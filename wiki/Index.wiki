@@ -1,7 +1,7 @@
 = Introduction =
-#summary Page d'acceuil du Wiki
+#summary Page d'accueil du Wiki
 
-Wiki pour le projet clavicom 5
+Wiki pour le projet Clavicom 5
 
 = Contenu =
 
