@@ -15,3 +15,6 @@
   * Gestion des profils utilisateurs
   * raccourics applicatifs (plugins ?)
   * Supprimer certaines touches (Suppr/Backspace, Arrêt defil,...) 
+  * Gérer la supperposition avec d'autres fenêtres (faire que le contraste soit toujours quelque soit la couleur d'arrière plan).
+  * Gérer un genre de Ctrl+Alt+Tab
+  * Bien gérer le focus
