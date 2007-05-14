@@ -20,3 +20,4 @@
   * Bien gérer le focus
   * Touche Entrée du clavier non significative
   * Faire gaffe aux messages d'erreur, s'il y en a (pas agressif, bien explicatif)
+  * Ajouter des raccourcis usuels (Copier/coller, Ctrl-Z,...).
