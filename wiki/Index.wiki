@@ -6,4 +6,4 @@ Wiki pour le projet clavicom 5
 
   * [Brainstorming]
   * [Observation_14_mai_2007]
-  * [Tests preliminaires]
+  * [Tests_preliminaires]
