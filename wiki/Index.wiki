@@ -1,9 +1,8 @@
-
 = Introduction =
 
 Wiki pour le projet clavicom 5
 
 = Contenu =
 
-Brainstorming
-TestPréliminaires
+  * Brainstorming
+  * TestPreliminaires
