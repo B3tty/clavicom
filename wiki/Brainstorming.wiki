@@ -13,3 +13,4 @@
   * Garder la simplicité
   * Gestion des profils utilisateurs
   * raccourics applicatifs (plugins ?)
+  * Supprimer certaines touches (Suppr/Backspace, Arrêt defil, 
