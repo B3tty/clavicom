@@ -5,4 +5,5 @@ Wiki pour le projet clavicom 5
 = Contenu =
 
   * [Brainstorming]
-  * [TestPreliminaires]
+  * [Observation_14_mai_2007]
+  * [Tests preliminaires]
