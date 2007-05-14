@@ -2,11 +2,16 @@
 
 Add your content here.
 
-
-= Details =
+*Position de la fenêtre :* L'application se positionne n'importe où (ou dernier endroit). Il serait bien de placer par défaut l'application en bas par exemple. Pourquoi pas pouvoir également la déplacer.
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+
+
+
+
+
 
