@@ -1,4 +1,4 @@
-#sommary Tests préliminaires
+#summary Tests préliminaires
 
 = Introduction =
 
