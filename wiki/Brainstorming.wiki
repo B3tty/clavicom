@@ -1,7 +1,8 @@
 #summary Idées en vrac.
 
-* Prendre en compte les couleurs
-* Multilingue
-* Transparence
-* Portabilité
-* Gestion d'interface (généricité)
+  * Prendre en compte les couleurs
+  * Multilingue
+  * Transparence
+  * Portabilité
+  * Gestion d'interface (généricité)
+
