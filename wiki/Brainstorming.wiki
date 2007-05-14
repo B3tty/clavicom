@@ -1,4 +1,7 @@
-#summary One-sentence summary of this page.
+#summary Idées en vrac.
 
-= Idées en vrac =
-
+* Prendre en compte les couleurs
+* Multilingue
+* Transparence
+* Portabilité
+* Gestion d'interface (généricité)
