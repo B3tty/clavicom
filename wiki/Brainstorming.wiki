@@ -6,5 +6,5 @@
   * Multilingue
   * Transparence
   * Portabilité
-  * Gestion d'interface (généricité)
+  * Gestion d'interface (généricité, plugins ?)
   * Regrouper les touches d'accents, caractères spéciaux (#,@,&,...)
