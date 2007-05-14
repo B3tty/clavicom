@@ -18,3 +18,4 @@
   * Gérer la supperposition avec d'autres fenêtres (faire que le contraste soit toujours quelque soit la couleur d'arrière plan).
   * Gérer un genre de Ctrl+Alt+Tab
   * Bien gérer le focus
+  * Touche Entrée du clavier non significative
