@@ -8,9 +8,9 @@
   * Portabilité
   * Gestion d'interface (généricité, plugins ?)
   * Regrouper les touches d'accents, caractères spéciaux (#,@,&,...)
-  * Utiliser des icônes simples (pas une croix pour fermer)
+  * Utiliser des icônes simples (pas une croix pour fermer), et pas trop proches.
   * Ajout de plugin (avec raccourcis spécifiques pour chaque application)
   * Garder la simplicité
   * Gestion des profils utilisateurs
   * raccourics applicatifs (plugins ?)
-  * Supprimer certaines touches (Suppr/Backspace, Arrêt defil, 
+  * Supprimer certaines touches (Suppr/Backspace, Arrêt defil,...) 
