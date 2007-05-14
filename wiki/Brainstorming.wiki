@@ -11,3 +11,4 @@
   * Utiliser des icônes simples (pas une croix pour fermer)
   * Ajout de plugin (avec raccourcis spécifiques pour chaque application)
   * Garder la simplicité
+  * Gestion des profils utilisateurs
