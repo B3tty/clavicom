@@ -1,8 +1,10 @@
 #summary Idées en vrac.
 
+  * Reprendre la disposition d'un clavier classique ?
   * Prendre en compte les couleurs
   * Multilingue
   * Transparence
   * Portabilité
   * Gestion d'interface (généricité)
+  * Regrouper les touches d'accents, caractères spéciaux (#,@,&,...)
 
