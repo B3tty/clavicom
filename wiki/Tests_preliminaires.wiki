@@ -1,0 +1,11 @@
+#Tests préliminaires
+
+= Introduction =
+
+Tests à effectuer avant de commencer l'application
+
+
+= Details =
+
+|| Fonction || Explications ||
+|| Split screen || Regarder s'il est possible de séparer l'écran en deux pour permettre de voir complement les applications et le clavicom en même temps.||
