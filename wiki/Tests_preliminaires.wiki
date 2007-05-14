@@ -7,6 +7,8 @@ Tests à effectuer avant de commencer l'application
 
 = Details =
 
-|| *Fonction* || *Explications* || *Fait* || *Fonctionnel* ||
+|| *Fonction* || *Explications* || *Test effectué * || *Fonctionne* ||
 || Split screen || Regarder s'il est possible de séparer l'écran en deux pour permettre de voir complement les applications et le clavicom en même temps.|| || ||
 || Volet dépliant || Regarder s'il est possible de creer un volet déroulant sur les différants cotés de l'écran (gauche, droite, haut ou bas), permettant d'afficher le clavicom.|| || ||
+|| Simulation des touches || Tester si on peut simuler l'appuis sur des touches du clavier avec une API Java || || ||
+|| Simulation de la souris || Tester si on peut simuler le mouvement et les clicks avec une API Java || || ||
