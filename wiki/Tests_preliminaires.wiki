@@ -7,6 +7,6 @@ Tests à effectuer avant de commencer l'application
 
 = Details =
 
-|| *Fonction* || *Explications* ||
-|| Split screen || Regarder s'il est possible de séparer l'écran en deux pour permettre de voir complement les applications et le clavicom en même temps.||
-|| Volet dépliant || Regarder s'il est possible de creer un volet déroulant sur les différants cotés de l'écran (gauche, droite, haut ou bas), permettant d'afficher le clavicom.||
+|| *Fonction* || *Explications* || *Fait* || *Fonctionnel* ||
+|| Split screen || Regarder s'il est possible de séparer l'écran en deux pour permettre de voir complement les applications et le clavicom en même temps.|| || ||
+|| Volet dépliant || Regarder s'il est possible de creer un volet déroulant sur les différants cotés de l'écran (gauche, droite, haut ou bas), permettant d'afficher le clavicom.|| || ||
