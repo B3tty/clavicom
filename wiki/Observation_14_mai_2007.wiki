@@ -1,7 +1,5 @@
 #summary Utilisation Clavicom 4, avec Trackball menton et bouton derrière la tête.
 
-Add your content here.
-
   * *Position de la fenêtre :* L'application se positionne n'importe où (ou dernier endroit). Il serait bien de placer par défaut l'application en bas par exemple. Pourquoi pas pouvoir également la déplacer.
 
   * *Bouton fermer :* La croix pour fermer l'application ne semble pas être une bonne métaphore. Son utilisation porte à confusion. 
