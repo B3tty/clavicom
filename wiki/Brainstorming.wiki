@@ -1,10 +1,10 @@
 #summary Idées en vrac.
 
   * Reprendre la disposition d'un clavier classique ?
+  * Ajout de raccourcis de préférences (Firefox,...)
   * Prendre en compte les couleurs
   * Multilingue
   * Transparence
   * Portabilité
   * Gestion d'interface (généricité)
   * Regrouper les touches d'accents, caractères spéciaux (#,@,&,...)
-
