@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class mainTestRobot 
+public class robotEtFocus 
 {
 
 	private static Robot robot;
