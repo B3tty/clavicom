@@ -1,4 +1,4 @@
-package alwaysVisible;
+package fenetres;
 
 import javax.swing.JFrame;
 

@@ -1,4 +1,4 @@
-package TestRobot;
+package touches;
 
 import java.awt.AWTException;
 import java.awt.GridLayout;
