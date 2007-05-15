@@ -2,7 +2,7 @@ package fenetres;
 
 import javax.swing.JFrame;
 
-public class mainAlwaysVisible
+public class alwaysVisible
 {
 
 	/**
