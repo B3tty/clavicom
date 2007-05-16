@@ -1,0 +1,6 @@
+#summary Choses a faire si on a le temps à la fin
+
+
+|| *Fonction* || *Explications* || *Fait* ||
+|| Images sur les boutons || Pouvoir mettre des images sur les boutons || ||
+|| Ctrl+Z de l'éditeur || Faire un Undo pour l'éditeur || ||
