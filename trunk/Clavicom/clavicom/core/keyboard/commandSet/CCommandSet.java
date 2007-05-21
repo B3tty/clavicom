@@ -32,23 +32,34 @@ public class CCommandSet
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	HashMap CommandSetSectionsList;	// liste des sections des commandSet
+	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	CCommandSet( String CommandSetfilePath )
 	{
 		// Initialisation des attributs
-		CommandSetSectionsList = new HashMap();
+		sectionsList = new HashMap<String, CSection>();
 		
 		// Chargement du fichier XML
 		LoadCommandSetFile ( CommandSetfilePath );
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	public CSection GetSection( String name )
+	{
+		return sectionsList.get( name );
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	private void LoadCommandSetFile ( String CommandSetfilePath )
 	{
-		
+		// =======================================================
+		//	Chargement du fichier XML
+		// =======================================================
+	}
+	
+	private void AddSection( CSection section )
+	{
+		sectionsList.put( section.name, section);
 	}
 }
