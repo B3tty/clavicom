@@ -3,7 +3,7 @@
 	<section name = "Minuscules">
 		<command caption = "a">
 			<code order="0" action="pressed" value="VK_A"/>
-			<code order="0" action="released" value="VK_A"/>
+			<code order="1" action="released" value="VK_A"/>
 		</command>
 		<command caption = "z">
 			<code order="0" action="pressed" value="VK_Z"/>
