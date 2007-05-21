@@ -66,15 +66,16 @@ public class robotEtFocus
 //				System.out.println( KeyEvent.VK_CIRCUMFLEX ); 
 //				
 //
-				int e1 = KeyEvent.VK_2;
-				int e2 = KeyEvent.VK_CONTROL;
-				int e3 = KeyEvent.VK_ALT;
+				System.out.println(KeyEvent.VK_EXCLAMATION_MARK);
+				int e1 = KeyEvent.VK_CIRCUMFLEX;
+				int e2 = KeyEvent.VK_A;
+				//int e3 = KeyEvenP;
 				
 				//KeyStroke s1 = KeyStroke.getKeyStroke(KeyEvent.VK_4, KeyEvent.ALT_GRAPH_DOWN_MASK, false);
-//				robot.keyPress( e2 );
+				robot.keyPress( e2 );
 //				robot.keyPress( e3 );
-				robot.keyPress( e1 );
-				robot.keyRelease( e1 );
+//				robot.keyPress( e1 );
+//				robot.keyRelease( e1 );
 //				robot.keyRelease( e2 );
 //				robot.keyRelease( e3 );
 				
