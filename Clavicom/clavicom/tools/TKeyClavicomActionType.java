@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CXMLNames.java
+			Filename			: CKeyClavicomType.java
 			Creation date		: 21 mai 07
 		
 			Project				: Clavicom
@@ -25,12 +25,16 @@
 
 package clavicom.tools;
 
-public class CXMLNames
+public final class TKeyClavicomActionType 
 {
-	//--------------------------------------------------------- CONSTANTES --//
-	// CPoint
-	public static String ELEMENT_NAME_X 		= "x";
-	public static String ELEMENT_NAME_Y 		= "y";
-	
-	
-}
+    private TKeyClavicomActionType() 
+    {
+    	// Rien à faire
+    }
+    
+    // Liste des valeurs
+    public final static TKeyClavicomActionType NONE					 	= new TKeyClavicomActionType();
+    public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType();
+    public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType();
+    public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType();
+} 

@@ -29,7 +29,7 @@ import java.awt.Color;
 
 import org.jdom.Element;
 
-import clavicom.tools.CPoint;
+import clavicom.tools.TPoint;
 
 public abstract class CKeyboardKey
 {
@@ -37,11 +37,11 @@ public abstract class CKeyboardKey
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	Color color;		// Couleur de la touche
-	CPoint pointMin;	// Point supérieur gauche
-	CPoint pointMax;	// Point inférieur droit
+	TPoint pointMin;	// Point supérieur gauche
+	TPoint pointMax;	// Point inférieur droit
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyboardKey(Color myColor, CPoint myPointMin, CPoint myPointMax)
+	public CKeyboardKey(Color myColor, TPoint myPointMin, TPoint myPointMax)
 	{
 		color = myColor;
 		pointMin = myPointMin;
@@ -61,22 +61,22 @@ public abstract class CKeyboardKey
 		this.color = color;
 	}
 
-	public CPoint getPointMax()
+	public TPoint getPointMax()
 	{
 		return pointMax;
 	}
 
-	public void setPointMax(CPoint pointMax)
+	public void setPointMax(TPoint pointMax)
 	{
 		this.pointMax = pointMax;
 	}
 
-	public CPoint getPointMin()
+	public TPoint getPointMin()
 	{
 		return pointMin;
 	}
 
-	public void setPointMin(CPoint pointMin)
+	public void setPointMin(TPoint pointMin)
 	{
 		this.pointMin = pointMin;
 	}
