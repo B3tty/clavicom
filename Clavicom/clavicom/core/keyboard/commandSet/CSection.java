@@ -27,6 +27,10 @@ package clavicom.core.keyboard.commandSet;
 
 import java.util.HashMap;
 
+import org.jdom.Element;
+
+import clavicom.tools.TXMLNames;
+
 public class CSection
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -40,6 +44,50 @@ public class CSection
 	{
 		name = myName;
 		commandMap = new HashMap<String, CCommand>();
+	}
+	
+	
+	public static CSection BuildSection( Element node ) throws Exception
+	{
+		// construction d'une section a partir d'un noeud XML
+		
+		if ( node == null )
+		{
+			throw new Exception("[Construction d'une section de clavier] : Impossible de trouver le noeud XML correspondant à cette section");
+		}
+		
+		String name = node.getAttributeValue( TXMLNames.CS_ATTRIBUT_NAME );
+		
+		if( name == null )
+		{
+			throw new Exception("[Construction d'une section de clavier] : Impossible de récupérer l'attribut " + TXMLNames.CS_ATTRIBUT_NAME + " d'une section");
+		}
+		
+		CSection section = new CSection( name );
+		
+		for( Object object : node.getChildren( TXMLNames.CS_ELEMENT_COMMAND ) )
+		{
+			if( object instanceof Element )
+			{
+				Element element = (Element)object;
+				if( element != null )
+				{
+					CCommand command = CCommand.BuildCommand( element );
+					
+					try
+					{
+						section.AddCommand( command );
+					}
+					catch(Exception ex)
+					{
+						throw new Exception("[Construction d'une section de clavier] : Impossible d'ajouter la commande à la liste des commandes");
+					}
+				}
+			}
+		}
+		
+		return section;
+		
 	}
 
 	//----------------------------------------------------------- METHODES --//
