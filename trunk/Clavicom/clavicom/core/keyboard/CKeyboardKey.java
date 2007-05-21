@@ -27,9 +27,11 @@ package clavicom.core.keyboard;
 
 import java.awt.Color;
 
+import org.jdom.Element;
+
 import clavicom.tools.CPoint;
 
-public class CKeyboardKey
+public abstract class CKeyboardKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -45,6 +47,8 @@ public class CKeyboardKey
 		pointMin = myPointMin;
 		pointMax = myPointMax;
 	}
+	
+	public abstract Element buildNode();	// Retourne le noeud XML correspondant
 	
 	//----------------------------------------------------------- METHODES --//	
 	public Color getColor()
@@ -77,6 +81,6 @@ public class CKeyboardKey
 		this.pointMin = pointMin;
 	}
 	
-	//--------------------------------------------------- METHODES PRIVEES --//	
+	//--------------------------------------------------- METHODES PRIVEES --//
 }
 

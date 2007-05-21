@@ -25,12 +25,12 @@
 
 package clavicom.tools;
 
-public final class CKeyClavicomActionType {
-	
+public final class CKeyClavicomActionType 
+{
     private CKeyClavicomActionType() 
     {
     	// Rien à faire
-    } 
+    }
     
     // Liste des valeurs
     public final static CKeyClavicomActionType NONE					 	= new CKeyClavicomActionType();
