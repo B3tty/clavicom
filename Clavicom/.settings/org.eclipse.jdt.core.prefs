@@ -1,4 +1,4 @@
-#Wed May 16 17:26:38 CEST 2007
+#Wed May 16 18:29:17 CEST 2007
 eclipse.preferences.version=1
 org.eclipse.jdt.core.formatter.align_type_members_on_columns=false
 org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression=16
@@ -43,7 +43,7 @@ org.eclipse.jdt.core.formatter.brace_position_for_method_declaration=next_line
 org.eclipse.jdt.core.formatter.brace_position_for_switch=next_line
 org.eclipse.jdt.core.formatter.brace_position_for_type_declaration=next_line
 org.eclipse.jdt.core.formatter.comment.clear_blank_lines=false
-org.eclipse.jdt.core.formatter.comment.format_comments=false
+org.eclipse.jdt.core.formatter.comment.format_comments=true
 org.eclipse.jdt.core.formatter.comment.format_header=false
 org.eclipse.jdt.core.formatter.comment.format_html=true
 org.eclipse.jdt.core.formatter.comment.format_source_code=true
