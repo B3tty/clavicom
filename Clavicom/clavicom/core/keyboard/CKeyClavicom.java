@@ -27,6 +27,9 @@ package clavicom.core.keyboard;
 
 import java.awt.Color;
 
+import clavicom.tools.CKeyClavicomActionType;
+import clavicom.tools.CPoint;
+
 
 public class CKeyClavicom extends CKeyboardKey
 {

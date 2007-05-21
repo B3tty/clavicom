@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="francais">
-
+<language name="Français">
+	<!-- Générales à l'application -->
+	<message id = "MSG_APPLICATION_NAME">Clavicom</message>
+	<message id = "MSG_APPLICATION_VERSION">5.0</message>
+	<message id = "MSG_APPLICATION_DESCRIPTION">Clavier virtuel universel</message>
 </language>
