@@ -2,7 +2,7 @@
 
 			Filename			: CCommandSet.java
 			Creation date		: 21 mai 07
-		
+
 			Project				: Clavicom
 			Package				: clavicom.core.keyboard.commandSet
 
@@ -25,7 +25,14 @@
 
 package clavicom.core.keyboard.commandSet;
 
+import java.io.File;
 import java.util.HashMap;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
+
+import clavicom.tools.TXMLNames;
 
 public class CCommandSet 
 {
@@ -35,14 +42,15 @@ public class CCommandSet
 	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CCommandSet( String CommandSetfilePath )
+	CCommandSet( String CommandSetfilePath ) throws Exception
 	{
 		// Initialisation des attributs
 		sectionsList = new HashMap<String, CSection>();
-		
+
 		// Chargement du fichier XML
 		LoadCommandSetFile ( CommandSetfilePath );
 	}
+
 
 	//----------------------------------------------------------- METHODES --//	
 	public CSection GetSection( String name )
@@ -51,13 +59,45 @@ public class CCommandSet
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
-	private void LoadCommandSetFile ( String CommandSetfilePath )
+	private void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
 	{
 		// =======================================================
 		//	Chargement du fichier XML
 		// =======================================================
+
+		SAXBuilder sxb = new SAXBuilder();
+		Document document = null;
+		try
+		{
+			document = sxb.build(new File( CommandSetfilePath ));
+		}
+		catch(Exception e)
+		{
+			throw new Exception("[Construction du CommandSet du clavier] : Erreur lors de l'ouverture du fichier " + CommandSetfilePath + "\n" + e.getMessage());
+		}
+
+		//On initialise un nouvel élément racine avec l'élément racine du document.
+		Element racine = document.getRootElement();
+		
+		for( Object object : racine.getChildren( TXMLNames.CS_ELEMENT_SECTION ) )
+		{
+			if( object instanceof CSection )
+			{
+				Element element = (Element)object;
+				CSection section = CSection.BuildSection( element );
+				
+				try
+				{
+					AddSection( section );
+				}
+				catch(Exception ex)
+				{
+					throw new Exception("[Construction du CommandSet du clavier] : Erreur lors de l'ajout de la section " + section.GetName());
+				}
+			}
+		}
 	}
-	
+
 	private void AddSection( CSection section )
 	{
 		sectionsList.put( section.name, section);
