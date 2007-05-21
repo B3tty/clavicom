@@ -281,7 +281,7 @@
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "Contrôle (gauche)">
+		<command caption = "ContrÃ´le (gauche)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="released" value="VK_CONTROL"/>
 		</command>
@@ -309,7 +309,7 @@
 			<code order="0" action="pressed" value="VK_CONTEXT_MENU"/>
 			<code order="1" action="released" value="VK_CONTEXT_MENU"/>
 		</command>
-		<command caption = "Contrôle (droit)">
+		<command caption = "Contrï¿½le (droit)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="released" value="VK_CONTROL"/>
 		</command>
@@ -317,23 +317,23 @@
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "Entrée">
+		<command caption = "EntrÃ©e">
 			<code order="0" action="pressed" value="VK_ENTER"/>
 			<code order="1" action="released" value="VK_ENTER"/>
 		</command>
-		<command caption = "Retour arrière">
+		<command caption = "Retour arriÃ©re">
 			<code order="0" action="pressed" value="VK_BACK_SPACE"/>
 			<code order="1" action="released" value="VK_BACK_SPACE"/>
 		</command>
-		<command caption = "Imprimer écran">
+		<command caption = "Imprimer Ã©cran">
 			<code order="0" action="pressed" value="VK_PRINTSCREEN"/>
 			<code order="1" action="released" value="VK_PRINTSCREEN"/>
 		</command>
-		<command caption = "Système">
+		<command caption = "SystÃ¨me">
 			<code order="0" action="pressed" value="VK_PRINTSCREEN"/>
 			<code order="1" action="released" value="VK_PRINTSCREEN"/>
 		</command>
-		<command caption = "Arrêt défilement">
+		<command caption = "ArrÃ©t dÃ©filement">
 			<code order="0" action="pressed" value="VK_STOP"/>
 			<code order="1" action="released" value="VK_STOP"/>
 		</command>
@@ -349,11 +349,11 @@
 			<code order="0" action="pressed" value="VK_INSER"/>
 			<code order="1" action="released" value="VK_INSER"/>
 		</command>
-		<command caption = "Début">
+		<command caption = "DÃ©but">
 			<code order="0" action="pressed" value="VK_BEGIN"/>
 			<code order="1" action="released" value="VK_BEGIN"/>
 		</command>
-		<command caption = "Page supérieure">
+		<command caption = "Page supÃ©rieure">
 			<code order="0" action="pressed" value="VK_DELETE"/>
 			<code order="1" action="released" value="VK_DELETE"/>
 		</command>
@@ -365,25 +365,25 @@
 			<code order="0" action="pressed" value="VK_END"/>
 			<code order="1" action="released" value="VK_END"/>
 		</command>
-		<command caption = "Page inférieure">
+		<command caption = "Page infï¿½rieure">
 			<code order="0" action="pressed" value="VK_PAGE_DOWN"/>
 			<code order="1" action="released" value="VK_PAGE_DOWN"/>
 		</command>
 	</section>
-	<section name = "Flèches">
-		<command caption = "Flèche haut">
+	<section name = "FlÃ¨ches">
+		<command caption = "FlÃ¨ches haut">
 			<code order="0" action="pressed" value="VK_UP"/>
 			<code order="1" action="released" value="VK_UP"/>
 		</command>
-		<command caption = "Flèche gauche">
+		<command caption = "FlÃ¨ches gauche">
 			<code order="0" action="pressed" value="VK_LEFT"/>
 			<code order="1" action="released" value="VK_LEFT"/>
 		</command>
-		<command caption = "Flèche bas">
+		<command caption = "FlÃ¨ches bas">
 			<code order="0" action="pressed" value="VK_DOWN"/>
 			<code order="1" action="released" value="VK_DOWN"/>
 		</command>
-		<command caption = "Flèche droite">
+		<command caption = "FlÃ¨ches droite">
 			<code order="0" action="pressed" value="VK_RIGHT"/>
 			<code order="1" action="released" value="VK_RIGHT"/>
 		</command>
@@ -418,12 +418,12 @@
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
 	</section>
-	<section name = "Spéciaux">
+	<section name = "SpÃ©ciaux">
 		<command caption = "&">
 			<code order="0" action="pressed" value="VK_1"/>
 			<code order="1" action="released" value="VK_1"/>
 		</command>
-		<command caption = "é">
+		<command caption = "Ã©">
 			<code order="0" action="pressed" value="VK_2"/>
 			<code order="1" action="released" value="VK_2"/>
 		</command>
@@ -483,7 +483,7 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "è">
+		<command caption = "Ã¨">
 			<code order="0" action="pressed" value="VK_7"/>
 			<code order="1" action="released" value="VK_7"/>
 		</command>
@@ -507,11 +507,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "ç">
+		<command caption = "Ã§">
 			<code order="0" action="pressed" value="VK_9"/>
 			<code order="1" action="released" value="VK_9"/>
 		</command>
-		<command caption = "^ (caractère)">
+		<command caption = "^ (caractï¿½re)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_9"/>
@@ -519,7 +519,7 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "à">
+		<command caption = "Ã ">
 			<code order="0" action="pressed" value="VK_0"/>
 			<code order="1" action="released" value="VK_0"/>
 		</command>
@@ -535,7 +535,7 @@
 			<code order="0" action="pressed" value="VK_RIGHT_PARENTHESIS"/>
 			<code order="1" action="released" value="VK_RIGHT_PARENTHESIS"/>
 		</command>
-		<command caption = "°">
+		<command caption = "Â°">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_RIGHT_PARENTHESIS"/>
 			<code order="2" action="released" value="VK_RIGHT_PARENTHESIS"/>
@@ -567,7 +567,7 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "€">
+		<command caption = "â‚¬">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_E"/>
@@ -575,7 +575,7 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "<">
+		<command caption = "/<">
 			<code order="0" action="pressed" value="VK_LESS"/>
 			<code order="1" action="released" value="VK_LESS"/>
 		</command>
@@ -589,7 +589,7 @@
 			<code order="0" action="pressed" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="1" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
 		</command>
-		<command caption = "¨">
+		<command caption = "Â¨">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="2" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
@@ -599,13 +599,13 @@
 			<code order="0" action="pressed" value="VK_DOLLAR"/>
 			<code order="1" action="released" value="VK_DOLLAR"/>
 		</command>
-		<command caption = "£">
+		<command caption = "Â£">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_DOLLAR"/>
 			<code order="2" action="released" value="VK_DOLLAR"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "¤">
+		<command caption = "Â¤">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_DOLLAR"/>
@@ -617,13 +617,13 @@
 			<code order="0" action="pressed" value="VK_ASTERISK"/>
 			<code order="1" action="released" value="VK_ASTERISK"/>
 		</command>
-		<command caption = "µ">
+		<command caption = "Âµ">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_ASTERISK"/>
 			<code order="2" action="released" value="VK_ASTERISK"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "ù">
+		<command caption = "Ã¹">
 			<code order="0" action="pressed" value="VK_U_ACCENT_GRAVE"/>
 			<code order="1" action="released" value="VK_U_ACCENT_GRAVE"/>
 		</command>
@@ -639,7 +639,7 @@
 			<code order="2" action="released" value="VK_COLON"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "§">
+		<command caption = "Â§">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_EXCLAMATION_MARK"/>
 			<code order="2" action="released" value="VK_EXCLAMATION_MARK"/>
@@ -758,8 +758,8 @@
 			<code order="1" action="released" value="VK_F12"/>
 		</command>
 	</section>
-	<section name = "Pavé numérique">
-		<command caption = "Verrouillage pavé numérique">
+	<section name = "PavÃ© numÃ©rique">
+		<command caption = "Verrouillage pavÃ© numÃ©rique">
 			<code order="0" action="pressed" value="VK_NUM_LOCK"/>
 			<code order="1" action="released" value="VK_NUM_LOCK"/>
 		</command>
@@ -779,51 +779,51 @@
 			<code order="0" action="pressed" value="VK_ADD"/>
 			<code order="1" action="released" value="VK_ADD"/>
 		</command>
-		<command caption = "Entrée (droit)">
+		<command caption = "EntrÃ©e (droit)">
 			<code order="0" action="pressed" value="VK_ENTER"/>
 			<code order="1" action="released" value="VK_ENTER"/>
 		</command>
-		<command caption = "Point (Pavé numérique)">
+		<command caption = "Point (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUM_POINT"/>
 			<code order="1" action="released" value="VK_NUM_POINT"/>
 		</command>
-		<command caption = "0 (Pavé numérique)">
+		<command caption = "0 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD0"/>
 			<code order="1" action="released" value="VK_NUMPAD0"/>
 		</command>
-		<command caption = "1 (Pavé numérique)">
+		<command caption = "1 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD1"/>
 			<code order="1" action="released" value="VK_NUMPAD1"/>
 		</command>
-		<command caption = "2 (Pavé numérique)">
+		<command caption = "2 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD2"/>
 			<code order="1" action="released" value="VK_NUMPAD2"/>
 		</command>
-		<command caption = "3 (Pavé numérique)">
+		<command caption = "3 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD3"/>
 			<code order="1" action="released" value="VK_NUMPAD3"/>
 		</command>
-		<command caption = "4 (Pavé numérique)">
+		<command caption = "4 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD4"/>
 			<code order="1" action="released" value="VK_NUMPAD4"/>
 		</command>
-		<command caption = "5 (Pavé numérique)">
+		<command caption = "5 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD5"/>
 			<code order="1" action="released" value="VK_NUMPAD5"/>
 		</command>
-		<command caption = "6 (Pavé numérique)">
+		<command caption = "6 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD6"/>
 			<code order="1" action="released" value="VK_NUMPAD6"/>
 		</command>
-		<command caption = "7 (Pavé numérique)">
+		<command caption = "7 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD7"/>
 			<code order="1" action="released" value="VK_NUMPAD7"/>
 		</command>
-		<command caption = "8 (Pavé numérique)">
+		<command caption = "8 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD8"/>
 			<code order="1" action="released" value="VK_NUMPAD8"/>
 		</command>
-		<command caption = "9 (Pavé numérique)">
+		<command caption = "9 (PavÃ© numÃ©rique)">
 			<code order="0" action="pressed" value="VK_NUMPAD9"/>
 			<code order="1" action="released" value="VK_NUMPAD9"/>
 		</command>
