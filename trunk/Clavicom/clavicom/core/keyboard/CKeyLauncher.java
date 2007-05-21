@@ -27,8 +27,8 @@ package clavicom.core.keyboard;
 
 import java.awt.Color;
 
-import clavicom.tools.CKeyClavicomActionType;
-import clavicom.tools.CPoint;
+import clavicom.tools.TKeyClavicomActionType;
+import clavicom.tools.TPoint;
 
 
 public class CKeyLauncher extends CKeyboardKey
@@ -37,22 +37,22 @@ public class CKeyLauncher extends CKeyboardKey
 	
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyClavicomActionType action;	// Action a faire
+	TKeyClavicomActionType action;	// Action a faire
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyLauncher (Color myColor, CPoint myPointMin, CPoint myPointMax)
+	public CKeyLauncher (Color myColor, TPoint myPointMin, TPoint myPointMax)
 	{
 		super(myColor,myPointMin,myPointMax);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 
-	public CKeyClavicomActionType getAction()
+	public TKeyClavicomActionType getAction()
 	{
 		return action;	
 	}
 
-	public void setAction(CKeyClavicomActionType action)
+	public void setAction(TKeyClavicomActionType action)
 	{
 		this.action = action;
 	}

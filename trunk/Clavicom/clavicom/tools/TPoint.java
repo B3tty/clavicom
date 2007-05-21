@@ -28,15 +28,17 @@ package clavicom.tools;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
-public class CPoint 
+public class TPoint 
 {
 	//--------------------------------------------------------- CONSTANTES --//
+	private static String ELEMENT_NAME_X;
+	private static String ELEMENT_NAME_Y;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	float x,y;	// Coordonnées relatives du point (pourcentage)
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CPoint (float myX, float myY) throws Exception
+	public TPoint (float myX, float myY) throws Exception
 	{
 		if((x < 0) || (x > 100) || (x < 0) || (y > 100))
 		{
@@ -47,7 +49,12 @@ public class CPoint
 		y = myY;
 	}
 	
-	public CPoint (Element pointElement) throws Exception
+	/**
+	 * Construit l'objet à partir du noeud XML
+	 * @param pointElement
+	 * @throws Exception
+	 */
+	public TPoint (Element pointElement) throws Exception
 	{
 		String strX,strY;
 		Element eltX, eltY;
@@ -87,6 +94,18 @@ public class CPoint
 			e.printStackTrace();
 			throw new Exception ("[Point] Chargement du noeud point : chaine invalide");
 		}
+	}
+	
+	public Element buildNode()
+	{
+		Element eltPoint = new Element("point");
+		Element eltX;
+		Element eltY;
+		
+		eltX = new Element (ELEMENT_NAME_X);
+		
+		
+		return eltPoint;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
