@@ -27,11 +27,9 @@ package clavicom.core.keyboard.commandSet;
 
 import java.io.File;
 import java.util.HashMap;
-
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
-
 import clavicom.tools.TXMLNames;
 
 public class CCommandSet 
