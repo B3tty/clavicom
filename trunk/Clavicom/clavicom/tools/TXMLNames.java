@@ -29,8 +29,22 @@ public class TXMLNames
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	// CPoint
-	public static String ELEMENT_NAME_X 		= "x";
-	public static String ELEMENT_NAME_Y 		= "y";
+	public static String ELEMENT_NAME_X 			= "x";
+	public static String ELEMENT_NAME_Y 			= "y";
 	
+	
+	// commandSet
+	public static String CS_ATTRIBUT_ACTION			= "action";
+	public static String CS_ATTRIBUT_VALUE			= "value";
+	public static String CS_ELEMENT_CODE			= "code";
+	public static String CS_ELEMENT_COMMAND			= "command";
+	public static String CS_ELEMENT_SECTION			= "section";
+	public static String CS_ELEMENT_COMMANDSET		= "commandeset";
+	public static String CS_ATTRIBUT_NAME			= "name";
+	public static String CS_ATTRIBUT_ORDER			= "order";
+	public static String CS_ATTRIBUT_CAPTION		= "caption";
+	
+	public static String CS_STRING_ENUM_PRESSED		= "pressed";
+	public static String CS_STRING_ENUM_RELEASED	= "released";
 	
 }

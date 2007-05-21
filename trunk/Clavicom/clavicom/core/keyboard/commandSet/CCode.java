@@ -26,26 +26,45 @@
 package clavicom.core.keyboard.commandSet;
 
 import java.awt.event.KeyEvent;
+import org.jdom.Attribute;
+import org.jdom.Element;
 
 import clavicom.tools.CKeyAction;
+import clavicom.tools.TXMLNames;
 
 public class CCode
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	KeyEvent keyEvent;		//keyEvent de la touche du clavier
+	int keyEvent;		// keyEvent de la touche du clavier
 	CKeyAction keyAction;	// Action à effectuer (PRESSED ou RELEASED)
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CCode( KeyEvent myKeyEvent, CKeyAction myKeyAction )
+	CCode( int myKeyEvent, CKeyAction myKeyAction )
 	{
 		keyEvent = myKeyEvent;
 		keyAction = myKeyAction;
 	}
+	
+	public static CCode BuildCode( Element node )
+	{
+		Attribute action =  node.getAttribute( TXMLNames.CS_ATTRIBUT_ACTION );
+		Attribute value =  node.getAttribute( TXMLNames.CS_ATTRIBUT_VALUE );
+		
+		int keyEvent = LoaderTemp.GetKeyEvent( value.getValue() );
+		
+		// charche le keyAction
+		if( action.getValue().equals( "pressed" ) )
+		{
+			
+		}
+		
+		return null;
+	}
 
 	//----------------------------------------------------------- METHODES --//	
-	public KeyEvent GetKeyEvent(){return keyEvent;}
+	public int GetKeyEvent(){return keyEvent;}
 	public CKeyAction GetKeyAction(){return keyAction;}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
