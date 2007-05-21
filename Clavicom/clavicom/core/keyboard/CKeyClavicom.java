@@ -27,6 +27,8 @@ package clavicom.core.keyboard;
 
 import java.awt.Color;
 
+import org.jdom.Element;
+
 import clavicom.tools.CKeyClavicomActionType;
 import clavicom.tools.CPoint;
 
@@ -55,6 +57,17 @@ public class CKeyClavicom extends CKeyboardKey
 	public void setAction(CKeyClavicomActionType action)
 	{
 		this.action = action;
+	}
+	
+	/**
+	 * Créé le noeud à partir de l'objet courant
+	 * @return Noeud construit
+	 */
+	public Element buildNode()
+	{
+		Element newElement = new Element("keyclavicom");
+		
+		return newElement;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

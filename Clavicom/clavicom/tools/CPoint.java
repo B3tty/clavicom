@@ -25,7 +25,11 @@
 
 package clavicom.tools;
 
-public class CPoint {
+import org.jdom.Attribute;
+import org.jdom.Element;
+
+public class CPoint 
+{
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//	
@@ -41,6 +45,48 @@ public class CPoint {
 		
 		x = myX;
 		y = myY;
+	}
+	
+	public CPoint (Element pointElement) throws Exception
+	{
+		String strX,strY;
+		Element eltX, eltY;
+		
+		// Récupération des noeuds fils
+		eltX = pointElement.getChild("x");
+		eltY = pointElement.getChild("y");
+
+		// Test des chaines récupérées
+		if ((eltX == null) || (eltY == null))
+		{
+			throw new Exception ("[Point] Chargement du noeud point : element manquant");
+		}
+		
+		// Récupération des chaînes
+		strX = eltX.getText();
+		strY = eltY.getText();
+		
+		// Test des chaines récupérées
+		if ((strX == null) || (strY == null))
+		{
+			throw new Exception ("[Point] Chargement du noeud point : valeur manquante");
+		}
+		else if ((strX.equals("")) || (strY.equals("")))
+		{
+			throw new Exception ("[Point] Chargement du noeud point : element vide");
+		}
+		
+		// Construction des valeurs
+		try
+		{
+			x = Float.parseFloat(strX);
+			y = Float.parseFloat(strY);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			throw new Exception ("[Point] Chargement du noeud point : chaine invalide");
+		}
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
