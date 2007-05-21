@@ -53,7 +53,7 @@ public class CSection
 	}
 	
 	/**
-	 * Retourn la command correspondante au name passé en paramtre
+	 * Retourn la command correspondante au name passé en parametre
 	 * Retourne null si la commande n'éxiste pas
 	 * @param name
 	 * @return

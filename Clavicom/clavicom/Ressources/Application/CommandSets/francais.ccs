@@ -419,7 +419,7 @@
 		</command>
 	</section>
 	<section name = "Spéciaux">
-		<command caption = "&">
+		<command caption = "&amp;">
 			<code order="0" action="pressed" value="VK_1"/>
 			<code order="1" action="released" value="VK_1"/>
 		</command>
@@ -575,11 +575,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "/<">
+		<command caption = "&lt;">
 			<code order="0" action="pressed" value="VK_LESS"/>
 			<code order="1" action="released" value="VK_LESS"/>
 		</command>
-		<command caption = ">">
+		<command caption = "&gt;">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_LESS"/>
 			<code order="2" action="released" value="VK_LESS"/>
