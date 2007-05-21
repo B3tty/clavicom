@@ -28,6 +28,10 @@ package clavicom.core.keyboard.commandSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom.Element;
+
+import clavicom.tools.TXMLNames;
+
 public class CCommand
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -41,6 +45,65 @@ public class CCommand
 	{
 		caption = myCaption;
 		CodeList = new ArrayList<CCode>();
+	}
+	
+	public static CCommand BuildCommand( Element node ) throws Exception
+	{
+		// Construction d'un CCommand à partir d'un noeud XML
+		
+		if( node == null )
+		{
+			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver le noeud de la commande");
+		}
+		
+		String caption = node.getAttributeValue( TXMLNames.CS_ATTRIBUT_CAPTION );
+		if( caption == null )
+		{
+			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_CAPTION);
+		}
+		
+		CCommand command = new CCommand( caption );
+		
+		for( Object object : node.getChildren( TXMLNames.CS_ELEMENT_CODE ) )
+		{
+			if( object instanceof Element )
+			{
+				Element element = (Element)object;
+				
+				if( element != null )
+				{
+					// Récupération de l'attribut order
+					String order = element.getAttributeValue( TXMLNames.CS_ATTRIBUT_ORDER );
+					if( order == null )
+					{
+						throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_ORDER);
+					}
+					
+					int orderInt = 0;
+					try
+					{
+						orderInt = Integer.getInteger( order );
+					}
+					catch( Exception ex )
+					{
+						throw new Exception("[Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
+					}
+					
+					CCode code = CCode.BuildCode( element );
+					
+					try
+					{
+						command.AddCode(orderInt, code);
+					}
+					catch(Exception ex)
+					{
+						throw new Exception("[Construction d'une commande de clavier] : Impossible d'ajouter le code d'ordre " + orderInt + " dans la commande " + caption);
+					}
+				}
+			}
+		}
+		
+		return command;
 	}
 
 	//----------------------------------------------------------- METHODES --//
