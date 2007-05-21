@@ -31,6 +31,10 @@ public final class CKeyAction
 	//	 Liste des valeurs
     public final static CKeyAction PRESSED	= new CKeyAction();
     public final static CKeyAction RELEASED	= new CKeyAction();
+    
+    
+    public static String CS_STRING_ENUM_PRESSED		= "pressed";
+	public static String CS_STRING_ENUM_RELEASED	= "released";
    
     //---------------------------------------------------------- VARIABLES --//	
 	

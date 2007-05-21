@@ -25,10 +25,7 @@
 
 package clavicom.core.keyboard.commandSet;
 
-import java.awt.event.KeyEvent;
-import org.jdom.Attribute;
 import org.jdom.Element;
-
 import clavicom.tools.CKeyAction;
 import clavicom.tools.TXMLNames;
 
@@ -47,20 +44,51 @@ public class CCode
 		keyAction = myKeyAction;
 	}
 	
-	public static CCode BuildCode( Element node )
+	public static CCode BuildCode( Element node ) throws Exception
 	{
-		Attribute action =  node.getAttribute( TXMLNames.CS_ATTRIBUT_ACTION );
-		Attribute value =  node.getAttribute( TXMLNames.CS_ATTRIBUT_VALUE );
-		
-		int keyEvent = LoaderTemp.GetKeyEvent( value.getValue() );
-		
-		// charche le keyAction
-		if( action.getValue().equals( "pressed" ) )
+		if( node == null )
 		{
-			
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le noeud XML");
 		}
 		
-		return null;
+		String action =  node.getAttributeValue( TXMLNames.CS_ATTRIBUT_ACTION );
+		String value =  node.getAttributeValue( TXMLNames.CS_ATTRIBUT_VALUE );
+		
+		if( action == null )
+		{
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_ACTION);
+		}
+		if( value == null )
+		{
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_VALUE);
+		}
+		
+		int keyEvent = LoaderTemp.GetKeyEvent( value );
+		
+		// Si le keyEvent n'est pas bon
+		if( keyEvent == 0 )
+		{
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le code caractere correspondant à :" + value);
+		}
+		
+		// recherche le keyAction
+		CKeyAction keyAction;
+		if( action.equals( CKeyAction.CS_STRING_ENUM_PRESSED ) )
+		{
+			keyAction = CKeyAction.PRESSED;
+		}
+		else if( action.equals( CKeyAction.CS_STRING_ENUM_PRESSED ) )
+		{
+			keyAction = CKeyAction.RELEASED;
+		}
+		else
+		{
+			// pas de bon keyAction
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver la bonne action correspondante à :" + action);
+		}
+		
+		return new CCode( keyEvent, keyAction );
+
 	}
 
 	//----------------------------------------------------------- METHODES --//	

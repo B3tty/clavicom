@@ -44,7 +44,5 @@ public class TXMLNames
 	public static String CS_ATTRIBUT_ORDER			= "order";
 	public static String CS_ATTRIBUT_CAPTION		= "caption";
 	
-	public static String CS_STRING_ENUM_PRESSED		= "pressed";
-	public static String CS_STRING_ENUM_RELEASED	= "released";
 	
 }
