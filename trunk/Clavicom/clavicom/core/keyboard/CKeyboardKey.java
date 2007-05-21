@@ -27,6 +27,8 @@ package clavicom.core.keyboard;
 
 import java.awt.Color;
 
+import clavicom.tools.CPoint;
+
 public class CKeyboardKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
