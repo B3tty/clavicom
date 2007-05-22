@@ -346,8 +346,8 @@
 			<code order="1" action="released" value="VK_PAUSE"/>
 		</command>
 		<command caption = "Insertion">
-			<code order="0" action="pressed" value="VK_INSER"/>
-			<code order="1" action="released" value="VK_INSER"/>
+			<code order="0" action="pressed" value="VK_INSERT"/>
+			<code order="1" action="released" value="VK_INSERT"/>
 		</command>
 		<command caption = "Début">
 			<code order="0" action="pressed" value="VK_BEGIN"/>

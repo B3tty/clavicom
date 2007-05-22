@@ -41,7 +41,7 @@ public class CCommand
 	List<CCode> CodeList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CCommand( String myCaption )
+	public CCommand( String myCaption )
 	{
 		caption = myCaption;
 		CodeList = new ArrayList<CCode>();
@@ -82,11 +82,11 @@ public class CCommand
 					int orderInt = 0;
 					try
 					{
-						orderInt = Integer.getInteger( order );
+						orderInt = Integer.parseInt( order );
 					}
 					catch( Exception ex )
 					{
-						throw new Exception("[order : " + order + "][Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
+						throw new Exception("[caption : " + caption + "][order : " + order + "][Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
 					}
 					
 					CCode code = null;

@@ -40,7 +40,7 @@ public class CCommandSet
 	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CCommandSet( String CommandSetfilePath ) throws Exception
+	public CCommandSet( String CommandSetfilePath ) throws Exception
 	{
 		// Initialisation des attributs
 		sectionsList = new HashMap<String, CSection>();
@@ -79,7 +79,7 @@ public class CCommandSet
 		
 		for( Object object : racine.getChildren( TXMLNames.CS_ELEMENT_SECTION ) )
 		{
-			if( object instanceof CSection )
+			if( object instanceof Element )
 			{
 				Element element = (Element)object;
 				CSection section = CSection.BuildSection( element );

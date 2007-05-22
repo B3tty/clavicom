@@ -40,7 +40,7 @@ public class CSection
 	HashMap<String, CCommand> commandMap;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CSection( String myName )
+	public CSection( String myName )
 	{
 		name = myName;
 		commandMap = new HashMap<String, CCommand>();

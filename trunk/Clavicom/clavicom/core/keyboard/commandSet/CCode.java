@@ -39,7 +39,7 @@ public class CCode
 	CKeyAction keyAction;	// Action à effectuer (PRESSED ou RELEASED)
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	CCode( int myKeyEvent, CKeyAction myKeyAction )
+	public CCode( int myKeyEvent, CKeyAction myKeyAction )
 	{
 		keyEvent = myKeyEvent;
 		keyAction = myKeyAction;
@@ -78,7 +78,7 @@ public class CCode
 		{
 			keyAction = CKeyAction.PRESSED;
 		}
-		else if( action.equals( CKeyAction.CS_STRING_ENUM_PRESSED ) )
+		else if( action.equals( CKeyAction.CS_STRING_ENUM_RELEASED ) )
 		{
 			keyAction = CKeyAction.RELEASED;
 		}
