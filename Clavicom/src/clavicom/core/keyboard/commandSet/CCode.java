@@ -44,7 +44,15 @@ public class CCode
 		keyEvent = myKeyEvent;
 		keyAction = myKeyAction;
 	}
+
+	//----------------------------------------------------------- METHODES --//	
+	public int GetKeyEvent(){return keyEvent;}
+	public CKeyAction GetKeyAction(){return keyAction;}
+
+	//--------------------------------------------------- METHODES PRIVEES --//
 	
+	//---------------------------------------------------------------- XML --//
+
 	public static CCode BuildCode( Element node ) throws Exception
 	{
 		if( node == null )
@@ -91,10 +99,4 @@ public class CCode
 		return new CCode( keyEvent, keyAction );
 
 	}
-
-	//----------------------------------------------------------- METHODES --//	
-	public int GetKeyEvent(){return keyEvent;}
-	public CKeyAction GetKeyAction(){return keyAction;}
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 }

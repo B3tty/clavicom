@@ -46,6 +46,35 @@ public class CCommand
 		caption = myCaption;
 		CodeList = new ArrayList<CCode>();
 	}
+
+	//----------------------------------------------------------- METHODES --//
+	/**
+	 * Ajoute un code à la liste des codes
+	 * Lance une exception si l'order n'est pas bon
+	 */
+	public void AddCode( int order, CCode code )
+	{
+		CodeList.add(order, code);
+	}
+	
+	public String GetCaption(){return caption;}
+	
+	/**
+	 * Donne le code correspondant à l'order donné
+	 * Lance une exception si l'order n'est pas bon
+	 * @param order
+	 * @return
+	 */
+	public CCode GetCode( int order )
+	{
+		return CodeList.get( order );
+	}
+	
+	public int Size(){return CodeList.size();}
+
+	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	//---------------------------------------------------------------- XML --//
 	
 	public static CCommand BuildCommand( Element node ) throws Exception
 	{
@@ -113,31 +142,4 @@ public class CCommand
 		
 		return command;
 	}
-
-	//----------------------------------------------------------- METHODES --//
-	/**
-	 * Ajoute un code à la liste des codes
-	 * Lance une exception si l'order n'est pas bon
-	 */
-	public void AddCode( int order, CCode code )
-	{
-		CodeList.add(order, code);
-	}
-	
-	public String GetCaption(){return caption;}
-	
-	/**
-	 * Donne le code correspondant à l'order donné
-	 * Lance une exception si l'order n'est pas bon
-	 * @param order
-	 * @return
-	 */
-	public CCode GetCode( int order )
-	{
-		return CodeList.get( order );
-	}
-	
-	public int Size(){return CodeList.size();}
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 }
