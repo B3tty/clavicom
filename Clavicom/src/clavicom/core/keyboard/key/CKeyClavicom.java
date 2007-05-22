@@ -48,6 +48,10 @@ public class CKeyClavicom extends CKeyboardKey
 		super(myColor,myPointMin,myPointMax);
 	}
 	
+	/**
+	 * Créé l'objet à partir d'elemeent
+	 * @throws Exception 
+	 */	
 	public CKeyClavicom (Element eltKeyClavicom) throws Exception
 	{
 		// On appelle le chargement du père, qui récupèrera seulement les élements
@@ -56,19 +60,19 @@ public class CKeyClavicom extends CKeyboardKey
 		super(eltKeyClavicom);
 		
 		// Chargement de l'action
-		Element eltAction = eltKeyClavicom.getChild(TXMLNames.KYCLAVICOM_ELEMENT_ACTION);
+		Element eltAction = eltKeyClavicom.getChild(TXMLNames.KY_CLAVICOM_ELEMENT_ACTION);
 		
 		if(eltAction == null)
 		{
 			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " attendu manquant") ;		
+					TXMLNames.KY_CLAVICOM_ELEMENT_ACTION + " attendu manquant") ;		
 		}
 		
 		action = TKeyClavicomActionType.getValue(eltAction.getText());
 		if(action == null)
 		{
 			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " invalide") ;
+					TXMLNames.KY_CLAVICOM_ELEMENT_ACTION + " invalide") ;
 		}
 	}
 	
@@ -92,13 +96,13 @@ public class CKeyClavicom extends CKeyboardKey
 	public Element buildNode() throws Exception
 	{
 		// Construction de l'élement
-		Element eltKey = new Element(TXMLNames.KYCLAVICOM_ELEMENT);
+		Element eltKey = new Element(TXMLNames.KY_CLAVICOM_ELEMENT);
 		
 		// Ajout des elements père
 		completeNode(eltKey);
 		
 		// Ajout des elements spécifiques
-		Element eltAction = new Element(TXMLNames.KYCLAVICOM_ELEMENT_ACTION);
+		Element eltAction = new Element(TXMLNames.KY_CLAVICOM_ELEMENT_ACTION);
 		String strAction = TKeyClavicomActionType.getString(action);
 		
 		if (strAction.equals(""))
