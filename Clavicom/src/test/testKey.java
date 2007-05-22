@@ -1,14 +1,14 @@
 package test;
 
-import java.awt.Color;
 import java.io.File;
+import java.io.FileOutputStream;
 
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
-import clavicom.core.keyboard.commandSet.CCode;
 import clavicom.core.keyboard.key.CKeyClavicom;
-import clavicom.tools.TPoint;
 
 public class testKey
 {
@@ -37,7 +37,17 @@ public class testKey
       CKeyClavicom key1;
       try
       {	  
-    	  key1 = new CKeyClavicom(new Color(1,1,1),new TPoint(.1f,.1f),new TPoint(.1f,.1f));
+    	  // Construction de la touche
+    	  key1 = new CKeyClavicom(uneTouche);
+    	  
+    	  // Enregistrement de la touche
+    	  Element racine2 = new Element("salut");
+
+    	  //On crée un nouveau Document JDOM basé sur la racine que l'on vient de créer
+    	  org.jdom.Document documentOut = new org.jdom.Document(racine2); 	  
+    	  racine2.addContent(key1.buildNode());
+          XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+          sortie.output(documentOut, new FileOutputStream("C:\\Temp\\key_out.xml"));
       }
       catch (Exception e)
       {
