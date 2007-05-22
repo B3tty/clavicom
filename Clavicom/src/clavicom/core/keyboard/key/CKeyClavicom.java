@@ -77,30 +77,13 @@ public class CKeyClavicom extends CKeyboardKey
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-
-	public TKeyClavicomActionType getAction()
-	{
-		return action;	
-	}
-
-	public void setAction(TKeyClavicomActionType action)
-	{
-		this.action = action;
-	}
-	
 	/**
 	 * Créé le noeud à partir de l'objet courant
 	 * @return Noeud construit
 	 * @throws Exception 
 	 */
-	public Element buildNode() throws Exception
-	{
-		// Construction de l'élement
-		Element eltKey = new Element(TXMLNames.KY_CLAVICOM_ELEMENT);
-		
-		// Ajout des elements père
-		completeNode(eltKey);
-		
+	public void completeNodeSpecific(Element keyNode) throws Exception
+	{	
 		// Ajout des elements spécifiques
 		Element eltAction = new Element(TXMLNames.KY_CLAVICOM_ELEMENT_ACTION);
 		String strAction = TKeyClavicomActionType.getString(action);
@@ -112,9 +95,22 @@ public class CKeyClavicom extends CKeyboardKey
 		
 		eltAction.setText(TKeyClavicomActionType.getString(action));
 		
-		eltKey.addContent(eltAction);
-		
-		return eltKey;
+		keyNode.addContent(eltAction);
+	}
+	
+	public String getElementName()
+	{
+		return TXMLNames.KY_CLAVICOM_ELEMENT;
+	}
+	
+	public TKeyClavicomActionType getAction()
+	{
+		return action;	
+	}
+
+	public void setAction(TKeyClavicomActionType action)
+	{
+		this.action = action;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
