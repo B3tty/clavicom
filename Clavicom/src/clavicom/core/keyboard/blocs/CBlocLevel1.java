@@ -73,6 +73,25 @@ public class CBlocLevel1
 		}
 		
 		// =================================================================
+		// Récupération de l'attribut order
+		// =================================================================
+		String s_order = node.getAttributeValue( TXMLNames.BL_VISIBLE );
+		if( s_order == null )
+		{
+			throw new Exception("[caption : " + caption + "][Construction d'un bloc de niveau 1] : Impossible de trouver l'attribut " + TXMLNames.BL_VISIBLE);
+		}
+		boolean b_visible;
+		try
+		{
+			b_visible = Boolean.parseBoolean( s_visible );
+		}
+		catch (Exception ex)
+		{
+			throw new Exception("[caption : " + caption + "][Construction d'un bloc de niveau 1] : Impossible de convertir " + s_visible + " en booléen");
+		}
+		
+		
+		// =================================================================
 		// Récupération de l'attribut Caption
 		// =================================================================
 		String caption = node.getAttributeValue( TXMLNames.BL_CAPTION );

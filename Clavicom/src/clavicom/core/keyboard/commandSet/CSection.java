@@ -67,6 +67,11 @@ public class CSection
 		return commandMap.get( name );
 	}
 	
+	public HashMap<String, CCommand> GetCommandMap( )
+	{
+		return commandMap;
+	}
+	
 	public String GetName(){return name;}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
