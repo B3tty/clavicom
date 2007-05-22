@@ -23,9 +23,11 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keyboard;
+package clavicom.core.keyboard.key;
 
 import java.awt.Color;
+
+import org.jdom.Element;
 
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TPoint;
@@ -55,6 +57,11 @@ public class CKeyLauncher extends CKeyboardKey
 	public void setAction(TKeyClavicomActionType action)
 	{
 		this.action = action;
+	}
+	
+	public Element buildNode()
+	{
+		return null;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

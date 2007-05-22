@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keyboard;
+package clavicom.core.keyboard.key;
 
 import java.awt.Color;
 
@@ -31,6 +31,7 @@ import org.jdom.Element;
 
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TPoint;
+import clavicom.tools.TXMLNames;
 
 
 public class CKeyClavicom extends CKeyboardKey
@@ -45,6 +46,29 @@ public class CKeyClavicom extends CKeyboardKey
 	public CKeyClavicom (Color myColor, TPoint myPointMin, TPoint myPointMax)
 	{
 		super(myColor,myPointMin,myPointMax);
+	}
+	
+	public CKeyClavicom (Element eltKeyClavicom) throws Exception
+	{
+		// On appelle le chargement du père, qui récupèrera seulement les élements
+		// qui le concerne.
+		super(eltKeyClavicom);
+		
+		// Chargement de l'action
+		Element eltAction = eltKeyClavicom.getChild(TXMLNames.KYCLAVICOM_ELEMENT_ACTION);
+		
+		if(eltAction == null)
+		{
+			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
+					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " attendu manquant") ;		
+		}
+		
+		action = TKeyClavicomActionType.getValue(eltAction.getText());
+		if(action == null)
+		{
+			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
+					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " invalide") ;
+		}
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -62,12 +86,30 @@ public class CKeyClavicom extends CKeyboardKey
 	/**
 	 * Créé le noeud à partir de l'objet courant
 	 * @return Noeud construit
+	 * @throws Exception 
 	 */
-	public Element buildNode()
+	public Element buildNode() throws Exception
 	{
-		Element newElement = new Element("keyclavicom");
+		// Construction de l'élement
+		Element eltKey = new Element(TXMLNames.KYCLAVICOM_ELEMENT);
 		
-		return newElement;
+		// Ajout des elements père
+		completeNode(eltKey);
+		
+		// Ajout des elements spécifiques
+		Element eltAction = new Element(TXMLNames.KYCLAVICOM_ELEMENT_ACTION);
+		String strAction = TKeyClavicomActionType.getString(action);
+		
+		if (strAction.equals(""))
+		{
+			throw new Exception ("[Création d'un noeud touche clavicom] : action inconnue");
+		}
+		
+		eltAction.setText(TKeyClavicomActionType.getString(action));
+		
+		eltKey.addContent(eltAction);
+		
+		return eltKey;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
