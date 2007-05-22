@@ -25,7 +25,6 @@
 
 package clavicom.tools;
 
-import org.jdom.Attribute;
 import org.jdom.Element;
 
 public class TPoint 

@@ -52,6 +52,7 @@ public class CKeyClavicom extends CKeyboardKey
 	{
 		// On appelle le chargement du père, qui récupèrera seulement les élements
 		// qui le concerne.
+		
 		super(eltKeyClavicom);
 		
 		// Chargement de l'action
