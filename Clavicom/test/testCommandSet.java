@@ -48,6 +48,8 @@ public class testCommandSet
 			
 			CSection section = commandSet.GetSection("Spéciaux");
 			
+			CCode e = new CCode()
+			
 			CCommand command = section.GetCommand( "&" );
 			
 			for( int i = 0 ; i < command.Size() ; ++i )
