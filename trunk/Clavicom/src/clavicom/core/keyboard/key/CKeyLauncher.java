@@ -65,22 +65,19 @@ public class CKeyLauncher extends CKeyboardKey
 	}
 
 	//----------------------------------------------------------- METHODES --//	
-	public Element buildNode() throws Exception
-	{
-		// Construction de l'élement
-		Element eltKey = new Element(TXMLNames.KY_CLAVICOM_ELEMENT);
-		
-		// Ajout des elements père
-		completeNode(eltKey);
-		
+	public void completeNodeSpecific(Element keyNode) throws Exception
+	{		
 		// Ajout des elements spécifiques
 		Element eltPath = new Element(TXMLNames.KY_LAUNCHER_ELEMENT_PATH);
 		
 		eltPath.setText(applicationPath);
 		
-		eltKey.addContent(eltPath);
-		
-		return eltKey;
+		keyNode.addContent(eltPath);
+	}
+	
+	public String getElementName()
+	{
+		return TXMLNames.KY_LAUNCHER_ELEMENT;
 	}
 	
 	public String getApplicationPath()

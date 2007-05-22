@@ -212,7 +212,23 @@ public abstract class CKeyboardKey
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	public abstract Element buildNode() throws Exception;
+	public Element buildNode(int order) throws Exception
+	{
+		// Création de l'élement
+		Element eltKeyNode = new Element(getElementName());
+		
+		// Ajout des informations génériques
+		completeNodeGlobal(eltKeyNode,order);
+		
+		// Ajout des informations spécifiques 
+		completeNodeSpecific(eltKeyNode);
+		
+		return eltKeyNode;
+	}
+	
+	public abstract void completeNodeSpecific(Element eltKeyNode) throws Exception;
+	
+	public abstract String getElementName();
 	
 	public Color getColor()
 	{
@@ -249,8 +265,11 @@ public abstract class CKeyboardKey
 	 * Ajoute les attributs de la classe au noeud construit par les fils
 	 * @param Noeud à compléter
 	 */
-	protected void completeNode(Element myNode)
+	private void completeNodeGlobal(Element myNode, int order)
 	{	
+		// Ordre
+		myNode.setAttribute(TXMLNames.KY_ATTRIBUT_ORDER,String.valueOf(order));		
+		
 		// Coordonnées
 		Element eltCoord = new Element( TXMLNames.KY_ELEMENT_COORDINATES );
 		
