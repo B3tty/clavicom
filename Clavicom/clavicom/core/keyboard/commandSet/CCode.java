@@ -27,6 +27,7 @@ package clavicom.core.keyboard.commandSet;
 
 import org.jdom.Element;
 import clavicom.tools.CKeyAction;
+import clavicom.tools.CKeyEventTools;
 import clavicom.tools.TXMLNames;
 
 public class CCode
@@ -63,7 +64,7 @@ public class CCode
 			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_VALUE);
 		}
 		
-		int keyEvent = LoaderTemp.GetKeyEvent( value );
+		int keyEvent = CKeyEventTools.GetKeyEvent( value );
 		
 		// Si le keyEvent n'est pas bon
 		if( keyEvent == 0 )
