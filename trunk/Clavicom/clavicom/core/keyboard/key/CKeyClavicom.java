@@ -48,7 +48,7 @@ public class CKeyClavicom extends CKeyboardKey
 		super(myColor,myPointMin,myPointMax);
 	}
 	
-	public CKeyClavicom (Element eltKeyClavicom) throws Exception
+	public CKeyClavicom (Element eltKeyClavicom)
 	{
 		// On appelle le chargement du père, qui récupèrera seulement les élements
 		// qui le concerne.
@@ -60,15 +60,15 @@ public class CKeyClavicom extends CKeyboardKey
 		
 		if(eltAction == null)
 		{
-			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " attendu manquant") ;		
+			/*throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
+					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " attendu manquant") ;*/		
 		}
 		
 		action = TKeyClavicomActionType.getValue(eltAction.getText());
 		if(action == null)
 		{
-			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " invalide") ;
+			/*throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
+					TXMLNames.KYCLAVICOM_ELEMENT_ACTION + " invalide") ;*/
 		}
 	}
 	
