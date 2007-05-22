@@ -42,7 +42,6 @@ public abstract class CKeyboardKey
 	Color color;		// Couleur de la touche
 	TPoint pointMin;	// Point supérieur gauche
 	TPoint pointMax;	// Point inférieur droit
-	int order;			// Ordre de la touche dans le niveau 3 du clavier
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyboardKey(Color myColor, TPoint myPointMin, TPoint myPointMax)
@@ -50,7 +49,6 @@ public abstract class CKeyboardKey
 		color = myColor;
 		pointMin = myPointMin;
 		pointMax = myPointMax;
-		order = -1;
 	}
 	
 	/**
@@ -63,26 +61,6 @@ public abstract class CKeyboardKey
 		if(eltKey == null)
 		{
 			throw new Exception ("[Chargement d'une touche] : Noeud vide");
-		}
-		
-		// Récupération de l'ordre
-		String strOrder = eltKey.getAttributeValue(TXMLNames.KY_ATTRIBUT_ORDER);
-		
-		if (strOrder == null)
-		{
-			throw new Exception (	"[Chargement d'une touche] : Attribut \"" + 
-					TXMLNames.KY_ATTRIBUT_ORDER + "\" attendu manquant") ;			
-		}
-		
-		try
-		{
-			order = Integer.parseInt(strOrder);
-		}
-		catch (Exception e)
-		{
-			throw new Exception (	"[Chargement d'une touche] : Attribut \"" + 
-					TXMLNames.KY_ATTRIBUT_ORDER + "\", la chaîne \"" + strOrder + 
-					"\" ne peut être convertie en entier") ;			
 		}
 		
 		// Récupération des coordonnées
@@ -265,16 +243,6 @@ public abstract class CKeyboardKey
 	{
 		this.pointMin = pointMin;
 	}
-	
-	public int getOrder()
-	{
-		return order;
-	}
-
-	public void setOrder(int order)
-	{
-		this.order = order;
-	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	/**
@@ -285,9 +253,6 @@ public abstract class CKeyboardKey
 	{	
 		// Coordonnées
 		Element eltCoord = new Element( TXMLNames.KY_ELEMENT_COORDINATES );
-		
-		// Ordre
-		Attribute attOrder = new Attribute (TXMLNames.KY_ATTRIBUT_ORDER, String.valueOf(order));
 		
 		// pointMin
 		Element eltPointMin = pointMin.buildNode();
@@ -322,7 +287,6 @@ public abstract class CKeyboardKey
 		// Ajout des noeuds
 		myNode.addContent(eltCoord);
 		myNode.addContent(eltColor);
-		myNode.setAttribute(attOrder);
 	}
 }
 
