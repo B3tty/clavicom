@@ -29,6 +29,7 @@ import clavicom.core.keyboard.commandSet.CCode;
 import clavicom.core.keyboard.commandSet.CCommand;
 import clavicom.core.keyboard.commandSet.CCommandSet;
 import clavicom.core.keyboard.commandSet.CSection;
+import clavicom.tools.CKeyAction;
 
 public class testCommandSet
 {
@@ -44,19 +45,20 @@ public class testCommandSet
 		String chemin = "C:\\Workspace\\Clavicom\\clavicom\\Ressources\\Application\\CommandSets\\francais.ccs";
 		try
 		{
-			CCommandSet commandSet = new CCommandSet( chemin );
+			//CCommandSet commandSet = new CCommandSet( chemin );
 			
-			CSection section = commandSet.GetSection("Spéciaux");
+			//CSection section = commandSet.GetSection("Spéciaux");
 			
-			CCode e = new CCode()
+			CCode cTest = new CCode(0, CKeyAction.PRESSED); 
 			
-			CCommand command = section.GetCommand( "&" );
+			//CCommand command = section.GetCommand( "&" );
 			
-			for( int i = 0 ; i < command.Size() ; ++i )
-			{
-				CCode code = command.GetCode(i);
-				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
-			}
+//			for( int i = 0 ; i < command.Size() ; ++i )
+//			{
+//				CCode code = command.GetCode(i);
+//				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
+//			}
+			
 		}
 		catch ( Exception e )
 		{
