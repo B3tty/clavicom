@@ -26,6 +26,7 @@
 package clavicom.core.keyboard.key;
 
 import java.awt.Color;
+import java.util.List;
 
 import org.jdom.Attribute;
 import org.jdom.Element;
@@ -54,72 +55,102 @@ public abstract class CKeyboardKey
 	 * Permet de construire l'objet courant à partir d'un noeud XML
 	 * @param eltKey : element contenant les informations à charger
 	 */
-	public CKeyboardKey(Element eltKey)
+	public CKeyboardKey(Element eltKey) throws Exception
 	{
 		// On vérifie que l'element existe
 		if(eltKey == null)
 		{
-			/*throw new Exception ("[Chargement d'une touche] : Noeud vide");*/
+			throw new Exception ("[Chargement d'une touche] : Noeud vide");
 		}
 		
 		// Récupération des coordonnées
 		Element eltCoord = eltKey.getChild(TXMLNames.KY_ELEMENT_COORDINATES);
 		if(eltCoord == null)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-									TXMLNames.KY_ELEMENT_COORDINATES + " attendu manquant")*/ ;	
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+									TXMLNames.KY_ELEMENT_COORDINATES + " attendu manquant") ;	
 		}
 		
-		// Récupération du Max
-		Element eltMax = eltCoord.getChild(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX);
-		if(eltMax == null)
+		// Récupération des deux points
+		List elements =  eltCoord.getChildren(TXMLNames.PT_ELEMENT_POINT);
+		
+		if (elements.size() != 2)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + " attendu manquant") ;*/				
+			throw new Exception (	"[Chargement d'une touche] : Mauvais nombre de " + 
+									TXMLNames.PT_ELEMENT_POINT) ;				
 		}
 		
-		// Chargement du Max
-		try
-		{
-			pointMax = new TPoint(eltMax);
-		}
-		catch (Exception e)
-		{
-			/*throw new Exception ("[Chargement d'une touche] : Point invalide " + e.getMessage() ) ;*/
-		}
-
-		// Récupération du Min
-		Element eltMin = eltCoord.getChild(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN);
-		if(eltMax == null)
-		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + " attendu manquant") ;*/				
-		}
+		// Récupération du Min et du Max
+		boolean maxFound = false; 
+		boolean minFound = false;
 		
-		// Chargement du Min
-		try
+		Element eltCourant;
+		
+		for (Object objCourant : elements)
 		{
-			pointMin = new TPoint(eltMin);
-		}
-		catch (Exception e)
-		{
-			/*throw new Exception ("[Chargement d'une touche] : Point invalide " + e.getMessage() ) ;*/
+			if ( objCourant instanceof Element )
+			{
+				eltCourant = (Element) objCourant;
+			}
+			else
+			{
+				throw new Exception (	"[Chargement d'une touche] : Element " + 
+						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " n'est pas un noeud valide") ;	
+			}
+			
+			try
+			{
+				if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX))
+				{
+					if(maxFound == false)
+					{
+						pointMax = new TPoint(eltCourant);
+						maxFound = true;
+					}
+					else
+					{
+						throw new Exception (	"[Chargement d'une touche] : Element " + 
+								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
+								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + " trouvé deux fois") ;									
+					}
+						
+				}
+				else if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN))
+				{
+					if(minFound == false)
+					{
+						pointMin = new TPoint(eltCourant);
+						minFound = true;
+					}
+					else
+					{
+						throw new Exception (	"[Chargement d'une touche] : Element " + 
+								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
+								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + " trouvé deux fois") ;									
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				throw new Exception (	"[Chargement d'une touche] : Element " + 
+						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " est mal construit") ;						
+			}
 		}
 				
 		// Récupération de la couleur
 		Element eltColor = eltKey.getChild(TXMLNames.KY_ELEMENT_COLOR);
 		if(eltColor == null)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR + " attendu manquant") ;	*/			
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR + " attendu manquant") ;				
 		}
 		
 		// Récupération de la couleur R
 		Element eltR = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
 		if(eltR == null)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_R + " attendu manquant") ;*/				
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_R + " attendu manquant") ;				
 		}	
 		
 		int R = 0;
@@ -129,46 +160,46 @@ public abstract class CKeyboardKey
 		}
 		catch (Exception E)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_R + " n'est pas un entier") ;*/					
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_R + " n'est pas un entier") ;					
 		}
 		
 		// Récupération de la couleur G
 		Element eltG = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
 		if(eltG == null)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_G + " attendu manquant") ;	*/			
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_G + " attendu manquant") ;			
 		}	
 		
 		int G = 0;
 		try
 		{
-			G = Integer.parseInt(eltR.getText());
+			G = Integer.parseInt(eltG.getText());
 		}
 		catch (Exception E)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_G + " n'est pas un entier") ;*/					
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_G + " n'est pas un entier") ;					
 		}
 		
 		// Récupération de la couleur B
 		Element eltB = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
 		if(eltB == null)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_B + " attendu manquant") ;	*/			
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_B + " attendu manquant") ;			
 		}	
 		
 		int B = 0;
 		try
 		{
-			B = Integer.parseInt(eltR.getText());
+			B = Integer.parseInt(eltB.getText());
 		}
 		catch (Exception E)
 		{
-			/*throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_B + " n'est pas un entier") ;*/					
+			throw new Exception (	"[Chargement d'une touche] : Element " + 
+					TXMLNames.KY_ELEMENT_COLOR_B + " n'est pas un entier") ;					
 		}
 		
 		color = new Color(R,G,B);		
@@ -224,10 +255,10 @@ public abstract class CKeyboardKey
 		eltPointMin.setAttribute(attPointMin);
 		
 		// pointMax
-		Element eltPointMax = pointMin.buildNode();
+		Element eltPointMax = pointMax.buildNode();
 		Attribute attPointMax = new Attribute(	TXMLNames.KY_ATTRIBUTE_COORDINATE_POS,
 												TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX );
-		eltPointMin.setAttribute(attPointMax);
+		eltPointMax.setAttribute(attPointMax);
 		
 		eltCoord.addContent(eltPointMin);
 		eltCoord.addContent(eltPointMax);
@@ -240,11 +271,11 @@ public abstract class CKeyboardKey
 		eltColor.addContent(eltColorR);
 		
 		Element eltColorG = new Element (TXMLNames.KY_ELEMENT_COLOR_G);
-		eltColorR.setText(String.valueOf(color.getGreen()));
+		eltColorG.setText(String.valueOf(color.getGreen()));
 		eltColor.addContent(eltColorG);
 		
 		Element eltColorB = new Element (TXMLNames.KY_ELEMENT_COLOR_B);
-		eltColorR.setText(String.valueOf(color.getBlue()));
+		eltColorB.setText(String.valueOf(color.getBlue()));
 		eltColor.addContent(eltColorB);
 		
 		// Ajout des noeuds
