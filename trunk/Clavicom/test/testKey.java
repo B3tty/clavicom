@@ -1,48 +1,41 @@
-/*-----------------------------------------------------------------------------+
-
-			Filename			: testKey.java
-			Creation date		: 22 mai 07
-		
-			Project				: Clavicom
-			Package				: test
-
-			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
-			Copyright (C)		: (2007) Centre ICOM'
-
-							-------------------------
-
-	This program is free software. You can redistribute it and/or modify it 
- 	under the terms of the GNU Lesser General Public License as published by 
-	the Free Software Foundation. Either version 2.1 of the License, or (at your 
-    option) any later version.
-
-	This program is distributed in the hope that it will be useful, but WITHOUT 
-	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
-    more details.
-
-+-----------------------------------------------------------------------------*/
-
 package test;
+
+import java.io.*;
+import org.jdom.*;
+import org.jdom.input.*;
+
+import clavicom.core.keyboard.key.CKeyClavicom;
 
 public class testKey
 {
+   static org.jdom.Document document;
+   static Element racine;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
+   public static void main(String[] args)
+   {
+      //On crée une instance de SAXBuilder
+      SAXBuilder sxb = new SAXBuilder();
+      try
+      {
+         //On crée un nouveau document JDOM avec en argument le fichier XML
+         //Le parsing est terminé ;)
+         document = sxb.build(new File("C:\\Temp\\key.xml"));
+      }
+      catch(Exception e){}
 
-	}
-	//--------------------------------------------------------- CONSTANTES --//
-
-	//---------------------------------------------------------- VARIABLES --//	
-
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-
-	//----------------------------------------------------------- METHODES --//	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
+      //On initialise un nouvel élément racine avec l'élément racine du document.
+      racine = document.getRootElement();
+      
+      Element uneTouche = racine.getChild("keyclavicom");
+      CKeyClavicom key1;
+      try
+      {	  
+    	  key1 = new CKeyClavicom(uneTouche);
+      }
+      catch (Exception e)
+      {
+    	  System.out.println(e.getMessage());
+      }
+      
+   }
 }
