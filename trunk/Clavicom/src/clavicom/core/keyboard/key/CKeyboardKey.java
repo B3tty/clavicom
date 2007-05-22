@@ -42,6 +42,7 @@ public abstract class CKeyboardKey
 	Color color;		// Couleur de la touche
 	TPoint pointMin;	// Point supérieur gauche
 	TPoint pointMax;	// Point inférieur droit
+	int order;			// Ordre de la touche dans le niveau 3 du clavier
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyboardKey(Color myColor, TPoint myPointMin, TPoint myPointMax)
@@ -49,6 +50,7 @@ public abstract class CKeyboardKey
 		color = myColor;
 		pointMin = myPointMin;
 		pointMax = myPointMax;
+		order = -1;
 	}
 	
 	/**
@@ -61,6 +63,26 @@ public abstract class CKeyboardKey
 		if(eltKey == null)
 		{
 			throw new Exception ("[Chargement d'une touche] : Noeud vide");
+		}
+		
+		// Récupération de l'ordre
+		String strOrder = eltKey.getAttributeValue(TXMLNames.KY_ATTRIBUT_ORDER);
+		
+		if (strOrder == null)
+		{
+			throw new Exception (	"[Chargement d'une touche] : Attribut \"" + 
+					TXMLNames.KY_ATTRIBUT_ORDER + "\" attendu manquant") ;			
+		}
+		
+		try
+		{
+			order = Integer.parseInt(strOrder);
+		}
+		catch (Exception e)
+		{
+			throw new Exception (	"[Chargement d'une touche] : Attribut \"" + 
+					TXMLNames.KY_ATTRIBUT_ORDER + "\", la chaîne \"" + strOrder + 
+					"\" ne peut être convertie en entier") ;			
 		}
 		
 		// Récupération des coordonnées
@@ -98,42 +120,48 @@ public abstract class CKeyboardKey
 						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " n'est pas un noeud valide") ;	
 			}
 			
-			try
+			if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX))
 			{
-				if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX))
+				if(maxFound == false)
 				{
-					if(maxFound == false)
+					try
 					{
 						pointMax = new TPoint(eltCourant);
 						maxFound = true;
 					}
-					else
+					catch (Exception e)
 					{
-						throw new Exception (	"[Chargement d'une touche] : Element " + 
-								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
-								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + " trouvé deux fois") ;									
+						throw new Exception (	"[Chargement d'une touche] : chargement du point max " + e.getMessage()) ;	
 					}
-						
 				}
-				else if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN))
+				else
 				{
-					if(minFound == false)
+					throw new Exception (	"[Chargement d'une touche] : Element " + 
+							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
+							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + " trouvé deux fois") ;									
+				}
+					
+			}
+			else if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN))
+			{
+				if(minFound == false)
+				{
+					try
 					{
 						pointMin = new TPoint(eltCourant);
 						minFound = true;
 					}
-					else
+					catch (Exception e)
 					{
-						throw new Exception (	"[Chargement d'une touche] : Element " + 
-								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
-								TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + " trouvé deux fois") ;									
+						throw new Exception (	"[Chargement d'une touche] : chargement du point min" + e.getMessage()) ;	
 					}
 				}
-			}
-			catch (Exception e)
-			{
-				throw new Exception (	"[Chargement d'une touche] : Element " + 
-						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " est mal construit") ;						
+				else
+				{
+					throw new Exception (	"[Chargement d'une touche] : Element " + 
+							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
+							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + " trouvé deux fois") ;									
+				}
 			}
 		}
 				
@@ -238,6 +266,16 @@ public abstract class CKeyboardKey
 		this.pointMin = pointMin;
 	}
 	
+	public int getOrder()
+	{
+		return order;
+	}
+
+	public void setOrder(int order)
+	{
+		this.order = order;
+	}
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 	/**
 	 * Ajoute les attributs de la classe au noeud construit par les fils
@@ -247,6 +285,9 @@ public abstract class CKeyboardKey
 	{	
 		// Coordonnées
 		Element eltCoord = new Element( TXMLNames.KY_ELEMENT_COORDINATES );
+		
+		// Ordre
+		Attribute attOrder = new Attribute (TXMLNames.KY_ATTRIBUT_ORDER, String.valueOf(order));
 		
 		// pointMin
 		Element eltPointMin = pointMin.buildNode();
@@ -281,6 +322,7 @@ public abstract class CKeyboardKey
 		// Ajout des noeuds
 		myNode.addContent(eltCoord);
 		myNode.addContent(eltColor);
+		myNode.setAttribute(attOrder);
 	}
 }
 
