@@ -110,6 +110,9 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_ACCEPT" ) )
 		{
 			return KeyEvent.VK_ACCEPT;
+		}else if( stringKeyEvent.equals( "VK_ACCENT_CIRCONFLEXE" ) )
+		{
+			return 130;
 		}else if( stringKeyEvent.equals( "VK_ADD" ) )
 		{
 			return KeyEvent.VK_ADD;
@@ -149,6 +152,9 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_BACK_SPACE" ) )
 		{
 			return KeyEvent.VK_BACK_SPACE;
+		}else if( stringKeyEvent.equals( "VK_BEGIN" ) )
+		{
+			return KeyEvent.VK_BEGIN;
 		}else if( stringKeyEvent.equals( "VK_BRACELEFT" ) )
 		{
 			return KeyEvent.VK_BRACELEFT;
@@ -185,6 +191,9 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_COMPOSE" ) )
 		{
 			return KeyEvent.VK_COMPOSE;
+		}else if( stringKeyEvent.equals( "VK_CONTEXT_MENU" ) )
+		{
+			return KeyEvent.VK_CONTEXT_MENU;
 		}else if( stringKeyEvent.equals( "VK_CONTROL" ) )
 		{
 			return KeyEvent.VK_CONTROL;
@@ -473,6 +482,9 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_NUM_LOCK" ) )
 		{
 			return KeyEvent.VK_NUM_LOCK;
+		}else if( stringKeyEvent.equals( "VK_NUM_POINT" ) )
+		{
+			return 110;
 		}else if( stringKeyEvent.equals( "VK_NUMBER_SIGN" ) )
 		{
 			return KeyEvent.VK_NUMBER_SIGN;
@@ -611,6 +623,10 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_U" ) )
 		{
 			return KeyEvent.VK_U;
+		}else if( stringKeyEvent.equals( "VK_U_ACCENT_GRAVE" ) )
+		{
+			// Probleme car elle n'éxiste pas
+			return 9999;
 		}else if( stringKeyEvent.equals( "VK_UNDEFINED" ) )
 		{
 			return KeyEvent.VK_UNDEFINED;
@@ -629,6 +645,10 @@ public class CKeyEventTools
 		}else if( stringKeyEvent.equals( "VK_W" ) )
 		{
 			return KeyEvent.VK_W;
+		}
+		else if( stringKeyEvent.equals( "VK_WINDOWS" ) )
+		{
+			return KeyEvent.VK_WINDOWS;
 		}else if( stringKeyEvent.equals( "VK_X" ) )
 		{
 			return KeyEvent.VK_X;
