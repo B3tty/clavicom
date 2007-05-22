@@ -6,6 +6,7 @@ import java.io.File;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
+import clavicom.core.keyboard.commandSet.CCode;
 import clavicom.core.keyboard.key.CKeyClavicom;
 import clavicom.tools.TPoint;
 
@@ -27,6 +28,7 @@ public class testKey
       catch(Exception e){
     	  System.out.println("cxoucou");
       }
+      
 
       //On initialise un nouvel élément racine avec l'élément racine du document.
       racine = document.getRootElement();
