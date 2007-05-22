@@ -35,7 +35,7 @@ import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
 import clavicom.core.keyboard.key.CKeyboardKey;
 import clavicom.tools.TXMLNames;
 
-public class CBlocLevel2
+public class CKeyList
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -44,7 +44,7 @@ public class CBlocLevel2
 	List<CKeyboardKey> keyList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CBlocLevel2()
+	public CKeyList()
 	{
 		keyList = new ArrayList<CKeyboardKey>();
 	}
@@ -62,30 +62,31 @@ public class CBlocLevel2
 	public int size(){return keyList.size();}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private CKeyboardKey GetKeyboardKey( Element node )
+	private static CKeyboardKey GetKeyboardKey( Element node )
 	{
-		CKeyboardKey = 
-		
+		//CKeyboardKey = 
+		// lalalalalalala
 		if( node.getName().equals( TXMLNames.KY_CLAVICOM_ELEMENT ) )
 		{
-			
 		}
 	}
 	
 	//---------------------------------------------------------------- XML --//
-	public static CBlocLevel2 BuildBlocLevel2 ( Element node ) throws Exception
+	public static CKeyList BuildKeyList ( Element node ) throws Exception
 	{
 		if( node == null  )
 		{
-			throw new Exception("[Construction d'un bloc de niveau 2] : Impossible de récupérer le noeud XML");
+			throw new Exception("[Construction d'une liste] : Impossible de récupérer le noeud XML");
 		}
 		
-		CBlocLevel2 blocLevel2 = new CBlocLevel2();
+		CKeyList blocLevel2 = new CKeyList();
+		
+		
 		
 		// =================================================================
-		// Récupération des OrderedKeys
+		// Récupération des keyboardKey
 		// =================================================================
-		List keyboardKeyList = node.getChildren( TXMLNames.BL_ELEMENT_ORDERED_KEY );
+		List keyboardKeyList = node.getChildren( );
 		for( Object object : keyboardKeyList )
 		{
 			if( object instanceof Element )
@@ -114,7 +115,14 @@ public class CBlocLevel2
 					// =================================================================
 					// Création du bon type de keyboardKey
 					// =================================================================
-					CKeyboardKey keybordKey = GetKeyboardKey( element );
+					try
+					{
+						CKeyboardKey keybordKey = GetKeyboardKey( element );
+					}
+					catch(Exception ex)
+					{
+						////// lalalalalal
+					}
 					
 					blocLevel2.AddKeyboardKey( i_order , keybordKey );
 				}
