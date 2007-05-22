@@ -45,20 +45,20 @@ public class TXMLNames
 	public static String KY_ATTRIBUT_ORDER 				= "order";
 	
 	// Key clavicom
-	public static String KY_CLAVICOM_ELEMENT		 		= "keyclavicom";
-	public static String KY_CLAVICOM_ELEMENT_ACTION 		= "action";
+	public static String KY_CLAVICOM_ELEMENT		 	= "keyclavicom";
+	public static String KY_CLAVICOM_ELEMENT_ACTION 	= "action";
 	
 	// CKeyString
 	public static String KY_STRING_ELEMENT		 		= "keystring";
 	
 	// CKeyCharacter
-	public static String KY_CHARACTER_ELEMENT		 		= "keycharacter";
+	public static String KY_CHARACTER_ELEMENT		 	= "keycharacter";
 
 	// CKeyShortcut
-	public static String KY_SHORTCUT_ELEMENT		 		= "keyshortcut";
+	public static String KY_SHORTCUT_ELEMENT		 	= "keyshortcut";
 
 	// CKeyLuncher
-	public static String KY_LUNCHER_ELEMENT		 		= "keyluncher";
+	public static String KY_LUNCHER_ELEMENT		 		= "keylauncher";
 	
 	// commandSet
 	public static String CS_ATTRIBUT_ACTION				= "action";
@@ -74,7 +74,9 @@ public class TXMLNames
 	// gestion des blocs
 	public static String BL_CAPTION						= "caption";
 	public static String BL_VISIBLE						= "visible";
-	public static String BL_ELEMENT_BLOC_N2				= "bloc_n2";
+	public static String BL_ELEMENT_OREDERED_BLOC_N1	= "ordered_block_n2";
+	public static String BL_ELEMENT_BLOC_N2				= "block_n2";
+	public static String BL_ELEMENT_ORDERED_KEY			= "orderedkey";
 	
 	
 }

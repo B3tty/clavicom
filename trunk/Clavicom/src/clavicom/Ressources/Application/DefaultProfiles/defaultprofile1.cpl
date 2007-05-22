@@ -1,65 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profile>
 	<keyboard name ="ejej">
-		<blocs>
-			<oredered_bloc_level_1 oreder="0">
-				<bloc_level_1>
-					<ordered_bloc_level_2 order="0">
-						<bloc_level_2>
+		<blocks>
+			<oredered_block_level_1 order="0">
+				<block_level_1>
+					<ordered_block_level_2 order="0">
+						<block_level_2>
 							<orderedkey order="0">
 								<keystring>
 									
 								</keystring>
-								<keyshortcut>
-									
-								</keyshortcut>
-								<keylaunch>
-									
-								</keylaunch>
 							</orderedkey>
 							<orderedkey order="1">
-								<keystring>
-									
-								</keystring>
-								<keyshortcut>
-									
-								</keyshortcut>
 								<keylaunch>
 									
 								</keylaunch>
 							</orderedkey>
-						</bloc_level_2>
-					</ordered_bloc_level_2>
-					<ordered_bloc_level_2 order="1">
-						<bloc_level_2>
+						</block_level_2>
+					</ordered_block_level_2>
+					<ordered_block_level_2 order="1">
+						<block_level_2>
 							<orderedkey order="0">
 								<keystring>
 									
 								</keystring>
-								<keyshortcut>
-									
-								</keyshortcut>
-								<keylaunch>
-									
-								</keylaunch>
 							</orderedkey>
 							<orderedkey order="1">
-								<keystring>
-									
-								</keystring>
 								<keyshortcut>
 									
 								</keyshortcut>
-								<keylaunch>
-									
-								</keylaunch>
 							</orderedkey>
-						</bloc_level_2>
-					</ordered_bloc_level_2>
+						</block_level_2>
+					</ordered_block_level_2>
 					
-				</bloc_level_1>
-			</oredered_bloc_level_3>
-		</blocs>
+				</block_level_1>
+			</oredered_block_level_3>
+		</blocks>
 	</keyboard>
 	<language>
 	</language>
