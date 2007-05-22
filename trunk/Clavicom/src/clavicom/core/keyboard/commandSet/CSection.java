@@ -45,8 +45,33 @@ public class CSection
 		name = myName;
 		commandMap = new HashMap<String, CCommand>();
 	}
+
+	//----------------------------------------------------------- METHODES --//
+	/**
+	 * Méthode permettant d'ajouter une commande à une section
+	 * Lance une exception si ce n'est pas possible
+	 */
+	public void AddCommand( CCommand command )
+	{
+		commandMap.put( command.GetCaption(), command );
+	}
 	
+	/**
+	 * Retourn la command correspondante au name passé en parametre
+	 * Retourne null si la commande n'éxiste pas
+	 * @param name
+	 * @return
+	 */
+	public CCommand GetCommand( String name )
+	{
+		return commandMap.get( name );
+	}
 	
+	public String GetName(){return name;}
+
+	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	//---------------------------------------------------------------- XML --//
 	public static CSection BuildSection( Element node ) throws Exception
 	{
 		// construction d'une section a partir d'un noeud XML
@@ -97,29 +122,4 @@ public class CSection
 		return section;
 		
 	}
-
-	//----------------------------------------------------------- METHODES --//
-	/**
-	 * Méthode permettant d'ajouter une commande à une section
-	 * Lance une exception si ce n'est pas possible
-	 */
-	public void AddCommand( CCommand command )
-	{
-		commandMap.put( command.GetCaption(), command );
-	}
-	
-	/**
-	 * Retourn la command correspondante au name passé en parametre
-	 * Retourne null si la commande n'éxiste pas
-	 * @param name
-	 * @return
-	 */
-	public CCommand GetCommand( String name )
-	{
-		return commandMap.get( name );
-	}
-	
-	public String GetName(){return name;}
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -55,8 +55,16 @@ public class CCommandSet
 	{
 		return sectionsList.get( name );
 	}
-
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	private void AddSection( CSection section )
+	{
+		sectionsList.put( section.name, section);
+	}
+	
+	//---------------------------------------------------------------- XML --//
+	
 	private void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
 	{
 		// =======================================================
@@ -96,8 +104,5 @@ public class CCommandSet
 		}
 	}
 
-	private void AddSection( CSection section )
-	{
-		sectionsList.put( section.name, section);
-	}
+	
 }

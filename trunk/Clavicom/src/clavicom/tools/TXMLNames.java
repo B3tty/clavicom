@@ -42,10 +42,23 @@ public class TXMLNames
 	public static String KY_ELEMENT_COLOR_R 			= "red";
 	public static String KY_ELEMENT_COLOR_G 			= "green";
 	public static String KY_ELEMENT_COLOR_B 			= "blue";
+	public static String KY_ATTRIBUT_ORDER 				= "order";
 	
 	// Key clavicom
 	public static String KY_CLAVICOM_ELEMENT		 		= "keyclavicom";
 	public static String KY_CLAVICOM_ELEMENT_ACTION 		= "action";
+	
+	// CKeyString
+	public static String KY_STRING_ELEMENT		 		= "keystring";
+	
+	// CKeyCharacter
+	public static String KY_CHARACTER_ELEMENT		 		= "keycharacter";
+
+	// CKeyShortcut
+	public static String KY_SHORTCUT_ELEMENT		 		= "keyshortcut";
+
+	// CKeyLuncher
+	public static String KY_LUNCHER_ELEMENT		 		= "keyluncher";
 	
 	// commandSet
 	public static String CS_ATTRIBUT_ACTION				= "action";
@@ -57,6 +70,11 @@ public class TXMLNames
 	public static String CS_ATTRIBUT_NAME				= "name";
 	public static String CS_ATTRIBUT_ORDER				= "order";
 	public static String CS_ATTRIBUT_CAPTION			= "caption";
+	
+	// gestion des blocs
+	public static String BL_CAPTION						= "caption";
+	public static String BL_VISIBLE						= "visible";
+	public static String BL_ELEMENT_BLOC_N2				= "bloc_n2";
 	
 	
 }
