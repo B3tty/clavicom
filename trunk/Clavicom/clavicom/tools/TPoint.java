@@ -31,8 +31,6 @@ import org.jdom.Element;
 public class TPoint 
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	private static String ELEMENT_NAME_X;
-	private static String ELEMENT_NAME_Y;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	float x,y;	// Coordonnées relatives du point (pourcentage)
@@ -60,8 +58,8 @@ public class TPoint
 		Element eltX, eltY;
 		
 		// Récupération des noeuds fils
-		eltX = pointElement.getChild("x");
-		eltY = pointElement.getChild("y");
+		eltX = pointElement.getChild(TXMLNames.PT_ELEMENT_X);
+		eltY = pointElement.getChild(TXMLNames.PT_ELEMENT_Y);
 
 		// Test des chaines récupérées
 		if ((eltX == null) || (eltY == null))
@@ -98,12 +96,19 @@ public class TPoint
 	
 	public Element buildNode()
 	{
-		Element eltPoint = new Element("point");
+		Element eltPoint = new Element(TXMLNames.PT_ELEMENT_POINT);
 		Element eltX;
 		Element eltY;
 		
-		eltX = new Element (ELEMENT_NAME_X);
+		// X
+		eltX = new Element (TXMLNames.PT_ELEMENT_X);
+		eltX.setText(String.valueOf(x));
+		eltPoint.addContent(eltX);
 		
+		// Y
+		eltY = new Element (TXMLNames.PT_ELEMENT_Y);
+		eltY.setText(String.valueOf(y));
+		eltPoint.addContent(eltY);		
 		
 		return eltPoint;
 	}

@@ -37,4 +37,62 @@ public final class TKeyClavicomActionType
     public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType();
     public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType();
     public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType();
+    
+    /**
+     * Retourne la chaine correspondant à la valeur transmise
+     * @param myVal : Valeur dont on veut la chaîne correspondante
+     * @return
+     */
+    public static String getString(TKeyClavicomActionType myVal )
+    {
+    	if (myVal == NONE)
+    	{
+    		return "NONE";
+    	}
+    	else if (myVal == SWITCH_MOUSE_KEYBOARD)
+    	{
+    		return "SWITCH_MOUSE_KEYBOARD";
+    	}
+    	else if (myVal == CLOSE_APPLICATION)
+    	{
+    		return "CLOSE_APPLICATION";
+    	}    	
+    	else if (myVal == SWITCH_MOUSE_KEYBOARD)
+    	{
+    		return "SWITCH_MOUSE_KEYBOARD";
+    	}
+    	else
+    	{
+    		return "";
+    	}
+    }
+    
+    /**
+     * Retourne la valeur correspondant à la chaine transmise
+     * @param myString : Chaine dont on veut la valeur correspondante
+     * @return
+     */    
+    public static TKeyClavicomActionType getValue(String myString )
+    {
+    	if (myString.equals("NONE"))
+    	{
+    		return NONE;
+    	}
+    	else if (myString.equals("SWITCH_MOUSE_KEYBOARD"))
+    	{
+    		return SWITCH_MOUSE_KEYBOARD;
+    	}
+    	else if (myString.equals("CLOSE_APPLICATION"))
+    	{
+    		return CLOSE_APPLICATION;
+    	}    	
+    	else if (myString.equals("SWITCH_MOUSE_KEYBOARD"))
+    	{
+    		return SWITCH_MOUSE_KEYBOARD;
+    	}
+    	else
+    	{
+    		return null;
+    	}
+    }
 } 
