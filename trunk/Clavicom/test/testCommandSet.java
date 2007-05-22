@@ -50,6 +50,8 @@ public class testCommandSet
 			//CSection section = commandSet.GetSection("Spéciaux");
 			
 			CCode cTest = new CCode(0, CKeyAction.PRESSED); 
+
+			
 			
 			// CCommand command = section.GetCommand( "&" );
 			//CCommand command = section.GetCommand( "&" );
