@@ -29,20 +29,34 @@ public class TXMLNames
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	// CPoint
-	public static String ELEMENT_NAME_X 			= "x";
-	public static String ELEMENT_NAME_Y 			= "y";
+	public static String PT_ELEMENT_POINT 				= "point";
+	public static String PT_ELEMENT_X					= "x";
+	public static String PT_ELEMENT_Y					= "y";
 	
+	// Key
+	public static String KY_ELEMENT_COORDINATES 		= "coordinates";
+	public static String KY_ATTRIBUTE_COORDINATE_POS 	= "position";
+	public static String KY_ATTRIBUTE_COORDINATE_POS_MIN= "min";
+	public static String KY_ATTRIBUTE_COORDINATE_POS_MAX= "max";
+	public static String KY_ELEMENT_COLOR 				= "color";
+	public static String KY_ELEMENT_COLOR_R 			= "red";
+	public static String KY_ELEMENT_COLOR_G 			= "green";
+	public static String KY_ELEMENT_COLOR_B 			= "blue";
+	
+	// Key clavicom
+	public static String KYCLAVICOM_ELEMENT		 		= "keyclavicom";
+	public static String KYCLAVICOM_ELEMENT_ACTION 		= "action";
 	
 	// commandSet
-	public static String CS_ATTRIBUT_ACTION			= "action";
-	public static String CS_ATTRIBUT_VALUE			= "value";
-	public static String CS_ELEMENT_CODE			= "code";
-	public static String CS_ELEMENT_COMMAND			= "command";
-	public static String CS_ELEMENT_SECTION			= "section";
-	public static String CS_ELEMENT_COMMANDSET		= "commandeset";
-	public static String CS_ATTRIBUT_NAME			= "name";
-	public static String CS_ATTRIBUT_ORDER			= "order";
-	public static String CS_ATTRIBUT_CAPTION		= "caption";
+	public static String CS_ATTRIBUT_ACTION				= "action";
+	public static String CS_ATTRIBUT_VALUE				= "value";
+	public static String CS_ELEMENT_CODE				= "code";
+	public static String CS_ELEMENT_COMMAND				= "command";
+	public static String CS_ELEMENT_SECTION				= "section";
+	public static String CS_ELEMENT_COMMANDSET			= "commandeset";
+	public static String CS_ATTRIBUT_NAME				= "name";
+	public static String CS_ATTRIBUT_ORDER				= "order";
+	public static String CS_ATTRIBUT_CAPTION			= "caption";
 	
 	
 }
