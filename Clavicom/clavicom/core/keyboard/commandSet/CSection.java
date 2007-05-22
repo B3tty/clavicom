@@ -72,7 +72,15 @@ public class CSection
 				Element element = (Element)object;
 				if( element != null )
 				{
-					CCommand command = CCommand.BuildCommand( element );
+					CCommand command = null;
+					try
+					{
+						command = CCommand.BuildCommand( element );
+					}
+					catch (Exception ex)
+					{
+						throw new Exception ( "[section:" + name + "]" + ex.getMessage() );
+					}
 					
 					try
 					{
@@ -80,7 +88,7 @@ public class CSection
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("[Construction d'une section de clavier] : Impossible d'ajouter la commande à la liste des commandes");
+						throw new Exception("[section:" + name + "][Construction d'une section de clavier] : Impossible d'ajouter la commande à la liste des commandes");
 					}
 				}
 			}

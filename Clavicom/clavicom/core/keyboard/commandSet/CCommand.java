@@ -86,10 +86,18 @@ public class CCommand
 					}
 					catch( Exception ex )
 					{
-						throw new Exception("[Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
+						throw new Exception("[order : " + order + "][Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
 					}
 					
-					CCode code = CCode.BuildCode( element );
+					CCode code = null;
+					try
+					{
+						code = CCode.BuildCode( element );
+					}
+					catch (Exception ex)
+					{
+						throw new Exception( "[order : " + orderInt + "]" + ex.getMessage() );
+					}
 					
 					try
 					{
@@ -97,7 +105,7 @@ public class CCommand
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("[Construction d'une commande de clavier] : Impossible d'ajouter le code d'ordre " + orderInt + " dans la commande " + caption);
+						throw new Exception("[order : " + orderInt + "][Construction d'une commande de clavier] : Impossible d'ajouter le code d'ordre " + orderInt + " dans la commande " + caption);
 					}
 				}
 			}
