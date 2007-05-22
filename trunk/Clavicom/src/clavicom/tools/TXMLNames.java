@@ -74,9 +74,9 @@ public class TXMLNames
 	// gestion des blocs
 	public static String BL_CAPTION						= "caption";
 	public static String BL_VISIBLE						= "visible";
-	public static String BL_ELEMENT_OREDERED_BLOC_N1	= "ordered_block_n2";
-	public static String BL_ELEMENT_BLOC_N2				= "block_n2";
-	public static String BL_ELEMENT_ORDERED_KEY			= "orderedkey";
+	public static String BL_ELEMENT_KEY_GROUP			= "keygroupe";
+	public static String BL_ELEMENT_KEY_LIST			= "keylist";
+	public static String BL_ATTRIBUT_ORDER				= "order";
 	
 	
 }

@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profile>
 	<keyboard name ="ejej">
-		<groupes>
-			<groupe order="0">
-				<list order="0">
+		<keygroups>
+			<keygroup order="0">
+				<keylist order="0">
 					<keystring order="0">
 					</keystring>
 					<keylaunch order="1">
 					</keylaunch>
-				</list>
-				<list order="1">
+				</keylist>
+				<keylist order="1">
 					<keyshortcut order="0">
 					</keyshortcut>
 					<keylaunch order="1">
 					</keylaunch>
-				</list>
-			</groupe>
-			<groupe order="1">
-				<list order="0">
+				</keylist>
+			</keygroup>
+			<keygroup order="1">
+				<keylist order="0">
 					<keystring order="0">
 					</keystring>
 					<keylaunch order="1">
 					</keylaunch>
-				</list>
-				<list order="1">
+				</keylist>
+				<keylist order="1">
 					<keyshortcut order="0">
 					</keyshortcut>
 					<keylaunch order="1">
 					</keylaunch>
-				</list>
-			</groupe>
-		</groupes>
+				</keylist>
+			</keygroup>
+		</keygroups>
 	</keyboard>
 	<language>
 	</language>
