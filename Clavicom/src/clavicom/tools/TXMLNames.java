@@ -44,8 +44,8 @@ public class TXMLNames
 	public static String KY_ELEMENT_COLOR_B 			= "blue";
 	
 	// Key clavicom
-	public static String KYCLAVICOM_ELEMENT		 		= "keyclavicom";
-	public static String KYCLAVICOM_ELEMENT_ACTION 		= "action";
+	public static String KY_CLAVICOM_ELEMENT		 		= "keyclavicom";
+	public static String KY_CLAVICOM_ELEMENT_ACTION 		= "action";
 	
 	// commandSet
 	public static String CS_ATTRIBUT_ACTION				= "action";
