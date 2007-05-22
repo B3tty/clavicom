@@ -52,6 +52,7 @@ public class testCommandSet
 			CCode cTest = new CCode(0, CKeyAction.PRESSED); 
 			
 			//CCommand command = section.GetCommand( "&" );
+			//CCommand command = section.GetCommand( "&" );
 			
 //			for( int i = 0 ; i < command.Size() ; ++i )
 //			{
