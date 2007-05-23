@@ -75,19 +75,19 @@ public class CKeyGroup
 		// =================================================================
 		// Récupération de l'attribut Caption
 		// =================================================================
-		String caption = node.getAttributeValue( TXMLNames.BL_CAPTION );
+		String caption = node.getAttributeValue( TXMLNames.BL_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[Construction d'un bloc de niveau 1] : Impossible de trouver l'attribut " + TXMLNames.BL_CAPTION);
+			throw new Exception("[Construction d'un bloc de niveau 1] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_CAPTION);
 		}
 		
 		// =================================================================
 		// Récupération de l'attribut visible
 		// =================================================================
-		String s_visible = node.getAttributeValue( TXMLNames.BL_VISIBLE );
+		String s_visible = node.getAttributeValue( TXMLNames.BL_ATTRIBUTE_VISIBLE );
 		if( s_visible == null )
 		{
-			throw new Exception("[caption : " + caption + "][Construction d'un groupe] : Impossible de trouver l'attribut " + TXMLNames.BL_VISIBLE);
+			throw new Exception("[caption : " + caption + "][Construction d'un groupe] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_VISIBLE);
 		}
 		boolean b_visible;
 		try
@@ -113,12 +113,12 @@ public class CKeyGroup
 				if( element != null )
 				{
 					// =================================================================
-					// Récupération de l'attribut order
+					// Récupération de l'attribut order de la keyList
 					// =================================================================
-					String s_order = element.getAttributeValue( TXMLNames.BL_ATTRIBUT_ORDER );
+					String s_order = element.getAttributeValue( TXMLNames.BL_ATTRIBUTE_ORDER );
 					if( s_order == null )
 					{
-						throw new Exception("[caption : " + caption + "][Construction d'un groupe] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUT_ORDER);
+						throw new Exception("[caption : " + caption + "][Construction d'un groupe] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_ORDER);
 					}
 					int i_order;
 					try

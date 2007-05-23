@@ -64,7 +64,7 @@ public class CKeyList
 	{
 		CKeyboardKey keyboardKey = null;
 		
-		if( node.getName().equals( TXMLNames.KY_CHARACTER_ELEMENT ) )
+		if( node.getName().equals( TXMLNames.KY_ELEMENT_CHARACTER ) )
 		{
 			try
 			{
@@ -74,7 +74,7 @@ public class CKeyList
 			{
 				throw new Exception("[Type de touche : Caractere]" + ex.getMessage() );
 			}
-		}else if( node.getName().equals( TXMLNames.KY_CLAVICOM_ELEMENT ) )
+		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_CLAVICOM ) )
 		{
 			try
 			{
@@ -84,7 +84,7 @@ public class CKeyList
 			{
 				throw new Exception("[Type de touche : Clavicom]" + ex.getMessage() );
 			}
-		}else if( node.getName().equals( TXMLNames.KY_LUNCHER_ELEMENT ) )
+		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_LAUNCHER ) )
 		{
 			try
 			{
@@ -94,7 +94,7 @@ public class CKeyList
 			{
 				throw new Exception("[Type de touche : lanceur d'application]" + ex.getMessage() );
 			}
-		}else if( node.getName().equals( TXMLNames.KY_SHORTCUT_ELEMENT ) )
+		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_SHORTCUT ) )
 		{
 			try
 			{
@@ -104,7 +104,7 @@ public class CKeyList
 			{
 				throw new Exception("[Type de touche : Raccourci]" + ex.getMessage() );
 			}
-		}else if( node.getName().equals( TXMLNames.KY_STRING_ELEMENT ) )
+		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_STRING ) )
 		{
 			try
 			{
@@ -145,12 +145,12 @@ public class CKeyList
 				if( element != null )
 				{
 					// =================================================================
-					// Récupération de l'order
+					// Récupération de l'order de la keyboardKey
 					// =================================================================
-					String s_order = element.getAttributeValue( TXMLNames.KY_ATTRIBUT_ORDER );
+					String s_order = element.getAttributeValue( TXMLNames.KY_ATTRIBUTE_ORDER );
 					if( s_order == null )
 					{
-						throw new Exception("[Construction d'un bloc de niveau 2] : Impossible de récupérer l'attribut " + TXMLNames.KY_ATTRIBUT_ORDER + " pour le noeud " + element.getName() );
+						throw new Exception("[Construction d'un bloc de niveau 2] : Impossible de récupérer l'attribut " + TXMLNames.KY_ATTRIBUTE_ORDER + " pour le noeud " + element.getName() );
 					}
 					int i_order;
 					try
