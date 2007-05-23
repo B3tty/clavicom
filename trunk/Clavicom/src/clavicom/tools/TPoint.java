@@ -80,17 +80,26 @@ public class TPoint
 			throw new Exception ("[Point] Chargement du noeud point : element vide");
 		}
 		
-		// Construction des valeurs
+		// Construction X
 		try
 		{
 			x = Float.parseFloat(strX);
+		}
+		catch (Exception e)
+		{
+			throw new Exception ("[Point] Chargement du noeud point : la chaine \"" + strX + "\" ne peut être convertie en entier");
+		}
+		
+		// Construction Y
+		try
+		{
 			y = Float.parseFloat(strY);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
-			throw new Exception ("[Point] Chargement du noeud point : chaine invalide");
+			throw new Exception ("[Point] Chargement du noeud point : la chaine \"" + strY + "\" ne peut être convertie en entier");
 		}
+		
 	}
 	
 	public Element buildNode()

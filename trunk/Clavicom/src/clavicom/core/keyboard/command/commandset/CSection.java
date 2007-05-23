@@ -4,7 +4,7 @@
 			Creation date		: 21 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.keyboard.commandSet
+			Package				: clavicom.core.keyboard.commandset.command
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,12 +23,13 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keyboard.commandSet;
+package clavicom.core.keyboard.command.commandset;
 
 import java.util.HashMap;
 
 import org.jdom.Element;
 
+import clavicom.core.keyboard.command.CCommand;
 import clavicom.tools.TXMLNames;
 
 public class CSection
