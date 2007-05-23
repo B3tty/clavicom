@@ -102,7 +102,7 @@ public class CCommandSet
 		}
 		catch(Exception e)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_COMMANDESET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDESET_OPEN_FILE" ) + CommandSetfilePath + "\n" + e.getMessage());
+			throw new Exception("[" + UIString.getUIString( "EX_COMMANDSET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDSET_OPEN_FILE" ) + CommandSetfilePath + "\n" + e.getMessage());
 		}
 
 		//On initialise un nouvel élément racine avec l'élément racine du document.
@@ -121,7 +121,7 @@ public class CCommandSet
 				}
 				catch(Exception ex)
 				{
-					throw new Exception("[" + UIString.getUIString( "EX_COMMANDESET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDESET_ERR_ADD_SECTION" ) + section.GetName());
+					throw new Exception("[" + UIString.getUIString( "EX_COMMANDSET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDSET_ERR_ADD_SECTION" ) + section.GetName());
 				}
 			}
 		}

@@ -32,6 +32,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
 import clavicom.core.keyboard.command.CCommand;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CShortcutSet 
@@ -44,8 +45,10 @@ public class CShortcutSet
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CShortcutSet( String myShortcutSetPath) throws Exception
 	{
+		commandMap = new HashMap<String, CCommand>();
+		
 		// Chargement du fichier XML
-		LoadShortcutSetFile (myShortcutSetPath );
+		LoadShortcutSetFile (myShortcutSetPath);
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -71,7 +74,10 @@ public class CShortcutSet
 		}
 		catch(Exception e)
 		{
-			throw new Exception("[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \"" + myShortcutsetfilePath + "\"" + e.getMessage());
+			throw new Exception(	UIString.getUIString("EX_SHORTCUTSET_BAD_PATH_1") +  
+									myShortcutsetfilePath +
+									UIString.getUIString("EX_SHORTCUTSET_BAD_PATH_2") + 
+									e.getMessage());
 		}
 
 		// On initialise un nouvel élément racine avec l'élément racine du document.
@@ -80,9 +86,11 @@ public class CShortcutSet
 		// Vérification du nom de la racine
 		if (!racine.getName().equals(TXMLNames.SS_ROOT_NAME))
 		{
-			throw new Exception("[Construction du jeu de racourcis] : Balise \"" + 
-								TXMLNames.SS_ROOT_NAME + "\" attendue, \\" + 
-								racine.getName() + "\" trouvée");
+			throw new Exception(UIString.getUIString("EX_SHORTCUTSET_BAD_ROOT_1") + 
+								TXMLNames.SS_ROOT_NAME + 
+								UIString.getUIString("EX_SHORTCUTSET_BAD_ROOT_2") + 
+								racine.getName() + 
+								UIString.getUIString("EX_SHORTCUTSET_BAD_ROOT_3"));
 		}
 		
 		for( Object object : racine.getChildren() )
@@ -91,14 +99,16 @@ public class CShortcutSet
 			{
 				Element element = (Element)object;
 				CCommand command = CCommand.BuildCommand(element);
-				
+								
 				try
 				{
 					commandMap.put(command.GetCaption(),command);
 				}
 				catch(Exception ex)
 				{
-					throw new Exception("[Construction du jeu de racourcis] : Erreur lors de l'ajout de la section " + command.GetCaption());				
+					ex.printStackTrace();
+					throw new Exception(	UIString.getUIString("EX_SHORTCUTSET_BAD_COMMAND") + 
+											command.GetCaption());				
 				}
 			}
 		}
