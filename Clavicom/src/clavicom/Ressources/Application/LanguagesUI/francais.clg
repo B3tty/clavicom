@@ -13,9 +13,8 @@
 	<!-- ========================================================================== 
 		Execptions 
 	==========================================================================  -->
-	
-	
-	
+	<message id = "EX_KEYBOARD_BUILD_GROUP">Construction d'un groupe</message>
+	<message id = "EX_KEYBOARD_NOT_FIND_NODE">Impossible de trouver le noeud XML</message>
 	
 	
 	<!-- ==========================================================================
