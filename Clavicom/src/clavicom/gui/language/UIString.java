@@ -49,10 +49,18 @@ public class UIString
 	{
 		if( uiStringMap != null )
 		{
-			return uiStringMap.get( ID );
+			if( uiStringMap.containsKey( ID ) )
+			{
+				return uiStringMap.get( ID );
+			}
+			else
+			{
+				return "String not found ";
+			}
+			
 		}
 		
-		return "";
+		return "UIString not loaded ";
 	}
 	
 	public static void LoadUIStringFile( String path ) throws Exception

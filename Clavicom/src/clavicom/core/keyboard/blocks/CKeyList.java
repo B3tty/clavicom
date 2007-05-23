@@ -31,6 +31,7 @@ import org.jdom.Element;
 
 import clavicom.core.keyboard.key.CKeyClavicom;
 import clavicom.core.keyboard.key.CKeyboardKey;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CKeyList
@@ -72,7 +73,7 @@ public class CKeyList
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("[Type de touche : Caractere]" + ex.getMessage() );
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : " + UIString.getUIString( "EX_KEYLIST_TYPE_CHARACTER" ) + "]" + ex.getMessage() );
 			}
 		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_CLAVICOM ) )
 		{
@@ -82,7 +83,7 @@ public class CKeyList
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("[Type de touche : Clavicom]" + ex.getMessage() );
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_CLAVICOM" )+ "]" + ex.getMessage() );
 			}
 		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_LAUNCHER ) )
 		{
@@ -92,7 +93,7 @@ public class CKeyList
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("[Type de touche : lanceur d'application]" + ex.getMessage() );
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER" )+ "]" + ex.getMessage() );
 			}
 		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_SHORTCUT ) )
 		{
@@ -102,7 +103,7 @@ public class CKeyList
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("[Type de touche : Raccourci]" + ex.getMessage() );
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_SHORTCUT" )+ "]" + ex.getMessage() );
 			}
 		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_STRING ) )
 		{
@@ -112,12 +113,12 @@ public class CKeyList
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("[Type de touche : Chaine de caractere]" + ex.getMessage() );
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_STRING" )+ "]" + ex.getMessage() );
 			}
 		}
 		else
 		{
-			throw new Exception("Type de touche inconnu : " + node.getName() );
+			throw new Exception( UIString.getUIString( "EX_KEYLIST_UNKNOWN_KEY_TYPE" )+ " : " + node.getName() );
 		}
 		
 		return keyboardKey;
@@ -128,7 +129,7 @@ public class CKeyList
 	{
 		if( node == null  )
 		{
-			throw new Exception("[Construction d'une liste] : Impossible de récupérer le noeud XML");
+			throw new Exception("[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
 		CKeyList keylist = new CKeyList();
@@ -150,7 +151,7 @@ public class CKeyList
 					String s_order = element.getAttributeValue( TXMLNames.KY_ATTRIBUTE_ORDER );
 					if( s_order == null )
 					{
-						throw new Exception("[Construction d'un bloc de niveau 2] : Impossible de récupérer l'attribut " + TXMLNames.KY_ATTRIBUTE_ORDER + " pour le noeud " + element.getName() );
+						throw new Exception("[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.KY_ATTRIBUTE_ORDER + UIString.getUIString( "EX_KEYLIST_FOR_THE_NODE" ) + element.getName() );
 					}
 					int i_order;
 					try
@@ -159,7 +160,7 @@ public class CKeyList
 					}
 					catch ( Exception ex )
 					{
-						throw new Exception( "[Construction d'un bloc de niveau 2] : Impossible de convertir l'order " + s_order + " en entier" );
+						throw new Exception( "[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ) );
 					}
 					
 					// =================================================================
@@ -181,7 +182,7 @@ public class CKeyList
 					}
 					catch(Exception ex)
 					{
-						throw new Exception( "[order=" + i_order + "] Impossible d'ajouter la touche à la liste" );
+						throw new Exception( "[order=" + i_order + "] " + UIString.getUIString( "EX_KEYLIST_CAN_NOT_ADD_KEY" ) );
 					}
 				}
 			}

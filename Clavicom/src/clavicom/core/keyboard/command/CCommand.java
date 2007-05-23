@@ -30,6 +30,7 @@ import java.util.List;
 
 import org.jdom.Element;
 
+import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CCommand
@@ -82,13 +83,13 @@ public class CCommand
 		
 		if( node == null )
 		{
-			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver le noeud de la commande");
+			throw new Exception("[" + UIString.getUIString( "EX_COMMANDE_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
 		String caption = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_CAPTION);
+			throw new Exception("[" + UIString.getUIString( "EX_COMMANDE_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
 		}
 		
 		CCommand command = new CCommand( caption );
@@ -105,7 +106,7 @@ public class CCommand
 					String order = element.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ORDER );
 					if( order == null )
 					{
-						throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_ORDER);
+						throw new Exception("[" + UIString.getUIString( "EX_COMMANDE_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_ORDER);
 					}
 					
 					int orderInt = 0;
@@ -115,7 +116,7 @@ public class CCommand
 					}
 					catch( Exception ex )
 					{
-						throw new Exception("[caption : " + caption + "][order : " + order + "][Construction d'une commande de clavier] : Impossible de convertir l'order en entier.");
+						throw new Exception("[caption : " + caption + "][order : " + order + "][" + UIString.getUIString( "EX_COMMANDE_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
 					CCode code = null;
@@ -134,7 +135,7 @@ public class CCommand
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("[order : " + orderInt + "][Construction d'une commande de clavier] : Impossible d'ajouter le code d'ordre " + orderInt + " dans la commande " + caption);
+						throw new Exception("[order : " + orderInt + "][" + UIString.getUIString( "EX_COMMANDE_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_COMMANDE_CAN_NOT_ADD_CODE" ) + orderInt + UIString.getUIString( "EX_COMMANDE_IN_THE_COMMANDE" ) + caption);
 					}
 				}
 			}

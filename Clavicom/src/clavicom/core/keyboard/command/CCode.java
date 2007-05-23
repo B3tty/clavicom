@@ -26,6 +26,8 @@
 package clavicom.core.keyboard.command;
 
 import org.jdom.Element;
+
+import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyAction;
 import clavicom.tools.TKeyEventTools;
 import clavicom.tools.TXMLNames;
@@ -57,7 +59,7 @@ public class CCode
 	{
 		if( node == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le noeud XML");
+			throw new Exception("[" + UIString.getUIString( "EX_CODE_BUILD_CODE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
 		}
 		
 		String action =  node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ACTION );
@@ -65,11 +67,11 @@ public class CCode
 		
 		if( action == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_ACTION);
+			throw new Exception("[" + UIString.getUIString( "EX_CODE_BUILD_CODE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_ACTION);
 		}
 		if( value == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_VALUE);
+			throw new Exception("[" + UIString.getUIString( "EX_CODE_BUILD_CODE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_VALUE);
 		}
 		
 		int keyEvent = TKeyEventTools.GetKeyEvent( value );
@@ -77,7 +79,7 @@ public class CCode
 		// Si le keyEvent n'est pas bon
 		if( keyEvent == 0 )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le code caractere correspondant à :" + value);
+			throw new Exception("[" + UIString.getUIString( "EX_CODE_BUILD_CODE" )+ "] : " + UIString.getUIString( "EX_CODE_CAN_NOT_FIND_KEY_CODE" ) + value);
 		}
 		
 		// recherche le keyAction
@@ -93,7 +95,7 @@ public class CCode
 		else
 		{
 			// pas de bon keyAction
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver la bonne action correspondante à :" + action);
+			throw new Exception("[" + UIString.getUIString( "EX_CODE_BUILD_CODE" )+ "] : " + UIString.getUIString( "EX_CODE_CAN_NOT_FIND_KEY_ACTION" ) + action);
 		}
 		
 		return new CCode( keyEvent, keyAction );
