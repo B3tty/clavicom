@@ -42,42 +42,45 @@ public class TXMLNames
 	public static String KY_ELEMENT_COLOR_R 			= "red";
 	public static String KY_ELEMENT_COLOR_G 			= "green";
 	public static String KY_ELEMENT_COLOR_B 			= "blue";
-	public static String KY_ATTRIBUT_ORDER 				= "order";
+	public static String KY_ATTRIBUTE_ORDER 				= "order";
 	
 	// Key clavicom
-	public static String KY_CLAVICOM_ELEMENT		 	= "keyclavicom";
-	public static String KY_CLAVICOM_ELEMENT_ACTION 	= "action";
+	public static String KY_ELEMENT_CLAVICOM		 	= "keyclavicom";
+	public static String KY_ELEMENT_CLAVICOM_ACTION 	= "action";
 	
 	// CKeyString
-	public static String KY_STRING_ELEMENT		 		= "keystring";
+	public static String KY_ELEMENT_STRING		 		= "keystring";
 	
 	// CKeyCharacter
-	public static String KY_CHARACTER_ELEMENT		 	= "keycharacter";
+	public static String KY_ELEMENT_CHARACTER		 	= "keycharacter";
 
 	// CKeyShortcut
-	public static String KY_SHORTCUT_ELEMENT		 	= "keyshortcut";
+	public static String KY_ELEMENT_SHORTCUT		 	= "keyshortcut";
 
 	// CKeyLuncher
-	public static String KY_LAUNCHER_ELEMENT		 	= "keylauncher";
-	public static String KY_LAUNCHER_ELEMENT_PATH		= "applicationpath";
+	public static String KY_ELEMENT_LAUNCHER		 		= "keylauncher";
+	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
 	
 	// commandSet
-	public static String CS_ATTRIBUT_ACTION				= "action";
-	public static String CS_ATTRIBUT_VALUE				= "value";
+	public static String CS_ATTRIBUTE_ACTION				= "action";
+	public static String CS_ATTRIBUTE_VALUE				= "value";
 	public static String CS_ELEMENT_CODE				= "code";
 	public static String CS_ELEMENT_COMMAND				= "command";
 	public static String CS_ELEMENT_SECTION				= "section";
 	public static String CS_ELEMENT_COMMANDSET			= "commandeset";
-	public static String CS_ATTRIBUT_NAME				= "name";
-	public static String CS_ATTRIBUT_ORDER				= "order";
-	public static String CS_ATTRIBUT_CAPTION			= "caption";
+	public static String CS_ATTRIBUTE_NAME				= "name";
+	public static String CS_ATTRIBUTE_ORDER				= "order";
+	public static String CS_ATTRIBUTE_CAPTION			= "caption";
 	
 	// gestion des blocs
-	public static String BL_CAPTION						= "caption";
-	public static String BL_VISIBLE						= "visible";
+	public static String BL_ATTRIBUTE_CAPTION						= "caption";
+	public static String BL_ATTRIBUTE_VISIBLE						= "visible";
 	public static String BL_ELEMENT_KEY_GROUP			= "keygroupe";
 	public static String BL_ELEMENT_KEY_LIST			= "keylist";
-	public static String BL_ATTRIBUT_ORDER				= "order";
+	public static String BL_ATTRIBUTE_ORDER				= "order";
+	
+	// uiString
+	public static String UI_ELEMENT_MESSAGE				= "message";
 	
 	
 }
