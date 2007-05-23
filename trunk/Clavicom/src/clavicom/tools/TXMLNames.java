@@ -84,5 +84,9 @@ public class TXMLNames
 	public static String BL_ELEMENT_KEY_LIST			= "keylist";
 	public static String BL_ATTRIBUTE_ORDER				= "order";
 	
+	// uiString
+	public static String UI_ELEMENT_MESSAGE				= "message";
+	public static String UI_ATTRIBUTE_ID				= "id";
+	
 	
 }
