@@ -87,11 +87,11 @@ public class CSection
 			throw new Exception("[Construction d'une section de clavier] : Impossible de trouver le noeud XML correspondant à cette section");
 		}
 		
-		String name = node.getAttributeValue( TXMLNames.CS_ATTRIBUT_NAME );
+		String name = node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_NAME );
 		
 		if( name == null )
 		{
-			throw new Exception("[Construction d'une section de clavier] : Impossible de récupérer l'attribut " + TXMLNames.CS_ATTRIBUT_NAME + " d'une section");
+			throw new Exception("[Construction d'une section de clavier] : Impossible de récupérer l'attribut " + TXMLNames.CS_ATTRIBUTE_NAME + " d'une section");
 		}
 		
 		CSection section = new CSection( name );
