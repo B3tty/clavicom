@@ -60,16 +60,16 @@ public class CCode
 			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le noeud XML");
 		}
 		
-		String action =  node.getAttributeValue( TXMLNames.CS_ATTRIBUT_ACTION );
-		String value =  node.getAttributeValue( TXMLNames.CS_ATTRIBUT_VALUE );
+		String action =  node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_ACTION );
+		String value =  node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_VALUE );
 		
 		if( action == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_ACTION);
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_ACTION);
 		}
 		if( value == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUT_VALUE);
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_VALUE);
 		}
 		
 		int keyEvent = CKeyEventTools.GetKeyEvent( value );
