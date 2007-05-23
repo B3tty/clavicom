@@ -45,7 +45,7 @@ public class UIString
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//
-	static String getUIString( String ID )
+	public static String getUIString( String ID )
 	{
 		if( uiStringMap != null )
 		{
@@ -55,7 +55,7 @@ public class UIString
 		return "";
 	}
 	
-	static void LoadUIStringFile( String path ) throws Exception
+	public static void LoadUIStringFile( String path ) throws Exception
 	{
 		uiStringMap = new HashMap<String, String>();
 		
