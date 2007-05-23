@@ -58,7 +58,8 @@ public class TXMLNames
 	public static String KY_SHORTCUT_ELEMENT		 	= "keyshortcut";
 
 	// CKeyLuncher
-	public static String KY_LUNCHER_ELEMENT		 		= "keylauncher";
+	public static String KY_LAUNCHER_ELEMENT		 	= "keylauncher";
+	public static String KY_LAUNCHER_ELEMENT_PATH		= "applicationpath";
 	
 	// commandSet
 	public static String CS_ATTRIBUT_ACTION				= "action";
