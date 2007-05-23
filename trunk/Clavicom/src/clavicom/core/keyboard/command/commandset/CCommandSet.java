@@ -32,6 +32,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
 import clavicom.core.keyboard.command.CCommand;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CCommandSet 
@@ -101,7 +102,7 @@ public class CCommandSet
 		}
 		catch(Exception e)
 		{
-			throw new Exception("[Construction du CommandSet du clavier] : Erreur lors de l'ouverture du fichier " + CommandSetfilePath + "\n" + e.getMessage());
+			throw new Exception("[" + UIString.getUIString( "EX_COMMANDESET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDESET_OPEN_FILE" ) + CommandSetfilePath + "\n" + e.getMessage());
 		}
 
 		//On initialise un nouvel élément racine avec l'élément racine du document.
@@ -120,7 +121,7 @@ public class CCommandSet
 				}
 				catch(Exception ex)
 				{
-					throw new Exception("[Construction du CommandSet du clavier] : Erreur lors de l'ajout de la section " + section.GetName());
+					throw new Exception("[" + UIString.getUIString( "EX_COMMANDESET_BUILD_COMMANDESET" )+ "] : " + UIString.getUIString( "EX_COMMANDESET_ERR_ADD_SECTION" ) + section.GetName());
 				}
 			}
 		}

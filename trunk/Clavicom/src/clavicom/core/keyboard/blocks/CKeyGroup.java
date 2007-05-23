@@ -70,7 +70,7 @@ public class CKeyGroup
 	{
 		if( node == null )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_NOT_FIND_NODE" ));
+			throw new Exception("[" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
 		}
 		
 		// =================================================================
@@ -79,7 +79,7 @@ public class CKeyGroup
 		String caption = node.getAttributeValue( TXMLNames.BL_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_CAPTION);
+			throw new Exception("[" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE") + " " + TXMLNames.BL_ATTRIBUTE_CAPTION);
 		}
 		
 		// =================================================================
@@ -88,7 +88,7 @@ public class CKeyGroup
 		String s_visible = node.getAttributeValue( TXMLNames.BL_ATTRIBUTE_VISIBLE );
 		if( s_visible == null )
 		{
-			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_VISIBLE);
+			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE") + " " + TXMLNames.BL_ATTRIBUTE_VISIBLE);
 		}
 		boolean b_visible;
 		try
@@ -97,7 +97,7 @@ public class CKeyGroup
 		}
 		catch (Exception ex)
 		{
-			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : Impossible de convertir " + s_visible + " en booléen");
+			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_visible + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ));
 		}
 		
 		CKeyGroup keyGroup = new CKeyGroup( caption, b_visible );
@@ -119,7 +119,7 @@ public class CKeyGroup
 					String s_order = element.getAttributeValue( TXMLNames.BL_ATTRIBUTE_ORDER );
 					if( s_order == null )
 					{
-						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : Impossible de trouver l'attribut " + TXMLNames.BL_ATTRIBUTE_ORDER);
+						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.BL_ATTRIBUTE_ORDER);
 					}
 					int i_order;
 					try
@@ -128,7 +128,7 @@ public class CKeyGroup
 					}
 					catch (Exception ex)
 					{
-						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYBOARD_BUILD_GROUP" ) + "] : Impossible de convertir " + s_order + " en entier");
+						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ));
 					}
 					
 					

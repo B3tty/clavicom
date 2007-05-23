@@ -30,6 +30,7 @@ import java.util.HashMap;
 import org.jdom.Element;
 
 import clavicom.core.keyboard.command.CCommand;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CSection
@@ -84,14 +85,14 @@ public class CSection
 		
 		if ( node == null )
 		{
-			throw new Exception("[Construction d'une section de clavier] : Impossible de trouver le noeud XML correspondant à cette section");
+			throw new Exception("[" + UIString.getUIString( "EX_SECTION_BUILD_SECTION" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" )  );
 		}
 		
 		String name = node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_NAME );
 		
 		if( name == null )
 		{
-			throw new Exception("[Construction d'une section de clavier] : Impossible de récupérer l'attribut " + TXMLNames.CS_ATTRIBUTE_NAME + " d'une section");
+			throw new Exception("[" + UIString.getUIString( "EX_SECTION_BUILD_SECTION" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CS_ATTRIBUTE_NAME);
 		}
 		
 		CSection section = new CSection( name );
@@ -119,7 +120,7 @@ public class CSection
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("[section:" + name + "][Construction d'une section de clavier] : Impossible d'ajouter la commande à la liste des commandes");
+						throw new Exception("[section:" + name + "][" + UIString.getUIString( "EX_SECTION_BUILD_SECTION" )+ "] : " + UIString.getUIString( "EX_SECTION_ERR_ADD_COMMAND" ));
 					}
 				}
 			}

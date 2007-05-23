@@ -13,8 +13,39 @@
 	<!-- ========================================================================== 
 		Execptions 
 	==========================================================================  -->
-	<message id = "EX_KEYBOARD_BUILD_GROUP">Construction d'un groupe</message>
-	<message id = "EX_KEYBOARD_NOT_FIND_NODE">Impossible de trouver le noeud XML</message>
+	<message id = "EX_KEYGROUP_BUILD_GROUP">Construction d'un groupe </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_NODE">Impossible de trouver le noeud XML </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
+	<message id = "EX_KEYGROUP_CAN_NOT_CONVERT">Impossible de convertir </message>
+	<message id = "EX_KEYGROUP_TO_BOOLEAN"> en booléen </message>
+	<message id = "EX_KEYGROUP_TO_INTEGER"> en entier </message>
+	
+	<message id = "EX_KEYLIST_KEY_TYPE">Type de touche </message>
+	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
+	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
+	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
+	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
+	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
+	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Type de touche inconnu</message>
+	<message id = "EX_KEYLIST_BUILD_LIST">Construction d'une liste</message>
+	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
+	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Impossible d'ajouter la touche à la liste </message>
+	
+	<message id = "EX_COMMANDESET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
+	<message id = "EX_COMMANDESET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_COMMANDESET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
+	
+	<message id = "EX_SECTION_BUILD_SECTION">Construction d'une section de clavier </message>
+	<message id = "EX_SECTION_ERR_ADD_COMMAND">Impossible d'ajouter la commande à la liste des commandes</message>
+	
+	<message id = "EX_CODE_BUILD_CODE">Construction d'un code de clavier </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Impossible de trouver le code caractere correspondant à </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Impossible de trouver la bonne action correspondante à </message>
+	
+	<message id = "EX_COMMANDE_BUILD_COMMANDE">Construction d'une commande de clavier </message>
+	<message id = "EX_COMMANDE_CAN_NOT_ADD_CODE">Impossible d'ajouter le code </message>
+	<message id = "EX_COMMANDE_IN_THE_COMMANDE"> dans la commande </message>
+	
 	
 	
 	<!-- ==========================================================================
