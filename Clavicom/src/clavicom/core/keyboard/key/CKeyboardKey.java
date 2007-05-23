@@ -31,6 +31,7 @@ import java.util.List;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
+import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -60,15 +61,16 @@ public abstract class CKeyboardKey
 		// On vérifie que l'element existe
 		if(eltKey == null)
 		{
-			throw new Exception ("[Chargement d'une touche] : Noeud vide");
+			throw new Exception (UIString.getUIString("EX_KEYBOARDKEY_EMPTY_NODE"));
+			
 		}
 		
 		// Récupération des coordonnées
 		Element eltCoord = eltKey.getChild(TXMLNames.KY_ELEMENT_COORDINATES);
 		if(eltCoord == null)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-									TXMLNames.KY_ELEMENT_COORDINATES + " attendu manquant") ;	
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_1") + 
+									TXMLNames.KY_ELEMENT_COORDINATES + UIString.getUIString("EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_2")) ;	
 		}
 		
 		// Récupération des deux points
@@ -76,7 +78,7 @@ public abstract class CKeyboardKey
 		
 		if (elements.size() != 2)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Mauvais nombre de " + 
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_NUMBER_OF_POINT") + 
 									TXMLNames.PT_ELEMENT_POINT) ;				
 		}
 		
@@ -94,8 +96,10 @@ public abstract class CKeyboardKey
 			}
 			else
 			{
-				throw new Exception (	"[Chargement d'une touche] : Element " + 
-						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " n'est pas un noeud valide") ;	
+				throw new Exception (	
+						UIString.getUIString("EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_1") + 
+						TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + 
+						UIString.getUIString("EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_2")) ;	
 			}
 			
 			if (eltCourant.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS).equals(TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX))
@@ -109,14 +113,17 @@ public abstract class CKeyboardKey
 					}
 					catch (Exception e)
 					{
-						throw new Exception (	"[Chargement d'une touche] : chargement du point max " + e.getMessage()) ;	
+						throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_MAX_POINT")
+												+ e.getMessage()) ;	
 					}
 				}
 				else
 				{
-					throw new Exception (	"[Chargement d'une touche] : Element " + 
-							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
-							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + " trouvé deux fois") ;									
+					throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_1") + 
+											TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + 
+											UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_2") + 
+											TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MAX + 
+											UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_3")) ;									
 				}
 					
 			}
@@ -131,14 +138,17 @@ public abstract class CKeyboardKey
 					}
 					catch (Exception e)
 					{
-						throw new Exception (	"[Chargement d'une touche] : chargement du point min" + e.getMessage()) ;	
+						throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_MIN_POINT") + 
+												e.getMessage()) ;	
 					}
 				}
 				else
 				{
-					throw new Exception (	"[Chargement d'une touche] : Element " + 
-							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + " d'attribut " + 
-							TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + " trouvé deux fois") ;									
+					throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_1") + 
+											TXMLNames.KY_ATTRIBUTE_COORDINATE_POS + 
+											UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2") + 
+											TXMLNames.KY_ATTRIBUTE_COORDINATE_POS_MIN + 
+											UIString.getUIString("EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3")) ;								
 				}
 			}
 		}
@@ -147,16 +157,18 @@ public abstract class CKeyboardKey
 		Element eltColor = eltKey.getChild(TXMLNames.KY_ELEMENT_COLOR);
 		if(eltColor == null)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR + " attendu manquant") ;				
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_1") + 
+									TXMLNames.KY_ELEMENT_COLOR + 
+									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_2")) ;				
 		}
 		
 		// Récupération de la couleur R
 		Element eltR = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
 		if(eltR == null)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_R + " attendu manquant") ;				
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_R_1") +
+									TXMLNames.KY_ELEMENT_COLOR_R +
+									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_R_2"));				
 		}	
 		
 		int R = 0;
@@ -166,16 +178,18 @@ public abstract class CKeyboardKey
 		}
 		catch (Exception E)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_R + " n'est pas un entier") ;					
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_R_1") + 
+									TXMLNames.KY_ELEMENT_COLOR_R + 
+									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_R_2")) ;					
 		}
 		
 		// Récupération de la couleur G
 		Element eltG = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
 		if(eltG == null)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_G + " attendu manquant") ;			
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_G_1") +
+									TXMLNames.KY_ELEMENT_COLOR_G +
+									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_G_2"));			
 		}	
 		
 		int G = 0;
@@ -185,16 +199,18 @@ public abstract class CKeyboardKey
 		}
 		catch (Exception E)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_G + " n'est pas un entier") ;					
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_G_1") + 
+									TXMLNames.KY_ELEMENT_COLOR_G + 
+									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_G_2")) ;						
 		}
 		
 		// Récupération de la couleur B
 		Element eltB = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
 		if(eltB == null)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_B + " attendu manquant") ;			
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_B_1") +
+									TXMLNames.KY_ELEMENT_COLOR_B +
+									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_B_2"));			
 		}	
 		
 		int B = 0;
@@ -204,8 +220,9 @@ public abstract class CKeyboardKey
 		}
 		catch (Exception E)
 		{
-			throw new Exception (	"[Chargement d'une touche] : Element " + 
-					TXMLNames.KY_ELEMENT_COLOR_B + " n'est pas un entier") ;					
+			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_B_1") + 
+									TXMLNames.KY_ELEMENT_COLOR_B + 
+									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_B_2")) ;						
 		}
 		
 		color = new Color(R,G,B);		

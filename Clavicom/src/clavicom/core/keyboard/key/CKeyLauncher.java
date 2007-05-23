@@ -30,6 +30,7 @@ import java.awt.Color;
 import org.jdom.Element;
 
 import clavicom.core.keyboard.key.CKeyboardKey;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -58,8 +59,9 @@ public class CKeyLauncher extends CKeyboardKey
 		
 		if(eltPath == null)
 		{
-			throw new Exception (	"[Chargement d'une touche lancement] : Element " + 
-					TXMLNames.KY_ELEMENT_LAUNCHER_PATH + " attendu manquant") ;		
+			throw new Exception (	UIString.getUIString("EX_KEYLAUNCHER_MISSING_PATH_1") + 
+									TXMLNames.KY_ELEMENT_LAUNCHER_PATH + 
+									UIString.getUIString("EX_KEYLAUNCHER_MISSING_PATH_2")) ;		
 		}
 		applicationPath = eltPath.getText();
 	}

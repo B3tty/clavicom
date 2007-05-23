@@ -29,6 +29,7 @@ import java.awt.Color;
 
 import org.jdom.Element;
 
+import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -64,15 +65,17 @@ public class CKeyClavicom extends CKeyboardKey
 		
 		if(eltAction == null)
 		{
-			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + " attendu manquant") ;		
+			throw new Exception ( 	UIString.getUIString("EX_KEYCLAVICOM_MISSING_ACTION_1") +
+									TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + 
+									UIString.getUIString("EX_KEYCLAVICOM_MISSING_ACTION_2")) ;		
 		}
 		
 		action = TKeyClavicomActionType.getValue(eltAction.getText());
 		if(action == null)
 		{
-			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + " invalide") ;
+			throw new Exception (	UIString.getUIString("EX_KEYCLAVICOM_INVALID_ACTION_1") +
+									TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + 
+									UIString.getUIString("EX_KEYCLAVICOM_INVALID_ACTION_2")) ;
 		}
 	}
 	
@@ -90,7 +93,7 @@ public class CKeyClavicom extends CKeyboardKey
 		
 		if (strAction.equals(""))
 		{
-			throw new Exception ("[Création d'un noeud touche clavicom] : action inconnue");
+			throw new Exception (UIString.getUIString("EX_KEYCLAVICOM_UNKNOWN_ACTION"));
 		}
 		
 		eltAction.setText(TKeyClavicomActionType.getString(action));

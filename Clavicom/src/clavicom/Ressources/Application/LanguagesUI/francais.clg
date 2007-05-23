@@ -11,8 +11,28 @@
 	
 	
 	<!-- ========================================================================== 
-		Execptions 
+		Exceptions 
 	==========================================================================  -->
+	<!-- COMMANDESET -->
+	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
+	<message id = "EX_COMMANDSET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_COMMANDSET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
+	
+	<!-- SECTION -->
+	<message id = "EX_SECTION_BUILD_SECTION">Construction d'une section de clavier </message>
+	<message id = "EX_SECTION_ERR_ADD_COMMAND">Impossible d'ajouter la commande à la liste des commandes</message>
+	
+	<!-- CODE -->
+	<message id = "EX_CODE_BUILD_CODE">Construction d'un code de clavier </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Impossible de trouver le code caractere correspondant à </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Impossible de trouver la bonne action correspondante à </message>
+	
+	<!-- COMMAND -->
+	<message id = "EX_COMMAND_BUILD_COMMANDE">Construction d'une commande de clavier </message>
+	<message id = "EX_COMMAND_CAN_NOT_ADD_CODE">Impossible d'ajouter le code </message>
+	<message id = "EX_COMMAND_IN_THE_COMMANDE"> dans la commande </message>
+	
+	<!-- KEYGROUP -->
 	<message id = "EX_KEYGROUP_BUILD_GROUP">Construction d'un groupe </message>
 	<message id = "EX_KEYGROUP_NOT_FIND_NODE">Impossible de trouver le noeud XML </message>
 	<message id = "EX_KEYGROUP_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
@@ -20,6 +40,7 @@
 	<message id = "EX_KEYGROUP_TO_BOOLEAN"> en booléen </message>
 	<message id = "EX_KEYGROUP_TO_INTEGER"> en entier </message>
 	
+	<!-- KEYLIST -->
 	<message id = "EX_KEYLIST_KEY_TYPE">Type de touche </message>
 	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
 	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
@@ -31,23 +52,71 @@
 	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
 	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Impossible d'ajouter la touche à la liste </message>
 	
-	<message id = "EX_COMMANDESET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
-	<message id = "EX_COMMANDESET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
-	<message id = "EX_COMMANDESET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
+	<!-- KEYBOARDKEY -->
+	<message id = "EX_KEYBOARDKEY_EMPTY_NODE">[Chargement d'une touche] : Noeud vide</message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_2"> attendu manquant</message>
 	
-	<message id = "EX_SECTION_BUILD_SECTION">Construction d'une section de clavier </message>
-	<message id = "EX_SECTION_ERR_ADD_COMMAND">Impossible d'ajouter la commande à la liste des commandes</message>
+	<message id = "EX_KEYBOARDKEY_BAD_NUMBER_OF_POINT">[Chargement d'une touche] : Mauvais nombre de </message>
 	
-	<message id = "EX_CODE_BUILD_CODE">Construction d'un code de clavier </message>
-	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Impossible de trouver le code caractere correspondant à </message>
-	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Impossible de trouver la bonne action correspondante à </message>
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_2"> n'est pas un noeud valide</message>
 	
-	<message id = "EX_COMMANDE_BUILD_COMMANDE">Construction d'une commande de clavier </message>
-	<message id = "EX_COMMANDE_CAN_NOT_ADD_CODE">Impossible d'ajouter le code </message>
-	<message id = "EX_COMMANDE_IN_THE_COMMANDE"> dans la commande </message>
+	<message id = "EX_KEYBOARDKEY_BAD_MAX_POINT">[Chargement d'une touche] : point max </message>
 	
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_2"> d'attribut </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_3"> trouvé deux fois</message>
 	
+	<message id = "EX_KEYBOARDKEY_BAD_MIN_POINT">[Chargement d'une touche] : point min </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2"> d'attribut </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3"> trouvé deux fois</message>
 	
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_2"> attendu manquant</message>
+
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_R_2"> attendu manquant</message>
+
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_G_2"> attendu manquant</message>
+
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_B_2"> attendu manquant</message>
+
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_R_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_G_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_BAD_COLOR_B_2"> n'est pas un entier</message>
+	
+	<!-- KEYCLAVICOM -->
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_2"> attendu manquant</message>
+
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_2"> invalide</message>
+	
+	<message id = "EX_KEYCLAVICOM_UNKNOWN_ACTION">[Création d'un noeud touche clavicom] : action inconnue</message>
+
+	<!-- KEYLAUNCHER -->
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Chargement d'une touche lancement] : Element </message>
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
+	
+	<!-- SHORTCUTSET -->
+	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
+	<message id = "EX_SHORTCUTSET_BAD_PATH_2">\"</message>
+	
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_1">[Construction du jeu de racourcis] : Balise \"</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_2">\" attendue, \"</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">\" trouvée</message>
+	
+	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de racourcis] : Erreur lors de l'ajout de la commande</message>
+	 
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
