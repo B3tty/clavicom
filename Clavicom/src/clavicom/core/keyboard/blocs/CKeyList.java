@@ -30,8 +30,6 @@ import java.util.List;
 
 import org.jdom.Element;
 
-import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
-
 import clavicom.core.keyboard.key.CKeyboardKey;
 import clavicom.tools.TXMLNames;
 
