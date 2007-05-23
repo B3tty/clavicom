@@ -64,11 +64,13 @@ public class CKeyList
 	
 	private static CKeyboardKey GetKeyboardKey( Element node )
 	{
-		//CKeyboardKey = 
-		// lalalalalalala
+		CKeyboardKey keyboardKey = null;
+		
 		if( node.getName().equals( TXMLNames.KY_CLAVICOM_ELEMENT ) )
 		{
 		}
+		
+		return keyboardKey;
 	}
 	
 	//---------------------------------------------------------------- XML --//
@@ -79,7 +81,7 @@ public class CKeyList
 			throw new Exception("[Construction d'une liste] : Impossible de récupérer le noeud XML");
 		}
 		
-		CKeyList blocLevel2 = new CKeyList();
+		CKeyList keylist = new CKeyList();
 		
 		
 		
@@ -115,20 +117,28 @@ public class CKeyList
 					// =================================================================
 					// Création du bon type de keyboardKey
 					// =================================================================
+					CKeyboardKey keybordKey;
 					try
 					{
-						CKeyboardKey keybordKey = GetKeyboardKey( element );
+						keybordKey = GetKeyboardKey( element );
 					}
 					catch(Exception ex)
 					{
-						////// lalalalalal
+						throw new Exception( "[order=" + i_order + "]" + ex.getMessage() );
 					}
 					
-					blocLevel2.AddKeyboardKey( i_order , keybordKey );
+					try
+					{
+						keylist.AddKeyboardKey( i_order , keybordKey );
+					}
+					catch(Exception ex)
+					{
+						throw new Exception( "[order=" + i_order + "] Impossible d'ajouter la touche à la liste" );
+					}
 				}
 			}
 		}
 		
-		return blocLevel2;
+		return keylist;
 	}
 }
