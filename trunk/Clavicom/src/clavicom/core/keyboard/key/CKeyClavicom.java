@@ -60,19 +60,19 @@ public class CKeyClavicom extends CKeyboardKey
 		super(eltKeyClavicom);
 		
 		// Chargement de l'action
-		Element eltAction = eltKeyClavicom.getChild(TXMLNames.KY_CLAVICOM_ELEMENT_ACTION);
+		Element eltAction = eltKeyClavicom.getChild(TXMLNames.KY_ELEMENT_CLAVICOM_ACTION);
 		
 		if(eltAction == null)
 		{
 			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KY_CLAVICOM_ELEMENT_ACTION + " attendu manquant") ;		
+					TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + " attendu manquant") ;		
 		}
 		
 		action = TKeyClavicomActionType.getValue(eltAction.getText());
 		if(action == null)
 		{
 			throw new Exception (	"[Chargement d'une touche clavicom] : Element " + 
-					TXMLNames.KY_CLAVICOM_ELEMENT_ACTION + " invalide") ;
+					TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + " invalide") ;
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class CKeyClavicom extends CKeyboardKey
 	public void completeNodeSpecific(Element keyNode) throws Exception
 	{	
 		// Ajout des elements spécifiques
-		Element eltAction = new Element(TXMLNames.KY_CLAVICOM_ELEMENT_ACTION);
+		Element eltAction = new Element(TXMLNames.KY_ELEMENT_CLAVICOM_ACTION);
 		String strAction = TKeyClavicomActionType.getString(action);
 		
 		if (strAction.equals(""))
@@ -100,7 +100,7 @@ public class CKeyClavicom extends CKeyboardKey
 	
 	public String getElementName()
 	{
-		return TXMLNames.KY_CLAVICOM_ELEMENT;
+		return TXMLNames.KY_ELEMENT_CLAVICOM;
 	}
 	
 	public TKeyClavicomActionType getAction()

@@ -26,8 +26,8 @@
 package clavicom.core.keyboard.command;
 
 import org.jdom.Element;
-import clavicom.tools.CKeyAction;
-import clavicom.tools.CKeyEventTools;
+import clavicom.tools.TKeyAction;
+import clavicom.tools.TKeyEventTools;
 import clavicom.tools.TXMLNames;
 
 public class CCode
@@ -36,10 +36,10 @@ public class CCode
 
 	//---------------------------------------------------------- VARIABLES --//
 	int keyEvent;		// keyEvent de la touche du clavier
-	CKeyAction keyAction;	// Action à effectuer (PRESSED ou RELEASED)
+	TKeyAction keyAction;	// Action à effectuer (PRESSED ou RELEASED)
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CCode( int myKeyEvent, CKeyAction myKeyAction )
+	public CCode( int myKeyEvent, TKeyAction myKeyAction )
 	{
 		keyEvent = myKeyEvent;
 		keyAction = myKeyAction;
@@ -47,7 +47,7 @@ public class CCode
 
 	//----------------------------------------------------------- METHODES --//	
 	public int GetKeyEvent(){return keyEvent;}
-	public CKeyAction GetKeyAction(){return keyAction;}
+	public TKeyAction GetKeyAction(){return keyAction;}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
@@ -60,19 +60,19 @@ public class CCode
 			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver le noeud XML");
 		}
 		
-		String action =  node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_ACTION );
-		String value =  node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_VALUE );
+		String action =  node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ACTION );
+		String value =  node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_VALUE );
 		
 		if( action == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_ACTION);
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_ACTION);
 		}
 		if( value == null )
 		{
-			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_VALUE);
+			throw new Exception("[Construction d'un code de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_VALUE);
 		}
 		
-		int keyEvent = CKeyEventTools.GetKeyEvent( value );
+		int keyEvent = TKeyEventTools.GetKeyEvent( value );
 		
 		// Si le keyEvent n'est pas bon
 		if( keyEvent == 0 )
@@ -81,14 +81,14 @@ public class CCode
 		}
 		
 		// recherche le keyAction
-		CKeyAction keyAction;
-		if( action.equals( CKeyAction.CS_STRING_ENUM_PRESSED ) )
+		TKeyAction keyAction;
+		if( action.equals( TKeyAction.CM_STRING_ENUM_PRESSED ) )
 		{
-			keyAction = CKeyAction.PRESSED;
+			keyAction = TKeyAction.PRESSED;
 		}
-		else if( action.equals( CKeyAction.CS_STRING_ENUM_RELEASED ) )
+		else if( action.equals( TKeyAction.CM_STRING_ENUM_RELEASED ) )
 		{
-			keyAction = CKeyAction.RELEASED;
+			keyAction = TKeyAction.RELEASED;
 		}
 		else
 		{

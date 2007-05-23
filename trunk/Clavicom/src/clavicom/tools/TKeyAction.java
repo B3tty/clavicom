@@ -25,21 +25,21 @@
 
 package clavicom.tools;
 
-public final class CKeyAction 
+public final class TKeyAction 
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	//	 Liste des valeurs
-    public final static CKeyAction PRESSED	= new CKeyAction();
-    public final static CKeyAction RELEASED	= new CKeyAction();
+    public final static TKeyAction PRESSED	= new TKeyAction();
+    public final static TKeyAction RELEASED	= new TKeyAction();
     
     
-    public static String CS_STRING_ENUM_PRESSED		= "pressed";
-	public static String CS_STRING_ENUM_RELEASED	= "released";
+    public static String CM_STRING_ENUM_PRESSED		= "pressed";
+	public static String CM_STRING_ENUM_RELEASED	= "released";
    
     //---------------------------------------------------------- VARIABLES --//	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-    private CKeyAction()
+    private TKeyAction()
     {
     	
     }

@@ -27,7 +27,7 @@ package clavicom.tools;
 
 import java.awt.event.KeyEvent;
 
-public class CKeyEventTools
+public class TKeyEventTools
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
