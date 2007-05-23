@@ -268,7 +268,7 @@ public abstract class CKeyboardKey
 	private void completeNodeGlobal(Element myNode, int order)
 	{	
 		// Ordre
-		myNode.setAttribute(TXMLNames.KY_ATTRIBUT_ORDER,String.valueOf(order));		
+		myNode.setAttribute(TXMLNames.KY_ATTRIBUTE_ORDER,String.valueOf(order));		
 		
 		// Coordonnées
 		Element eltCoord = new Element( TXMLNames.KY_ELEMENT_COORDINATES );

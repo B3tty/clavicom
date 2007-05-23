@@ -54,12 +54,12 @@ public class CKeyLauncher extends CKeyboardKey
 		super(eltKeyLauncher);
 		
 		// Chargement du path
-		Element eltPath = eltKeyLauncher.getChild(TXMLNames.KY_LAUNCHER_ELEMENT_PATH);
+		Element eltPath = eltKeyLauncher.getChild(TXMLNames.KY_ELEMENT_LAUNCHER_PATH);
 		
 		if(eltPath == null)
 		{
 			throw new Exception (	"[Chargement d'une touche lancement] : Element " + 
-					TXMLNames.KY_LAUNCHER_ELEMENT_PATH + " attendu manquant") ;		
+					TXMLNames.KY_ELEMENT_LAUNCHER_PATH + " attendu manquant") ;		
 		}
 		applicationPath = eltPath.getText();
 	}
@@ -68,7 +68,7 @@ public class CKeyLauncher extends CKeyboardKey
 	public void completeNodeSpecific(Element keyNode) throws Exception
 	{		
 		// Ajout des elements spécifiques
-		Element eltPath = new Element(TXMLNames.KY_LAUNCHER_ELEMENT_PATH);
+		Element eltPath = new Element(TXMLNames.KY_ELEMENT_LAUNCHER_PATH);
 		
 		eltPath.setText(applicationPath);
 		
@@ -77,7 +77,7 @@ public class CKeyLauncher extends CKeyboardKey
 	
 	public String getElementName()
 	{
-		return TXMLNames.KY_LAUNCHER_ELEMENT;
+		return TXMLNames.KY_ELEMENT_LAUNCHER;
 	}
 	
 	public String getApplicationPath()

@@ -85,10 +85,10 @@ public class CCommand
 			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver le noeud de la commande");
 		}
 		
-		String caption = node.getAttributeValue( TXMLNames.CS_ATTRIBUTE_CAPTION );
+		String caption = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_CAPTION);
+			throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_CAPTION);
 		}
 		
 		CCommand command = new CCommand( caption );
@@ -102,10 +102,10 @@ public class CCommand
 				if( element != null )
 				{
 					// Récupération de l'attribut order
-					String order = element.getAttributeValue( TXMLNames.CS_ATTRIBUTE_ORDER );
+					String order = element.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ORDER );
 					if( order == null )
 					{
-						throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CS_ATTRIBUTE_ORDER);
+						throw new Exception("[Construction d'une commande de clavier] : Impossible de trouver l'attribut :" + TXMLNames.CM_ATTRIBUTE_ORDER);
 					}
 					
 					int orderInt = 0;

@@ -57,20 +57,25 @@ public class TXMLNames
 	// CKeyShortcut
 	public static String KY_ELEMENT_SHORTCUT		 	= "keyshortcut";
 
-	// CKeyLuncher
+	// CKeyLauncher
 	public static String KY_ELEMENT_LAUNCHER		 		= "keylauncher";
 	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
+
+	// command
+	public static String CM_ATTRIBUTE_ACTION			= "action";
+	public static String CM_ATTRIBUTE_VALUE				= "value";
+	public static String CM_ATTRIBUTE_ORDER				= "order";
+	public static String CM_ATTRIBUTE_CAPTION			= "caption";
 	
 	// commandSet
-	public static String CS_ATTRIBUTE_ACTION				= "action";
-	public static String CS_ATTRIBUTE_VALUE				= "value";
 	public static String CS_ELEMENT_CODE				= "code";
 	public static String CS_ELEMENT_COMMAND				= "command";
 	public static String CS_ELEMENT_SECTION				= "section";
 	public static String CS_ELEMENT_COMMANDSET			= "commandeset";
 	public static String CS_ATTRIBUTE_NAME				= "name";
-	public static String CS_ATTRIBUTE_ORDER				= "order";
-	public static String CS_ATTRIBUTE_CAPTION			= "caption";
+
+	// shorcutSet
+	public static String SS_ROOT_NAME					= "shortcuts";
 	
 	// gestion des blocs
 	public static String BL_ATTRIBUTE_CAPTION						= "caption";
@@ -78,9 +83,6 @@ public class TXMLNames
 	public static String BL_ELEMENT_KEY_GROUP			= "keygroupe";
 	public static String BL_ELEMENT_KEY_LIST			= "keylist";
 	public static String BL_ATTRIBUTE_ORDER				= "order";
-	
-	// uiString
-	public static String UI_ELEMENT_MESSAGE				= "message";
 	
 	
 }
