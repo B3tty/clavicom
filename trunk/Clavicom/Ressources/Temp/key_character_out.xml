@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bla_bla_bla>
+  <keycharacter order="11">
+    <coordinates>
+      <point position="min">
+        <x>25.5</x>
+        <y>52.2</y>
+      </point>
+      <point position="max">
+        <x>5.5</x>
+        <y>2.2</y>
+      </point>
+    </coordinates>
+    <colors>
+      <color_normal>
+        <red>215</red>
+        <green>100</green>
+        <blue>98</blue>
+      </color_normal>
+      <color_clicked>
+        <red>50</red>
+        <green>100</green>
+        <blue>80</blue>
+      </color_clicked>
+      <color_entered>
+        <red>29</red>
+        <green>19</green>
+        <blue>99</blue>
+      </color_entered>
+    </colors>
+    <commands>
+      <command_normal id="1" />
+      <command_shift id="2" />
+      <command_altgr id="3" />
+    </commands>
+  </keycharacter>
+</bla_bla_bla>
+

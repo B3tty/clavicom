@@ -8,8 +8,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.gui.language.UIString;
 
 public class testKeyCharacter
@@ -24,7 +24,7 @@ public class testKeyCharacter
 		{
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
 			
 			// On crée une instance de SAXBuilder
 			SAXBuilder sxb = new SAXBuilder();
@@ -38,10 +38,10 @@ public class testKeyCharacter
 			racine = document.getRootElement();
 	
 			Element uneTouche = racine.getChild("keycharacter");
-			CKeyShortcut key1;
+			CKeyCharacter key1;
 	
 			// Construction de la touche
-			key1 = new CKeyShortcut(uneTouche);
+			key1 = new CKeyCharacter(uneTouche);
 	
 			// Enregistrement de la touche
 			Element racine2 = new Element("bla_bla_bla");

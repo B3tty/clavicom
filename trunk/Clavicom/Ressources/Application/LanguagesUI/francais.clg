@@ -86,15 +86,33 @@
 	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Chargement d'une touche lancement] : Element </message>
 	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
 	
-	<!-- KEYCOMMAND -->
-	<message id = "EX_KEYSHORCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
-	<message id = "EX_KEYSHORCUT_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
+	<!-- KEYSHORTCUT -->
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
 
-	<message id = "EX_KEYSHORTCUT_MISSING_CAPTION_1">[Chargement d'une touche raccourci] : Attribut </message>
-	<message id = "EX_KEYSHORTCUT_MISSING_CAPTION_2"> attendu manquant</message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_1">[Chargement d'une touche raccourci] : Attribut </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_2"> attendu manquant</message>
 
-	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_1">[Chargement d'une touche raccourci] : Attribut </message>
-	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_2"> non trouvé</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_1">[Chargement d'une touche raccourci] : Id "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_2">" non trouvé</message>
+	
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+		
+	<!-- KEYCHARACTER -->
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Construction de touche caractère] Element \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED">[Construction de touche caractère] Jeu de commande non chargé</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Construction de touche caractère] Element \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_2">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_1">[Construction de touche caractère] Attribut \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_2">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_1">[Construction de touche caractère] Attribut \"</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_2">\" invalide</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+	
+	
 	
 	<!-- SHORTCUTSET -->
 	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
@@ -105,16 +123,6 @@
 	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">\" trouvée</message>
 	
 	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de racourcis] : Erreur lors de l'ajout de la commande</message>
-	<!-- KEYCHARACTER -->
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Construction de touche caractère] Element \"</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">\" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED">[Construction de touche caractère] Jeu de commande non chargé</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Construction de touche caractère] Element \"</message>
-	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2">\" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_MISSING_CAPTION_1">[Construction de touche caractère] Attribut \"</message>
-	<message id = "EX_KEYCHARACTER_MISSING_CAPTION_2">\" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_BAD_CAPTION_1">[Construction de touche caractère] Attribut \"</message>
-	<message id = "EX_KEYCHARACTER_BAD_CAPTION_2">\" invalide</message>
 	
 	<!-- KEY -->
 	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>

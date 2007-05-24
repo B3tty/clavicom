@@ -28,9 +28,9 @@
 			</color_entered>
 		</colors>
 		<commands>
-			<command_normal caption="Copier"></command_normal>
-			<command_shift caption="Coller"></command_shift>
-			<command_altgr caption="Couper"></command_altgr>
+			<command_normal id="1"></command_normal>
+			<command_shift id="2"></command_shift>
+			<command_altgr id="3"></command_altgr>
 		</commands>
 	</keycharacter>
 </all>

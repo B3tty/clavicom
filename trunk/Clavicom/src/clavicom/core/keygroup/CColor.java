@@ -42,7 +42,6 @@ public class CColor
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CColor( Element node ) throws Exception
 	{
-		
 		if( node == null )
 		{
 			throw new Exception( UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );

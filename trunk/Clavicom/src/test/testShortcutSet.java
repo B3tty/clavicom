@@ -9,7 +9,7 @@ public class testShortcutSet
 		try
 		{	
 			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
-			CShortcutSet.GetInstance().GetCommand("Copier");	
+			CShortcutSet.GetInstance().GetCommand(1);	
 		}
 		catch (Exception e)
 		{
