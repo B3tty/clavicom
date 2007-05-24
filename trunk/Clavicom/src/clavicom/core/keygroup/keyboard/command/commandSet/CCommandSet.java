@@ -42,13 +42,14 @@ public class CCommandSet
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
-	HashMap<String, CCommand> indexedCommandList;
+	HashMap< Integer, CCommand> indexedCommandList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	private CCommandSet( String CommandSetfilePath ) throws Exception
 	{
 		// Initialisation des attributs
 		sectionsList = new HashMap<String, CSection>();
+		indexedCommandList = new HashMap<Integer, CCommand>();
 
 		// Chargement du fichier XML
 		LoadCommandSetFile ( CommandSetfilePath );
@@ -73,9 +74,9 @@ public class CCommandSet
 		return sectionsList.get( name );
 	}
 	
-	public CCommand GetCommande( String name )
+	public CCommand GetCommande( int id )
 	{
-		return indexedCommandList.get( name );
+		return indexedCommandList.get( id );
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -91,7 +92,7 @@ public class CCommandSet
 		{
 			for ( CCommand commande : section.GetCommandMap().values() )
 			{
-				indexedCommandList.put( commande.GetCaption() , commande );
+				indexedCommandList.put( commande.GetID() , commande );
 			}
 		}
 	}
