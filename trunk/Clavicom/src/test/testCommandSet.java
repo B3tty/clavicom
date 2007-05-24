@@ -46,7 +46,7 @@ public class testCommandSet
 		{
 			CCommandSet.CreateInstance( chemin );
 			
-			CSection section = CCommandSet.GetSection("Spéciaux");
+			CSection section = CCommandSet.GetInstance().GetSection("Spéciaux");
 
 			CCommand command = section.GetCommand( "&" );
 			
