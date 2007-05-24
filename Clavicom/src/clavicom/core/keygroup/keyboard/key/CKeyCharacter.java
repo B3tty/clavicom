@@ -30,7 +30,6 @@ import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -92,7 +91,7 @@ public class CKeyCharacter extends CKeyboardKey
 		}
 		
 		// ------ Chargement de la commande NORMAL
-		Element eltCommandNormal = eltKey.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL);
+		Element eltCommandNormal = eltCommands.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL);
 		
 		if(eltCommandNormal == null)
 		{
@@ -101,26 +100,39 @@ public class CKeyCharacter extends CKeyboardKey
 									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2")) ;		
 		}
 		
-		// Récupération de l'attribut caption
-		String strCaptionNormal = eltCommandNormal.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION);
-		if((strCaptionNormal == null) || (strCaptionNormal == ""))
+		// Récupération de l'attribut id
+		String strIdNormal = eltCommandNormal.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
+		if((strIdNormal == null) || (strIdNormal.equals("")))
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_2")) ;			
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2")) ;			
 		}
 		
-		commandNormal = CShortcutSet.GetInstance().GetCommand(strCaptionNormal);
+		// Transformation de la chaine en int
+		int idNormal;
+		try
+		{
+			idNormal = Integer.parseInt(strIdNormal);	
+		}	
+		catch (Exception e)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1") +
+									strIdNormal + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
+		}
+		
+		commandNormal = CCommandSet.GetInstance().GetCommande(idNormal);
 		
 		if(commandNormal == null)
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_2")) ;	
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2")) ;	
 		}
 		
-		// ------ Chargement de la commande NORMAL
-		Element eltCommandShift = eltKey.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT);
+		// ------ Chargement de la commande SHIFT
+		Element eltCommandShift = eltCommands.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT);
 		
 		if(eltCommandShift == null)
 		{
@@ -129,26 +141,39 @@ public class CKeyCharacter extends CKeyboardKey
 									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2")) ;		
 		}
 		
-		// Récupération de l'attribut caption
-		String strCaptionShift = eltCommandShift.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION);
-		if((strCaptionShift == null) || (strCaptionShift == ""))
+		// Récupération de l'attribut id
+		String strIdShift = eltCommandShift.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
+		if((strIdShift == null) || (strIdShift.equals("")))
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_2")) ;			
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2")) ;			
 		}
 		
-		commandShift = CShortcutSet.GetInstance().GetCommand(strCaptionShift);
+		// Transformation de la chaine en int
+		int idShift;
+		try
+		{
+			idShift = Integer.parseInt(strIdShift);	
+		}	
+		catch (Exception e)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1") +
+									strIdShift + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
+		}
+		
+		commandShift = CCommandSet.GetInstance().GetCommande(idShift);
 		
 		if(commandShift == null)
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_2")) ;	
-		}	
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2")) ;	
+		}
 		
-		// ------ Chargement de la commande NORMAL
-		Element eltCommandAltGr = eltKey.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR);
+		// ------ Chargement de la commande ALTGR
+		Element eltCommandAltGr = eltCommands.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR);
 		
 		if(eltCommandAltGr == null)
 		{
@@ -157,22 +182,35 @@ public class CKeyCharacter extends CKeyboardKey
 									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2")) ;		
 		}
 		
-		// Récupération de l'attribut caption
-		String strCaptionAltGr = eltCommandAltGr.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION);
-		if((strCaptionAltGr == null) || (strCaptionAltGr == ""))
+		// Récupération de l'attribut id
+		String strIdAltGr = eltCommandAltGr.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
+		if((strIdAltGr == null) || (strIdAltGr.equals("")))
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_MISSING_CAPTION_2")) ;			
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2")) ;			
 		}
 		
-		commandAltGr = CShortcutSet.GetInstance().GetCommand(strCaptionAltGr);
+		// Transformation de la chaine en int
+		int idAltGr;
+		try
+		{
+			idAltGr = Integer.parseInt(strIdAltGr);	
+		}	
+		catch (Exception e)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1") +
+									strIdAltGr + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
+		}
+		
+		commandAltGr = CCommandSet.GetInstance().GetCommande(idAltGr);
 		
 		if(commandAltGr == null)
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYCHARACTER_BAD_CAPTION_2")) ;	
+			throw new Exception ( 	UIString.getUIString("EX_KEYCHARACTER_BAD_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
+									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2")) ;	
 		}
 	}
 	
@@ -219,17 +257,17 @@ public class CKeyCharacter extends CKeyboardKey
 		
 		// Ajout du noeud commande Normal
 		Element eltCommandNormal = new Element(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL);
-		eltCommandNormal.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION, commandNormal.GetCaption());
+		eltCommandNormal.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String.valueOf(commandNormal.GetID()));
 		eltCommands.addContent(eltCommandNormal);
 		
 		// Ajout du noeud commande Shift
 		Element eltCommandShift = new Element(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT);
-		eltCommandShift.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION, commandShift.GetCaption());
+		eltCommandShift.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String.valueOf(commandShift.GetID()));
 		eltCommands.addContent(eltCommandShift);
 		
 		// Ajout du noeud commande AltGr
 		Element eltCommandAltGr = new Element(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR);
-		eltCommandAltGr.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION, commandAltGr.GetCaption());
+		eltCommandAltGr.setAttribute(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String.valueOf(commandAltGr.GetID()));
 		eltCommands.addContent(eltCommandAltGr);	
 		
 		// Ajout au noeud père

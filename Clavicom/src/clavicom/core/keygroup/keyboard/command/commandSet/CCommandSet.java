@@ -74,7 +74,7 @@ public class CCommandSet
 		return sectionsList.get( name );
 	}
 	
-	public CCommand GetCommand( int id )
+	public CCommand GetCommande( int id )
 	{
 		return indexedCommandList.get( id );
 	}

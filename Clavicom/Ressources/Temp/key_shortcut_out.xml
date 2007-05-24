@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blob>
+  <keyshortcut order="10">
+    <coordinates>
+      <point position="min">
+        <x>25.5</x>
+        <y>52.2</y>
+      </point>
+      <point position="max">
+        <x>5.5</x>
+        <y>2.2</y>
+      </point>
+    </coordinates>
+    <colors>
+      <color_normal>
+        <red>215</red>
+        <green>100</green>
+        <blue>98</blue>
+      </color_normal>
+      <color_clicked>
+        <red>50</red>
+        <green>100</green>
+        <blue>80</blue>
+      </color_clicked>
+      <color_entered>
+        <red>29</red>
+        <green>19</green>
+        <blue>99</blue>
+      </color_entered>
+    </colors>
+    <command id="Coller" />
+  </keyshortcut>
+</blob>
+

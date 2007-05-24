@@ -69,22 +69,35 @@ public class CKeyShortcut extends CKeyboardKey
 		super(eltKeyCommand);
 		
 		// Chargement de la commande
-		Element eltCommand = eltKeyCommand.getChild(TXMLNames.KY_ELEMENT_COMMAND_COMMAND);
+		Element eltCommand = eltKeyCommand.getChild(TXMLNames.KY_ELEMENT_SHORTCUT_COMMAND);
 		
 		if(eltCommand == null)
 		{
 			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1") +
-									TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + 
+									TXMLNames.KY_ELEMENT_SHORTCUT_COMMAND + 
 									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2")) ;		
 		}
 		
-		// Récupération de l'attribut caption
-		String strCaption = eltCommand.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION);
-		if((strCaption == null) || (strCaption == ""))
+		// Récupération de l'attribut id
+		String strId = eltCommand.getAttributeValue(TXMLNames.KY_ATTRIBUTE_SHORTCUT_COMMAND_ID);
+		if((strId == null) || (strId .equals("")))
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_MISSING_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYSHORTCUT_MISSING_CAPTION_2")) ;			
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_MISSING_ID_1") +
+									TXMLNames.KY_ATTRIBUTE_SHORTCUT_COMMAND_ID + 
+									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ID_2")) ;			
+		}
+
+		// Transformation de la chaine en int
+		int idCommand;
+		try
+		{
+			idCommand = Integer.parseInt(strId);	
+		}	
+		catch (Exception e)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_BAD_ID_NOT_INT_1") +
+					strId + 
+									UIString.getUIString("EX_KEYSHORTCUT_BAD_ID_NOT_INT_2")) ;				
 		}
 		
 		// Récupération de la commande correspondant à la caption
@@ -93,13 +106,14 @@ public class CKeyShortcut extends CKeyboardKey
 			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED")) ;			
 		}
 		
-		command = CShortcutSet.GetInstance().GetCommand(strCaption);
+		
+		command = CShortcutSet.GetInstance().GetCommand(idCommand);
 		
 		if(command == null)
 		{
-			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_BAD_CAPTION_1") +
-									TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION + 
-									UIString.getUIString("EX_KEYSHORTCUT_BAD_CAPTION_2")) ;	
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_BAD_ID_1") +
+									strId + 
+									UIString.getUIString("EX_KEYSHORTCUT_BAD_ID_2")) ;	
 		}
 	}
 	
@@ -107,8 +121,8 @@ public class CKeyShortcut extends CKeyboardKey
 	public void completeNodeSpecific(Element eltKeyNode) throws Exception
 	{
 		// Ajout de la commande
-		Element eltCommand = new Element(TXMLNames.KY_ELEMENT_COMMAND_COMMAND);
-		eltCommand.setAttribute(TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION,command.GetCaption());
+		Element eltCommand = new Element(TXMLNames.KY_ELEMENT_SHORTCUT_COMMAND);
+		eltCommand.setAttribute(TXMLNames.KY_ATTRIBUTE_SHORTCUT_COMMAND_ID,command.GetCaption());
 		
 		eltKeyNode.addContent(eltCommand);
 	}

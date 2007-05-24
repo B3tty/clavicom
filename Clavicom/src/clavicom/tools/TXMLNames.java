@@ -54,18 +54,16 @@ public class TXMLNames
 	public static String KY_ELEMENT_CHARACTER_COMMAND_SHIFT		= "command_shift";
 	public static String KY_ELEMENT_CHARACTER_COMMAND_ALTGR		= "command_altgr";
 	
-	public static String KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION	= "caption";
+	public static String KY_ATTRIBUTE_CHARACTER_COMMAND_ID	= "id";
 	
 	// CKeyShortcut
 	public static String KY_ELEMENT_SHORTCUT		 	= "keyshortcut";
-
+	public static String KY_ELEMENT_SHORTCUT_COMMAND	 	= "command";
+	public static String KY_ATTRIBUTE_SHORTCUT_COMMAND_ID 	= "id";
+	
 	// CKeyLauncher
 	public static String KY_ELEMENT_LAUNCHER		 	= "keylauncher";
 	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
-	
-	// CKeyCommand
-	public static String KY_ELEMENT_COMMAND_COMMAND	 	= "command";
-	public static String KY_ATTRIBUTE_COMMAND_CAPTION 	= "caption";
 
 	// command
 	public static String CM_ATTRIBUTE_ACTION			= "action";
