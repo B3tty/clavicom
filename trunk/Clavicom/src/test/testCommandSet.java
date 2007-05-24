@@ -44,12 +44,10 @@ public class testCommandSet
 		String chemin = "C:\\Workspace\\Clavicom\\clavicom\\Ressources\\Application\\CommandSets\\francais.ccs";
 		try
 		{
-			CCommandSet commandSet = new CCommandSet( chemin );
+			CCommandSet.CreateInstance( chemin );
 			
-			CSection section = commandSet.GetSection("Spéciaux");
+			CSection section = CCommandSet.GetSection("Spéciaux");
 
-			
-			
 			CCommand command = section.GetCommand( "&" );
 			
 			for( int i = 0 ; i < command.Size() ; ++i )

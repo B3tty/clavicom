@@ -4,7 +4,7 @@
 			Creation date		: 21 mai 07
 
 			Project				: Clavicom
-			Package				: clavicom.core.keyboard.commandset.command
+			Package				: clavicom.core.key.keyboard.commandset.command
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -38,13 +38,14 @@ import clavicom.tools.TXMLNames;
 public class CCommandSet 
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	private static CCommandSet commandSet;
+	
 	//---------------------------------------------------------- VARIABLES --//	
-	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
-	HashMap<String, CCommand> indexedCommandList;
+	static HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
+	static HashMap<String, CCommand> indexedCommandList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CCommandSet( String CommandSetfilePath ) throws Exception
+	private CCommandSet( String CommandSetfilePath ) throws Exception
 	{
 		// Initialisation des attributs
 		sectionsList = new HashMap<String, CSection>();
@@ -56,26 +57,35 @@ public class CCommandSet
 		IndexCommandes();
 	}
 
-
 	//----------------------------------------------------------- METHODES --//	
-	public CSection GetSection( String name )
+	public static CCommandSet GetInstance() 
+	{
+		return commandSet;
+	}
+	
+	public static void CreateInstance(String CommandSetfilePath) throws Exception
+	{
+		commandSet = new CCommandSet (CommandSetfilePath);
+	}
+
+	public static CSection GetSection( String name )
 	{
 		return sectionsList.get( name );
 	}
 	
-	public CCommand GetCommande( String name )
+	public static CCommand GetCommande( String name )
 	{
 		return indexedCommandList.get( name );
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private void AddSection( CSection section )
+	private static void AddSection( CSection section )
 	{
 		sectionsList.put( section.name, section);
 	}
 	
-	private void IndexCommandes()
+	private static void IndexCommandes()
 	{
 		for( CSection section : sectionsList.values() )
 		{
@@ -88,7 +98,7 @@ public class CCommandSet
 	
 	//---------------------------------------------------------------- XML --//
 	
-	private void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
+	private static void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
 	{
 		// =======================================================
 		//	Chargement du fichier XML

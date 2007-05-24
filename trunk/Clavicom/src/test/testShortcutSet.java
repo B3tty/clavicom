@@ -8,8 +8,8 @@ public class testShortcutSet
 	{
 		try
 		{	
-			CShortcutSet shortcutSet = new CShortcutSet("C:\\Developpement Java\\Clavicom\\src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
-			shortcutSet.GetCommand("Copier");	
+			CShortcutSet.CreateInstance("C:\\Developpement Java\\Clavicom\\src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
+			CShortcutSet.GetCommand("Copier");	
 		}
 		catch (Exception e)
 		{

@@ -44,7 +44,7 @@ public class TXMLNames
 	public static String KY_ELEMENT_COLOR_B 			= "blue";
 	public static String KY_ATTRIBUTE_ORDER 				= "order";
 	
-	// Key clavicom
+	// CKeyClavicom
 	public static String KY_ELEMENT_CLAVICOM		 	= "keyclavicom";
 	public static String KY_ELEMENT_CLAVICOM_ACTION 	= "action";
 	
@@ -58,8 +58,12 @@ public class TXMLNames
 	public static String KY_ELEMENT_SHORTCUT		 	= "keyshortcut";
 
 	// CKeyLauncher
-	public static String KY_ELEMENT_LAUNCHER		 		= "keylauncher";
+	public static String KY_ELEMENT_LAUNCHER		 	= "keylauncher";
 	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
+	
+	// CKeyCommand
+	public static String KY_ELEMENT_COMMAND_COMMAND	 	= "command";
+	public static String KY_ATTRIBUTE_COMMAND_CAPTION 	= "caption";
 
 	// command
 	public static String CM_ATTRIBUTE_ACTION			= "action";
