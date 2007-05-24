@@ -95,6 +95,21 @@
 
 	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_1">[Chargement d'une touche raccourci] : Attribut </message>
 	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_2"> non trouvé</message>
+
+	<!-- KEYCHARACTER --> 	
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Chargement d'une touche caractère] : Element </message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_2"> attendu manquant</message>
+	
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche caractère] : Element </message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
+			
+	<message id = "EX_KEYCHARACTER_MISSING_CAPTION_1">[Chargement d'une touche caractère] : Attribut </message>
+	<message id = "EX_KEYCHARACTER_MISSING_CAPTION_2"> attendu manquant</message>			
+	
+	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED">[Chargement d'une touche caractère] : La liste des commandes n'a pas été créée</message>			
+
+	<message id = "EX_KEYCHARACTER_BAD_CAPTION_1">[Chargement d'une touche caractère] : Element </message>
+	<message id = "EX_KEYCHARACTER_BAD_CAPTION_2"> invalide ou manquant</message>			
 	
 	<!-- SHORTCUTSET -->
 	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
@@ -105,6 +120,7 @@
 	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">\" trouvée</message>
 	
 	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de racourcis] : Erreur lors de l'ajout de la commande</message>
+	
 	
 	<!-- KEY -->
 	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
