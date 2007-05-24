@@ -127,6 +127,11 @@ public class CColor
 	//----------------------------------------------------------- METHODES --//
 	
 	public Color GetColor () {return color;};
+	
+	public void BuildNode ( Element parentNode )
+	{
+		
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
