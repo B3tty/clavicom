@@ -23,15 +23,15 @@ public class testKeyShortcut
 		try
 		{
 			// Chargement des UIString et shortcutset
-			UIString.LoadUIStringFile("src\\clavicom\\Ressources\\Application\\LanguagesUI\\francais.clg");
-			CShortcutSet.CreateInstance("src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
+			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
 			// On crée une instance de SAXBuilder
 			SAXBuilder sxb = new SAXBuilder();
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("src\\clavicom\\Ressources\\Temp\\key_shortcut.xml"));
+			document = sxb.build(new File("Ressources\\Temp\\key_shortcut.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
@@ -52,7 +52,7 @@ public class testKeyShortcut
 			racine2.addContent(key1.buildNode(10));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("src\\clavicom\\Ressources\\Temp\\key_shortcut_out.xml"));
+					new FileOutputStream("Ressources\\Temp\\key_shortcut_out.xml"));
 		}
 		catch (Exception e)
 		{

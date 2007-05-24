@@ -41,7 +41,7 @@ public class testCommandSet
 	//----------------------------------------------------------- METHODES --//	
 	public static void main(String[] args)
 	{
-		String chemin = "C:\\Workspace\\Clavicom\\clavicom\\Ressources\\Application\\CommandSets\\francais.ccs";
+		String chemin = "Ressources\\Application\\CommandSets\\francais.ccs";
 		try
 		{
 			CCommandSet.CreateInstance( chemin );
