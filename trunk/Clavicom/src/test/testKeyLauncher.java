@@ -8,7 +8,9 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.gui.language.UIString;
 
 public class testKeyLauncher
 {
@@ -20,12 +22,16 @@ public class testKeyLauncher
 	{
 		try
 		{
+			// Chargement des UIString et shortcutset
+			UIString.LoadUIStringFile("src\\clavicom\\Ressources\\Application\\LanguagesUI\\francais.clg");
+			CShortcutSet.CreateInstance("src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
+			
 			// On crée une instance de SAXBuilder
 			SAXBuilder sxb = new SAXBuilder();
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("C:\\Temp\\key_launcher.xml"));
+			document = sxb.build(new File("src\\clavicom\\Ressources\\Temp\\key_launcher.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
@@ -46,7 +52,7 @@ public class testKeyLauncher
 			racine2.addContent(key1.buildNode(88));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("C:\\Temp\\key_launcher_out.xml"));
+					new FileOutputStream("src\\clavicom\\Ressources\\Temp\\key_launcher_out.xml"));
 		}
 		catch (Exception e)
 		{
