@@ -1,6 +1,6 @@
 package test;
 
-import clavicom.core.key.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 
 public class testShortcutSet
 {

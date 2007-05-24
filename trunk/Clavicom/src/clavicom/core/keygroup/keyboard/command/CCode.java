@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.keyboard.command;
+package clavicom.core.keygroup.keyboard.command;
 
 import org.jdom.Element;
 

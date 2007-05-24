@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.keyboard.command.commandSet;
+package clavicom.core.keygroup.keyboard.command.commandSet;
 
 import java.io.File;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
-import clavicom.core.key.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 

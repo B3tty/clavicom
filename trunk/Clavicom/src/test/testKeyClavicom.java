@@ -8,7 +8,7 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import clavicom.core.key.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 
 public class testKeyClavicom
 {

@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.keyboard.key;
+package clavicom.core.keygroup.keyboard.key;
 
 import java.awt.Color;
 import java.util.List;

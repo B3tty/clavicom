@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CMouseKey.java
+			Filename			: CKeyShortcut.java
 			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.mouse
+			Package				: clavicom.core.keyboard.key
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,17 +23,49 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.mouse;
+package clavicom.core.keygroup.keyboard.key;
 
-public abstract class CMouseKey
+import java.awt.Color;
+
+import org.jdom.Element;
+
+import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.gui.language.UIString;
+import clavicom.tools.TPoint;
+import clavicom.tools.TXMLNames;
+
+public class CKeyShortcut extends CKeyCommand
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	public CKeyShortcut(Color myColor, TPoint myPointMin, TPoint myPointMax, CCommand myCommand)
+	{
+		super(myColor, myPointMin, myPointMax,  myCommand);
+	}
+	
+	public CKeyShortcut(Color myColor, TPoint myPointMin, TPoint myPointMax)
+	{
+		super(myColor, myPointMin, myPointMax);
+	}
 
+	public CKeyShortcut(Element eltKeyCommand) throws Exception
+	{	
+		super(eltKeyCommand);
+	}
+	
 	//----------------------------------------------------------- METHODES --//	
+	protected CCommand getCommandFromCaption(String strCommand)
+	{
+		//CShortcutSet
+		return null;
+	}
 
+	protected String getElementNameSpecific()
+	{
+		return null;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
