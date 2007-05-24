@@ -25,7 +25,6 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import java.awt.Color;
 import java.util.List;
 
 import org.jdom.Attribute;

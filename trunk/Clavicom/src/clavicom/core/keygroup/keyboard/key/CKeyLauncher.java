@@ -25,10 +25,9 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import java.awt.Color;
-
 import org.jdom.Element;
 
+import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -41,9 +40,14 @@ public class CKeyLauncher extends CKeyboardKey
 	String applicationPath;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyLauncher (Color myColor, TPoint myPointMin, TPoint myPointMax)
+	public CKeyLauncher(
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered , 
+			TPoint myPointMin, 
+			TPoint myPointMax)
 	{
-		super(myColor,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
 	}
 	
 	public CKeyLauncher (Element eltKeyLauncher) throws Exception

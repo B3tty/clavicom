@@ -25,10 +25,9 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import java.awt.Color;
-
 import org.jdom.Element;
 
+import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TPoint;
@@ -44,9 +43,14 @@ public class CKeyClavicom extends CKeyboardKey
 	TKeyClavicomActionType action;	// Action a faire
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyClavicom (Color myColor, TPoint myPointMin, TPoint myPointMax)
+	public CKeyClavicom(
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered , 
+			TPoint myPointMin, 
+			TPoint myPointMax)
 	{
-		super(myColor,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
 	}
 	
 	/**
