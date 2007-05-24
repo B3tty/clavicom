@@ -4,7 +4,7 @@
 			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.keyboard.key
+			Package				: clavicom.core.key.keyboard.key
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,13 +23,13 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keyboard.key;
+package clavicom.core.key.keyboard.key;
 
 import java.awt.Color;
 
 import org.jdom.Element;
 
-import clavicom.core.keyboard.command.CCommand;
+import clavicom.core.key.keyboard.command.CCommand;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;

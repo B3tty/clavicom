@@ -23,13 +23,13 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keyboard.key;
+package clavicom.core.key.keyboard.key;
 
 import java.awt.Color;
 
 import org.jdom.Element;
 
-import clavicom.core.keyboard.command.CCommand;
+import clavicom.core.key.keyboard.command.CCommand;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;

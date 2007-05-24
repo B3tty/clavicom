@@ -4,7 +4,7 @@
 			Creation date		: 23 mai 07
 
 			Project				: Clavicom
-			Package				: clavicom.core.keyboard.shortcutset
+			Package				: clavicom.core.key.keyboard.shortcutset
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -32,18 +32,20 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
 import clavicom.core.key.keyboard.command.CCommand;
+
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CShortcutSet 
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	private static CShortcutSet shortcutSet;
+	
 	//---------------------------------------------------------- VARIABLES --//	
-	HashMap<String, CCommand> commandMap;
+	static HashMap<String, CCommand> commandMap;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CShortcutSet( String myShortcutSetPath) throws Exception
+	private CShortcutSet( String myShortcutSetPath) throws Exception
 	{
 		commandMap = new HashMap<String, CCommand>();
 		
@@ -52,15 +54,24 @@ public class CShortcutSet
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public static CShortcutSet GetInstance() 
+	{
+		return shortcutSet;
+	}
 	
-	public CCommand GetCommand( String name )
+	public static void CreateInstance(String myShortcutSetPath) throws Exception
+	{
+		shortcutSet = new CShortcutSet (myShortcutSetPath);
+	}
+	
+	public static CCommand GetCommand( String name )
 	{
 		return commandMap.get( name );
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private void LoadShortcutSetFile ( String myShortcutsetfilePath ) throws Exception
+	private static void LoadShortcutSetFile ( String myShortcutsetfilePath ) throws Exception
 	{
 		// =======================================================
 		//	Chargement du fichier XML
