@@ -110,7 +110,7 @@ public class CCommand
 		String caption = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "]" + "[" + s_id + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
+			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "]" + "[ id:" + s_id + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
 		}
 		
 		CCommand command = new CCommand( i_id, caption );
@@ -127,7 +127,7 @@ public class CCommand
 					String order = element.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ORDER );
 					if( order == null )
 					{
-						throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_ORDER);
+						throw new Exception("[id : " + i_id + "][" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_ORDER);
 					}
 					
 					int orderInt = 0;
@@ -137,7 +137,7 @@ public class CCommand
 					}
 					catch( Exception ex )
 					{
-						throw new Exception("[caption : " + caption + "][order : " + order + "][" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+						throw new Exception("[id : " + i_id + "][order : " + order + "][" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
 					CCode code = null;
@@ -147,7 +147,7 @@ public class CCommand
 					}
 					catch (Exception ex)
 					{
-						throw new Exception( "[order : " + orderInt + "]" + ex.getMessage() );
+						throw new Exception( "[id : " + i_id + "][order : " + orderInt + "]" + ex.getMessage() );
 					}
 					
 					try
@@ -156,7 +156,7 @@ public class CCommand
 					}
 					catch(Exception ex)
 					{
-						throw new Exception("[order : " + orderInt + "][" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_COMMAND_CAN_NOT_ADD_CODE" ) + orderInt + UIString.getUIString( "EX_COMMAND_IN_THE_COMMANDE" ) + caption);
+						throw new Exception("[id : " + i_id + "]order : " + orderInt + "][" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_COMMAND_CAN_NOT_ADD_CODE" ) + orderInt + UIString.getUIString( "EX_COMMAND_IN_THE_COMMANDE" ) + caption);
 					}
 				}
 			}
