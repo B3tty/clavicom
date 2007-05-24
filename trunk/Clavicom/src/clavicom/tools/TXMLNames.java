@@ -92,5 +92,11 @@ public class TXMLNames
 	public static String UI_ELEMENT_MESSAGE				= "message";
 	public static String UI_ATTRIBUTE_ID				= "id";
 	
+	// colors
+	public static String CO_ELEMENT_COLORS				= "colors";
+	public static String CO_ELEMENT_COLOR_NORMAL		= "color_normal";
+	public static String CO_ELEMENT_COLOR_CLICKED		= "color_clicked";
+	public static String CO_ELEMENT_COLOR_ENTERED		= "color_entered";
+	
 	
 }
