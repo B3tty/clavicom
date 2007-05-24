@@ -49,17 +49,17 @@ public class CColor
 		}
 		
 		
-		// Récupération de la couleur
-		Element eltColor = node.getChild(TXMLNames.KY_ELEMENT_COLOR);
-		if(eltColor == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_1") + 
-									TXMLNames.KY_ELEMENT_COLOR + 
-									UIString.getUIString("EX_KEY_MISSING_COLOR_2")) ;				
-		}
+//		// Récupération de la couleur
+//		Element eltColor = node.getChild(TXMLNames.KY_ELEMENT_COLOR);
+//		if(eltColor == null)
+//		{
+//			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_1") + 
+//									TXMLNames.KY_ELEMENT_COLOR + 
+//									UIString.getUIString("EX_KEY_MISSING_COLOR_2")) ;				
+//		}
 		
 		// Récupération de la couleur R
-		Element eltR = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
+		Element eltR = node.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
 		if(eltR == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_R_1") +
@@ -80,7 +80,7 @@ public class CColor
 		}
 		
 		// Récupération de la couleur G
-		Element eltG = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
+		Element eltG = node.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
 		if(eltG == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_G_1") +
@@ -101,7 +101,7 @@ public class CColor
 		}
 		
 		// Récupération de la couleur B
-		Element eltB = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
+		Element eltB = node.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
 		if(eltB == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_B_1") +

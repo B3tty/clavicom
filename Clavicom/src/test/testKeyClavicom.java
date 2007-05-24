@@ -42,17 +42,21 @@ public class testKeyClavicom
 	
 			// Construction de la touche
 			key1 = new CKeyClavicom(uneTouche);
+			
+			System.out.println(key1.GetColorClicked().GetColor().getRed());
+			System.out.println(key1.GetColorClicked().GetColor().getBlue());
+			System.out.println();
 	
 			// Enregistrement de la touche
-			Element racine2 = new Element("salut");
-	
-			// On crée un nouveau Document JDOM basé sur la racine que l'on vient de
-			// créer
-			org.jdom.Document documentOut = new org.jdom.Document(racine2);
-			racine2.addContent(key1.buildNode(99));
-			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
-			sortie.output(documentOut,
-					new FileOutputStream("src\\clavicom\\Ressources\\Temp\\key_clavicom_out.xml"));
+//			Element racine2 = new Element("salut");
+//	
+//			// On crée un nouveau Document JDOM basé sur la racine que l'on vient de
+//			// créer
+//			org.jdom.Document documentOut = new org.jdom.Document(racine2);
+//			racine2.addContent(key1.buildNode(99));
+//			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
+//			sortie.output(documentOut,
+//					new FileOutputStream("src\\clavicom\\Ressources\\Temp\\key_clavicom_out.xml"));
 		}
 		catch (Exception e)
 		{
