@@ -41,6 +41,13 @@ public class CKey
 	CColor entered;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CKey( CColor myNormal, CColor myClicked, CColor myEntered )
+	{
+		normal = myNormal;
+		clicked = myClicked;
+		entered = myEntered;
+	}
+	
 	public CKey( Element node ) throws Exception
 	{
 		if( node == null )

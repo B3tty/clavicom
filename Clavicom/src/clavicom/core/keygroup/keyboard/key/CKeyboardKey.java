@@ -31,23 +31,30 @@ import java.util.List;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
+import clavicom.core.keygroup.CColor;
+import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public abstract class CKeyboardKey
+public abstract class CKeyboardKey extends CKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	Color color;		// Couleur de la touche
 	TPoint pointMin;	// Point supérieur gauche
 	TPoint pointMax;	// Point inférieur droit
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyboardKey(Color myColor, TPoint myPointMin, TPoint myPointMax)
+	public CKeyboardKey(
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered , 
+			TPoint myPointMin, 
+			TPoint myPointMax)
 	{
-		color = myColor;
+		super (myColorNormal, myColorClicked, myColorEntered );
+		
 		pointMin = myPointMin;
 		pointMax = myPointMax;
 	}
@@ -58,6 +65,8 @@ public abstract class CKeyboardKey
 	 */
 	public CKeyboardKey(Element eltKey) throws Exception
 	{
+		super( eltKey );
+		
 		// On vérifie que l'element existe
 		if(eltKey == null)
 		{
@@ -152,80 +161,7 @@ public abstract class CKeyboardKey
 				}
 			}
 		}
-				
-		// Récupération de la couleur
-		Element eltColor = eltKey.getChild(TXMLNames.KY_ELEMENT_COLOR);
-		if(eltColor == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_1") + 
-									TXMLNames.KY_ELEMENT_COLOR + 
-									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_2")) ;				
-		}
-		
-		// Récupération de la couleur R
-		Element eltR = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
-		if(eltR == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_R_1") +
-									TXMLNames.KY_ELEMENT_COLOR_R +
-									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_R_2"));				
-		}	
-		
-		int R = 0;
-		try
-		{
-			R = Integer.parseInt(eltR.getText());
-		}
-		catch (Exception E)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_R_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_R + 
-									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_R_2")) ;					
-		}
-		
-		// Récupération de la couleur G
-		Element eltG = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
-		if(eltG == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_G_1") +
-									TXMLNames.KY_ELEMENT_COLOR_G +
-									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_G_2"));			
-		}	
-		
-		int G = 0;
-		try
-		{
-			G = Integer.parseInt(eltG.getText());
-		}
-		catch (Exception E)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_G_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_G + 
-									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_G_2")) ;						
-		}
-		
-		// Récupération de la couleur B
-		Element eltB = eltColor.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
-		if(eltB == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_B_1") +
-									TXMLNames.KY_ELEMENT_COLOR_B +
-									UIString.getUIString("EX_KEYBOARDKEY_MISSING_COLOR_B_2"));			
-		}	
-		
-		int B = 0;
-		try
-		{
-			B = Integer.parseInt(eltB.getText());
-		}
-		catch (Exception E)
-		{
-			throw new Exception (	UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_B_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_B + 
-									UIString.getUIString("EX_KEYBOARDKEY_BAD_COLOR_B_2")) ;						
-		}
-		
-		color = new Color(R,G,B);		
+						
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -247,15 +183,6 @@ public abstract class CKeyboardKey
 	
 	public abstract String getElementName();
 	
-	public Color getColor()
-	{
-		return color;
-	}
-
-	public void setColor(Color color)
-	{
-		this.color = color;
-	}
 
 	public TPoint getPointMax()
 	{
@@ -305,24 +232,8 @@ public abstract class CKeyboardKey
 		eltCoord.addContent(eltPointMin);
 		eltCoord.addContent(eltPointMax);
 		
-		// Couleur
-		Element eltColor = new Element( TXMLNames.KY_ELEMENT_COLOR );
-		
-		Element eltColorR = new Element (TXMLNames.KY_ELEMENT_COLOR_R);
-		eltColorR.setText(String.valueOf(color.getRed()));
-		eltColor.addContent(eltColorR);
-		
-		Element eltColorG = new Element (TXMLNames.KY_ELEMENT_COLOR_G);
-		eltColorG.setText(String.valueOf(color.getGreen()));
-		eltColor.addContent(eltColorG);
-		
-		Element eltColorB = new Element (TXMLNames.KY_ELEMENT_COLOR_B);
-		eltColorB.setText(String.valueOf(color.getBlue()));
-		eltColor.addContent(eltColorB);
-		
 		// Ajout des noeuds
 		myNode.addContent(eltCoord);
-		myNode.addContent(eltColor);
 	}
 }
 
