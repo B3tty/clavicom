@@ -49,7 +49,13 @@ public class TXMLNames
 	
 	// CKeyCharacter
 	public static String KY_ELEMENT_CHARACTER		 	= "keycharacter";
-
+	public static String KY_ELEMENT_CHARACTER_COMMANDS	= "commands";
+	public static String KY_ELEMENT_CHARACTER_COMMAND_NORMAL	= "command_normal";
+	public static String KY_ELEMENT_CHARACTER_COMMAND_SHIFT		= "command_shift";
+	public static String KY_ELEMENT_CHARACTER_COMMAND_ALTGR		= "command_altgr";
+	
+	public static String KY_ATTRIBUTE_CHARACTER_COMMAND_CAPTION	= "caption";
+	
 	// CKeyShortcut
 	public static String KY_ELEMENT_SHORTCUT		 	= "keyshortcut";
 
