@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CKeyShortcut.java
+			Filename			: CKeyCommand.java
 			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.keyboard.key
+			Package				: clavicom.core.key.keyboard.key
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -25,47 +25,110 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import java.awt.Color;
-
 import org.jdom.Element;
 
+import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public class CKeyShortcut extends CKeyCommand
-{
+public class CKeyShortcut extends CKeyboardKey
+{	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	CCommand command;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyShortcut(Color myColor, TPoint myPointMin, TPoint myPointMax, CCommand myCommand)
+	public CKeyShortcut(
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered , 
+			TPoint myPointMin, 
+			TPoint myPointMax,
+			CCommand myCommand)
 	{
-		super(myColor, myPointMin, myPointMax,  myCommand);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		command = myCommand;
 	}
 	
-	public CKeyShortcut(Color myColor, TPoint myPointMin, TPoint myPointMax)
+	public CKeyShortcut(
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered , 
+			TPoint myPointMin, 
+			TPoint myPointMax)
 	{
-		super(myColor, myPointMin, myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
 	}
 
 	public CKeyShortcut(Element eltKeyCommand) throws Exception
 	{	
 		super(eltKeyCommand);
+		
+		// Chargement de la commande
+		Element eltCommand = eltKeyCommand.getChild(TXMLNames.KY_ELEMENT_COMMAND_COMMAND);
+		
+		if(eltCommand == null)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1") +
+									TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + 
+									UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2")) ;		
+		}
+		
+		// Récupération de l'attribut caption
+		String strCaption = eltCommand.getAttributeValue(TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION);
+		if((strCaption == null) || (strCaption == ""))
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_MISSING_CAPTION_1") +
+									TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION + 
+									UIString.getUIString("EX_KEYSHORTCUT_MISSING_CAPTION_2")) ;			
+		}
+		
+		// Récupération de la commande correspondant à la caption
+		if(CShortcutSet.GetInstance() == null)
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED")) ;			
+		}
+		
+		command = CShortcutSet.GetInstance().GetCommand(strCaption);
+		
+		if((strCaption == null) || (strCaption.equals("")))
+		{
+			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_BAD_CAPTION_1") +
+									TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION + 
+									UIString.getUIString("EX_KEYSHORTCUT_BAD_CAPTION_2")) ;	
+		}
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	protected CCommand getCommandFromCaption(String strCommand)
+	public void completeNodeSpecific(Element eltKeyNode) throws Exception
 	{
-		//CShortcutSet
-		return null;
+		// Ajout de la commande
+		Element eltCommand = new Element(TXMLNames.KY_ELEMENT_COMMAND_COMMAND);
+		eltCommand.setAttribute(TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION,command.GetCaption());
+		
+		eltKeyNode.addContent(eltCommand);
 	}
 
-	protected String getElementNameSpecific()
+	public String getElementName()
 	{
-		return null;
+		return (TXMLNames.KY_ELEMENT_SHORTCUT);
 	}
+	
+	public CCommand getCommand()
+	{
+		return command;
+	}
+
+	public void setCommand(CCommand command)
+	{
+		this.command = command;
+	}
+
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
 }
+
