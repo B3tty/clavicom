@@ -6,4 +6,4 @@
 || Ctrl+Z de l'éditeur || Faire un Undo pour l'éditeur || ||
 || liste de keyEvent || Vérifier le gros switch pour savoir si toutes les commandes y sont présentes || ||
 || Editeur de commandSet || Réaliser un éditeur pour creer son propre commandeSet || ||
-|| Renommer les entêtes || Renommer les commentaires d'entetes pour faire correspondre notement les packages || ||
+|| Renommer les entêtes || Renommer les commentaires d'entetes pour faire correspondre notement les noms des packages || ||
