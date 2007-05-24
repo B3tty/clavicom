@@ -231,8 +231,12 @@ public abstract class CKeyboardKey extends CKey
 		eltCoord.addContent(eltPointMin);
 		eltCoord.addContent(eltPointMax);
 		
+		// color
+		Element color = super.BuildNode();
+		
 		// Ajout des noeuds
 		myNode.addContent(eltCoord);
+		myNode.addContent(color);
 	}
 }
 

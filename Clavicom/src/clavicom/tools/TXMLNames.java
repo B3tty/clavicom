@@ -38,10 +38,6 @@ public class TXMLNames
 	public static String KY_ATTRIBUTE_COORDINATE_POS 	= "position";
 	public static String KY_ATTRIBUTE_COORDINATE_POS_MIN= "min";
 	public static String KY_ATTRIBUTE_COORDINATE_POS_MAX= "max";
-	public static String KY_ELEMENT_COLOR 				= "color";
-	public static String KY_ELEMENT_COLOR_R 			= "red";
-	public static String KY_ELEMENT_COLOR_G 			= "green";
-	public static String KY_ELEMENT_COLOR_B 			= "blue";
 	public static String KY_ATTRIBUTE_ORDER 			= "order";
 	
 	// CKeyClavicom
@@ -94,9 +90,13 @@ public class TXMLNames
 	
 	// colors
 	public static String CO_ELEMENT_COLORS				= "colors";
+	public static String CO_ELEMENT_COLOR				= "color";
 	public static String CO_ELEMENT_COLOR_NORMAL		= "color_normal";
 	public static String CO_ELEMENT_COLOR_CLICKED		= "color_clicked";
 	public static String CO_ELEMENT_COLOR_ENTERED		= "color_entered";
+	public static String CO_ELEMENT_COLOR_R 			= "red";
+	public static String CO_ELEMENT_COLOR_G 			= "green";
+	public static String CO_ELEMENT_COLOR_B 			= "blue";
 	
 	
 }
