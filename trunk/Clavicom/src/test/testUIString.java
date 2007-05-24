@@ -8,7 +8,7 @@ public class testUIString
 	{
 		try
 		{	
-				UIString.LoadUIStringFile("src\\clavicom\\Ressources\\Application\\LanguagesUI\\francais.clg");
+				UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 				
 				System.out.println(UIString.getUIString("EX_KEYCLAVICOM_INVALID_ACTION_1"));
 		}

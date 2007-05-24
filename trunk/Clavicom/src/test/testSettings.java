@@ -53,11 +53,11 @@ public class testSettings
 		try
 		{
 			// Chargement des UIString et shortcutset
-			UIString.LoadUIStringFile("src\\clavicom\\Ressources\\Application\\LanguagesUI\\francais.clg");
-			CShortcutSet.CreateInstance("src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
+			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
-			String s = "src\\clavicom\\Ressources\\Application\\config.xml";
-			String s_out = "src\\clavicom\\Ressources\\Application\\config_out.xml";
+			String s = "Ressources\\Application\\config.xml";
+			String s_out = "Ressources\\Application\\config_out.xml";
 			
 			CSettings.LoadSettings( s );
 			
