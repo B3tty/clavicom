@@ -51,16 +51,16 @@ public class UIString
 		{
 			if( uiStringMap.containsKey( ID ) )
 			{
-				return uiStringMap.get( ID );
+				return uiStringMap.get( ID ) + "(" + ID + ")";
 			}
 			else
 			{
-				return "String not found ";
+				return ("*** Cannot find string \"" + ID + "\" ***" );
 			}
 			
 		}
 		
-		return ("*** Cannot find string \"" + ID + "\" ***" );
+		return ("*** No string information ***" );
 	}
 	
 	public static void LoadUIStringFile( String path ) throws Exception

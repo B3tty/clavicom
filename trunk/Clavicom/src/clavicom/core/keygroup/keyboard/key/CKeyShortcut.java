@@ -95,7 +95,7 @@ public class CKeyShortcut extends CKeyboardKey
 		
 		command = CShortcutSet.GetInstance().GetCommand(strCaption);
 		
-		if((strCaption == null) || (strCaption.equals("")))
+		if(command == null)
 		{
 			throw new Exception ( 	UIString.getUIString("EX_KEYSHORTCUT_BAD_CAPTION_1") +
 									TXMLNames.KY_ATTRIBUTE_COMMAND_CAPTION + 
