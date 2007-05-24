@@ -42,12 +42,12 @@ public class CShortcutSet
 	private static CShortcutSet shortcutSet;
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	HashMap<String, CCommand> commandMap;
+	HashMap<Integer, CCommand> commandMap;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	private CShortcutSet( String myShortcutSetPath) throws Exception
 	{
-		commandMap = new HashMap<String, CCommand>();
+		commandMap = new HashMap<Integer, CCommand>();
 		
 		// Chargement du fichier XML
 		LoadShortcutSetFile (myShortcutSetPath);
@@ -64,9 +64,9 @@ public class CShortcutSet
 		shortcutSet = new CShortcutSet (myShortcutSetPath);
 	}
 	
-	public CCommand GetCommand( String name )
+	public CCommand GetCommand( int id )
 	{
-		return commandMap.get( name );
+		return commandMap.get( id );
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -113,7 +113,7 @@ public class CShortcutSet
 								
 				try
 				{
-					commandMap.put(command.GetCaption(),command);
+					commandMap.put(command.GetID(),command);
 				}
 				catch(Exception ex)
 				{
