@@ -8,7 +8,7 @@ public class testShortcutSet
 	{
 		try
 		{	
-			CShortcutSet.CreateInstance("C:\\Developpement Java\\Clavicom\\src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
+			CShortcutSet.CreateInstance("src\\clavicom\\Ressources\\Application\\ShortcutSets\\default.css");
 			CShortcutSet.GetInstance().GetCommand("Copier");	
 		}
 		catch (Exception e)

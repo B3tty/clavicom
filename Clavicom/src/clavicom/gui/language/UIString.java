@@ -60,7 +60,7 @@ public class UIString
 			
 		}
 		
-		return "UIString not loaded ";
+		return ("*** Cannot find string \"" + ID + "\" ***" );
 	}
 	
 	public static void LoadUIStringFile( String path ) throws Exception

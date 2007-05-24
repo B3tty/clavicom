@@ -87,11 +87,14 @@
 	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
 	
 	<!-- KEYCOMMAND -->
-	<message id = "EX_KEYCOMMAND_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche commande] : Element </message>
-	<message id = "EX_KEYCOMMAND_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
+	<message id = "EX_KEYSHORCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
+	<message id = "EX_KEYSHORCUT_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
 
-	<message id = "EX_KEYCOMMAND_MISSING_CAPTION_1">[Chargement d'une touche commande] : Attribut </message>
-	<message id = "EX_KEYCOMMAND_MISSING_CAPTION_2"> attendu manquant</message>
+	<message id = "EX_KEYSHORTCUT_MISSING_CAPTION_1">[Chargement d'une touche raccourci] : Attribut </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_CAPTION_2"> attendu manquant</message>
+
+	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_1">[Chargement d'une touche raccourci] : Attribut </message>
+	<message id = "EX_KEYSHORTCUT_BAD_CAPTION_2"> non trouvé</message>
 	
 	<!-- SHORTCUTSET -->
 	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
@@ -128,6 +131,8 @@
 	<message id = "EX_KEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
 	<message id = "EX_KEY_BAD_COLOR_B_2"> n'est pas un entier</message>
 	 
+	<message id = "EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED">[Chargement d'une touche raccourci] : Le jeu de raccourcis n'a pas été chargé, il est impossible de récupérer la commande.</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

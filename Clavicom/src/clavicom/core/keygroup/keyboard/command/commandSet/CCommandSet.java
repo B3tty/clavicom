@@ -41,8 +41,8 @@ public class CCommandSet
 	private static CCommandSet commandSet;
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	static HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
-	static HashMap<String, CCommand> indexedCommandList;
+	HashMap< String, CSection > sectionsList;	// liste des sections des commandSet
+	HashMap<String, CCommand> indexedCommandList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	private CCommandSet( String CommandSetfilePath ) throws Exception
@@ -68,24 +68,24 @@ public class CCommandSet
 		commandSet = new CCommandSet (CommandSetfilePath);
 	}
 
-	public static CSection GetSection( String name )
+	public CSection GetSection( String name )
 	{
 		return sectionsList.get( name );
 	}
 	
-	public static CCommand GetCommande( String name )
+	public CCommand GetCommande( String name )
 	{
 		return indexedCommandList.get( name );
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private static void AddSection( CSection section )
+	private void AddSection( CSection section )
 	{
 		sectionsList.put( section.name, section);
 	}
 	
-	private static void IndexCommandes()
+	private void IndexCommandes()
 	{
 		for( CSection section : sectionsList.values() )
 		{
@@ -98,7 +98,7 @@ public class CCommandSet
 	
 	//---------------------------------------------------------------- XML --//
 	
-	private static void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
+	private void LoadCommandSetFile ( String CommandSetfilePath ) throws Exception
 	{
 		// =======================================================
 		//	Chargement du fichier XML
