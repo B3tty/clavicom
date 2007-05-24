@@ -1,263 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <commandset>
 	<section name = "Minuscules">
-		<command caption = "a">
+		<command id="0" caption = "a">
 			<code order="0" action="pressed" value="VK_A"/>
 			<code order="1" action="released" value="VK_A"/>
 		</command>
-		<command caption = "z">
+		<command id="1" caption = "z">
 			<code order="0" action="pressed" value="VK_Z"/>
 			<code order="1" action="released" value="VK_Z"/>
 		</command>
-		<command caption = "e">
+		<command id="2" caption = "e">
 			<code order="0" action="pressed" value="VK_E"/>
 			<code order="1" action="released" value="VK_E"/>
 		</command>
-		<command caption = "r">
+		<command id="3" caption = "r">
 			<code order="0" action="pressed" value="VK_R"/>
 			<code order="1" action="released" value="VK_R"/>
 		</command>
-		<command caption = "t">
+		<command id="4" caption = "t">
 			<code order="0" action="pressed" value="VK_T"/>
 			<code order="1" action="released" value="VK_T"/>
 		</command>
-		<command caption = "y">
+		<command id="5" caption = "y">
 			<code order="0" action="pressed" value="VK_Y"/>
 			<code order="1" action="released" value="VK_Y"/>
 		</command>
-		<command caption = "u">
+		<command id="6" caption = "u">
 			<code order="0" action="pressed" value="VK_U"/>
 			<code order="1" action="released" value="VK_U"/>
 		</command>
-		<command caption = "i">
+		<command id="7" caption = "i">
 			<code order="0" action="pressed" value="VK_I"/>
 			<code order="1" action="released" value="VK_I"/>
 		</command>
-		<command caption = "o">
+		<command id="8" caption = "o">
 			<code order="0" action="pressed" value="VK_O"/>
 			<code order="1" action="released" value="VK_O"/>
 		</command>
-		<command caption = "p">
+		<command id="9" caption = "p">
 			<code order="0" action="pressed" value="VK_P"/>
 			<code order="1" action="released" value="VK_P"/>
 		</command>
-		<command caption = "q">
+		<command id="10" caption = "q">
 			<code order="0" action="pressed" value="VK_Q"/>
 			<code order="1" action="released" value="VK_Q"/>
 		</command>
-		<command caption = "s">
+		<command id="11" caption = "s">
 			<code order="0" action="pressed" value="VK_S"/>
 			<code order="1" action="released" value="VK_S"/>
 		</command>
-		<command caption = "d">
+		<command id="12" caption = "d">
 			<code order="0" action="pressed" value="VK_D"/>
 			<code order="1" action="released" value="VK_D"/>
 		</command>
-		<command caption = "f">
+		<command id="13" caption = "f">
 			<code order="0" action="pressed" value="VK_F"/>
 			<code order="1" action="released" value="VK_F"/>
 		</command>
-		<command caption = "g">
+		<command id="14" caption = "g">
 			<code order="0" action="pressed" value="VK_G"/>
 			<code order="1" action="released" value="VK_G"/>
 		</command>
-		<command caption = "h">
+		<command id="15" caption = "h">
 			<code order="0" action="pressed" value="VK_H"/>
 			<code order="1" action="released" value="VK_H"/>
 		</command>
-		<command caption = "j">
+		<command id="16" caption = "j">
 			<code order="0" action="pressed" value="VK_J"/>
 			<code order="1" action="released" value="VK_A"/>
 		</command>
-		<command caption = "k">
+		<command id="17" caption = "k">
 			<code order="0" action="pressed" value="VK_K"/>
 			<code order="1" action="released" value="VK_K"/>
 		</command>
-		<command caption = "l">
+		<command id="18" caption = "l">
 			<code order="0" action="pressed" value="VK_L"/>
 			<code order="1" action="released" value="VK_L"/>
 		</command>
-		<command caption = "m">
+		<command id="19" caption = "m">
 			<code order="0" action="pressed" value="VK_M"/>
 			<code order="1" action="released" value="VK_M"/>
 		</command>
-		<command caption = "w">
+		<command id="20" caption = "w">
 			<code order="0" action="pressed" value="VK_W"/>
 			<code order="1" action="released" value="VK_W"/>
 		</command>
-		<command caption = "x">
+		<command id="21" caption = "x">
 			<code order="0" action="pressed" value="VK_X"/>
 			<code order="1" action="released" value="VK_X"/>
 		</command>
-		<command caption = "c">
+		<command id="22" caption = "c">
 			<code order="0" action="pressed" value="VK_C"/>
 			<code order="1" action="released" value="VK_C"/>
 		</command>
-		<command caption = "v">
+		<command id="23" caption = "v">
 			<code order="0" action="pressed" value="VK_V"/>
 			<code order="1" action="released" value="VK_V"/>
 		</command>
-		<command caption = "b">
+		<command id="24" caption = "b">
 			<code order="0" action="pressed" value="VK_B"/>
 			<code order="1" action="released" value="VK_B"/>
 		</command>
-		<command caption = "n">
+		<command id="25" caption = "n">
 			<code order="0" action="pressed" value="VK_N"/>
 			<code order="1" action="released" value="VK_N"/>
 		</command>
 	</section>
 	<section name = "Majuscules">	
-		<command caption = "A">
+		<command id="26" caption = "A">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_A"/>
 			<code order="2" action="released" value="VK_A"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "Z">
+		<command id="27" caption = "Z">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_Z"/>
 			<code order="2" action="released" value="VK_Z"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "E">
+		<command id="28" caption = "E">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_E"/>
 			<code order="2" action="released" value="VK_E"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "R">
+		<command id="29" caption = "R">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_R"/>
 			<code order="2" action="released" value="VK_R"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "T">
+		<command id="30" caption = "T">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_T"/>
 			<code order="2" action="released" value="VK_T"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "Y">
+		<command id="31" caption = "Y">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_Y"/>
 			<code order="2" action="released" value="VK_Y"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "U">
+		<command id="32" caption = "U">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_U"/>
 			<code order="2" action="released" value="VK_U"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "I">
+		<command id="33" caption = "I">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_I"/>
 			<code order="2" action="released" value="VK_I"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "O">
+		<command id="34" caption = "O">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_O"/>
 			<code order="2" action="released" value="VK_O"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "P">
+		<command id="35" caption = "P">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_P"/>
 			<code order="2" action="released" value="VK_P"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "Q">
+		<command id="36" caption = "Q">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_Q"/>
 			<code order="2" action="released" value="VK_Q"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "S">
+		<command id="37" caption = "S">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_S"/>
 			<code order="2" action="released" value="VK_S"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "D">
+		<command id="38" caption = "D">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_D"/>
 			<code order="2" action="released" value="VK_D"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "F">
+		<command id="39" caption = "F">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_F"/>
 			<code order="2" action="released" value="VK_F"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "G">
+		<command id="40" caption = "G">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_G"/>
 			<code order="2" action="released" value="VK_G"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "H">
+		<command id="51" caption = "H">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_H"/>
 			<code order="2" action="released" value="VK_H"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "J">
+		<command id="52" caption = "J">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_J"/>
 			<code order="2" action="released" value="VK_J"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "K">
+		<command id="53" caption = "K">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_K"/>
 			<code order="2" action="released" value="VK_K"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "L">
+		<command id="54" caption = "L">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_L"/>
 			<code order="2" action="released" value="VK_L"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "M">
+		<command id="55" caption = "M">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_M"/>
 			<code order="2" action="released" value="VK_M"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "W">
+		<command id="56" caption = "W">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_W"/>
 			<code order="2" action="released" value="VK_W"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "X">
+		<command id="57" caption = "X">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_X"/>
 			<code order="2" action="released" value="VK_X"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "C">
+		<command id="58" caption = "C">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_C"/>
 			<code order="2" action="released" value="VK_C"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "V">
+		<command id="59" caption = "V">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_V"/>
 			<code order="2" action="released" value="VK_V"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "B">
+		<command id="60" caption = "B">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_B"/>
 			<code order="2" action="released" value="VK_B"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "N">
+		<command id="61" caption = "N">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_N"/>
 			<code order="2" action="released" value="VK_N"/>
@@ -265,153 +265,153 @@
 		</command>
 	</section>
 	<section name = "Edition">
-		<command caption = "Echappement">
+		<command id="62" caption = "Echappement">
 			<code order="0" action="pressed" value="VK_ESCAPE"/>
 			<code order="1" action="released" value="VK_ESCAPE"/>
 		</command>
-		<command caption = "Tabulation">
+		<command id="63" caption = "Tabulation">
 			<code order="0" action="pressed" value="VK_TAB"/>
 			<code order="1" action="released" value="VK_TAB"/>
 		</command>	
-		<command caption = "Verrouillage majuscule">
+		<command id="64" caption = "Verrouillage majuscule">
 			<code order="0" action="pressed" value="VK_CAPS_LOCK"/>
 			<code order="1" action="released" value="VK_CAPS_LOCK"/>
 		</command>		
-		<command caption = "Majuscule (gauche)">
+		<command id="65" caption = "Majuscule (gauche)">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "Contrôle (gauche)">
+		<command id="66" caption = "Contrôle (gauche)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "Windows (gauche)">
+		<command id="67" caption = "Windows (gauche)">
 			<code order="0" action="pressed" value="VK_WINDOWS"/>
 			<code order="1" action="released" value="VK_WINDOWS"/>
 		</command>
-		<command caption = "Alt">
+		<command id="68" caption = "Alt">
 			<code order="0" action="pressed" value="VK_ALT"/>
 			<code order="1" action="released" value="VK_ALT"/>
 		</command>
-		<command caption = "Espace">
+		<command id="69" caption = "Espace">
 			<code order="0" action="pressed" value="VK_SPACE"/>
 			<code order="1" action="released" value="VK_SPACE"/>
 		</command>
-		<command caption = "Alt-Gr">
+		<command id="70" caption = "Alt-Gr">
 			<code order="0" action="pressed" value="VK_ALT_GRAPH"/>
 			<code order="1" action="released" value="VK_ALT_GRAPH"/>
 		</command>
-		<command caption = "Windows (droit)">
+		<command id="71" caption = "Windows (droit)">
 			<code order="0" action="pressed" value="VK_WINDOWS"/>
 			<code order="1" action="released" value="VK_WINDOWS"/>
 		</command>
-		<command caption = "Menu contextuel">
+		<command id="72" caption = "Menu contextuel">
 			<code order="0" action="pressed" value="VK_CONTEXT_MENU"/>
 			<code order="1" action="released" value="VK_CONTEXT_MENU"/>
 		</command>
-		<command caption = "Contr�le (droit)">
+		<command id="73" caption = "Contr�le (droit)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "Majuscule (droit)">
+		<command id="74" caption = "Majuscule (droit)">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "Entrée">
+		<command id="75" caption = "Entrée">
 			<code order="0" action="pressed" value="VK_ENTER"/>
 			<code order="1" action="released" value="VK_ENTER"/>
 		</command>
-		<command caption = "Retour arriére">
+		<command id="76" caption = "Retour arriére">
 			<code order="0" action="pressed" value="VK_BACK_SPACE"/>
 			<code order="1" action="released" value="VK_BACK_SPACE"/>
 		</command>
-		<command caption = "Imprimer écran">
+		<command id="77" caption = "Imprimer écran">
 			<code order="0" action="pressed" value="VK_PRINTSCREEN"/>
 			<code order="1" action="released" value="VK_PRINTSCREEN"/>
 		</command>
-		<command caption = "Système">
+		<command id="78" caption = "Système">
 			<code order="0" action="pressed" value="VK_PRINTSCREEN"/>
 			<code order="1" action="released" value="VK_PRINTSCREEN"/>
 		</command>
-		<command caption = "Arrét défilement">
+		<command id="79" caption = "Arrét défilement">
 			<code order="0" action="pressed" value="VK_STOP"/>
 			<code order="1" action="released" value="VK_STOP"/>
 		</command>
-		<command caption = "Pause">
+		<command id="80" caption = "Pause">
 			<code order="0" action="pressed" value="VK_PAUSE"/>
 			<code order="1" action="released" value="VK_PAUSE"/>
 		</command>
-		<command caption = "Attn">
+		<command id="81" caption = "Attn">
 			<code order="0" action="pressed" value="VK_PAUSE"/>
 			<code order="1" action="released" value="VK_PAUSE"/>
 		</command>
-		<command caption = "Insertion">
+		<command id="82" caption = "Insertion">
 			<code order="0" action="pressed" value="VK_INSERT"/>
 			<code order="1" action="released" value="VK_INSERT"/>
 		</command>
-		<command caption = "Début">
+		<command id="83" caption = "Début">
 			<code order="0" action="pressed" value="VK_BEGIN"/>
 			<code order="1" action="released" value="VK_BEGIN"/>
 		</command>
-		<command caption = "Page supérieure">
+		<command id="84" caption = "Page supérieure">
 			<code order="0" action="pressed" value="VK_DELETE"/>
 			<code order="1" action="released" value="VK_DELETE"/>
 		</command>
-		<command caption = "Suppression">
+		<command id="85" caption = "Suppression">
 			<code order="0" action="pressed" value="VK_PAGE_UP"/>
 			<code order="1" action="released" value="VK_PAGE_UP"/>
 		</command>
-		<command caption = "Fin">
+		<command id="86" caption = "Fin">
 			<code order="0" action="pressed" value="VK_END"/>
 			<code order="1" action="released" value="VK_END"/>
 		</command>
-		<command caption = "Page inf�rieure">
+		<command id="87" caption = "Page inf�rieure">
 			<code order="0" action="pressed" value="VK_PAGE_DOWN"/>
 			<code order="1" action="released" value="VK_PAGE_DOWN"/>
 		</command>
 	</section>
 	<section name = "Flèches">
-		<command caption = "Flèches haut">
+		<command id="88" caption = "Flèches haut">
 			<code order="0" action="pressed" value="VK_UP"/>
 			<code order="1" action="released" value="VK_UP"/>
 		</command>
-		<command caption = "Flèches gauche">
+		<command id="89" caption = "Flèches gauche">
 			<code order="0" action="pressed" value="VK_LEFT"/>
 			<code order="1" action="released" value="VK_LEFT"/>
 		</command>
-		<command caption = "Flèches bas">
+		<command id="90" caption = "Flèches bas">
 			<code order="0" action="pressed" value="VK_DOWN"/>
 			<code order="1" action="released" value="VK_DOWN"/>
 		</command>
-		<command caption = "Flèches droite">
+		<command id="91" caption = "Flèches droite">
 			<code order="0" action="pressed" value="VK_RIGHT"/>
 			<code order="1" action="released" value="VK_RIGHT"/>
 		</command>
 	</section>
 	<section name = "Ponctuation">
-		<command caption = ",">
+		<command id="92" caption = ",">
 			<code order="0" action="pressed" value="VK_COMMA"/>
 			<code order="1" action="released" value="VK_COMMA"/>
 		</command>
-		<command caption = ";">
+		<command id="93" caption = ";">
 			<code order="0" action="pressed" value="VK_SEMICOLON"/>
 			<code order="1" action="released" value="VK_SEMICOLON"/>
 		</command>
-		<command caption = ":">
+		<command id="94" caption = ":">
 			<code order="0" action="pressed" value="VK_COLON"/>
 			<code order="1" action="released" value="VK_COLON"/>
 		</command>
-		<command caption = "!">
+		<command id="95" caption = "!">
 			<code order="0" action="pressed" value="VK_EXCLAMATION_MARK"/>
 			<code order="1" action="released" value="VK_EXCLAMATION_MARK"/>
 		</command>
-		<command caption = "?">
+		<command id="96" caption = "?">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_COMMA"/>
 			<code order="2" action="released" value="VK_COMMA"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = ".">
+		<command id="97" caption = ".">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_SEMICOLON"/>
 			<code order="2" action="released" value="VK_SEMICOLON"/>
@@ -419,15 +419,15 @@
 		</command>
 	</section>
 	<section name = "Spéciaux">
-		<command caption = "&amp;">
+		<command id="98" caption = "&amp;">
 			<code order="0" action="pressed" value="VK_1"/>
 			<code order="1" action="released" value="VK_1"/>
 		</command>
-		<command caption = "é">
+		<command id="99" caption = "é">
 			<code order="0" action="pressed" value="VK_2"/>
 			<code order="1" action="released" value="VK_2"/>
 		</command>
-		<command caption = "~">
+		<command id="100" caption = "~">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_2"/>
@@ -435,11 +435,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "\">
+		<command id="101" caption = "\">
 			<code order="0" action="pressed" value="VK_3"/>
 			<code order="1" action="released" value="VK_3"/>
 		</command>
-		<command caption = "#">
+		<command id="102" caption = "#">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_3"/>
@@ -447,11 +447,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "'">
+		<command id="103" caption = "'">
 			<code order="0" action="pressed" value="VK_4"/>
 			<code order="1" action="released" value="VK_4"/>
 		</command>
-		<command caption = "{">
+		<command id="104" caption = "{">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_4"/>
@@ -459,11 +459,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "(">
+		<command id="105" caption = "(">
 			<code order="0" action="pressed" value="VK_5"/>
 			<code order="1" action="released" value="VK_5"/>
 		</command>
-		<command caption = "[">
+		<command id="106" caption = "[">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_5"/>
@@ -471,11 +471,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "-">
+		<command id="107" caption = "-">
 			<code order="0" action="pressed" value="VK_6"/>
 			<code order="1" action="released" value="VK_6"/>
 		</command>
-		<command caption = "|">
+		<command id="108" caption = "|">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_6"/>
@@ -483,11 +483,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "è">
+		<command id="109" caption = "è">
 			<code order="0" action="pressed" value="VK_7"/>
 			<code order="1" action="released" value="VK_7"/>
 		</command>
-		<command caption = "`">
+		<command id="110" caption = "`">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_7"/>
@@ -495,11 +495,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "_">
+		<command id="111" caption = "_">
 			<code order="0" action="pressed" value="VK_8"/>
 			<code order="1" action="released" value="VK_8"/>
 		</command>
-		<command caption = "\\">
+		<command id="112" caption = "\\">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_8"/>
@@ -507,11 +507,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "ç">
+		<command id="113" caption = "ç">
 			<code order="0" action="pressed" value="VK_9"/>
 			<code order="1" action="released" value="VK_9"/>
 		</command>
-		<command caption = "^ (caractére)">
+		<command id="114" caption = "^ (caractére)">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_9"/>
@@ -519,11 +519,11 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "à">
+		<command id="115" caption = "à">
 			<code order="0" action="pressed" value="VK_0"/>
 			<code order="1" action="released" value="VK_0"/>
 		</command>
-		<command caption = "@">
+		<command id="116" caption = "@">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_0"/>
@@ -531,17 +531,17 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = ")">
+		<command id="117" caption = ")">
 			<code order="0" action="pressed" value="VK_RIGHT_PARENTHESIS"/>
 			<code order="1" action="released" value="VK_RIGHT_PARENTHESIS"/>
 		</command>
-		<command caption = "°">
+		<command id="118" caption = "°">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_RIGHT_PARENTHESIS"/>
 			<code order="2" action="released" value="VK_RIGHT_PARENTHESIS"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "]">
+		<command id="119" caption = "]">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_RIGHT_PARENTHESIS"/>
@@ -549,17 +549,17 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "=">
+		<command id="120" caption = "=">
 			<code order="0" action="pressed" value="VK_EQUALS"/>
 			<code order="1" action="released" value="VK_EQUALS"/>
 		</command>
-		<command caption = "+">
+		<command id="121" caption = "+">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_EQUALS"/>
 			<code order="2" action="released" value="VK_EQUALS"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "}">
+		<command id="122" caption = "}">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_EQUALS"/>
@@ -567,7 +567,7 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "€">
+		<command id="123" caption = "€">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_E"/>
@@ -575,37 +575,37 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "&lt;">
+		<command id="124" caption = "&lt;">
 			<code order="0" action="pressed" value="VK_LESS"/>
 			<code order="1" action="released" value="VK_LESS"/>
 		</command>
-		<command caption = "&gt;">
+		<command id="125" caption = "&gt;">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_LESS"/>
 			<code order="2" action="released" value="VK_LESS"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "^ (accent)">
+		<command id="126" caption = "^ (accent)">
 			<code order="0" action="pressed" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="1" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
 		</command>
-		<command caption = "¨">
+		<command id="127" caption = "¨">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="2" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "$">
+		<command id="128" caption = "$">
 			<code order="0" action="pressed" value="VK_DOLLAR"/>
 			<code order="1" action="released" value="VK_DOLLAR"/>
 		</command>
-		<command caption = "£">
+		<command id="129" caption = "£">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_DOLLAR"/>
 			<code order="2" action="released" value="VK_DOLLAR"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "¤">
+		<command id="130" caption = "¤">
 			<code order="0" action="pressed" value="VK_CONTROL"/>
 			<code order="1" action="pressed" value="VK_ALT"/>
 			<code order="2" action="pressed" value="VK_DOLLAR"/>
@@ -613,33 +613,33 @@
 			<code order="4" action="released" value="VK_ALT"/>
 			<code order="5" action="released" value="VK_CONTROL"/>
 		</command>
-		<command caption = "*">
+		<command id="131" caption = "*">
 			<code order="0" action="pressed" value="VK_ASTERISK"/>
 			<code order="1" action="released" value="VK_ASTERISK"/>
 		</command>
-		<command caption = "µ">
+		<command id="132" caption = "µ">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_ASTERISK"/>
 			<code order="2" action="released" value="VK_ASTERISK"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "ù">
+		<command id="133" caption = "ù">
 			<code order="0" action="pressed" value="VK_U_ACCENT_GRAVE"/>
 			<code order="1" action="released" value="VK_U_ACCENT_GRAVE"/>
 		</command>
-		<command caption = "%">
+		<command id="134" caption = "%">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_U_ACCENT_GRAVE"/>
 			<code order="2" action="released" value="VK_U_ACCENT_GRAVE"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "/">
+		<command id="135" caption = "/">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_COLON"/>
 			<code order="2" action="released" value="VK_COLON"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command caption = "§">
+		<command id="136" caption = "§">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_EXCLAMATION_MARK"/>
 			<code order="2" action="released" value="VK_EXCLAMATION_MARK"/>
@@ -647,61 +647,61 @@
 		</command>
 	</section>
 	<section name = "Chiffres">
-		<command caption = "1">
+		<command id="137" caption = "1">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_1"/>
 			<code order="2" action="released" value="VK_1"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "2">
+		<command id="138" caption = "2">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_2"/>
 			<code order="2" action="released" value="VK_2"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "3">
+		<command id="139" caption = "3">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_3"/>
 			<code order="2" action="released" value="VK_3"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "4">
+		<command id="140" caption = "4">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_4"/>
 			<code order="2" action="released" value="VK_4"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "5">
+		<command id="141" caption = "5">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_5"/>
 			<code order="2" action="released" value="VK_5"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "6">
+		<command id="142" caption = "6">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_6"/>
 			<code order="2" action="released" value="VK_6"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "7">
+		<command id="143" caption = "7">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_7"/>
 			<code order="2" action="released" value="VK_7"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "8">
+		<command id="144" caption = "8">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_8"/>
 			<code order="2" action="released" value="VK_8"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "9">
+		<command id="145" caption = "9">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_9"/>
 			<code order="2" action="released" value="VK_9"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>	
-		<command caption = "0">
+		<command id="146" caption = "0">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
 			<code order="1" action="pressed" value="VK_0"/>
 			<code order="2" action="released" value="VK_0"/>
@@ -709,121 +709,121 @@
 		</command>
 	</section>
 	<section name = "Fonctions">
-		<command caption = "F1">
+		<command id="147" caption = "F1">
 			<code order="0" action="pressed" value="VK_F1"/>
 			<code order="1" action="released" value="VK_F1"/>
 		</command>
-		<command caption = "F2">
+		<command id="148" caption = "F2">
 			<code order="0" action="pressed" value="VK_F2"/>
 			<code order="1" action="released" value="VK_F2"/>
 		</command>
-		<command caption = "F3">
+		<command id="149" caption = "F3">
 			<code order="0" action="pressed" value="VK_F3"/>
 			<code order="1" action="released" value="VK_F3"/>
 		</command>
-		<command caption = "F4">
+		<command id="150" caption = "F4">
 			<code order="0" action="pressed" value="VK_F4"/>
 			<code order="1" action="released" value="VK_F4"/>
 		</command>
-		<command caption = "F5">
+		<command id="151" caption = "F5">
 			<code order="0" action="pressed" value="VK_F5"/>
 			<code order="1" action="released" value="VK_F5"/>
 		</command>
-		<command caption = "F6">
+		<command id="152" caption = "F6">
 			<code order="0" action="pressed" value="VK_F6"/>
 			<code order="1" action="released" value="VK_F6"/>
 		</command>
-		<command caption = "F7">
+		<command id="153" caption = "F7">
 			<code order="0" action="pressed" value="VK_F7"/>
 			<code order="1" action="released" value="VK_F7"/>
 		</command>
-		<command caption = "F8">
+		<command id="154" caption = "F8">
 			<code order="0" action="pressed" value="VK_F8"/>
 			<code order="1" action="released" value="VK_F8"/>
 		</command>
-		<command caption = "F9">
+		<command id="155" caption = "F9">
 			<code order="0" action="pressed" value="VK_F9"/>
 			<code order="1" action="released" value="VK_F9"/>
 		</command>
-		<command caption = "F10">
+		<command id="156" caption = "F10">
 			<code order="0" action="pressed" value="VK_F10"/>
 			<code order="1" action="released" value="VK_F10"/>
 		</command>
-		<command caption = "F11">
+		<command id="157" caption = "F11">
 			<code order="0" action="pressed" value="VK_F11"/>
 			<code order="1" action="released" value="VK_F11"/>
 		</command>
-		<command caption = "F12">
+		<command id="158" caption = "F12">
 			<code order="0" action="pressed" value="VK_F12"/>
 			<code order="1" action="released" value="VK_F12"/>
 		</command>
 	</section>
 	<section name = "Pavé numérique">
-		<command caption = "Verrouillage pavé numérique">
+		<command id="159" caption = "Verrouillage pavé numérique">
 			<code order="0" action="pressed" value="VK_NUM_LOCK"/>
 			<code order="1" action="released" value="VK_NUM_LOCK"/>
 		</command>
-		<command caption = "Diviser">
+		<command id="160" caption = "Diviser">
 			<code order="0" action="pressed" value="VK_DIVIDE"/>
 			<code order="1" action="released" value="VK_DIVIDE"/>
 		</command>
-		<command caption = "Multiplier">
+		<command id="161" caption = "Multiplier">
 			<code order="0" action="pressed" value="VK_MULTIPLY"/>
 			<code order="1" action="released" value="VK_MULTIPLY"/>
 		</command>
-		<command caption = "Moins">
+		<command id="162" caption = "Moins">
 			<code order="0" action="pressed" value="VK_SUBTRACT"/>
 			<code order="1" action="released" value="VK_SUBTRACT"/>
 		</command>
-		<command caption = "Plus">
+		<command id="162" caption = "Plus">
 			<code order="0" action="pressed" value="VK_ADD"/>
 			<code order="1" action="released" value="VK_ADD"/>
 		</command>
-		<command caption = "Entrée (droit)">
+		<command id="163" caption = "Entrée (droit)">
 			<code order="0" action="pressed" value="VK_ENTER"/>
 			<code order="1" action="released" value="VK_ENTER"/>
 		</command>
-		<command caption = "Point (Pavé numérique)">
+		<command id="164" caption = "Point (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUM_POINT"/>
 			<code order="1" action="released" value="VK_NUM_POINT"/>
 		</command>
-		<command caption = "0 (Pavé numérique)">
+		<command id="165" caption = "0 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD0"/>
 			<code order="1" action="released" value="VK_NUMPAD0"/>
 		</command>
-		<command caption = "1 (Pavé numérique)">
+		<command id="166" caption = "1 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD1"/>
 			<code order="1" action="released" value="VK_NUMPAD1"/>
 		</command>
-		<command caption = "2 (Pavé numérique)">
+		<command id="167" caption = "2 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD2"/>
 			<code order="1" action="released" value="VK_NUMPAD2"/>
 		</command>
-		<command caption = "3 (Pavé numérique)">
+		<command id="168" caption = "3 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD3"/>
 			<code order="1" action="released" value="VK_NUMPAD3"/>
 		</command>
-		<command caption = "4 (Pavé numérique)">
+		<command id="169" caption = "4 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD4"/>
 			<code order="1" action="released" value="VK_NUMPAD4"/>
 		</command>
-		<command caption = "5 (Pavé numérique)">
+		<command id="170" caption = "5 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD5"/>
 			<code order="1" action="released" value="VK_NUMPAD5"/>
 		</command>
-		<command caption = "6 (Pavé numérique)">
+		<command id="171" caption = "6 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD6"/>
 			<code order="1" action="released" value="VK_NUMPAD6"/>
 		</command>
-		<command caption = "7 (Pavé numérique)">
+		<command id="172" caption = "7 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD7"/>
 			<code order="1" action="released" value="VK_NUMPAD7"/>
 		</command>
-		<command caption = "8 (Pavé numérique)">
+		<command id="173" caption = "8 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD8"/>
 			<code order="1" action="released" value="VK_NUMPAD8"/>
 		</command>
-		<command caption = "9 (Pavé numérique)">
+		<command id="174" caption = "9 (Pavé numérique)">
 			<code order="0" action="pressed" value="VK_NUMPAD9"/>
 			<code order="1" action="released" value="VK_NUMPAD9"/>
 		</command>
