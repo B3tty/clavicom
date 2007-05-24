@@ -134,6 +134,10 @@
 	 
 	<message id = "EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED">[Chargement d'une touche raccourci] : Le jeu de raccourcis n'a pas été chargé, il est impossible de récupérer la commande.</message>
 	
+	<!-- Settings -->
+	<message id = "EX_SETTINGS_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_SETTINGS">Gestion de la configuration de l'application</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

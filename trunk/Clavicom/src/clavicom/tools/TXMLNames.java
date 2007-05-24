@@ -78,8 +78,8 @@ public class TXMLNames
 	public static String SS_ROOT_NAME					= "shortcuts";
 	
 	// gestion des blocs
-	public static String BL_ATTRIBUTE_CAPTION						= "caption";
-	public static String BL_ATTRIBUTE_VISIBLE						= "visible";
+	public static String BL_ATTRIBUTE_CAPTION			= "caption";
+	public static String BL_ATTRIBUTE_VISIBLE			= "visible";
 	public static String BL_ELEMENT_KEY_GROUP			= "keygroupe";
 	public static String BL_ELEMENT_KEY_LIST			= "keylist";
 	public static String BL_ATTRIBUTE_ORDER				= "order";
@@ -98,5 +98,8 @@ public class TXMLNames
 	public static String CO_ELEMENT_COLOR_G 			= "green";
 	public static String CO_ELEMENT_COLOR_B 			= "blue";
 	
+	// Settings
+	public static String SE_ELEMENT_DEFAULT_PROFIL		= "defaultProfilsPath";
+	public static String SE_ELEMENT_SETTINGS			= "settings";
 	
 }
