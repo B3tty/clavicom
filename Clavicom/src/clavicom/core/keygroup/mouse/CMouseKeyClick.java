@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.mouse;
+package clavicom.core.keygroup.mouse;
 
 import clavicom.tools.TMouseKeyClickEnum;
 

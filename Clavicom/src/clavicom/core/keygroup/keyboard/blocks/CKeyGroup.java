@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.keyboard.blocks;
+package clavicom.core.keygroup.keyboard.blocks;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CMouseKeyMove.java
+			Filename			: CKey.java
 			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.mouse
+			Package				: clavicom.core
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,30 +23,17 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.mouse;
+package clavicom.core.keygroup;
 
-import clavicom.tools.TMouseKeyMoveEnum;
-
-public class CMouseKeyMove extends CMouseKey
+public class CKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	TMouseKeyMoveEnum direction;
-	
-	static int speedLevel; // vitesse du mouvement
+	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseKeyMove( TMouseKeyMoveEnum mydirection )
-	{
-		direction = mydirection;
-	}
+	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	
-	
-	public TMouseKeyMoveEnum GetDirection(){ return direction; }
-	
-	public static int GetSpeedLevel(){ return speedLevel; }
-	public static void SetSpeedLevel( int mySpeedLevel ){speedLevel = mySpeedLevel; }
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

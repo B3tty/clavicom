@@ -23,14 +23,14 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.keyboard.blocks;
+package clavicom.core.keygroup.keyboard.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom.Element;
 
-import clavicom.core.key.keyboard.key.CKeyClavicom;
-import clavicom.core.key.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 

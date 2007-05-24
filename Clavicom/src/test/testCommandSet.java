@@ -25,10 +25,10 @@
 
 package test;
 
-import clavicom.core.key.keyboard.command.CCode;
-import clavicom.core.key.keyboard.command.CCommand;
-import clavicom.core.key.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.key.keyboard.command.commandSet.CSection;
+import clavicom.core.keygroup.keyboard.command.CCode;
+import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 
 public class testCommandSet
 {

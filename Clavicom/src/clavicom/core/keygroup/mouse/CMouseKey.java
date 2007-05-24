@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CMouse.java
+			Filename			: CMouseKey.java
 			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
@@ -23,37 +23,17 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.key.mouse;
+package clavicom.core.keygroup.mouse;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class CMouse
+public abstract class CMouseKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	List<CMouseKey> mouseKeyList;
+	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouse()
-	{
-		mouseKeyList = new ArrayList<CMouseKey>();
-	}
+	//------------------------------------------------------ CONSTRUCTEURS --//	
 
-	//----------------------------------------------------------- METHODES --//
-	public void AddMouseKey( CMouseKey mouseKey )
-	{
-		mouseKeyList.add( mouseKey );
-	}
-	
-	public CMouseKey GetMouseKey( int index )
-	{
-		return mouseKeyList.get( index );
-	}
-	
-	public int size(){return mouseKeyList.size();}
+	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
