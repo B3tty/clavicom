@@ -42,7 +42,7 @@ public class TXMLNames
 	public static String KY_ELEMENT_COLOR_R 			= "red";
 	public static String KY_ELEMENT_COLOR_G 			= "green";
 	public static String KY_ELEMENT_COLOR_B 			= "blue";
-	public static String KY_ATTRIBUTE_ORDER 				= "order";
+	public static String KY_ATTRIBUTE_ORDER 			= "order";
 	
 	// CKeyClavicom
 	public static String KY_ELEMENT_CLAVICOM		 	= "keyclavicom";
