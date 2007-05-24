@@ -120,10 +120,30 @@ public class CKey
 		
 	}
 
+	//----------------------------------------------------------- METHODES --//
+
 	public CColor GetColorNormal(){return normal;}
 	public CColor GetColorClicked(){return clicked;}
 	public CColor GetColorEntered(){return entered;}
-	//----------------------------------------------------------- METHODES --//	
+	
+	public void BuildNode ( Element parentNode )
+	{
+		if( parentNode == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_KEY_SAVE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
+		}
+		
+		// ==================================================================
+		// Création du noeud colors
+		// ==================================================================
+		Element colors = new Element( TXMLNames.CO_ELEMENT_COLORS );
+		
+		normal.BuildNode( colors );
+		clicked.BuildNode( colors );
+		entered.BuildNode( colors );
+		
+		
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
