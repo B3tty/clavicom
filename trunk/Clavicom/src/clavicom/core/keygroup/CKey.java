@@ -126,21 +126,26 @@ public class CKey
 	public CColor GetColorClicked(){return clicked;}
 	public CColor GetColorEntered(){return entered;}
 	
-	public void BuildNode ( Element parentNode )
+	public Element BuildNode ( )
 	{
-		if( parentNode == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEY_SAVE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
-		}
-		
 		// ==================================================================
 		// Création du noeud colors
 		// ==================================================================
 		Element colors = new Element( TXMLNames.CO_ELEMENT_COLORS );
+
+		Element color_normal = normal.BuildNode ( );
+		color_normal.setName( TXMLNames.CO_ELEMENT_COLOR_NORMAL );
+		colors.addContent( color_normal );
 		
-		normal.BuildNode( colors );
-		clicked.BuildNode( colors );
-		entered.BuildNode( colors );
+		Element color_clicked = clicked.BuildNode( );
+		color_clicked.setName( TXMLNames.CO_ELEMENT_COLOR_CLICKED );
+		colors.addContent( color_clicked );
+		
+		Element color_entered = entered.BuildNode( );
+		color_entered.setName( TXMLNames.CO_ELEMENT_COLOR_ENTERED );
+		colors.addContent( color_entered );
+		
+		return colors;
 		
 		
 	}

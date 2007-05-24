@@ -108,6 +108,7 @@
 	
 	<!-- KEY -->
 	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
+	<message id = "EX_KEY_SAVE">Sauvegarde d'une touche </message>
 	
 	<!-- COLOR -->
 	<message id = "EX_KEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>

@@ -48,22 +48,12 @@ public class CColor
 			throw new Exception( UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
-		
-//		// Récupération de la couleur
-//		Element eltColor = node.getChild(TXMLNames.KY_ELEMENT_COLOR);
-//		if(eltColor == null)
-//		{
-//			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_1") + 
-//									TXMLNames.KY_ELEMENT_COLOR + 
-//									UIString.getUIString("EX_KEY_MISSING_COLOR_2")) ;				
-//		}
-		
 		// Récupération de la couleur R
-		Element eltR = node.getChild(TXMLNames.KY_ELEMENT_COLOR_R);
+		Element eltR = node.getChild(TXMLNames.CO_ELEMENT_COLOR_R);
 		if(eltR == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_R_1") +
-									TXMLNames.KY_ELEMENT_COLOR_R +
+									TXMLNames.CO_ELEMENT_COLOR_R +
 									UIString.getUIString("EX_KEY_MISSING_COLOR_R_2"));				
 		}	
 		
@@ -75,16 +65,16 @@ public class CColor
 		catch (Exception E)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_BAD_COLOR_R_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_R +
+									TXMLNames.CO_ELEMENT_COLOR_R +
 									UIString.getUIString("EX_KEY_BAD_COLOR_R_2")) ;					
 		}
 		
 		// Récupération de la couleur G
-		Element eltG = node.getChild(TXMLNames.KY_ELEMENT_COLOR_G);
+		Element eltG = node.getChild(TXMLNames.CO_ELEMENT_COLOR_G);
 		if(eltG == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_G_1") +
-									TXMLNames.KY_ELEMENT_COLOR_G +
+									TXMLNames.CO_ELEMENT_COLOR_G +
 									UIString.getUIString("EX_KEY_MISSING_COLOR_G_2"));			
 		}	
 		
@@ -96,16 +86,16 @@ public class CColor
 		catch (Exception E)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_BAD_COLOR_G_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_G + 
+									TXMLNames.CO_ELEMENT_COLOR_G + 
 									UIString.getUIString("EX_KEY_BAD_COLOR_G_2")) ;						
 		}
 		
 		// Récupération de la couleur B
-		Element eltB = node.getChild(TXMLNames.KY_ELEMENT_COLOR_B);
+		Element eltB = node.getChild(TXMLNames.CO_ELEMENT_COLOR_B);
 		if(eltB == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_MISSING_COLOR_B_1") +
-									TXMLNames.KY_ELEMENT_COLOR_B +
+									TXMLNames.CO_ELEMENT_COLOR_B +
 									UIString.getUIString("EX_KEY_MISSING_COLOR_B_2"));			
 		}	
 		
@@ -117,7 +107,7 @@ public class CColor
 		catch (Exception E)
 		{
 			throw new Exception (	UIString.getUIString("EX_KEY_BAD_COLOR_B_1") + 
-									TXMLNames.KY_ELEMENT_COLOR_B + 
+									TXMLNames.CO_ELEMENT_COLOR_B + 
 									UIString.getUIString("EX_KEY_BAD_COLOR_B_2")) ;						
 		}
 		
@@ -128,9 +118,23 @@ public class CColor
 	
 	public Color GetColor () {return color;};
 	
-	public void BuildNode ( Element parentNode )
+	public Element BuildNode ( )
 	{
+		Element color_elem = new Element( TXMLNames.CO_ELEMENT_COLOR );
 		
+		Element red = new Element( TXMLNames.CO_ELEMENT_COLOR_R );
+		red.setText( String.valueOf( color.getRed() ) );
+		color_elem.addContent( red );
+		
+		Element green = new Element( TXMLNames.CO_ELEMENT_COLOR_G );
+		green.setText( String.valueOf( color.getGreen() ) );
+		color_elem.addContent( green );
+		
+		Element blue = new Element( TXMLNames.CO_ELEMENT_COLOR_B );
+		blue.setText( String.valueOf( color.getBlue() ) );
+		color_elem.addContent( blue );
+		
+		return color_elem;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
