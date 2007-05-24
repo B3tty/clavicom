@@ -25,17 +25,8 @@
 
 package test;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
-
 import clavicom.CSettings;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
 
 public class testSettings
