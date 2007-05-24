@@ -101,7 +101,7 @@ public class CKey
 		{
 			throw new Exception( "[" + TXMLNames.CO_ELEMENT_COLOR_NORMAL +"]" + ex.getMessage() );
 		}
-		
+
 		try
 		{
 			clicked = new CColor( color_clicked_elem );

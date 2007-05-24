@@ -39,12 +39,14 @@ public class CCommand
 
 	//---------------------------------------------------------- VARIABLES --//
 	String caption;
+	int id;
 	List<CCode> CodeList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CCommand( String myCaption )
+	public CCommand( int myId, String myCaption )
 	{
 		caption = myCaption;
+		id = myId;
 		CodeList = new ArrayList<CCode>();
 	}
 
@@ -59,6 +61,7 @@ public class CCommand
 	}
 	
 	public String GetCaption(){return caption;}
+	public int GetID(){return id;}
 	
 	/**
 	 * Donne le code correspondant à l'order donné
@@ -86,13 +89,31 @@ public class CCommand
 			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
+		
+		// récupérationde l'id
+		String s_id = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_ID );
+		if( s_id == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_ID);
+		}
+		int i_id;
+		try
+		{
+			i_id = Integer.parseInt( s_id );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_id + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ) );
+		}
+		
+		// récupération de la caption
 		String caption = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_CAPTION );
 		if( caption == null )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
+			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "]" + "[" + s_id + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
 		}
 		
-		CCommand command = new CCommand( caption );
+		CCommand command = new CCommand( i_id, caption );
 		
 		for( Object object : node.getChildren( TXMLNames.CS_ELEMENT_CODE ) )
 		{

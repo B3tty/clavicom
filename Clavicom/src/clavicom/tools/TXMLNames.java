@@ -72,6 +72,7 @@ public class TXMLNames
 	public static String CM_ATTRIBUTE_VALUE				= "value";
 	public static String CM_ATTRIBUTE_ORDER				= "order";
 	public static String CM_ATTRIBUTE_CAPTION			= "caption";
+	public static String CM_ATTRIBUTE_ID				= "id";
 	
 	// commandSet
 	public static String CS_ELEMENT_CODE				= "code";
