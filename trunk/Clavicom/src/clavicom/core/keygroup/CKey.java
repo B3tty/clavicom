@@ -120,6 +120,9 @@ public class CKey
 		
 	}
 
+	public CColor GetColorNormal(){return normal;}
+	public CColor GetColorClicked(){return clicked;}
+	public CColor GetColorEntered(){return entered;}
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
