@@ -73,27 +73,6 @@
 	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2"> d'attribut </message>
 	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3"> trouvé deux fois</message>
 	
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_2"> attendu manquant</message>
-
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_R_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_R_2"> attendu manquant</message>
-
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_G_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_G_2"> attendu manquant</message>
-
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_B_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_MISSING_COLOR_B_2"> attendu manquant</message>
-
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_R_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_R_2"> n'est pas un entier</message>
-
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_G_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_G_2"> n'est pas un entier</message>
-
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_BAD_COLOR_B_2"> n'est pas un entier</message>
-	
 	<!-- KEYCLAVICOM -->
 	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
 	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_2"> attendu manquant</message>
@@ -123,6 +102,31 @@
 	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">\" trouvée</message>
 	
 	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de racourcis] : Erreur lors de l'ajout de la commande</message>
+	
+	<!-- KEY -->
+	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
+	
+	<!-- COLOR -->
+	<message id = "EX_KEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_R_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_G_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_B_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_BAD_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_R_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEY_BAD_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_G_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_B_2"> n'est pas un entier</message>
 	 
 	<!-- ==========================================================================
 		Messages 
