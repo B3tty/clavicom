@@ -52,6 +52,11 @@ public class CSettings
 	{
 		return defaultProfilsPath;
 	}
+	
+	public static String getCommandSetsPath()
+	{
+		return "";
+	}
 
 	//----------------------------------------------------------- METHODES --//
 	public static void LoadSettings( String configFilePath ) throws Exception
