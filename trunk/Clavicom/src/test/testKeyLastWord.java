@@ -9,10 +9,10 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
+import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.gui.language.UIString;
 
-public class testKeyPrediction
+public class testKeyLastWord
 {
 	static org.jdom.Document document;
 
@@ -31,17 +31,17 @@ public class testKeyPrediction
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("Ressources\\Temp\\key_prediction.xml"));
+			document = sxb.build(new File("Ressources\\Temp\\key_lastword.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
 			racine = document.getRootElement();
 	
-			Element uneTouche = racine.getChild("keyprediction");
-			CKeyPrediction key1;
+			Element uneTouche = racine.getChild("keylastword");
+			CKeyLastWord key1;
 	
 			// Construction de la touche
-			key1 = new CKeyPrediction(uneTouche);
+			key1 = new CKeyLastWord(uneTouche);
 	
 			// Enregistrement de la touche
 			Element racine2 = new Element("blob");
@@ -52,7 +52,7 @@ public class testKeyPrediction
 			racine2.addContent(key1.buildNode(10));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("Ressources\\Temp\\key_prediction_out.xml"));
+					new FileOutputStream("Ressources\\Temp\\key_lastword_out.xml"));
 		}
 		catch (Exception e)
 		{
