@@ -44,7 +44,7 @@ public class CColor
 	{
 		if( node == null )
 		{
-			throw new Exception( "[" + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
+			throw new Exception( "[" + UIString.getUIString( "EX_COLOR_BILD" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
 		// Récupération de la couleur R
