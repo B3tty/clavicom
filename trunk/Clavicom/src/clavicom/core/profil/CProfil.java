@@ -32,21 +32,86 @@ public class CProfil
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
+	
 	CLangueUI langueUI;				// langue de l'interface utilisateur
 	CDictionnary dictionnary;		// dictionnaire
 	CKeyboardColor defultColor;		// Couleur par défaut du clavicom
 	CTransparency transparency;		// Transparence
 	CSound sound;					// Gestion du son
 	CNavigation navigation;			// Type de navigation de l'utilisateur
-	CKeyboardKey keyboard;			// Structure du clavicom
+	CKeyboard keyboard;			// Structure du clavicom
 	CMouse mouse;					// Souricom
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	String commandSet;				// nom du fichier de commandeSet de l'utilisateur
 									// (pour vérifier que c'est bien le bon commandSet que l'on charge)
+	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CProfil( String profilFilePath )
+	{
+		// chargement du fichier de profil
+		LoadProfilFile( profilFilePath );
+	}
 
 	//----------------------------------------------------------- METHODES --//	
+	
+	private void LoadProfilFile ( String profilFilePath )
+	{
+		// ======================================================================
+		// chargement du fichier de profil
+		// ======================================================================
+		
+		
+		
+		// ======================================================================
+		// chargement de la langueUI
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement du dictionnaire
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement de la couleur par defaut
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement de la transparence
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement de la gestion du son
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement de la navigation
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement du clavier
+		// ======================================================================
+		
+		// ======================================================================
+		// création de la souris
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement des mots préférés del'utilisateur
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement du nom du commande set à utiliser
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement du commandeSet
+		// ======================================================================
+		
+		// ======================================================================
+		// chargement du shortcutSet
+		// ======================================================================
+		
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
