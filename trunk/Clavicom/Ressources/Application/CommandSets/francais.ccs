@@ -715,6 +715,84 @@
 			<code order="2" action="pressed" value="VK_O"/>
 			<code order="3" action="released" value="VK_O"/>
 		</command>
+		<command id="185" search_string="ÿ" caption = "ÿ">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_ACCENT_CIRCONFLEXE"/>
+			<code order="2" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+			<code order="4" action="pressed" value="VK_Y"/>
+			<code order="5" action="released" value="VK_Y"/>
+		</command>
+		<command id="186" search_string="ã" caption = "ã">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_2"/>
+			<code order="3" action="released" value="VK_2"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_A"/>
+			<code order="7" action="released" value="VK_A"/>
+		</command>
+		<command id="186" search_string="õ" caption = "õ">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_2"/>
+			<code order="3" action="released" value="VK_2"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_O"/>
+			<code order="7" action="released" value="VK_O"/>
+		</command>
+		<command id="187" search_string="ñ" caption = "ñ">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_2"/>
+			<code order="3" action="released" value="VK_2"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_N"/>
+			<code order="7" action="released" value="VK_N"/>
+		</command>
+		<command id="187" search_string="è" caption = "è">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_7"/>
+			<code order="3" action="released" value="VK_7"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_E"/>
+			<code order="7" action="released" value="VK_E"/>
+		</command>
+		<command id="188" search_string="ì" caption = "ì">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_7"/>
+			<code order="3" action="released" value="VK_7"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_I"/>
+			<code order="7" action="released" value="VK_I"/>
+		</command>
+		<command id="189" search_string="ò" caption = "ò">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_7"/>
+			<code order="3" action="released" value="VK_7"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_O"/>
+			<code order="7" action="released" value="VK_O"/>
+		</command>
+		<command id="190" search_string="ù" caption = "ù">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_7"/>
+			<code order="3" action="released" value="VK_7"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+			<code order="6" action="pressed" value="VK_U"/>
+			<code order="7" action="released" value="VK_U"/>
+		</command>
 	</section>
 	<section name = "Chiffres">
 		<command id="137" search_string="1" caption = "1">
