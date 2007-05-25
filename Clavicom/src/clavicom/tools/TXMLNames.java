@@ -46,6 +46,7 @@ public class TXMLNames
 	
 	// CKeyString
 	public static String KY_ELEMENT_STRING		 		= "keystring";
+	public static String KY_ELEMENT_STRING_BASESTRING	= "basekeystring";
 	
 	// CKeyCharacter
 	public static String KY_ELEMENT_CHARACTER		 	= "keycharacter";
@@ -67,8 +68,17 @@ public class TXMLNames
 	
 	// CKeyLevel
 	public static String KY_ELEMENT_KEYLEVEL		 	= "keylevel";
-	public static String KY_ELEMENT_LEVEL		 	= "level";
+	public static String KY_ELEMENT_LEVEL		 		= "level";
 
+	// CKeyDynamicString
+	public static String KY_ELEMENT_DYNAMIC_ORDER		= "order_dynamic";
+	
+	// CKeyPrediction
+	public static String KY_ELEMENT_PREDICTION	 		= "keyprediction";
+
+	// CKeyLastWord
+	public static String KY_ELEMENT_LASTWORD	 		= "keylastword";
+	
 	// command
 	public static String CM_ATTRIBUTE_ACTION			= "action";
 	public static String CM_ATTRIBUTE_VALUE				= "value";
