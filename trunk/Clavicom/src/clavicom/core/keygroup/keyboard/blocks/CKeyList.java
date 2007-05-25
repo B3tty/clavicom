@@ -27,6 +27,8 @@ package clavicom.core.keygroup.keyboard.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jdom.Attribute;
 import org.jdom.Element;
 
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
@@ -120,7 +122,50 @@ public class CKeyList
 				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_STRING" )+ "]" + ex.getMessage() );
 			}
 		}
-		
+		else if( node.getName().equals( TXMLNames.KY_ELEMENT_LEVEL ) )
+		{
+			try
+			{
+				keyboardKey = new CKeyString( node );
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_LEVEL" )+ "]" + ex.getMessage() );
+			}
+		}
+		else if( node.getName().equals( TXMLNames.KY_ELEMENT_DYNAMIC_ORDER ) )
+		{
+			try
+			{
+				keyboardKey = new CKeyString( node );
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_DYNAMIC_STRING" )+ "]" + ex.getMessage() );
+			}
+		}
+		else if( node.getName().equals( TXMLNames.KY_ELEMENT_LASTWORD ) )
+		{
+			try
+			{
+				keyboardKey = new CKeyString( node );
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_LAST_WORD" )+ "]" + ex.getMessage() );
+			}
+		}
+		else if( node.getName().equals( TXMLNames.KY_ELEMENT_PREDICTION ) )
+		{
+			try
+			{
+				keyboardKey = new CKeyString( node );
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_PREDICTION" )+ "]" + ex.getMessage() );
+			}
+		}
 		else
 		{
 			throw new Exception( UIString.getUIString( "EX_KEYLIST_UNKNOWN_KEY_TYPE" )+ " : " + node.getName() );
@@ -197,16 +242,26 @@ public class CKeyList
 	}
 	
 	
-	public Element buildNode()
+	public Element buildNode( int order ) throws Exception
 	{
 		Element list = new Element( TXMLNames.BL_ELEMENT_KEY_LIST );
+		
+		Attribute order_att = new Attribute( TXMLNames.BL_ATTRIBUTE_ORDER, String.valueOf( order ) );
+		list.setAttribute( order_att );
 		
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
 			CKeyboardKey keyboardKey = keyList.get( i );
 			if( keyboardKey != null )
 			{
-				
+				try
+				{
+					list.addContent( keyboardKey.buildNode( i ) );
+				}
+				catch ( Exception e )
+				{
+					throw new Exception("[key:" + i + "]" + e.getMessage());
+				}
 			}
 		}
 		

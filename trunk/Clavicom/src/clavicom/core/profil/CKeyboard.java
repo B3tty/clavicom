@@ -101,7 +101,7 @@ public class CKeyboard
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public Element BuildNode()
+	public Element BuildNode() throws Exception
 	{
 		Element keyboard = new Element( TXMLNames.PR_ELEMENT_KEYBOARD );
 		
@@ -111,7 +111,14 @@ public class CKeyboard
 			CKeyGroup keyGroup = keyGroupList.get( i );
 			if( keyGroup != null )
 			{
-				keyboard.addContent( keyGroup.buildNode() );
+				try
+				{
+					keyboard.addContent( keyGroup.buildNode( i ) );
+				}
+				catch ( Exception e )
+				{
+					throw new Exception("[group:" + i + "]" + e.getMessage());
+				}
 			}
 		}
 		
