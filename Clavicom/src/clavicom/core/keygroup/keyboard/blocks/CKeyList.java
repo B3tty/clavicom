@@ -29,7 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdom.Element;
 
+import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
@@ -69,7 +74,7 @@ public class CKeyList
 		{
 			try
 			{
-				// keyboardKey = new CKeyCharacter( node );
+				keyboardKey = new CKeyCharacter( node );
 			}
 			catch (Exception ex)
 			{
@@ -89,7 +94,7 @@ public class CKeyList
 		{
 			try
 			{
-				// keyboardKey = new CKeyLauncher( node );
+				keyboardKey = new CKeyLauncher( node );
 			}
 			catch (Exception ex)
 			{
@@ -99,7 +104,7 @@ public class CKeyList
 		{
 			try
 			{
-				// keyboardKey = new CKeyShortcut( node );
+				keyboardKey = new CKeyShortcut( node );
 			}
 			catch (Exception ex)
 			{
@@ -109,13 +114,14 @@ public class CKeyList
 		{
 			try
 			{
-				// keyboardKey = new CKeyString( node );
+				keyboardKey = new CKeyString( node );
 			}
 			catch (Exception ex)
 			{
 				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_STRING" )+ "]" + ex.getMessage() );
 			}
 		}
+		
 		else
 		{
 			throw new Exception( UIString.getUIString( "EX_KEYLIST_UNKNOWN_KEY_TYPE" )+ " : " + node.getName() );
@@ -189,5 +195,22 @@ public class CKeyList
 		}
 		
 		return keylist;
+	}
+	
+	
+	public Element buildNode()
+	{
+		Element list = new Element( TXMLNames.BL_ELEMENT_KEY_LIST );
+		
+		for( int i = 0 ; i < keyList.size() ; ++i )
+		{
+			CKeyboardKey keyboardKey = keyList.get( i );
+			if( keyboardKey != null )
+			{
+				
+			}
+		}
+		
+		return list;
 	}
 }
