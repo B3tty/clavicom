@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdom.Element;
 
-import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;

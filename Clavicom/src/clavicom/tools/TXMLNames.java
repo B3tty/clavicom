@@ -46,7 +46,7 @@ public class TXMLNames
 	
 	// CKeyString
 	public static String KY_ELEMENT_STRING		 		= "keystring";
-	public static String KY_ELEMENT_STRING_BASESTRING	= "basekeystring";
+	public static String KY_ELEMENT_STRING_BASESTRING	= "base_string";
 	
 	// CKeyCharacter
 	public static String KY_ELEMENT_CHARACTER		 	= "keycharacter";
