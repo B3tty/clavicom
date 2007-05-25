@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: tesCommandSet.java
-			Creation date		: 22 mai 07
+			Filename			: TKeyLevelEnum.java
+			Creation date		: 25 mai 07
 		
 			Project				: Clavicom
-			Package				: test
+			Package				: clavicom.tools
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,49 +23,24 @@
 
 +-----------------------------------------------------------------------------*/
 
-package test;
+package clavicom.tools;
 
-import clavicom.core.keygroup.keyboard.command.CCode;
-import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
-import clavicom.tools.TKeyLevelEnum;
-
-public class testCommandSet
+public class TKeyLevelEnum
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
+	//	 Liste des valeurs
+    public final static int CTRL			= 0;
+    public final static int ALT_GR			= 1;
+    public final static int NORMAL			= 2;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-
-	//----------------------------------------------------------- METHODES --//	
-	public static void main(String[] args)
+	public TKeyLevelEnum()
 	{
-
-		String chemin = "Ressources\\Application\\CommandSets\\francais.ccs";
-		try
-		{
-			CCommandSet.CreateInstance( chemin );
-			
-			CSection section = CCommandSet.GetInstance().GetSection("Spéciaux");
-
-			CCommand command = section.GetCommand( "&" );
-			
-			for( int i = 0 ; i < command.Size() ; ++i )
-			{
-				CCode code = command.GetCode(i);
-				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
-			}
-			
-		}
-		catch ( Exception e )
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		// TODO Auto-generated constructor stub
 	}
+	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

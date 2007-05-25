@@ -40,13 +40,15 @@ public class CCommand
 	//---------------------------------------------------------- VARIABLES --//
 	String caption;
 	int id;
+	String search_string;
 	List<CCode> CodeList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CCommand( int myId, String myCaption )
+	public CCommand( int myId, String mySearchString, String myCaption )
 	{
 		caption = myCaption;
 		id = myId;
+		search_string = mySearchString;
 		CodeList = new ArrayList<CCode>();
 	}
 
@@ -62,6 +64,7 @@ public class CCommand
 	
 	public String GetCaption(){return caption;}
 	public int GetID(){return id;}
+	public String GetSearchString(){return search_string;}
 	
 	/**
 	 * Donne le code correspondant à l'order donné
@@ -106,6 +109,14 @@ public class CCommand
 			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_id + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ) );
 		}
 		
+		// récupération de la search_string
+		String search_string = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_SEARCH_STRING );
+		if( search_string == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "]" + "[ id:" + s_id + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_SEARCH_STRING);
+		}
+		
+		
 		// récupération de la caption
 		String caption = node.getAttributeValue( TXMLNames.CM_ATTRIBUTE_CAPTION );
 		if( caption == null )
@@ -113,7 +124,7 @@ public class CCommand
 			throw new Exception("[" + UIString.getUIString( "EX_COMMAND_BUILD_COMMANDE" )+ "]" + "[ id:" + s_id + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.CM_ATTRIBUTE_CAPTION);
 		}
 		
-		CCommand command = new CCommand( i_id, caption );
+		CCommand command = new CCommand( i_id, search_string, caption );
 		
 		for( Object object : node.getChildren( TXMLNames.CS_ELEMENT_CODE ) )
 		{

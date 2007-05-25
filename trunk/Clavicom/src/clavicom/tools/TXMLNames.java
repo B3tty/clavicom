@@ -64,6 +64,10 @@ public class TXMLNames
 	// CKeyLauncher
 	public static String KY_ELEMENT_LAUNCHER		 	= "keylauncher";
 	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
+	
+	// CKeyLevel
+	public static String KY_ELEMENT_KEYLEVEL		 	= "keylevel";
+	public static String KY_ELEMENT_LEVEL		 	= "level";
 
 	// command
 	public static String CM_ATTRIBUTE_ACTION			= "action";
@@ -71,6 +75,7 @@ public class TXMLNames
 	public static String CM_ATTRIBUTE_ORDER				= "order";
 	public static String CM_ATTRIBUTE_CAPTION			= "caption";
 	public static String CM_ATTRIBUTE_ID				= "id";
+	public static String CM_ATTRIBUTE_SEARCH_STRING		= "search_string";
 	
 	// commandSet
 	public static String CS_ELEMENT_CODE				= "code";
