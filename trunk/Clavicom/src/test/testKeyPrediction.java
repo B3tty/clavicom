@@ -8,11 +8,11 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.gui.language.UIString;
 
-public class testKeyLevel
+public class testKeyPrediction
 {
 	static org.jdom.Document document;
 
@@ -24,37 +24,35 @@ public class testKeyLevel
 		{
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
 			// On crée une instance de SAXBuilder
 			SAXBuilder sxb = new SAXBuilder();
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("Ressources\\Temp\\key_level.xml"));
+			document = sxb.build(new File("Ressources\\Temp\\key_prediction.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
 			racine = document.getRootElement();
 	
-			Element uneTouche = racine.getChild("keylevel");
-			CKeyLevel key1;
+			Element uneTouche = racine.getChild("keyshortcut");
+			CKeyPrediction key1;
 	
 			// Construction de la touche
-			key1 = new CKeyLevel(uneTouche);
-			
-			System.out.println(key1.GetLevel());
+			key1 = new CKeyPrediction(uneTouche);
 	
 			// Enregistrement de la touche
-			Element racine2 = new Element("bla_bla_bla");
+			Element racine2 = new Element("blob");
 	
 			// On crée un nouveau Document JDOM basé sur la racine que l'on vient de
 			// créer
 			org.jdom.Document documentOut = new org.jdom.Document(racine2);
-			racine2.addContent(key1.buildNode(11));
+			racine2.addContent(key1.buildNode(10));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("Ressources\\Temp\\key_level_out.xml"));
+					new FileOutputStream("Ressources\\Temp\\key_prediction_out.xml"));
 		}
 		catch (Exception e)
 		{

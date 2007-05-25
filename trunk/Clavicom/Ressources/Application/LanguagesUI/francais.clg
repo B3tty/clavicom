@@ -112,8 +112,27 @@
 	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
 	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
 	
+	<!-- KEYDYNAMICSTRING -->
+	<message id = "EX_KEYDYNAMICSTRING_COMMANDSET_NOT_LOADED">[Construction de touche chaîne dynamique] Le jeu de commmande n'est pas chargé."</message>
 	
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_1">[Construction de touche chaîne dynamique] La chaîne "</message>
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_2">" ne correpond à aucune commande du jeu de commande.</message>
 	
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique]</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique] Attribut "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">" attendu manquant</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_1">[Construction de touche chaîne dynamique] Attribut "</message>
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_2">" attendu manquant</message>
+
+	<message id = "EX_KEYDYNAMICSTRING_BAS_ORDER_1">[Construction de touche chaîne dynamique] Attribut ordre "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BAD_ORDER_2">" ne peut pas être converti en entier</message>
+		
+	<!-- KEYSTRING -->
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_1">[Construction de touche chaîne] Element "</message>
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_2">" manquant</message>
+		
 	<!-- SHORTCUTSET -->
 	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
 	<message id = "EX_SHORTCUTSET_BAD_PATH_2">\"</message>

@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: tesCommandSet.java
-			Creation date		: 22 mai 07
+			Filename			: CKeyPrediction.java
+			Creation date		: 25 mai 07
 		
 			Project				: Clavicom
-			Package				: test
+			Package				: clavicom.core.keygroup.keyboard.key
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,48 +23,44 @@
 
 +-----------------------------------------------------------------------------*/
 
-package test;
+package clavicom.core.keygroup.keyboard.key;
 
-import clavicom.core.keygroup.keyboard.command.CCode;
-import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
+import org.jdom.Element;
 
-public class testCommandSet
+import clavicom.core.keygroup.CColor;
+import clavicom.tools.TPoint;
+import clavicom.tools.TXMLNames;
+
+public class CKeyLastWord extends CKeyDynamicString
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-
-	//----------------------------------------------------------- METHODES --//	
-	public static void main(String[] args)
+	public CKeyLastWord(CColor myColorNormal, CColor myColorClicked,
+			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
 	{
-
-		String chemin = "Ressources\\Application\\CommandSets\\francais.ccs";
-		try
-		{
-			CCommandSet.CreateInstance( chemin );
-			
-			CSection section = CCommandSet.GetInstance().GetSection("Spéciaux");
-
-			CCommand command = section.GetCommand( "&" );
-			
-			for( int i = 0 ; i < command.Size() ; ++i )
-			{
-				CCode code = command.GetCode(i);
-				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
-			}
-			
-		}
-		catch ( Exception e )
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
+				myPointMax);
+	}
+	
+	public CKeyLastWord (Element eltKeyLastWord) throws Exception
+	{
+		super(eltKeyLastWord);
+		
+		// Rien a ajouter
+	}
+	
+	//----------------------------------------------------------- METHODES --//	
+	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
+	{
+		// Rien à rajouter		
 	}
 
+	public String getElementName()
+	{
+		return TXMLNames.KY_ELEMENT_PREDICTION;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
