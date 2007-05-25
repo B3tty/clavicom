@@ -100,7 +100,6 @@ public class TXMLNames
 	// gestion des blocs
 	public static String BL_ATTRIBUTE_CAPTION			= "caption";
 	public static String BL_ATTRIBUTE_VISIBLE			= "visible";
-	public static String BL_ELEMENT_KEY_GROUP			= "keygroupe";
 	public static String BL_ELEMENT_KEY_LIST			= "keylist";
 	public static String BL_ATTRIBUTE_ORDER				= "order";
 	
@@ -121,5 +120,27 @@ public class TXMLNames
 	// Settings
 	public static String SE_ELEMENT_DEFAULT_PROFIL		= "defaultProfilsPath";
 	public static String SE_ELEMENT_SETTINGS			= "settings";
+	
+	// LangagueUI
+	public static String PR_ELEMENT_LANGUAGE_UI		= "language_ui";
+	
+	public static String PR_ELEMENT_DICTIONARY			= "dictionary";
+	
+	public static String PR_ELEMENT_KEYBOARD			= "keyboard";
+	public static String PR_ELEMENT_KEY_GROUP			= "keygroupe";
+	
+	public static String PR_ELEMENT_KEYBOARD_COLOR		= "keyboard_color";
+	public static String PR_ELEMENT_KEYBOARD_COLOR_BACK = "back_color";
+	public static String PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_NORMAL = "default_normal";
+	public static String PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED = "default_clicked";
+	public static String PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_ENTERED = "default_entered";
+	
+	public static String PR_ELEMENT_NAVIGATION			= "navigation";
+	
+	public static String PR_ELEMENT_PREFERED_WORDS		= "prefered_words";
+	
+	public static String PR_ELEMENT_SOUND				= "sound";
+	
+	public static String PR_ELEMENT_TRANSPARENCY		= "transparency";
 	
 }

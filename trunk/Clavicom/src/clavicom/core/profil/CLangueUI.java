@@ -25,14 +25,38 @@
 
 package clavicom.core.profil;
 
+import org.jdom.Element;
+
+import clavicom.gui.language.UIString;
+
 public class CLangueUI
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-
+	//---------------------------------------------------------- VARIABLES --//
+	String languageFileName;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	public CLangueUI( Element node ) throws Exception
+	{
+		if( node == null )
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_LANGUAGE_UI_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+		}
+		
+		languageFileName = node.getText();
+		
+		if( languageFileName == "" )
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_LANGUAGE_UI_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+		}
+	}
 
+	public String getLanguageFileName()
+	{
+		return languageFileName;
+	}
+	
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//

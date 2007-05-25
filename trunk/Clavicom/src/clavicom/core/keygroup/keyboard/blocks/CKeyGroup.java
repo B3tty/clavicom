@@ -28,6 +28,7 @@ package clavicom.core.keygroup.keyboard.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom.Attribute;
 import org.jdom.Element;
 
 import clavicom.gui.language.UIString;
@@ -128,7 +129,7 @@ public class CKeyGroup
 					}
 					catch (Exception ex)
 					{
-						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ));
+						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
 					
@@ -152,5 +153,26 @@ public class CKeyGroup
 		}
 		
 		return keyGroup;
+	}
+
+	public Element buildNode()
+	{
+		Element key_groupe = new Element( TXMLNames.PR_ELEMENT_KEY_GROUP );
+		
+		// caption
+		Attribute caption_att = new Attribute( TXMLNames.BL_ATTRIBUTE_CAPTION, caption );
+		key_groupe.setAttribute( caption_att );
+		
+		// lists
+		for( int i = 0 ; i < keyListList.size() ; ++i )
+		{
+			CKeyList list = keyListList.get( i );
+			if( list != null )
+			{
+				key_groupe.addContent( list.buildNode() );
+			}
+		}
+		
+		return key_groupe;
 	}
 }

@@ -178,6 +178,14 @@
 	<!-- keylevel -->
 	<message id = "EX_KEYLEVEL_BUILD">Chargement d'une touche keylevel </message>
 	
+	<!-- Profil -->
+	<message id = "EX_LANGUAGE_UI_BUILD">Chargement du language de l'interface</message>
+	<message id = "EX_LANGUAGE_UI_STRING_NOT_FOUND">Le fichier de language utilisateur n'est pas précisé</message>
+	
+	<message id = "EX_KEYBOARD_COLOR_BUILD">Chargement de la couleur du clavier</message>
+	
+	<message id = "EX_KEYBOARD_BUILD">Chargement du clavier</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

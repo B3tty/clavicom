@@ -25,15 +25,98 @@
 
 package clavicom.core.profil;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jdom.Element;
+
+import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
+import clavicom.gui.language.UIString;
+import clavicom.tools.TXMLNames;
+
 public class CKeyboard
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
+	List< CKeyGroup > keyGroupList;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CKeyboard( Element node ) throws Exception
+	{
+		if ( node == null )
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+		}
+		
+		keyGroupList = new ArrayList<CKeyGroup>();
+		
+		// ============================================================
+		// Récupération de la liste des groupes
+		// ============================================================
+		List groupeList = node.getChildren( TXMLNames.PR_ELEMENT_KEY_GROUP );
+		for( Object object : groupeList )
+		{
+			if( object instanceof Element )
+			{
+				Element element = (Element)object;
+				if( element != null )
+				{
+					// ============================================================
+					// Récupération de l'order
+					// ============================================================
+					String s_order = element.getAttributeValue( TXMLNames.BL_ATTRIBUTE_ORDER );
+					if( s_order == null )
+					{
+						throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.BL_ATTRIBUTE_ORDER);
+					}
+					int i_order;
+					try
+					{
+						i_order = Integer.parseInt( s_order );
+					}
+					catch (Exception ex)
+					{
+						throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+					}
+					
+					
+					
+					// récupération du groupe
+					CKeyGroup key_group = null;
+					try
+					{
+						key_group = CKeyGroup.BuildKeyGroup( element );
+					}
+					catch(Exception ex)
+					{
+						throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+					}
+					
+					keyGroupList.add( i_order, key_group );
+				}
+			}
+		}
+	}
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
+	
+	public Element BuildNode()
+	{
+		Element keyboard = new Element( TXMLNames.PR_ELEMENT_KEYBOARD );
+		
+		// pour tous les groupes
+		for ( int i = 0 ; i < keyGroupList.size() ; ++i )
+		{
+			CKeyGroup keyGroup = keyGroupList.get( i );
+			if( keyGroup != null )
+			{
+				keyboard.addContent( keyGroup.buildNode() );
+			}
+		}
+		
+		return keyboard;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

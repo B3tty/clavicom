@@ -37,7 +37,7 @@ public class CProfil
 	CTransparency transparency;		// Transparence
 	CSound sound;					// Gestion du son
 	CNavigation navigation;			// Type de navigation de l'utilisateur
-	CKeyboard keyboard;			// Structure du clavicom
+	CKeyboard keyboard;				// Structure du clavicom
 	CMouse mouse;					// Souricom
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	String commandSet;				// nom du fichier de commandeSet de l'utilisateur
