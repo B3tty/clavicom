@@ -25,8 +25,6 @@
 
 package clavicom.core.profil;
 
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
-
 public class CProfil
 {
 	//--------------------------------------------------------- CONSTANTES --//
