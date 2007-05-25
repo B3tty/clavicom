@@ -52,7 +52,7 @@ public class CKey
 	{
 		if( node == null )
 		{
-			throw new Exception( UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
+			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
 		}
 		
 		// ===============================================================
