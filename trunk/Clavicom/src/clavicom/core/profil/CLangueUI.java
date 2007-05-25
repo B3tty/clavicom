@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CMouse.java
-			Creation date		: 24 mai 07
+			Filename			: CLangueUI.java
+			Creation date		: 25 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.mouse
+			Package				: clavicom.core.profil
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,37 +23,17 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keygroup.mouse;
+package clavicom.core.profil;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class CMouse
+public class CLangueUI
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	List<CMouseKey> mouseKeyList;
+	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouse()
-	{
-		mouseKeyList = new ArrayList<CMouseKey>();
-	}
+	//------------------------------------------------------ CONSTRUCTEURS --//	
 
-	//----------------------------------------------------------- METHODES --//
-	public void AddMouseKey( CMouseKey mouseKey )
-	{
-		mouseKeyList.add( mouseKey );
-	}
-	
-	public CMouseKey GetMouseKey( int index )
-	{
-		return mouseKeyList.get( index );
-	}
-	
-	public int size(){return mouseKeyList.size();}
+	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
