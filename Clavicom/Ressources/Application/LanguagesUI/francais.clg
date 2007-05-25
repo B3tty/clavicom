@@ -47,6 +47,10 @@
 	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
 	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
 	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
+	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Chaine de caractere dynamique</message>
+	<message id = "EX_KEYLIST_TYPE_LAST_WORD">Dernier mot</message>
+	<message id = "EX_KEYLIST_TYPE_PREDICTION">Prediction</message>
+	<message id = "EX_KEYLIST_TYPE_LEVEL">Gestion des niveaux</message>
 	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Type de touche inconnu</message>
 	<message id = "EX_KEYLIST_BUILD_LIST">Construction d'une liste</message>
 	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
@@ -148,6 +152,7 @@
 	<message id = "EX_KEY_SAVE">Sauvegarde d'une touche </message>
 	
 	<!-- COLOR -->
+	<message id = "EX_COLOR_BILD">Chargement de la couleur </message>
 	<message id = "EX_KEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
 	<message id = "EX_KEY_MISSING_COLOR_2"> attendu manquant</message>
 

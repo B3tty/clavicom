@@ -155,7 +155,7 @@ public class CKeyGroup
 		return keyGroup;
 	}
 
-	public Element buildNode()
+	public Element buildNode( int order ) throws Exception
 	{
 		Element key_groupe = new Element( TXMLNames.PR_ELEMENT_KEY_GROUP );
 		
@@ -163,13 +163,29 @@ public class CKeyGroup
 		Attribute caption_att = new Attribute( TXMLNames.BL_ATTRIBUTE_CAPTION, caption );
 		key_groupe.setAttribute( caption_att );
 		
+		// order
+		Attribute order_att = new Attribute( TXMLNames.BL_ATTRIBUTE_ORDER, String.valueOf( order ) );
+		key_groupe.setAttribute( order_att );
+		
+		// visible
+		Attribute visible_att = new Attribute( TXMLNames.BL_ATTRIBUTE_VISIBLE, String.valueOf( visible ) );
+		key_groupe.setAttribute( visible_att );
+		
 		// lists
 		for( int i = 0 ; i < keyListList.size() ; ++i )
 		{
 			CKeyList list = keyListList.get( i );
 			if( list != null )
 			{
-				key_groupe.addContent( list.buildNode() );
+				try
+				{
+					key_groupe.addContent( list.buildNode( i ) );
+				}
+				catch ( Exception e )
+				{
+					throw new Exception("[list:" + i + "]" + e.getMessage());
+				}
+				
 			}
 		}
 		
