@@ -156,6 +156,9 @@
 	<message id = "EX_SETTINGS_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
 	<message id = "EX_SETTINGS">Gestion de la configuration de l'application</message>
 	
+	<!-- keylevel -->
+	<message id = "EX_KEYLEVEL_BUILD">Chargement d'une touche keylevel </message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
