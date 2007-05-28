@@ -1,0 +1,85 @@
+<profil>
+	<navigation>
+		<type value = "CLICK_TEMPORISE"/>
+		<temporisation value = "152"/>
+		<rollover active = "true"/>
+	</navigation>
+	<prefered_words>
+		<prefered_word frequency="5">coucou</prefered_word>
+		<prefered_word frequency="10">salut</prefered_word>
+	</prefered_words>
+	<sound>
+		<on_click active = "true"/>
+		<on_survol active = "true"/>
+		<on_defil active = "false"/>
+	</sound>
+	<transparency>
+		<keyboard_transparency>50</keyboard_transparency>
+		<key_transparency>20</key_transparency>
+	</transparency>
+	<keyboard>
+		<groupe order="0">
+			<list order="0">
+				<keycharacter order="15" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<commands>
+						<command_normal id="1"></command_normal>
+						<command_shift id="2"></command_shift>
+						<command_altgr id="3"></command_altgr>
+					</commands>
+				</keycharacter>
+			</list>
+		</groupe>
+	</keyboard>
+	<language_ui>francais.clg</language_ui>
+	<commandSet_name>francais.css</commandSet_name>
+	<dictionary_name>francais.cdc</dictionary_name>
+	<keyboard_color>
+		<back_color>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</back_color>
+	</keyboard_color>
+	<default_normal>
+		<red>215</red>
+		<green>100</green>
+		<blue>98</blue>
+	</default_normal>
+	<default_clicked>
+		<red>215</red>
+		<green>100</green>
+		<blue>98</blue>
+	</default_clicked>
+	<default_entered>
+		<red>215</red>
+		<green>100</green>
+		<blue>98</blue>
+	</default_entered>
+</profil>

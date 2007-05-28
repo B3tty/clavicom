@@ -1,4 +1,4 @@
-<all>
+<profil>
 	<keycharacter order="15" >
 		<coordinates>
 			<point position="min">
@@ -33,4 +33,4 @@
 			<command_altgr id="3"></command_altgr>
 		</commands>
 	</keycharacter>
-</all>
+</profil>
