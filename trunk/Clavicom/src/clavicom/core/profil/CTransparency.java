@@ -60,7 +60,7 @@ public class CTransparency
 	{
 		if( node == null )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
 		}
 		
 		// ==================================================================
@@ -69,7 +69,7 @@ public class CTransparency
 		String s_keyboardTransparency = node.getChildText( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
 		if( s_keyboardTransparency == null )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
+			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
 		}
 		
 		try
@@ -78,7 +78,7 @@ public class CTransparency
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 		}
 		
 		// ==================================================================
@@ -87,7 +87,7 @@ public class CTransparency
 		String s_keyTransparency = node.getChildText( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
 		if( s_keyTransparency == null )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
+			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
 		}
 		
 		try
@@ -96,7 +96,7 @@ public class CTransparency
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 		}
 	}
 

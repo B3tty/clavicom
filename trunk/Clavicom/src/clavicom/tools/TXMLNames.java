@@ -138,6 +138,8 @@ public class TXMLNames
 	public static String PR_ELEMENT_NAVIGATION			= "navigation";
 	
 	public static String PR_ELEMENT_PREFERED_WORDS		= "prefered_words";
+	public static String PR_ELEMENT_PREFERED_WORD		= "prefered_word";
+	public static String PR_ATTRIBUTES_PREFERED_WORD_FREQUENCY	= "frequency";
 	
 	public static String PR_ELEMENT_SOUND				= "sound";
 	public static String PR_ELEMENT_SOUND_ON_DEFIL		= "on_defil";

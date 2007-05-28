@@ -52,14 +52,14 @@ public class CDictionnaryName
 	{
 		if( node == null )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
 		}
 		
 		dictionaryName = node.getText();
 		
 		if( dictionaryName.equals( "" ))
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYBOARD_DICTIONARY_NAME_MISSING") );
+			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_PROFIL_DICTIONARY_NAME_MISSING") );
 		}
 	}
 

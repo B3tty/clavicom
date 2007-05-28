@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blob>
+  <prefered_words>
+    <prefered_word coucou="5">coucou</prefered_word>
+    <prefered_word salut="10">salut</prefered_word>
+  </prefered_words>
+</blob>
+
