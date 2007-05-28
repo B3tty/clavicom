@@ -34,8 +34,6 @@ import clavicom.tools.TXMLNames;
 
 public class CKeyLevel extends CKeyboardKey
 {
-
-	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
@@ -56,7 +54,7 @@ public class CKeyLevel extends CKeyboardKey
 
 		level = myLevel;
 	}
-	
+
 	public CKeyLevel( Element node ) throws Exception
 	{
 		super( node );

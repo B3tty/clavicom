@@ -124,7 +124,7 @@ public class TXMLNames
 	// LangagueUI
 	public static String PR_ELEMENT_LANGUAGE_UI		= "language_ui";
 	
-	public static String PR_ELEMENT_DICTIONARY			= "dictionary";
+	public static String PR_ELEMENT_DICTIONARY_NAME			= "dictionary_name";
 	
 	public static String PR_ELEMENT_KEYBOARD			= "keyboard";
 	public static String PR_ELEMENT_KEY_GROUP			= "keygroupe";
