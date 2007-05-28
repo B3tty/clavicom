@@ -25,20 +25,21 @@
 
 package clavicom.core.profil;
 
+import clavicom.core.keygroup.mouse.CMouse;
+
 public class CProfil
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
 	
-	CLangueUIName langueUI;				// Langue de l'interface utilisateur
+	CLangueUIName langueUI;			// Langue de l'interface utilisateur
 	CDictionnaryName dictionnary;	// dictionnaire
 	CKeyboardColor defaultColor;	// Couleur par défaut du clavicom
 	CTransparency transparency;		// Transparence
 	CSound sound;					// Gestion du son
 	CNavigation navigation;			// Type de navigation de l'utilisateur
 	CKeyboard keyboard;				// Structure du clavicom
-	CMouse mouse;					// Souricom
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	String commandSet;				// nom du fichier de commandeSet de l'utilisateur
 									// (pour vérifier que c'est bien le bon commandSet que l'on charge)
@@ -100,11 +101,7 @@ public class CProfil
 		// ======================================================================
 		// chargement du clavier
 		// ======================================================================
-		
-		// ======================================================================
-		// création de la souris
-		// ======================================================================
-		
+
 		// ======================================================================
 		// chargement des mots préférés del'utilisateur
 		// ======================================================================
