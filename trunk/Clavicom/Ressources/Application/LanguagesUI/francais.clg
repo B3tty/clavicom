@@ -200,12 +200,30 @@
 	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">[Chargement des sons] La chaîne "</message>
 	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">" ne peut être convertie en booléen.</message>		
 
-	<message id = "EX_PROFIL_BUILD_TRANSPARENCY">Chargement de la transparence</message>
+	<message id = "EX_KEYBOARD_BUILD_TRANSPARENCY">Chargement de la transparence</message>
 	
 	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
 	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Impossible de trouver le nom du dictionnaire utilisé</message>
 	
 	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">Chargement des mots préférés de l'utilisateur</message>
+	
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_1">[Chargement de la navigation] Element "</message>
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_2">" attendu manquant.</message>
+	
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Chargement de la navigation] Attribut "</message>
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
+
+	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_TYPE_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_TYPE_3">" valide.</message>		
+
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_3">" valide.</message>
+	
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>	
 	
 	<!-- ==========================================================================
 		Messages 
