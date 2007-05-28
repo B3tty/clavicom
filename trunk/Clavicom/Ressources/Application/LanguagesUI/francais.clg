@@ -191,6 +191,8 @@
 	
 	<message id = "EX_KEYBOARD_BUILD">Chargement du clavier</message>
 	
+	<message id = "EX_KEYBOARD_BUILD_TRANSPARENCY">Chargement de la transparence</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

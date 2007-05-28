@@ -142,5 +142,7 @@ public class TXMLNames
 	public static String PR_ELEMENT_SOUND				= "sound";
 	
 	public static String PR_ELEMENT_TRANSPARENCY		= "transparency";
+	public static String PR_ELEMENT_TRANSPARENCY_KEYBOARD	= "keyboard_transparency";
+	public static String PR_ELEMENT_TRANSPARENCY_KEY	= "key_transparency";
 	
 }
