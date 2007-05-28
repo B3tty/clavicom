@@ -121,10 +121,12 @@ public class TXMLNames
 	public static String SE_ELEMENT_DEFAULT_PROFIL		= "defaultProfilsPath";
 	public static String SE_ELEMENT_SETTINGS			= "settings";
 	
-	// LangagueUI
+	// Profil
 	public static String PR_ELEMENT_LANGUAGE_UI		= "language_ui";
 	
 	public static String PR_ELEMENT_DICTIONARY_NAME			= "dictionary_name";
+	
+	public static String PR_ELEMENT_COMMANDSET_NAME			= "commandset_name";
 	
 	public static String PR_ELEMENT_KEYBOARD			= "keyboard";
 	public static String PR_ELEMENT_KEY_GROUP			= "keygroupe";

@@ -227,6 +227,9 @@
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>	
 	
+	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Chargement du nom du commandSet</message>
+	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Impossible de trouver le nom du commandSet utilisé</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
