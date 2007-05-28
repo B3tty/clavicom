@@ -122,6 +122,8 @@ public class TXMLNames
 	public static String SE_ELEMENT_SETTINGS			= "settings";
 	
 	// Profil
+	public static String PR_ELEMENT_PROFIL		= "profil";
+	
 	public static String PR_ELEMENT_LANGUAGE_UI		= "language_ui";
 	
 	public static String PR_ELEMENT_DICTIONARY_NAME			= "dictionary_name";
