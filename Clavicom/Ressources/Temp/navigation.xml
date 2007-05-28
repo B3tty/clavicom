@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <père>
 	<navigation>
-		<type value = "CLICK_TEMPORISE"/>
-		<temporisation value = "152"/>
-		<rollover active = "true"/>
+		<type value="CLICK_TEMPORISE"/>
+		<temporisation value="152"/>
+		<rollover active="true"/>
 	</navigation>
 </père>
