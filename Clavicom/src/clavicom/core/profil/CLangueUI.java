@@ -28,6 +28,7 @@ package clavicom.core.profil;
 import org.jdom.Element;
 
 import clavicom.gui.language.UIString;
+import clavicom.tools.TXMLNames;
 
 public class CLangueUI
 {
@@ -52,12 +53,22 @@ public class CLangueUI
 		}
 	}
 
+	
+	
+	//----------------------------------------------------------- METHODES --//
 	public String getLanguageFileName()
 	{
 		return languageFileName;
 	}
 	
-	//----------------------------------------------------------- METHODES --//	
+	public Element buildNode()
+	{
+		Element languageUI = new Element( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		
+		languageUI.setText( languageFileName );
+		
+		return languageUI;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
