@@ -34,8 +34,6 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.profil.CTransparency;
 import clavicom.gui.language.UIString;
 

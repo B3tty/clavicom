@@ -25,7 +25,7 @@
 
 package clavicom.core.profil;
 
-public class FilesPaths
+public class CFilePaths
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
