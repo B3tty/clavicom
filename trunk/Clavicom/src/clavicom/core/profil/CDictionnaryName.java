@@ -28,6 +28,7 @@ package clavicom.core.profil;
 import org.jdom.Element;
 
 import clavicom.gui.language.UIString;
+import clavicom.tools.TXMLNames;
 
 public class CDictionnaryName
 {
@@ -53,9 +54,24 @@ public class CDictionnaryName
 		{
 			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
 		}
+		
+		dictionaryName = node.getText();
+		
+		if( dictionaryName.equals( "" ))
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYBOARD_DICTIONARY_NAME_MISSING") );
+		}
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	public Element buildNode()
+	{
+		Element dictionaryName_elem = new Element( TXMLNames.PR_ELEMENT_DICTIONARY_NAME );
+		
+		dictionaryName_elem.setText( dictionaryName );
+		
+		return dictionaryName_elem;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
