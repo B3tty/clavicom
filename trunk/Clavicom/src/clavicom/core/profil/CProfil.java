@@ -31,9 +31,9 @@ public class CProfil
 
 	//---------------------------------------------------------- VARIABLES --//
 	
-	CLangueUI langueUI;				// Langue de l'interface utilisateur
-	CDictionnaryName dictionnary;		// dictionnaire
-	CKeyboardColor defaultColor;		// Couleur par défaut du clavicom
+	CLangueUIName langueUI;				// Langue de l'interface utilisateur
+	CDictionnaryName dictionnary;	// dictionnaire
+	CKeyboardColor defaultColor;	// Couleur par défaut du clavicom
 	CTransparency transparency;		// Transparence
 	CSound sound;					// Gestion du son
 	CNavigation navigation;			// Type de navigation de l'utilisateur

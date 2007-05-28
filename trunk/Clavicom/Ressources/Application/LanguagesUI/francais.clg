@@ -202,6 +202,8 @@
 
 	<message id = "EX_KEYBOARD_BUILD_TRANSPARENCY">Chargement de la transparence</message>
 	
+	<message id = "EX_KEYBOARD_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

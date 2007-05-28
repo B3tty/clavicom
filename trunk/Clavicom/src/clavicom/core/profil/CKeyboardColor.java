@@ -122,6 +122,46 @@ public class CKeyboardColor
 
 	//----------------------------------------------------------- METHODES --//	
 	
+	public CColor getBackColor()
+	{
+		return backColor;
+	}
+
+	public void setBackColor(CColor backColor)
+	{
+		this.backColor = backColor;
+	}
+
+	public CColor getDefaultKeyClicked()
+	{
+		return defaultKeyClicked;
+	}
+
+	public void setDefaultKeyClicked(CColor defaultKeyClicked)
+	{
+		this.defaultKeyClicked = defaultKeyClicked;
+	}
+
+	public CColor getDefaultKeyEntered()
+	{
+		return defaultKeyEntered;
+	}
+
+	public void setDefaultKeyEntered(CColor defaultKeyEntered)
+	{
+		this.defaultKeyEntered = defaultKeyEntered;
+	}
+
+	public CColor getDefaultKeyNormal()
+	{
+		return defaultKeyNormal;
+	}
+
+	public void setDefaultKeyNormal(CColor defaultKeyNormal)
+	{
+		this.defaultKeyNormal = defaultKeyNormal;
+	}
+
 	public Element buildNode()
 	{
 		Element keyboard_color = new Element( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR );

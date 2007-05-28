@@ -25,13 +25,35 @@
 
 package clavicom.core.profil;
 
+import org.jdom.Element;
+
+import clavicom.gui.language.UIString;
+
 public class CDictionnaryName
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	String dictionaryName;
+
+	public String getDictionaryName()
+	{
+		return dictionaryName;
+	}
+
+	public void setDictionaryName(String dictionaryName)
+	{
+		this.dictionaryName = dictionaryName;
+	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	public CDictionnaryName( Element node ) throws Exception
+	{
+		if( node == null )
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD_DICTIONARY_NAME") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+		}
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

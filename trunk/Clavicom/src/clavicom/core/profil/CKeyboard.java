@@ -42,6 +42,7 @@ public class CKeyboard
 	List< CKeyGroup > keyGroupList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
+	
 	public CKeyboard( Element node ) throws Exception
 	{
 		if ( node == null )
@@ -100,6 +101,25 @@ public class CKeyboard
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public void addKeyGroup( CKeyGroup keyGroup )
+	{
+		keyGroupList.add( keyGroup );
+	}
+	
+	public void removeKeyGroup( CKeyGroup keyGroup )
+	{
+		keyGroupList.remove( keyGroup );
+	}
+	
+	public CKeyGroup getKeyGroup( int order )
+	{
+		return keyGroupList.get( order );
+	}
+	
+	public int size( )
+	{
+		return keyGroupList.size();
+	}
 	
 	public Element BuildNode() throws Exception
 	{
