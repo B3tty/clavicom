@@ -291,7 +291,7 @@ public class CProfil
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "]"  + ex.getMessage() );
 		}
 		
 		// ======================================================================
@@ -300,7 +300,7 @@ public class CProfil
 		Element sound_elem = racine.getChild( TXMLNames.PR_ELEMENT_SOUND );
 		if( sound_elem == null )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_SOUND );
+			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_SOUND );
 		}
 		try
 		{
