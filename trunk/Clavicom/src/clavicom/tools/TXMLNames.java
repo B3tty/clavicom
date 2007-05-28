@@ -91,7 +91,7 @@ public class TXMLNames
 	public static String CS_ELEMENT_CODE				= "code";
 	public static String CS_ELEMENT_COMMAND				= "command";
 	public static String CS_ELEMENT_SECTION				= "section";
-	public static String CS_ELEMENT_COMMANDSET			= "commandeset";
+	public static String CS_ELEMENT_COMMANDSET			= "commandset";
 	public static String CS_ATTRIBUTE_NAME				= "name";
 
 	// shorcutSet

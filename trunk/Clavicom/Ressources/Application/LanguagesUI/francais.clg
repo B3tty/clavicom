@@ -207,6 +207,8 @@
 	
 	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">Chargement des mots préférés de l'utilisateur</message>
 	
+	<message id = "EX_PROFIL_BUILD_PROFIL">Chargement du profil</message>
+	
 	<message id = "EX_NAVIGATION_MISSING_ELEMENT_1">[Chargement de la navigation] Element "</message>
 	<message id = "EX_NAVIGATION_MISSING_ELEMENT_2">" attendu manquant.</message>
 	
