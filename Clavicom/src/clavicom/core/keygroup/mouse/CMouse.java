@@ -23,12 +23,11 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.profil;
+package clavicom.core.keygroup.mouse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import clavicom.core.keygroup.mouse.CMouseKey;
 
 
 public class CMouse
