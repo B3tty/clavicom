@@ -25,7 +25,6 @@
 
 package clavicom.core.profil;
 
-import clavicom.core.keygroup.mouse.CMouse;
 
 public class CProfil
 {

@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.profil;
+package clavicom;
 
 public class CFilePaths
 {
