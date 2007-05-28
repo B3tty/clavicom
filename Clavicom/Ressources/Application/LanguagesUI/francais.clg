@@ -200,10 +200,12 @@
 	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">[Chargement des sons] La chaîne "</message>
 	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">" ne peut être convertie en booléen.</message>		
 
-	<message id = "EX_KEYBOARD_BUILD_TRANSPARENCY">Chargement de la transparence</message>
+	<message id = "EX_PROFIL_BUILD_TRANSPARENCY">Chargement de la transparence</message>
 	
-	<message id = "EX_KEYBOARD_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
-	<message id = "EX_KEYBOARD_DICTIONARY_NAME_MISSING">Impossible de trouver le nom du dictionnaire utilisé</message>
+	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
+	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Impossible de trouver le nom du dictionnaire utilisé</message>
+	
+	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">Chargement des mots préférés de l'utilisateur</message>
 	
 	<!-- ==========================================================================
 		Messages 
