@@ -135,7 +135,6 @@ public class TXMLNames
 	public static String PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED = "default_clicked";
 	public static String PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_ENTERED = "default_entered";
 	
-	public static String PR_ELEMENT_NAVIGATION			= "navigation";
 	
 	public static String PR_ELEMENT_PREFERED_WORDS		= "prefered_words";
 	public static String PR_ELEMENT_PREFERED_WORD		= "prefered_word";
@@ -151,5 +150,16 @@ public class TXMLNames
 	public static String PR_ELEMENT_TRANSPARENCY		= "transparency";
 	public static String PR_ELEMENT_TRANSPARENCY_KEYBOARD	= "keyboard_transparency";
 	public static String PR_ELEMENT_TRANSPARENCY_KEY	= "key_transparency";
+	
+	public static String PR_ELEMENT_NAVIGATION			= "navigation";
+	public static String PR_ELEMENT_NAVIGATION_TYPE		= "type";
+	public static String PR_ATTRIBUTE_NAVIGATION_TYPE_VALUE	= "value";
+	public static String PR_ELEMENT_NAVIGATION_TEMPORISE_TEMPO	= "temporisation";
+	public static String PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO	= "temporisation";
+	public static String PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE	= "value";
+	public static String PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE	= "value";
+	
+	public static String PR_ELEMENT_NAVIGATION_ROLLOVER	= "rollover";
+	public static String PR_ATTRIBUTE_NAVIGATION_ROLLOVER	= "active";
 	
 }

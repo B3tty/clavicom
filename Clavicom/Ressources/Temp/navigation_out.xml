@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blob>
+  <navigation>
+    <type type="CLICK_TEMPORISE" />
+    <rollover active="true" />
+    <temporisation value="152" />
+  </navigation>
+</blob>
+
