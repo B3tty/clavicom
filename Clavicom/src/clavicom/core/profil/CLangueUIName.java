@@ -30,7 +30,7 @@ import org.jdom.Element;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
-public class CLangueUI
+public class CLangueUIName
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -38,7 +38,7 @@ public class CLangueUI
 	String languageFileName;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CLangueUI( Element node ) throws Exception
+	public CLangueUIName( Element node ) throws Exception
 	{
 		if( node == null )
 		{
@@ -55,6 +55,13 @@ public class CLangueUI
 
 	
 	
+	public void setLanguageFileName(String languageFileName)
+	{
+		this.languageFileName = languageFileName;
+	}
+
+
+
 	//----------------------------------------------------------- METHODES --//
 	public String getLanguageFileName()
 	{
