@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CDictionnary.java
-			Creation date		: 25 mai 07
+			Filename			: CDictionnaryName.java
+			Creation date		: 28 mai 07
 		
 			Project				: Clavicom
 			Package				: clavicom.core.profil
@@ -25,7 +25,7 @@
 
 package clavicom.core.profil;
 
-public class CDictionnary
+public class CDictionnaryName
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
