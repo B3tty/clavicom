@@ -25,6 +25,15 @@
 
 package clavicom.core.profil;
 
+import java.io.File;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
+
+import clavicom.gui.language.UIString;
+import clavicom.tools.TXMLNames;
+
 
 public class CProfil
 {
@@ -45,7 +54,7 @@ public class CProfil
 	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CProfil( String profilFilePath )
+	public CProfil( String profilFilePath ) throws Exception
 	{
 		// chargement du fichier de profil
 		LoadProfilFile( profilFilePath );
@@ -53,21 +62,47 @@ public class CProfil
 
 	//----------------------------------------------------------- METHODES --//	
 	
-	private void LoadProfilFile ( String profilFilePath )
+	private void LoadProfilFile ( String profilFilePath ) throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
 		// ======================================================================
-		
+		SAXBuilder sxb = new SAXBuilder();
+		Document document = null;
+		try
+		{
+			document = sxb.build(new File( profilFilePath ));
+		}
+		catch(Exception e)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_COMMANDSET_OPEN_FILE" ) + profilFilePath + "\n" + e.getMessage());
+		}
+
+		//On initialise un nouvel élément racine avec l'élément racine du document.
+		Element racine = document.getRootElement();
 		
 		
 		// ======================================================================
 		// chargement de la langueUI
 		// ======================================================================
+		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		if( langueUI_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		}
+		try
+		{
+			langueUI = new CLangueUIName( langueUI_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
 		
 		// ======================================================================
 		// chargement du nom du commande set à utiliser
 		// ======================================================================
+		
 		
 		// ======================================================================
 		// chargement du commandeSet
