@@ -131,7 +131,7 @@ public class TXMLNames
 	public static String PR_ELEMENT_COMMANDSET_NAME			= "commandset_name";
 	
 	public static String PR_ELEMENT_KEYBOARD			= "keyboard";
-	public static String PR_ELEMENT_KEY_GROUP			= "keygroupe";
+	public static String PR_ELEMENT_KEY_GROUP			= "keygroup";
 	
 	public static String PR_ELEMENT_KEYBOARD_COLOR		= "keyboard_color";
 	public static String PR_ELEMENT_KEYBOARD_COLOR_BACK = "back_color";

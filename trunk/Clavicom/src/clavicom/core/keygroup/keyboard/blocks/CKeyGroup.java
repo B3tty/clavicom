@@ -98,7 +98,7 @@ public class CKeyGroup
 		}
 		catch (Exception ex)
 		{
-			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_visible + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ));
+			throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_visible + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ));
 		}
 		
 		CKeyGroup keyGroup = new CKeyGroup( caption, b_visible );
@@ -129,7 +129,7 @@ public class CKeyGroup
 					}
 					catch (Exception ex)
 					{
-						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+						throw new Exception("[caption : " + caption + "][" + UIString.getUIString( "EX_KEYGROUP_BUILD_GROUP" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
 					
