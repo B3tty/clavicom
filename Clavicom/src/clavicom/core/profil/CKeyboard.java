@@ -78,7 +78,7 @@ public class CKeyboard
 					}
 					catch (Exception ex)
 					{
-						throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+						throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
 					
@@ -91,7 +91,7 @@ public class CKeyboard
 					}
 					catch(Exception ex)
 					{
-						throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+						throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_BUILD") + "] : " + ex.getMessage() );
 					}
 					
 					keyGroupList.add( i_order, key_group );

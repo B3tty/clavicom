@@ -78,7 +78,7 @@ public class CTransparency
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 		}
 		
 		// ==================================================================
@@ -96,7 +96,7 @@ public class CTransparency
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYBOARD_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 		}
 	}
 

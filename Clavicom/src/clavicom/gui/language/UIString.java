@@ -51,7 +51,7 @@ public class UIString
 		{
 			if( uiStringMap.containsKey( ID ) )
 			{
-				return uiStringMap.get( ID ) + "(" + ID + ")";
+				return uiStringMap.get( ID );
 			}
 			else
 			{

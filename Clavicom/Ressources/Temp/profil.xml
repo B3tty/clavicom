@@ -1,13 +1,34 @@
 <profil>
+	<language_ui>francais.clg</language_ui>
+	<commandset_name>francais.css</commandset_name>
+	<dictionary_name>francais.cdc</dictionary_name>
+	<keyboard_color>
+		<back_color>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</back_color>
+		<default_normal>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</default_normal>
+		<default_clicked>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</default_clicked>
+		<default_entered>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</default_entered>
+	</keyboard_color>
 	<navigation>
 		<type value = "CLICK_TEMPORISE"/>
 		<temporisation value = "152"/>
 		<rollover active = "true"/>
 	</navigation>
-	<prefered_words>
-		<prefered_word frequency="5">coucou</prefered_word>
-		<prefered_word frequency="10">salut</prefered_word>
-	</prefered_words>
 	<sound>
 		<on_click active = "true"/>
 		<on_survol active = "true"/>
@@ -18,9 +39,9 @@
 		<key_transparency>20</key_transparency>
 	</transparency>
 	<keyboard>
-		<groupe order="0">
-			<list order="0">
-				<keycharacter order="15" >
+		<keygroup order="0" caption="groupe de ouf" visible="true">
+			<keylist order="0">
+				<keycharacter order="0" >
 					<coordinates>
 						<point position="min">
 							<x>25.5</x>
@@ -49,37 +70,16 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="1"></command_normal>
-						<command_shift id="2"></command_shift>
-						<command_altgr id="3"></command_altgr>
+						<command_normal id="0"></command_normal>
+						<command_shift id="1"></command_shift>
+						<command_altgr id="2"></command_altgr>
 					</commands>
 				</keycharacter>
-			</list>
-		</groupe>
+			</keylist>
+		</keygroup>
 	</keyboard>
-	<language_ui>francais.clg</language_ui>
-	<commandSet_name>francais.css</commandSet_name>
-	<dictionary_name>francais.cdc</dictionary_name>
-	<keyboard_color>
-		<back_color>
-			<red>215</red>
-			<green>100</green>
-			<blue>98</blue>
-		</back_color>
-	</keyboard_color>
-	<default_normal>
-		<red>215</red>
-		<green>100</green>
-		<blue>98</blue>
-	</default_normal>
-	<default_clicked>
-		<red>215</red>
-		<green>100</green>
-		<blue>98</blue>
-	</default_clicked>
-	<default_entered>
-		<red>215</red>
-		<green>100</green>
-		<blue>98</blue>
-	</default_entered>
+	<prefered_words>
+		<prefered_word frequency="5">coucou</prefered_word>
+		<prefered_word frequency="10">salut</prefered_word>
+	</prefered_words>
 </profil>
