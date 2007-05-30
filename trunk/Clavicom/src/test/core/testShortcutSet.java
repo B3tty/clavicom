@@ -1,4 +1,4 @@
-package test;
+package test.core;
 
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 

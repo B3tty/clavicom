@@ -1,4 +1,4 @@
-package test;
+package test.core;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,10 +9,10 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.profil.CNavigation;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.gui.language.UIString;
 
-public class testNavigation
+public class testKeyLauncher
 {
 	static org.jdom.Document document;
 
@@ -31,25 +31,28 @@ public class testNavigation
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("Ressources\\Temp\\navigation.xml"));
+			document = sxb.build(new File("Ressources\\Temp\\key_launcher.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
 			racine = document.getRootElement();
 	
-			Element uneNavigation = racine.getChild("navigation");
-			CNavigation navigation = new CNavigation(uneNavigation);
+			Element uneTouche = racine.getChild("keylauncher");
+			CKeyLauncher key1;
+	
+			// Construction de la touche
+			key1 = new CKeyLauncher(uneTouche);
 	
 			// Enregistrement de la touche
-			Element racine2 = new Element("blob");
+			Element racine2 = new Element("salut");
 	
 			// On crée un nouveau Document JDOM basé sur la racine que l'on vient de
 			// créer
 			org.jdom.Document documentOut = new org.jdom.Document(racine2);
-			racine2.addContent(navigation.buildNode());
+			racine2.addContent(key1.buildNode(88));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("Ressources\\Temp\\navigation_out.xml"));
+					new FileOutputStream("Ressources\\Temp\\key_launcher_out.xml"));
 		}
 		catch (Exception e)
 		{

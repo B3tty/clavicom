@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: testSettings.java
-			Creation date		: 24 mai 07
+			Filename			: tesCommandSet.java
+			Creation date		: 22 mai 07
 		
 			Project				: Clavicom
 			Package				: test
@@ -23,13 +23,14 @@
 
 +-----------------------------------------------------------------------------*/
 
-package test;
+package test.core;
 
-import clavicom.CSettings;
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.gui.language.UIString;
+import clavicom.core.keygroup.keyboard.command.CCode;
+import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 
-public class testSettings
+public class testCommandSet
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -37,31 +38,32 @@ public class testSettings
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
-	//----------------------------------------------------------- METHODES --//
-
+	//----------------------------------------------------------- METHODES --//	
 	public static void main(String[] args)
 	{
+
+		String chemin = "Ressources\\Application\\CommandSets\\francais.ccs";
 		try
 		{
-			// Chargement des UIString et shortcutset
-			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+			CCommandSet.CreateInstance( chemin );
 			
-			String s = "Ressources\\Application\\config.xml";
-			String s_out = "Ressources\\Application\\config_out.xml";
+			CSection section = CCommandSet.GetInstance().GetSection("Spéciaux");
+
+			CCommand command = section.GetCommand( "&" );
 			
-			CSettings.LoadSettings( s );
-			
-			System.out.println( CSettings.getDefaultProfilsPath() );
-			
-			CSettings.SaveSettings( s_out );
-	
+			for( int i = 0 ; i < command.Size() ; ++i )
+			{
+				CCode code = command.GetCode(i);
+				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
+			}
 			
 		}
-		catch (Exception e)
+		catch ( Exception e )
 		{
-			System.out.println(e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
