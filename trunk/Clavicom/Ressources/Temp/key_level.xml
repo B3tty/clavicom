@@ -1,5 +1,5 @@
 <all>
-	<keylevel order="15" >
+	<keylevel order="0" caption_image="false">
 		<coordinates>
 			<point position="min">
 				<x>25.5</x>
@@ -8,25 +8,26 @@
 			<point position="max">
 				<x>5.5</x>
 				<y>2.2</y>
-			</point>		
+			</point>
 		</coordinates>
+		<caption>coucou1</caption>
 		<colors>
 			<color_normal>
-				<red>215</red>
-				<green>100</green>
-				<blue>98</blue>
+				<red>189</red>
+				<green>189</green>
+				<blue>189</blue>
 			</color_normal>
 			<color_clicked>
-				<red>50</red>
-				<green>100</green>
-				<blue>80</blue>
+				<red>255</red>
+				<green>0</green>
+				<blue>51</blue>
 			</color_clicked>
 			<color_entered>
-				<red>29</red>
-				<green>19</green>
-				<blue>99</blue>
+				<red>255</red>
+				<green>153</green>
+				<blue>153</blue>
 			</color_entered>
 		</colors>
-		<level>1</level>
+		<level>NORMAL</level>
 	</keylevel>
 </all>

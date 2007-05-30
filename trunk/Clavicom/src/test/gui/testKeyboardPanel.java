@@ -25,7 +25,6 @@ package test.gui;
 +-----------------------------------------------------------------------------*/
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import clavicom.gui.keyboard.key.UIKeyboardPanel;
 
