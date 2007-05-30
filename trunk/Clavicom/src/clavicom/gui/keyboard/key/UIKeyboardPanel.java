@@ -31,7 +31,9 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-public class UIKeyboardPanel extends JPanel //implements ButtonListener 
+import clavicom.tools.TUIKeyState;
+
+public class UIKeyboardPanel extends JPanel implements UIKeyListener 
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -40,7 +42,6 @@ public class UIKeyboardPanel extends JPanel //implements ButtonListener
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardPanel() {
-		
 		// TEMPORAIRE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(800, 600));
@@ -55,41 +56,43 @@ public class UIKeyboardPanel extends JPanel //implements ButtonListener
 		add(touche1);
 		add(touche2);
 	}
-	//----------------------------------------------------------- METHODES --//	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
-
-//	public void buttonClicked(UIKey source)
-//	{
-//		// TODO Auto-generated method stub
-//		if(source == touche1)
-//		{
-//			System.out.println("Click 1");
-//		}
-//		else
-//		{
-//			System.out.println("Click 2");
-//		}
-//	}
-//
-//	public void buttonEntered(UIKey source)
-//	{
-//		// TODO Auto-generated method stub
-//		if(source == touche1)
-//		{
-//			System.out.println("Survol 1");
-//		}
-//		else
-//		{
-//			System.out.println("Survol 2");
-//		}
-//	}
-//	
-	private JPanel createUIKey() 
+	//----------------------------------------------------------- METHODES --//
+	//-----------------------------------------------------------------------
+	// Gestion des UIKeys - Implémentation de l'interface UIKeyListener
+	//-----------------------------------------------------------------------
+	public void buttonEntered(UIKey source)
 	{
-		UIKey button = new UIKey();
-//		button.addButtonListener(this);
-		
-		return button;
+		source.setState(TUIKeyState.SELECTED);
+		source.repaint();
 	}
+
+	public void buttonExited(UIKey source)
+	{
+		source.setState(TUIKeyState.NORMAL);
+		source.repaint();
+	}
+
+	public void buttonPressed(UIKey source)
+	{
+		source.setState(TUIKeyState.PRESSED);
+		source.repaint();	
+	}
+
+	public void buttonReleased(UIKey source)
+	{
+		source.setState(TUIKeyState.NORMAL);
+		source.repaint();		
+	}
+	
+	//--------------------------------------------------- METHODES PRIVEES --//	
+	//-----------------------------------------------------------------------
+	// Gestion des UIKeys
+	//-----------------------------------------------------------------------
+	protected JPanel createUIKey()
+	{
+//		UIKey key = new UIKey();
+//		key.addUIKeyListener(this);
+		return null;
+	}
+
 }

@@ -236,10 +236,9 @@
 	<!-- KEY_THREE_LEVEL -->
 	<message id = "EX_KEY_THREE_LEVEL_BUILD">Chargement d'une touche à trois niveau</message>
 	
-	<!-- ==========================================================================
-		Messages 
-	==========================================================================  -->
-	
+	<!-- UI_KEY -->
+	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
+
 	
 	
 	

@@ -27,11 +27,12 @@ package clavicom.gui.keyboard.key;
 import java.util.EventListener;
 
 
-public interface ButtonListener extends EventListener {
+public interface UIKeyListener extends EventListener {
 	//--------------------------------------------------------- CONSTANTES --//
 	//----------------------------------------------------------- METHODES --//
 	
-	public void buttonClicked(UIKey source);
 	public void buttonEntered(UIKey source);
-	//public void buttonLeaved(UIKey source);
+	public void buttonExited(UIKey source);
+	public void buttonPressed(UIKey source);
+	public void buttonReleased(UIKey source);
 }
