@@ -26,11 +26,8 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import javax.swing.event.EventListenerList;
-
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
-import clavicom.core.listener.OnClickKeyLastWordListener;
 import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;

@@ -26,7 +26,6 @@
 package clavicom.core.listener;
 
 import java.util.EventListener;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 
 public interface OnClickKeyClavicomListener extends EventListener
