@@ -25,11 +25,14 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
+
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -42,6 +45,8 @@ public class CKeyCharacter extends CKeyThreeLevel
 	CCommand commandNormal;
 	CCommand commandShift;
 	CCommand commandAltGr;
+	
+	protected EventListenerList listenerList;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyCharacter(
@@ -62,6 +67,8 @@ public class CKeyCharacter extends CKeyThreeLevel
 		commandNormal = myCommandNormal;
 		commandShift = myCommandShift;
 		commandAltGr = myCommandAltGr;
+		
+		this.listenerList = new EventListenerList();
 	}
 	
 	public CKeyCharacter(
@@ -76,6 +83,8 @@ public class CKeyCharacter extends CKeyThreeLevel
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,
 				captionLeve1,captionLeve2,captionLeve3);
+		
+		this.listenerList = new EventListenerList();
 	}
 
 	public CKeyCharacter(Element eltKey) throws Exception
@@ -220,9 +229,35 @@ public class CKeyCharacter extends CKeyThreeLevel
 									TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID + 
 									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2")) ;	
 		}
+		
+		this.listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	// Listener ==============================================
+	public void addOnClickKeyCharacterListener(OnClickKeyCharacterListener l)
+	{
+		this.listenerList.add(OnClickKeyCharacterListener.class, l);
+	}
+
+	public void removeOnClickKeyCharacterListener(OnClickKeyCharacterListener l)
+	{
+		this.listenerList.remove(OnClickKeyCharacterListener.class, l);
+	}
+
+	protected void fireOnClickKeyCharacter()
+	{
+		OnClickKeyCharacterListener[] listeners = (OnClickKeyCharacterListener[]) listenerList
+				.getListeners(OnClickKeyCharacterListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyCharacter(this);
+		}
+	}
+	// fin Listener ============================================
+	
 	public String getElementName()
 	{
 		return (TXMLNames.KY_ELEMENT_CHARACTER);
