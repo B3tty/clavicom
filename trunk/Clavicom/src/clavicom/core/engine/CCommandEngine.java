@@ -30,12 +30,27 @@ import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.event.EventListenerList;
+
+import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
+import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyLastWordListener;
+import clavicom.core.profil.CKeyboard;
+import clavicom.gui.language.UIString;
+import clavicom.gui.message.CMessage;
+import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TKeyAction;
 import clavicom.tools.TLevelEnum;
 
@@ -45,10 +60,87 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 
 	//---------------------------------------------------------- VARIABLES --//
 	TLevelEnum currentLevel;
+	
+	protected EventListenerList listenerList;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CCommandEngine( CKeyboard keyboard )
+	{
+		listenerList = new EventListenerList();
+		
+		// =============================================================
+		// Abonnement aux listener
+		// =============================================================
+		for( int i = 0 ; i < keyboard.size() ; ++i )
+		{
+			CKeyGroup keyGroup = keyboard.getKeyGroup( i );
+			if( keyGroup != null )
+			{
+				for( int j = 0 ; j < keyGroup.size() ; ++j )
+				{
+					CKeyList keyList = keyGroup.GetkeyList( j );
+					if( keyList != null )
+					{
+						for( int k = 0 ;  k < keyList.size() ; ++k )
+						{
+							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( i );
+							if( keyboardKey != null )
+							{
+								// on cast pour savoir de quel type est la key
+								if( keyboardKey instanceof CKeyCharacter )
+								{
+									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
+								}else if( keyboardKey instanceof CKeyLastWord )
+								{
+									((CKeyLastWord)keyboardKey).addOnClickKeyLastWordListener( this );
+								}else if( keyboardKey instanceof CKeyLevel )
+								{
+//									((CKeyLevel)keyboardKey).addOnClickKeyCharacterListener( this );
+								}else if( keyboardKey instanceof CKeyPrediction )
+								{
+//									((CKeyPrediction)keyboardKey).addOnClickKeyCharacterListener( this );
+								}else if( keyboardKey instanceof CKeyShortcut )
+								{
+//									((CKeyShortcut)keyboardKey).addOnClickKeyCharacterListener( this );
+								}else if( keyboardKey instanceof CKeyString )
+								{
+//									((CKeyString)keyboardKey).addOnClickKeyCharacterListener( this );
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	//----------------------------------------------------------- METHODES --//
+	
+	// ========================================================|
+	// Listener ===============================================|
+	// ========================================================|
+	public void addNewMessageListener(NewMessageListener l)
+	{
+		this.listenerList.add(NewMessageListener.class, l);
+	}
+
+	public void removeNewMessageListener(NewMessageListener l)
+	{
+		this.listenerList.remove(NewMessageListener.class, l);
+	}
+
+	protected void fireNewMessage( CMessage message )
+	{
+		NewMessageListener[] listeners = (NewMessageListener[]) listenerList
+				.getListeners(NewMessageListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].newMessage( message );
+		}
+	}
+	// ========================================================|
+	// fin Listener ===========================================|
+	// ========================================================|
 	
 	protected void executeCommande( List<CCommand> commandList )
 	{
@@ -62,7 +154,9 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 		}
 		catch ( AWTException e )
 		{
-			e.printStackTrace();
+			// TODO - afficher msg
+			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
+			fireNewMessage( message );
 		}
 		
 		for( CCommand command : commandList )
@@ -72,16 +166,38 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 				code = command.GetCode( i );
 				if( code.GetKeyAction() == TKeyAction.PRESSED )
 				{
-					robot.keyPress( code.GetKeyEvent() );
+					try
+					{
+						robot.keyPress( code.GetKeyEvent() );
+					}
+					catch(Exception ex)
+					{
+						// TODO - afficher msg
+						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+						fireNewMessage( message );
+					}
 				}
 				else if( code.GetKeyAction() == TKeyAction.RELEASED )
 				{
-					robot.keyRelease( code.GetKeyEvent() );
+					try
+					{
+						robot.keyRelease( code.GetKeyEvent() );
+					}
+					catch(Exception ex)
+					{
+						// TODO - afficher msg
+						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+						fireNewMessage( message );
+					}
 				}
 			}
 		}
 	}
 	
+	
+	// ========================================================|
+	// ACTION =================================================|
+	// ========================================================|
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
@@ -101,11 +217,17 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 		executeCommande( commandList );
 	}
 
-
 	public void onClickKeyLastWord(CKeyLastWord keyLasWord)
 	{
-		//executeCommande( keyLasWord.getCommands() );
-		
+		try
+		{
+			executeCommande( keyLasWord.getCommands() );
+		}
+		catch ( Exception e )
+		{
+			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN" ) );
+			fireNewMessage( message );
+		}	
 	}
 
 

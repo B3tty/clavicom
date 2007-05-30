@@ -97,6 +97,12 @@ public class CKeyString extends CKeyDynamicString
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	public void Click()
+	{
+		// TODO - fire...
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

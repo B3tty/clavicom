@@ -240,6 +240,10 @@
 	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
 
 	
+	<!-- Command engine -->
+	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Impossible de creer le robot envoyant les caractères</message>
+	<message id = "MSG_COMMAND_ENGINE_CODE_INCORECT">Code de la touche incorrect</message>
+	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">Une ou pluseurs lettres ne sont pas connues</message>
 	
 	
 	
