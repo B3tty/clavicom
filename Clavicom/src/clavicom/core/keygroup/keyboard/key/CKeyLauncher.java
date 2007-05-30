@@ -32,7 +32,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public class CKeyLauncher extends CKeyboardKey
+public class CKeyLauncher extends CKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -45,9 +45,10 @@ public class CKeyLauncher extends CKeyboardKey
 			CColor myColorClicked , 
 			CColor myColorEntered , 
 			TPoint myPointMin, 
-			TPoint myPointMax)
+			TPoint myPointMax,
+			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 	}
 	
 	public CKeyLauncher (Element eltKeyLauncher) throws Exception
@@ -70,7 +71,7 @@ public class CKeyLauncher extends CKeyboardKey
 	}
 
 	//----------------------------------------------------------- METHODES --//	
-	public void completeNodeSpecific(Element keyNode) throws Exception
+	public void completeNodeSpecific2(Element keyNode) throws Exception
 	{		
 		// Ajout des elements spécifiques
 		Element eltPath = new Element(TXMLNames.KY_ELEMENT_LAUNCHER_PATH);
@@ -95,4 +96,11 @@ public class CKeyLauncher extends CKeyboardKey
 		this.applicationPath = applicationPath;
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

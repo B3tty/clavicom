@@ -39,6 +39,11 @@ public class TXMLNames
 	public static String KY_ATTRIBUTE_COORDINATE_POS_MIN= "min";
 	public static String KY_ATTRIBUTE_COORDINATE_POS_MAX= "max";
 	public static String KY_ATTRIBUTE_ORDER 			= "order";
+	public static String KY_ATTRIBUTE_CAPTION_IMAGE		= "caption_image";
+	public static String KY_ELEMENT_CAPTION				= "caption";
+	public static String KY_ELEMENT_CAPTION_LEVEL_1		= "caption_level_1";
+	public static String KY_ELEMENT_CAPTION_LEVEL_2		= "caption_level_2";
+	public static String KY_ELEMENT_CAPTION_LEVEL_3		= "caption_level_3";
 	
 	// CKeyClavicom
 	public static String KY_ELEMENT_CLAVICOM		 	= "keyclavicom";

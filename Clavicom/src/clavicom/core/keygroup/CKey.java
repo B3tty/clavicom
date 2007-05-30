@@ -39,6 +39,14 @@ public class CKey
 	CColor normal;
 	CColor clicked;
 	CColor entered;
+	
+	boolean captionImage;
+
+
+	public boolean isCaptionImage()
+	{
+		return captionImage;
+	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKey( CColor myNormal, CColor myClicked, CColor myEntered )
@@ -89,6 +97,23 @@ public class CKey
 		if( color_normal_elem == null )
 		{
 			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) +"] " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.CO_ELEMENT_COLOR_NORMAL );
+		}
+		
+		// =================================================================
+		// Récupération du booléen captionImage
+		// =================================================================
+		String caption_image_string = node.getAttributeValue( TXMLNames.KY_ATTRIBUTE_CAPTION_IMAGE );
+		if( caption_image_string == null )
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) +"] " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.KY_ATTRIBUTE_CAPTION_IMAGE );
+		}
+		try
+		{
+			captionImage = Boolean.parseBoolean( caption_image_string );
+		}
+		catch ( Exception ex )
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + caption_image_string + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ) );
 		}
 		
 		// =================================================================

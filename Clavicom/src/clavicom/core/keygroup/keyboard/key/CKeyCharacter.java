@@ -34,7 +34,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public class CKeyCharacter extends CKeyboardKey
+public class CKeyCharacter extends CKeyThreeLevel
 {	
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -50,11 +50,15 @@ public class CKeyCharacter extends CKeyboardKey
 			CColor myColorEntered , 
 			TPoint myPointMin, 
 			TPoint myPointMax,
+			String captionLeve1,
+			String captionLeve2,
+			String captionLeve3,
 			CCommand myCommandNormal,
 			CCommand myCommandShift,
 			CCommand myCommandAltGr)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,
+				captionLeve1,captionLeve2,captionLeve3);
 		commandNormal = myCommandNormal;
 		commandShift = myCommandShift;
 		commandAltGr = myCommandAltGr;
@@ -65,9 +69,13 @@ public class CKeyCharacter extends CKeyboardKey
 			CColor myColorClicked , 
 			CColor myColorEntered , 
 			TPoint myPointMin, 
-			TPoint myPointMax)
+			TPoint myPointMax,
+			String captionLeve1,
+			String captionLeve2,
+			String captionLeve3)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,
+				captionLeve1,captionLeve2,captionLeve3);
 	}
 
 	public CKeyCharacter(Element eltKey) throws Exception
@@ -250,7 +258,7 @@ public class CKeyCharacter extends CKeyboardKey
 		this.commandShift = commandShift;
 	}
 	
-	public void completeNodeSpecific(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Ajout du noeud commands		
 		Element eltCommands = new Element(TXMLNames.KY_ELEMENT_CHARACTER_COMMANDS);

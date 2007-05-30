@@ -27,13 +27,11 @@ package clavicom.core.profil;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
-
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -109,8 +107,6 @@ public class CProfil
 		return transparency;
 	}
 	
-	
-	
 	public void SaveProfil( String profilFilePath ) throws Exception
 	{
 		// ===============================================================
@@ -184,9 +180,6 @@ public class CProfil
 		
 	}
 
-	
-
-	 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	private void LoadProfilFile ( String profilFilePath ) throws Exception

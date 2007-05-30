@@ -41,10 +41,11 @@ public class CKeyString extends CKeyDynamicString
 						
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyString(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
+			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
-				myPointMax);
+				myPointMax,myCaption);
 	}
 	
 	public CKeyString (Element eltKeyString) throws Exception
@@ -88,6 +89,13 @@ public class CKeyString extends CKeyDynamicString
 	public void setBaseString(String baseString)
 	{
 		this.baseString = baseString;
+	}
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

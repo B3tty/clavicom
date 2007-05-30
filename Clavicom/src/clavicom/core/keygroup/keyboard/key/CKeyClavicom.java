@@ -34,7 +34,7 @@ import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
 
-public class CKeyClavicom extends CKeyboardKey
+public class CKeyClavicom extends CKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -48,9 +48,10 @@ public class CKeyClavicom extends CKeyboardKey
 			CColor myColorClicked , 
 			CColor myColorEntered , 
 			TPoint myPointMin, 
-			TPoint myPointMax)
+			TPoint myPointMax,
+			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 	}
 	
 	/**
@@ -89,7 +90,7 @@ public class CKeyClavicom extends CKeyboardKey
 	 * @return Noeud construit
 	 * @throws Exception 
 	 */
-	public void completeNodeSpecific(Element keyNode) throws Exception
+	public void completeNodeSpecific2(Element keyNode) throws Exception
 	{	
 		// Ajout des elements spécifiques
 		Element eltAction = new Element(TXMLNames.KY_ELEMENT_CLAVICOM_ACTION);
@@ -118,6 +119,13 @@ public class CKeyClavicom extends CKeyboardKey
 	public void setAction(TKeyClavicomActionType action)
 	{
 		this.action = action;
+	}
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

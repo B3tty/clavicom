@@ -39,10 +39,11 @@ public class CKeyPrediction extends CKeyDynamicString
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyPrediction(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
+			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
-				myPointMax);
+				myPointMax,myCaption);
 	}
 	
 	public CKeyPrediction (Element eltKeyPrediction) throws Exception
@@ -61,6 +62,13 @@ public class CKeyPrediction extends CKeyDynamicString
 	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Rien à ajouter		
+	}
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
