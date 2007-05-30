@@ -26,7 +26,6 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import java.util.List;
-import javax.swing.event.EventListenerList;
 import org.jdom.Attribute;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;

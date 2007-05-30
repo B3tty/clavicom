@@ -26,7 +26,6 @@
 package clavicom.core.listener;
 
 import java.util.EventListener;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 
 public interface OnClickKeyLevelListener extends EventListener

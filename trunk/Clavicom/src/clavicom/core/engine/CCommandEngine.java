@@ -29,17 +29,13 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.event.EventListenerList;
-
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
-import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
