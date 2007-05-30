@@ -31,7 +31,7 @@ import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
-public class CKey
+public abstract class CKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -175,6 +175,7 @@ public class CKey
 		
 	}
 
+	public abstract void Click(); 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 }

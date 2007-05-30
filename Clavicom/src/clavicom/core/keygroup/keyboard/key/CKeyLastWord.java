@@ -104,4 +104,10 @@ public class CKeyLastWord extends CKeyDynamicString
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void Click()
+	{
+		fireOnClickKeyLastWord();
+	}
 }

@@ -25,9 +25,13 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
+
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.OnClickKeyLastWordListener;
+import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
@@ -40,6 +44,8 @@ public class CKeyLevel extends CKeyOneLevel
 	//---------------------------------------------------------- VARIABLES --//	
 	
 	TLevelEnum level;
+	
+	protected EventListenerList listenerList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLevel(
@@ -55,6 +61,8 @@ public class CKeyLevel extends CKeyOneLevel
 
 
 		level = myLevel;
+		
+		listenerList = new EventListenerList();
 	}
 
 	public CKeyLevel( Element node ) throws Exception
@@ -74,9 +82,35 @@ public class CKeyLevel extends CKeyOneLevel
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_level );
 		}
+		
+		listenerList = new EventListenerList();
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	
+	// Listener ==============================================
+	public void addOnClickKeyLevelListener(OnClickKeyLevelListener l)
+	{
+		this.listenerList.add(OnClickKeyLevelListener.class, l);
+	}
+
+	public void removeOnClickKeyLevelListener(OnClickKeyLevelListener l)
+	{
+		this.listenerList.remove(OnClickKeyLevelListener.class, l);
+	}
+
+	protected void fireOnClickKeyLevel()
+	{
+		OnClickKeyLevelListener[] listeners = (OnClickKeyLevelListener[]) listenerList
+				.getListeners(OnClickKeyLevelListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyLevel(this);
+		}
+	}
+	// fin Listener ============================================
+	
+	
 	
 	public TLevelEnum GetLevel(){ return level; }
 	
@@ -100,6 +134,12 @@ public class CKeyLevel extends CKeyOneLevel
 	{
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public void Click()
+	{
+		fireOnClickKeyLevel();
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

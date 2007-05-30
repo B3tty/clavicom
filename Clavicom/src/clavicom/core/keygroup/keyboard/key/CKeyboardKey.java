@@ -185,7 +185,6 @@ public abstract class CKeyboardKey extends CKey
 
 	// ----------------------------------------------------------- METHODES --//
 
-	
 
 	public Element buildNode(int order) throws Exception
 	{

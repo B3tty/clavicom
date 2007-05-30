@@ -162,6 +162,12 @@ public class CKeyClavicom extends CKeyOneLevel
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	public void Click()
+	{
+		fireOnClickKeyClavicom();
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

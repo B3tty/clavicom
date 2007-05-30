@@ -151,6 +151,12 @@ public class CKeyShortcut extends CKeyOneLevel
 		return true;
 	}
 
+	@Override
+	public void Click()
+	{
+		// TODO - fire...
+	}
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 }

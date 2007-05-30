@@ -70,6 +70,12 @@ public class CKeyPrediction extends CKeyDynamicString
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void Click()
+	{
+		// TODO - fire...
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
