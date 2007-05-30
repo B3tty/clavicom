@@ -1,10 +1,7 @@
 package test;
 
 import org.jdom.Element;
-
-import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 

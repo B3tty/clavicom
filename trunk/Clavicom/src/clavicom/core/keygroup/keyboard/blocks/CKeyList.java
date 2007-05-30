@@ -27,13 +27,10 @@ package clavicom.core.keygroup.keyboard.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.jdom.Attribute;
 import org.jdom.Element;
-
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
-import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
