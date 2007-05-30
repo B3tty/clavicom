@@ -25,10 +25,10 @@ public class testProfil
 			String output = "Ressources\\Temp\\profil_out.xml";
 			
 			// Chargement
-			CProfil myProfil = new CProfil(input);
+			CProfil.createInstance(input);
 			
 			// Sauvegarde
-			myProfil.SaveProfil(output);
+			CProfil.getInstance().SaveProfil(output);
 		}
 		catch (Exception e)
 		{

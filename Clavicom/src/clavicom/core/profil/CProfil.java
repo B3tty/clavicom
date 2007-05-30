@@ -32,6 +32,8 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -39,7 +41,8 @@ import clavicom.tools.TXMLNames;
 public class CProfil
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	private static CProfil profil;
+	
 	//---------------------------------------------------------- VARIABLES --//
 	
 	CLangueUIName langueUI;			// Langue de l'interface utilisateur
@@ -54,13 +57,23 @@ public class CProfil
 	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CProfil( String profilFilePath ) throws Exception
+	
+	private CProfil( String profilFilePath ) throws Exception
 	{
 		// chargement du fichier de profil
 		LoadProfilFile( profilFilePath );
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public static void createInstance(String profilFilePath) throws Exception 
+	{
+		profil = new CProfil(profilFilePath);
+	}
+	
+	public static CProfil getInstance() 
+	{
+		return profil;
+	}
 	
 	public CCommandSetName getCommandSetName()
 	{

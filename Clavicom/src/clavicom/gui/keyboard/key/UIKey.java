@@ -25,129 +25,223 @@
 
 package clavicom.gui.keyboard.key;
 
-import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
 
+import clavicom.core.keygroup.CKey;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TUIKeyState;
 
-public class UIKey extends JPanel
+public abstract class UIKey extends JPanel
 {
 		//--------------------------------------------------------- CONSTANTES --//
 
 		//---------------------------------------------------------- ATTRIBUTS --//		
-		private EventListenerList listenersList;
-		private TUIKeyState currentState;
+		private EventListenerList listenersList;	// Elements abonnés
+		
+		private TUIKeyState currentState;			// Etat de la touche
 		//------------------------------------------------------ CONSTRUCTEURS --//
 		
 		public UIKey()
 		{
 			this.listenersList = new EventListenerList();
-			
+			 
 			// Ajout des listener sur la souris
-			addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-					buttonClicked();
+			addMouseListener(	new MouseAdapter() 
+			{
+				public void mouseEntered(MouseEvent e) 
+				{
+						fireButtonEntered();
 				}
 			});
 			
-			addMouseListener(new MouseAdapter() {
-					public void mouseEntered(MouseEvent e) {
-					buttonEntered();
+			addMouseListener(	new MouseAdapter() 
+			{
+				public void mouseExited(MouseEvent e) 
+				{
+						fireButtonExited();
+				}
+			});
+			
+			addMouseListener(	new MouseAdapter() 
+			{
+				public void mousePressed(MouseEvent e) 
+				{
+						fireButtonPressed();
+				}
+			});
+
+			addMouseListener(	new MouseAdapter() 
+			{
+				public void mouseReleased(MouseEvent e) 
+				{
+						fireButtonReleased();
+				}
+			});
+		}
+		
+		//----------------------------------------------------------- METHODES --//
+		//-----------------------------------------------------------------------
+		// Gestion des listeners
+		//-----------------------------------------------------------------------
+		public void addUIKeyListener(UIKeyListener listener)
+		{
+			listenersList.add(UIKeyListener.class, listener);
+		}
+	
+		public void removeUIKeyListener(UIKeyListener listener)
+		{
+			listenersList.remove(UIKeyListener.class, listener);
+		}		
+		//-----------------------------------------------------------------------
+		// Méthodes d'interface
+		//-----------------------------------------------------------------------
+		public TUIKeyState getState()
+		{
+			return currentState;
+		}
+
+		public void setState(TUIKeyState currentState)
+		{
+			this.currentState = currentState;
+		}
+		
+		//-----------------------------------------------------------------------
+		// Dessin
+		//-----------------------------------------------------------------------		
+		protected void paintComponent(Graphics myGraphic)
+		{
+			try
+			{
+				// Dessin de la touche
+				paintBackground(myGraphic);
+				
+				// Dessin de la caption
+				paintCaption(myGraphic);
 			}
-			});					
-		}
-			
-		//--------------------------------------------------- METHODES PRIVEES --//
-		void buttonClicked()
-		{
-			System.out.println("clicked");
-		}
-		
-		void buttonEntered()
-		{
-			System.out.println("entered");
-		}
-		
-		void buttonLeaved()
-		{
-			System.out.println("entered");
-		}
-		
-//		----------------------------------------------------------- METHODES --//
-		
-		protected void paintComponent(Graphics myGraphic) {
-			Graphics2D graphic2D = (Graphics2D) myGraphic;
-			
-			graphic2D.setRenderingHint(
-											RenderingHints.KEY_ANTIALIASING,
-											RenderingHints.VALUE_ANTIALIAS_ON);
-			
-			graphic2D.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND,
-												BasicStroke.JOIN_ROUND));
-					
-			
-			// Contour
-				graphic2D.setStroke(new BasicStroke(5f));
-				graphic2D.drawRect(0,0,getWidth(),getHeight());
-		}
-		
-//			setPreferredSize(new Dimension(50, 60));
-//			setSize(50, 60);
-//			
-//			// Ajout des listener sur la souris
-//			addMouseListener(new MouseAdapter() {
-//					public void mouseClicked(MouseEvent e) {
-//						fireButtonClick();
-//				}
-//			});
-//			
-//			addMouseListener(new MouseAdapter() {
-//				public void mouseEntered(MouseEvent e) {
-//					fireButtonEntered();
+			catch (Exception ex)
+			{
+				// A COMPLETER
+			}
+
+//			System.out.println("paintComponent");
+//	
+//			Graphics2D graphic2D = (Graphics2D) myGraphic;
+//	
+//			graphic2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//					RenderingHints.VALUE_ANTIALIAS_ON);
+//	
+//			graphic2D.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND,
+//					BasicStroke.JOIN_ROUND));
+//	
+//			// Contour
+//			graphic2D.setStroke(new BasicStroke(5f));
+//	
+//			if ( currentState == TUIKeyState.NORMAL )
+//			{
+//				graphic2D.setColor(Color.BLACK);
 //			}
-//		});
-//		}
-//		
-//		//----------------------------------------------------------- METHODES --//
-//		
-//		public void addButtonListener(ButtonListener listener) {
-//			listenersList.add(ButtonListener.class, listener);
-//		}
-//		
-//		public void removeButtonListener(ButtonListener listener) {
-//			listenersList.remove(ButtonListener.class, listener);
-//		}
-//		
-//		protected ButtonListener[] getButtonListeners() {
-//			return listenersList.getListeners(ButtonListener.class);
-//		}
-//		
-//		protected void fireButtonClick() {
-//			Object[] listeners = listenersList.getListenerList();
-//			
-//			for (int i = listeners.length - 2; i >= 0; i -= 2)
-//				if (listeners[i] == ButtonListener.class)
-//					((ButtonListener) listeners[i + 1]).buttonClicked(this);
-//		}
-//		
-//		protected void fireButtonEntered() 
-//		{
-//			Object[] listeners = listenersList.getListenerList();
-//			
-//			for (int i = listeners.length - 2; i >= 0; i -= 2)
-//				if (listeners[i] == ButtonListener.class)
-//					((ButtonListener) listeners[i + 1]).buttonEntered(this);
-//		}
-//		
-//		
+//			else if ( currentState == TUIKeyState.SELECTED )
+//			{
+//				graphic2D.setColor(Color.BLUE);
+//			}
+//			else if ( currentState == TUIKeyState.PRESSED )
+//			{
+//				graphic2D.setColor(Color.RED);
+//			}
+//	
+//			graphic2D.drawRect(0, 0, getWidth(), getHeight());
+		}
+		
 		//--------------------------------------------------- METHODES PRIVEES --//
+		//-----------------------------------------------------------------------
+		// Dessin
+		//-----------------------------------------------------------------------
+		protected void paintBackground(Graphics myGraphic) throws Exception
+		{
+			// Récupération de la couleur de fond
+			Color bgdColor;
+			try
+			{
+				if (currentState == TUIKeyState.NORMAL)
+				{
+					bgdColor = getCoreKey().GetColorNormal().GetColor();
+				}
+				else if (currentState == TUIKeyState.PRESSED)
+				{
+					bgdColor = getCoreKey().GetColorClicked().GetColor();
+				}
+				else if (currentState == TUIKeyState.SELECTED)
+				{
+					bgdColor = getCoreKey().GetColorEntered().GetColor();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(	UIString.getUIString("EX_UIKEY_COLOR_ERROR") + 
+										ex.getMessage());
+			}
+			
+			// Dessin du fond
+			// A COMPLETER
+			
+		}
+		
+		protected void paintCaption(Graphics myGraphic)
+		{
+			// A COMPLETER
+		}
+		
+		//-----------------------------------------------------------------------
+		// Gestion des listeners
+		//-----------------------------------------------------------------------
+		protected UIKeyListener[] getButtonListeners()
+		{
+			return listenersList.getListeners(UIKeyListener.class);
+		}
+	
+		protected void fireButtonEntered()
+		{
+			Object[] listeners = listenersList.getListenerList();
+	
+			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
+				if ( listeners[i] == UIKeyListener.class )
+					((UIKeyListener) listeners[i + 1]).buttonEntered(this);
+		}
+		
+		protected void fireButtonExited()
+		{
+			Object[] listeners = listenersList.getListenerList();
+	
+			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
+				if ( listeners[i] == UIKeyListener.class )
+					((UIKeyListener) listeners[i + 1]).buttonExited(this);
+		}
+		
+		protected void fireButtonPressed()
+		{
+			Object[] listeners = listenersList.getListenerList();
+	
+			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
+				if ( listeners[i] == UIKeyListener.class )
+					((UIKeyListener) listeners[i + 1]).buttonPressed(this);
+		}
+		
+		protected void fireButtonReleased()
+		{
+			Object[] listeners = listenersList.getListenerList();
+	
+			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
+				if ( listeners[i] == UIKeyListener.class )
+					((UIKeyListener) listeners[i + 1]).buttonReleased(this);
+		}
+
+		protected abstract CKey getCoreKey();
 }
 
 
