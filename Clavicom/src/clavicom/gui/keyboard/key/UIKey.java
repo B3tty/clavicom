@@ -25,8 +25,11 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -165,7 +168,7 @@ public abstract class UIKey extends JPanel
 		protected void paintBackground(Graphics myGraphic) throws Exception
 		{
 			// Récupération de la couleur de fond
-			Color bgdColor;
+			Color bgdColor = null;
 			try
 			{
 				if (currentState == TUIKeyState.NORMAL)
@@ -187,8 +190,30 @@ public abstract class UIKey extends JPanel
 										ex.getMessage());
 			}
 			
-			// Dessin du fond
-			// A COMPLETER
+			// Récupération du graphic
+			Graphics2D graphic2D = (Graphics2D) myGraphic;
+			
+			// Couleur de fond
+			graphic2D.setPaint(new GradientPaint(0,0, bgdColor, getWidth(),getHeight(),Color.WHITE,true));
+			graphic2D.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
+	
+			// Contour
+			graphic2D.setColor(bgdColor);
+			graphic2D.setStroke(new BasicStroke(10f));
+			graphic2D.drawRoundRect(0, 0, getWidth(), getHeight(),20,20);
+			
+//			graphic2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//					RenderingHints.VALUE_ANTIALIAS_ON);
+//	
+//			graphic2D.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND,
+//					BasicStroke.JOIN_ROUND));
+//	
+//			// Contour
+//			graphic2D.setStroke(new BasicStroke(50f));
+//
+//			graphic2D.setColor(bgdColor);
+//	
+//			graphic2D.drawRect(0, 0, getWidth(), getHeight());
 			
 		}
 		

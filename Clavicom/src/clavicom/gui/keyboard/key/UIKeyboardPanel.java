@@ -90,9 +90,9 @@ public class UIKeyboardPanel extends JPanel implements UIKeyListener
 	//-----------------------------------------------------------------------
 	protected JPanel createUIKey()
 	{
-//		UIKey key = new UIKey();
-//		key.addUIKeyListener(this);
-		return null;
+		UIKey key = new UIKeyOneLevel();
+		key.addUIKeyListener(this);
+		return key;
 	}
 
 }
