@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: tesCommandSet.java
-			Creation date		: 22 mai 07
+			Filename			: testSettings.java
+			Creation date		: 24 mai 07
 		
 			Project				: Clavicom
 			Package				: test
@@ -23,14 +23,13 @@
 
 +-----------------------------------------------------------------------------*/
 
-package test;
+package test.core;
 
-import clavicom.core.keygroup.keyboard.command.CCode;
-import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
+import clavicom.CSettings;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.gui.language.UIString;
 
-public class testCommandSet
+public class testSettings
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -38,32 +37,31 @@ public class testCommandSet
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
+
 	public static void main(String[] args)
 	{
-
-		String chemin = "Ressources\\Application\\CommandSets\\francais.ccs";
 		try
 		{
-			CCommandSet.CreateInstance( chemin );
+			// Chargement des UIString et shortcutset
+			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
-			CSection section = CCommandSet.GetInstance().GetSection("Spéciaux");
-
-			CCommand command = section.GetCommand( "&" );
+			String s = "Ressources\\Application\\config.xml";
+			String s_out = "Ressources\\Application\\config_out.xml";
 			
-			for( int i = 0 ; i < command.Size() ; ++i )
-			{
-				CCode code = command.GetCode(i);
-				System.out.println(code.GetKeyEvent() + " " + code.GetKeyAction());
-			}
+			CSettings.LoadSettings( s );
+			
+			System.out.println( CSettings.getDefaultProfilsPath() );
+			
+			CSettings.SaveSettings( s_out );
+	
 			
 		}
-		catch ( Exception e )
+		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
-
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

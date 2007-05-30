@@ -1,4 +1,4 @@
-package test;
+package test.core;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,10 +9,10 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.profil.CPreferedWords;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
 
-public class testPreferedWords
+public class testKeyClavicom
 {
 	static org.jdom.Document document;
 
@@ -31,28 +31,30 @@ public class testPreferedWords
 	
 			// On crée un nouveau document JDOM avec en argument le fichier XML
 			// Le parsing est terminé ;)
-			document = sxb.build(new File("Ressources\\Temp\\preferedWords.xml"));
+			document = sxb.build(new File("Ressources\\Temp\\key_clavicom.xml"));
 	
 			// On initialise un nouvel élément racine avec l'élément racine du
 			// document.
 			racine = document.getRootElement();
 	
-			Element uneTouche = racine.getChild("prefered_words");
-			CPreferedWords pw;
+			Element uneTouche = racine.getChild("keyclavicom");
+			CKeyClavicom key1;
 	
 			// Construction de la touche
-			pw = new CPreferedWords(uneTouche);
+			key1 = new CKeyClavicom(uneTouche);
+			
+			
 	
 			// Enregistrement de la touche
-			Element racine2 = new Element("blob");
+			Element racine2 = new Element("salut");
 	
 			// On crée un nouveau Document JDOM basé sur la racine que l'on vient de
 			// créer
 			org.jdom.Document documentOut = new org.jdom.Document(racine2);
-			racine2.addContent(pw.buildNode());
+			racine2.addContent(key1.buildNode(99));
 			XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
 			sortie.output(documentOut,
-					new FileOutputStream("Ressources\\Temp\\preferedWords_out.xml"));
+					new FileOutputStream("Ressources\\Temp\\key_clavicom_out.xml"));
 		}
 		catch (Exception e)
 		{

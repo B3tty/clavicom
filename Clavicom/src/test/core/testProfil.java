@@ -1,7 +1,8 @@
-package test;
+package test.core;
 
 import org.jdom.Element;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
@@ -17,7 +18,7 @@ public class testProfil
 		{
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
 			// Chemins
 			String input = "Ressources\\Temp\\profil.xml";
