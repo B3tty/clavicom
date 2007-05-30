@@ -25,9 +25,13 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
+
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.OnClickKeyCharacterListener;
+import clavicom.core.listener.OnClickKeyClavicomListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TPoint;
@@ -42,6 +46,8 @@ public class CKeyClavicom extends CKeyOneLevel
 
 	TKeyClavicomActionType action;	// Action a faire
 	
+	protected EventListenerList listenerList;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyClavicom(
 			CColor myColorNormal, 
@@ -52,6 +58,8 @@ public class CKeyClavicom extends CKeyOneLevel
 			String myCaption)
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		
+		listenerList = new EventListenerList();
 	}
 	
 	/**
@@ -82,9 +90,36 @@ public class CKeyClavicom extends CKeyOneLevel
 									TXMLNames.KY_ELEMENT_CLAVICOM_ACTION + 
 									UIString.getUIString("EX_KEYCLAVICOM_INVALID_ACTION_2")) ;
 		}
+		
+		listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	// Listener ==============================================
+	public void addOnClickKeyClavicomListener(OnClickKeyClavicomListener l)
+	{
+		this.listenerList.add(OnClickKeyClavicomListener.class, l);
+	}
+
+	public void removeOnClickKeyClavicomListener(OnClickKeyClavicomListener l)
+	{
+		this.listenerList.remove(OnClickKeyClavicomListener.class, l);
+	}
+
+	protected void fireOnClickKeyClavicom()
+	{
+		OnClickKeyClavicomListener[] listeners = (OnClickKeyClavicomListener[]) listenerList
+				.getListeners(OnClickKeyClavicomListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyClavicom(this);
+		}
+	}
+	// fin Listener ============================================
+	
+	
 	/**
 	 * Créé le noeud à partir de l'objet courant
 	 * @return Noeud construit

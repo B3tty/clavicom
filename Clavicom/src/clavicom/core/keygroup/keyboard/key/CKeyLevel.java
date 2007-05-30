@@ -29,6 +29,7 @@ import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -38,7 +39,7 @@ public class CKeyLevel extends CKeyOneLevel
 
 	//---------------------------------------------------------- VARIABLES --//	
 	
-	int level;
+	TLevelEnum level;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLevel(
@@ -47,7 +48,7 @@ public class CKeyLevel extends CKeyOneLevel
 			CColor myColorEntered, 
 			TPoint myPointMin, 
 			TPoint myPointMax,
-			int myLevel,
+			TLevelEnum myLevel,
 			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax,myCaption);
@@ -66,25 +67,24 @@ public class CKeyLevel extends CKeyOneLevel
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYLEVEL_BUILD" ) + TXMLNames.CM_ATTRIBUTE_ID);
 		}
-		try
+
+		level = TLevelEnum.getValue( s_level );
+
+		if( level == null )
 		{
-			level = Integer.parseInt( s_level );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_level + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ) );
+			throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_level );
 		}
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public int GetLevel(){ return level; }
+	public TLevelEnum GetLevel(){ return level; }
 	
 	@Override
 	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		Element level_elem = new Element( TXMLNames.KY_ELEMENT_LEVEL );
-		level_elem.setText( String.valueOf( level ) );
+		level_elem.setText( TLevelEnum.getString( level ) );
 		
 		eltKeyNode.addContent( level_elem );
 	}
