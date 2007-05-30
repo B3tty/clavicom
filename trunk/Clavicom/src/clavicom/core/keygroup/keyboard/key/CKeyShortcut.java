@@ -34,7 +34,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public class CKeyShortcut extends CKeyboardKey
+public class CKeyShortcut extends CKeyOneLevel
 {	
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -48,9 +48,10 @@ public class CKeyShortcut extends CKeyboardKey
 			CColor myColorEntered , 
 			TPoint myPointMin, 
 			TPoint myPointMax,
+			String myCaption,
 			CCommand myCommand)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 		command = myCommand;
 	}
 	
@@ -59,9 +60,10 @@ public class CKeyShortcut extends CKeyboardKey
 			CColor myColorClicked , 
 			CColor myColorEntered , 
 			TPoint myPointMin, 
-			TPoint myPointMax)
+			TPoint myPointMax,
+			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax);
+		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 	}
 
 	public CKeyShortcut(Element eltKeyCommand) throws Exception
@@ -118,7 +120,7 @@ public class CKeyShortcut extends CKeyboardKey
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	public void completeNodeSpecific(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Ajout de la commande
 		Element eltCommand = new Element(TXMLNames.KY_ELEMENT_SHORTCUT_COMMAND);
@@ -140,6 +142,13 @@ public class CKeyShortcut extends CKeyboardKey
 	public void setCommand(CCommand command)
 	{
 		this.command = command;
+	}
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

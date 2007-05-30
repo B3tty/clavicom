@@ -230,6 +230,12 @@
 	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Chargement du nom du commandSet</message>
 	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Impossible de trouver le nom du commandSet utilisé</message>
 	
+	<!-- KEY_ONE_LEVEL -->
+	<message id = "EX_KEY_ONE_LEVEL_BUILD">Chargement d'une touche à un niveau</message>
+	
+	<!-- KEY_THREE_LEVEL -->
+	<message id = "EX_KEY_THREE_LEVEL_BUILD">Chargement d'une touche à trois niveau</message>
+	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->

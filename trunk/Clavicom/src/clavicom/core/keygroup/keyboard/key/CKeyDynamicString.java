@@ -37,7 +37,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public abstract class CKeyDynamicString extends CKeyboardKey
+public abstract class CKeyDynamicString extends CKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	String currentCaption;
@@ -51,13 +51,15 @@ public abstract class CKeyDynamicString extends CKeyboardKey
 			CColor myColorClicked , 
 			CColor myColorEntered , 
 			TPoint myPointMin, 
-			TPoint myPointMax)
+			TPoint myPointMax,
+			String myCaption)
 	{
 		super (	myColorNormal, 
 				myColorClicked , 
 				myColorEntered , 
 				myPointMin, 
-				myPointMax);
+				myPointMax,
+				myCaption);
 		
 		currentCaption = "";
 	}

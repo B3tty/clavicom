@@ -39,10 +39,11 @@ public class CKeyLastWord extends CKeyDynamicString
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLastWord(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
+			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
-				myPointMax);
+				myPointMax,myCaption);
 	}
 	
 	public CKeyLastWord (Element eltKeyLastWord) throws Exception
@@ -63,4 +64,11 @@ public class CKeyLastWord extends CKeyDynamicString
 		return TXMLNames.KY_ELEMENT_PREDICTION;
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

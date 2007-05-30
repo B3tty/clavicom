@@ -33,7 +33,11 @@ import org.jdom.Element;
 
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
+import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
@@ -122,33 +126,22 @@ public class CKeyList
 				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_STRING" )+ "]" + ex.getMessage() );
 			}
 		}
-		else if( node.getName().equals( TXMLNames.KY_ELEMENT_LEVEL ) )
+		else if( node.getName().equals( TXMLNames.KY_ELEMENT_KEYLEVEL ) )
 		{
 			try
 			{
-				keyboardKey = new CKeyString( node );
+				keyboardKey = new CKeyLevel( node );
 			}
 			catch (Exception ex)
 			{
 				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_LEVEL" )+ "]" + ex.getMessage() );
 			}
 		}
-		else if( node.getName().equals( TXMLNames.KY_ELEMENT_DYNAMIC_ORDER ) )
-		{
-			try
-			{
-				keyboardKey = new CKeyString( node );
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_DYNAMIC_STRING" )+ "]" + ex.getMessage() );
-			}
-		}
 		else if( node.getName().equals( TXMLNames.KY_ELEMENT_LASTWORD ) )
 		{
 			try
 			{
-				keyboardKey = new CKeyString( node );
+				keyboardKey = new CKeyLastWord( node );
 			}
 			catch (Exception ex)
 			{
@@ -159,7 +152,7 @@ public class CKeyList
 		{
 			try
 			{
-				keyboardKey = new CKeyString( node );
+				keyboardKey = new CKeyPrediction( node );
 			}
 			catch (Exception ex)
 			{

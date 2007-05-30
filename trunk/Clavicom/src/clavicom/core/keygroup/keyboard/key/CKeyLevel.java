@@ -32,7 +32,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public class CKeyLevel extends CKeyboardKey
+public class CKeyLevel extends CKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -47,9 +47,10 @@ public class CKeyLevel extends CKeyboardKey
 			CColor myColorEntered, 
 			TPoint myPointMin, 
 			TPoint myPointMax,
-			int myLevel)
+			int myLevel,
+			String myCaption)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax);
+		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax,myCaption);
 
 
 		level = myLevel;
@@ -80,7 +81,7 @@ public class CKeyLevel extends CKeyboardKey
 	public int GetLevel(){ return level; }
 	
 	@Override
-	public void completeNodeSpecific(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		Element level_elem = new Element( TXMLNames.KY_ELEMENT_LEVEL );
 		level_elem.setText( String.valueOf( level ) );
@@ -92,6 +93,13 @@ public class CKeyLevel extends CKeyboardKey
 	public String getElementName()
 	{
 		return TXMLNames.KY_ELEMENT_KEYLEVEL;
+	}
+
+	@Override
+	protected Boolean toBeSave()
+	{
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
