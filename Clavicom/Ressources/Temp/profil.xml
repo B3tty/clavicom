@@ -109,6 +109,38 @@
 					</colors>
 					<level>NORMAL</level>
 				</keylevel>
+	<keystring order="2" caption_image="false">
+		<order_dynamic>12</order_dynamic>
+		<base_string>test</base_string>
+		<coordinates>
+			<point position="min">
+				<x>25.5</x>
+				<y>52.2</y>
+			</point>
+			<point position="max">
+				<x>5.5</x>
+				<y>2.2</y>
+			</point>		
+		</coordinates>
+		<caption>coucou1</caption>
+		<colors>
+			<color_normal>
+				<red>189</red>
+				<green>189</green>
+				<blue>189</blue>
+			</color_normal>
+			<color_clicked>
+				<red>204</red>
+				<green>0</green>
+				<blue>204</blue>
+			</color_clicked>
+			<color_entered>
+				<red>255</red>
+				<green>153</green>
+				<blue>255</blue>
+			</color_entered>
+		</colors>
+	</keystring>
 			</keylist>
 		</keygroup>
 	</keyboard>

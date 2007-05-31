@@ -40,7 +40,6 @@ import clavicom.tools.TXMLNames;
 public abstract class CKeyDynamicString extends CKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	String currentCaption;
 	int order;
 	
 	protected EventListenerList listenerList;
@@ -62,8 +61,6 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 				myPointMin, 
 				myPointMax,
 				myCaption);
-		
-		currentCaption = "";
 		
 		listenerList = new EventListenerList();
 	}
@@ -147,16 +144,6 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		
 		eltKeyNode.addContent(eltOrder);
 	}
-
-	public String getCurrentCaption()
-	{
-		return currentCaption;
-	}
-
-	public void setCurrentCaption(String currentCaption)
-	{
-		this.currentCaption = currentCaption;
-	}
 	
 	/**
 	 * Permet de récupérer la liste de commandes correspondant à la chaîne courante
@@ -176,13 +163,13 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		CCommand currentCommand;
 		List<CCommand> listCommands = new ArrayList<CCommand>();
 		
-		for(int i = 0 ; i < currentCaption.length() ; ++i )
+		for(int i = 0 ; i < caption.length() ; ++i )
 		{
 			// Récupération du caractère courant
-			currentChar = currentCaption.charAt(i);
+			currentChar = caption.charAt(i);
 			
 			// Recherche de la commande
-			currentCommand = CCommandSet.GetInstance().GetCommande(currentChar);
+			currentCommand = CCommandSet.GetInstance().GetCommande(String.valueOf(currentChar));
 			
 			if(currentCommand == null)
 			{

@@ -44,7 +44,7 @@ public class UIKeyboardPanel extends JPanel implements UIKeyListener
 	public UIKeyboardPanel() {
 		// TEMPORAIRE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		setBackground(Color.WHITE);
-		setPreferredSize(new Dimension(800, 600));
+		setPreferredSize(new Dimension(300,150 ));
 		setSize(getPreferredSize());
 		
 		// Touches de test
@@ -74,6 +74,7 @@ public class UIKeyboardPanel extends JPanel implements UIKeyListener
 
 	public void buttonPressed(UIKey source)
 	{
+		source.alertCoreKey();
 		source.setState(TUIKeyState.PRESSED);
 		source.repaint();	
 	}

@@ -25,8 +25,14 @@ package test.gui;
 +-----------------------------------------------------------------------------*/
 
 import javax.swing.JFrame;
+import javax.swing.JWindow;
 
+import clavicom.core.engine.CCommandEngine;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.profil.CKeyboard;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.UIKeyboardPanel;
+import clavicom.gui.language.UIString;
 
 public final class testKeyboardPanel extends JFrame {
 
@@ -37,7 +43,35 @@ public final class testKeyboardPanel extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
-        new testKeyboardPanel().setVisible(true);
+    public static void main(String[] args) throws Exception {
+    	
+		// Chargement des UIString et shortcutset
+		UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
+		CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+		
+		// Chemins
+		String input = "Ressources\\Temp\\profil.xml";
+		
+		// Chargement du profil
+		try
+		{
+			CProfil.createInstance(input);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		CProfil profil = CProfil.getInstance();
+		
+		CKeyboard keyboard = profil.getKeyboard();
+		
+		// Chargement du commandEngine
+		CCommandEngine commandEngine = new CCommandEngine( keyboard );
+		
+    	testKeyboardPanel application =  new testKeyboardPanel();
+    	application.setVisible(true);
+    	application.setFocusableWindowState(false);
+    	application.setAlwaysOnTop(true);
     }
 }

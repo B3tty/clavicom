@@ -173,6 +173,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			// TODO - afficher msg
 			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
 			fireNewMessage( message );
+			return;
 		}
 		
 		for( CCommand command : commandList )
@@ -191,6 +192,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 						// TODO - afficher msg
 						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						fireNewMessage( message );
+						return;
 					}
 				}
 				else if( code.GetKeyAction() == TKeyAction.RELEASED )
@@ -204,6 +206,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 						// TODO - afficher msg
 						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						fireNewMessage( message );
+						return;
 					}
 				}
 			}
@@ -263,9 +266,13 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		{
 			CMessage message = new CMessage( e.getMessage() );
 			fireNewMessage( message );
+			return;
 		}
 		
-		executeCommande( commandList );
+		if(commandList != null)
+		{
+			executeCommande( commandList );
+		}
 	}
 
 
