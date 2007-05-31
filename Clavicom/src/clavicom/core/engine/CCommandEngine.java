@@ -29,8 +29,6 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
@@ -41,6 +39,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyLevelListener;
@@ -60,11 +59,13 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	TLevelEnum currentLevel;
 	
 	protected EventListenerList listenerNewMessageList;
+	protected EventListenerList listenerChangeLevelList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CCommandEngine( CKeyboard keyboard )
 	{
 		listenerNewMessageList = new EventListenerList();
+		listenerChangeLevelList = new EventListenerList();
 		
 		// =============================================================
 		// Abonnement aux listener
@@ -115,12 +116,24 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	{
 		this.listenerNewMessageList.add(NewMessageListener.class, l);
 	}
+	public void addChangeLevelListener(ChangeLevelListener l)
+	{
+		this.listenerChangeLevelList.add(ChangeLevelListener.class, l);
+	}
 
+	
+	
 	public void removeNewMessageListener(NewMessageListener l)
 	{
 		this.listenerNewMessageList.remove(NewMessageListener.class, l);
 	}
+	public void removeChangeLevelListener(ChangeLevelListener l)
+	{
+		this.listenerChangeLevelList.remove(ChangeLevelListener.class, l);
+	}
 
+	
+	
 	protected void fireNewMessage( CMessage message )
 	{
 		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
@@ -128,6 +141,15 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		for ( int i = listeners.length - 1; i >= 0; i-- )
 		{
 			listeners[i].newMessage( message );
+		}
+	}
+	protected void fireChangeLevel( )
+	{
+		ChangeLevelListener[] listeners = (ChangeLevelListener[]) listenerChangeLevelList
+				.getListeners(ChangeLevelListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].changeLevel( currentLevel );
 		}
 	}
 	// ========================================================|
@@ -224,7 +246,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		// changement de level
 		currentLevel = keyLevel.GetLevel();
 		
-		// fireChangeLevel();
+		fireChangeLevel();
 		
 	}
 
