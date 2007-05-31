@@ -18,14 +18,14 @@
 				<blue>189</blue>
 			</color_normal>
 			<color_clicked>
-				<red>255</red>
+				<red>204</red>
 				<green>0</green>
-				<blue>51</blue>
+				<blue>204</blue>
 			</color_clicked>
 			<color_entered>
 				<red>255</red>
 				<green>153</green>
-				<blue>153</blue>
+				<blue>255</blue>
 			</color_entered>
 		</colors>
 		<level>NORMAL</level>

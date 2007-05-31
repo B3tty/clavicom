@@ -25,13 +25,19 @@
 
 package clavicom.gui.keyboard.key;
 
-import java.awt.BasicStroke;
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
@@ -43,11 +49,16 @@ import clavicom.tools.TUIKeyState;
 public abstract class UIKey extends JPanel
 {
 		//--------------------------------------------------------- CONSTANTES --//
-
+//		private float[] BLUR = {0.10f, 0.10f, 0.10f, 0.10f, 0.30f, 0.10f, 0.10f, 0.10f, 0.10f};
+		
+		final int TAILLE_BORDURE_INTERIEURE = 4;
+		final int TAILLE_BORDURE_EXTERIEURE = 3;
+		final int TAILLE_ARC = 25;
+		
 		//---------------------------------------------------------- ATTRIBUTS --//		
 		private EventListenerList listenersList;	// Elements abonnés
-		
 		private TUIKeyState currentState;			// Etat de la touche
+		
 		//------------------------------------------------------ CONSTRUCTEURS --//
 		
 		public UIKey()
@@ -86,6 +97,8 @@ public abstract class UIKey extends JPanel
 						fireButtonReleased();
 				}
 			});
+			
+			currentState = TUIKeyState.NORMAL;
 		}
 		
 		//----------------------------------------------------------- METHODES --//
@@ -114,6 +127,11 @@ public abstract class UIKey extends JPanel
 			this.currentState = currentState;
 		}
 		
+		public void alertCoreKey()
+		{
+			getCoreKey().Click();
+		}
+		
 		//-----------------------------------------------------------------------
 		// Dessin
 		//-----------------------------------------------------------------------		
@@ -121,105 +139,141 @@ public abstract class UIKey extends JPanel
 		{
 			try
 			{
-				// Dessin de la touche
-				paintBackground(myGraphic);
+				super.paintComponent(myGraphic);
 				
-				// Dessin de la caption
-				paintCaption(myGraphic);
+				// Construction du buffer
+				BufferedImage vBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D bg = vBuffer.createGraphics();
+				bg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				
+				// Récupération de la couleur de fond
+				Color bgdColor = null;
+				try
+				{
+					if (currentState == TUIKeyState.NORMAL)
+					{
+						bgdColor = getCoreKey().GetColorNormal().GetColor();
+					}
+					else if (currentState == TUIKeyState.PRESSED)
+					{
+						bgdColor = getCoreKey().GetColorClicked().GetColor();
+					}
+					else if (currentState == TUIKeyState.SELECTED)
+					{
+						bgdColor = getCoreKey().GetColorEntered().GetColor();
+					}
+				}
+				catch (Exception ex)
+				{
+					throw new Exception(	UIString.getUIString("EX_UIKEY_COLOR_ERROR") + 
+											ex.getMessage());
+				}
+				
+				// Ajout du fond de la touche
+				addPaintBackground(bg,bgdColor);
+				
+				// Ajout de la caption
+				addPaintCaption(bg,bgdColor);
+				
+				// Dessin
+				Graphics2D g2 = (Graphics2D) myGraphic;
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				g2.drawImage(vBuffer, 0, 0, null);	
 			}
 			catch (Exception ex)
 			{
 				// A COMPLETER
+				ex.printStackTrace();
 			}
-
-//			System.out.println("paintComponent");
-//	
-//			Graphics2D graphic2D = (Graphics2D) myGraphic;
-//	
-//			graphic2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//					RenderingHints.VALUE_ANTIALIAS_ON);
-//	
-//			graphic2D.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND,
-//					BasicStroke.JOIN_ROUND));
-//	
-//			// Contour
-//			graphic2D.setStroke(new BasicStroke(5f));
-//	
-//			if ( currentState == TUIKeyState.NORMAL )
-//			{
-//				graphic2D.setColor(Color.BLACK);
-//			}
-//			else if ( currentState == TUIKeyState.SELECTED )
-//			{
-//				graphic2D.setColor(Color.BLUE);
-//			}
-//			else if ( currentState == TUIKeyState.PRESSED )
-//			{
-//				graphic2D.setColor(Color.RED);
-//			}
-//	
-//			graphic2D.drawRect(0, 0, getWidth(), getHeight());
 		}
 		
 		//--------------------------------------------------- METHODES PRIVEES --//
 		//-----------------------------------------------------------------------
 		// Dessin
 		//-----------------------------------------------------------------------
-		protected void paintBackground(Graphics myGraphic) throws Exception
-		{
-			// Récupération de la couleur de fond
-			Color bgdColor = null;
-			try
-			{
-				if (currentState == TUIKeyState.NORMAL)
-				{
-					bgdColor = getCoreKey().GetColorNormal().GetColor();
-				}
-				else if (currentState == TUIKeyState.PRESSED)
-				{
-					bgdColor = getCoreKey().GetColorClicked().GetColor();
-				}
-				else if (currentState == TUIKeyState.SELECTED)
-				{
-					bgdColor = getCoreKey().GetColorEntered().GetColor();
-				}
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(	UIString.getUIString("EX_UIKEY_COLOR_ERROR") + 
-										ex.getMessage());
-			}
+		protected void addPaintBackground(Graphics2D bg, Color bgdColor) throws Exception
+		{						
+			// Création du Paint du premier calque
+			Color vGradientStartColor, vGradientEndColor;
+			vGradientStartColor =  bgdColor.brighter();
+			vGradientEndColor = bgdColor;				
+
+			Paint vPaint = new GradientPaint(	0, 
+												0, 
+												vGradientStartColor, 
+												0, 
+												getHeight(), 
+												vGradientEndColor, 
+												true);
+			bg.setPaint(vPaint);
+
+			// Dessin du premier Paint
+			bg.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
 			
-			// Récupération du graphic
-			Graphics2D graphic2D = (Graphics2D) myGraphic;
+			// Taille du second Layer
+			int vButtonHighlightHeight = getHeight() - (TAILLE_BORDURE_INTERIEURE * 2);
+			int vButtonHighlightWidth = getWidth() - (TAILLE_BORDURE_INTERIEURE * 2);
+
+			// Création du Paint du second calque
+			vGradientStartColor = bgdColor.brighter().brighter();
+			vGradientEndColor = bgdColor.brighter();				
 			
-			// Couleur de fond
-			graphic2D.setPaint(new GradientPaint(0,0, bgdColor, getWidth(),getHeight(),Color.WHITE,true));
-			graphic2D.fillRoundRect(0,0,getWidth(),getHeight(),20,20);
-	
-			// Contour
-			graphic2D.setColor(bgdColor);
-			graphic2D.setStroke(new BasicStroke(10f));
-			graphic2D.drawRoundRect(0, 0, getWidth(), getHeight(),20,20);
+			vPaint = new GradientPaint(	0,
+										TAILLE_BORDURE_INTERIEURE,
+										vGradientStartColor,
+										0,
+										TAILLE_BORDURE_INTERIEURE+(vButtonHighlightHeight/2), 
+										vGradientEndColor, 
+										false);
+
+			// Dessin du second Paint
+			bg.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,.8f));
+			bg.setPaint(vPaint);
+			bg.setClip(new RoundRectangle2D.Float(	TAILLE_BORDURE_INTERIEURE,
+													TAILLE_BORDURE_INTERIEURE,
+													vButtonHighlightWidth,
+													vButtonHighlightHeight /2, 
+													TAILLE_ARC,TAILLE_ARC));
 			
-//			graphic2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//					RenderingHints.VALUE_ANTIALIAS_ON);
-//	
-//			graphic2D.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND,
-//					BasicStroke.JOIN_ROUND));
-//	
-//			// Contour
-//			graphic2D.setStroke(new BasicStroke(50f));
-//
-//			graphic2D.setColor(bgdColor);
-//	
-//			graphic2D.drawRect(0, 0, getWidth(), getHeight());
-			
+			bg.fillRoundRect(	TAILLE_BORDURE_INTERIEURE,
+								TAILLE_BORDURE_INTERIEURE,
+								vButtonHighlightWidth,
+								vButtonHighlightHeight,
+								TAILLE_ARC,TAILLE_ARC);	
 		}
 		
-		protected void paintCaption(Graphics myGraphic)
+		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
 		{
-			// A COMPLETER
+			if (getCoreKey().isCaptionImage() == true)
+			// Dessin de l'image
+			{
+				
+			}
+			else
+			// Dessin du texte
+			{
+				// Récupération de la caption
+				String caption = getCaption();
+				
+				// On agrandit le clip
+				bg.setClip(0,0,getWidth(), getHeight());
+				
+				// On met la couleur et la bonne police
+				bg.setFont(new Font("Arial",Font.BOLD,32));
+				bg.setColor(bgdColor.brighter());
+				
+				// Calcul de la taille que va prendre le texte à s'écrire
+				// pour calculer la position de dessin
+				FontMetrics fontMetrics = bg.getFontMetrics();
+				int captionWidth = fontMetrics.stringWidth(getCaption());
+				int captionHeight = fontMetrics.getHeight();
+				
+				int xPosition = (getWidth()/2) - (captionWidth/2);
+				int yPosition = (getHeight()/2) + (captionHeight/2);
+				
+				// On écrit le texte
+				bg.drawString(caption,xPosition,yPosition);
+			}
 		}
 		
 		//-----------------------------------------------------------------------
@@ -267,6 +321,7 @@ public abstract class UIKey extends JPanel
 		}
 
 		protected abstract CKey getCoreKey();
+		protected abstract String getCaption();
 }
 
 
