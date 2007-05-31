@@ -25,11 +25,12 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -40,6 +41,8 @@ public class CKeyShortcut extends CKeyOneLevel
 
 	//---------------------------------------------------------- VARIABLES --//	
 	CCommand command;
+	
+	protected EventListenerList listenerList;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyShortcut(
@@ -53,6 +56,8 @@ public class CKeyShortcut extends CKeyOneLevel
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 		command = myCommand;
+		
+		listenerList = new EventListenerList();
 	}
 	
 	public CKeyShortcut(
@@ -64,6 +69,8 @@ public class CKeyShortcut extends CKeyOneLevel
 			String myCaption)
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		
+		listenerList = new EventListenerList();
 	}
 
 	public CKeyShortcut(Element eltKeyCommand) throws Exception
@@ -117,9 +124,39 @@ public class CKeyShortcut extends CKeyOneLevel
 									strId + 
 									UIString.getUIString("EX_KEYSHORTCUT_BAD_ID_2")) ;	
 		}
+		
+		listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	
+	// Listener ==============================================
+	public void addOnClickKeyShortcutListener(OnClickKeyShortcutListener l)
+	{
+		this.listenerList.add(OnClickKeyShortcutListener.class, l);
+	}
+
+	public void removeOnClickKeyShortcutListener(OnClickKeyShortcutListener l)
+	{
+		this.listenerList.remove(OnClickKeyShortcutListener.class, l);
+	}
+
+	protected void fireOnClickKeyShortcut()
+	{
+		OnClickKeyShortcutListener[] listeners = (OnClickKeyShortcutListener[]) listenerList
+				.getListeners(OnClickKeyShortcutListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyShortcut(this);
+		}
+	}
+	// fin Listener ============================================
+	
+	
+	
+	
 	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Ajout de la commande
@@ -154,7 +191,7 @@ public class CKeyShortcut extends CKeyOneLevel
 	@Override
 	public void Click()
 	{
-		// TODO - fire...
+		fireOnClickKeyShortcut();
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

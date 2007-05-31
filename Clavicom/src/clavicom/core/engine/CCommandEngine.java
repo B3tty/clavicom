@@ -29,20 +29,22 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
-import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
-import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
-import clavicom.core.listener.OnClickKeyLastWordListener;
+import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyLevelListener;
+import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.CMessage;
@@ -50,19 +52,19 @@ import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TKeyAction;
 import clavicom.tools.TLevelEnum;
 
-public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLastWordListener
+public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyLevelListener,OnClickKeyDynamicStringListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
 	TLevelEnum currentLevel;
 	
-	protected EventListenerList listenerList;
+	protected EventListenerList listenerNewMessageList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CCommandEngine( CKeyboard keyboard )
 	{
-		listenerList = new EventListenerList();
+		listenerNewMessageList = new EventListenerList();
 		
 		// =============================================================
 		// Abonnement aux listener
@@ -86,21 +88,15 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 								if( keyboardKey instanceof CKeyCharacter )
 								{
 									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
-								}else if( keyboardKey instanceof CKeyLastWord )
+								}else if( keyboardKey instanceof CKeyDynamicString )
 								{
-									((CKeyLastWord)keyboardKey).addOnClickKeyLastWordListener( this );
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
 								}else if( keyboardKey instanceof CKeyLevel )
 								{
-//									((CKeyLevel)keyboardKey).addOnClickKeyCharacterListener( this );
-								}else if( keyboardKey instanceof CKeyPrediction )
-								{
-//									((CKeyPrediction)keyboardKey).addOnClickKeyCharacterListener( this );
+									((CKeyLevel)keyboardKey).addOnClickKeyLevelListener( this );
 								}else if( keyboardKey instanceof CKeyShortcut )
 								{
-//									((CKeyShortcut)keyboardKey).addOnClickKeyCharacterListener( this );
-								}else if( keyboardKey instanceof CKeyString )
-								{
-//									((CKeyString)keyboardKey).addOnClickKeyCharacterListener( this );
+									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
 								}
 							}
 						}
@@ -117,17 +113,17 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 	// ========================================================|
 	public void addNewMessageListener(NewMessageListener l)
 	{
-		this.listenerList.add(NewMessageListener.class, l);
+		this.listenerNewMessageList.add(NewMessageListener.class, l);
 	}
 
 	public void removeNewMessageListener(NewMessageListener l)
 	{
-		this.listenerList.remove(NewMessageListener.class, l);
+		this.listenerNewMessageList.remove(NewMessageListener.class, l);
 	}
 
 	protected void fireNewMessage( CMessage message )
 	{
-		NewMessageListener[] listeners = (NewMessageListener[]) listenerList
+		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
 				.getListeners(NewMessageListener.class);
 		for ( int i = listeners.length - 1; i >= 0; i-- )
 		{
@@ -213,18 +209,42 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyLas
 		executeCommande( commandList );
 	}
 
-	public void onClickKeyLastWord(CKeyLastWord keyLasWord)
+
+	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{
+		List<CCommand> commandList = new ArrayList<CCommand>();
+		commandList.add( keyShortcut.getCommand() );
+		
+		executeCommande( commandList );
+		
+	}
+
+	public void onClickKeyLevel(CKeyLevel keyLevel)
+	{
+		// changement de level
+		currentLevel = keyLevel.GetLevel();
+		
+		// fireChangeLevel();
+		
+	}
+
+	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
+	{
+		List<CCommand> commandList = null;
+		
 		try
 		{
-			executeCommande( keyLasWord.getCommands() );
+			commandList = keyDynamicString.getCommands();
 		}
 		catch ( Exception e )
 		{
-			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN" ) );
+			CMessage message = new CMessage( e.getMessage() );
 			fireNewMessage( message );
-		}	
+		}
+		
+		executeCommande( commandList );
 	}
+
 
 
 	//--------------------------------------------------- METHODES PRIVEES --//

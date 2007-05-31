@@ -26,7 +26,6 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
@@ -38,6 +37,7 @@ public class CKeyString extends CKeyDynamicString
 
 	//---------------------------------------------------------- VARIABLES --//	
 	String baseString; // Désigne la chaîne générée, en minuscules, telle qu'elle sera sauvée
+
 						
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyString(CColor myColorNormal, CColor myColorClicked,
@@ -63,9 +63,12 @@ public class CKeyString extends CKeyDynamicString
 									TXMLNames.KY_ELEMENT_STRING_BASESTRING + 
 									UIString.getUIString("EX_KEYSTRING_MISSING_BASESTRING_2"));
 		}
+		
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	
+	
 	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Ajout de la chaine
@@ -98,11 +101,5 @@ public class CKeyString extends CKeyDynamicString
 		return true;
 	}
 
-	@Override
-	public void Click()
-	{
-		// TODO - fire...
-	}
-	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -26,9 +26,10 @@
 package clavicom.core.listener;
 
 import java.util.EventListener;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 
-public interface OnClickKeyLastWordListener extends EventListener
+
+public interface OnClickKeyDynamicStringListener extends EventListener
 {
-	public void onClickKeyLastWord ( CKeyLastWord keyLasWord );
+	public void onClickKeyDynamicString ( CKeyDynamicString keyDynamicString );
 }

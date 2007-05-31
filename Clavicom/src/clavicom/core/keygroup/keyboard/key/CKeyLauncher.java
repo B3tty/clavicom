@@ -25,9 +25,10 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.OnClickKeyLauncherListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -39,6 +40,8 @@ public class CKeyLauncher extends CKeyOneLevel
 	//---------------------------------------------------------- VARIABLES --//	
 	String applicationPath;
 	
+	protected EventListenerList listenerList;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLauncher(
 			CColor myColorNormal, 
@@ -49,6 +52,8 @@ public class CKeyLauncher extends CKeyOneLevel
 			String myCaption)
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		
+		this.listenerList = new EventListenerList();
 	}
 	
 	public CKeyLauncher (Element eltKeyLauncher) throws Exception
@@ -68,9 +73,37 @@ public class CKeyLauncher extends CKeyOneLevel
 									UIString.getUIString("EX_KEYLAUNCHER_MISSING_PATH_2")) ;		
 		}
 		applicationPath = eltPath.getText();
+		
+		this.listenerList = new EventListenerList();
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	// Listener ==============================================
+	public void addOnClickKeyLauncherListener(OnClickKeyLauncherListener l)
+	{
+		this.listenerList.add(OnClickKeyLauncherListener.class, l);
+	}
+
+	public void removeOnClickKeyLauncherListener(OnClickKeyLauncherListener l)
+	{
+		this.listenerList.remove(OnClickKeyLauncherListener.class, l);
+	}
+
+	protected void fireOnClickKeyLauncher()
+	{
+		OnClickKeyLauncherListener[] listeners = (OnClickKeyLauncherListener[]) listenerList
+				.getListeners(OnClickKeyLauncherListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyLauncher(this);
+		}
+	}
+	// fin Listener ============================================
+	
+	
+	
 	public void completeNodeSpecific2(Element keyNode) throws Exception
 	{		
 		// Ajout des elements spécifiques
@@ -107,6 +140,6 @@ public class CKeyLauncher extends CKeyOneLevel
 	@Override
 	public void Click()
 	{
-		// TODO - fire...
+		fireOnClickKeyLauncher();
 	}
 }
