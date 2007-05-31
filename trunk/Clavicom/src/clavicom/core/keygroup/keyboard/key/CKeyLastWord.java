@@ -25,10 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
-import clavicom.core.listener.OnClickKeyLastWordListener;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -37,7 +35,6 @@ public class CKeyLastWord extends CKeyDynamicString
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	protected EventListenerList listenerList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLastWord(CColor myColorNormal, CColor myColorClicked,
@@ -47,40 +44,16 @@ public class CKeyLastWord extends CKeyDynamicString
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
 				myPointMax,myCaption);
 		
-		this.listenerList = new EventListenerList();
 	}
 	
 	public CKeyLastWord (Element eltKeyLastWord) throws Exception
 	{
 		super(eltKeyLastWord);
-		
-		this.listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 	
 	
-	// Listener ==============================================
-	public void addOnClickKeyLastWordListener(OnClickKeyLastWordListener l)
-	{
-		this.listenerList.add(OnClickKeyLastWordListener.class, l);
-	}
-
-	public void removeOnClickKeyLastWordListener(OnClickKeyLastWordListener l)
-	{
-		this.listenerList.remove(OnClickKeyLastWordListener.class, l);
-	}
-
-	protected void fireOnClickKeyLastWord()
-	{
-		OnClickKeyLastWordListener[] listeners = (OnClickKeyLastWordListener[]) listenerList
-				.getListeners(OnClickKeyLastWordListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
-		{
-			listeners[i].onClickKeyLastWord(this);
-		}
-	}
-	// fin Listener ============================================
 	
 	
 	
@@ -102,9 +75,4 @@ public class CKeyLastWord extends CKeyDynamicString
 		return false;
 	}
 
-	@Override
-	public void Click()
-	{
-		fireOnClickKeyLastWord();
-	}
 }

@@ -27,12 +27,12 @@ package clavicom.core.keygroup.keyboard.key;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.swing.event.EventListenerList;
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -42,6 +42,8 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	//--------------------------------------------------------- CONSTANTES --//
 	String currentCaption;
 	int order;
+	
+	protected EventListenerList listenerList;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 
@@ -62,6 +64,8 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 				myCaption);
 		
 		currentCaption = "";
+		
+		listenerList = new EventListenerList();
 	}
 	
 	public CKeyDynamicString(Element keyDynamicElement) throws Exception 
@@ -94,9 +98,36 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 									strOrder + 
 									UIString.getUIString("EX_KEYDYNAMICSTRING_BAS_ORDER_1")) ;			
 		}
+		
+		listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	
+//	 Listener ==============================================
+	public void addOnClickKeyDynamicStringListener(OnClickKeyDynamicStringListener l)
+	{
+		this.listenerList.add(OnClickKeyDynamicStringListener.class, l);
+	}
+
+	public void removeOnClickKeyDynamicStringListener(OnClickKeyDynamicStringListener l)
+	{
+		this.listenerList.remove(OnClickKeyDynamicStringListener.class, l);
+	}
+
+	protected void fireOnClickKeyClavicom()
+	{
+		OnClickKeyDynamicStringListener[] listeners = (OnClickKeyDynamicStringListener[]) listenerList
+				.getListeners(OnClickKeyDynamicStringListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyDynamicString(this);
+		}
+	}
+	// fin Listener ============================================
+	
+	
+	
 	public void completeNodeSpecific(Element eltKeyNode) throws Exception
 	{
 		// Ajout des informations spécifiques 
@@ -168,6 +199,12 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	}
 	
 	public abstract void completeNodeSpecific2(Element eltKeyNode) throws Exception;
+	
+	@Override
+	public void Click()
+	{
+		fireOnClickKeyClavicom();		
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -25,8 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
-import org.jdom.Element;
 
+import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -49,11 +49,11 @@ public class CKeyPrediction extends CKeyDynamicString
 	public CKeyPrediction (Element eltKeyPrediction) throws Exception
 	{
 		super(eltKeyPrediction);
-		
-		// Rien a ajouter
 	}
 	
 	//----------------------------------------------------------- METHODES --//
+	
+
 	public String getElementName()
 	{
 		return TXMLNames.KY_ELEMENT_PREDICTION;
@@ -71,11 +71,7 @@ public class CKeyPrediction extends CKeyDynamicString
 		return false;
 	}
 
-	@Override
-	public void Click()
-	{
-		// TODO - fire...
-	}
+
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
