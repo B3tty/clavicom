@@ -67,6 +67,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		listenerNewMessageList = new EventListenerList();
 		listenerChangeLevelList = new EventListenerList();
 		
+		currentLevel = TLevelEnum.NORMAL;
+		
 		// =============================================================
 		// Abonnement aux listener
 		// =============================================================
@@ -82,7 +84,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 					{
 						for( int k = 0 ;  k < keyList.size() ; ++k )
 						{
-							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( i );
+							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( k );
 							if( keyboardKey != null )
 							{
 								// on cast pour savoir de quel type est la key
@@ -110,7 +112,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	//----------------------------------------------------------- METHODES --//
 	
 	// ========================================================|
-	// Listener ===============================================|
+	// Listeners ===============================================|
 	// ========================================================|
 	public void addNewMessageListener(NewMessageListener l)
 	{
@@ -153,7 +155,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 	}
 	// ========================================================|
-	// fin Listener ===========================================|
+	// fin Listeners ==========================================|
 	// ========================================================|
 	
 	protected void executeCommande( List<CCommand> commandList )
@@ -210,7 +212,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	
 	// ========================================================|
-	// ACTION =================================================|
+	// COMMAND ACTION =========================================|
 	// ========================================================|
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
@@ -230,7 +232,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		
 		executeCommande( commandList );
 	}
-
 
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{

@@ -78,7 +78,7 @@
 						<command_altgr id="2"></command_altgr>
 					</commands>
 				</keycharacter>
-				<keylevel order="0" caption_image="false" >
+				<keylevel order="1" caption_image="false" >
 					<coordinates>
 						<point position="min">
 							<x>25.5</x>
