@@ -197,7 +197,7 @@ public class CCommandSet
 				if( element != null )
 				{
 				// pour tous les end_of_word_character
-				for ( Object object2 : racine.getChildren(TXMLNames.CS_EOW_CHARACTER) )
+				for ( Object object2 : element.getChildren(TXMLNames.CS_EOW_CHARACTER) )
 				{
 					if ( object2 instanceof Element )
 					{

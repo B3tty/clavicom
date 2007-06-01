@@ -100,7 +100,7 @@ public class TXMLNames
 	public static String CS_ATTRIBUTE_NAME				= "name";
 	public static String CS_EOW_CHARACTERS				= "end_of_word_characters";
 	public static String CS_EOW_CHARACTER				= "end_of_word_character";
-	public static String CS_EOW_CHARACTER_STRING			= "character_string";
+	public static String CS_EOW_CHARACTER_STRING		= "character_string";
 
 	// shorcutSet
 	public static String SS_ROOT_NAME					= "shortcuts";
