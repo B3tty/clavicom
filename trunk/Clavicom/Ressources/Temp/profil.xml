@@ -38,6 +38,13 @@
 		<keyboard_transparency>50</keyboard_transparency>
 		<key_transparency>20</key_transparency>
 	</transparency>
+	<font>
+		<name>Arial</name>
+		<size>12</size>
+		<auto_size>false</auto_size>
+		<bold>true</bold>
+		<italic>false</italic>
+	</font>
 	<keyboard>
 		<keygroup order="0" caption="groupe de ouf" visible="true">
 			<keylist order="0">

@@ -171,4 +171,12 @@ public class TXMLNames
 	public static String PR_ELEMENT_NAVIGATION_ROLLOVER	= "rollover";
 	public static String PR_ATTRIBUTE_NAVIGATION_ROLLOVER	= "active";
 	
+	public static String PR_ELEMENT_FONT = "font";
+	public static String PR_ELEMENT_FONT_NAME	= "name";
+	public static String PR_ELEMENT_FONT_SIZE	= "size";
+	public static String PR_ELEMENT_FONT_AUTO_SIZE	= "auto_size";
+	public static String PR_ELEMENT_FONT_BOLD	= "bold";
+	public static String PR_ELEMENT_FONT_ITALIC= "italic";
+	
 }
+

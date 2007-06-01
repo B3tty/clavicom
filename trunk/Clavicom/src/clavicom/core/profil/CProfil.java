@@ -52,6 +52,7 @@ public class CProfil
 	CNavigation navigation;			// Type de navigation de l'utilisateur
 	CKeyboard keyboard;				// Structure du clavicom
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
+	CFont keyboardFont;				// Police de caractère utilisée pour le clavier
 	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -118,6 +119,11 @@ public class CProfil
 		return transparency;
 	}
 	
+	public CFont getKeyboardFont()
+	{
+		return keyboardFont;
+	}
+	
 	public void SaveProfil( String profilFilePath ) throws Exception
 	{
 		// ===============================================================
@@ -162,6 +168,11 @@ public class CProfil
 		// Attachement de la navigation
 		// ===============================================================
 		racine.addContent( navigation.buildNode() );
+
+		// ===============================================================
+		// Attachement de la police
+		// ===============================================================
+		racine.addContent( keyboardFont.buildNode() );
 		
 		// ===============================================================
 		// Attachement du clavier
@@ -179,8 +190,6 @@ public class CProfil
 		// Attachement des mots préférés de l'utilisateur
 		// ===============================================================
 		racine.addContent( preferedWords.buildNode() );
-		
-		
 
 		
 		// ===============================================================
@@ -275,6 +284,23 @@ public class CProfil
 		try
 		{
 			defaultColor = new CKeyboardColor( default_color_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+		
+		// ======================================================================
+		// chargement de la police
+		// ======================================================================
+		Element font_eleme = racine.getChild( TXMLNames.PR_ELEMENT_FONT );
+		if( font_eleme == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_FONT );
+		}
+		try
+		{
+			keyboardFont = new CFont( font_eleme );
 		}
 		catch(Exception ex)
 		{
