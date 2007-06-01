@@ -230,6 +230,16 @@
 	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Chargement du nom du commandSet</message>
 	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Impossible de trouver le nom du commandSet utilisé</message>
 	
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_1">[Chargement de la police] Attribut "</message>
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_2">" attendu manquant.</message>
+	
+	<message id = "EX_PROFIL_FONT_BAD_CAST_1">[Chargement de la police] La chaîne "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_2">" n'est pas un "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_3">" valide.</message>
+	
+	<message id = "EX_PROFIL_FONT_IMPOSSIBLE_LOAD_1">[Chargement de la police] Impossible de charger la police "</message>	
+	<message id = "EX_PROFIL_FONT_IMPOSSIBLE_LOAD_2">".</message>	
+	
 	<!-- KEY_ONE_LEVEL -->
 	<message id = "EX_KEY_ONE_LEVEL_BUILD">Chargement d'une touche à un niveau</message>
 	
@@ -239,13 +249,19 @@
 	<!-- UI_KEY -->
 	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
 
+	<!-- ==========================================================================
+		Messages 
+	==========================================================================  -->
 	
 	<!-- Command engine -->
 	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Impossible de creer le robot envoyant les caractères</message>
 	<message id = "MSG_COMMAND_ENGINE_CODE_INCORECT">Code de la touche incorrect</message>
 	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">Une ou pluseurs lettres ne sont pas connues</message>
 	
-	
+	<message id = "MSG_FONT_MISSING_FONT_1">Impossible de charger la police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_2">". La police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_3">" a été chargée par défaut.</message>
+		
 	
 	
 	<!-- ==========================================================================
