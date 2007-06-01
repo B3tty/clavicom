@@ -27,7 +27,6 @@ package clavicom.gui.keyboard.key;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -43,6 +42,7 @@ import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
 
 import clavicom.core.keygroup.CKey;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TUIKeyState;
 
@@ -259,9 +259,8 @@ public abstract class UIKey extends JPanel
 				bg.setClip(0,0,getWidth(), getHeight());
 				
 				// On met la couleur et la bonne police
-				bg.setFont(new Font("Arial",Font.BOLD,32));
-				bg.setColor(bgdColor.brighter());
-				
+				bg.setFont(CProfil.getInstance().getKeyboardFont().getUsedFont());
+						
 				// Calcul de la taille que va prendre le texte à s'écrire
 				// pour calculer la position de dessin
 				FontMetrics fontMetrics = bg.getFontMetrics();
