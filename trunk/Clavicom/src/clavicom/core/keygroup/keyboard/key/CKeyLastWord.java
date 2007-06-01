@@ -75,4 +75,10 @@ public class CKeyLastWord extends CKeyDynamicString
 		return false;
 	}
 
+	@Override
+	protected String GetStringCommand()
+	{
+		return caption;
+	}
+
 }

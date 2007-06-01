@@ -101,5 +101,11 @@ public class CKeyString extends CKeyDynamicString
 		return true;
 	}
 
+	@Override
+	protected String GetStringCommand()
+	{
+		return baseString;
+	}
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
