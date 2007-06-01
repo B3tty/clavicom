@@ -97,8 +97,8 @@ public class CKeyString extends CKeyDynamicString
 	@Override
 	protected Boolean toBeSave()
 	{
-		// TODO Auto-generated method stub
-		return true;
+		// TODO uto-generated method stub
+		return true; 
 	}
 
 	@Override
