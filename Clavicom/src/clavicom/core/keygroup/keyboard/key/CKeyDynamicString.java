@@ -145,6 +145,8 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		eltKeyNode.addContent(eltOrder);
 	}
 	
+	protected abstract String GetStringCommand();
+	
 	/**
 	 * Permet de récupérer la liste de commandes correspondant à la chaîne courante
 	 * @return La liste de commandes
@@ -163,10 +165,10 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		CCommand currentCommand;
 		List<CCommand> listCommands = new ArrayList<CCommand>();
 		
-		for(int i = 0 ; i < caption.length() ; ++i )
+		for(int i = 0 ; i < GetStringCommand().length() ; ++i )
 		{
 			// Récupération du caractère courant
-			currentChar = caption.charAt(i);
+			currentChar = GetStringCommand().charAt(i);
 			
 			// Recherche de la commande
 			currentCommand = CCommandSet.GetInstance().GetCommande(String.valueOf(currentChar));

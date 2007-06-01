@@ -71,6 +71,12 @@ public class CKeyPrediction extends CKeyDynamicString
 		return false;
 	}
 
+	@Override
+	protected String GetStringCommand()
+	{
+		return caption;
+	}
+
 
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
