@@ -34,6 +34,7 @@ import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -139,7 +140,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
 		}
 		
-		commandNormal = CCommandSet.GetInstance().GetCommande(idNormal);
+		commandNormal = CCommandSet.GetInstance().GetCommand(idNormal);
 		
 		if(commandNormal == null)
 		{
@@ -180,7 +181,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
 		}
 		
-		commandShift = CCommandSet.GetInstance().GetCommande(idShift);
+		commandShift = CCommandSet.GetInstance().GetCommand(idShift);
 		
 		if(commandShift == null)
 		{
@@ -221,7 +222,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 									UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2")) ;				
 		}
 		
-		commandAltGr = CCommandSet.GetInstance().GetCommande(idAltGr);
+		commandAltGr = CCommandSet.GetInstance().GetCommand(idAltGr);
 		
 		if(commandAltGr == null)
 		{
@@ -263,35 +264,38 @@ public class CKeyCharacter extends CKeyThreeLevel
 		return (TXMLNames.KY_ELEMENT_CHARACTER);
 	}
 
-	public CCommand getCommandAltGr()
-	{
-		return commandAltGr;
-	}
 
-	public void setCommandAltGr(CCommand commandAltGr)
-	{
-		this.commandAltGr = commandAltGr;
-	}
 
-	public CCommand getCommandNormal()
+	public CCommand getCommand( TLevelEnum level )
 	{
-		return commandNormal;
+		if( level == TLevelEnum.NORMAL )
+		{
+			return commandNormal;
+		}else if( level == TLevelEnum.SHIFT )
+		{
+			return commandShift;
+		}else if( level == TLevelEnum.ALT_GR )
+		{
+			return commandAltGr;
+		}
+		
+		return null;
 	}
-
-	public void setCommandNormal(CCommand commandNormal)
+	
+	public void setCommand( CCommand command, TLevelEnum level )
 	{
-		this.commandNormal = commandNormal;
+		if( level == TLevelEnum.NORMAL )
+		{
+			commandNormal = command;
+		}else if( level == TLevelEnum.SHIFT )
+		{
+			commandShift = command;
+		}else if( level == TLevelEnum.ALT_GR )
+		{
+			commandAltGr = command;
+		}
 	}
-
-	public CCommand getCommandShift()
-	{
-		return commandShift;
-	}
-
-	public void setCommandShift(CCommand commandShift)
-	{
-		this.commandShift = commandShift;
-	}
+	
 	
 	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{

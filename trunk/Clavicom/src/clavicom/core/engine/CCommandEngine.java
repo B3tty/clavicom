@@ -36,10 +36,8 @@ import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
-import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyLevelListener;
@@ -49,25 +47,21 @@ import clavicom.gui.language.UIString;
 import clavicom.gui.message.CMessage;
 import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TKeyAction;
-import clavicom.tools.TLevelEnum;
 
-public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyLevelListener,OnClickKeyDynamicStringListener
+public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyLevelListener,OnClickKeyDynamicStringListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	TLevelEnum currentLevel;
 	
 	protected EventListenerList listenerNewMessageList;
-	protected EventListenerList listenerChangeLevelList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CCommandEngine( CKeyboard keyboard )
 	{
-		listenerNewMessageList = new EventListenerList();
-		listenerChangeLevelList = new EventListenerList();
+		super(keyboard);
 		
-		currentLevel = TLevelEnum.NORMAL;
+		listenerNewMessageList = new EventListenerList();
 		
 		// =============================================================
 		// Abonnement aux listener
@@ -94,9 +88,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 								}else if( keyboardKey instanceof CKeyDynamicString )
 								{
 									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
-								}else if( keyboardKey instanceof CKeyLevel )
-								{
-									((CKeyLevel)keyboardKey).addOnClickKeyLevelListener( this );
 								}else if( keyboardKey instanceof CKeyShortcut )
 								{
 									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -112,28 +103,17 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	//----------------------------------------------------------- METHODES --//
 	
 	// ========================================================|
-	// Listeners ===============================================|
+	// Listener ===============================================|
 	// ========================================================|
 	public void addNewMessageListener(NewMessageListener l)
 	{
 		this.listenerNewMessageList.add(NewMessageListener.class, l);
 	}
-	public void addChangeLevelListener(ChangeLevelListener l)
-	{
-		this.listenerChangeLevelList.add(ChangeLevelListener.class, l);
-	}
-
-	
 	
 	public void removeNewMessageListener(NewMessageListener l)
 	{
 		this.listenerNewMessageList.remove(NewMessageListener.class, l);
 	}
-	public void removeChangeLevelListener(ChangeLevelListener l)
-	{
-		this.listenerChangeLevelList.remove(ChangeLevelListener.class, l);
-	}
-
 	
 	
 	protected void fireNewMessage( CMessage message )
@@ -145,17 +125,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			listeners[i].newMessage( message );
 		}
 	}
-	protected void fireChangeLevel( )
-	{
-		ChangeLevelListener[] listeners = (ChangeLevelListener[]) listenerChangeLevelList
-				.getListeners(ChangeLevelListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
-		{
-			listeners[i].changeLevel( currentLevel );
-		}
-	}
 	// ========================================================|
-	// fin Listeners ==========================================|
+	// fin Listener ==========================================|
 	// ========================================================|
 	
 	protected void executeCommande( List<CCommand> commandList )
@@ -221,17 +192,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
 		List<CCommand> commandList = new ArrayList<CCommand>();
-		
-		if( currentLevel == TLevelEnum.NORMAL )
-		{
-			commandList.add( keyCharacter.getCommandNormal() );
-		}else if( currentLevel == TLevelEnum.SHIFT )
-		{
-			commandList.add( keyCharacter.getCommandShift() );
-		}else if( currentLevel == TLevelEnum.ALT_GR )
-		{
-			commandList.add( keyCharacter.getCommandAltGr() );
-		}
+
+		commandList.add( keyCharacter.getCommand( currentLevel ) );
 		
 		executeCommande( commandList );
 	}
@@ -242,15 +204,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		commandList.add( keyShortcut.getCommand() );
 		
 		executeCommande( commandList );
-		
-	}
-
-	public void onClickKeyLevel(CKeyLevel keyLevel)
-	{
-		// changement de level
-		currentLevel = keyLevel.GetLevel();
-		
-		fireChangeLevel();
 		
 	}
 

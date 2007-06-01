@@ -25,8 +25,11 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import javax.swing.event.EventListenerList;
+
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -43,7 +46,6 @@ public class CKeyLastWord extends CKeyDynamicString
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
 				myPointMax,myCaption);
-		
 	}
 	
 	public CKeyLastWord (Element eltKeyLastWord) throws Exception
@@ -52,7 +54,6 @@ public class CKeyLastWord extends CKeyDynamicString
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	
 	
 	
 	
@@ -76,9 +77,10 @@ public class CKeyLastWord extends CKeyDynamicString
 	}
 
 	@Override
-	protected String GetStringCommand()
+	public String GetStringCommand()
 	{
 		return caption;
 	}
+
 
 }

@@ -72,7 +72,7 @@ public class CKeyPrediction extends CKeyDynamicString
 	}
 
 	@Override
-	protected String GetStringCommand()
+	public String GetStringCommand()
 	{
 		return caption;
 	}

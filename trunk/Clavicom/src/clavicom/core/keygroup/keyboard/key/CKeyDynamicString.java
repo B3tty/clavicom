@@ -101,7 +101,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	
 	//----------------------------------------------------------- METHODES --//	
 	
-//	 Listener ==============================================
+	// Listener ==============================================
 	public void addOnClickKeyDynamicStringListener(OnClickKeyDynamicStringListener l)
 	{
 		this.listenerList.add(OnClickKeyDynamicStringListener.class, l);
@@ -112,7 +112,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		this.listenerList.remove(OnClickKeyDynamicStringListener.class, l);
 	}
 
-	protected void fireOnClickKeyClavicom()
+	protected void fireOnClickKeyDynamicString()
 	{
 		OnClickKeyDynamicStringListener[] listeners = (OnClickKeyDynamicStringListener[]) listenerList
 				.getListeners(OnClickKeyDynamicStringListener.class);
@@ -145,7 +145,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		eltKeyNode.addContent(eltOrder);
 	}
 	
-	protected abstract String GetStringCommand();
+	public abstract String GetStringCommand();
 	
 	/**
 	 * Permet de récupérer la liste de commandes correspondant à la chaîne courante
@@ -171,7 +171,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 			currentChar = GetStringCommand().charAt(i);
 			
 			// Recherche de la commande
-			currentCommand = CCommandSet.GetInstance().GetCommande(String.valueOf(currentChar));
+			currentCommand = CCommandSet.GetInstance().GetCommand(String.valueOf(currentChar));
 			
 			if(currentCommand == null)
 			{
@@ -192,7 +192,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	@Override
 	public void Click()
 	{
-		fireOnClickKeyClavicom();		
+		fireOnClickKeyDynamicString();		
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

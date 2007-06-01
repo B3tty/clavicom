@@ -595,7 +595,7 @@
 			<code order="2" action="released" value="VK_ACCENT_CIRCONFLEXE"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
-		<command id="128" search_string="¨" caption = "$">
+		<command id="128" search_string="$" caption = "$">
 			<code order="0" action="pressed" value="VK_DOLLAR"/>
 			<code order="1" action="released" value="VK_DOLLAR"/>
 		</command>
@@ -976,4 +976,25 @@
 			<code order="1" action="released" value="VK_NUMPAD9"/>
 		</command>
 	</section>
+	<end_of_word_characters>
+		<end_of_word_character character_string="ESC"/>
+		<end_of_word_character character_string="TAB"/>
+		<end_of_word_character character_string=" "/>
+		<end_of_word_character character_string="ENTER"/>
+		<end_of_word_character character_string="BEGIN"/>
+		<end_of_word_character character_string="PAGE_UP"/>
+		<end_of_word_character character_string="END"/>
+		<end_of_word_character character_string="PAGE_DOWN"/>
+		<end_of_word_character character_string="UP"/>
+		<end_of_word_character character_string="LEFT"/>
+		<end_of_word_character character_string="DOWN"/>
+		<end_of_word_character character_string="RIGHT"/>
+		<end_of_word_character character_string=","/>
+		<end_of_word_character character_string=";"/>
+		<end_of_word_character character_string=":"/>
+		<end_of_word_character character_string="!"/>
+		<end_of_word_character character_string="?"/>
+		<end_of_word_character character_string="."/>
+		<end_of_word_character character_string=".">
+	</end_of_word_characters>
 </commandset>
