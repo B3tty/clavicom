@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CLauncherEngine.java
-			Creation date		: 1 juin 07
+			Filename			: CCommandEngine.java
+			Creation date		: 30 mai 07
 		
 			Project				: Clavicom
 			Package				: clavicom.core.engine
@@ -26,33 +26,35 @@
 package clavicom.core.engine;
 
 
-import java.io.File;
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
-import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
-import clavicom.core.listener.OnClickKeyLauncherListener;
+import clavicom.core.listener.ChangeLevelListener;
+import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.core.profil.CKeyboard;
-import clavicom.gui.message.CMessage;
-import clavicom.gui.message.NewMessageListener;
-import org.jdesktop.jdic.desktop.Desktop;
-import org.jdesktop.jdic.desktop.DesktopException;
+import clavicom.tools.TLevelEnum;
 
-public class CLauncherEngine implements OnClickKeyLauncherListener
+public abstract class CLevelEngine implements OnClickKeyLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-	protected EventListenerList listenerNewMessageList;
+	//---------------------------------------------------------- VARIABLES --//
+	TLevelEnum currentLevel;
+
+	protected EventListenerList listenerChangeLevelList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CLauncherEngine( CKeyboard keyboard )
+	public CLevelEngine( CKeyboard keyboard )
 	{
-		listenerNewMessageList = new EventListenerList();
+		listenerChangeLevelList = new EventListenerList();
 		
-		// abonnement au listener des keyLauncher
+		currentLevel = TLevelEnum.NORMAL;
 		
+		// =============================================================
+		// Abonnement aux listener
+		// =============================================================
 		for( int i = 0 ; i < keyboard.size() ; ++i )
 		{
 			CKeyGroup keyGroup = keyboard.getKeyGroup( i );
@@ -68,10 +70,10 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( k );
 							if( keyboardKey != null )
 							{
-								// on cast pour savoir si le type est bien keyLauncher
-								if( keyboardKey instanceof CKeyLauncher )
+								// on cast pour savoir de quel type est la key
+								if( keyboardKey instanceof CKeyLevel )
 								{
-									((CKeyLauncher)keyboardKey).addOnClickKeyLauncherListener( this );
+									((CKeyLevel)keyboardKey).addOnClickKeyLevelListener( this );
 								}
 							}
 						}
@@ -81,54 +83,56 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 		}
 	}
 
-	public void onClickKeyLauncher(CKeyLauncher keyLauncher)
-	{
-		// lancement de l'application
-		try
-		{
-			// String s = keyLauncher.getApplicationPath();
-			String s = "C:\\Program Files\\QuickTime\\QuickTimePlayer.exe";
-			Desktop.open( new File ( s ) );
-		}
-		catch ( DesktopException e )
-		{
-			CMessage message = new CMessage( e.getMessage() );
-			fireNewMessage( message );
-			return;
-		}
-		
-		
-	}
-
-	//----------------------------------------------------------- METHODES --//	
-	
+	//----------------------------------------------------------- METHODES --//
 	
 	// ========================================================|
 	// Listener ===============================================|
 	// ========================================================|
-	public void addNewMessageListener(NewMessageListener l)
+	public void addChangeLevelListener(ChangeLevelListener l)
 	{
-		this.listenerNewMessageList.add(NewMessageListener.class, l);
+		this.listenerChangeLevelList.add(ChangeLevelListener.class, l);
 	}
-	
-	public void removeNewMessageListener(NewMessageListener l)
+
+	public void removeChangeLevelListener(ChangeLevelListener l)
 	{
-		this.listenerNewMessageList.remove(NewMessageListener.class, l);
+		this.listenerChangeLevelList.remove(ChangeLevelListener.class, l);
 	}
-	
-	protected void fireNewMessage( CMessage message )
+
+	protected void fireChangeLevel( )
 	{
-		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
-				.getListeners(NewMessageListener.class);
+		ChangeLevelListener[] listeners = (ChangeLevelListener[]) listenerChangeLevelList
+				.getListeners(ChangeLevelListener.class);
 		for ( int i = listeners.length - 1; i >= 0; i-- )
 		{
-			listeners[i].newMessage( message );
+			listeners[i].changeLevel( currentLevel );
 		}
 	}
+	// ========================================================|
+	// fin Listeners ==========================================|
+	// ========================================================|
 	
-	// ========================================================|
-	// fin Listener ==========================================|
-	// ========================================================|
+	public void onClickKeyLevel(CKeyLevel keyLevel)
+	{
+		// Si le level est le même, on repasse au level normal
+		if( keyLevel.GetLevel() == currentLevel )
+		{
+			currentLevel = TLevelEnum.NORMAL;
+		}
+		else
+		{
+			// changement de level
+			currentLevel = keyLevel.GetLevel();
+		}
+		
+		
+		fireChangeLevel();
+		
+	}
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	
+
+	
 }

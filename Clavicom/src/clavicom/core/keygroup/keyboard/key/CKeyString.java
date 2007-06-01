@@ -97,12 +97,11 @@ public class CKeyString extends CKeyDynamicString
 	@Override
 	protected Boolean toBeSave()
 	{
-		// TODO uto-generated method stub
 		return true; 
 	}
 
 	@Override
-	protected String GetStringCommand()
+	public String GetStringCommand()
 	{
 		return baseString;
 	}
