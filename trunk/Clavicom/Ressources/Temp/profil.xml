@@ -85,7 +85,44 @@
 						<command_altgr id="2"></command_altgr>
 					</commands>
 				</keycharacter>
-				<keylevel order="1" caption_image="false" >
+				<keycharacter order="1" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption_level_1>coucou1</caption_level_1>
+					<caption_level_2>coucou2</caption_level_2>
+					<caption_level_3>coucou3</caption_level_3>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<commands>
+						<command_normal id="63"></command_normal>
+						<command_shift id="63"></command_shift>
+						<command_altgr id="63"></command_altgr>
+					</commands>
+				</keycharacter>
+				<keylevel order="2" caption_image="false" >
 					<coordinates>
 						<point position="min">
 							<x>25.5</x>
@@ -116,38 +153,6 @@
 					</colors>
 					<level>NORMAL</level>
 				</keylevel>
-	<keystring order="2" caption_image="false">
-		<order_dynamic>12</order_dynamic>
-		<base_string>test</base_string>
-		<coordinates>
-			<point position="min">
-				<x>25.5</x>
-				<y>52.2</y>
-			</point>
-			<point position="max">
-				<x>5.5</x>
-				<y>2.2</y>
-			</point>		
-		</coordinates>
-		<caption>Coucou !!!</caption>
-		<colors>
-			<color_normal>
-				<red>189</red>
-				<green>189</green>
-				<blue>189</blue>
-			</color_normal>
-			<color_clicked>
-				<red>204</red>
-				<green>0</green>
-				<blue>204</blue>
-			</color_clicked>
-			<color_entered>
-				<red>255</red>
-				<green>153</green>
-				<blue>255</blue>
-			</color_entered>
-		</colors>
-	</keystring>
 				<keylauncher order="3" caption_image="false" >
 					<coordinates>
 						<point position="min">
@@ -179,6 +184,37 @@
 					</colors>
 					<applicationpath>C:\Program Files\QuickTime\QuickTimePlayer.exe</applicationpath>
 				</keylauncher>
+				<keylastword order="4" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption>coucou1</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>0</order_dynamic>
+				</keylastword>
 			</keylist>
 		</keygroup>
 	</keyboard>

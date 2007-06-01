@@ -35,13 +35,16 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 
 public class CLastWordEngine extends CLevelEngine implements
-		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener
+		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener, OnClickKeyShortcutListener
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
@@ -87,12 +90,18 @@ public class CLastWordEngine extends CLevelEngine implements
 									CKeyLastWord keyLastWord = (CKeyLastWord)keyboardKey;
 									if( keyLastWord != null )
 									{
-										// Abonnement
-										keyLastWord.addOnClickKeyDynamicStringListener( this );
-										
 										// Ajout à la liste des keyLastWord
 										keyLastWordList.add(keyLastWord);
 									}
+								}else if( keyboardKey instanceof CKeyCharacter )
+								{
+									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
+								}else if( keyboardKey instanceof CKeyDynamicString )
+								{
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+								}else if( keyboardKey instanceof CKeyShortcut )
+								{
+									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
 								}
 							}
 						}
@@ -136,8 +145,6 @@ public class CLastWordEngine extends CLevelEngine implements
 		}
 
 	}
-
-
 	
 
 	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
@@ -151,6 +158,21 @@ public class CLastWordEngine extends CLevelEngine implements
 		
 		// on met la chaine de keyDynamicString dans la string courrante
 		currentString = keyDynamicString.GetStringCommand();
+		
+		// on met a jour les touches
+		updateKeyLastWord();
+	}
+	
+	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
+	{
+		// si la chaine courrante n'est pas vide
+		if( ! currentString.equals("") )
+		{
+			// on l'ajoute au début de la liste
+			stringList.add( 0, currentString );
+		}
+		
+		currentString = "";
 		
 		// on met a jour les touches
 		updateKeyLastWord();
@@ -189,4 +211,5 @@ public class CLastWordEngine extends CLevelEngine implements
 			}
 		}
 	}
+	
 }
