@@ -25,12 +25,14 @@
 
 package clavicom.core.profil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.jdom.Attribute;
 import org.jdom.Element;
 
+import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -39,7 +41,7 @@ public class CPreferedWords
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	HashMap<String, Integer> preferedWords;
+	List<CDictionaryWord> preferedWords;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CPreferedWords( Element node ) throws Exception
@@ -49,7 +51,7 @@ public class CPreferedWords
 			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_PREFERED_WORDS") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
 		}
 		
-		preferedWords = new HashMap<String, Integer>();
+		preferedWords = new ArrayList<CDictionaryWord>();
 		
 		// ============================================================
 		// récupération des Elements preferedWord
@@ -80,7 +82,7 @@ public class CPreferedWords
 						throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PREFERED_WORDS" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + frequency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ) );
 					}
 					
-					preferedWords.put(prefredWord, i_frequency);
+					preferedWords.add(new CDictionaryWord( prefredWord, i_frequency) );
 				}
 			}
 		}
@@ -88,28 +90,27 @@ public class CPreferedWords
 
 	//----------------------------------------------------------- METHODES --//	
 	
-	public void addPreferedWord( String preferedWord )
+	public void addPreferedWord( CDictionaryWord preferedWord )
 	{
-		preferedWords.put(preferedWord, 0);
+		preferedWords.add( preferedWord );
 	}
-	public void incrementPreferedWord( String preferedWord )
-	{
-		int frequency = preferedWords.get( preferedWord );
-		frequency++;
-		preferedWords.put(preferedWord, frequency);
-	}
-	public void removePreferedWord( String preferedWord )
+	
+	public void removePreferedWord( CDictionaryWord preferedWord )
 	{
 		preferedWords.remove( preferedWord );
 	}
-	public int getFrequency( String preferedWord )
-	{
-		return preferedWords.get( preferedWord );
-	}
+	
 	public boolean contain( String preferedWord )
 	{
-		return preferedWords.containsKey( preferedWord );
+		return preferedWords.contains( preferedWord );
 	}
+	
+	public CDictionaryWord getPreferedWord( int order )
+	{
+		return preferedWords.get( order );
+	}
+	
+	public int getSize() { return preferedWords.size(); }
 	
 	public Element buildNode()
 	{
@@ -118,14 +119,14 @@ public class CPreferedWords
 		Attribute frequency_att;
 		int frequency;
 		
-		for( String preferedWord : preferedWords.keySet() )
+		for( CDictionaryWord preferedWord : preferedWords )
 		{
-			frequency = preferedWords.get( preferedWord );
+			frequency = preferedWord.getFrequency();
 			
 			preferedWord_elem = new Element( TXMLNames.PR_ELEMENT_PREFERED_WORD );
-			preferedWord_elem.setText( preferedWord );
+			preferedWord_elem.setText( preferedWord.getWord() );
 			
-			frequency_att = new Attribute( preferedWord, String.valueOf( frequency ) );
+			frequency_att = new Attribute( TXMLNames.PR_ATTRIBUTES_PREFERED_WORD_FREQUENCY, String.valueOf( frequency ) );
 			preferedWord_elem.setAttribute( frequency_att );
 			
 			preferedWords_elem.addContent( preferedWord_elem );

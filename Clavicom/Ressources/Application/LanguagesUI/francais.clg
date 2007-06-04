@@ -248,6 +248,11 @@
 	
 	<!-- UI_KEY -->
 	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
+	
+	<!-- DICTIONARY -->
+	<message id = "EX_DICTIONARY_BUILD">Chargement du dictionaire</message>
+	<message id = "EX_DICTIONARY_OPEN">Impossible de lire le fichier </message>
+	<message id = "EX_DICTIONARY_READ">Erreur lors de la lecture du dictionnaire </message>
 
 	<!-- ==========================================================================
 		Messages 

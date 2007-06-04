@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CDictionary.java
+			Filename			: CDictionaryWord.java
 			Creation date		: 4 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.engine
+			Package				: clavicom.core.engine.dictionary
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,30 +23,47 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.engine;
+package clavicom.core.engine.dictionary;
 
-import java.util.HashMap;
-
-import clavicom.core.profil.CDictionaryName;
-
-public class CDictionary
+public class CDictionaryWord
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	HashMap<String, Integer> wordMap;
+	int frequency;
+	String word;
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CDictionary( CDictionaryName dictionaryName )
+	public CDictionaryWord( String myWord, int myFrequency )
 	{
-		wordMap = new HashMap<String, Integer>();
-		
-		// =====================================================================
-		// Chargement du fichier de dictionaire
-		// =====================================================================
+		frequency = myFrequency;
+		word = myWord;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
+	
+	public int getFrequency()
+	{
+		return frequency;
+	}
+	public void setFrequency(int frequency)
+	{
+		this.frequency = frequency;
+	}
+	public String getWord()
+	{
+		return word;
+	}
+	public void setWord(String word)
+	{
+		this.word = word;
+	}
+	
+	public void increaseFrequency()
+	{
+		frequency++;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
