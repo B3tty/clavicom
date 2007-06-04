@@ -45,7 +45,7 @@ public class CProfil
 	
 	CLangueUIName langueUI;			// Langue de l'interface utilisateur
 	CCommandSetName commandSetName; // nom du fichier du commandSet
-	CDictionnaryName dictionnaryName;	// nom du fichier de dictionnaire
+	CDictionaryName dictionnaryName;	// nom du fichier de dictionnaire
 	CKeyboardColor defaultColor;	// Couleur par défaut du clavicom
 	CTransparency transparency;		// Transparence
 	CSound sound;					// Gestion du son
@@ -84,7 +84,7 @@ public class CProfil
 		return defaultColor;
 	}
 
-	public CDictionnaryName getDictionnaryName()
+	public CDictionaryName getDictionnaryName()
 	{
 		return dictionnaryName;
 	}
@@ -266,7 +266,7 @@ public class CProfil
 		}
 		try
 		{
-			dictionnaryName = new CDictionnaryName( dictionary_elem );
+			dictionnaryName = new CDictionaryName( dictionary_elem );
 		}
 		catch(Exception ex)
 		{

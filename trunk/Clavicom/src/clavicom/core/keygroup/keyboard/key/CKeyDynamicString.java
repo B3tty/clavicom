@@ -194,6 +194,11 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	{
 		fireOnClickKeyDynamicString();		
 	}
+
+	public int getOrder()
+	{
+		return order;
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

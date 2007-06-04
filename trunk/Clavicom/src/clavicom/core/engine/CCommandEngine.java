@@ -36,6 +36,7 @@ import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
@@ -48,18 +49,21 @@ import clavicom.gui.message.CMessage;
 import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TKeyAction;
 
-public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyLevelListener,OnClickKeyDynamicStringListener
+public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
 	
 	protected EventListenerList listenerNewMessageList;
+	
+	protected CLevelEngine levelEngine;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CCommandEngine( CKeyboard keyboard )
+	public CCommandEngine( CKeyboard keyboard, CLevelEngine myLevelEngine )
 	{
-		super(keyboard);
+
+		levelEngine = myLevelEngine;
 		
 		listenerNewMessageList = new EventListenerList();
 		
@@ -141,7 +145,6 @@ public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterL
 		}
 		catch ( AWTException e )
 		{
-			// TODO - afficher msg
 			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
 			fireNewMessage( message );
 			return;
@@ -160,7 +163,6 @@ public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterL
 					}
 					catch(Exception ex)
 					{
-						// TODO - afficher msg
 						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						fireNewMessage( message );
 						return;
@@ -174,7 +176,6 @@ public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterL
 					}
 					catch(Exception ex)
 					{
-						// TODO - afficher msg
 						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						fireNewMessage( message );
 						return;
@@ -193,7 +194,7 @@ public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterL
 	{
 		List<CCommand> commandList = new ArrayList<CCommand>();
 
-		commandList.add( keyCharacter.getCommand( currentLevel ) );
+		commandList.add( keyCharacter.getCommand( levelEngine.getCurrentLevel() ) );
 		
 		executeCommande( commandList );
 	}
@@ -227,7 +228,6 @@ public class CCommandEngine extends CLevelEngine implements OnClickKeyCharacterL
 			executeCommande( commandList );
 		}
 	}
-
 
 
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -30,7 +30,7 @@ import org.jdom.Element;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
-public class CDictionnaryName
+public class CDictionaryName
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -48,7 +48,7 @@ public class CDictionnaryName
 	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CDictionnaryName( Element node ) throws Exception
+	public CDictionaryName( Element node ) throws Exception
 	{
 		if( node == null )
 		{

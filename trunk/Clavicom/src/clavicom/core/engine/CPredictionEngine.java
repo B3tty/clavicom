@@ -35,29 +35,36 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
+import clavicom.core.profil.CDictionaryName;
 import clavicom.core.profil.CKeyboard;
 
-public class CLastWordEngine extends CStringsEngine implements
+public class CPredictionEngine extends CStringsEngine implements
 		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener, OnClickKeyShortcutListener
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
 	// ---------------------------------------------------------- VARIABLES --//
 	
+	CDictionary dictionnary; // dictionnaire
+
+	
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 
 	
-	public CLastWordEngine( CKeyboard keyboard, CLevelEngine myLevelEngine )
+	public CPredictionEngine( CKeyboard keyboard, CLevelEngine myLevelEngine, CDictionary myDictionary )
 	{
 		super( keyboard, myLevelEngine );
 		
-		List<CKeyLastWord> keyLastWordListTemp = new ArrayList<CKeyLastWord>();
+		dictionnary = myDictionary;
+		
+		List<CKeyPrediction> keyPredictionListTemp = new ArrayList<CKeyPrediction>();
 
 		
 		// ========================================================
@@ -80,13 +87,13 @@ public class CLastWordEngine extends CStringsEngine implements
 							{
 								// on cast pour savoir si le type est bien
 								// keyLauncher
-								if( keyboardKey instanceof CKeyLastWord )
+								if( keyboardKey instanceof CKeyPrediction )
 								{
-									CKeyLastWord keyLastWord = (CKeyLastWord)keyboardKey;
-									if( keyLastWord != null )
+									CKeyPrediction keyPrediction = (CKeyPrediction)keyboardKey;
+									if( keyPrediction != null )
 									{
 										// Ajout à la liste des keyLastWord
-										keyLastWordListTemp.add(keyLastWord);
+										keyPredictionListTemp.add(keyPrediction);
 									}
 								}else if( keyboardKey instanceof CKeyCharacter )
 								{
@@ -108,19 +115,20 @@ public class CLastWordEngine extends CStringsEngine implements
 		// ========================================================
 		// tri de la liste des keyLastWord
 		// ========================================================
-		for( int i = 0 ; i < keyLastWordListTemp.size() ; ++i )
+		for( int i = 0 ; i < keyPredictionListTemp.size() ; ++i )
 		{
-			for( CKeyLastWord keyLastWord : keyLastWordListTemp )
+			for( CKeyPrediction predictionWord : keyPredictionListTemp )
 			{
-				if( keyLastWord.getOrder() == i )
+				if( predictionWord.getOrder() == i )
 				{
-					keyList.add( keyLastWord );
+					keyList.add( predictionWord );
 				}
 			}
 		}
 		
+		
 		LoadStringList();
-
+		
 	}
 
 	
@@ -129,63 +137,16 @@ public class CLastWordEngine extends CStringsEngine implements
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
-		CCommand command = keyCharacter.getCommand( levelEngine.getCurrentLevel() );
-		String character = command.GetSearchString();
 		
-		// Si ce caractere est un caractere de fin de mot
-		if( IsEndWordCharacter( character ) )
-		{
-			// si la chaine courrente n'est pas vide
-			if( ! currentString.equals("") )
-			{
-				// on l'ajoute au début de la liste
-				stringList.add( 0, currentString );
-				
-				// on vide la chaine courrante
-				currentString = "";
-				
-				// on mes a jour les touches
-				updateKeyLastWord();
-			}
-		}
-		else
-		{
-			// on l'ajoute au mot courrant
-			currentString += character;
-		}
-
 	}
 	
 
 	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
 	{
-		// si la chaine courrante n'est pas vide
-		if( ! currentString.equals("") )
-		{
-			// on l'ajoute au début de la liste
-			stringList.add( 0, currentString );
-		}
-		
-		// on met la chaine de keyDynamicString dans la string courrante
-		currentString = keyDynamicString.GetStringCommand();
-		
-		// on met a jour les touches
-		updateKeyLastWord();
 	}
 	
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{
-		// si la chaine courrante n'est pas vide
-		if( ! currentString.equals("") )
-		{
-			// on l'ajoute au début de la liste
-			stringList.add( 0, currentString );
-		}
-		
-		currentString = "";
-		
-		// on met a jour les touches
-		updateKeyLastWord();
 	}
 
 
@@ -193,9 +154,8 @@ public class CLastWordEngine extends CStringsEngine implements
 	@Override
 	protected void LoadStringList()
 	{
-		stringList = new ArrayList<String>( keyList.size() );		
+		stringList = new ArrayList<String>( keyList.size() );
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
-	
 }
