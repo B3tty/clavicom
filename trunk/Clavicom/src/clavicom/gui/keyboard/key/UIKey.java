@@ -31,154 +31,281 @@ import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Paint;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.event.EventListenerList;
+import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
+import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.language.UIString;
+import clavicom.tools.TUIKeySelectionState;
 import clavicom.tools.TUIKeyState;
 
-public abstract class UIKey extends JPanel
+public abstract class UIKey extends JPanel implements ComponentListener
 {
 		//--------------------------------------------------------- CONSTANTES --//
-//		private float[] BLUR = {0.10f, 0.10f, 0.10f, 0.10f, 0.30f, 0.10f, 0.10f, 0.10f, 0.10f};
+		// Dessin
+		final int TAILLE_BORDURE_INTERIEURE = 4;	// Taille de la bordure intérieure
+		final int TAILLE_ARC = 25;					// Rayon de l'arrondi du bouton
 		
-		final int TAILLE_BORDURE_INTERIEURE = 4;
-		final int TAILLE_BORDURE_EXTERIEURE = 3;
-		final int TAILLE_ARC = 25;
+		final int SHADOW_INSET_H = 1;				// Décallage horizontal de l'ombre du texte
+		final int SHADOW_INSET_V = 1;				// Décallage vertical de l'ombre du texte
+		
+		final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
+													// images est lancé, pendant un resize	
+		
+		final int CAPTION_IMAGE_BORDER_RELATIVE = 0;		// Taille de la bordure de l'image
+		
+		final int CAPTION_IMAGE_BORDER_SIZE = 	CAPTION_IMAGE_BORDER_RELATIVE + // Taille de la bordure de l'image, tout compris
+												TAILLE_BORDURE_INTERIEURE;
 		
 		//---------------------------------------------------------- ATTRIBUTS --//		
-		private EventListenerList listenersList;	// Elements abonnés
-		private TUIKeyState currentState;			// Etat de la touche
+		private TUIKeyState state;					// Etat de la touche
+		private TUIKeySelectionState selState;		// Etat de selection de la touche
 		
-		//------------------------------------------------------ CONSTRUCTEURS --//
+		private MouseAdapterUse mouseAdapterUse;	// MouseAdapteur en mode utilisation
+		private MouseAdapterEdit mouseAdapterEdit;	// MouseAdapteur en mode édition
 		
+		private Image imgNormal;					// Buffer de l'image normale
+		private Image imgEntered;					// Buffer de l'image survolée
+		private Image imgClicked;					// Buffer de l'image cliquée
+		
+		private Image currentImage;					// Buffer de l'image courante
+		private Timer resizeTimer;					// Timer qui une fois expiré demande
+													// le calcul des images
+		
+		private Image originalCaptionImage;			// Image correspondant à la caption
+		
+		//---------------------------------------------------- CLASSES PRIVEES --//
+		//-----------------------------------------------------------------------
+		// Mère
+		//-----------------------------------------------------------------------		
+		private abstract class MouseAdapterKey extends MouseAdapter
+		{	
+			//----------------------------------------------------- METHODES --//			
+			public void mouseEntered(MouseEvent e) 
+			{
+				mouseEnteredSpecific(e);
+			}
+			
+			public void mouseExited(MouseEvent e) 
+			{
+				mouseExitedSpecific(e);
+			}
+			
+			public void mousePressed(MouseEvent e) 
+			{
+				mousePressedSpecific(e);
+			}
+			
+			public void mouseReleased(MouseEvent e) 
+			{				
+				mouseReleasedSpecific(e);
+			}
+			
+			//-------------------------------------------- METHODES PRIVEES --//
+			
+			protected abstract void mouseEnteredSpecific(MouseEvent e);
+			protected abstract void mouseExitedSpecific(MouseEvent e);
+			protected abstract void mousePressedSpecific(MouseEvent e);
+			protected abstract void mouseReleasedSpecific(MouseEvent e);
+		}	
+		
+		//-----------------------------------------------------------------------
+		// Utilisation
+		//-----------------------------------------------------------------------		
+		private class MouseAdapterUse extends MouseAdapterKey
+		{
+			//----------------------------------------------------- METHODES --//	
+			public void mouseEnteredSpecific(MouseEvent e) 
+			{
+				buttonEnteredUse();
+			}
+			
+			public void mouseExitedSpecific(MouseEvent e) 
+			{
+				buttonExitedUse();
+			}
+			
+			public void mousePressedSpecific(MouseEvent e) 
+			{
+				buttonPressedUse();
+			}
+			
+			public void mouseReleasedSpecific(MouseEvent e) 
+			{
+				buttonReleasedUse();
+			}
+			
+			//-------------------------------------------- METHODES PRIVEES --//
+		}	
+		
+		//-----------------------------------------------------------------------
+		// Mode édition
+		//-----------------------------------------------------------------------		
+		private class MouseAdapterEdit extends MouseAdapterKey
+		{
+			public void mouseEnteredSpecific(MouseEvent e) 
+			{
+				
+			}
+			
+			public void mouseExitedSpecific(MouseEvent e) 
+			{
+					
+			}
+			
+			public void mousePressedSpecific(MouseEvent e) 
+			{
+					
+			}
+			
+			public void mouseReleasedSpecific(MouseEvent e) 
+			{
+					
+			}
+		}	
+		
+		// ------------------------------------------------------ CONSTRUCTEURS --//
 		public UIKey()
-		{
-			this.listenersList = new EventListenerList();
-			 
+		{ 
+			super();
+			// Création des mouseAdapters
+			mouseAdapterEdit = new MouseAdapterEdit();
+			mouseAdapterUse = new MouseAdapterUse();
+			
+			// On définit la transparence
+			setOpaque(false);
+			
 			// Ajout des listener sur la souris
-			addMouseListener(	new MouseAdapter() 
-			{
-				public void mouseEntered(MouseEvent e) 
-				{
-						fireButtonEntered();
-				}
-			});
-			
-			addMouseListener(	new MouseAdapter() 
-			{
-				public void mouseExited(MouseEvent e) 
-				{
-						fireButtonExited();
-				}
-			});
-			
-			addMouseListener(	new MouseAdapter() 
-			{
-				public void mousePressed(MouseEvent e) 
-				{
-						fireButtonPressed();
-				}
-			});
+			addMouseListener(mouseAdapterUse);
 
-			addMouseListener(	new MouseAdapter() 
-			{
-				public void mouseReleased(MouseEvent e) 
-				{
-						fireButtonReleased();
-				}
-			});
+			// Ajout en tant que listener de component
+			// (pour le resize,...)
+			addComponentListener(this);
 			
-			currentState = TUIKeyState.NORMAL;
+			// Chargement de l'image si nécessaire
+			if (getCoreKey().isCaptionImage() == true)
+			{
+				// On teste l'existence de l'image
+				File fileImage = new File(getCaption());
+				if (fileImage.exists() == false)
+				{
+					// A COMPLETER !!!
+					System.out.println("fichier non existant...");
+				}
+				
+				// Création de l'image icon
+				ImageIcon iconImage = new ImageIcon(getCaption());	
+				
+				// Récupération de l'image
+				originalCaptionImage = iconImage.getImage();
+			}
+
+			// Initialisation des états
+			state = TUIKeyState.NORMAL;
+			selState = TUIKeySelectionState.UNSELECTED;
+			
+			// Création du Timer resize
+			resizeTimer = createResizeTimer();
 		}
 		
-		//----------------------------------------------------------- METHODES --//
-		//-----------------------------------------------------------------------
-		// Gestion des listeners
-		//-----------------------------------------------------------------------
-		public void addUIKeyListener(UIKeyListener listener)
-		{
-			listenersList.add(UIKeyListener.class, listener);
-		}
-	
-		public void removeUIKeyListener(UIKeyListener listener)
-		{
-			listenersList.remove(UIKeyListener.class, listener);
-		}		
-		//-----------------------------------------------------------------------
-		// Méthodes d'interface
-		//-----------------------------------------------------------------------
-		public TUIKeyState getState()
-		{
-			return currentState;
-		}
-
-		public void setState(TUIKeyState currentState)
-		{
-			this.currentState = currentState;
-		}
-		
-		public void alertCoreKey()
-		{
-			getCoreKey().Click();
-		}
+		//----------------------------------------------------------- METHODES --//	
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------		
+		//-----------------------------------------------------------------------	
+		protected Image recreateNormalImage(Color bgdColor)
+		{
+			// Variables
+			Graphics2D buffer;
+			Image image;
+			
+			// Création de l'image
+			image = createImage(getWidth(), getHeight());
+			buffer = (Graphics2D) image.getGraphics();
+			
+			// Application de la transparence pour tout ce qui sera dessiné ensuite
+			float transparency = 0.8f;// = (float)CProfil.getInstance().getTransparency().getKeyTrancparencyPourcent() / 100;
+			//buffer.setComposite(AlphaComposite.getInstance(AlphaComposite., transparency ));
+		     
+			// Construction du buffer
+			buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			
+			// Ajout du fond de la touche
+			addPaintBackground(buffer,bgdColor);
+			
+			// Ajout de la caption
+			addPaintCaption(buffer,bgdColor);
+			
+			return image;
+		}
+		
+		/**
+		 * Appelé lors du redimensionnement du composant
+		 */
+		public void componentResized(ComponentEvent e)
+		{			
+			// On ettend l'image
+			if (currentImage != null)
+			{
+				currentImage = currentImage.getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST);
+			}
+			
+			// On réarme le timer
+			resizeTimer.restart();
+		}
+		
+		public void componentHidden(ComponentEvent e)
+		{
+			// Rien à ajouter
+		}
+		
+		public void componentMoved(ComponentEvent e)
+		{
+			// Rien à ajouter
+		}
+		
+		public void componentShown(ComponentEvent e)
+		{
+			// Rien à ajouter
+		}
+		
+		/**
+		 * Recréé les buffers des images dans chacun des états
+		 *
+		 */
+		protected void recreateNormalImages()
+		{
+			imgNormal = recreateNormalImage(getCoreKey().GetColorNormal().GetColor());
+			imgEntered = recreateNormalImage(getCoreKey().GetColorEntered().GetColor());
+			imgClicked = recreateNormalImage(getCoreKey().GetColorClicked().GetColor());
+		}
+		
 		protected void paintComponent(Graphics myGraphic)
 		{
 			try
 			{
+				// Appel du père
 				super.paintComponent(myGraphic);
 				
-				// Construction du buffer
-				BufferedImage vBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-				Graphics2D bg = vBuffer.createGraphics();
-				bg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				
-				// Récupération de la couleur de fond
-				Color bgdColor = null;
-				try
-				{
-					if (currentState == TUIKeyState.NORMAL)
-					{
-						bgdColor = getCoreKey().GetColorNormal().GetColor();
-					}
-					else if (currentState == TUIKeyState.PRESSED)
-					{
-						bgdColor = getCoreKey().GetColorClicked().GetColor();
-					}
-					else if (currentState == TUIKeyState.SELECTED)
-					{
-						bgdColor = getCoreKey().GetColorEntered().GetColor();
-					}
-				}
-				catch (Exception ex)
-				{
-					throw new Exception(	UIString.getUIString("EX_UIKEY_COLOR_ERROR") + 
-											ex.getMessage());
-				}
-				
-				// Ajout du fond de la touche
-				addPaintBackground(bg,bgdColor);
-				
-				// Ajout de la caption
-				addPaintCaption(bg,bgdColor);
-				
-				// Dessin
+				// Dessin de l'image courante
 				Graphics2D g2 = (Graphics2D) myGraphic;
 				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				g2.drawImage(vBuffer, 0, 0, null);	
+				g2.drawImage(currentImage, 0, 0, null);	
 			}
 			catch (Exception ex)
 			{
@@ -189,9 +316,73 @@ public abstract class UIKey extends JPanel
 		
 		//--------------------------------------------------- METHODES PRIVEES --//
 		//-----------------------------------------------------------------------
-		// Dessin
+		// Mode utilisation
+		//-----------------------------------------------------------------------		
+		protected void buttonEnteredUse()
+		{
+			state = TUIKeyState.ENTERED;
+			selectCurrentStateImage();
+			
+			// On force le redessin
+			repaint();
+		}
+
+		protected void buttonExitedUse()
+		{
+			state = TUIKeyState.NORMAL;
+			selectCurrentStateImage();
+			
+			// On force le redessin
+			repaint();
+		}
+
+		protected void buttonPressedUse()
+		{
+			state = TUIKeyState.PRESSED;
+			
+			getCoreKey().Click();
+			selectCurrentStateImage();
+			
+			// On force le redessin
+			repaint();
+		}
+
+		protected void buttonReleasedUse()
+		{
+			state = TUIKeyState.NORMAL;
+			selectCurrentStateImage();
+			
+			// On force le redessin
+			repaint();
+		}
+		
 		//-----------------------------------------------------------------------
-		protected void addPaintBackground(Graphics2D bg, Color bgdColor) throws Exception
+		// Mode édition
+		//-----------------------------------------------------------------------	
+		protected void buttonEnteredEdit()
+		{
+			// TODO
+		}
+
+		protected void buttonExitedEdit()
+		{
+			// TODO
+		}
+
+		protected void buttonPressedEdit()
+		{
+			// TODO	
+		}
+
+		protected void buttonReleasedEdit()
+		{
+			// TODO	
+		}
+		
+		//-----------------------------------------------------------------------
+		// Dessin
+		//-----------------------------------------------------------------------	
+		protected void addPaintBackground(Graphics2D bg, Color bgdColor)
 		{						
 			// Création du Paint du premier calque
 			Color vGradientStartColor, vGradientEndColor;
@@ -243,84 +434,124 @@ public abstract class UIKey extends JPanel
 		}
 		
 		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
-		{
+		{			
+			// On agrandit le clip (pour dessiner sur tout le bouton)
+			bg.setClip(0,0,getWidth(), getHeight());
+			
+			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
-			{
+			{		
+				// Calcul du facteur de réduction
+				float scaleFactor = 1f;
 				
+				// Dimensions de l'image originale
+				int imageWidth = originalCaptionImage.getWidth(null);
+				int imageHeight = originalCaptionImage.getHeight(null);
+
+				// Calcul de la "place" qu'il reste en largeur et en hauteur
+				int widthPlace  = getWidth() - imageWidth;
+				int heightPlace = getHeight() - imageHeight;
+				
+				if (widthPlace > heightPlace)
+				// On redimensionne selon la HAUTEUR
+				{
+					scaleFactor = (float) getHeight() / (float)imageHeight;
+				}
+				else if (widthPlace < heightPlace)
+				// On redimensionne selon la LARGEUR					
+				{
+					scaleFactor = (float)getWidth() / (float)imageWidth;
+				}
+				
+				// Calcul des nouvelles dimensions
+		        int newW = Math.round(imageWidth*scaleFactor) - 2*CAPTION_IMAGE_BORDER_SIZE;
+		        int newH = Math.round(imageHeight*scaleFactor) - 2*CAPTION_IMAGE_BORDER_SIZE;
+		        
+		        // Calcul de la position de dessin
+		        int xPosition = Math.round(((float)getWidth()/2) - ((float)newW/2));
+		        int yPosition = Math.round(((float)getHeight()/2) - ((float)newH/2));
+		        
+		        // Dessin de l'image
+		        bg.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+		                            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		        
+		        bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
 			}
 			else
 			// Dessin du texte
 			{
-				// Récupération de la caption
-				String caption = getCaption();
-				
-				// On agrandit le clip
-				bg.setClip(0,0,getWidth(), getHeight());
-				
-				// On met la couleur et la bonne police
-				bg.setFont(CProfil.getInstance().getKeyboardFont().getUsedFont());
-						
-				// Calcul de la taille que va prendre le texte à s'écrire
-				// pour calculer la position de dessin
+				// Calcul des positions de dessin du texte
 				FontMetrics fontMetrics = bg.getFontMetrics();
-				int captionWidth = fontMetrics.stringWidth(getCaption());
-				int captionHeight = fontMetrics.getHeight();
+				int captionWidth= fontMetrics.stringWidth(getCaption());
+				int captionHeight= fontMetrics.getHeight();
 				
 				int xPosition = (getWidth()/2) - (captionWidth/2);
-				int yPosition = (getHeight()/2) + (captionHeight/2);
+				int yPosition = (getHeight()/2) + (captionHeight/3);
+				
+				// Récupération du CFont du profil
+				CFont profilFont = CProfil.getInstance().getKeyboardFont();
+				
+				// On met la bonne police
+				bg.setFont(profilFont.getUsedFont());
+
+				// Ajout de l'ombre
+				if (profilFont.isShadow())
+				{
+					bg.setColor(profilFont.getFontColor().GetColor().brighter().brighter().brighter());
+					bg.drawString(	getCaption(),	
+									xPosition + SHADOW_INSET_H,
+									yPosition + SHADOW_INSET_V);
+				}
 				
 				// On écrit le texte
-				bg.drawString(caption,xPosition,yPosition);
+				bg.setColor(profilFont.getFontColor().GetColor());
+				bg.drawString(getCaption(),xPosition,yPosition);
 			}
 		}
 		
-		//-----------------------------------------------------------------------
-		// Gestion des listeners
-		//-----------------------------------------------------------------------
-		protected UIKeyListener[] getButtonListeners()
+		protected void selectCurrentStateImage()
 		{
-			return listenersList.getListeners(UIKeyListener.class);
-		}
-	
-		protected void fireButtonEntered()
-		{
-			Object[] listeners = listenersList.getListenerList();
-	
-			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
-				if ( listeners[i] == UIKeyListener.class )
-					((UIKeyListener) listeners[i + 1]).buttonEntered(this);
-		}
-		
-		protected void fireButtonExited()
-		{
-			Object[] listeners = listenersList.getListenerList();
-	
-			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
-				if ( listeners[i] == UIKeyListener.class )
-					((UIKeyListener) listeners[i + 1]).buttonExited(this);
+			if (currentImage == null)
+			{
+				recreateNormalImages();
+			}
+			
+			if (state == TUIKeyState.ENTERED)
+			{
+				currentImage = imgEntered;
+			}
+			else if (state == TUIKeyState.NORMAL)
+			{
+				currentImage = imgNormal;
+			}
+			else if (state == TUIKeyState.PRESSED)
+			{
+				currentImage = imgClicked;
+			}
 		}
 		
-		protected void fireButtonPressed()
+		protected Timer createResizeTimer()
 		{
-			Object[] listeners = listenersList.getListenerList();
+			// Création d'une instance de listener
+			// associée au timer
+			ActionListener action = new ActionListener()
+			{
+				// Méthode appelée à chaque tic du timer
+				public void actionPerformed(ActionEvent event)
+				{
+					resizeTimer.stop();
+					recreateNormalImages();
+					selectCurrentStateImage();
+					repaint();
+				}
+			};
 	
-			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
-				if ( listeners[i] == UIKeyListener.class )
-					((UIKeyListener) listeners[i + 1]).buttonPressed(this);
-		}
+			// Création d'un timer qui génère un tic
+			// chaque 500 millième de seconde
+			return new Timer(RESIZE_TIMER_DURATION,action);
+		}  
 		
-		protected void fireButtonReleased()
-		{
-			Object[] listeners = listenersList.getListenerList();
-	
-			for ( int i = listeners.length - 2; i >= 0; i -= 2 )
-				if ( listeners[i] == UIKeyListener.class )
-					((UIKeyListener) listeners[i + 1]).buttonReleased(this);
-		}
-
 		protected abstract CKey getCoreKey();
 		protected abstract String getCaption();
 }
-
-
