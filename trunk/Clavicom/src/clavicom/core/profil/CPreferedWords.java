@@ -26,12 +26,9 @@
 package clavicom.core.profil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 import org.jdom.Attribute;
 import org.jdom.Element;
-
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;

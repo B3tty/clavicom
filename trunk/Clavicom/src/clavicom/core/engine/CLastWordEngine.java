@@ -31,12 +31,10 @@ import java.util.List;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
-
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
@@ -118,9 +116,6 @@ public class CLastWordEngine extends CStringsEngine implements
 				}
 			}
 		}
-		
-		LoadStringList();
-
 	}
 
 	
@@ -145,7 +140,7 @@ public class CLastWordEngine extends CStringsEngine implements
 				currentString = "";
 				
 				// on mes a jour les touches
-				updateKeyLastWord();
+				updateKeys();
 			}
 		}
 		else
@@ -170,7 +165,7 @@ public class CLastWordEngine extends CStringsEngine implements
 		currentString = keyDynamicString.GetStringCommand();
 		
 		// on met a jour les touches
-		updateKeyLastWord();
+		updateKeys();
 	}
 	
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
@@ -185,16 +180,10 @@ public class CLastWordEngine extends CStringsEngine implements
 		currentString = "";
 		
 		// on met a jour les touches
-		updateKeyLastWord();
+		updateKeys();
 	}
 
 
-
-	@Override
-	protected void LoadStringList()
-	{
-		stringList = new ArrayList<String>( keyList.size() );		
-	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 	

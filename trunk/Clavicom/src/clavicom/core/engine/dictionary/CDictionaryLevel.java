@@ -26,6 +26,7 @@
 package clavicom.core.engine.dictionary;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 
@@ -119,10 +120,32 @@ public class CDictionaryLevel
 		return dictionaryLevelMap.get( character );
 	}
 
-	public List<CDictionaryWord> getDictionaryWordOrededList()
+	public List<CDictionaryWord> getDictionaryWordOrededList( int nb )
 	{
-		return dictionaryWordOrededList;
+		List<CDictionaryWord> returnList = new ArrayList<CDictionaryWord>();
+		
+		// ajout de la liste local
+		for( CDictionaryWord dictionaryWord : dictionaryWordOrededList )
+		{
+			CDictionary.addToOrderedList(dictionaryWord, returnList, nb);
+		}
+		
+		// ajout des listes filles	
+		for( CDictionaryLevel dictionaryLevel : dictionaryLevelMap.values() )
+		{
+			List<CDictionaryWord> tmp = dictionaryLevel.getDictionaryWordOrededList( nb );
+			
+			for( CDictionaryWord dictionaryWord : tmp )
+			{
+				CDictionary.addToOrderedList(dictionaryWord, returnList, nb);
+			}
+		}
+		
+		
+		return returnList;
 	}
 
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+
 }

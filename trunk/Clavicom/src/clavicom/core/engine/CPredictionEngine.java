@@ -29,22 +29,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clavicom.core.engine.dictionary.CDictionary;
+import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
-
 import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
-import clavicom.core.profil.CDictionaryName;
 import clavicom.core.profil.CKeyboard;
+import clavicom.core.profil.CPreferedWords;
 
 public class CPredictionEngine extends CStringsEngine implements
 		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener, OnClickKeyShortcutListener
@@ -54,16 +52,22 @@ public class CPredictionEngine extends CStringsEngine implements
 	// ---------------------------------------------------------- VARIABLES --//
 	
 	CDictionary dictionnary; // dictionnaire
+	CPreferedWords preferedWord; // mot de l'utilisateur
 
 	
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 
 	
-	public CPredictionEngine( CKeyboard keyboard, CLevelEngine myLevelEngine, CDictionary myDictionary )
+	public CPredictionEngine( 
+			CKeyboard keyboard, 
+			CLevelEngine myLevelEngine, 
+			CDictionary myDictionary,
+			CPreferedWords myPreferedWord)
 	{
 		super( keyboard, myLevelEngine );
 		
 		dictionnary = myDictionary;
+		preferedWord = myPreferedWord;
 		
 		List<CKeyPrediction> keyPredictionListTemp = new ArrayList<CKeyPrediction>();
 
@@ -127,9 +131,6 @@ public class CPredictionEngine extends CStringsEngine implements
 			}
 		}
 		
-		
-		LoadStringList();
-		
 	}
 
 	
@@ -138,25 +139,66 @@ public class CPredictionEngine extends CStringsEngine implements
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
+		CCommand command = keyCharacter.getCommand( levelEngine.getCurrentLevel() );
+		String character = command.GetSearchString();
 		
+		// Si ce caractere est un caractere de fin de mot
+		if( IsEndWordCharacter( character ) )
+		{
+			SaveAndClean();
+		}
+		else
+		{
+			// on l'ajoute au mot courrant
+			currentString += character;
+			
+			// on récupère la liste des mots de prédiction
+			stringList = dictionnary.getWords( currentString , keyList.size() );
+			
+			// réaffiche les bouttons
+			updateKeys();
+		}
 	}
 	
 
 	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
 	{
+		SaveAndClean();
 	}
 	
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{
+		SaveAndClean();
 	}
-
-
-
-	@Override
-	protected void LoadStringList()
+	
+	protected void SaveAndClean()
 	{
-		stringList = new ArrayList<String>( keyList.size() );
+		if( ! currentString.equals( "" ) )
+		{
+			// on sauvegarde le mot courrent dans le dictionnaire et dans les prefered Words
+			CDictionaryWord dictionaryWord = dictionnary.getWord( currentString );
+			if( dictionaryWord == null )
+			{
+				dictionaryWord = new CDictionaryWord( currentString, 0 );
+				
+				// Ajout au dictionnaire
+				dictionnary.addWord( dictionaryWord );
+			}
+			
+			// ajout a la liste des preferedWords
+			preferedWord.addPreferedWord( dictionaryWord );
+			
+			// on vide la chaine courrante
+			currentString = "";
+			
+			// on vide la liste des strings
+			stringList.clear();
+			
+			// réaffiche les bouttons
+			updateKeys();
+		}
 	}
+
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 }

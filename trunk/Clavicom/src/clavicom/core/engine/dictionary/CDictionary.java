@@ -30,9 +30,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 import clavicom.CFilePaths;
 import clavicom.core.profil.CDictionaryName;
 import clavicom.core.profil.CPreferedWords;
@@ -180,39 +178,23 @@ public class CDictionary
 		List<CDictionaryWord> dictionaryWordList = new ArrayList<CDictionaryWord>( nbOfWord );
 		
 		CDictionaryLevel currentLevel = dictionaryLevel_0;
-		List<CDictionaryWord> wordExistedList;
-		int minFrequency = 0;
+		CDictionaryLevel currentLevelTemp;
 		
-		// pour tous les mots suceptibles de répondrent aux attentes
+		// on trouve le bon level
 		for( int i = 0 ; i < beginString.length() ; ++i )
 		{
-			currentLevel = currentLevel.getDictionaryLevel( beginString.charAt( i ) );
-			if( currentLevel == null )
+			currentLevelTemp = currentLevel.getDictionaryLevel( beginString.charAt( i ) );
+			if( currentLevelTemp == null )
 			{
 				break;
 			}
+			currentLevel = currentLevelTemp;
 			
-			// Ajout des elements à la list à renvoyer
-			wordExistedList = currentLevel.getDictionaryWordOrededList();
-			
-			for( int j = 0 ; j < wordExistedList.size() ; ++j )
-			{
-				CDictionaryWord dictionaryWord = wordExistedList.get( j );
-				// si la frequence est plus basse que celle du minimum de la liste, 
-				// ce n'est pas la peine d'essayer de l'ajouter
-				if( dictionaryWord.getFrequency() >= minFrequency )
-				{
-					addToOrderedList( dictionaryWord, dictionaryWordList, nbOfWord );
-					
-					// on change le min 
-					if( dictionaryWordList.size() != 0 )
-					{
-						minFrequency = dictionaryWordList.get( dictionaryWordList.size() - 1 ).getFrequency();
-					}
-				}
-				
-			}
 		}
+		
+		// je suis au bon niveau, donc je prend les mots du niveau
+		// plus ceux des niveaux du dessous
+		dictionaryWordList = currentLevel.getDictionaryWordOrededList( nbOfWord );
 		
 		
 		// l'utilisteur ne veux que les string
@@ -222,6 +204,48 @@ public class CDictionary
 			wordList.add( dictionaryWord.getWord() );
 		}
 		return wordList;
+	}
+	
+	public CDictionaryWord getWord( String word )
+	{
+		CDictionaryLevel currentLevel = dictionaryLevel_0;
+		CDictionaryLevel currentLevelTemp;
+		Character currentCharacter;
+		
+		// on trouve le mot
+		for( int i = 0 ; i < nbDictionaryLevel ; ++i )
+		{
+			// Si le caractere existe
+			if( word.length() > i )
+			{
+				// on récupere ce caractere
+				currentCharacter = word.charAt( i );
+				
+				// on recupere le dictionaryLevel corespondant
+				currentLevelTemp = currentLevel.getDictionaryLevel( currentCharacter );
+				
+				// si on bien trouvé le level
+				if( currentLevelTemp == null )
+				{
+					// le mot ce trouve donc dans le level en court, ou n'existe pas
+					return currentLevel.getDictionaryWord( word );
+				}
+				else
+				{
+					// le level temporaire devient le current level
+					currentLevel = currentLevelTemp;
+				}
+			}
+			else
+			{
+				// si le caractere n'existe pas
+				// le mot se trouve donc dans le level en court, ou n'existe pas
+				return currentLevel.getDictionaryWord( word );				
+			}				
+		}
+		
+		// le mot ce trouve donc dans le level en court, ou n'existe pas
+		return currentLevel.getDictionaryWord( word );
 	}
 	
 	public void increaseWord( String word )

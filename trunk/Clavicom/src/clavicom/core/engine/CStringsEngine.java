@@ -28,20 +28,9 @@ package clavicom.core.engine;
 import java.util.ArrayList;
 import java.util.List;
 
-import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
-import clavicom.core.keygroup.keyboard.blocks.CKeyList;
-import clavicom.core.keygroup.keyboard.command.CCommand;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
-import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
-import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
-import clavicom.core.listener.OnClickKeyCharacterListener;
-import clavicom.core.listener.OnClickKeyDynamicStringListener;
-import clavicom.core.listener.OnClickKeyShortcutListener;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 import clavicom.core.profil.CKeyboard;
 
 public abstract class CStringsEngine
@@ -67,13 +56,11 @@ public abstract class CStringsEngine
 		
 		currentString = "";
 		
+		stringList = new ArrayList<String>();
+		
 	}
 	
-	/**
-	 * Initialisation de stringList au nombre de key
-	 * @param max
-	 */
-	protected abstract void LoadStringList( ); 
+
 
 	
 
@@ -100,16 +87,25 @@ public abstract class CStringsEngine
 		return false;
 	}
 	
-	protected void updateKeyLastWord()
+	protected void updateKeys()
 	{
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
-			CKeyOneLevel keyboardKey = keyList.get( i );
-			String stringToDisplay = stringList.get( i );
+			CKeyOneLevel keyOneLevelKey = keyList.get( i );
+			String stringToDisplay;
 			
-			if( (keyboardKey != null ) && ( stringToDisplay != null ) )
+			if( i < stringList.size() )
 			{
-				keyboardKey.setCaption( stringToDisplay );
+				stringToDisplay = stringList.get( i );
+			}
+			else
+			{
+				stringToDisplay = "";
+			}
+			
+			if( (keyOneLevelKey != null ) && ( stringToDisplay != null ) )
+			{
+				keyOneLevelKey.setCaption( stringToDisplay );
 			}
 		}
 	}

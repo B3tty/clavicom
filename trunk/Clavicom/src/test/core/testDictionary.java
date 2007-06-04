@@ -74,7 +74,7 @@ public class testDictionary
 			dictionary.increaseWord("tarabiscoterait");
 			dictionary.increaseWord("tarabiscoterait");
 			
-			List<String> stringList = dictionary.getWords( "tara", 10 );
+			List<String> stringList = dictionary.getWords( "tara", 14 );
 			
 			for( String word : stringList )
 			{
