@@ -36,7 +36,7 @@ import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.tools.TLevelEnum;
 
-public abstract class CLevelEngine implements OnClickKeyLevelListener
+public class CLevelEngine implements OnClickKeyLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -127,6 +127,11 @@ public abstract class CLevelEngine implements OnClickKeyLevelListener
 		
 		fireChangeLevel();
 		
+	}
+
+	public TLevelEnum getCurrentLevel()
+	{
+		return currentLevel;
 	}
 
 
