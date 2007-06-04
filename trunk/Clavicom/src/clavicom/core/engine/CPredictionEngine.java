@@ -28,6 +28,7 @@ package clavicom.core.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCommand;

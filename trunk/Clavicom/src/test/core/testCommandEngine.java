@@ -3,6 +3,7 @@ package test.core;
 import org.jdom.Element;
 
 import clavicom.core.engine.CCommandEngine;
+import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
@@ -35,7 +36,8 @@ public class testCommandEngine
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CCommandEngine commandEngine = new CCommandEngine( keyboard );
+			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+			CCommandEngine commandEngine = new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
