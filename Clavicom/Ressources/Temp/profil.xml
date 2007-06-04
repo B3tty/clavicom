@@ -80,7 +80,7 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="0"></command_normal>
+						<command_normal id="4"></command_normal>
 						<command_shift id="1"></command_shift>
 						<command_altgr id="2"></command_altgr>
 					</commands>
@@ -117,9 +117,9 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="63"></command_normal>
-						<command_shift id="63"></command_shift>
-						<command_altgr id="63"></command_altgr>
+						<command_normal id="2"></command_normal>
+						<command_shift id="3"></command_shift>
+						<command_altgr id="3"></command_altgr>
 					</commands>
 				</keycharacter>
 				<keylevel order="2" caption_image="false" >
@@ -215,6 +215,68 @@
 					</colors>
 					<order_dynamic>0</order_dynamic>
 				</keylastword>
+				<keyprediction order="5" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption>coucou1</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>0</order_dynamic>
+				</keyprediction>
+				<keyprediction order="6" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption>coucou1</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>1</order_dynamic>
+				</keyprediction>
 			</keylist>
 		</keygroup>
 	</keyboard>
