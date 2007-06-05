@@ -31,7 +31,15 @@ import javax.swing.event.MouseInputListener;
  */
 public class UIJResizer extends JComponent
 {
-
+	private UIResizableBorder resizableBorder;
+	
+	public UIJResizer()
+	{
+		setLayout(new BorderLayout());
+		resizableBorder = new UIDefaultResizableBorder(5);
+		setBorder(resizableBorder);
+	}
+	
 	public UIJResizer(Component comp)
 	{
 		this(comp, new UIDefaultResizableBorder(6));
@@ -62,7 +70,7 @@ public class UIJResizer extends JComponent
 		{
 			getParent().repaint();
 			invalidate();
-			((JComponent) getParent()).revalidate();
+			//((JComponent) getParent()).revalidate();
 		}
 	}
 

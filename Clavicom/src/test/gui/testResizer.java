@@ -25,7 +25,7 @@ public class testResizer
 		bt.setText("rien");
 		
 		Dimension bounds = bt.getPreferredSize();
-		UIJResizer resizer = new UIJResizer(bt);
+		UIJResizer resizer = new UIJResizer();
 		resizer.setBounds(0,0, bounds.width,bounds.height);
 		
 		panel.add(resizer);

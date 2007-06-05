@@ -39,6 +39,7 @@ public final class testKeyboardPanel extends JFrame {
 
 	private testKeyboardPanel() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         getContentPane().add((new UIKeyboardPanel()));
         pack();
         setLocationRelativeTo(null);
