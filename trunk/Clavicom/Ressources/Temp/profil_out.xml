@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profil>
+  <language_ui>francais.clg</language_ui>
+  <commandset_name>francais.css</commandset_name>
+  <dictionary_name>francais.cdc</dictionary_name>
+  <keyboard_color>
+    <color>
+      <red>215</red>
+      <green>100</green>
+      <blue>98</blue>
+    </color>
+    <color>
+      <red>215</red>
+      <green>100</green>
+      <blue>98</blue>
+    </color>
+    <color>
+      <red>215</red>
+      <green>100</green>
+      <blue>98</blue>
+    </color>
+    <color>
+      <red>215</red>
+      <green>100</green>
+      <blue>98</blue>
+    </color>
+  </keyboard_color>
+  <transparency>
+    <keyboard_transparency>50</keyboard_transparency>
+    <key_transparency>20</key_transparency>
+  </transparency>
+  <sound>
+    <on_defil active="false" />
+    <on_click active="true" />
+    <on_survol active="true" />
+  </sound>
+  <navigation>
+    <type type="CLICK_TEMPORISE" />
+    <rollover active="true" />
+    <temporisation value="152" />
+  </navigation>
+  <font>
+    <name>Arial</name>
+    <size>50</size>
+    <auto_size>false</auto_size>
+    <bold>true</bold>
+    <italic>false</italic>
+  </font>
+  <keyboard>
+    <keygroup caption="groupe de ouf" order="0" visible="true">
+      <keylist order="0">
+        <keycharacter order="0">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>coucou1</caption_level_1>
+          <caption_level_2>coucou2</caption_level_2>
+          <caption_level_3>coucou3</caption_level_3>
+          <commands>
+            <command_normal id="4" />
+            <command_shift id="1" />
+            <command_altgr id="2" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>coucou1</caption_level_1>
+          <caption_level_2>coucou2</caption_level_2>
+          <caption_level_3>coucou3</caption_level_3>
+          <commands>
+            <command_normal id="2" />
+            <command_shift id="3" />
+            <command_altgr id="3" />
+          </commands>
+        </keycharacter>
+        <keylevel order="2">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>coucou1</caption>
+          <level>NORMAL</level>
+        </keylevel>
+        <keylauncher order="3">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>coucou1</caption>
+          <applicationpath>C:\Program Files\QuickTime\QuickTimePlayer.exe</applicationpath>
+        </keylauncher>
+        <keyprediction order="4">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <order_dynamic>0</order_dynamic>
+        </keyprediction>
+        <keyprediction order="5">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <order_dynamic>0</order_dynamic>
+        </keyprediction>
+        <keyprediction order="6">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <order_dynamic>1</order_dynamic>
+        </keyprediction>
+      </keylist>
+    </keygroup>
+  </keyboard>
+  <prefered_words>
+    <prefered_word frequency="5">tarabiscoterait</prefered_word>
+    <prefered_word frequency="10">tarabiscoterait2</prefered_word>
+  </prefered_words>
+</profil>
+

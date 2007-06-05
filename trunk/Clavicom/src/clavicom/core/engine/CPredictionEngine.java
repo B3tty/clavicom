@@ -185,6 +185,8 @@ public class CPredictionEngine extends CStringsEngine implements
 				dictionnary.addWord( dictionaryWord );
 			}
 			
+			dictionaryWord.increaseFrequency();
+			
 			// ajout a la liste des preferedWords
 			preferedWord.addPreferedWord( dictionaryWord );
 			

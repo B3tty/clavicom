@@ -89,7 +89,14 @@ public class CPreferedWords
 	
 	public void addPreferedWord( CDictionaryWord preferedWord )
 	{
-		preferedWords.add( preferedWord );
+		if ( preferedWords.contains( preferedWord ) )
+		{
+			preferedWord.increaseFrequency();
+		}
+		else
+		{
+			preferedWords.add( preferedWord );
+		}
 	}
 	
 	public void removePreferedWord( CDictionaryWord preferedWord )

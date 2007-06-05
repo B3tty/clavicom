@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/jdom.jar"/>
 	<classpathentry kind="lib" path="libs/jdic.jar"/>
+	<classpathentry kind="lib" path="libs/jna.jar"/>
+	<classpathentry kind="lib" path="libs/examples.jar"/>
 	<classpathentry kind="output" path="class"/>
 </classpath>
