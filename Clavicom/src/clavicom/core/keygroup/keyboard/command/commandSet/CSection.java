@@ -129,4 +129,10 @@ public class CSection
 		return section;
 		
 	}
+	
+	@Override
+	public String toString()
+	{
+		return name;
+	}
 }

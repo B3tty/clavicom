@@ -264,7 +264,7 @@
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
 	</section>
-	<section name = "Edition">
+	<section name = "Touches d'édition">
 		<command id="62" search_string="ESC" caption = "Echappement">
 			<code order="0" action="pressed" value="VK_ESCAPE"/>
 			<code order="1" action="released" value="VK_ESCAPE"/>
@@ -418,7 +418,7 @@
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
 	</section>
-	<section name = "Spéciaux">
+	<section name = "Touches spéciales">
 		<command id="98" search_string="&amp;" caption = "&amp;">
 			<code order="0" action="pressed" value="VK_1"/>
 			<code order="1" action="released" value="VK_1"/>

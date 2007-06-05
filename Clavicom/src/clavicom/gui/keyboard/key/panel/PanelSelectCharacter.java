@@ -23,42 +23,57 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.option;
+package clavicom.gui.keyboard.key.panel;
 
-import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TLevelEnum;
 
-public class PanelSelectCharacter extends JPanel
+public class PanelSelectCharacter extends JPanel implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
 	CKeyCharacter keyCharacter;
 	JTextField textField;
-	List< JList > jlists;
+	TLevelEnum level;
+	JComboBox comboSection;
+	JList list;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelSelectCharacter( 
 			CKeyCharacter myKeyCharacter, 
-			CCommandSet commandSet )
+			CCommandSet commandSet,
+			TLevelEnum myLevel)
 	{
 		keyCharacter = myKeyCharacter;
+		level = myLevel;
 		
 		// Ajout du libéllé
 		JPanel p_caption = new JPanel();
 		JLabel label = new JLabel( UIString.getUIString("LB_KEYCHARACTER_CAPTION") );
-		textField = new JTextField();
+		
+		if( keyCharacter == null )
+		{
+			textField = new JTextField();
+		}
+		else
+		{
+			textField = new JTextField( myKeyCharacter.getCaption( level ) );
+		}
 		
 		p_caption.add( label );
 		p_caption.add( textField );
@@ -72,20 +87,38 @@ public class PanelSelectCharacter extends JPanel
 	private JPanel CreateListViewSections( CCommandSet commandSet )
 	{
 		JPanel listViewPanel = new JPanel();
-		jlists = new ArrayList<JList>();
+		JPanel p_section;
+		JScrollPane listeAvecAscenseur;
+
+		// Ajout de la comboBox
+		comboSection = new JComboBox( commandSet.getSectionsList().values().toArray() );
+		comboSection.addActionListener( this );
+		listViewPanel.add( comboSection );
 		
-		// pour chaques sections
+		// Ajout de la listView
+		list = new JList( );
+		listeAvecAscenseur = new JScrollPane( list );
 		
-		for( CSection section : commandSet.getSectionsList().values() )
-		{
-			JPanel p_section = new JPanel();
-			p_section.add( new JLabel( section.GetName() ) );
-			
-			// création de la list
-			//JList ---------- IICICICICICICICICIICICICICCI 
-		}
+		listViewPanel.add( listeAvecAscenseur );
+		
+		// simulation d'une selection pour l'initialisation
+		actionPerformed( null );
 		
 		return listViewPanel;
+	}
+
+	public void actionPerformed(ActionEvent arg0)
+	{
+		Object object = comboSection.getSelectedItem();
+		if( object != null )
+		{
+			if( object instanceof CSection )
+			{
+				CSection selectedSection = (CSection)object;
+
+				list.setListData( selectedSection.GetCommandMap().values().toArray() ); 
+			}
+		}
 	}
 
 	//----------------------------------------------------------- METHODES --//	
