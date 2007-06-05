@@ -25,11 +25,10 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.RenderingHints;
 
@@ -58,7 +57,7 @@ public class UIKeyboardPanel extends JPanel
 		
 		setOpaque(false);
 		
-		setLayout(new FlowLayout());
+		//setLayout(new BorderLayout());
 //		
 		// Touches de test
 		touche1 = createUIKey();
@@ -75,7 +74,6 @@ public class UIKeyboardPanel extends JPanel
 		//touche1.setOpaque(true);
 		add(touche1);
 		touche1.setPreferredSize(new Dimension(160,80));
-		touche1.edit();
 		
 		//touche1.unEdit();
 		
