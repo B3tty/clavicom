@@ -58,7 +58,7 @@ public class UIKeyboardPanel extends JPanel
 		
 		setOpaque(false);
 		
-		setLayout(new GridLayout());
+		setLayout(new FlowLayout());
 //		
 		// Touches de test
 		touche1 = createUIKey();
