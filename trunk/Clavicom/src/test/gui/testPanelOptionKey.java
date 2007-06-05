@@ -30,7 +30,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 import clavicom.core.keygroup.CColor;
-import clavicom.gui.keyboard.key.option.PanelOptionColor;
+import clavicom.gui.keyboard.key.panel.PanelOptionColor;
 
 public class testPanelOptionKey
 {

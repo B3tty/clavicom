@@ -29,6 +29,7 @@ import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -38,9 +39,9 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	String caption_level_1; // caption pour le niveau 1
-	String caption_level_2; // caption pour le niveau 1 
-	String caption_level_3; // caption pour le niveau 1
+	String captionNormal;
+	String captionShift;
+	String captionAltGr;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKeyThreeLevel(
@@ -49,15 +50,15 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 			CColor myColorEntered, 
 			TPoint myPointMin, 
 			TPoint myPointMax,
-			String myCaptionLevel1,
-			String myCaptionLevel2,
-			String myCaptionLevel3)
+			String myCaptionNormal,
+			String myCaptionShift,
+			String myCaptionAltGr)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax);
 
-		caption_level_1 = myCaptionLevel1;
-		caption_level_2 = myCaptionLevel2;
-		caption_level_3 = myCaptionLevel3;
+		captionNormal = myCaptionNormal;
+		captionShift = myCaptionShift;
+		captionAltGr = myCaptionAltGr;
 	}
 	
 	public CKeyThreeLevel(Element node) throws Exception
@@ -65,10 +66,10 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 		super(node);
 		
 		// Récupération du caption level 1
-		caption_level_1 = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_1);
+		captionNormal = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_1);
 		
 		// si le caption est null et si il aurait du en avoir un
-		if ( caption_level_1 == null )
+		if ( captionNormal == null )
 		{
 			throw new Exception("["
 					+ UIString.getUIString("EX_KEY_THREE_LEVEL_BUILD") + " ] : "
@@ -77,10 +78,10 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 		}
 		
 		// Récupération du caption level 2
-		caption_level_2 = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_2);
+		captionShift = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_2);
 		
 		// si le caption est null et si il aurait du en avoir un
-		if ( caption_level_2 == null )
+		if ( captionShift == null )
 		{
 			throw new Exception("["
 					+ UIString.getUIString("EX_KEY_THREE_LEVEL_BUILD") + " ] : "
@@ -89,10 +90,10 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 		}
 		
 		// Récupération du caption level 3
-		caption_level_3 = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_3);
+		captionAltGr = node.getChildText(TXMLNames.KY_ELEMENT_CAPTION_LEVEL_3);
 		
 		// si le caption est null et si il aurait du en avoir un
-		if ( caption_level_3 == null )
+		if ( captionAltGr == null )
 		{
 			throw new Exception("["
 					+ UIString.getUIString("EX_KEY_THREE_LEVEL_BUILD") + " ] : "
@@ -105,35 +106,36 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 	
 
 	//----------------------------------------------------------- METHODES --//
+
+	public String getCaption( TLevelEnum level )
+	{
+		if( level == TLevelEnum.NORMAL )
+		{
+			return captionNormal;
+		}else if( level == TLevelEnum.SHIFT )
+		{
+			return captionShift;
+		}else if( level == TLevelEnum.ALT_GR )
+		{
+			return captionAltGr;
+		}else
+		{
+			return "";
+		}
+	}
 	
-	public String getCaptionLevel1()
+	public void setCaption( String caption, TLevelEnum level )
 	{
-		return caption_level_1;
-	}
-
-	public void setCaptionLevel1(String caption_level_1)
-	{
-		this.caption_level_1 = caption_level_1;
-	}
-
-	public String getCaptionLevel2()
-	{
-		return caption_level_2;
-	}
-
-	public void setCaptionLevel2(String caption_level_2)
-	{
-		this.caption_level_2 = caption_level_2;
-	}
-
-	public String getCaptionLevel3()
-	{
-		return caption_level_3;
-	}
-
-	public void setCaptionLevel3(String caption_level_3)
-	{
-		this.caption_level_3 = caption_level_3;
+		if( level == TLevelEnum.NORMAL )
+		{
+			captionNormal = caption;
+		}else if( level == TLevelEnum.SHIFT )
+		{
+			captionShift = caption;
+		}else if( level == TLevelEnum.ALT_GR )
+		{
+			captionAltGr = caption;
+		}
 	}
 	
 	@Override
@@ -141,17 +143,17 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 	{
 		// caption level 1
 		Element caption_level_1_elem = new Element( TXMLNames.KY_ELEMENT_CAPTION_LEVEL_1 );
-		caption_level_1_elem.setText( caption_level_1 );
+		caption_level_1_elem.setText( captionNormal );
 		eltKeyNode.addContent( caption_level_1_elem );
 		
 		// caption level 2
 		Element caption_level_2_elem = new Element( TXMLNames.KY_ELEMENT_CAPTION_LEVEL_2 );
-		caption_level_2_elem.setText( caption_level_2 );
+		caption_level_2_elem.setText( captionShift );
 		eltKeyNode.addContent( caption_level_2_elem );
 		
 		// caption level 3
 		Element caption_level_3_elem = new Element( TXMLNames.KY_ELEMENT_CAPTION_LEVEL_3 );
-		caption_level_3_elem.setText( caption_level_3 );
+		caption_level_3_elem.setText( captionAltGr );
 		eltKeyNode.addContent( caption_level_3_elem );
 		
 		completeNodeSpecific2( eltKeyNode );

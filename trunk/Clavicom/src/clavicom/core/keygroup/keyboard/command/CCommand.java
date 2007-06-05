@@ -175,4 +175,10 @@ public class CCommand
 		
 		return command;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return caption;
+	}
 }

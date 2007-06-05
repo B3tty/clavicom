@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionColor.java
+			Filename			: PanelOptionKey.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -23,57 +23,39 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.option;
+package clavicom.gui.keyboard.key.panel;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import clavicom.core.keygroup.CKey;
+import clavicom.gui.language.UIString;
 
-import clavicom.core.keygroup.CColor;
-
-public class PanelOptionColor extends JPanel implements ActionListener
+public class PanelOptionKey extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-	CColor ccolor;
-	JButton colorButton;
+	//---------------------------------------------------------- VARIABLES --//
+	CKey key;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelOptionColor( CColor myColor, String caption )
+	public PanelOptionKey( CKey myKey )
 	{
-		ccolor = myColor;
+		key = myKey;
 		
-		add( new JLabel(caption) );
 		
-		colorButton = new JButton();
-		colorButton.setBackground( ccolor.GetColor() );
+		// création des trois panels des couleurs et ajout
+		PanelOptionColor panelColorClicked = new PanelOptionColor( key.GetColorClicked(), UIString.getUIString("LB_COLOR_CLICKED") );
+		PanelOptionColor panelColorEntered = new PanelOptionColor( key.GetColorEntered(), UIString.getUIString("LB_COLOR_ENTERED") );
+		PanelOptionColor panelColorNormal = new PanelOptionColor( key.GetColorNormal(), UIString.getUIString("LB_COLOR_NORMAL") );
 		
-		add( colorButton );
-		
-		colorButton.addActionListener( this );
-	
-	}
-
-	public void actionPerformed(ActionEvent arg0)
-	{
-		Color newColor = JColorChooser.showDialog( this, "Choix de la couleur", ccolor.GetColor() );
-		
-		if( newColor != ccolor.GetColor() )
-		{
-			// la couleur à changé
-			ccolor.setColor( newColor );
-			
-			colorButton.setBackground( newColor );
-		}
+		add( panelColorNormal );
+		add( panelColorEntered );
+		add( panelColorClicked );
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
+	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

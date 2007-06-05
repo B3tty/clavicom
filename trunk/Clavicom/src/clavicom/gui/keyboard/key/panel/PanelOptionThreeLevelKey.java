@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.option;
+package clavicom.gui.keyboard.key.panel;
 
 import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
 

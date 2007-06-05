@@ -41,44 +41,45 @@ import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.panel.PanelOptionColor;
 import clavicom.gui.keyboard.key.panel.PanelOptionKey;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyCharacter;
 import clavicom.gui.language.UIString;
 
-public class testPanelOptionKey2
+public class testPanelOptionKeyCharacter
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-		//		 Chargement des UIString et shortcutset
-		UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-		CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
-		
-		// Chemins
-		String input = "Ressources\\Temp\\profil.xml";
-		
-		// Chargement du profil
-		CProfil.createInstance(input);
-		CProfil profil = CProfil.getInstance();
-		
-		CKeyboard keyboard = profil.getKeyboard();
-		
-		// Chargement du commandEngine
-		CLevelEngine levelEngine = new CLevelEngine( keyboard );
-		CCommandEngine commandEngine = new CCommandEngine( keyboard, levelEngine );
-		
-		// on simule l'appuis sur une touche
-		CKeyGroup group = keyboard.getKeyGroup( 0 );
-		CKeyList list = group.GetkeyList( 0 );
-		CKeyCharacter keyCharacter = (CKeyCharacter)list.GetKeyboardKey( 0 );
-		
-		
-		PanelOptionKey panelOptionColor = new PanelOptionKey( keyCharacter );
-		
-		JFrame frame = new JFrame();
-		frame.setSize(500,500);
-		frame.add( panelOptionColor );
-		
-		frame.show();
+			//		 Chargement des UIString et shortcutset
+			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
+			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			
+			// Chemins
+			String input = "Ressources\\Temp\\profil.xml";
+			
+			// Chargement du profil
+			CProfil.createInstance(input);
+			CProfil profil = CProfil.getInstance();
+			
+			CKeyboard keyboard = profil.getKeyboard();
+			
+			// Chargement du commandEngine
+			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+			CCommandEngine commandEngine = new CCommandEngine( keyboard, levelEngine );
+			
+			// on simule l'appuis sur une touche
+			CKeyGroup group = keyboard.getKeyGroup( 0 );
+			CKeyList list = group.GetkeyList( 0 );
+			CKeyCharacter keyCharacter = (CKeyCharacter)list.GetKeyboardKey( 0 );
+			
+			
+			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
+			
+			JFrame frame = new JFrame();
+			frame.setSize(500,500);
+			frame.add( panelOptionCharacter );
+			
+			frame.show();
 		}
 		catch(Exception e)
 		{

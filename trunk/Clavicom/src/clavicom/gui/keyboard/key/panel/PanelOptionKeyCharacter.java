@@ -23,9 +23,20 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.option;
+package clavicom.gui.keyboard.key.panel;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.tools.TLevelEnum;
 
 public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
 {
@@ -37,11 +48,30 @@ public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter )
+	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
 	{
 		super( myKeyCharacter );
 		
 		keyCharacter = myKeyCharacter;
+		
+		setLayout( new BoxLayout(this, BoxLayout.PAGE_AXIS ) );
+		
+		JPanel panellevelNormal = new JPanel();
+		panellevelNormal.add( new JLabel( TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
+		panellevelNormal.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL ) );
+		add( panellevelNormal, BorderLayout.CENTER );
+		
+		JPanel panellevelShift = new JPanel();
+		panellevelShift.add( new JLabel( TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
+		panellevelShift.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT ) );
+		add( panellevelShift, BorderLayout.CENTER  );
+		
+		JPanel panellevelAltGr = new JPanel();
+		panellevelAltGr.add( new JLabel( TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
+		panellevelAltGr.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR ) );
+		add( panellevelAltGr, BorderLayout.CENTER  );
+		
+		
 	}
 	//----------------------------------------------------------- METHODES --//	
 
