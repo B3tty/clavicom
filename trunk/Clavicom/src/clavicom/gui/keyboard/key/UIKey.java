@@ -73,6 +73,8 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		final int CAPTION_IMAGE_BORDER_SIZE = 	CAPTION_IMAGE_BORDER_RELATIVE + // Taille de la bordure de l'image, tout compris
 												TAILLE_BORDURE_INTERIEURE;
 		
+		final int TAILLE_CADRE_SELECTION = 10;		// Taille du cadre de selection
+		
 		//---------------------------------------------------------- ATTRIBUTS --//		
 		private TUIKeyState state;					// Etat de la touche
 		private TUIKeyEditionState editionState;	// Etat d'édition de la touche
@@ -84,6 +86,10 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		private BufferedImage imgNormal;			// Buffer de l'image normale
 		private BufferedImage imgEntered;			// Buffer de l'image survolée
 		private BufferedImage imgClicked;			// Buffer de l'image cliquée
+		
+		private BufferedImage imgNormalSelected;	// Buffer de l'image normale
+		private BufferedImage imgEnteredSelected;   // Buffer de l'image survolée
+		private BufferedImage imgClickedSelected;   // Buffer de l'image cliquée
 		
 		
 		private BufferedImage currentImage;			// Buffer de l'image courante
@@ -263,7 +269,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		//-----------------------------------------------------------------------
 		// Dessin
 		//-----------------------------------------------------------------------
-		protected void recreateSelectionImage()
+		protected void recreateSelectionMask()
 		{
 			// Variables
 			Graphics2D buffer;
@@ -272,8 +278,14 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			selectionMask = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
 			buffer = (Graphics2D) selectionMask.getGraphics();
 			
-			buffer.setStroke(new BasicStroke(2.0f));
-			buffer.drawRoundRect(0, 0, getWidth(), getHeight(), 25, 25);
+			buffer.setColor(Color.RED);
+			buffer.setStroke(new BasicStroke(TAILLE_CADRE_SELECTION));
+			buffer.drawRoundRect(	TAILLE_BORDURE_INTERIEURE, 
+									TAILLE_BORDURE_INTERIEURE, 
+									getWidth() - 2*TAILLE_BORDURE_INTERIEURE, 
+									getHeight() - 2*TAILLE_BORDURE_INTERIEURE, 
+									TAILLE_ARC, 
+									TAILLE_ARC);
 		}
 		
 		/**
@@ -342,6 +354,24 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			imgClicked = recreateNormalImage(getCoreKey().GetColorClicked().GetColor());
 		}
 		
+		protected void recreateSelectionImages()
+		{
+			imgNormalSelected = recreateSelectionImage(imgNormal);
+			imgEnteredSelected = recreateSelectionImage(imgEntered);
+			imgClickedSelected = recreateSelectionImage(imgClicked);
+		}
+		
+		protected BufferedImage recreateSelectionImage(BufferedImage img)
+		{
+			BufferedImage selectedImage = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2 = (Graphics2D) selectedImage.getGraphics();
+			
+			g2.drawImage(img,0,0,null);
+			g2.drawImage(selectionMask,0,0,null);
+			
+			return selectedImage;
+		}
+		
 		/**
 		 * Redessine la touche
 		 */
@@ -406,7 +436,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			// On avertit le noyau du clic
 			getCoreKey().Click();
 			
-			state = TUIKeyState.NORMAL;
+			state = TUIKeyState.ENTERED;
 			selectGoodImage();
 			
 			// On force le redessin
@@ -417,7 +447,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		// Mode édition
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredEdit()
-		{
+		{			
 			state = TUIKeyState.ENTERED;
 			selectGoodImage();
 			
@@ -441,12 +471,9 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		}
 
 		protected void buttonPressedEdit()
-		{
-			// On change l'état de selection
-			isSelected = (!isSelected);
-			
+		{					
 			// On selectione la bonne image
-			state = TUIKeyState.NORMAL;
+			state = TUIKeyState.PRESSED;
 			selectGoodImage();
 			
 			// Ajout du masque de selection, si necessaire
@@ -457,8 +484,11 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		}
 
 		protected void buttonReleasedEdit()
-		{			
-			state = TUIKeyState.NORMAL;
+		{		
+			// On change l'état de selection
+			isSelected = (!isSelected);
+			
+			state = TUIKeyState.ENTERED;
 			selectGoodImage();
 			
 			// Ajout du masque de selection, si necessaire
@@ -616,19 +646,42 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			if (currentImage == null)
 			{
 				recreateNormalImages();
+				recreateSelectionMask();
+				recreateSelectionImages();
 			}
 			
 			if (state == TUIKeyState.ENTERED)
 			{
-				currentImage = imgEntered;
+				if(isSelected == false)
+				{
+					currentImage = imgEntered;
+				}
+				else
+				{
+					currentImage = imgEnteredSelected;
+				}
 			}
 			else if (state == TUIKeyState.NORMAL)
 			{
-				currentImage = imgNormal;
+				if(isSelected == false)
+				{
+					currentImage = imgNormal;
+				}
+				else
+				{
+					currentImage = imgNormalSelected;
+				}
 			}
 			else if (state == TUIKeyState.PRESSED)
 			{
-				currentImage = imgClicked;
+				if(isSelected == false)
+				{
+					currentImage = imgClicked;
+				}
+				else
+				{
+					currentImage = imgClickedSelected;
+				}
 			}
 		}
 		
@@ -641,7 +694,9 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			if (isSelected == true)
 			{
 				// Ajout du masque de selection
+				
 				Graphics2D buffer = (Graphics2D) currentImage.getGraphics();
+				
 				buffer.drawImage(selectionMask,0,0,getWidth(),getHeight(),null);
 			}
 		}		
@@ -662,8 +717,9 @@ public abstract class UIKey extends JPanel implements ComponentListener
 				{
 					resizeTimer.stop();
 					recreateNormalImages();
+					recreateSelectionMask();
+					recreateSelectionImages();
 					selectGoodImage();
-					recreateSelectionImage();
 					repaint();
 				}
 			};
