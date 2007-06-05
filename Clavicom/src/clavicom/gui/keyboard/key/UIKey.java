@@ -67,7 +67,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
 													// images est lancé, pendant un resize	
 		
-		final int CAPTION_IMAGE_BORDER_RELATIVE = 0;		// Taille de la bordure de l'image
+		final int CAPTION_IMAGE_BORDER_RELATIVE = 0;	// Taille de la bordure de l'image
 		
 		final int CAPTION_IMAGE_BORDER_SIZE = 	CAPTION_IMAGE_BORDER_RELATIVE + // Taille de la bordure de l'image, tout compris
 												TAILLE_BORDURE_INTERIEURE;
@@ -79,15 +79,17 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		private MouseAdapterUse mouseAdapterUse;	// MouseAdapteur en mode utilisation
 		private MouseAdapterEdit mouseAdapterEdit;	// MouseAdapteur en mode édition
 		
-		private Image imgNormal;					// Buffer de l'image normale
-		private Image imgEntered;					// Buffer de l'image survolée
-		private Image imgClicked;					// Buffer de l'image cliquée
+		private BufferedImage imgNormal;			// Buffer de l'image normale
+		private BufferedImage imgEntered;			// Buffer de l'image survolée
+		private BufferedImage imgClicked;			// Buffer de l'image cliquée
 		
-		private Image currentImage;					// Buffer de l'image courante
+		private BufferedImage currentImage;			// Buffer de l'image courante
 		private Timer resizeTimer;					// Timer qui une fois expiré demande
 													// le calcul des images
 		
-		private Image originalCaptionImage;			// Image correspondant à la caption
+		private BufferedImage originalCaptionImage;	// Image correspondant à la caption
+		
+		private float opacity;						// Opacité du bouton (de 0 à 1)
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -183,12 +185,14 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		public UIKey()
 		{ 
 			super();
+			
 			// Création des mouseAdapters
 			mouseAdapterEdit = new MouseAdapterEdit();
 			mouseAdapterUse = new MouseAdapterUse();
 			
 			// On définit la transparence
 			setOpaque(false);
+			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTrancparencyPourcent() / 100;
 			
 			// Ajout des listener sur la souris
 			addMouseListener(mouseAdapterUse);
@@ -212,7 +216,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 				ImageIcon iconImage = new ImageIcon(getCaption());	
 				
 				// Récupération de l'image
-				originalCaptionImage = iconImage.getImage();
+				originalCaptionImage = toBufferedImage(iconImage.getImage());
 			}
 
 			// Initialisation des états
@@ -228,24 +232,22 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		//-----------------------------------------------------------------------
 		// Dessin
 		//-----------------------------------------------------------------------	
-		protected Image recreateNormalImage(Color bgdColor)
+		protected BufferedImage recreateNormalImage(Color bgdColor)
 		{
 			// Variables
 			Graphics2D buffer;
-			Image image;
+			BufferedImage image;
 			
 			// Création de l'image
-			image = createImage(getWidth(), getHeight());
+			image = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
 			buffer = (Graphics2D) image.getGraphics();
 			
-			// Application de la transparence pour tout ce qui sera dessiné ensuite
-			float transparency = 0.8f;// = (float)CProfil.getInstance().getTransparency().getKeyTrancparencyPourcent() / 100;
-			//buffer.setComposite(AlphaComposite.getInstance(AlphaComposite., transparency ));
-		     
+			//buffer.setBackground(Color.RED);
+			
 			// Construction du buffer
 			buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			
-			// Ajout du fond de la touche
+			// Ajout du fond de la touche			
 			addPaintBackground(buffer,bgdColor);
 			
 			// Ajout de la caption
@@ -262,7 +264,7 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			// On ettend l'image
 			if (currentImage != null)
 			{
-				currentImage = currentImage.getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST);
+				currentImage = toBufferedImage(((Image)currentImage).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 			}
 			
 			// On réarme le timer
@@ -295,17 +297,23 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			imgClicked = recreateNormalImage(getCoreKey().GetColorClicked().GetColor());
 		}
 		
-		protected void paintComponent(Graphics myGraphic)
+		public void paintComponent(Graphics myGraphic)
 		{
+			super.paintComponent(myGraphic);
 			try
 			{
 				// Appel du père
 				super.paintComponent(myGraphic);
 				
-				// Dessin de l'image courante
+				// Récupération du Graphics2D
 				Graphics2D g2 = (Graphics2D) myGraphic;
 				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				g2.drawImage(currentImage, 0, 0, null);	
+				
+				// Application de la transparence
+				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+				
+				// Dessin de l'image			
+				g2.drawImage(currentImage, 0, 0, null);
 			}
 			catch (Exception ex)
 			{
@@ -550,7 +558,36 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			// Création d'un timer qui génère un tic
 			// chaque 500 millième de seconde
 			return new Timer(RESIZE_TIMER_DURATION,action);
-		}  
+		}
+		
+		/**
+		 * Converti une Image en BufferedImage
+		 * @param image
+		 * @return
+		 */
+		BufferedImage toBufferedImage(Image image)
+		{
+			// On test si l'image n'est pas déja une instance de BufferedImage
+			if ( image instanceof BufferedImage )
+			{
+				return ((BufferedImage) image);
+			}
+			else
+			{
+				// On s'assure que l'image est complètement chargée
+				image = new ImageIcon(image).getImage();
+	
+				// On crée la nouvelle image
+				BufferedImage bufferedImage = new BufferedImage(image
+						.getWidth(null), image.getHeight(null),
+						BufferedImage.TYPE_INT_ARGB);
+				Graphics g = bufferedImage.createGraphics();
+				g.drawImage(image, 0, 0, null);
+				g.dispose();
+	
+				return (bufferedImage);
+			}
+		}
 		
 		protected abstract CKey getCoreKey();
 		protected abstract String getCaption();
