@@ -25,74 +25,100 @@
 
 package clavicom.gui.keyboard.key;
 
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.RenderingHints;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import clavicom.tools.TUIKeyState;
-
-public class UIKeyboardPanel extends JPanel implements UIKeyListener 
+public class UIKeyboardPanel extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	private JPanel touche1, touche2;
+	private UIKey touche1, touche2, touche3, touche4, touche5, touche6, touche7, touche8, touche9;
+	Image image;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardPanel() {
 		// TEMPORAIRE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		setBackground(Color.WHITE);
-		setPreferredSize(new Dimension(300,150 ));
+//		setBackground(Color.GREEN);
+		setPreferredSize(new Dimension(600,400 ));
 		setSize(getPreferredSize());
 		
+		ImageIcon iconImage = new ImageIcon("C:\\Developpement Java\\Clavicom\\Ressources\\Application\\Pictures\\texture2.jpg");	
+		
+		// Récupération de l'image
+		image = iconImage.getImage();
+		
+		setOpaque(false);
+		
+		setLayout(new GridLayout());
+//		
 		// Touches de test
 		touche1 = createUIKey();
 		touche2 = createUIKey();
+		touche3 = createUIKey();
+		touche4 = createUIKey();
+		touche5 = createUIKey();
+		touche6 = createUIKey();
+		touche7 = createUIKey();
+		touche8 = createUIKey();
+		touche9 = createUIKey();
 		
-		setLayout(new GridLayout());
-		
+//	
+		//touche1.setOpaque(true);
 		add(touche1);
-		add(touche2);
+		touche1.setPreferredSize(new Dimension(160,80));
+		touche1.edit();
+		
+		//touche1.unEdit();
+		
+//		add(touche2);
+//		add(touche3);
+//		add(touche4);
+//		add(touche5);
+//		add(touche6);
+//		add(touche7);
+//		add(touche8);
+//		add(touche9);
 	}
 	//----------------------------------------------------------- METHODES --//
 	//-----------------------------------------------------------------------
 	// Gestion des UIKeys - Implémentation de l'interface UIKeyListener
 	//-----------------------------------------------------------------------
-	public void buttonEntered(UIKey source)
+	protected void paintComponent(Graphics myGraphic)
 	{
-		source.setState(TUIKeyState.SELECTED);
-		source.repaint();
-	}
-
-	public void buttonExited(UIKey source)
-	{
-		source.setState(TUIKeyState.NORMAL);
-		source.repaint();
-	}
-
-	public void buttonPressed(UIKey source)
-	{
-		source.alertCoreKey();
-		source.setState(TUIKeyState.PRESSED);
-		source.repaint();	
-	}
-
-	public void buttonReleased(UIKey source)
-	{
-		source.setState(TUIKeyState.NORMAL);
-		source.repaint();		
+		try
+		{
+			// Appel du père
+			super.paintComponent(myGraphic);
+			
+			// Dessin de l'image courante
+			Graphics2D g2 = (Graphics2D) myGraphic;
+			//g2.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_ATOP, 0.5f ));
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g2.drawImage(image, 0, 0, null);	
+		}
+		catch (Exception ex)
+		{
+			// A COMPLETER
+			ex.printStackTrace();
+		}
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//	
 	//-----------------------------------------------------------------------
 	// Gestion des UIKeys
 	//-----------------------------------------------------------------------
-	protected JPanel createUIKey()
+	protected UIKey createUIKey()
 	{
 		UIKey key = new UIKeyOneLevel();
-		key.addUIKeyListener(this);
 		return key;
 	}
 
