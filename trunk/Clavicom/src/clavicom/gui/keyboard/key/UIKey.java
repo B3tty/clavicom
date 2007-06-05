@@ -231,7 +231,10 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------	
+		//-----------------------------------------------------------------------
+		/**
+		 * Recréé l'image de fond de la couleur correspondante
+		 */
 		protected BufferedImage recreateNormalImage(Color bgdColor)
 		{
 			// Variables
@@ -241,8 +244,6 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			// Création de l'image
 			image = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
 			buffer = (Graphics2D) image.getGraphics();
-			
-			//buffer.setBackground(Color.RED);
 			
 			// Construction du buffer
 			buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -297,6 +298,9 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			imgClicked = recreateNormalImage(getCoreKey().GetColorClicked().GetColor());
 		}
 		
+		/**
+		 * Redessine la touche
+		 */
 		public void paintComponent(Graphics myGraphic)
 		{
 			super.paintComponent(myGraphic);
@@ -389,7 +393,10 @@ public abstract class UIKey extends JPanel implements ComponentListener
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------	
+		//-----------------------------------------------------------------------
+		/**
+		 * Dessine l'image de fond de la touche
+		 */
 		protected void addPaintBackground(Graphics2D bg, Color bgdColor)
 		{						
 			// Création du Paint du premier calque
@@ -441,6 +448,11 @@ public abstract class UIKey extends JPanel implements ComponentListener
 								TAILLE_ARC,TAILLE_ARC);	
 		}
 		
+		/**
+		 * Dessine la caption sur la touche (image ou texte)
+		 * @param bg
+		 * @param bgdColor
+		 */
 		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
 		{			
 			// On agrandit le clip (pour dessiner sur tout le bouton)
@@ -518,6 +530,10 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			}
 		}
 		
+		/**
+		 * Selectionne la bonne image courante
+		 *
+		 */
 		protected void selectCurrentStateImage()
 		{
 			if (currentImage == null)
@@ -539,6 +555,10 @@ public abstract class UIKey extends JPanel implements ComponentListener
 			}
 		}
 		
+		/**
+		 * Créé un Timer de redimension
+		 * @return
+		 */
 		protected Timer createResizeTimer()
 		{
 			// Création d'une instance de listener
