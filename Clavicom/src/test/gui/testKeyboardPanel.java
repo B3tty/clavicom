@@ -28,6 +28,7 @@ import javax.swing.JFrame;
 import javax.swing.JWindow;
 
 import clavicom.core.engine.CCommandEngine;
+import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
@@ -67,7 +68,7 @@ public final class testKeyboardPanel extends JFrame {
 		CKeyboard keyboard = profil.getKeyboard();
 		
 		// Chargement du commandEngine
-		CCommandEngine commandEngine = new CCommandEngine( keyboard );
+		CCommandEngine commandEngine = new CCommandEngine( keyboard, new CLevelEngine(keyboard));
 		
     	testKeyboardPanel application =  new testKeyboardPanel();
     	application.setVisible(true);

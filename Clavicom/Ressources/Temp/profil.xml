@@ -40,10 +40,17 @@
 	</transparency>
 	<font>
 		<name>Arial</name>
-		<size>50</size>
-		<auto_size>false</auto_size>
+		<size>0.2</size>
+		<auto_size>true</auto_size>
 		<bold>true</bold>
 		<italic>false</italic>
+		<auto_color>false</auto_color>
+		<color>
+			<red>102</red>
+			<green>0</green>
+			<blue>102</blue>
+		</color>
+		<shadow>true</shadow>
 	</font>
 	<keyboard>
 		<keygroup order="0" caption="groupe de ouf" visible="true">
@@ -80,49 +87,12 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="4"></command_normal>
+						<command_normal id="0"></command_normal>
 						<command_shift id="1"></command_shift>
 						<command_altgr id="2"></command_altgr>
 					</commands>
 				</keycharacter>
-				<keycharacter order="1" caption_image="false" >
-					<coordinates>
-						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
-						</point>
-						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
-					</coordinates>
-					<caption_level_1>coucou1</caption_level_1>
-					<caption_level_2>coucou2</caption_level_2>
-					<caption_level_3>coucou3</caption_level_3>
-					<colors>
-						<color_normal>
-							<red>215</red>
-							<green>100</green>
-							<blue>98</blue>
-						</color_normal>
-						<color_clicked>
-							<red>50</red>
-							<green>100</green>
-							<blue>80</blue>
-						</color_clicked>
-						<color_entered>
-							<red>29</red>
-							<green>19</green>
-							<blue>99</blue>
-						</color_entered>
-					</colors>
-					<commands>
-						<command_normal id="2"></command_normal>
-						<command_shift id="3"></command_shift>
-						<command_altgr id="3"></command_altgr>
-					</commands>
-				</keycharacter>
-				<keylevel order="2" caption_image="false" >
+				<keylevel order="1" caption_image="false" >
 					<coordinates>
 						<point position="min">
 							<x>25.5</x>
@@ -153,6 +123,38 @@
 					</colors>
 					<level>NORMAL</level>
 				</keylevel>
+	<keystring order="2" caption_image="true">
+		<order_dynamic>12</order_dynamic>
+		<base_string>Marcel DUPONT</base_string>
+		<coordinates>
+			<point position="min">
+				<x>25.5</x>
+				<y>52.2</y>
+			</point>
+			<point position="max">
+				<x>5.5</x>
+				<y>2.2</y>
+			</point>		
+		</coordinates>
+		<caption>C:\Developpement Java\Clavicom\Ressources\Application\Pictures\firefox.png</caption>
+		<colors>
+			<color_normal>
+				<red>189</red>
+				<green>189</green>
+				<blue>189</blue>
+			</color_normal>
+			<color_clicked>
+				<red>204</red>
+				<green>0</green>
+				<blue>204</blue>
+			</color_clicked>
+			<color_entered>
+				<red>255</red>
+				<green>153</green>
+				<blue>255</blue>
+			</color_entered>
+		</colors>
+	</keystring>
 				<keylauncher order="3" caption_image="false" >
 					<coordinates>
 						<point position="min">
@@ -281,7 +283,7 @@
 		</keygroup>
 	</keyboard>
 	<prefered_words>
-		<prefered_word frequency="5">tarabiscoterait</prefered_word>
-		<prefered_word frequency="10">tarabiscoterait2</prefered_word>
+		<prefered_word frequency="5">coucou</prefered_word>
+		<prefered_word frequency="10">salut</prefered_word>
 	</prefered_words>
 </profil>

@@ -34,6 +34,6 @@ public final class TUIKeyState
     
     // Liste des valeurs
     public final static TUIKeyState NORMAL		= new TUIKeyState();
-    public final static TUIKeyState SELECTED	= new TUIKeyState();
+    public final static TUIKeyState ENTERED		= new TUIKeyState();
     public final static TUIKeyState PRESSED		= new TUIKeyState();
 } 

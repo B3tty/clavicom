@@ -1,11 +1,10 @@
-package clavicom.gui.keyboard.key;
 /*-----------------------------------------------------------------------------+
 
-			Filename			: ButtonListener.java
-			Creation date		: 29 mai 07
+			Filename			: TUIKeyEditionState.java
+			Creation date		: 21 mai 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.keyboard
+			Package				: clavicom.tools
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -24,15 +23,17 @@ package clavicom.gui.keyboard.key;
 
 +-----------------------------------------------------------------------------*/
 
-import java.util.EventListener;
+package clavicom.tools;
 
-
-public interface UIKeyListener extends EventListener {
-	//--------------------------------------------------------- CONSTANTES --//
-	//----------------------------------------------------------- METHODES --//
-	
-	public void buttonEntered(UIKey source);
-	public void buttonExited(UIKey source);
-	public void buttonPressed(UIKey source);
-	public void buttonReleased(UIKey source);
-}
+public final class TUIKeyEditionState 
+{
+    private TUIKeyEditionState() 
+    {
+    	// Rien à faire
+    }
+    
+    // Liste des valeurs
+    public final static TUIKeyEditionState IN_EDITION	= new TUIKeyEditionState();
+    public final static TUIKeyEditionState IN_USE		= new TUIKeyEditionState();
+   
+} 

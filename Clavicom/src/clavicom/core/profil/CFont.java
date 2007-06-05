@@ -31,6 +31,7 @@ import javax.swing.event.EventListenerList;
 
 import org.jdom.Element;
 
+import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.CMessage;
 import clavicom.gui.message.NewMessageListener;
@@ -40,9 +41,17 @@ public class CFont
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final String DEFAULT_FONT_NAME = "Arial";
+	final int DEFAULT_FONT_SIZE = 12;
+	final float DEFAULT_FONT_HEIGHT_FACTOR = 1f;
 	//---------------------------------------------------------- VARIABLES --//	
 	Font usedFont;
 	boolean autoSize;
+	
+	CColor fontColor;
+	boolean autoColor;
+	boolean shadow;
+	
+	float heightFactor;
 	
 	protected EventListenerList listenerNewMessageList;
 	
@@ -51,49 +60,25 @@ public class CFont
 	{
 		// Initialisation
 		listenerNewMessageList = new EventListenerList();
+		heightFactor = DEFAULT_FONT_HEIGHT_FACTOR;
 		
 		// Récupération du nom de la police
 		String fontName = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_NAME);
 		
 		if(fontName == null || fontName.equals(""))
 		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_1") +
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
 									TXMLNames.PR_ELEMENT_FONT_NAME + 
-									UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_2"));
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}
-		
-		// Récupération de la taille
-		String strFontSize = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_SIZE);
-		
-		if(strFontSize == null || strFontSize.equals(""))
-		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_1") +
-									TXMLNames.PR_ELEMENT_FONT_SIZE + 
-									UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_2"));
-		}
-		
-		int fontSize;
-		try
-		{
-			fontSize = Integer.parseInt(strFontSize);
-		}
-		catch (Exception ex)
-		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_1") +
-									strFontSize + 
-									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_2") + 
-									TXMLNames.PR_ELEMENT_FONT_SIZE + 
-									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));			
-		}
-		
 		
 		// Autosize		
 		String strAutoSize = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_AUTO_SIZE);
 		if(strAutoSize == null || strAutoSize.equals(""))
 		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_1") +
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
 									TXMLNames.PR_ELEMENT_FONT_AUTO_SIZE + 
-									UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_2"));
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}		
 
 		try
@@ -109,13 +94,47 @@ public class CFont
 									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));					
 		}
 		
+		// Récupération de la taille
+		
+		if (autoSize == false)
+		// On ne récupère la taille que si elle est nécessaire
+		{
+			
+			String strFontSize = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_SIZE);
+			
+			if(strFontSize == null || strFontSize.equals(""))
+			{
+				throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
+										TXMLNames.PR_ELEMENT_FONT_SIZE + 
+										UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
+			}
+			
+			
+			try
+			{
+				heightFactor = Float.parseFloat(strFontSize);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_1") +
+										strFontSize + 
+										UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_2") + 
+										TXMLNames.PR_ELEMENT_FONT_SIZE + 
+										UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));			
+			}
+		}
+		else
+		{
+			heightFactor = DEFAULT_FONT_SIZE;
+		}
+		
 		// Bold		
 		String strBold = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_BOLD);
 		if(strBold == null || strBold.equals(""))
 		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_1") +
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
 									TXMLNames.PR_ELEMENT_FONT_BOLD + 
-									UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_2"));
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}		
 		
 		boolean bold;
@@ -136,9 +155,9 @@ public class CFont
 		String strItalic = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_ITALIC);
 		if(strItalic == null || strItalic.equals(""))
 		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_1") +
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
 									TXMLNames.PR_ELEMENT_FONT_ITALIC + 
-									UIString.getUIString("EX_PROFIL_FONT_ATTRIBUTE_MISSING_2"));
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}		
 		
 		boolean italic;
@@ -152,6 +171,76 @@ public class CFont
 									strItalic + 
 									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_2") + 
 									TXMLNames.PR_ELEMENT_FONT_ITALIC + 
+									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));					
+		}
+		
+		// AutoColor		
+		String strAutoColor = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_AUTO_COLOR);
+		if(strAutoColor == null || strAutoColor.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
+									TXMLNames.PR_ELEMENT_FONT_AUTO_COLOR + 
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
+		}		
+		
+		try
+		{
+			autoColor = Boolean.parseBoolean(strAutoColor);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_1") +
+									strAutoColor + 
+									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_2") + 
+									TXMLNames.PR_ELEMENT_FONT_AUTO_COLOR + 
+									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));					
+		}
+		
+		// Récupération de la couleur
+		if(autoColor == false)
+		{
+			// Récupération de l'element color
+			Element eltColor = nodeFont.getChild(TXMLNames.PR_ELEMENT_FONT_COLOR);
+			
+			if(eltColor == null)
+			{
+				throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
+										TXMLNames.PR_ELEMENT_FONT_COLOR + 
+										UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
+			}	
+			
+			// Création de la CColor
+			try
+			{
+				fontColor = new CColor(eltColor);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_BAD_COLOR") +
+										ex.getMessage()); 
+	
+			}
+		}
+		
+		// Ombre		
+		String strShadow = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_SHADOW);
+		if(strShadow == null || strShadow.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_1") +
+									TXMLNames.PR_ELEMENT_FONT_SHADOW + 
+									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
+		}		
+		
+		try
+		{
+			shadow = Boolean.parseBoolean(strShadow);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_1") +
+									strShadow + 
+									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_2") + 
+									TXMLNames.PR_ELEMENT_FONT_SHADOW + 
 									UIString.getUIString("EX_PROFIL_FONT_BAD_CAST_3"));					
 		}
 		
@@ -179,7 +268,7 @@ public class CFont
 			style += Font.ITALIC;
 		}
 		
-		usedFont = new Font(fontName,style,fontSize);
+		usedFont = new Font(fontName,style,DEFAULT_FONT_SIZE);
 		
 		if(usedFont == null)
 		{
@@ -202,15 +291,32 @@ public class CFont
 		eltName.setText(usedFont.getFamily());
 		eltFont.addContent(eltName);
 		
-		// Ajout de la taille		
-		Element eltSize = new Element (TXMLNames.PR_ELEMENT_FONT_SIZE);
-		eltSize.setText(String.valueOf(usedFont.getSize()));
-		eltFont.addContent(eltSize);	
-		
 		// Ajout de l'autosize
 		Element eltAutoSize = new Element (TXMLNames.PR_ELEMENT_FONT_AUTO_SIZE);
 		eltAutoSize.setText(String.valueOf(autoSize));
 		eltFont.addContent(eltAutoSize);
+		
+		// Ajout de la taille
+		if (autoSize == false)
+		{
+			Element eltSize = new Element (TXMLNames.PR_ELEMENT_FONT_SIZE);
+			eltSize.setText(String.valueOf(usedFont.getSize()));
+			eltFont.addContent(eltSize);	
+		}
+		
+		// Ajout de l'autocolor
+		Element eltAutoColor = new Element (TXMLNames.PR_ELEMENT_FONT_AUTO_COLOR);
+		eltAutoColor.setText(String.valueOf(autoColor));
+		eltFont.addContent(eltAutoColor);
+		
+		// Ajout de la taille
+		if (autoColor == false)
+		{
+			Element eltColor = new Element (TXMLNames.PR_ELEMENT_FONT_COLOR);
+			eltColor = fontColor.BuildNode();
+			eltColor.setName(TXMLNames.PR_ELEMENT_FONT_COLOR);
+			eltFont.addContent(eltColor);
+		}
 		
 		// Ajout du bold
 		Element eltBold = new Element (TXMLNames.PR_ELEMENT_FONT_BOLD);
@@ -221,6 +327,11 @@ public class CFont
 		Element eltItalic = new Element (TXMLNames.PR_ELEMENT_FONT_ITALIC);
 		eltItalic.setText(String.valueOf(usedFont.isItalic()));
 		eltFont.addContent(eltItalic);
+		
+		// Ajout de l'ombre
+		Element eltShadow = new Element (TXMLNames.PR_ELEMENT_FONT_SHADOW);
+		eltShadow.setText(String.valueOf(shadow));
+		eltFont.addContent(eltShadow);
 		
 		// Fin
 		return eltFont;
@@ -261,6 +372,54 @@ public class CFont
 	{
 		this.usedFont = usedFont;
 	}
+
+	public boolean isAutoColor()
+	{
+		return autoColor;
+	}
+
+
+	public void setAutoColor(boolean autoColor)
+	{
+		this.autoColor = autoColor;
+	}
+
+
+	public CColor getFontColor()
+	{
+		return fontColor;
+	}
+
+
+	public void setFontColor(CColor fontColor)
+	{
+		this.fontColor = fontColor;
+	}
+
+
+	public boolean isShadow()
+	{
+		return shadow;
+	}
+
+
+	public void setShadow(boolean shadow)
+	{
+		this.shadow = shadow;
+	}
+
+
+	public float getHeightFactor()
+	{
+		return heightFactor;
+	}
+
+
+	public void setHeightFactor(float heightFactor)
+	{
+		this.heightFactor = heightFactor;
+	}
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	// Listeners

@@ -181,5 +181,9 @@ public class TXMLNames
 	public static String PR_ELEMENT_FONT_BOLD	= "bold";
 	public static String PR_ELEMENT_FONT_ITALIC= "italic";
 	
+	public static String PR_ELEMENT_FONT_AUTO_COLOR= "auto_color";
+	public static String PR_ELEMENT_FONT_COLOR= "color";
+	public static String PR_ELEMENT_FONT_SHADOW= "shadow";
+	
 }
 
