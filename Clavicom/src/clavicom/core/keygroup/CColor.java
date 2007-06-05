@@ -113,6 +113,10 @@ public class CColor
 		color = new Color(R,G,B);
 	}
 
+	public CColor( Color myColor )
+	{
+		color = myColor;
+	}
 	//----------------------------------------------------------- METHODES --//
 	
 	public Color GetColor () {return color;};
@@ -134,6 +138,15 @@ public class CColor
 		color_elem.addContent( blue );
 		
 		return color_elem;
+	}
+
+	
+	public void setColor(Color color)
+	{
+		this.color = color;
+		
+		// on avertis du chamgement de couleur
+		// fire... - TODO
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

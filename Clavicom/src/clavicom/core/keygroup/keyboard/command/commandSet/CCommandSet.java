@@ -227,4 +227,9 @@ public class CCommandSet
 			}
 		}
 	}
+
+	public HashMap<String, CSection> getSectionsList()
+	{
+		return sectionsList;
+	}
 }

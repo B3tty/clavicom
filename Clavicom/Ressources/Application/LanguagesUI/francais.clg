@@ -271,4 +271,10 @@
 	<!-- ==========================================================================
 		Labels 
 	==========================================================================  -->
+	
+	<!-- Color -->
+	<message id = "LB_COLOR_CLICKED">Couleur de click</message>
+	<message id = "LB_COLOR_ENTERED">Couleur de survol</message>
+	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
+	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
 </language>
