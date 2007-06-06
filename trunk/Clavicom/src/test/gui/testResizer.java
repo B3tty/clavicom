@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import clavicom.gui.resizer.UIJResizer;
+import clavicom.gui.keyboard.key.resizer.UIJResizer;
 
 /**
  * @author Santhosh Kumar T

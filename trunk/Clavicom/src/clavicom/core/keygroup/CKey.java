@@ -41,7 +41,7 @@ public abstract class CKey
 
 	//---------------------------------------------------------- VARIABLES --//
 	CColor normal;
-	CColor clicked;
+	CColor pressed;
 	CColor entered;
 	
 	boolean captionImage;
@@ -50,10 +50,10 @@ public abstract class CKey
     private final EventListenerList listeners = new EventListenerList();
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CKey( CColor myNormal, CColor myClicked, CColor myEntered )
+	public CKey( CColor myNormal, CColor myPressed, CColor myEntered )
 	{
 		normal = myNormal;
-		clicked = myClicked;
+		pressed = myPressed;
 		entered = myEntered;
 	}
 	
@@ -83,9 +83,9 @@ public abstract class CKey
 		}
 		
 		// =================================================================
-		// Récupération de la color_clicked
+		// Récupération de la color_pressed
 		// =================================================================
-		Element color_clicked_elem = colors.getChild( TXMLNames.CO_ELEMENT_COLOR_CLICKED );
+		Element color_pressed_elem = colors.getChild( TXMLNames.CO_ELEMENT_COLOR_PRESSED );
 		if( color_normal_elem == null )
 		{
 			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) +"] " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.CO_ELEMENT_COLOR_NORMAL );
@@ -123,17 +123,19 @@ public abstract class CKey
 		try
 		{
 			normal = new CColor( color_normal_elem );
-		}catch(Exception ex)
+		}
+		catch(Exception ex)
 		{
 			throw new Exception( "[" + TXMLNames.CO_ELEMENT_COLOR_NORMAL +"]" + ex.getMessage() );
 		}
 
 		try
 		{
-			clicked = new CColor( color_clicked_elem );
-		}catch(Exception ex)
+			pressed = new CColor( color_pressed_elem );
+		}
+		catch(Exception ex)
 		{
-			throw new Exception( "[" + TXMLNames.CO_ELEMENT_COLOR_CLICKED +"]" + ex.getMessage() );
+			throw new Exception( "[" + TXMLNames.CO_ELEMENT_COLOR_PRESSED +"]" + ex.getMessage() );
 		}
 		
 		try
@@ -149,7 +151,7 @@ public abstract class CKey
 	//----------------------------------------------------------- METHODES --//
 
 	public CColor GetColorNormal(){return normal;}
-	public CColor GetColorClicked(){return clicked;}
+	public CColor GetColorPressed(){return pressed;}
 	public CColor GetColorEntered(){return entered;}
 	
 	public boolean isCaptionImage()
@@ -169,7 +171,7 @@ public abstract class CKey
 		}
 		else if( colorEnum == TColorKeyEnum.PRESSED )
 		{
-			return clicked.getColor();
+			return pressed.getColor();
 		}
 		else
 		{
@@ -189,7 +191,7 @@ public abstract class CKey
 		}
 		else if( colorEnum == TColorKeyEnum.PRESSED )
 		{
-			clicked.setColor( color );
+			pressed.setColor( color );
 		}
 		
 		// On averti le changement de couleur
@@ -207,9 +209,9 @@ public abstract class CKey
 		color_normal.setName( TXMLNames.CO_ELEMENT_COLOR_NORMAL );
 		colors.addContent( color_normal );
 		
-		Element color_clicked = clicked.BuildNode( );
-		color_clicked.setName( TXMLNames.CO_ELEMENT_COLOR_CLICKED );
-		colors.addContent( color_clicked );
+		Element color_pressed = pressed.BuildNode( );
+		color_pressed.setName( TXMLNames.CO_ELEMENT_COLOR_PRESSED );
+		colors.addContent( color_pressed );
 		
 		Element color_entered = entered.BuildNode( );
 		color_entered.setName( TXMLNames.CO_ELEMENT_COLOR_ENTERED );

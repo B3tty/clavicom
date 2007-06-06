@@ -119,7 +119,7 @@ public class TXMLNames
 	public static String CO_ELEMENT_COLORS				= "colors";
 	public static String CO_ELEMENT_COLOR				= "color";
 	public static String CO_ELEMENT_COLOR_NORMAL		= "color_normal";
-	public static String CO_ELEMENT_COLOR_CLICKED		= "color_clicked";
+	public static String CO_ELEMENT_COLOR_PRESSED		= "color_clicked";
 	public static String CO_ELEMENT_COLOR_ENTERED		= "color_entered";
 	public static String CO_ELEMENT_COLOR_R 			= "red";
 	public static String CO_ELEMENT_COLOR_G 			= "green";
