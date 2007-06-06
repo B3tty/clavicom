@@ -121,11 +121,11 @@
 							<blue>99</blue>
 						</color_entered>
 					</colors>
-					<level>NORMAL</level>
+					<level>ALT_GR</level>
 				</keylevel>
-	<keystring order="2" caption_image="true">
+	<keystring order="2" caption_image="false">
 		<order_dynamic>12</order_dynamic>
-		<base_string>Marcel DUPONT</base_string>
+		<base_string>coucou write</base_string>
 		<coordinates>
 			<point position="min">
 				<x>25.5</x>
@@ -136,7 +136,7 @@
 				<y>2.2</y>
 			</point>		
 		</coordinates>
-		<caption>C:\Developpement Java\Clavicom\Ressources\Application\Pictures\firefox.png</caption>
+		<caption>coucou display</caption>
 		<colors>
 			<color_normal>
 				<red>189</red>
@@ -310,6 +310,37 @@
 					</colors>
 					<action>SWITCH_MOUSE_KEYBOARD</action>
 				</keyclavicom>
+				<keyshortcut order="8" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption>coucou1</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<command id="1"></command>
+				</keyshortcut>
 			</keylist>
 		</keygroup>
 	</keyboard>

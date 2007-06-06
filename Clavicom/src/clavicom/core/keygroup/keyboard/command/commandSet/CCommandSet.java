@@ -102,6 +102,19 @@ public class CCommandSet
 	
 	public int EndOfWordCharacterListSize() {return endOfWordCharacterList.size();}
 
+	public CSection getSectionCommand( CCommand command )
+	{
+		// on recherche la section qui contien la commande suivante...
+		for( CSection section : sectionsList.values() )
+		{
+			if( section.GetCommandMap().containsValue( command ) )
+			{
+				return section;
+			}
+		}
+		
+		return null;
+	}
 	// --------------------------------------------------- METHODES PRIVEES --//
 
 	private void AddSection(CSection section)

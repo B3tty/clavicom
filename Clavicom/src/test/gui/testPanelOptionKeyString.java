@@ -29,7 +29,6 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLevelEngine;
@@ -42,6 +41,8 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.panel.PanelOptionColor;
@@ -49,16 +50,16 @@ import clavicom.gui.keyboard.key.panel.PanelOptionKey;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyCharacter;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyClavicom;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyLauncher;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyLevel;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyString;
 import clavicom.gui.language.UIString;
 
-public class testPanelOptionKeyLauncher
+public class testPanelOptionKeyString
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
@@ -80,10 +81,10 @@ public class testPanelOptionKeyLauncher
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
 			CKeyList list = group.GetkeyList( 0 );
-			CKeyLauncher keyLauncher = (CKeyLauncher)list.GetKeyboardKey( 3 );
+			CKeyString keyString = (CKeyString)list.GetKeyboardKey( 2 );
 			
 			
-			PanelOptionKeyLauncher panelOptionclavicom = new PanelOptionKeyLauncher( keyLauncher );
+			PanelOptionKeyString panelOptionclavicom = new PanelOptionKeyString( keyString );
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();

@@ -62,7 +62,10 @@ public class testPanelOptionKeyShortCut
 		{
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CShortcutSet.CreateInstance("Ressources\\Application\\ShortCutSets\\default.css");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			
+			CShortcutSet d = CShortcutSet.GetInstance();
 			
 			// Chemins
 			String input = "Ressources\\Temp\\profil.xml";
@@ -70,6 +73,7 @@ public class testPanelOptionKeyShortCut
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
+	
 			
 			CKeyboard keyboard = profil.getKeyboard();
 			
@@ -80,7 +84,8 @@ public class testPanelOptionKeyShortCut
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
 			CKeyList list = group.GetkeyList( 0 );
-			CKeyShortcut keyShortCut = (CKeyShortcut)list.GetKeyboardKey( 1 );
+			CKeyShortcut keyShortCut = (CKeyShortcut)list.GetKeyboardKey( 8 );
+			
 			
 			
 			PanelOptionKeyShortCut panelOptionclavicom = new PanelOptionKeyShortCut( keyShortCut, CShortcutSet.GetInstance() );

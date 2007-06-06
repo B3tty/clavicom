@@ -31,6 +31,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -44,9 +46,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import sun.misc.Compare;
 import sun.misc.Sort;
+import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
@@ -88,6 +93,24 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 		{
 			textField = new JTextField( myKeyCharacter.getCaption( level ) );
 		}
+		textField.addKeyListener(new KeyListener()
+		{
+			public void keyPressed(KeyEvent arg0)
+			{
+				
+			}
+
+			public void keyReleased(KeyEvent arg0)
+			{
+				keyCharacter.setCaption( textField.getText(), level );				
+			}
+
+			public void keyTyped(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		textField.setPreferredSize( new Dimension( 80, 23 ) );
 		
@@ -99,7 +122,31 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 		// Ajout des box de séléction
 		add ( CreateListViewSections( commandSet ), BorderLayout.CENTER ) ;
 		
+		if( keyCharacter != null )
+		{
+			if( keyCharacter.getCommand( level ) != null )
+			{
+				InitialiseCombo( commandSet, keyCharacter, level );
+			}
+		}
+		
 		setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), type ));
+		
+		// initialisation de la list
+		if( keyCharacter.getCommand( level ) != null )
+		{
+			list.setSelectedValue( keyCharacter.getCommand( level ) , true);
+		}
+	}
+
+	private void InitialiseCombo(CCommandSet commandSet, CKeyCharacter keyCharacter2, TLevelEnum level2)
+	{
+		// on trouve la section de la key
+		CSection section = commandSet.getSectionCommand( keyCharacter2.getCommand( level2 ) );
+		if( section != null )
+		{
+			comboSection.setSelectedItem( section );
+		}
 	}
 
 	private JPanel CreateListViewSections( CCommandSet commandSet )
@@ -115,14 +162,31 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 		
 		// Ajout de la listView
 		list = new JList( );
-		
-		listeAvecAscenseur = new JScrollPane( list );
-		
-		listViewPanel.add( listeAvecAscenseur, BorderLayout.CENTER );
+		list.addListSelectionListener(new ListSelectionListener()
+		{
+			public void valueChanged(ListSelectionEvent arg0)
+			{
+				if( keyCharacter != null )
+				{
+					Object object = list.getSelectedValue();
+					if( object != null )
+					{
+						if( object instanceof CCommand )
+						{
+							keyCharacter.setCommand( (CCommand)object, level);
+						}
+					}
+				}
+			}
+		});
 		
 		// simulation d'une selection pour l'initialisation
 		actionPerformed( null );
+
+		listeAvecAscenseur = new JScrollPane( list );
 		
+		listViewPanel.add( listeAvecAscenseur, BorderLayout.CENTER );
+
 		return listViewPanel;
 	}
 

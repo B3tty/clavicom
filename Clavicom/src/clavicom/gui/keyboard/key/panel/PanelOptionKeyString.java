@@ -29,6 +29,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -49,62 +51,92 @@ import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 
 
-public class PanelOptionKeyShortCut extends PanelOptionOneLevelKey
+public class PanelOptionKeyString extends PanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyShortcut keyShortCut;
-	JList list;
+	CKeyString keyString;
+	JTextField textDisplay;
+	JTextField textWrite;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyShortCut( CKeyShortcut myKeyShortCut, CShortcutSet shortCutSet )
+	public PanelOptionKeyString( CKeyString myKeyString )
 	{
-		super( myKeyShortCut );
+		super( myKeyString );
 
-		keyShortCut = myKeyShortCut;
+		keyString = myKeyString;
 
-		JPanel panel = new JPanel(  );
-		JPanel panel2 = new JPanel( new BorderLayout() );
+		JPanel panel = new JPanel( new BorderLayout() );
 		
-		panel2.add( new JLabel( UIString.getUIString("LB_KEYSHORCUT_SHORTCUT")), BorderLayout.NORTH );
+		JPanel panelDisplay = new JPanel();
 		
-		list = new JList( shortCutSet.getValues().toArray() );
-		
-		if( keyShortCut != null )
+		JLabel ltextDisplay = new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") );
+		textDisplay = new JTextField();
+		textDisplay.setPreferredSize( new Dimension( 200,23 ) );
+		textDisplay.addKeyListener(new KeyListener()
 		{
-			if( keyShortCut.getCommand() != null )
+			public void keyPressed(KeyEvent arg0)
 			{
-				list.setSelectedValue( keyShortCut.getCommand(), true);
+				
 			}
-		}
-		
-		list.addListSelectionListener( new ListSelectionListener()
-		{
-			public void valueChanged(ListSelectionEvent arg0)
+
+			public void keyReleased(KeyEvent arg0)
 			{
-				if( keyShortCut != null )
-				{
-					Object object = list.getSelectedValue();
-					if( object instanceof CCommand )
-					{
-						keyShortCut.setCommand( (CCommand) object);
-					}
-				}
+				keyString.setCaption( textDisplay.getText() );				
+			}
+
+			public void keyTyped(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
 			}
 		});
-
-		JScrollPane sp = new JScrollPane( list );
 		
-		panel2.add( sp, BorderLayout.CENTER );
-		panel.add( panel2 );
+		panelDisplay.add( ltextDisplay );
+		panelDisplay.add( textDisplay );
+		
+		
+		
+		JPanel panelWrite = new JPanel();
+		
+		JLabel ltextWrite = new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTWRITE") );
+		textWrite = new JTextField();
+		textWrite.setPreferredSize( new Dimension( 200,23 ) );
+		textWrite.addKeyListener(new KeyListener()
+		{
+			public void keyPressed(KeyEvent arg0)
+			{
+				
+			}
+
+			public void keyReleased(KeyEvent arg0)
+			{
+				keyString.setBaseString( textWrite.getText() );				
+			}
+
+			public void keyTyped(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		panelWrite.add( ltextWrite );
+		panelWrite.add( textWrite );
+		
+		
+		panel.add( panelDisplay, BorderLayout.NORTH ); 
+		panel.add( panelWrite ); 
+		
 		add( panel, BorderLayout.CENTER );
 		
 	}

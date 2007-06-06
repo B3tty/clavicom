@@ -45,13 +45,14 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 
 
-public class PanelOptionKeyLevel extends PanelOptionOneLevelKey
+public class PanelOptionKeyLevel extends PanelOptionOneLevelKey implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyLevel keyLevel;
+	JComboBox combo;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
@@ -63,9 +64,13 @@ public class PanelOptionKeyLevel extends PanelOptionOneLevelKey
 
 		JPanel panel = new JPanel();
 		
-		JComboBox combo = new JComboBox();
+		combo = new JComboBox();
 		combo.addItem( TLevelEnum.SHIFT );
 		combo.addItem( TLevelEnum.ALT_GR );
+		
+		combo.addActionListener( this );
+		
+		combo.setSelectedItem( keyLevel.GetLevel() );
 		
 		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
 		panel.add( combo );
@@ -73,7 +78,22 @@ public class PanelOptionKeyLevel extends PanelOptionOneLevelKey
 		add( panel, BorderLayout.CENTER );
 		
 	}
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
+	
+	public void actionPerformed(ActionEvent arg0)
+	{
+		if( keyLevel != null )
+		{
+			Object object = combo.getSelectedItem();
+			if( object != null )
+			{
+				if ( object instanceof TLevelEnum )
+				{
+					keyLevel.setLevel( (TLevelEnum)object );
+				}
+			}
+		}
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

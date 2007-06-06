@@ -29,13 +29,16 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.CKey;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 
 public class PanelOptionColor extends JPanel implements ActionListener

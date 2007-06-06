@@ -27,7 +27,9 @@ package clavicom.gui.keyboard.key.panel;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
@@ -47,6 +49,8 @@ public class PanelOptionKey extends JPanel
 		
 		setLayout( new BorderLayout() );
 		
+		JPanel panelGlobal = new JPanel();
+		
 		JPanel colors = new JPanel();
 		
 		// création des trois panels des couleurs et ajout
@@ -58,7 +62,14 @@ public class PanelOptionKey extends JPanel
 		colors.add( panelColorEntered );
 		colors.add( panelColorClicked );
 		
-		add( colors, BorderLayout.NORTH );
+		
+		
+		colors.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_COLOR_COLOR_MANAGEMENT")) );
+		
+		panelGlobal.add(colors);
+
+		add( panelGlobal, BorderLayout.NORTH );
 	}
 
 	//----------------------------------------------------------- METHODES --//
