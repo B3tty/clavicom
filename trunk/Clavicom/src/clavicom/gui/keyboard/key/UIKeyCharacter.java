@@ -27,7 +27,6 @@ package clavicom.gui.keyboard.key;
 
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 
 public class UIKeyCharacter extends UIKeyThreeLevel
 {
