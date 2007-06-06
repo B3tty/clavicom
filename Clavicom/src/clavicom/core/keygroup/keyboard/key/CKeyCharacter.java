@@ -26,13 +26,10 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import javax.swing.event.EventListenerList;
-
 import org.jdom.Element;
-
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;

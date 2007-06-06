@@ -31,11 +31,7 @@ import java.util.HashMap;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
-
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import clavicom.core.keygroup.keyboard.command.CCommand;
-
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 

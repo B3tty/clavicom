@@ -29,6 +29,7 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLevelEngine;
@@ -52,6 +53,9 @@ public class testPanelOptionKeyCharacter
 	{
 		try
 		{
+			
+			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
+			
 			//		 Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");

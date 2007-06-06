@@ -26,13 +26,8 @@
 package clavicom.core.keygroup.keyboard.command;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-
 import org.jdom.Element;
-
-import sun.misc.Compare;
-
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 

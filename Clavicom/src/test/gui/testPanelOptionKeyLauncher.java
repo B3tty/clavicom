@@ -30,26 +30,18 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLevelEngine;
-import clavicom.core.keygroup.CColor;
-import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.key.panel.PanelOptionColor;
-import clavicom.gui.keyboard.key.panel.PanelOptionKey;
-import clavicom.gui.keyboard.key.panel.PanelOptionKeyCharacter;
-import clavicom.gui.keyboard.key.panel.PanelOptionKeyClavicom;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyLauncher;
 import clavicom.gui.language.UIString;
+
 
 public class testPanelOptionKeyLauncher
 {
@@ -57,7 +49,8 @@ public class testPanelOptionKeyLauncher
 	{
 		try
 		{
-			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
 			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");

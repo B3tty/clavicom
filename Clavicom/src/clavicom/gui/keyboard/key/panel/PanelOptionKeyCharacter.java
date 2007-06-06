@@ -26,25 +26,9 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-
-import sun.awt.resources.awt;
-
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 
 public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
