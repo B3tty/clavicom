@@ -25,7 +25,7 @@
 
 package clavicom.gui.keyboard.key;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,6 +34,8 @@ import java.awt.RenderingHints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import clavicom.tools.TColorKeyEnum;
 
 public class UIKeyboardPanel extends JPanel
 {
@@ -75,6 +77,8 @@ public class UIKeyboardPanel extends JPanel
 		add(touche1);
 		touche1.setPreferredSize(new Dimension(160,80));
 		touche1.setEditable(true);
+		
+		touche1.getCoreKey().setColor(Color.GREEN, TColorKeyEnum.PRESSED);
 		
 		add(touche2);
 		touche2.setPreferredSize(new Dimension(160,80));
@@ -119,7 +123,7 @@ public class UIKeyboardPanel extends JPanel
 	//-----------------------------------------------------------------------
 	protected UIKey createUIKey()
 	{
-		UIKey key = new UIKeyOneLevel();
+		UIKey key = new _UIKeyOneLevel();
 		return key;
 	}
 

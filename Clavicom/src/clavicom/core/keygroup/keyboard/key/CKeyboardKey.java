@@ -30,6 +30,7 @@ import org.jdom.Attribute;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.CKey;
+import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -265,4 +266,28 @@ public abstract class CKeyboardKey extends CKey
 		myNode.addContent(eltCoord);
 		myNode.addContent(color);
 	}
+	
+	// Listeners sur la caption
+	public void addCaptionListener(CKeyCaptionChangedListener listener) 
+	{
+        listeners.add(CKeyCaptionChangedListener.class, listener);
+    }
+    
+    public void removeCaptionListener(CKeyCaptionChangedListener listener) 
+    {
+        listeners.remove(CKeyCaptionChangedListener.class, listener);
+    }
+    
+    public CKeyCaptionChangedListener[] getCaptionListeners() 
+    {
+        return listeners.getListeners(CKeyCaptionChangedListener.class);
+    }
+    
+    protected void fireCaptionChanged() 
+    {
+	    for ( CKeyCaptionChangedListener listener : getCaptionListeners() )
+		{
+			listener.captionChanged();
+		}
+    }	
 }

@@ -28,7 +28,10 @@ package clavicom.core.keygroup.keyboard.key;
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.CKeyCaptionChangedListener;
+import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -100,8 +103,10 @@ public abstract class CKeyOneLevel extends CKeyboardKey
 	public void setCaption(String caption)
 	{
 		this.caption = caption;
+		
+		// Alerte de changement de la caption
+		fireCaptionChanged();
 	}
-	
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 }

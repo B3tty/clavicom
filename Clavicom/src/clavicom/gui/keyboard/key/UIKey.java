@@ -26,7 +26,6 @@
 package clavicom.gui.keyboard.key;
 
 import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
@@ -49,13 +48,15 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
+import clavicom.core.listener.CKeyCaptionChangedListener;
+import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TUIKeyState;
 
-public abstract class UIKey extends UIJResizer implements ComponentListener
+public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
 {
 		//--------------------------------------------------------- CONSTANTES --//
 		// Dessin
@@ -75,7 +76,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		
 		final int TAILLE_CADRE_SELECTION = 10;		// Taille du cadre de selection
 		
-		//---------------------------------------------------------- ATTRIBUTS --//		
+		//---------------------------------------------------------- ATTRIBUTS --//	
+		
 		private TUIKeyState state;					// Etat de la touche
 		
 		private MouseAdapterUse mouseAdapterUse;	// MouseAdapteur en mode utilisation
@@ -87,7 +89,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		
 		
 		private BufferedImage currentImage;			// Buffer de l'image courante
-		private BufferedImage selectionMask;		// Buffer du masque de selection
 		
 		private Timer resizeTimer;					// Timer qui une fois expiré demande
 													// le calcul des images
@@ -231,6 +232,32 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		
 		//----------------------------------------------------------- METHODES --//	
 		//-----------------------------------------------------------------------
+		// Listeners
+		//-----------------------------------------------------------------------
+		public void colorChanged(TColorKeyEnum colorType)
+		{
+			// On recréé l'image buffer qui a été modifiée
+			if (colorType == TColorKeyEnum.NORMAL)
+			{
+				imgNormal = recreateNormalImage(getCoreKey().getColor(colorType));
+			}
+			else if (colorType == TColorKeyEnum.ENTERED)
+			{
+				imgEntered = recreateNormalImage(getCoreKey().getColor(colorType));
+			}
+			else if (colorType == TColorKeyEnum.PRESSED)
+			{
+				imgPressed = recreateNormalImage(getCoreKey().getColor(colorType));
+			}
+		}
+
+		public void captionChanged()
+		{
+			// On recréé les images, car la caption a changé
+			recreateNormalImages();
+		}
+		
+		//-----------------------------------------------------------------------
 		// Selection
 		//-----------------------------------------------------------------------
 		
@@ -259,31 +286,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------
-		protected void recreateSelectionMask()
-		{
-			// Variables
-			Graphics2D buffer;
-			
-			// Création de l'image
-			selectionMask = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
-			buffer = (Graphics2D) selectionMask.getGraphics();
-			
-			buffer.setColor(Color.RED);
-			buffer.setStroke(new BasicStroke(TAILLE_CADRE_SELECTION));
-			buffer.drawRoundRect(	TAILLE_BORDURE_INTERIEURE, 
-									TAILLE_BORDURE_INTERIEURE, 
-									getWidth() - 2*TAILLE_BORDURE_INTERIEURE, 
-									getHeight() - 2*TAILLE_BORDURE_INTERIEURE, 
-									TAILLE_ARC, 
-									TAILLE_ARC);
-		}
-		
+		//-----------------------------------------------------------------------		
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */
 		protected BufferedImage recreateNormalImage(Color bgdColor)
 		{
+			if (getWidth() == 0 || getHeight() == 0)
+			{
+				return null;
+			}
+			
 			// Variables
 			Graphics2D buffer;
 			BufferedImage image;
@@ -345,17 +358,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 			imgPressed = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.PRESSED));
 		}
 		
-		protected BufferedImage recreateSelectionImage(BufferedImage img)
-		{
-			BufferedImage selectedImage = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g2 = (Graphics2D) selectedImage.getGraphics();
-			
-			g2.drawImage(img,0,0,null);
-			g2.drawImage(selectionMask,0,0,null);
-			
-			return selectedImage;
-		}
-		
 		/**
 		 * Redessine la touche
 		 */
@@ -385,9 +387,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		}
 		
 		//--------------------------------------------------- METHODES PRIVEES --//
+		/**
+		 * Méthodes ou l'objet doit IMPERATIVEMENT s'abonner en tant que listener
+		 * au prêt de TOUS les evenements, y compris ceux des classes mères
+		 */
+		protected abstract void addToAllListeners();
 		//-----------------------------------------------------------------------
 		// Mode utilisation
-		//-----------------------------------------------------------------------		
+		//-----------------------------------------------------------------------	
 		protected void buttonEnteredUse()
 		{
 			state = TUIKeyState.ENTERED;

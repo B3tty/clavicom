@@ -129,13 +129,18 @@ public abstract class CKeyThreeLevel extends CKeyboardKey
 		if( level == TLevelEnum.NORMAL )
 		{
 			captionNormal = caption;
-		}else if( level == TLevelEnum.SHIFT )
+		}
+		else if( level == TLevelEnum.SHIFT )
 		{
 			captionShift = caption;
-		}else if( level == TLevelEnum.ALT_GR )
+		}
+		else if( level == TLevelEnum.ALT_GR )
 		{
 			captionAltGr = caption;
 		}
+		
+		// Alerte de changement de la caption
+		fireCaptionChanged();
 	}
 	
 	@Override
