@@ -25,10 +25,12 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.RenderingHints;
 
@@ -37,7 +39,6 @@ import javax.swing.JPanel;
 
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
-import clavicom.tools.TColorKeyEnum;
 
 public class UIKeyboardPanel extends JPanel
 {
@@ -56,12 +57,18 @@ public class UIKeyboardPanel extends JPanel
 		
 		ImageIcon iconImage = new ImageIcon("C:\\Developpement Java\\Clavicom\\Ressources\\Application\\Pictures\\texture2.jpg");	
 		
+		JPanel panelGauche = new JPanel();
+		JPanel panelDroit = new JPanel();
+		
+		panelGauche.setBackground(Color.RED);
+		panelDroit.setBackground(Color.GREEN);
+		
 		// Récupération de l'image
 		image = iconImage.getImage();
 		
 		setOpaque(false);
 		
-		//setLayout(new BorderLayout());
+		setLayout(new GridLayout());
 //		
 		// Touches de test
 		touche1 = createUIKey();
@@ -76,7 +83,11 @@ public class UIKeyboardPanel extends JPanel
 		
 //	
 		//touche1.setOpaque(true);
-		add(touche1);
+		add(panelGauche);
+		add(panelDroit);
+		
+		panelDroit.add(touche1);
+		
 		touche1.setPreferredSize(new Dimension(160,80));
 		touche1.setEditable(true);
 //		
@@ -110,7 +121,7 @@ public class UIKeyboardPanel extends JPanel
 			Graphics2D g2 = (Graphics2D) myGraphic;
 			//g2.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_ATOP, 0.5f ));
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			g2.drawImage(image, 0, 0, null);	
+			//g2.drawImage(image, 0, 0, null);	
 		}
 		catch (Exception ex)
 		{
