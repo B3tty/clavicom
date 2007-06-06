@@ -37,23 +37,32 @@ import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.panel.PanelOptionColor;
 import clavicom.gui.keyboard.key.panel.PanelOptionKey;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyCharacter;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyClavicom;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyLauncher;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyLevel;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyShortCut;
 import clavicom.gui.language.UIString;
 
-public class testPanelOptionKeyCharacter
+public class testPanelOptionKeyShortCut
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-			//		 Chargement des UIString et shortcutset
+			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortCutSets\\default.css");
 			
 			// Chemins
 			String input = "Ressources\\Temp\\profil.xml";
@@ -71,11 +80,11 @@ public class testPanelOptionKeyCharacter
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
 			CKeyList list = group.GetkeyList( 0 );
-			CKeyCharacter keyCharacter = (CKeyCharacter)list.GetKeyboardKey( 0 );
+			CKeyShortcut keyShortCut = (CKeyShortcut)list.GetKeyboardKey( 1 );
 			
 			
-			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
-			JScrollPane sp = new JScrollPane( panelOptionCharacter );
+			PanelOptionKeyShortCut panelOptionclavicom = new PanelOptionKeyShortCut( keyShortCut, CShortcutSet.GetInstance() );
+			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();
 			frame.setSize(900,400);

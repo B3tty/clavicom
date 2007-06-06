@@ -86,4 +86,26 @@ public final class TLevelEnum
     		return null;
     	}
     }
+
+    @Override
+    public String toString()
+    {
+    	if (this == NORMAL)
+    	{
+    		return "NORMAL";
+    	}
+    	else if (this == SHIFT)
+    	{
+    		return "SHIFT";
+    	}
+    	else if (this == ALT_GR)
+    	{
+    		return "ALT_GR";
+    	}    	
+    	else
+    	{
+    		return "";
+    	}
+    }
+    
 } 

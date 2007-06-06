@@ -25,17 +25,28 @@
 
 package clavicom.gui.keyboard.key.panel;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
+import sun.misc.Compare;
+import sun.misc.Sort;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
@@ -57,13 +68,16 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 	public PanelSelectCharacter( 
 			CKeyCharacter myKeyCharacter, 
 			CCommandSet commandSet,
-			TLevelEnum myLevel)
+			TLevelEnum myLevel,
+			String type)
 	{
 		keyCharacter = myKeyCharacter;
 		level = myLevel;
 		
+		setLayout( new BorderLayout() );
+		
 		// Ajout du libéllé
-		JPanel p_caption = new JPanel();
+		JPanel p_caption = new JPanel( );
 		JLabel label = new JLabel( UIString.getUIString("LB_KEYCHARACTER_CAPTION") );
 		
 		if( keyCharacter == null )
@@ -75,31 +89,36 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 			textField = new JTextField( myKeyCharacter.getCaption( level ) );
 		}
 		
+		textField.setPreferredSize( new Dimension( 80, 23 ) );
+		
 		p_caption.add( label );
 		p_caption.add( textField );
 		
-		add ( p_caption ) ;
+		add ( p_caption, BorderLayout.NORTH ) ;
 		
 		// Ajout des box de séléction
-		add ( CreateListViewSections( commandSet ) ) ;
+		add ( CreateListViewSections( commandSet ), BorderLayout.CENTER ) ;
+		
+		setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), type ));
 	}
 
 	private JPanel CreateListViewSections( CCommandSet commandSet )
 	{
-		JPanel listViewPanel = new JPanel();
-		JPanel p_section;
+		JPanel listViewPanel = new JPanel( );
+		listViewPanel.setLayout( new BorderLayout() );
 		JScrollPane listeAvecAscenseur;
 
 		// Ajout de la comboBox
 		comboSection = new JComboBox( commandSet.getSectionsList().values().toArray() );
 		comboSection.addActionListener( this );
-		listViewPanel.add( comboSection );
+		listViewPanel.add( comboSection, BorderLayout.NORTH );
 		
 		// Ajout de la listView
 		list = new JList( );
+		
 		listeAvecAscenseur = new JScrollPane( list );
 		
-		listViewPanel.add( listeAvecAscenseur );
+		listViewPanel.add( listeAvecAscenseur, BorderLayout.CENTER );
 		
 		// simulation d'une selection pour l'initialisation
 		actionPerformed( null );
@@ -116,7 +135,11 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 			{
 				CSection selectedSection = (CSection)object;
 
-				list.setListData( selectedSection.GetCommandMap().values().toArray() ); 
+				Object[] tab = selectedSection.GetCommandMap().values().toArray();
+				
+				Arrays.sort(tab);
+				
+				list.setListData( tab ); 
 			}
 		}
 	}

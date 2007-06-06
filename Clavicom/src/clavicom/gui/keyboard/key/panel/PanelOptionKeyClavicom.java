@@ -26,62 +26,80 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 
-import sun.awt.resources.awt;
-
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TLevelEnum;
+import clavicom.tools.TKeyClavicomActionType;
 
-public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
+
+public class PanelOptionKeyClavicom extends PanelOptionOneLevelKey implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyCharacter keyCharacter;
+	CKeyClavicom keyClavicom;
+	JComboBox comboBox;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
+	public PanelOptionKeyClavicom( CKeyClavicom myKeyClavicom )
 	{
-
-		super( myKeyCharacter );
+		super( myKeyClavicom );
 		
-		keyCharacter = myKeyCharacter;
-
-		JPanel characters = new JPanel();
+		keyClavicom = myKeyClavicom;
 		
-		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
-		characters.add( panellevelNormal );
+		comboBox = new JComboBox();
+		comboBox.addItem( TKeyClavicomActionType.NONE );
+		comboBox.addItem( TKeyClavicomActionType.OPEN_CONFIGURATION );
+		comboBox.addItem( TKeyClavicomActionType.CLOSE_APPLICATION );
+		comboBox.addItem( TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD );
+		comboBox.addItem( TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE );
 		
-		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
-		characters.add( panellevelShift  );
+		if( keyClavicom != null )
+		{
+			comboBox.setSelectedItem( TKeyClavicomActionType.getString( keyClavicom.getAction() ) );
+		}
 		
-		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
-		characters.add( panellevelAltGr  );
+		comboBox.addActionListener( this );
 		
-		add( characters, BorderLayout.CENTER );
+		JPanel panel = new JPanel();
+		
+		panel.add( new JLabel( UIString.getUIString("LB_KEYCLAVICOM_ACTION") ) );
+		panel.add( comboBox );
+		
+		add( panel, BorderLayout.CENTER );
+		
+		
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
+
+	public void actionPerformed(ActionEvent arg0)
+	{
+		// si une action a été séléctionnée
+		Object object = comboBox.getSelectedItem();
+		if( object != null )
+		{
+			if( object instanceof TKeyClavicomActionType )
+			{
+				TKeyClavicomActionType action = (TKeyClavicomActionType)object;
+				
+				// si l'action est différente de l'ancienne
+				if( action != keyClavicom.getAction() )
+				{
+					keyClavicom.setAction( action );
+				}
+			} 
+		}
+		
+	}
 
 
 

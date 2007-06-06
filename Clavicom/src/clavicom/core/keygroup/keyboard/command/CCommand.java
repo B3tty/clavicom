@@ -26,14 +26,17 @@
 package clavicom.core.keygroup.keyboard.command;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.jdom.Element;
 
+import sun.misc.Compare;
+
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
-public class CCommand
+public class CCommand implements Comparable<CCommand>
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -180,5 +183,10 @@ public class CCommand
 	public String toString()
 	{
 		return caption;
+	}
+
+	public int compareTo(CCommand arg0)
+	{
+		return arg0.GetCaption().compareTo( caption ) * -1;
 	}
 }

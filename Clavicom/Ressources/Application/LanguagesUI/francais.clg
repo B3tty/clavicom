@@ -276,5 +276,27 @@
 	<message id = "LB_COLOR_CLICKED">Couleur de click</message>
 	<message id = "LB_COLOR_ENTERED">Couleur de survol</message>
 	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
+	
+	
+	<!-- optionKeyCharacter -->
 	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
+	<message id = "LB_KEYCHARACTER_CLOSE">Fermer</message>
+	
+	<!-- optionKeyClavicom -->
+	<message id = "LB_KEYCLAVICOM_NONE">Rien</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD">Passage du souricom au clavicom</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_KEYBOARD_MOUSE">Passage du clavicom au souricom</message>
+	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Fermer l'application</message>
+	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
+	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
+	
+	<!-- optionKeyLauncher -->
+	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
+	
+	<!-- optionKeyLevel -->
+	<message id = "LB_KEYLEVEL_LEVEL">Niveau</message>
+	
+	<!-- optionKeyShortCut -->
+	<message id = "LB_KEYSHORCUT_SHORTCUT">Raccourci</message>
+	
 </language>

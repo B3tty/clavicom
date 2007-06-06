@@ -26,9 +26,12 @@
 package clavicom.gui.keyboard.key.panel;
 
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TColorKeyEnum;
 
 public class PanelOptionKey extends JPanel
 {
@@ -42,15 +45,20 @@ public class PanelOptionKey extends JPanel
 	{
 		key = myKey;
 		
+		setLayout( new BorderLayout() );
+		
+		JPanel colors = new JPanel();
 		
 		// création des trois panels des couleurs et ajout
-		PanelOptionColor panelColorClicked = new PanelOptionColor( key.GetColorClicked(), UIString.getUIString("LB_COLOR_CLICKED") );
-		PanelOptionColor panelColorEntered = new PanelOptionColor( key.GetColorEntered(), UIString.getUIString("LB_COLOR_ENTERED") );
-		PanelOptionColor panelColorNormal = new PanelOptionColor( key.GetColorNormal(), UIString.getUIString("LB_COLOR_NORMAL") );
+		PanelOptionColor panelColorClicked = new PanelOptionColor( key, TColorKeyEnum.PRESSED );
+		PanelOptionColor panelColorEntered = new PanelOptionColor( key, TColorKeyEnum.ENTERED );
+		PanelOptionColor panelColorNormal = new PanelOptionColor( key, TColorKeyEnum.NORMAL );
 		
-		add( panelColorNormal );
-		add( panelColorEntered );
-		add( panelColorClicked );
+		colors.add( panelColorNormal );
+		colors.add( panelColorEntered );
+		colors.add( panelColorClicked );
+		
+		add( colors, BorderLayout.NORTH );
 	}
 
 	//----------------------------------------------------------- METHODES --//

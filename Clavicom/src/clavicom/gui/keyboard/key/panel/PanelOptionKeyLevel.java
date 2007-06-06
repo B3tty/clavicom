@@ -26,64 +26,54 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
-import sun.awt.resources.awt;
-
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 
-public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
+
+public class PanelOptionKeyLevel extends PanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyCharacter keyCharacter;
+	CKeyLevel keyLevel;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
+	public PanelOptionKeyLevel( CKeyLevel myKeyLevel )
 	{
+		super( myKeyLevel );
 
-		super( myKeyCharacter );
-		
-		keyCharacter = myKeyCharacter;
+		keyLevel = myKeyLevel;
 
-		JPanel characters = new JPanel();
+		JPanel panel = new JPanel();
 		
-		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
-		characters.add( panellevelNormal );
+		JComboBox combo = new JComboBox();
+		combo.addItem( TLevelEnum.SHIFT );
+		combo.addItem( TLevelEnum.ALT_GR );
 		
-		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
-		characters.add( panellevelShift  );
-		
-		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
-		characters.add( panellevelAltGr  );
-		
-		add( characters, BorderLayout.CENTER );
+		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
+		panel.add( combo );
+
+		add( panel, BorderLayout.CENTER );
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
-
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

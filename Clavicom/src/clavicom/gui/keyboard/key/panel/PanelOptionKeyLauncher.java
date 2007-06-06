@@ -26,64 +26,85 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
-import sun.awt.resources.awt;
-
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TLevelEnum;
+import clavicom.tools.TKeyClavicomActionType;
 
-public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
+
+public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyCharacter keyCharacter;
+	CKeyLauncher keyLauncher;
+	JTextField textField ;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
+	public PanelOptionKeyLauncher( CKeyLauncher myKeyLauncher )
 	{
+		super( myKeyLauncher );
+		
+		keyLauncher = myKeyLauncher;
+		
+		JPanel panel = new JPanel();
+		panel.add( new JLabel( UIString.getUIString("LB_KEYLAUNCHER_APPLICATION") ) );
 
-		super( myKeyCharacter );
+		if( keyLauncher != null )
+		{
+			textField = new JTextField( keyLauncher.getApplicationPath() );
+		}
+		else
+		{
+			textField = new JTextField( );
+		}
 		
-		keyCharacter = myKeyCharacter;
-
-		JPanel characters = new JPanel();
+		textField.setPreferredSize( new Dimension( 330, 23 ) );
 		
-		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
-		characters.add( panellevelNormal );
+		textField.addActionListener( this );
 		
-		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
-		characters.add( panellevelShift  );
+		panel.add( textField );
+		JButton button = new JButton("...");
+		button.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				JFileChooser chooser = new JFileChooser();
+				
+				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+				{
+					textField.setText( chooser.getSelectedFile().getAbsolutePath() );
+					
+					keyLauncher.setApplicationPath( chooser.getSelectedFile().getAbsolutePath() );
+				} 
+			}
+		});
+		button.setPreferredSize( new Dimension( 20 , 22 ) );
+		panel.add( button );
 		
-		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
-		characters.add( panellevelAltGr  );
-		
-		add( characters, BorderLayout.CENTER );
+	
+		add( panel, BorderLayout.CENTER );
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
 
-
+	public void actionPerformed(ActionEvent arg0)
+	{
+		int i = 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
