@@ -276,6 +276,7 @@
 	<message id = "LB_COLOR_CLICKED">Couleur de click</message>
 	<message id = "LB_COLOR_ENTERED">Couleur de survol</message>
 	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
+	<message id = "LB_COLOR_COLOR_MANAGEMENT">Gestion de la couleur</message>
 	
 	
 	<!-- optionKeyCharacter -->
@@ -298,5 +299,9 @@
 	
 	<!-- optionKeyShortCut -->
 	<message id = "LB_KEYSHORCUT_SHORTCUT">Raccourci</message>
+	
+	<!-- optionKeyString -->
+	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
+	<message id = "LB_KEYSTRING_TEXTWRITE">Texte écrit par l'ordinateur</message>
 	
 </language>

@@ -139,6 +139,11 @@ public class CKeyLevel extends CKeyOneLevel
 		fireOnClickKeyLevel();
 	}
 
+	public void setLevel(TLevelEnum level)
+	{
+		this.level = level;
+	}
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	

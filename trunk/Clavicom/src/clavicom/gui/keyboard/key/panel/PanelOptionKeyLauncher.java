@@ -29,6 +29,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -50,7 +52,8 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyLauncher keyLauncher;
-	JTextField textField ;
+	JTextField textFieldDisplay ;
+	JTextField textFieldPath ;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
@@ -60,23 +63,63 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 		
 		keyLauncher = myKeyLauncher;
 		
+		
+		
+		JPanel panelGlobal = new JPanel( new BorderLayout() );
+		
+		
+		
+		JPanel panelDisplay = new JPanel();
+		
+		panelDisplay.add( new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") ) );
+		
+		textFieldDisplay = new JTextField( myKeyLauncher.getCaption() );
+		textFieldDisplay.setPreferredSize( new Dimension( 270, 23 ) );
+		textFieldDisplay.addKeyListener(new KeyListener()
+		{
+			public void keyPressed(KeyEvent arg0)
+			{
+				
+			}
+
+			public void keyReleased(KeyEvent arg0)
+			{
+				keyLauncher.setCaption( textFieldDisplay.getText() );				
+			}
+
+			public void keyTyped(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		panelDisplay.add( textFieldDisplay );
+
+		
+		panelGlobal.add( panelDisplay, BorderLayout.NORTH );
+		
+		
+		
+		
 		JPanel panel = new JPanel();
 		panel.add( new JLabel( UIString.getUIString("LB_KEYLAUNCHER_APPLICATION") ) );
 
 		if( keyLauncher != null )
 		{
-			textField = new JTextField( keyLauncher.getApplicationPath() );
+			textFieldPath = new JTextField( keyLauncher.getApplicationPath() );
 		}
 		else
 		{
-			textField = new JTextField( );
+			textFieldPath = new JTextField( );
 		}
 		
-		textField.setPreferredSize( new Dimension( 330, 23 ) );
+		textFieldPath.setPreferredSize( new Dimension( 330, 23 ) );
+		textFieldPath.setEditable( false );
 		
-		textField.addActionListener( this );
+		textFieldPath.addActionListener( this );
 		
-		panel.add( textField );
+		panel.add( textFieldPath );
 		JButton button = new JButton("...");
 		button.addActionListener(new ActionListener()
 		{
@@ -86,7 +129,7 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 				
 				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 				{
-					textField.setText( chooser.getSelectedFile().getAbsolutePath() );
+					textFieldPath.setText( chooser.getSelectedFile().getAbsolutePath() );
 					
 					keyLauncher.setApplicationPath( chooser.getSelectedFile().getAbsolutePath() );
 				} 
@@ -96,7 +139,9 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 		panel.add( button );
 		
 	
-		add( panel, BorderLayout.CENTER );
+		panelGlobal.add( panel, BorderLayout.CENTER );
+		
+		add( panelGlobal, BorderLayout.CENTER );
 		
 	}
 	//----------------------------------------------------------- METHODES --//	

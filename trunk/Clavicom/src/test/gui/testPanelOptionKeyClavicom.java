@@ -37,6 +37,7 @@ import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.profil.CKeyboard;
@@ -56,6 +57,7 @@ public class testPanelOptionKeyClavicom
 			//		 Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
 			// Chemins
 			String input = "Ressources\\Temp\\profil.xml";
