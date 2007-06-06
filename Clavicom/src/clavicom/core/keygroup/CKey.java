@@ -177,18 +177,23 @@ public abstract class CKey
 		}
 	}
 	
-	public void setColor( Color color, TColorKeyEnum coloEnum )
+	public void setColor( Color color, TColorKeyEnum colorEnum )
 	{
-		if( coloEnum == TColorKeyEnum.NORMAL )
+		if( colorEnum == TColorKeyEnum.NORMAL )
 		{
 			normal.setColor( color );
-		}else if( coloEnum == TColorKeyEnum.ENTERED )
+		}
+		else if( colorEnum == TColorKeyEnum.ENTERED )
 		{
 			entered.setColor( color );
-		}else if( coloEnum == TColorKeyEnum.PRESSED )
+		}
+		else if( colorEnum == TColorKeyEnum.PRESSED )
 		{
 			clicked.setColor( color );
 		}
+		
+		// On averti le changement de couleur
+		fireColorChanged(colorEnum);
 	}
 	
 	public Element BuildNode ( )
