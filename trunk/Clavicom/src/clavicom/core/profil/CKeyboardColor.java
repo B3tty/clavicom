@@ -85,16 +85,16 @@ public class CKeyboardColor
 		}
 		
 		// ================================================================================================
-		// default clicked
+		// default pressed
 		// ================================================================================================
-		Element default_key_clicked_elem = node.getChild( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED );
-		if( default_key_clicked_elem == null )
+		Element default_key_pressed_elem = node.getChild( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED );
+		if( default_key_pressed_elem == null )
 		{
 			throw new Exception( "[" + UIString.getUIString("EX_KEYBOARD_COLOR_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED );
 		}
 		try
 		{
-			defaultKeyClicked = new CColor( default_key_clicked_elem );
+			defaultKeyClicked = new CColor( default_key_pressed_elem );
 		}
 		catch (Exception ex)
 		{
