@@ -25,19 +25,29 @@
 
 package clavicom.gui.keyboard.key;
 
-public abstract class UIKeyKeyboardKey extends UIKey
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
+
+public class UIKeyPrediction extends UIKeyDynamicString
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	private CKeyPrediction coreKey;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyKeyboardKey()
+	public UIKeyPrediction(CKeyPrediction myCoreKey)
 	{
+		// Appel à la mère
+		super();
 		
+		coreKey = myCoreKey;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	@Override
+	protected CKeyPrediction getCoreKey()
+	{
+		return coreKey;
+	}
 }

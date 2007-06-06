@@ -25,14 +25,14 @@
 
 package clavicom.gui.keyboard.key.panel;
 
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 
 public class PanelOptionKeyboardKey extends PanelOptionKey
 {
 
-	CKeyboardKey keyboardKey;
+	CKeyKeyboard keyboardKey;
 	
-	public PanelOptionKeyboardKey( CKeyboardKey myKeyboardKey )
+	public PanelOptionKeyboardKey( CKeyKeyboard myKeyboardKey )
 	{
 		super( myKeyboardKey );
 

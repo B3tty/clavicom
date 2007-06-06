@@ -33,7 +33,7 @@ import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public abstract class CKeyThreeLevel extends CKeyboardKey
+public abstract class CKeyThreeLevel extends CKeyKeyboard
 {
 
 	//--------------------------------------------------------- CONSTANTES --//

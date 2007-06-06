@@ -25,26 +25,30 @@
 
 package clavicom.gui.keyboard.key;
 
-public abstract class UIKeyThreeLevel extends UIKeyKeyboard
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+
+public class UIKeyShortcut extends UIKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	CKeyShortcut coreKey;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyThreeLevel()
+	public UIKeyShortcut(CKeyShortcut myCoreKey)
 	{
 		// Appel à la mère
 		super();
+		
+		coreKey = myCoreKey;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	protected String getCaption()
-	{
-		// TODO
-		
-		return null;
-	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
+	@Override
+	protected CKeyShortcut getCoreKey()
+	{
+		return coreKey;
+	}
 }

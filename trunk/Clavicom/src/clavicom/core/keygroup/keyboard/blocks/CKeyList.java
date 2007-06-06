@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -47,30 +47,30 @@ public class CKeyList
 
 	//---------------------------------------------------------- VARIABLES --//
 	
-	List<CKeyboardKey> keyList;
+	List<CKeyKeyboard> keyList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyList()
 	{
-		keyList = new ArrayList<CKeyboardKey>();
+		keyList = new ArrayList<CKeyKeyboard>();
 	}
 
 	//----------------------------------------------------------- METHODES --//
-	public void AddKeyboardKey( int order, CKeyboardKey keybordKey )
+	public void AddKeyboardKey( int order, CKeyKeyboard keybordKey )
 	{
 		keyList.add( order, keybordKey );
 	}
 
-	public CKeyboardKey GetKeyboardKey( int order )
+	public CKeyKeyboard GetKeyboardKey( int order )
 	{
 		return keyList.get( order );
 	}
 	public int size(){return keyList.size();}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private static CKeyboardKey GetKeyboardKey( Element node ) throws Exception
+	private static CKeyKeyboard GetKeyboardKey( Element node ) throws Exception
 	{
-		CKeyboardKey keyboardKey = null;
+		CKeyKeyboard keyboardKey = null;
 		
 		if( node.getName().equals( TXMLNames.KY_ELEMENT_CHARACTER ) )
 		{
@@ -206,7 +206,7 @@ public class CKeyList
 					// =================================================================
 					// Création du bon type de keyboardKey
 					// =================================================================
-					CKeyboardKey keybordKey;
+					CKeyKeyboard keybordKey;
 					try
 					{
 						keybordKey = GetKeyboardKey( element );
@@ -241,7 +241,7 @@ public class CKeyList
 		
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
-			CKeyboardKey keyboardKey = keyList.get( i );
+			CKeyKeyboard keyboardKey = keyList.get( i );
 			if( keyboardKey != null )
 			{
 				try

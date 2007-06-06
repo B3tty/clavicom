@@ -32,7 +32,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public abstract class CKeyOneLevel extends CKeyboardKey
+public abstract class CKeyOneLevel extends CKeyKeyboard
 {
 	// --------------------------------------------------------- CONSTANTES --//
 

@@ -35,7 +35,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
-public abstract class CKeyboardKey extends CKey
+public abstract class CKeyKeyboard extends CKey
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
@@ -45,7 +45,7 @@ public abstract class CKeyboardKey extends CKey
 	TPoint pointMax; // Point inférieur droit
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
-	public CKeyboardKey(CColor myColorNormal, CColor myColorClicked,
+	public CKeyKeyboard(CColor myColorNormal, CColor myColorClicked,
 			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered);
@@ -60,7 +60,7 @@ public abstract class CKeyboardKey extends CKey
 	 * @param eltKey :
 	 *            element contenant les informations à charger
 	 */
-	public CKeyboardKey(Element eltKey) throws Exception
+	public CKeyKeyboard(Element eltKey) throws Exception
 	{
 		super(eltKey);
 

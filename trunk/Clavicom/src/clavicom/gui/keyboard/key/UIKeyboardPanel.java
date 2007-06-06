@@ -35,6 +35,8 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.profil.CProfil;
 import clavicom.tools.TColorKeyEnum;
 
 public class UIKeyboardPanel extends JPanel
@@ -77,12 +79,12 @@ public class UIKeyboardPanel extends JPanel
 		add(touche1);
 		touche1.setPreferredSize(new Dimension(160,80));
 		touche1.setEditable(true);
-		
-		touche1.getCoreKey().setColor(Color.GREEN, TColorKeyEnum.PRESSED);
-		
-		add(touche2);
-		touche2.setPreferredSize(new Dimension(160,80));
-		touche2.setEditable(true);
+//		
+//		touche1.getCoreKey().setColor(Color.GREEN, TColorKeyEnum.PRESSED);
+//		
+//		add(touche2);
+//		touche2.setPreferredSize(new Dimension(160,80));
+//		touche2.setEditable(true);
 		
 //		add(touche2);
 //		add(touche3);
@@ -123,8 +125,9 @@ public class UIKeyboardPanel extends JPanel
 	//-----------------------------------------------------------------------
 	protected UIKey createUIKey()
 	{
-		UIKey key = new _UIKeyOneLevel();
-		return key;
+		CKeyString key = (CKeyString) CProfil.getInstance().getKeyboard().getKeyGroup(0).GetkeyList(0).GetKeyboardKey(2);
+		UIKey uiKey = new UIKeyString(key);
+		return uiKey;
 	}
 
 }

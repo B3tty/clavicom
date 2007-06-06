@@ -31,7 +31,7 @@ import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyLauncherListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.gui.message.CMessage;
@@ -65,7 +65,7 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 					{
 						for( int k = 0 ;  k < keyList.size() ; ++k )
 						{
-							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( k );
+							CKeyKeyboard keyboardKey = keyList.GetKeyboardKey( k );
 							if( keyboardKey != null )
 							{
 								// on cast pour savoir si le type est bien keyLauncher
