@@ -40,7 +40,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.gui.language.UIString;
 
 
-public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements ActionListener
+public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -112,8 +112,6 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 		textFieldPath.setPreferredSize( new Dimension( 330, 23 ) );
 		textFieldPath.setEditable( false );
 		
-		textFieldPath.addActionListener( this );
-		
 		panel.add( textFieldPath );
 		JButton button = new JButton("...");
 		button.addActionListener(new ActionListener()
@@ -140,11 +138,6 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey implements Ac
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
-	public void actionPerformed(ActionEvent arg0)
-	{
-		int i = 0;
-	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
