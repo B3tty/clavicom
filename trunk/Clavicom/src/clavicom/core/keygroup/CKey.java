@@ -47,7 +47,7 @@ public abstract class CKey
 	boolean captionImage;
 
     // un seul objet pour tous les types d'écouteurs
-    private final EventListenerList listeners = new EventListenerList();
+    protected final EventListenerList listeners = new EventListenerList();
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKey( CColor myNormal, CColor myPressed, CColor myEntered )
