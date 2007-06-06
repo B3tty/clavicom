@@ -119,7 +119,7 @@ public class CColor
 	}
 	//----------------------------------------------------------- METHODES --//
 	
-	public Color GetColor () {return color;};
+	public Color getColor () {return color;};
 	
 	public Element BuildNode ( )
 	{
