@@ -26,33 +26,16 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import sun.awt.image.ShortComponentRaster;
-
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
-import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TKeyClavicomActionType;
-import clavicom.tools.TLevelEnum;
-
 
 public class PanelOptionKeyShortCut extends PanelOptionOneLevelKey
 {
