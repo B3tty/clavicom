@@ -74,8 +74,11 @@ public class UIKeyboardPanel extends JPanel
 		//touche1.setOpaque(true);
 		add(touche1);
 		touche1.setPreferredSize(new Dimension(160,80));
+		touche1.setEditable(true);
 		
-		//touche1.unEdit();
+		add(touche2);
+		touche2.setPreferredSize(new Dimension(160,80));
+		touche2.setEditable(true);
 		
 //		add(touche2);
 //		add(touche3);

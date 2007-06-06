@@ -26,6 +26,7 @@
 package clavicom.gui.keyboard.key;
 
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
@@ -45,14 +46,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
 import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.resizer.UIJResizer;
-import clavicom.tools.TUIKeyEditionState;
+import clavicom.gui.keyboard.key.resizer.UIJResizer;
+import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TUIKeyState;
 
 public abstract class UIKey extends UIJResizer implements ComponentListener
@@ -77,18 +77,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		
 		//---------------------------------------------------------- ATTRIBUTS --//		
 		private TUIKeyState state;					// Etat de la touche
-		private TUIKeyEditionState editionState;	// Etat d'édition de la touche
-		private boolean isSelected;					// Indique si la touche est selectionnée.
 		
 		private MouseAdapterUse mouseAdapterUse;	// MouseAdapteur en mode utilisation
 		private MouseAdapterEdit mouseAdapterEdit;	// MouseAdapteur en mode édition
 		
 		private BufferedImage imgNormal;			// Buffer de l'image normale
 		private BufferedImage imgEntered;			// Buffer de l'image survolée
-		private BufferedImage imgClicked;			// Buffer de l'image cliquée
+		private BufferedImage imgPressed;			// Buffer de l'image cliquée
 		
 		
 		private BufferedImage currentImage;			// Buffer de l'image courante
+		private BufferedImage selectionMask;		// Buffer du masque de selection
 		
 		private Timer resizeTimer;					// Timer qui une fois expiré demande
 													// le calcul des images
@@ -196,13 +195,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 			mouseAdapterEdit = new MouseAdapterEdit();
 			mouseAdapterUse = new MouseAdapterUse();
 			
-			// Ajout du mouse adapter
-			addMouseListener(mouseAdapterUse);
-			
 			// On définit la transparence
 			setOpaque(false);
 			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTrancparencyPourcent() / 100;
-
+			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
 			addComponentListener(this);
@@ -227,15 +223,62 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 
 			// Initialisation des états
 			state = TUIKeyState.NORMAL;
+			setEditable(false);
 			
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
 		}
 		
-		//----------------------------------------------------------- METHODES --//			
+		//----------------------------------------------------------- METHODES --//	
+		//-----------------------------------------------------------------------
+		// Selection
+		//-----------------------------------------------------------------------
+		
+		public void setEditable(boolean myIsEditable)
+		{		
+			// Activation du resizable
+			super.setEditable(myIsEditable);
+			
+			// Deselection
+			setSelected(false);
+			
+			// Changement du listener sur la souris
+			if(myIsEditable == true)
+			{
+				// Maj des listeners
+				removeMouseListener(mouseAdapterUse);
+				addMouseListener(mouseAdapterEdit);
+			}
+			else
+			{
+				// Maj des listeners
+				removeMouseListener(mouseAdapterEdit);
+				addMouseListener(mouseAdapterUse);			
+			}
+		}
+		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------		
+		//-----------------------------------------------------------------------
+		protected void recreateSelectionMask()
+		{
+			// Variables
+			Graphics2D buffer;
+			
+			// Création de l'image
+			selectionMask = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+			buffer = (Graphics2D) selectionMask.getGraphics();
+			
+			buffer.setColor(Color.RED);
+			buffer.setStroke(new BasicStroke(TAILLE_CADRE_SELECTION));
+			buffer.drawRoundRect(	TAILLE_BORDURE_INTERIEURE, 
+									TAILLE_BORDURE_INTERIEURE, 
+									getWidth() - 2*TAILLE_BORDURE_INTERIEURE, 
+									getHeight() - 2*TAILLE_BORDURE_INTERIEURE, 
+									TAILLE_ARC, 
+									TAILLE_ARC);
+		}
+		
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */
@@ -297,9 +340,20 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		 */
 		protected void recreateNormalImages()
 		{
-			imgNormal = recreateNormalImage(getCoreKey().GetColorNormal().GetColor());
-			imgEntered = recreateNormalImage(getCoreKey().GetColorEntered().GetColor());
-			imgClicked = recreateNormalImage(getCoreKey().GetColorClicked().GetColor());
+			imgNormal = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.NORMAL));
+			imgEntered = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.ENTERED));
+			imgPressed = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.PRESSED));
+		}
+		
+		protected BufferedImage recreateSelectionImage(BufferedImage img)
+		{
+			BufferedImage selectedImage = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2 = (Graphics2D) selectedImage.getGraphics();
+			
+			g2.drawImage(img,0,0,null);
+			g2.drawImage(selectionMask,0,0,null);
+			
+			return selectedImage;
 		}
 		
 		/**
@@ -378,22 +432,39 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredEdit()
 		{			
-			// TODO
+			state = TUIKeyState.ENTERED;
+			selectGoodImage();
+			
+			// On force le redessin
+			repaint();
 		}
 
 		protected void buttonExitedEdit()
 		{
-			// TODO
+			state = TUIKeyState.NORMAL;
+			selectGoodImage();
+			
+			// On force le redessin
+			repaint();
 		}
 
 		protected void buttonPressedEdit()
 		{					
-			// TODO
+			// On selectione la bonne image
+			state = TUIKeyState.PRESSED;
+			selectGoodImage();
+			
+			// On force le redessin
+			repaint();
 		}
 
 		protected void buttonReleasedEdit()
-		{		
-			// TODO
+		{					
+			state = TUIKeyState.ENTERED;
+			selectGoodImage();
+			
+			// On force le redessin
+			repaint();
 		}
 		
 		//-----------------------------------------------------------------------
@@ -523,14 +594,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 				// Ajout de l'ombre
 				if (profilFont.isShadow())
 				{
-					bg.setColor(profilFont.getFontColor().GetColor().brighter().brighter().brighter());
+					bg.setColor(profilFont.getFontColor().getColor().brighter().brighter().brighter());
 					bg.drawString(	getCaption(),	
 									xPosition + SHADOW_INSET_H,
 									yPosition + SHADOW_INSET_V);
 				}
 				
 				// On écrit le texte
-				bg.setColor(profilFont.getFontColor().GetColor());
+				bg.setColor(profilFont.getFontColor().getColor());
 				bg.drawString(getCaption(),xPosition,yPosition);
 			}
 		}
@@ -552,15 +623,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener
 			}
 			else if (state == TUIKeyState.NORMAL)
 			{
-
 				currentImage = imgNormal;
-
 			}
 			else if (state == TUIKeyState.PRESSED)
 			{
-				currentImage = imgClicked;
+				currentImage = imgPressed;
 			}
-		}		
+		}
+		
 		
 		/**
 		 * Créé un Timer de redimension
