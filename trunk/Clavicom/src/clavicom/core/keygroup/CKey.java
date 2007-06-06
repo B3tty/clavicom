@@ -25,11 +25,12 @@
 
 package clavicom.core.keygroup;
 
+import javax.swing.event.EventListenerList;
 import java.awt.Color;
 
 import org.jdom.Element;
 
-import clavicom.core.keygroup.CColor;
+import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TXMLNames;
@@ -45,11 +46,8 @@ public abstract class CKey
 	
 	boolean captionImage;
 
-
-	public boolean isCaptionImage()
-	{
-		return captionImage;
-	}
+    // un seul objet pour tous les types d'écouteurs
+    private final EventListenerList listeners = new EventListenerList();
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKey( CColor myNormal, CColor myClicked, CColor myEntered )
@@ -150,19 +148,30 @@ public abstract class CKey
 
 	//----------------------------------------------------------- METHODES --//
 
+	public CColor GetColorNormal(){return normal;}
+	public CColor GetColorClicked(){return clicked;}
+	public CColor GetColorEntered(){return entered;}
 	
-	public Color getColor( TColorKeyEnum coloEnum )
+	public boolean isCaptionImage()
 	{
-		if( coloEnum == TColorKeyEnum.NORMAL )
+		return captionImage;
+	}
+	
+	public Color getColor( TColorKeyEnum colorEnum )
+	{
+		if( colorEnum == TColorKeyEnum.NORMAL )
 		{
-			return normal.GetColor();
-		}else if( coloEnum == TColorKeyEnum.ENTERED )
+			return normal.getColor();
+		}
+		else if( colorEnum == TColorKeyEnum.ENTERED )
 		{
-			return entered.GetColor();
-		}else if( coloEnum == TColorKeyEnum.PRESSED )
+			return entered.getColor();
+		}
+		else if( colorEnum == TColorKeyEnum.PRESSED )
 		{
-			return clicked.GetColor();
-		}else
+			return clicked.getColor();
+		}
+		else
 		{
 			return Color.WHITE;
 		}
@@ -181,7 +190,7 @@ public abstract class CKey
 			clicked.setColor( color );
 		}
 	}
-
+	
 	public Element BuildNode ( )
 	{
 		// ==================================================================
@@ -202,11 +211,32 @@ public abstract class CKey
 		colors.addContent( color_entered );
 		
 		return colors;
-		
-		
 	}
 
 	public abstract void Click(); 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
+	// Listeners sur les couleurs
+	public void addColorListener(CKeyColorChangedListener listener) 
+	{
+        listeners.add(CKeyColorChangedListener.class, listener);
+    }
+    
+    public void removeColorListener(CKeyColorChangedListener listener) 
+    {
+        listeners.remove(CKeyColorChangedListener.class, listener);
+    }
+    
+    public CKeyColorChangedListener[] getColorListeners() 
+    {
+        return listeners.getListeners(CKeyColorChangedListener.class);
+    }
+    
+    protected void fireColorChanged(TColorKeyEnum colorType) 
+    {
+	    for ( CKeyColorChangedListener listener : getColorListeners() )
+		{
+			listener.colorChanged(colorType);
+		}
+    }	
 }
