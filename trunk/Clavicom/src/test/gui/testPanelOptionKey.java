@@ -37,11 +37,11 @@ public class testPanelOptionKey
 	public static void main(String[] args)
 	{
 		CColor color = new CColor( Color.green );
-		PanelOptionColor panelOptionColor = new PanelOptionColor( color, "coucou" );
+		//PanelOptionColor panelOptionColor = new PanelOptionColor( color, "coucou" );
 		
 		JFrame frame = new JFrame();
 		frame.setSize(500,500);
-		frame.add( panelOptionColor );
+		//frame.add( panelOptionColor );
 		
 		frame.show();
 	}

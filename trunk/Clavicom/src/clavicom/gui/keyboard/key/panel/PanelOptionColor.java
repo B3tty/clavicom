@@ -35,24 +35,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import clavicom.core.keygroup.CColor;
+import clavicom.core.keygroup.CKey;
+import clavicom.tools.TColorKeyEnum;
 
 public class PanelOptionColor extends JPanel implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	CColor ccolor;
+	CKey key;
 	JButton colorButton;
+	TColorKeyEnum colorEnum;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelOptionColor( CColor myColor, String caption )
+	public PanelOptionColor( CKey myKey, TColorKeyEnum myColorEnum )
 	{
-		ccolor = myColor;
+		key = myKey;
+		colorEnum = myColorEnum;
 		
-		add( new JLabel(caption) );
+		add( new JLabel( colorEnum.toString() ) );
 		
 		colorButton = new JButton();
-		colorButton.setBackground( ccolor.GetColor() );
+		colorButton.setBackground( key.getColor( colorEnum ) );
 		
 		add( colorButton );
 		
@@ -62,15 +66,15 @@ public class PanelOptionColor extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent arg0)
 	{
-		Color newColor = JColorChooser.showDialog( this, "Choix de la couleur", ccolor.GetColor() );
+		Color newColor = JColorChooser.showDialog( this, "Choix de la couleur", key.getColor( colorEnum ) );
 		
 		if( newColor != null )
 		{
-			if( newColor != ccolor.GetColor() )
+			if( newColor != key.getColor( colorEnum ) )
 			{
 				// la couleur à changé
-				ccolor.setColor( newColor );
-				
+				key.setColor( newColor, colorEnum );
+
 				colorButton.setBackground( newColor );
 			}
 		}

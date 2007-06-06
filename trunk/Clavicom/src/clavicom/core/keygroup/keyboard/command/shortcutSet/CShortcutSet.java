@@ -26,10 +26,13 @@
 package clavicom.core.keygroup.keyboard.command.shortcutSet;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import clavicom.core.keygroup.keyboard.command.CCommand;
 
@@ -67,6 +70,11 @@ public class CShortcutSet
 	public CCommand GetCommand( int id )
 	{
 		return commandMap.get( id );
+	}
+	
+	public Collection<CCommand> getValues()
+	{
+		return commandMap.values();
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

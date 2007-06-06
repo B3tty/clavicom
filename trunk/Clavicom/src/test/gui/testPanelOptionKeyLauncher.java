@@ -38,14 +38,18 @@ import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.panel.PanelOptionColor;
 import clavicom.gui.keyboard.key.panel.PanelOptionKey;
 import clavicom.gui.keyboard.key.panel.PanelOptionKeyCharacter;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyClavicom;
+import clavicom.gui.keyboard.key.panel.PanelOptionKeyLauncher;
 import clavicom.gui.language.UIString;
 
-public class testPanelOptionKeyCharacter
+public class testPanelOptionKeyLauncher
 {
 	public static void main(String[] args)
 	{
@@ -71,11 +75,11 @@ public class testPanelOptionKeyCharacter
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
 			CKeyList list = group.GetkeyList( 0 );
-			CKeyCharacter keyCharacter = (CKeyCharacter)list.GetKeyboardKey( 0 );
+			CKeyLauncher keyLauncher = (CKeyLauncher)list.GetKeyboardKey( 3 );
 			
 			
-			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
-			JScrollPane sp = new JScrollPane( panelOptionCharacter );
+			PanelOptionKeyLauncher panelOptionclavicom = new PanelOptionKeyLauncher( keyLauncher );
+			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();
 			frame.setSize(900,400);

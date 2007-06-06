@@ -25,6 +25,8 @@
 
 package clavicom.tools;
 
+import clavicom.gui.language.UIString;
+
 public final class TColorKeyEnum 
 {
     private TColorKeyEnum() 
@@ -36,4 +38,22 @@ public final class TColorKeyEnum
     public final static TColorKeyEnum NORMAL		= new TColorKeyEnum();
     public final static TColorKeyEnum ENTERED		= new TColorKeyEnum();
     public final static TColorKeyEnum PRESSED		= new TColorKeyEnum();
+    
+    @Override
+    public String toString()
+    {
+    	if( this == NORMAL )
+    	{
+    		return UIString.getUIString("LB_COLOR_NORMAL");
+    	}else if( this == ENTERED )
+    	{
+    		return UIString.getUIString("LB_COLOR_ENTERED");
+    	}else if( this == PRESSED )
+    	{
+    		return UIString.getUIString("LB_COLOR_CLICKED");
+    	}else
+    	{
+    		return "";
+    	}
+    }
 } 
