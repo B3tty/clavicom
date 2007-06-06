@@ -25,26 +25,19 @@
 
 package clavicom.gui.keyboard.key;
 
-public abstract class UIKeyThreeLevel extends UIKeyKeyboard
+public abstract class UIKeyDynamicString extends UIKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyThreeLevel()
+	public UIKeyDynamicString()
 	{
-		// Appel à la mère
-		super();
+		
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	protected String getCaption()
-	{
-		// TODO
-		
-		return null;
-	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -30,7 +30,7 @@ import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.core.profil.CKeyboard;
@@ -67,7 +67,7 @@ public class CLevelEngine implements OnClickKeyLevelListener
 					{
 						for( int k = 0 ;  k < keyList.size() ; ++k )
 						{
-							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( k );
+							CKeyKeyboard keyboardKey = keyList.GetKeyboardKey( k );
 							if( keyboardKey != null )
 							{
 								// on cast pour savoir de quel type est la key

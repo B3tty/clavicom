@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
-import clavicom.core.keygroup.keyboard.key.CKeyboardKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
@@ -87,7 +87,7 @@ public class CPredictionEngine extends CStringsEngine implements
 					{
 						for( int k = 0 ;  k < keyList.size() ; ++k )
 						{
-							CKeyboardKey keyboardKey = keyList.GetKeyboardKey( k );
+							CKeyKeyboard keyboardKey = keyList.GetKeyboardKey( k );
 							if( keyboardKey != null )
 							{
 								// on cast pour savoir si le type est bien

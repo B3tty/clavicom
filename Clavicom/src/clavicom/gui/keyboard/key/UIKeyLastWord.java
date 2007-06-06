@@ -25,26 +25,29 @@
 
 package clavicom.gui.keyboard.key;
 
-public abstract class UIKeyThreeLevel extends UIKeyKeyboard
+import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+
+public class UIKeyLastWord extends UIKeyDynamicString
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	private CKeyLastWord coreKey;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyThreeLevel()
+	public UIKeyLastWord(CKeyLastWord myCoreKey)
 	{
 		// Appel à la mère
 		super();
+		
+		coreKey = myCoreKey;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	protected String getCaption()
-	{
-		// TODO
-		
-		return null;
-	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
+	@Override
+	protected CKeyLastWord getCoreKey()
+	{
+		return coreKey;
+	}
 }

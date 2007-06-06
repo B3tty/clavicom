@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UIKeyOneLevel.java
-			Creation date		: 30 mai 07
+			Filename			: UIKeyKeyboardKey.java
+			Creation date		: 6 juin 07
 		
 			Project				: Clavicom
 			Package				: clavicom.gui.keyboard.key
@@ -25,70 +25,36 @@
 
 package clavicom.gui.keyboard.key;
 
-import org.jdom.Element;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 
-import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.keyboard.key.CKeyString;
-import clavicom.core.profil.CProfil;
 
-public class _UIKeyOneLevel extends UIKey
+public abstract class UIKeyKeyboard extends UIKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	
-	static CKeyString key;		// Objet du noyau
-	
-	//----------------------------------------------------------- METHODES --//	
-	public _UIKeyOneLevel()
+	public UIKeyKeyboard()
 	{
-		// Appel à la mère
+		// Appel de la mère
 		super();
-		
-		// Création de la touche
-		
-		
-		// Ajout des liseners
-		addToAllListeners();
 	}
 	
+	//----------------------------------------------------------- METHODES --//	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
-	/**
-	 * Ajout en tant que listener
-	 */
-	protected void addToAllListeners()
+	@Override
+	protected void addListeners()
 	{
 		// Abonnement à la coreKey
 		getCoreKey().addColorListener(this);
-	}
-	
-	/**
-	 * Retourne l'objet du noyau
-	 */
-	protected CKey getCoreKey()
-	{
-		// TODO ---> MODIFIER
-		if (key != null)
-		{
-			return key;
-		}
 		
-		try
-		{		
-			key = (CKeyString) CProfil.getInstance().getKeyboard().getKeyGroup(0).GetkeyList(0).GetKeyboardKey(2);
-		}
-		catch (Exception ex)
+		// ATTENTION !!! On caste en CKeyKeyboard car toutes les classes fille
+		// ont des fils de la CKeyBoardKey comme objet core
+		if ( getCoreKey() instanceof CKeyKeyboard )
 		{
-			System.out.println(ex.getMessage());
+			((CKeyKeyboard)getCoreKey()).addCaptionListener(this);
 		}
-		System.out.println("ok");
-		return key;
-	}
-	
-	protected String getCaption()
-	{
-		return key.getCaption();
 	}
 }

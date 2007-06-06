@@ -25,19 +25,48 @@
 
 package clavicom.gui.keyboard.key;
 
-public abstract class UIKeyCharacter extends UIKeyThreeLevel
+import clavicom.core.keygroup.CKey;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+
+public class UIKeyCharacter extends UIKeyThreeLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	CKeyCharacter coreKey;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyCharacter()
+	public UIKeyCharacter(CKeyCharacter myCoreKey)
 	{
+		// Appel de la mère
+		super();
 		
+		coreKey = myCoreKey;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	protected void addListeners()
+	{
+		// Ajout des listeners supérieurs
+		super.addListeners();
+		
+		// Ajout au listener de caption
+		coreKey.addCaptionListener(this);
+	}
+	
+	@Override
+	protected String getCaption()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected CKey getCoreKey()
+	{
+		return coreKey;
+	}
 }

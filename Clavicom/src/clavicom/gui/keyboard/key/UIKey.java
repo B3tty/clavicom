@@ -203,24 +203,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
 			addComponentListener(this);
-			
-			// Chargement de l'image si nécessaire
-			if (getCoreKey().isCaptionImage() == true)
-			{
-				// On teste l'existence de l'image
-				File fileImage = new File(getCaption());
-				if (fileImage.exists() == false)
-				{
-					// A COMPLETER !!!
-					System.out.println("fichier non existant...");
-				}
-				
-				// Création de l'image icon
-				ImageIcon iconImage = new ImageIcon(getCaption());	
-				
-				// Récupération de l'image
-				originalCaptionImage = toBufferedImage(iconImage.getImage());
-			}
 
 			// Initialisation des états
 			state = TUIKeyState.NORMAL;
@@ -262,7 +244,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------
 		
 		public void setEditable(boolean myIsEditable)
-		{		
+		{
 			// Activation du resizable
 			super.setEditable(myIsEditable);
 			
@@ -273,13 +255,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			if(myIsEditable == true)
 			{
 				// Maj des listeners
+				removeMouseListener(mouseAdapterEdit);
 				removeMouseListener(mouseAdapterUse);
+				
 				addMouseListener(mouseAdapterEdit);
 			}
 			else
 			{
 				// Maj des listeners
 				removeMouseListener(mouseAdapterEdit);
+				removeMouseListener(mouseAdapterUse);
+				
 				addMouseListener(mouseAdapterUse);			
 			}
 		}
@@ -391,7 +377,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Méthodes ou l'objet doit IMPERATIVEMENT s'abonner en tant que listener
 		 * au prêt de TOUS les evenements, y compris ceux des classes mères
 		 */
-		protected abstract void addToAllListeners();
+		protected abstract void addListeners();
 		//-----------------------------------------------------------------------
 		// Mode utilisation
 		//-----------------------------------------------------------------------	
@@ -544,7 +530,13 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
-			{		
+			{	
+				// On charge l'image de la caption si ce n'est déja fait
+				if(originalCaptionImage == null)
+				{
+					loadCaptionImage();
+				}
+				
 				// Calcul du facteur de réduction
 				float scaleFactor = 1f;
 				
@@ -691,6 +683,23 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 	
 				return (bufferedImage);
 			}
+		}
+		
+		protected void loadCaptionImage()
+		{
+			// On teste l'existence de l'image
+			File fileImage = new File(getCaption());
+			if (fileImage.exists() == false)
+			{
+				// A COMPLETER !!!
+				System.out.println("fichier non existant...");
+			}
+			
+			// Création de l'image icon
+			ImageIcon iconImage = new ImageIcon(getCaption());	
+			
+			// Récupération de l'image
+			originalCaptionImage = toBufferedImage(iconImage.getImage());
 		}
 		
 		protected abstract CKey getCoreKey();
