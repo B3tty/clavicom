@@ -25,10 +25,13 @@
 
 package clavicom.core.keygroup;
 
+import java.awt.Color;
+
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TXMLNames;
 
 public abstract class CKey
@@ -147,10 +150,38 @@ public abstract class CKey
 
 	//----------------------------------------------------------- METHODES --//
 
-	public CColor GetColorNormal(){return normal;}
-	public CColor GetColorClicked(){return clicked;}
-	public CColor GetColorEntered(){return entered;}
 	
+	public Color getColor( TColorKeyEnum coloEnum )
+	{
+		if( coloEnum == TColorKeyEnum.NORMAL )
+		{
+			return normal.GetColor();
+		}else if( coloEnum == TColorKeyEnum.ENTERED )
+		{
+			return entered.GetColor();
+		}else if( coloEnum == TColorKeyEnum.PRESSED )
+		{
+			return clicked.GetColor();
+		}else
+		{
+			return Color.WHITE;
+		}
+	}
+	
+	public void setColor( Color color, TColorKeyEnum coloEnum )
+	{
+		if( coloEnum == TColorKeyEnum.NORMAL )
+		{
+			normal.setColor( color );
+		}else if( coloEnum == TColorKeyEnum.ENTERED )
+		{
+			entered.setColor( color );
+		}else if( coloEnum == TColorKeyEnum.PRESSED )
+		{
+			clicked.setColor( color );
+		}
+	}
+
 	public Element BuildNode ( )
 	{
 		// ==================================================================
