@@ -85,8 +85,8 @@ public class testUIKeyboard
 			
 			
 			
-			CLastWordEngine lasWordEngine = new CLastWordEngine(keyboard,levelEngine);
-			CPredictionEngine predictionEngine = new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
+			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
+			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
