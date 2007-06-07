@@ -39,7 +39,7 @@ public class UIKeyboard extends JPanel
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	private List<_UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
+	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
 	private List<UIKey> allKeys;					// Liste des keys
 	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
 	
@@ -50,7 +50,7 @@ public class UIKeyboard extends JPanel
 	public UIKeyboard(CKeyboard coreKeyboard)
 	{
 		// Initialisation des attributs
-		keyGroups = new ArrayList<_UIKeyGroup>();
+		keyGroups = new ArrayList<UIKeyGroup>();
 		allKeys = new ArrayList<UIKey>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		
@@ -58,7 +58,7 @@ public class UIKeyboard extends JPanel
 		int groupCount = coreKeyboard.groupCount();
 		
 		// Variables temporaires
-		_UIKeyGroup currentKeyGroup;
+		UIKeyGroup currentKeyGroup;
 		List<UIKeyThreeLevel> currentThreeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		List<UIKey> currentKeys = new ArrayList<UIKey>();
 		
@@ -66,7 +66,7 @@ public class UIKeyboard extends JPanel
 		for (int i = 0 ; i < groupCount ; ++i)
 		{
 			// Création du UIKeyGroup
-			currentKeyGroup = new _UIKeyGroup (coreKeyboard.getKeyGroup(i));
+			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i));
 			
 			// Demande de récupération des ThreeLevelKeys
 			currentThreeLevelKeys.clear();
