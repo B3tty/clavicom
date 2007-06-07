@@ -40,6 +40,7 @@ public final class testKeyboardPanel extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         //getContentPane().add((new UIKeyboardPanel()));
+        
         pack();
         setLocationRelativeTo(null);
     }
@@ -50,7 +51,6 @@ public final class testKeyboardPanel extends JFrame {
 		UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 		CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
 		CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
-		
 		
 		// Chemins
 		String input = "Ressources\\Temp\\profil.xml";
