@@ -116,7 +116,7 @@ public class CKeyboard
 		return keyGroupList.get( order );
 	}
 	
-	public int size( )
+	public int groupCount( )
 	{
 		return keyGroupList.size();
 	}

@@ -66,9 +66,9 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption_level_1>coucou1</caption_level_1>
-					<caption_level_2>cou</caption_level_2>
-					<caption_level_3></caption_level_3>
+					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
+					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
+					<caption_level_3>keycharacter 0 - Level 3</caption_level_3>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -87,7 +87,7 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="0"></command_normal>
+						<command_normal id="2"></command_normal>
 						<command_shift id="1"></command_shift>
 						<command_altgr id="2"></command_altgr>
 					</commands>
@@ -103,7 +103,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>Keylevel 1</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -136,7 +136,7 @@
 				<y>2.2</y>
 			</point>		
 		</coordinates>
-		<caption>coucou display</caption>
+		<caption>KeyString 2</caption>
 		<colors>
 			<color_normal>
 				<red>189</red>
@@ -166,7 +166,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyLauncher 3</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -197,7 +197,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyLastWord 4</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -228,7 +228,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyPrediction 5</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -259,7 +259,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyPrediction 6</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -290,7 +290,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyClavicom 7 - SWITCH_MOUSE_KEYBOARD</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -321,7 +321,7 @@
 							<y>2.2</y>
 						</point>
 					</coordinates>
-					<caption>coucou1</caption>
+					<caption>KeyShortcut 8</caption>
 					<colors>
 						<color_normal>
 							<red>215</red>
@@ -341,6 +341,43 @@
 					</colors>
 					<command id="1"></command>
 				</keyshortcut>
+				<keycharacter order="9" caption_image="false" >
+					<coordinates>
+						<point position="min">
+							<x>25.5</x>
+							<y>52.2</y>
+						</point>
+						<point position="max">
+							<x>5.5</x>
+							<y>2.2</y>
+						</point>
+					</coordinates>
+					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
+					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
+					<caption_level_3>keycharacter 0 - Level 3</caption_level_3>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<commands>
+						<command_normal id="69"></command_normal>
+						<command_shift id="1"></command_shift>
+						<command_altgr id="2"></command_altgr>
+					</commands>
+				</keycharacter>
 			</keylist>
 		</keygroup>
 	</keyboard>

@@ -66,8 +66,8 @@ public class testPanelOptionKeyString
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyString keyString = (CKeyString)list.GetKeyboardKey( 2 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyString keyString = (CKeyString)list.getKeyKeyboard( 2 );
 			
 			
 			PanelOptionKeyString panelOptionclavicom = new PanelOptionKeyString( keyString );

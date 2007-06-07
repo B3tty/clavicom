@@ -57,12 +57,12 @@ public class CKeyGroup
 		keyListList.add( order, blocLevel2 );
 	}
 	
-	public CKeyList GetkeyList( int order )
+	public CKeyList getkeyList( int order )
 	{
 		return keyListList.get( order );
 	}
 	
-	public int size(){return keyListList.size();}
+	public int listCount(){return keyListList.size();}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	

@@ -25,27 +25,33 @@
 
 package test.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
+import javax.swing.JPanel;
 
 import clavicom.core.engine.CCommandEngine;
+import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLevelEngine;
-import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
-import clavicom.core.keygroup.keyboard.blocks.CKeyList;
+import clavicom.core.engine.CPredictionEngine;
+import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.key.panel.PanelOptionKeyLevel;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 
-public class testPanelOptionKeyLevel
+public class testUIKeyboard
 {
 	public static void main(String[] args)
 	{
 		try
 		{
+			
+			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
+			
 			//		 Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
@@ -62,20 +68,52 @@ public class testPanelOptionKeyLevel
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+			
+			CDictionary dictionary = null;
+			try
+			{
+				dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
+			}
+			catch (Exception ex)
+			{
+				System.out.println("argh1 !!!");
+				Thread.sleep( 3000 );
+				
+				System.out.println("argh2 !!!");
+				ex.printStackTrace();
+			}
+			
+			
+			
+			CLastWordEngine lasWordEngine = new CLastWordEngine(keyboard,levelEngine);
+			CPredictionEngine predictionEngine = new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
-			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.getkeyList( 0 );
-			CKeyLevel keyLevel = (CKeyLevel)list.getKeyKeyboard( 1 );
+//			CKeyGroup group = keyboard.getKeyGroup( 0 );
+//			CKeyList list = group.getkeyList( 0 );
+//			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
+//			
+//			
+//			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
+//			JScrollPane sp = new JScrollPane( panelOptionCharacter );
 			
 			
-			PanelOptionKeyLevel panelOptionclavicom = new PanelOptionKeyLevel( keyLevel );
-			JScrollPane sp = new JScrollPane( panelOptionclavicom );
+			
+			JPanel panel = new JPanel();
+			panel.setLayout(new BorderLayout());
+			
+			UIKeyboard uiKeyboard = new UIKeyboard(keyboard);
+			uiKeyboard.setPreferredSize(new Dimension(100,100));
+			
+			panel.add(uiKeyboard, BorderLayout.CENTER);
 			
 			JFrame frame = new JFrame();
 			frame.setSize(900,400);
-			frame.add( sp );
+			frame.add( panel );
+			
+			frame.setAlwaysOnTop(true);
+			frame.setFocusableWindowState(false);
 			
 			frame.setVisible(true);
 		}

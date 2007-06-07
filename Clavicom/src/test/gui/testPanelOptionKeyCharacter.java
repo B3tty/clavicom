@@ -69,8 +69,8 @@ public class testPanelOptionKeyCharacter
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyCharacter keyCharacter = (CKeyCharacter)list.GetKeyboardKey( 0 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
 			
 			
 			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );

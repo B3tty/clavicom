@@ -66,8 +66,8 @@ public class testPanelOptionKeyClavicom
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyClavicom keyClavicom = (CKeyClavicom)list.GetKeyboardKey( 7 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyClavicom keyClavicom = (CKeyClavicom)list.getKeyKeyboard( 7 );
 			
 			
 			PanelOptionKeyClavicom panelOptionclavicom = new PanelOptionKeyClavicom( keyClavicom );

@@ -25,16 +25,17 @@
 
 package clavicom.gui.keyboard.key;
 
-import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 
-public class UIKeyString extends UIKeyDynamicString
+public class UIKeyClavicom extends UIKeyOneLevel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	
+
 	//---------------------------------------------------------- VARIABLES --//	
-	private CKeyString coreKey;
+	private CKeyClavicom coreKey;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyString(CKeyString myCoreKey)
+	public UIKeyClavicom(CKeyClavicom myCoreKey)
 	{
 		// Appel à la mère
 		super();
@@ -47,7 +48,7 @@ public class UIKeyString extends UIKeyDynamicString
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	@Override
-	protected CKeyString getCoreKey()
+	protected CKeyClavicom getCoreKey()
 	{
 		return coreKey;
 	}

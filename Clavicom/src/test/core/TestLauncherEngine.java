@@ -39,8 +39,8 @@ public class TestLauncherEngine
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKey key = (CKey)list.GetKeyboardKey( 2 );
+			CKeyList list = group.getkeyList( 0 );
+			CKey key = (CKey)list.getKeyKeyboard( 2 );
 			
 			// simulation du click
 			key.Click();
