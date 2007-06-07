@@ -10,3 +10,4 @@
 || caption commandSet multilanguage || Rendre les caption des commandes dans le fichier de commandeSet indépendant de la langue || ||
 || programme de création de language UI || Création d'un programme permettant de creer ces propres fichiers .clg pour définir un nouveau language || ||
 || clean prefered words || faire une option pour pouvoir vider ces prefered words || ||
+|| vérif keycodes || vérifier que tous les keycodes sont inplémentés dans le grand switch || ||
