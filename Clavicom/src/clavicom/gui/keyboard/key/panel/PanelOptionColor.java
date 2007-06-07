@@ -26,6 +26,7 @@
 package clavicom.gui.keyboard.key.panel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -53,7 +54,9 @@ public class PanelOptionColor extends JPanel implements ActionListener
 		add( new JLabel( colorEnum.toString() ) );
 		
 		colorButton = new JButton();
+		colorButton.setPreferredSize( new Dimension(30,20) );
 		colorButton.setBackground( key.getColor( colorEnum ) );
+		
 		
 		add( colorButton );
 		
