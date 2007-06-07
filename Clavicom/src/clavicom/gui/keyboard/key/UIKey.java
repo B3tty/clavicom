@@ -49,6 +49,7 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.core.profil.CFont;
@@ -221,6 +222,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------
 		// Listeners
 		//-----------------------------------------------------------------------
+		public abstract CKey getCoreKey();
+		
 		public void colorChanged(TColorKeyEnum colorType)
 		{
 			// On recréé l'image buffer qui a été modifiée
@@ -713,6 +716,5 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			originalCaptionImage = toBufferedImage(iconImage.getImage());
 		}
 		
-		protected abstract CKey getCoreKey();
 		protected abstract String getCaption();
 }
