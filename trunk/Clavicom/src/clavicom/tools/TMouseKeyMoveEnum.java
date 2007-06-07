@@ -25,7 +25,7 @@
 
 package clavicom.tools;
 
-public final class TMouseKeyMoveEnum 
+public final class TMouseKeyMoveEnum
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	//	 Liste des valeurs

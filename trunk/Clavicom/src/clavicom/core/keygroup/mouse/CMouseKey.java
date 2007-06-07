@@ -25,15 +25,37 @@
 
 package clavicom.core.keygroup.mouse;
 
-public abstract class CMouseKey
+import clavicom.core.keygroup.CColor;
+import clavicom.core.keygroup.CKey;
+
+public abstract class CMouseKey extends CKey
 {
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
+	String caption;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
 
-	//----------------------------------------------------------- METHODES --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CMouseKey( String myCaption, CColor myNormal, CColor myPressed, CColor myEntered)
+	{
+		super(myNormal, myPressed, myEntered);
+		
+		caption = myCaption;
+	}
+
+	//----------------------------------------------------------- METHODES --//
+	
+	public String getCaption()
+	{
+		return caption;
+	}
+
+	public void setCaption(String caption)
+	{
+		this.caption = caption;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

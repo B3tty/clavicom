@@ -171,6 +171,9 @@ public class TXMLNames
 	public static String PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE	= "value";
 	public static String PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE	= "value";
 	
+	public static String PR_ELEMENT_NAVIGATION_MOUSE_SPEED	= "mouse_speed";
+	public static String PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED = "value";
+	
 	public static String PR_ELEMENT_NAVIGATION_ROLLOVER	= "rollover";
 	public static String PR_ATTRIBUTE_NAVIGATION_ROLLOVER	= "active";
 	

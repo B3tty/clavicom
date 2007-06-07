@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CMouseKeyClick.java
-			Creation date		: 24 mai 07
+			Filename			: UIKeyMouse.java
+			Creation date		: 7 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.mouse
+			Package				: clavicom.gui.mouse
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,38 +23,45 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keygroup.mouse;
+package clavicom.gui.mouse;
 
-import clavicom.core.keygroup.CColor;
-import clavicom.tools.TMouseKeyClickEnum;
+import clavicom.core.keygroup.CKey;
+import clavicom.core.keygroup.mouse.CMouseKey;
+import clavicom.gui.keyboard.key.UIKey;
 
-public class CMouseKeyClick extends CMouseKey
+public class UIKeyMouse extends UIKey
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	TMouseKeyClickEnum click;
+	CMouseKey mouseKey;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseKeyClick( 
-			TMouseKeyClickEnum myClick,
-			String caption,
-			CColor myColorNormal, 
-			CColor myColorClicked , 
-			CColor myColorEntered)
+	
+	public UIKeyMouse( CMouseKey myMouseKey )
 	{
-		super( caption, myColorNormal, myColorClicked, myColorEntered );
-		click = myClick;
+		mouseKey = myMouseKey;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
-	
-	public TMouseKeyClickEnum GetClick(){return click;}
+	//----------------------------------------------------------- METHODES --//
+	@Override
+	protected void addListeners()
+	{
+	}
 
 	@Override
-	public void Click()
+	protected String getCaption()
 	{
-		// fire...
+		// TODO Auto-generated method stub
+		return mouseKey.getCaption();
+	}
+
+	@Override
+	protected CKey getCoreKey()
+	{
+		return mouseKey;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

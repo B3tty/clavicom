@@ -26,6 +26,7 @@
 	</keyboard_color>
 	<navigation>
 		<type value = "CLICK_TEMPORISE"/>
+		<mouse_speed value = "100"/>
 		<temporisation value = "152"/>
 		<rollover active = "true"/>
 	</navigation>
@@ -308,7 +309,7 @@
 							<blue>99</blue>
 						</color_entered>
 					</colors>
-					<action>SWITCH_MOUSE_KEYBOARD</action>
+					<action>SWITCH_KEYBOARD_MOUSE</action>
 				</keyclavicom>
 				<keyshortcut order="8" caption_image="false" >
 					<coordinates>

@@ -25,19 +25,21 @@
 
 package clavicom.tools;
 
-public final class TMouseKeyClickEnum 
+public final class TMouseKeyClickEnum
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	//	 Liste des valeurs
     public final static TMouseKeyClickEnum BUTTON_1			= new TMouseKeyClickEnum();
     public final static TMouseKeyClickEnum BUTTON_2			= new TMouseKeyClickEnum();
     public final static TMouseKeyClickEnum DOUBLE_BUTTON_1	= new TMouseKeyClickEnum();
+    public final static TMouseKeyClickEnum BUTTON_1_PRESS	= new TMouseKeyClickEnum();
+    public final static TMouseKeyClickEnum BUTTON_1_RELEASE	= new TMouseKeyClickEnum();
     
    
     //---------------------------------------------------------- VARIABLES --//	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-    private TMouseKeyClickEnum()
+    private TMouseKeyClickEnum( )
     {
     }
 	
