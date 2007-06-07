@@ -29,17 +29,22 @@ import clavicom.gui.language.UIString;
 
 public final class TKeyClavicomActionType 
 {
-    private TKeyClavicomActionType() 
+	
+	boolean userCreatable;
+	
+    private TKeyClavicomActionType( boolean myUserCreatable ) 
     {
-    	// Rien à faire
+    	userCreatable = myUserCreatable;
     }
     
     // Liste des valeurs
-    public final static TKeyClavicomActionType NONE					 	= new TKeyClavicomActionType();
-    public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType();
-    public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType();
-    public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType();
-    public final static TKeyClavicomActionType SWITCH_KEYBOARD_MOUSE	= new TKeyClavicomActionType();
+    public final static TKeyClavicomActionType NONE					 	= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType( false );
+    public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType SWITCH_KEYBOARD_MOUSE	= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType SWITCH_MOUSEMOVE_MOUSECLICK	= new TKeyClavicomActionType( false );
+    public final static TKeyClavicomActionType SWITCH_MOUSECLICK_MOUSEMOVE	= new TKeyClavicomActionType( false );
     /**
      * Retourne la chaine correspondant à la valeur transmise
      * @param myVal : Valeur dont on veut la chaîne correspondante
@@ -54,10 +59,6 @@ public final class TKeyClavicomActionType
     	else if (myVal == SWITCH_KEYBOARD_MOUSE)
     	{
     		return "SWITCH_KEYBOARD_MOUSE";
-    	}
-    	else if (myVal == SWITCH_MOUSE_KEYBOARD)
-    	{
-    		return "SWITCH_MOUSE_KEYBOARD";
     	}
     	else if (myVal == CLOSE_APPLICATION)
     	{
@@ -88,10 +89,6 @@ public final class TKeyClavicomActionType
     	{
     		return SWITCH_KEYBOARD_MOUSE;
     	}
-    	else if (myString.equals("SWITCH_MOUSE_KEYBOARD"))
-    	{
-    		return SWITCH_MOUSE_KEYBOARD;
-    	}
     	else if (myString.equals("CLOSE_APPLICATION"))
     	{
     		return CLOSE_APPLICATION;
@@ -112,10 +109,6 @@ public final class TKeyClavicomActionType
     	if (this == NONE)
     	{
     		return UIString.getUIString("LB_KEYCLAVICOM_NONE");
-    	}
-    	else if (this == SWITCH_MOUSE_KEYBOARD)
-    	{
-    		return UIString.getUIString("LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD");
     	}
     	else if (this == SWITCH_KEYBOARD_MOUSE)
     	{

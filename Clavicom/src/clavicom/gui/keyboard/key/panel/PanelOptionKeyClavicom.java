@@ -59,7 +59,6 @@ public class PanelOptionKeyClavicom extends PanelOptionOneLevelKey implements Ac
 		comboBox.addItem( TKeyClavicomActionType.NONE );
 		comboBox.addItem( TKeyClavicomActionType.OPEN_CONFIGURATION );
 		comboBox.addItem( TKeyClavicomActionType.CLOSE_APPLICATION );
-		comboBox.addItem( TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD );
 		comboBox.addItem( TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE );
 		
 		if( (keyClavicom != null) )

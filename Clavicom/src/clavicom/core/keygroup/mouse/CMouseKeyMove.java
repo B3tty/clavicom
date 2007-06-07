@@ -25,6 +25,7 @@
 
 package clavicom.core.keygroup.mouse;
 
+import clavicom.core.keygroup.CColor;
 import clavicom.tools.TMouseKeyMoveEnum;
 
 public class CMouseKeyMove extends CMouseKey
@@ -37,8 +38,14 @@ public class CMouseKeyMove extends CMouseKey
 	static int speedLevel; // vitesse du mouvement
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseKeyMove( TMouseKeyMoveEnum mydirection )
+	public CMouseKeyMove( 
+			TMouseKeyMoveEnum mydirection,
+			String caption,
+			CColor myColorNormal, 
+			CColor myColorClicked , 
+			CColor myColorEntered )
 	{
+		super( caption, myColorNormal, myColorClicked, myColorEntered );
 		direction = mydirection;
 	}
 
@@ -49,4 +56,10 @@ public class CMouseKeyMove extends CMouseKey
 	public static int GetSpeedLevel(){ return speedLevel; }
 	public static void SetSpeedLevel( int mySpeedLevel ){speedLevel = mySpeedLevel; }
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+	@Override
+	public void Click()
+	{
+		// fire
+	}
 }

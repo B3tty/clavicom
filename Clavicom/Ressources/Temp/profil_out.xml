@@ -37,14 +37,21 @@
   <navigation>
     <type type="CLICK_TEMPORISE" />
     <rollover active="true" />
+    <mouse_speed value="100" />
     <temporisation value="152" />
   </navigation>
   <font>
     <name>Arial</name>
-    <size>50</size>
-    <auto_size>false</auto_size>
+    <auto_size>true</auto_size>
+    <auto_color>false</auto_color>
+    <color>
+      <red>102</red>
+      <green>0</green>
+      <blue>102</blue>
+    </color>
     <bold>true</bold>
     <italic>false</italic>
+    <shadow>true</shadow>
   </font>
   <keyboard>
     <keygroup caption="groupe de ouf" order="0" visible="true">
@@ -78,52 +85,15 @@
             </color_entered>
           </colors>
           <caption_level_1>coucou1</caption_level_1>
-          <caption_level_2>coucou2</caption_level_2>
-          <caption_level_3>coucou3</caption_level_3>
+          <caption_level_2>cou</caption_level_2>
+          <caption_level_3 />
           <commands>
-            <command_normal id="4" />
+            <command_normal id="0" />
             <command_shift id="1" />
             <command_altgr id="2" />
           </commands>
         </keycharacter>
-        <keycharacter order="1">
-          <coordinates>
-            <point position="min">
-              <x>25.5</x>
-              <y>52.2</y>
-            </point>
-            <point position="max">
-              <x>5.5</x>
-              <y>2.2</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>215</red>
-              <green>100</green>
-              <blue>98</blue>
-            </color_normal>
-            <color_clicked>
-              <red>50</red>
-              <green>100</green>
-              <blue>80</blue>
-            </color_clicked>
-            <color_entered>
-              <red>29</red>
-              <green>19</green>
-              <blue>99</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>coucou1</caption_level_1>
-          <caption_level_2>coucou2</caption_level_2>
-          <caption_level_3>coucou3</caption_level_3>
-          <commands>
-            <command_normal id="2" />
-            <command_shift id="3" />
-            <command_altgr id="3" />
-          </commands>
-        </keycharacter>
-        <keylevel order="2">
+        <keylevel order="1">
           <coordinates>
             <point position="min">
               <x>25.5</x>
@@ -152,8 +122,39 @@
             </color_entered>
           </colors>
           <caption>coucou1</caption>
-          <level>NORMAL</level>
+          <level>ALT_GR</level>
         </keylevel>
+        <keystring order="2">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>189</red>
+              <green>189</green>
+              <blue>189</blue>
+            </color_normal>
+            <color_clicked>
+              <red>204</red>
+              <green>0</green>
+              <blue>204</blue>
+            </color_clicked>
+            <color_entered>
+              <red>255</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <base_string>coucou write</base_string>
+          <order_dynamic>12</order_dynamic>
+        </keystring>
         <keylauncher order="3">
           <coordinates>
             <point position="min">
@@ -275,12 +276,74 @@
           </colors>
           <order_dynamic>1</order_dynamic>
         </keyprediction>
+        <keyclavicom order="7">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>coucou1</caption>
+          <action>SWITCH_KEYBOARD_MOUSE</action>
+        </keyclavicom>
+        <keyshortcut order="8">
+          <coordinates>
+            <point position="min">
+              <x>25.5</x>
+              <y>52.2</y>
+            </point>
+            <point position="max">
+              <x>5.5</x>
+              <y>2.2</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>coucou1</caption>
+          <command id="Couper" />
+        </keyshortcut>
       </keylist>
     </keygroup>
   </keyboard>
   <prefered_words>
-    <prefered_word frequency="5">tarabiscoterait</prefered_word>
-    <prefered_word frequency="10">tarabiscoterait2</prefered_word>
+    <prefered_word frequency="5">coucou</prefered_word>
+    <prefered_word frequency="10">salut</prefered_word>
   </prefered_words>
 </profil>
 

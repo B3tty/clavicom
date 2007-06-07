@@ -36,6 +36,7 @@ public class CNavigation
 	//--------------------------------------------------------- CONSTANTES --//
 	private static int DEFAULT_TEMPORISATION_CLIC = 10;
 	private static int DEFAULT_TEMPORISATION_DEFILEMENT = 10;
+	private static int DEFAULT_MOUSE_SPEED = 1;
 	
 	private static boolean DEFAULT_BLOCK_SELECTION_ACTIVE = false;
 	private static boolean DEFAULT_ROLLOVER_ACTIVE = false;
@@ -45,6 +46,7 @@ public class CNavigation
 	
 	int temporisationClic;
 	int temporisationDefilement;
+	int mouseSpeed;
 	
 	boolean blockSelectionActive;
 	boolean rolloverActive;
@@ -57,6 +59,7 @@ public class CNavigation
 		temporisationDefilement = DEFAULT_TEMPORISATION_DEFILEMENT;
 		blockSelectionActive = DEFAULT_BLOCK_SELECTION_ACTIVE;
 		rolloverActive = DEFAULT_ROLLOVER_ACTIVE;
+		mouseSpeed = DEFAULT_MOUSE_SPEED;
 		
 		// Récupération du type de noeud
 		Element eltTypeNavigation = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_TYPE);
@@ -119,6 +122,38 @@ public class CNavigation
 									UIString.getUIString("EX_NAVIGATION_BAD_ROLLOVER_2")+
 									TXMLNames.PR_ATTRIBUTE_NAVIGATION_ROLLOVER +							
 									UIString.getUIString("EX_NAVIGATION_BAD_ROLLOVER_3"));			
+		}
+		
+		// Récupération du mouseSpeed
+		Element eltMouseSpeed = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_SPEED);
+		
+		if (eltMouseSpeed == null)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
+									TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_SPEED +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));			
+		}
+		
+		String strMouseSpeed = eltMouseSpeed.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED);
+		if(strMouseSpeed == null || strRollover.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
+	
+		}
+		
+		try
+		{
+			mouseSpeed = Integer.parseInt(strMouseSpeed);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_1")+
+									strMouseSpeed +
+									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_2")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED +							
+									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_3"));			
 		}
 		
 		// Récupération des paramètres spécifiques à chaque type
@@ -213,6 +248,11 @@ public class CNavigation
 		eltRollover.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_ROLLOVER, Boolean.toString(rolloverActive));
 		eltNavigation.addContent(eltRollover);
 		
+		// Ajout du mouse speed
+		Element eltMouseSpeed = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_SPEED);
+		eltMouseSpeed.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED, Integer.toString(mouseSpeed));
+		eltNavigation.addContent(eltMouseSpeed);
+		
 		// Ajout des informations spécifiques au type
 		if (typeNavigation == TNavigationType.STANDARD)
 		{
@@ -233,6 +273,19 @@ public class CNavigation
 		
 		return eltNavigation;
 	}
+
+	
+	public int getMouseSpeed()
+	{
+		return mouseSpeed;
+	}
+
+
+	public void setMouseSpeed(int mouseSpeed)
+	{
+		this.mouseSpeed = mouseSpeed;
+	}
+
 
 	public boolean isBlockSelectionActive()
 	{
