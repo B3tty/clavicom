@@ -53,19 +53,19 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 		
 		// abonnement au listener des keyLauncher
 		
-		for( int i = 0 ; i < keyboard.size() ; ++i )
+		for( int i = 0 ; i < keyboard.groupCount() ; ++i )
 		{
 			CKeyGroup keyGroup = keyboard.getKeyGroup( i );
 			if( keyGroup != null )
 			{
-				for( int j = 0 ; j < keyGroup.size() ; ++j )
+				for( int j = 0 ; j < keyGroup.listCount() ; ++j )
 				{
-					CKeyList keyList = keyGroup.GetkeyList( j );
+					CKeyList keyList = keyGroup.getkeyList( j );
 					if( keyList != null )
 					{
-						for( int k = 0 ;  k < keyList.size() ; ++k )
+						for( int k = 0 ;  k < keyList.keyCount() ; ++k )
 						{
-							CKeyKeyboard keyboardKey = keyList.GetKeyboardKey( k );
+							CKeyKeyboard keyboardKey = keyList.getKeyKeyboard( k );
 							if( keyboardKey != null )
 							{
 								// on cast pour savoir si le type est bien keyLauncher

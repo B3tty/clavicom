@@ -40,6 +40,7 @@ public class UIKeyPrediction extends UIKeyDynamicString
 		super();
 		
 		coreKey = myCoreKey;
+		addListeners();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

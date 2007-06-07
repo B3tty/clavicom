@@ -40,6 +40,7 @@ public class UIKeyLastWord extends UIKeyDynamicString
 		super();
 		
 		coreKey = myCoreKey;
+		addListeners();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

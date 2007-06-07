@@ -45,12 +45,12 @@ public class TestPredictionEngine
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyPrediction keyLastWord1 = (CKeyPrediction)list.GetKeyboardKey( 5 );
-			CKeyPrediction keyLastWord2 = (CKeyPrediction)list.GetKeyboardKey( 6 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyPrediction keyLastWord1 = (CKeyPrediction)list.getKeyKeyboard( 5 );
+			CKeyPrediction keyLastWord2 = (CKeyPrediction)list.getKeyKeyboard( 6 );
 			
-			CKey key = (CKey)list.GetKeyboardKey( 0 );
-			CKey key2 = (CKey)list.GetKeyboardKey( 1 );
+			CKey key = (CKey)list.getKeyKeyboard( 0 );
+			CKey key2 = (CKey)list.getKeyKeyboard( 1 );
 			
 			// simulation du click
 			key.Click();

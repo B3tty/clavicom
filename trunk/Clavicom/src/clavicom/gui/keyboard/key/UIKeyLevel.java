@@ -40,6 +40,7 @@ public class UIKeyLevel extends UIKeyOneLevel
 		super();
 		
 		coreKey = myCoreKey;
+		addListeners();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

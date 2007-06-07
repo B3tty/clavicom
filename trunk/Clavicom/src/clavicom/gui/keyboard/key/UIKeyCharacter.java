@@ -42,25 +42,26 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 		super();
 		
 		coreKey = myCoreKey;
+		addListeners();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
-	protected void addListeners()
-	{
-		// Ajout des listeners supérieurs
-		super.addListeners();
-		
-		// Ajout au listener de caption
-		coreKey.addCaptionListener(this);
-	}
+//	protected void addListeners()
+//	{
+//		// Ajout des listeners supérieurs
+//		super.addListeners();
+//		
+//		// Ajout au listener de caption
+//		coreKey.addCaptionListener(this);
+//	}
 	
 	@Override
 	protected String getCaption()
 	{
 		// TODO Auto-generated method stub
-		return null;
+		return "RIEN";
 	}
 
 	@Override

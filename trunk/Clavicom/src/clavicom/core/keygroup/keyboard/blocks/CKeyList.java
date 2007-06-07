@@ -61,11 +61,11 @@ public class CKeyList
 		keyList.add( order, keybordKey );
 	}
 
-	public CKeyKeyboard GetKeyboardKey( int order )
+	public CKeyKeyboard getKeyKeyboard( int order )
 	{
 		return keyList.get( order );
 	}
-	public int size(){return keyList.size();}
+	public int keyCount(){return keyList.size();}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	private static CKeyKeyboard GetKeyboardKey( Element node ) throws Exception

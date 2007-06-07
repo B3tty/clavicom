@@ -69,8 +69,8 @@ public class testPanelOptionKeyShortCut
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyShortcut keyShortCut = (CKeyShortcut)list.GetKeyboardKey( 8 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyShortcut keyShortCut = (CKeyShortcut)list.getKeyKeyboard( 8 );
 			
 			
 			

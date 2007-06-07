@@ -70,8 +70,8 @@ public class testPanelOptionKeyLauncher
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
-			CKeyList list = group.GetkeyList( 0 );
-			CKeyLauncher keyLauncher = (CKeyLauncher)list.GetKeyboardKey( 3 );
+			CKeyList list = group.getkeyList( 0 );
+			CKeyLauncher keyLauncher = (CKeyLauncher)list.getKeyKeyboard( 3 );
 			
 			
 			PanelOptionKeyLauncher panelOptionclavicom = new PanelOptionKeyLauncher( keyLauncher );

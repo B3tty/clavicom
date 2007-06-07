@@ -27,6 +27,7 @@ package clavicom.gui.keyboard.key;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -210,6 +211,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
+			
+			// TODO
+			setPreferredSize(new Dimension(100,50));
+			setEditable(false);
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
@@ -237,6 +242,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{
 			// On recréé les images, car la caption a changé
 			recreateNormalImages();
+			
+			// On reselectionne la bonne image
+			selectGoodImage();
+			
+			// Redessin
+			repaint();
 		}
 		
 		//-----------------------------------------------------------------------
@@ -325,7 +336,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		public void componentMoved(ComponentEvent e)
 		{
-			System.out.println(getLocation().toString());
+			// Rien à ajouter
 		}
 		
 		public void componentShown(ComponentEvent e)

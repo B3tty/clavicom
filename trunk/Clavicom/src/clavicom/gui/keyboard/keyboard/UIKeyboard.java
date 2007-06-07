@@ -25,15 +25,82 @@
 
 package clavicom.gui.keyboard.keyboard;
 
-public class UIKeyboard
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JPanel;
+
+import clavicom.core.profil.CKeyboard;
+import clavicom.gui.keyboard.key.UIKey;
+import clavicom.gui.keyboard.key.UIKeyThreeLevel;
+
+public class UIKeyboard extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
+	private List<UIKey> allKeys;					// Liste des keys
+	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
+	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	/**
+	 * Créé l'UIKeyboard à partir du CKeyboard
+	 */
+	public UIKeyboard(CKeyboard coreKeyboard)
+	{
+		// Initialisation des attributs
+		keyGroups = new ArrayList<UIKeyGroup>();
+		allKeys = new ArrayList<UIKey>();
+		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
+		
+		// Récupération du nombre de groupes 
+		int groupCount = coreKeyboard.groupCount();
+		
+		// Variables temporaires
+		UIKeyGroup currentKeyGroup;
+		List<UIKeyThreeLevel> currentThreeLevelKeys = new ArrayList<UIKeyThreeLevel>();
+		List<UIKey> currentKeys = new ArrayList<UIKey>();
+		
+		// On parcours tous les groupes
+		for (int i = 0 ; i < groupCount ; ++i)
+		{
+			// Création du UIKeyGroup
+			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i));
+			
+			// Demande de récupération des ThreeLevelKeys
+			currentThreeLevelKeys.clear();
+			currentThreeLevelKeys = currentKeyGroup.getThreeLevelKeys();
+			
+			if(currentThreeLevelKeys != null)
+			{
+				threeLevelKeys.addAll(currentThreeLevelKeys);
+			}
+			
+			// Demande de récupération des Keys
+			currentKeys.clear();
+			currentKeys = currentKeyGroup.getKeys();
+			
+			if(currentKeys != null)
+			{
+				allKeys.addAll(currentKeys);
+			}
+		}
+		
+		// Ajout des touches au panel
+		addUIKeys();
+		
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	private void addUIKeys()
+	{
+		for (UIKey currentKey : allKeys)
+		{
+			// Ajout au panel
+			add(currentKey);
+		}
+	}
 }

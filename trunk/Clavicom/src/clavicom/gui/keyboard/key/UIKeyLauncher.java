@@ -41,6 +41,7 @@ public class UIKeyLauncher extends UIKeyOneLevel
 		super();
 		
 		coreKey = myCoreKey;
+		addListeners();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
