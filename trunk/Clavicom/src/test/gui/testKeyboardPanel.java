@@ -25,13 +25,13 @@ package test.gui;
 +-----------------------------------------------------------------------------*/
 
 import javax.swing.JFrame;
+
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.keyboard._UIKeyboardPanel;
 import clavicom.gui.language.UIString;
 
 public final class testKeyboardPanel extends JFrame {
@@ -39,7 +39,7 @@ public final class testKeyboardPanel extends JFrame {
 	private testKeyboardPanel() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-        getContentPane().add((new _UIKeyboardPanel()));
+        //getContentPane().add((new UIKeyboardPanel()));
         pack();
         setLocationRelativeTo(null);
     }
