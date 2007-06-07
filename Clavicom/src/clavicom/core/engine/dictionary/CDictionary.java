@@ -253,6 +253,9 @@ public class CDictionary
 			}
 		}
 		
+		// on sauvegarde la dernière sous-list (effet de bord)
+		listListString.add( subList );
+		
 		
 		// on construit la liste trié a partir de la liste de liste
 		for( int i = 0 ; i < listListString.size() ; ++i )

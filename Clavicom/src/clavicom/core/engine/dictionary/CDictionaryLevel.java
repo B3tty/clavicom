@@ -126,6 +126,7 @@ public class CDictionaryLevel
 		// ajout de la liste local
 		for( CDictionaryWord dictionaryWord : dictionaryWordOrededList )
 		{
+			// a trier //// TODO
 			CDictionary.addToOrderedList(dictionaryWord, returnList, nb);
 		}
 		
