@@ -48,7 +48,6 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.core.profil.CFont;
