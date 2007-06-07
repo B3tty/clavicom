@@ -25,8 +25,6 @@
 
 package test.gui;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
@@ -68,7 +66,7 @@ public class testPanelOptionKeyLauncher
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			CCommandEngine commandEngine = new CCommandEngine( keyboard, levelEngine );
+			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
@@ -83,7 +81,7 @@ public class testPanelOptionKeyLauncher
 			frame.setSize(900,400);
 			frame.add( sp );
 			
-			frame.show();
+			frame.setVisible(true);
 		}
 		catch(Exception e)
 		{

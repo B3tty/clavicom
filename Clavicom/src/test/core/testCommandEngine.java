@@ -37,7 +37,7 @@ public class testCommandEngine
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			CCommandEngine commandEngine = new CCommandEngine( keyboard, levelEngine );
+			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

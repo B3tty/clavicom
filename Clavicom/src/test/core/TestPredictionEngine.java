@@ -2,9 +2,6 @@ package test.core;
 
 import org.jdom.Element;
 
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLastWordEngine;
-import clavicom.core.engine.CLauncherEngine;
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.engine.dictionary.CDictionary;
@@ -12,8 +9,6 @@ import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
@@ -46,7 +41,7 @@ public class TestPredictionEngine
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			CPredictionEngine predictionEngine = new CPredictionEngine( keyboard, levelEngine, dictionary, profil.getPreferedWords() );
+			/*CPredictionEngine predictionEngine = */new CPredictionEngine( keyboard, levelEngine, dictionary, profil.getPreferedWords() );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

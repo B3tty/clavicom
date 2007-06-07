@@ -25,24 +25,19 @@
 
 package test.gui;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
-
-import clavicom.core.keygroup.CColor;
-import clavicom.gui.keyboard.key.panel.PanelOptionColor;
 
 public class testPanelOptionKey
 {
 	public static void main(String[] args)
 	{
-		CColor color = new CColor( Color.green );
+		//CColor color = new CColor( Color.green );
 		//PanelOptionColor panelOptionColor = new PanelOptionColor( color, "coucou" );
 		
 		JFrame frame = new JFrame();
 		frame.setSize(500,500);
 		//frame.add( panelOptionColor );
 		
-		frame.show();
+		frame.setVisible(true);
 	}
 }
