@@ -26,6 +26,7 @@
 package clavicom.gui.keyboard.key;
 
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -62,7 +63,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 {
 		//--------------------------------------------------------- CONSTANTES --//
 		// Dessin
-		final int TAILLE_BORDURE_INTERIEURE = 4;	// Taille de la bordure intérieure
+		final int TAILLE_BORDURE_INTERIEURE = 5;	// Taille de la bordure intérieure
 		final int TAILLE_ARC = 25;					// Rayon de l'arrondi du bouton
 		
 		final int SHADOW_INSET_H = 1;				// Décallage horizontal de l'ombre du texte
@@ -77,6 +78,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 												TAILLE_BORDURE_INTERIEURE;
 		
 		final int TAILLE_CADRE_SELECTION = 10;		// Taille du cadre de selection
+		
+		final int TAILLE_CONTOUR = 2;				// Taille du contour
+		final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 		
 		//---------------------------------------------------------- ATTRIBUTS --//	
 		
@@ -222,7 +226,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------
 		// Listeners
 		//-----------------------------------------------------------------------
-		public abstract CKey getCoreKey();
+		protected abstract CKey getCoreKey();
 		
 		public void colorChanged(TColorKeyEnum colorType)
 		{
@@ -528,7 +532,19 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 								TAILLE_BORDURE_INTERIEURE,
 								vButtonHighlightWidth,
 								vButtonHighlightHeight,
-								TAILLE_ARC,TAILLE_ARC);	
+								TAILLE_ARC,TAILLE_ARC);
+			
+			// Dessin du contour
+			bg.setColor(bgdColor.darker());
+			bg.setStroke(new BasicStroke(TAILLE_CONTOUR));
+			
+			bg.setClip(0, 0, getWidth(), getHeight());
+			
+			bg.drawRoundRect(	TAILLE_CONTOUR/2, 
+								TAILLE_CONTOUR/2, 
+								getWidth()-TAILLE_CONTOUR, 
+								getHeight()-TAILLE_CONTOUR,
+								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
 		}
 		
 		/**
