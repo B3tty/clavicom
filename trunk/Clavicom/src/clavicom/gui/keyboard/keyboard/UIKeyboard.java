@@ -100,8 +100,7 @@ public class UIKeyboard extends JPanel
 		for (UIKeyKeyboard currentKey : allKeys)
 		{
 			// On récupère la position de la touche
-			// TODO
-			((CKeyKeyboard)(currentKey.getCoreKey())).getPointMax();
+//			eee (CKeyKeyboard)(currentKey.getCoreKey())).getPointMax();
 			
 			// Ajout au panel
 			add(currentKey);
