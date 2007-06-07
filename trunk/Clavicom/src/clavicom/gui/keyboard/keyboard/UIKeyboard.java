@@ -30,8 +30,9 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.profil.CKeyboard;
-import clavicom.gui.keyboard.key.UIKey;
+import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 
 public class UIKeyboard extends JPanel
@@ -40,7 +41,7 @@ public class UIKeyboard extends JPanel
 
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
-	private List<UIKey> allKeys;					// Liste des keys
+	private List<UIKeyKeyboard> allKeys;					// Liste des keys
 	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -51,7 +52,7 @@ public class UIKeyboard extends JPanel
 	{
 		// Initialisation des attributs
 		keyGroups = new ArrayList<UIKeyGroup>();
-		allKeys = new ArrayList<UIKey>();
+		allKeys = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		
 		// Récupération du nombre de groupes 
@@ -60,7 +61,7 @@ public class UIKeyboard extends JPanel
 		// Variables temporaires
 		UIKeyGroup currentKeyGroup;
 		List<UIKeyThreeLevel> currentThreeLevelKeys = new ArrayList<UIKeyThreeLevel>();
-		List<UIKey> currentKeys = new ArrayList<UIKey>();
+		List<UIKeyKeyboard> currentKeys = new ArrayList<UIKeyKeyboard>();
 		
 		// On parcours tous les groupes
 		for (int i = 0 ; i < groupCount ; ++i)
@@ -89,7 +90,6 @@ public class UIKeyboard extends JPanel
 		
 		// Ajout des touches au panel
 		addUIKeys();
-		
 	}
 
 	//----------------------------------------------------------- METHODES --//	
@@ -97,8 +97,12 @@ public class UIKeyboard extends JPanel
 	//--------------------------------------------------- METHODES PRIVEES --//
 	private void addUIKeys()
 	{
-		for (UIKey currentKey : allKeys)
+		for (UIKeyKeyboard currentKey : allKeys)
 		{
+			// On récupère la position de la touche
+			// TODO
+			((CKeyKeyboard)(currentKey.getCoreKey())).getPointMax();
+			
 			// Ajout au panel
 			add(currentKey);
 		}

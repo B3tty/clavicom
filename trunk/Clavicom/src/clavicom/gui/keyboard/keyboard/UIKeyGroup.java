@@ -30,6 +30,7 @@ import java.util.List;
 
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.gui.keyboard.key.UIKey;
+import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 
 public class UIKeyGroup
@@ -85,10 +86,10 @@ public class UIKeyGroup
 	/**
 	 * Retourne la liste des UIKey contenues par le groupe
 	 */
-	public List<UIKey> getKeys()
+	public List<UIKeyKeyboard> getKeys()
 	{
 		// Construction de la liste des UIThreeLevelKeys
-		List<UIKey> keys = new ArrayList<UIKey>();
+		List<UIKeyKeyboard> keys = new ArrayList<UIKeyKeyboard>();
 		
 		// Parcours de keyLists
 		for (UIKeyList currentKeyList : keyLists)
