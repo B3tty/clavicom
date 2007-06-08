@@ -25,6 +25,7 @@
 
 package clavicom.gui.keyboard.key;
 
+import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 
 public class UIKeyPrediction extends UIKeyDynamicString
@@ -44,11 +45,11 @@ public class UIKeyPrediction extends UIKeyDynamicString
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 	@Override
-	protected CKeyPrediction getCoreKey()
+	public CKey getCoreKey()
 	{
 		return coreKey;
 	}
+	
+	//--------------------------------------------------- METHODES PRIVEES --//
 }

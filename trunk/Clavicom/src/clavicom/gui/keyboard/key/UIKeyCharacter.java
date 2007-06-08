@@ -46,7 +46,11 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-
+	@Override
+	public CKey getCoreKey()
+	{
+		return coreKey;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 //	protected void addListeners()
 //	{
@@ -62,11 +66,5 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 	{
 		// TODO Auto-generated method stub
 		return "RIEN";
-	}
-
-	@Override
-	protected CKey getCoreKey()
-	{
-		return coreKey;
 	}
 }

@@ -72,7 +72,7 @@ public class testUIKeyboard
 			CDictionary dictionary = null;
 			try
 			{
-				dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
+				//dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
 			}
 			catch (Exception ex)
 			{

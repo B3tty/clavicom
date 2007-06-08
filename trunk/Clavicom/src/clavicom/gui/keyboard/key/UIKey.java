@@ -50,7 +50,6 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.core.profil.CFont;
@@ -58,6 +57,7 @@ import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TUIKeyState;
+import clavicom.tools.TImageUtils;
 
 public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
 {
@@ -204,7 +204,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On définit la transparence
 			setOpaque(false);
-			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTrancparencyPourcent() / 100;
+			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTransparencyPourcent() / 100;
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -226,7 +226,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------
 		// Listeners
 		//-----------------------------------------------------------------------
-		protected abstract CKey getCoreKey();
+		public abstract CKey getCoreKey();
 		
 		public void colorChanged(TColorKeyEnum colorType)
 		{
@@ -329,7 +329,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On ettend l'image
 			if (currentImage != null)
 			{
-				currentImage = toBufferedImage(((Image)currentImage).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+				currentImage = TImageUtils.toBufferedImage(((Image)currentImage).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 			}
 			
 			// On réarme le timer
@@ -686,35 +686,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			return new Timer(RESIZE_TIMER_DURATION,action);
 		}
 		
-		/**
-		 * Converti une Image en BufferedImage
-		 * @param image
-		 * @return
-		 */
-		BufferedImage toBufferedImage(Image image)
-		{
-			// On test si l'image n'est pas déja une instance de BufferedImage
-			if ( image instanceof BufferedImage )
-			{
-				return ((BufferedImage) image);
-			}
-			else
-			{
-				// On s'assure que l'image est complètement chargée
-				image = new ImageIcon(image).getImage();
-	
-				// On crée la nouvelle image
-				BufferedImage bufferedImage = new BufferedImage(image
-						.getWidth(null), image.getHeight(null),
-						BufferedImage.TYPE_INT_ARGB);
-				Graphics g = bufferedImage.createGraphics();
-				g.drawImage(image, 0, 0, null);
-				g.dispose();
-	
-				return (bufferedImage);
-			}
-		}
-		
 		protected void loadCaptionImage()
 		{
 			// On teste l'existence de l'image
@@ -729,7 +700,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			ImageIcon iconImage = new ImageIcon(getCaption());	
 			
 			// Récupération de l'image
-			originalCaptionImage = toBufferedImage(iconImage.getImage());
+			originalCaptionImage = TImageUtils.toBufferedImage(iconImage.getImage());
 		}
 		
 		protected abstract String getCaption();

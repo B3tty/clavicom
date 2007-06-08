@@ -35,24 +35,24 @@ public class CTransparency
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	private int KeyboardTrancparencyPourcent;
-	private int KeyTrancparencyPourcent;
+	private int KeyboardTransparencyPourcent;
+	private int KeyTransparencyPourcent;
 	
-	public int getKeyboardTrancparencyPourcent()
+	public int getKeyboardTransparencyPourcent()
 	{
-		return KeyboardTrancparencyPourcent;
+		return KeyboardTransparencyPourcent;
 	}
-	public void setKeyboardTrancparencyPourcent(int keyboardTrancparencyPourcent)
+	public void setKeyboardTrancparencyPourcent(int keyboardTransparencyPourcent)
 	{
-		KeyboardTrancparencyPourcent = keyboardTrancparencyPourcent;
+		KeyboardTransparencyPourcent = keyboardTransparencyPourcent;
 	}
-	public int getKeyTrancparencyPourcent()
+	public int getKeyTransparencyPourcent()
 	{
-		return KeyTrancparencyPourcent;
+		return KeyTransparencyPourcent;
 	}
-	public void setKeyTrancparencyPourcent(int keyTrancparencyPourcent)
+	public void setKeyTransparencyPourcent(int keyTransparencyPourcent)
 	{
-		KeyTrancparencyPourcent = keyTrancparencyPourcent;
+		KeyTransparencyPourcent = keyTransparencyPourcent;
 	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -74,7 +74,7 @@ public class CTransparency
 		
 		try
 		{
-			KeyboardTrancparencyPourcent = Integer.parseInt( s_keyboardTransparency );
+			KeyboardTransparencyPourcent = Integer.parseInt( s_keyboardTransparency );
 		}
 		catch(Exception ex)
 		{
@@ -92,7 +92,7 @@ public class CTransparency
 		
 		try
 		{
-			KeyTrancparencyPourcent = Integer.parseInt( s_keyTransparency );
+			KeyTransparencyPourcent = Integer.parseInt( s_keyTransparency );
 		}
 		catch(Exception ex)
 		{
@@ -108,12 +108,12 @@ public class CTransparency
 		
 		// ajout de la transparence du clavier
 		Element keyboardTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
-		keyboardTransparency_elem.setText( String.valueOf( KeyboardTrancparencyPourcent ) );
+		keyboardTransparency_elem.setText( String.valueOf( KeyboardTransparencyPourcent ) );
 		transparencyElement.addContent( keyboardTransparency_elem );
 		
 		// ajout de la transparence des touches
 		Element keyTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
-		keyTransparency_elem.setText( String.valueOf( KeyTrancparencyPourcent ) );
+		keyTransparency_elem.setText( String.valueOf( KeyTransparencyPourcent ) );
 		transparencyElement.addContent( keyTransparency_elem );
 		
 		return transparencyElement;
