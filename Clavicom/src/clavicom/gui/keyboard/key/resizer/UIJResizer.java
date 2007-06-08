@@ -47,17 +47,17 @@ public abstract class UIJResizer extends JComponent
 	//--------------------------------------------------------- CONSTANTES --//
 	final int MINIMUM_HEIGHT = 10;
 	final int MINIMUM_WIDTH = 10;
+	final int INSET_SIZE = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	private UISelectableBorder resizableBorder;	// Bordure lors du resize
-	private boolean changeSelection;
-	private boolean nowResizing;			
+	private boolean changeSelection;		
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIJResizer()
 	{
 		setLayout(new BorderLayout());
-		resizableBorder = new UISelectableBorder(6);
+		resizableBorder = new UISelectableBorder(INSET_SIZE);
 		resizableBorder.setVisible(false);
 	}
 	
@@ -150,6 +150,9 @@ public abstract class UIJResizer extends JComponent
 				int dx = me.getX() - startPos.x;
 				int dy = me.getY() - startPos.y;
 				
+				//System.out.println(" X:" +String.valueOf(dx) + " Y :" + String.valueOf(dy));
+				//System.out.println(" GetX:" +String.valueOf(me.getX()) + " GetY :" + String.valueOf(me.getY()));
+				
 				Rectangle newBounds = new Rectangle(); 
 				
 				switch ( cursor )
@@ -231,7 +234,10 @@ public abstract class UIJResizer extends JComponent
 		{
 			if ((newSize.getWidth() > MINIMUM_WIDTH) && (newSize.getHeight() > MINIMUM_HEIGHT))
 			{
-				setBounds(newSize);
+				if(newSize.getWidth()%15 == 0)
+				{
+					setBounds(newSize);
+				}
 			}
 		}
 
