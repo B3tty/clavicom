@@ -150,8 +150,8 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
-		// On replace les touches
-		replaceUIKeys();
+//		// On replace les touches
+//		replaceUIKeys();
 		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;

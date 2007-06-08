@@ -63,7 +63,7 @@ public abstract class UIKeyKeyboard extends UIKey
 	
 	@Override
 	protected void onBoundsChanged()
-	{
+	{		
 		// Calcul des nouvelles positions
 		// On caste en CKeyKeyboard
 		CKeyKeyboard keyKeyboard = (CKeyKeyboard)(getCoreKey());
