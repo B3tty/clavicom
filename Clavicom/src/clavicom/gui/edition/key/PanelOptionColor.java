@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionKey.java
+			Filename			: PanelOptionColor.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -23,58 +23,64 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.panel;
+package clavicom.gui.edition.key;
 
-
-import java.awt.BorderLayout;
 import java.awt.Color;
-
-import javax.swing.BorderFactory;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.CKey;
-import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 
-public class PanelOptionKey extends JPanel
+public class PanelOptionColor extends JPanel implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
+	//---------------------------------------------------------- VARIABLES --//	
 	CKey key;
+	JButton colorButton;
+	TColorKeyEnum colorEnum;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelOptionKey( CKey myKey )
+	public PanelOptionColor( CKey myKey, TColorKeyEnum myColorEnum )
 	{
 		key = myKey;
+		colorEnum = myColorEnum;
 		
-		setLayout( new BorderLayout() );
+		add( new JLabel( colorEnum.toString() ) );
 		
-		JPanel panelGlobal = new JPanel();
-		
-		JPanel colors = new JPanel();
-		
-		// création des trois panels des couleurs et ajout
-		PanelOptionColor panelColorClicked = new PanelOptionColor( key, TColorKeyEnum.PRESSED );
-		PanelOptionColor panelColorEntered = new PanelOptionColor( key, TColorKeyEnum.ENTERED );
-		PanelOptionColor panelColorNormal = new PanelOptionColor( key, TColorKeyEnum.NORMAL );
-		
-		colors.add( panelColorNormal );
-		colors.add( panelColorEntered );
-		colors.add( panelColorClicked );
+		colorButton = new JButton();
+		colorButton.setPreferredSize( new Dimension(30,20) );
+		colorButton.setBackground( key.getColor( colorEnum ) );
 		
 		
+		add( colorButton );
 		
-		colors.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
-				UIString.getUIString("LB_COLOR_COLOR_MANAGEMENT")) );
-		
-		panelGlobal.add(colors);
+		colorButton.addActionListener( this );
+	
+	}
 
-		add( panelGlobal, BorderLayout.NORTH );
+	public void actionPerformed(ActionEvent arg0)
+	{
+		Color newColor = JColorChooser.showDialog( this, "Choix de la couleur", key.getColor( colorEnum ) );
+		
+		if( newColor != null )
+		{
+			if( newColor != key.getColor( colorEnum ) )
+			{
+				// la couleur à changé
+				key.setColor( newColor, colorEnum );
+
+				colorButton.setBackground( newColor );
+			}
+		}
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
-	
-
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

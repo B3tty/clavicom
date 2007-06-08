@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.panel;
+package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
