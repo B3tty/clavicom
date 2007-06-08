@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationLangueUIName.java
+			Filename			: PanelModificationFont.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,24 +25,24 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CLangueUIName;
+import clavicom.core.profil.CFont;
 
-public class PanelModificationLangueUIName extends PanelModification
+public class PanelModificationProfilFont extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	CLangueUIName langueUIName;
-
-	//------------------------------------------------------ CONSTRUCTEURS --//
+	//---------------------------------------------------------- VARIABLES --//	
+	CFont font;
 	
-	public PanelModificationLangueUIName(String title, CLangueUIName myLangueUIName)
+	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationProfilFont(String title, CFont myFont)
 	{
 		super(title);
 		
-		langueUIName = myLangueUIName;
+		font = myFont;
 	}
 
 	
@@ -52,7 +52,7 @@ public class PanelModificationLangueUIName extends PanelModification
 	@Override
 	public int validateDataEntry()
 	{
-		// Si la langue de l'UI à changé, on la change le nom du fichier UI
+		// si la police a changé, on la met dans le font
 		
 		return 0;
 	}

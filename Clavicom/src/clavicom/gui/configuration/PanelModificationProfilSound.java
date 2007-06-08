@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationNavigation.java
+			Filename			: PanelModificationSound.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,33 +25,34 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CNavigation;
+import clavicom.core.profil.CSound;
 
-public class PanelModificationNavigation extends PanelModification
+public class PanelModificationProfilSound extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CNavigation navigation;
+	CSound sound;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationNavigation(String title, CNavigation myNavigation)
+	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationProfilSound(String title, CSound mySound)
 	{
 		super(title);
 		
-		navigation = myNavigation;
+		sound = mySound;
 	}
 
 	
 
-	//----------------------------------------------------------- METHODES --//
+	//----------------------------------------------------------- METHODES --//	
 	
 	@Override
 	public int validateDataEntry()
 	{
-		// Si la navigation a changé, on la change dans le profil
+		// Si la gestion du son a changé, on la change dans le profil
 		
 		return 0;
 	}

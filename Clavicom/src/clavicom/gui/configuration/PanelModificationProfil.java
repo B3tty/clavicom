@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationDictionaryName.java
+			Filename			: PanelModification.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,36 +25,35 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CDictionaryName;
+import java.awt.Color;
 
-public class PanelModificationDictionaryName extends PanelModification
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+public abstract class PanelModificationProfil extends JPanel
 {
-
-	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CDictionaryName dictionaryName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationDictionaryName(String title, CDictionaryName myDictionaryName)
+	public PanelModificationProfil( String title )
 	{
-		super(title);
-		
-		dictionaryName = myDictionaryName;
+		setBorder( 
+				BorderFactory.createTitledBorder( 
+						BorderFactory.createLineBorder( Color.BLACK ), 
+						title ) );
 	}
 
+	//----------------------------------------------------------- METHODES --//	
 	
-
-	//----------------------------------------------------------- METHODES --//
-	
-	@Override
-	public int validateDataEntry()
-	{
-		// Si le dictionnaire a été changé, on change son nom
-		
-		return 0;
-	}
+	/**
+	 * mettre les données des composants dans les variable du profil
+	 * Retour : 
+	 * 		* 0 si rien n'a été changé
+	 * 		* 1 si quelque chose a changé
+	 */
+	public abstract int validateDataEntry();
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

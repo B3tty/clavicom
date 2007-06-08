@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationSound.java
+			Filename			: PanelModificationLangueUIName.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,34 +25,34 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CSound;
+import clavicom.core.profil.CLangueUIName;
 
-public class PanelModificationSound extends PanelModification
+public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CSound sound;
+	CLangueUIName langueUIName;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelModificationSound(String title, CSound mySound)
+	public PanelModificationProfilLangueUIName(String title, CLangueUIName myLangueUIName)
 	{
 		super(title);
 		
-		sound = mySound;
+		langueUIName = myLangueUIName;
 	}
 
 	
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
 	
 	@Override
 	public int validateDataEntry()
 	{
-		// Si la gestion du son a changé, on la change dans le profil
+		// Si la langue de l'UI à changé, on la change le nom du fichier UI
 		
 		return 0;
 	}

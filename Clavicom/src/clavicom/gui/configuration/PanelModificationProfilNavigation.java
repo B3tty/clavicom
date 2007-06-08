@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationTransparency.java
+			Filename			: PanelModificationNavigation.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,34 +25,33 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CTransparency;
+import clavicom.core.profil.CNavigation;
 
-public class PanelModificationTransparency extends PanelModification
+public class PanelModificationProfilNavigation extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CTransparency transparency;
+	CNavigation navigation;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-	
-	public PanelModificationTransparency(String title, CTransparency myTransparency)
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public PanelModificationProfilNavigation(String title, CNavigation myNavigation)
 	{
 		super(title);
 		
-		transparency = myTransparency;
+		navigation = myNavigation;
 	}
 
 	
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
 	
 	@Override
 	public int validateDataEntry()
 	{
-		// Si la gestion de la transparence a changé, on la change dans le profil
+		// Si la navigation a changé, on la change dans le profil
 		
 		return 0;
 	}
