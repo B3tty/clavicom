@@ -26,6 +26,7 @@
 package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
+
 import clavicom.tools.TMouseKeyMoveEnum;
 
 public class CMouseKeyMove extends CMouseKey

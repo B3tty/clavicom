@@ -234,10 +234,7 @@ public abstract class UIJResizer extends JComponent
 		{
 			if ((newSize.getWidth() > MINIMUM_WIDTH) && (newSize.getHeight() > MINIMUM_HEIGHT))
 			{
-				if(newSize.getWidth()%15 == 0)
-				{
 					setBounds(newSize);
-				}
 			}
 		}
 

@@ -364,11 +364,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void paintComponent(Graphics myGraphic)
 		{
+			// Appel du père
 			super.paintComponent(myGraphic);
 			try
 			{
-				// Appel du père
-				super.paintComponent(myGraphic);
+
 				
 				// Récupération du Graphics2D
 				Graphics2D g2 = (Graphics2D) myGraphic;
@@ -671,6 +671,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// Méthode appelée à chaque tic du timer
 				public void actionPerformed(ActionEvent event)
 				{
+					System.out.println("timer key !");
 					resizeTimer.stop();
 					recreateNormalImages();
 					selectGoodImage();

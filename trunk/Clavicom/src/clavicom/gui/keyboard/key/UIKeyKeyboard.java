@@ -25,6 +25,7 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
@@ -63,7 +64,7 @@ public abstract class UIKeyKeyboard extends UIKey
 	
 	@Override
 	protected void onBoundsChanged()
-	{		
+	{				
 		// Calcul des nouvelles positions
 		// On caste en CKeyKeyboard
 		CKeyKeyboard keyKeyboard = (CKeyKeyboard)(getCoreKey());
@@ -82,6 +83,32 @@ public abstract class UIKeyKeyboard extends UIKey
 		
 		// Affectation des nouveaux points à l'objet du noyau
 		keyKeyboard.setPointMin(tptMin);
-		keyKeyboard.setPointMax(tptMax);		
+		keyKeyboard.setPointMax(tptMax);	
+		
+		System.out.println(	"Après resize... Min : [" + keyKeyboard.getPointMin().getX() + "|" + keyKeyboard.getPointMin().getY() +
+							"] Max : [" + keyKeyboard.getPointMax().getX() + "|" + keyKeyboard.getPointMax().getY() + "]");
+	}
+	
+	public void replaceKey()
+	{		
+		// Calcul des nouvelles positions
+		// On caste en CKeyKeyboard
+		CKeyKeyboard keyKeyboard = (CKeyKeyboard)(getCoreKey());
+		
+		// On récupère les pourcentages des positions
+		TPoint relMax = keyKeyboard.getPointMax();
+		TPoint relMin = keyKeyboard.getPointMin();
+		
+		// Calcul des positions absolues
+		int absMinX = Math.round(getWidth()*relMin.getX());
+		int absMinY = Math.round(getHeight()*relMin.getY());
+		int absMaxX = Math.round(getWidth()*relMax.getX());
+		int absMaxY = Math.round(getHeight()*relMax.getY());
+		
+		
+		// Affectation de la position
+		setLocation(absMinX,absMinY);
+		setPreferredSize(new Dimension (	absMaxX - absMinX,
+											absMaxY - absMinY));
 	}
 }
