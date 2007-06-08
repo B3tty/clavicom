@@ -51,6 +51,7 @@ public abstract class UIJResizer extends JComponent
 	//---------------------------------------------------------- VARIABLES --//	
 	private UISelectableBorder resizableBorder;	// Bordure lors du resize
 	private boolean changeSelection;
+	private boolean nowResizing;			
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIJResizer()
@@ -213,8 +214,6 @@ public abstract class UIJResizer extends JComponent
 						didResized();
 				}
 				
-				onBoundsChanged();
-				
 				// cursor shouldn't change while dragging
 				setCursor(Cursor.getPredefinedCursor(cursor));
 			}
@@ -239,6 +238,9 @@ public abstract class UIJResizer extends JComponent
 		public void mouseReleased(MouseEvent mouseEvent)
 		{
 			startPos = null;
+			
+			// On indique que les dimensions ont changées
+			onBoundsChanged();
 			
 			if (changeSelection == true)
 			{

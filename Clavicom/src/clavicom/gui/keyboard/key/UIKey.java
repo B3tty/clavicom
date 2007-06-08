@@ -442,7 +442,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		// Mode édition
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredEdit()
-		{			
+		{
 			state = TUIKeyState.ENTERED;
 			selectGoodImage();
 			
