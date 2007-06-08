@@ -219,7 +219,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// TODO
 			//setPreferredSize(new Dimension(100,50));
-			setEditable(true);
+			setEditable( false );
 		}
 		
 		//----------------------------------------------------------- METHODES --//	

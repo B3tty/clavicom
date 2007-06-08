@@ -314,4 +314,19 @@
 	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
 	<message id = "LB_KEYSTRING_TEXTWRITE">Texte écrit par l'ordinateur</message>
 	
+	<!-- Key creation -->
+	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
+	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>
+	<message id = "LB_KEYCREATION_KEYSTRING_EXEMPLE">Abdelmalek BOUREGHDA</message>
+	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
+	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
+	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
+	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
+	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configuration de l'application</message>
+	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
+	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
+	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
+	
 </language>

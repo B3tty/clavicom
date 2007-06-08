@@ -49,12 +49,17 @@ public abstract class CKey
     // un seul objet pour tous les types d'écouteurs
     protected final EventListenerList listeners = new EventListenerList();
 
+	public void setCaptionImage(boolean captionImage)
+	{
+		this.captionImage = captionImage;
+	}
+
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKey( Color myNormal, Color myPressed, Color myEntered )
 	{
-		normal.setColor( myNormal) ;
-		pressed.setColor( myPressed );
-		entered.setColor( myEntered );
+		normal = new CColor(myNormal);
+		pressed = new CColor(myPressed);
+		entered = new CColor(myEntered);
 	}
 	
 	public CKey( Element node ) throws Exception
