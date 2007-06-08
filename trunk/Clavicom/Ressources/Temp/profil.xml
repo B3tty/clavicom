@@ -1,7 +1,7 @@
 <profil>
 	<language_ui>francais.clg</language_ui>
 	<commandset_name>francais.css</commandset_name>
-	<dictionary_name>francais.cdc</dictionary_name>
+	<dictionary_name>francaisPlusFreq.cdc</dictionary_name>
 	<keyboard_color>
 		<back_color>
 			<red>215</red>
@@ -88,7 +88,7 @@
 						</color_entered>
 					</colors>
 					<commands>
-						<command_normal id="2"></command_normal>
+						<command_normal id="22"></command_normal>
 						<command_shift id="1"></command_shift>
 						<command_altgr id="2"></command_altgr>
 					</commands>

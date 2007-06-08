@@ -25,10 +25,7 @@
 
 package clavicom.core.engine.dictionary;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -43,14 +40,8 @@ public class CDictionary
 	static int nbDictionaryLevel = 4;
 
 	//---------------------------------------------------------- VARIABLES --//
-	CDictionaryLevel dictionaryLevel_0;
-	
-	// == TMP POUR TEST ================================================
-	public CDictionaryLevel getDictionaryLevel_0()
-	{
-		return dictionaryLevel_0;
-	}
-	// == TMP POUR TEST ================================================
+	CDictionaryLevel dictionaryGlobal;
+	CDictionaryLevel dictionaryUser;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CDictionary( 
@@ -58,7 +49,8 @@ public class CDictionary
 			CPreferedWords preferedWords
 			) throws Exception
 	{
-		dictionaryLevel_0 = new CDictionaryLevel( new Character(' ') ); // le caractere du niveau 0, on s'en fou
+		dictionaryGlobal = new CDictionaryLevel( new Character(' ') ); // le caractere du niveau 0, on s'en fou
+		dictionaryUser = new CDictionaryLevel( new Character(' ') ); // le caractere du niveau 0, on s'en fou
 		
 		// Chargement du fichier de dictionaire
 		LoadDictionary( dictionaryName );
@@ -78,7 +70,7 @@ public class CDictionary
 			preferedWord = preferedWords.getPreferedWord( i );
 			if( preferedWord != null )
 			{
-				addWord( new CDictionaryWord(  preferedWord.getWord(), preferedWord.getFrequency() ) );
+				addWord( dictionaryUser, new CDictionaryWord(  preferedWord.getWord(), preferedWord.getFrequency() ) );
 			}
 		}
 		
@@ -86,36 +78,33 @@ public class CDictionary
 	
 	private void LoadDictionary(CDictionaryName dictionaryName) throws Exception
 	{
-		InputStream ips = null; 
-		InputStreamReader ipsr = null;
-		BufferedReader br = null;
-		
+
 		String dictionaryPath = CFilePaths.getDictionaries() + dictionaryName.getDictionaryName();
 		
-		// ouverture du fichier
-		try
-		{
-			ips = new FileInputStream( dictionaryPath ); 
-			ipsr = new InputStreamReader(ips, "UTF-8");
-			br = new BufferedReader(ipsr);
-		}
-		catch (Exception e)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_DICTIONARY_BUILD" ) + "] :" + UIString.getUIString("EX_DICTIONARY_OPEN") + dictionaryPath + " : " + e.getMessage() );
-		}
+
+
+		// Ouverture du fichier
+		FileInputStream fis = new FileInputStream( dictionaryPath );
+		
+		// On construit et on lit autant d'octets qu'il y a dans le fichier
+		int x= fis.available();
+		byte b[]= new byte[x];
+		fis.read(b);
+		fis.close();
+		
+		// On construit la String à partir du buffer
+		String content = new String(b,"UTF-8");
+		String[] tabDico = content.split("[\r][\n]");
+		int frequence = tabDico.length;
 		
 		// parcourt du fichier
 		try
 		{
-			String word;
-			
-			while ( (word = br.readLine() ) != null )
+			for ( String word : tabDico )
 			{
 				// pour chaque mot - on met tout en minuscule
-				addWord( new CDictionaryWord( word.toLowerCase(), 0 ) );
+				addWord( dictionaryGlobal, new CDictionaryWord( word.toLowerCase(), frequence-- ) );
 			}
-			
-			br.close(); 
 		}		
 		catch (Exception e)
 		{
@@ -124,10 +113,10 @@ public class CDictionary
 
 	}
 
-	public void addWord( CDictionaryWord newDictionaryWord )
+	public void addWord( CDictionaryLevel dictionaryGlobal, CDictionaryWord newDictionaryWord )
 	{
 		Character currentCharacter;
-		CDictionaryLevel currentDictionaryLevel = dictionaryLevel_0;
+		CDictionaryLevel currentDictionaryLevel = dictionaryGlobal;
 		CDictionaryLevel currentDictionaryLevelTemp;
 		
 		for( int i = 0 ; i < nbDictionaryLevel ; ++i )
@@ -176,10 +165,16 @@ public class CDictionary
 	 */
 	public List<String> getWords( String beginString, int nbOfWord )
 	{
+		
+		
+		// ====================================================================================
+		// récupération des mots du dictionnaire
+		// ====================================================================================
 		List<CDictionaryWord> dictionaryWordList = new ArrayList<CDictionaryWord>( nbOfWord );
 		
-		CDictionaryLevel currentLevel = dictionaryLevel_0;
+		CDictionaryLevel currentLevel = dictionaryGlobal;
 		CDictionaryLevel currentLevelTemp;
+		boolean rienTrouve = false;
 		
 		// on trouve le bon level
 		for( int i = 0 ; i < beginString.length() ; ++i )
@@ -187,20 +182,109 @@ public class CDictionary
 			currentLevelTemp = currentLevel.getDictionaryLevel( beginString.charAt( i ) );
 			if( currentLevelTemp == null )
 			{
+				rienTrouve = true;
 				break;
 			}
 			currentLevel = currentLevelTemp;
 			
 		}
 		
-		// je suis au bon niveau, donc je prend les mots du niveau
-		// plus ceux des niveaux du dessous
-		dictionaryWordList = currentLevel.getDictionaryWordOrededList( nbOfWord );
+		List<String> shortListDico = new ArrayList<String>();
 		
-		// Tri de la list par order alphabétique
-		List<String> shortList = TrierListe( dictionaryWordList );
+		// si la requete donne bien quelque chose
+		if( ! rienTrouve )
+		{
+			// je suis au bon niveau, donc je prend les mots du niveau
+			// plus ceux des niveaux du dessous
+			dictionaryWordList = currentLevel.getDictionaryWordOrededList( nbOfWord );
+			
+			// Tri de la list par order alphabétique
+			//shortListDico = TrierListe( dictionaryWordList );
+			
+			// on met en tableau de string
+			for( CDictionaryWord dictionaryWord : dictionaryWordList )
+			{
+				shortListDico.add( dictionaryWord.getWord() );
+			}
+		}
 		
-		return shortList;
+		
+		
+		
+		
+		// ====================================================================================
+		// récupération des mots de l'utilisateur
+		// ====================================================================================
+		dictionaryWordList = new ArrayList<CDictionaryWord>( nbOfWord );
+		
+		currentLevel = dictionaryUser;
+		rienTrouve = false;
+		
+		// on trouve le bon level
+		for( int i = 0 ; i < beginString.length() ; ++i )
+		{
+			currentLevelTemp = currentLevel.getDictionaryLevel( beginString.charAt( i ) );
+			if( currentLevelTemp == null )
+			{
+				rienTrouve = true;
+				break;
+			}
+			currentLevel = currentLevelTemp;
+			
+		}
+		
+		List<String> shortListUser = new ArrayList<String>();
+		
+		// si la requete donne bien quelque chose
+		if( ! rienTrouve )
+		{
+			// je suis au bon niveau, donc je prend les mots du niveau
+			// plus ceux des niveaux du dessous
+			dictionaryWordList = currentLevel.getDictionaryWordOrededList( nbOfWord );
+			
+			// Tri de la list par order alphabétique
+			//shortListUser = TrierListe( dictionaryWordList );
+			
+			// on met en tableau de string
+			for( CDictionaryWord dictionaryWord : dictionaryWordList )
+			{
+				shortListUser.add( dictionaryWord.getWord() );
+			}
+		}
+		
+		
+		
+		
+		// ====================================================================================
+		// Fusion des deux listes en mettant ceux de l'utilisateur en premier
+		// ====================================================================================
+		List<String> finalList = new ArrayList<String>();
+		
+		// celle de l'utilisteur en premier
+		for( String word : shortListUser )
+		{
+			finalList.add( word );
+		}
+		
+		// Puis celle du dictionnaire
+		for( String word : shortListDico )
+		{
+			finalList.add( word );
+		}
+		
+		int index = 0;
+		if( nbOfWord > finalList.size() )
+		{
+			index = finalList.size();
+		}
+		else
+		{
+			index = nbOfWord;
+		}
+		finalList = finalList.subList(0, index);
+		
+		
+		return finalList;
 	}
 	
 	private List<String> TrierListe(List<CDictionaryWord> wordList)
@@ -280,7 +364,7 @@ public class CDictionary
 
 	public CDictionaryWord getWord( String word )
 	{
-		CDictionaryLevel currentLevel = dictionaryLevel_0;
+		CDictionaryLevel currentLevel = dictionaryGlobal;
 		CDictionaryLevel currentLevelTemp;
 		Character currentCharacter;
 		
@@ -322,7 +406,7 @@ public class CDictionary
 	
 	public void increaseWord( String word )
 	{
-		CDictionaryLevel currentLevel = dictionaryLevel_0;
+		CDictionaryLevel currentLevel = dictionaryUser;
 		CDictionaryLevel currentLevelTemp;
 		Character currentCharacter;
 		
@@ -431,6 +515,12 @@ public class CDictionary
 		
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+
+	public CDictionaryLevel getUserDictionnaryLevel()
+	{
+		return dictionaryUser;
+	}
 
 	
 }
