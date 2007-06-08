@@ -25,13 +25,20 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationKeyboardColor
+public class PanelModificationKeyboardColor extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationKeyboardColor(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

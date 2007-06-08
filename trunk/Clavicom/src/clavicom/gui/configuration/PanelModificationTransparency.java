@@ -25,13 +25,20 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationTransparency
+public class PanelModificationTransparency extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationTransparency(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

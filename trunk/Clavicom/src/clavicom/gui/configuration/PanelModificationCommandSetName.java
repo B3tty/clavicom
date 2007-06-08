@@ -25,15 +25,20 @@
 
 package clavicom.gui.configuration;
 
-import javax.swing.JPanel;
 
-public class PanelModificationCommandSetName extends JPanel
+public class PanelModificationCommandSetName extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public PanelModificationCommandSetName(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

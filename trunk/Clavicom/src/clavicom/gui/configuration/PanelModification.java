@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationLangueUIName.java
+			Filename			: PanelModification.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,19 +25,24 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationLangueUIName extends PanelModification
-{
+import java.awt.Color;
 
-	
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+public class PanelModification extends JPanel
+{
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	
-	public PanelModificationLangueUIName(String title)
+	public PanelModification( String title )
 	{
-		super(title);
+		setBorder( 
+				BorderFactory.createTitledBorder( 
+						BorderFactory.createLineBorder( Color.BLACK ), 
+						title ) );
 	}
 
 	//----------------------------------------------------------- METHODES --//	

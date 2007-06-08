@@ -25,13 +25,19 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationNavigation
+public class PanelModificationNavigation extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public PanelModificationNavigation(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 
