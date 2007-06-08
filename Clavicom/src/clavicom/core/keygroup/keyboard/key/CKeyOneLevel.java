@@ -26,7 +26,9 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import java.awt.Color;
+
 import org.jdom.Element;
+
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;

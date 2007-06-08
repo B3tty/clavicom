@@ -115,7 +115,9 @@ public class testUIKeyboard
 			frame.setAlwaysOnTop(true);
 			frame.setFocusableWindowState(false);
 			
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
+			
 		}
 		catch(Exception e)
 		{

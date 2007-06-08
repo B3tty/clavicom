@@ -127,9 +127,6 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// Création du Timer resize
 		resizeTimer = createResizeTimer();
 		
-		// On double bufferise
-		setDoubleBuffered(true);
-		
 		// Ajout des touches au panel
 		addUIKeys();
 		
@@ -150,8 +147,8 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
-//		// On replace les touches
-//		replaceUIKeys();
+		// On replace les touches
+		//replaceUIKeys();
 		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
@@ -167,9 +164,6 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		}
 		
 		g2.drawImage(imgBackground, 0, 0, null);
-		
-		// On redessine les touches
-		repaintKeys();
 	}
 
 	//-----------------------------------------------------------------------
@@ -186,7 +180,7 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	public void componentResized(ComponentEvent arg0)
 	{
 		// On repositionne les touches
@@ -200,7 +194,8 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		}
 		
 		// On réarme le timer
-		resizeTimer.restart();
+		repaint();
+		//resizeTimer.restart();
 	}
 
 	public void componentShown(ComponentEvent arg0)
@@ -253,16 +248,7 @@ public class UIKeyboard extends JPanel implements ComponentListener
 	
 	//-----------------------------------------------------------------------
 	// Dessin
-	//-----------------------------------------------------------------------
-	private void repaintKeys()
-	{
-		for (UIKeyKeyboard currentKey : allKeys)
-		{						
-			// Ajout au panel
-			currentKey.repaint();
-		}
-	}
-	
+	//-----------------------------------------------------------------------	
 	protected BufferedImage recreateBackground()
 	{			
 		// Variables
