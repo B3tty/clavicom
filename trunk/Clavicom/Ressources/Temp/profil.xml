@@ -14,14 +14,14 @@
 			<blue>98</blue>
 		</default_normal>
 		<default_clicked>
-			<red>215</red>
+			<red>50</red>
 			<green>100</green>
-			<blue>98</blue>
+			<blue>80</blue>
 		</default_clicked>
 		<default_entered>
-			<red>215</red>
-			<green>100</green>
-			<blue>98</blue>
+			<red>29</red>
+			<green>19</green>
+			<blue>99</blue>
 		</default_entered>
 	</keyboard_color>
 	<navigation>
