@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
@@ -44,9 +46,9 @@ public class CKeyLauncher extends CKeyOneLevel
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLauncher(
-			CColor myColorNormal, 
-			CColor myColorClicked , 
-			CColor myColorEntered , 
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered , 
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)

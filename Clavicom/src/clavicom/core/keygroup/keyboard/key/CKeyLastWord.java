@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
 import clavicom.tools.TPoint;
@@ -37,8 +39,8 @@ public class CKeyLastWord extends CKeyDynamicString
 	//---------------------------------------------------------- VARIABLES --//
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyLastWord(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+	public CKeyLastWord(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
 			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,

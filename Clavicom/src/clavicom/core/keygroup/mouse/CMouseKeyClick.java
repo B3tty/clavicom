@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.mouse;
 
+import java.awt.Color;
+
 import clavicom.core.keygroup.CColor;
 import clavicom.tools.TMouseKeyClickEnum;
 
@@ -39,9 +41,9 @@ public class CMouseKeyClick extends CMouseKey
 	public CMouseKeyClick( 
 			TMouseKeyClickEnum myClick,
 			String caption,
-			CColor myColorNormal, 
-			CColor myColorClicked , 
-			CColor myColorEntered)
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered)
 	{
 		super( caption, myColorNormal, myColorClicked, myColorEntered );
 		click = myClick;

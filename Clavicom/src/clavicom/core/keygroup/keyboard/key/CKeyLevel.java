@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
@@ -46,9 +48,9 @@ public class CKeyLevel extends CKeyOneLevel
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLevel(
-			CColor myColorNormal, 
-			CColor myColorClicked, 
-			CColor myColorEntered, 
+			Color myColorNormal, 
+			Color myColorClicked, 
+			Color myColorEntered, 
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			TLevelEnum myLevel,

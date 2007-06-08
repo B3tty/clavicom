@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.mouse;
 
+import java.awt.Color;
+
 import clavicom.core.keygroup.CColor;
 import clavicom.tools.TMouseKeyMoveEnum;
 
@@ -41,9 +43,9 @@ public class CMouseKeyMove extends CMouseKey
 	public CMouseKeyMove( 
 			TMouseKeyMoveEnum mydirection,
 			String caption,
-			CColor myColorNormal, 
-			CColor myColorClicked , 
-			CColor myColorEntered )
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered )
 	{
 		super( caption, myColorNormal, myColorClicked, myColorEntered );
 		direction = mydirection;

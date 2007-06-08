@@ -50,11 +50,11 @@ public abstract class CKey
     protected final EventListenerList listeners = new EventListenerList();
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CKey( CColor myNormal, CColor myPressed, CColor myEntered )
+	public CKey( Color myNormal, Color myPressed, Color myEntered )
 	{
-		normal = myNormal;
-		pressed = myPressed;
-		entered = myEntered;
+		normal.setColor( myNormal) ;
+		pressed.setColor( myPressed );
+		entered.setColor( myEntered );
 	}
 	
 	public CKey( Element node ) throws Exception
