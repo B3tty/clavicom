@@ -25,6 +25,7 @@
 
 package clavicom.gui.keyboard.key;
 
+import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 
 public class UIKeyLauncher extends UIKeyOneLevel
@@ -45,11 +46,11 @@ public class UIKeyLauncher extends UIKeyOneLevel
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 	@Override
-	protected CKeyLauncher getCoreKey()
+	public CKey getCoreKey()
 	{
 		return coreKey;
 	}
+	
+	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -59,13 +59,13 @@
 				<keycharacter order="0" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.1</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>0.2</x>
+							<y>0.2</y>
+						</point>	
 					</coordinates>
 					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
 					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
@@ -96,12 +96,12 @@
 				<keylevel order="1" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.2</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
+							<x>0.3</x>
+							<y>0.2</y>
 						</point>
 					</coordinates>
 					<caption>Keylevel 1</caption>
@@ -129,13 +129,13 @@
 		<base_string>coucou write</base_string>
 		<coordinates>
 			<point position="min">
-				<x>25.5</x>
-				<y>52.2</y>
+				<x>0.3</x>
+				<y>0</y>
 			</point>
 			<point position="max">
-				<x>5.5</x>
-				<y>2.2</y>
-			</point>		
+				<x>0.4</x>
+				<y>0.2</y>
+			</point>
 		</coordinates>
 		<caption>KeyString 2</caption>
 		<colors>
@@ -159,13 +159,13 @@
 				<keylauncher order="3" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.4</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>0.5</x>
+							<y>0.2</y>
+						</point>	
 					</coordinates>
 					<caption>KeyLauncher 3</caption>
 					<colors>
@@ -190,13 +190,13 @@
 				<keylastword order="4" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.5</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>0.6</x>
+							<y>0.2</y>
+						</point>	
 					</coordinates>
 					<caption>KeyLastWord 4</caption>
 					<colors>
@@ -221,13 +221,13 @@
 				<keyprediction order="5" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.6</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>0.7</x>
+							<y>0.2</y>
+						</point>	
 					</coordinates>
 					<caption>KeyPrediction 5</caption>
 					<colors>
@@ -252,12 +252,12 @@
 				<keyprediction order="6" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.7</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
+							<x>0.8</x>
+							<y>0.2</y>
 						</point>
 					</coordinates>
 					<caption>KeyPrediction 6</caption>
@@ -283,12 +283,12 @@
 				<keyclavicom order="7" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.8</x>
+							<y>0</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
+							<x>0.9</x>
+							<y>0.2</y>
 						</point>
 					</coordinates>
 					<caption>KeyClavicom 7 - SWITCH_MOUSE_KEYBOARD</caption>
@@ -314,13 +314,13 @@
 				<keyshortcut order="8" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.9</x>
+							<y>0.5</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>1.0</x>
+							<y>0.8</y>
+						</point>	
 					</coordinates>
 					<caption>KeyShortcut 8</caption>
 					<colors>
@@ -345,13 +345,13 @@
 				<keycharacter order="9" caption_image="false" >
 					<coordinates>
 						<point position="min">
-							<x>25.5</x>
-							<y>52.2</y>
+							<x>0.4</x>
+							<y>0.4</y>
 						</point>
 						<point position="max">
-							<x>5.5</x>
-							<y>2.2</y>
-						</point>
+							<x>0.6</x>
+							<y>0.8</y>
+						</point>	
 					</coordinates>
 					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
 					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>

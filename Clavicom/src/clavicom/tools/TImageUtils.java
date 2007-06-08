@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UIKeyKeyboardKey.java
-			Creation date		: 6 juin 07
+			Filename			: TImageUtils.java
+			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.keyboard.key
+			Package				: clavicom.tools
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,33 +23,50 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key;
+package clavicom.tools;
 
-import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
-public class UIKeyLastWord extends UIKeyDynamicString
+import javax.swing.ImageIcon;
+
+public class TImageUtils
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	private CKeyLastWord coreKey;
+
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyLastWord(CKeyLastWord myCoreKey)
-	{
-		// Appel à la mère
-		super();
-		
-		coreKey = myCoreKey;
-		addListeners();
-	}
-	
+
 	//----------------------------------------------------------- METHODES --//	
-	@Override
-	public CKey getCoreKey()
+	/**
+	 * Converti une Image en BufferedImage
+	 * @param image
+	 * @return
+	 */
+	public static BufferedImage toBufferedImage(Image image)
 	{
-		return coreKey;
+		// On test si l'image n'est pas déja une instance de BufferedImage
+		if ( image instanceof BufferedImage )
+		{
+			return ((BufferedImage) image);
+		}
+		else
+		{
+			// On s'assure que l'image est complètement chargée
+			image = new ImageIcon(image).getImage();
+
+			// On crée la nouvelle image
+			BufferedImage bufferedImage = new BufferedImage(image
+					.getWidth(null), image.getHeight(null),
+					BufferedImage.TYPE_INT_ARGB);
+			Graphics g = bufferedImage.createGraphics();
+			g.drawImage(image, 0, 0, null);
+			g.dispose();
+
+			return (bufferedImage);
+		}
 	}
-	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

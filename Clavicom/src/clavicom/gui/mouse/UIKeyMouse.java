@@ -45,7 +45,14 @@ public class UIKeyMouse extends UIKey
 		mouseKey = myMouseKey;
 	}
 
-	//----------------------------------------------------------- METHODES --//
+	//----------------------------------------------------------- METHODES --//	
+	@Override
+	public CKey getCoreKey()
+	{
+		return mouseKey;
+	}
+
+	//--------------------------------------------------- METHODES PRIVEES --//
 	@Override
 	protected void addListeners()
 	{
@@ -57,12 +64,4 @@ public class UIKeyMouse extends UIKey
 		// TODO Auto-generated method stub
 		return mouseKey.getCaption();
 	}
-
-	@Override
-	protected CKey getCoreKey()
-	{
-		return mouseKey;
-	}
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 }

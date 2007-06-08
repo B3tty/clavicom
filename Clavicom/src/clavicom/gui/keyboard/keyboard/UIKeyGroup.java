@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
-import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 

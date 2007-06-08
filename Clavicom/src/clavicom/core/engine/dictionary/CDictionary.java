@@ -27,7 +27,6 @@ package clavicom.core.engine.dictionary;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import clavicom.CFilePaths;
 import clavicom.core.profil.CDictionaryName;
@@ -285,81 +284,6 @@ public class CDictionary
 		
 		
 		return finalList;
-	}
-	
-	private List<String> TrierListe(List<CDictionaryWord> wordList)
-	{
-		List<String> shortList = new ArrayList<String>();
-		
-		// découpage en sous liste par fréquence
-		List< List<String> > listListString = new ArrayList< List<String> >();
-		List<String> subList = new ArrayList<String>();
-		int currentFrequence = 0;
-
-		// initialisation de la première fréquence
-		if( wordList.size() > 0 )
-		{
-			CDictionaryWord firstWord = wordList.get( 0 );
-			if( firstWord != null )
-			{
-				currentFrequence = firstWord.getFrequency();
-			}else return null;
-		} else return null;
-		
-		// on parcourt les mots
-		for( int i = 0 ; i < wordList.size() ; ++i )
-		{
-			CDictionaryWord dictionaryWord = wordList.get( i );
-			if( dictionaryWord != null )
-			{
-				// si c'est la même frequence
-				if( currentFrequence == dictionaryWord.getFrequency() )
-				{
-					// on l'ajoute a la sous liste
-					subList.add( dictionaryWord.getWord() );
-				}
-				else
-				{
-					// si ce n'est pas la même frequence,
-					
-					// on tri la sous-list par odre alphabétique
-					Collections.sort( subList, String.CASE_INSENSITIVE_ORDER);
-					
-					// on ajoute la sous-liste a la liste de list
-					listListString.add( subList );
-					
-					// on en recrer un nouvelle
-					subList = new ArrayList<String>();
-					
-					// on met à jour la frequence courrante
-					currentFrequence = dictionaryWord.getFrequency();
-				}
-			}
-		}
-		
-		// on sauvegarde la dernière sous-list (effet de bord)
-		listListString.add( subList );
-		
-		
-		// on construit la liste trié a partir de la liste de liste
-		for( int i = 0 ; i < listListString.size() ; ++i )
-		{
-			List<String> listTmp = listListString.get( i );
-			if( listTmp != null )
-			{
-				for( int j = 0 ; j < listTmp.size() ; ++j )
-				{
-					String str_tmp = listTmp.get( j );
-					if( str_tmp != null )
-					{
-						shortList.add( str_tmp );
-					}
-				}
-			}
-		}
-		
-		
-		return shortList;
 	}
 
 	public CDictionaryWord getWord( String word )
