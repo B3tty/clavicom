@@ -42,7 +42,7 @@ import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 
 
-public class UIJResizer extends JComponent
+public abstract class UIJResizer extends JComponent
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int MINIMUM_HEIGHT = 10;
@@ -102,6 +102,8 @@ public class UIJResizer extends JComponent
 			invalidate();
 		}
 	}
+	
+	protected abstract void onBoundsChanged();
 
 	MouseInputListener resizeListener = new MouseInputAdapter()
 	{
@@ -210,6 +212,8 @@ public class UIJResizer extends JComponent
 						setBounds(bounds);
 						didResized();
 				}
+				
+				onBoundsChanged();
 				
 				// cursor shouldn't change while dragging
 				setCursor(Cursor.getPredefinedCursor(cursor));

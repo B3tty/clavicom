@@ -35,13 +35,8 @@ public class TPoint
 	float x,y;	// Coordonnées relatives du point (pourcentage)
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public TPoint (float myX, float myY) throws Exception
-	{
-		if((x < 0) || (x > 100) || (x < 0) || (y > 100))
-		{
-			throw new Exception ("Point en dehors des bornes [0;100]");
-		}
-		
+	public TPoint (float myX, float myY)
+	{		
 		x = myX;
 		y = myY;
 	}
