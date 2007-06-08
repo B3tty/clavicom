@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.key.panel.PanelOptionKeyClavicom;
+import clavicom.gui.edition.key.PanelOptionKeyClavicom;
 import clavicom.gui.language.UIString;
 
 public class testPanelOptionKeyClavicom

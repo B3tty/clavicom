@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionKeyCharacter.java
+			Filename			: PanelOptionKey.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -23,68 +23,58 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key.panel;
+package clavicom.gui.edition.key;
+
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TLevelEnum;
+import clavicom.tools.TColorKeyEnum;
 
-
-public class PanelOptionKeyLevel extends PanelOptionOneLevelKey implements ActionListener
+public class PanelOptionKey extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-
-	CKeyLevel keyLevel;
-	JComboBox combo;
+	//---------------------------------------------------------- VARIABLES --//
+	CKey key;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	
-	public PanelOptionKeyLevel( CKeyLevel myKeyLevel )
+	public PanelOptionKey( CKey myKey )
 	{
-		super( myKeyLevel );
+		key = myKey;
+		
+		setLayout( new BorderLayout() );
+		
+		JPanel panelGlobal = new JPanel();
+		
+		JPanel colors = new JPanel();
+		
+		// création des trois panels des couleurs et ajout
+		PanelOptionColor panelColorClicked = new PanelOptionColor( key, TColorKeyEnum.PRESSED );
+		PanelOptionColor panelColorEntered = new PanelOptionColor( key, TColorKeyEnum.ENTERED );
+		PanelOptionColor panelColorNormal = new PanelOptionColor( key, TColorKeyEnum.NORMAL );
+		
+		colors.add( panelColorNormal );
+		colors.add( panelColorEntered );
+		colors.add( panelColorClicked );
+		
+		
+		
+		colors.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_COLOR_COLOR_MANAGEMENT")) );
+		
+		panelGlobal.add(colors);
 
-		keyLevel = myKeyLevel;
-
-		JPanel panel = new JPanel();
-		
-		combo = new JComboBox();
-		combo.addItem( TLevelEnum.SHIFT );
-		combo.addItem( TLevelEnum.ALT_GR );
-		
-		combo.addActionListener( this );
-		
-		combo.setSelectedItem( keyLevel.GetLevel() );
-		
-		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
-		panel.add( combo );
-
-		add( panel, BorderLayout.CENTER );
-		
+		add( panelGlobal, BorderLayout.NORTH );
 	}
+
 	//----------------------------------------------------------- METHODES --//
 	
-	public void actionPerformed(ActionEvent arg0)
-	{
-		if( keyLevel != null )
-		{
-			Object object = combo.getSelectedItem();
-			if( object != null )
-			{
-				if ( object instanceof TLevelEnum )
-				{
-					keyLevel.setLevel( (TLevelEnum)object );
-				}
-			}
-		}
-	}
+	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
