@@ -27,7 +27,7 @@ package clavicom.gui.configuration;
 
 import clavicom.core.profil.CKeyboardColor;
 
-public class PanelModificationKeyboardColor extends PanelModification
+public class PanelModificationProfilKeyboardColor extends PanelModificationProfil
 {
 
 	
@@ -38,7 +38,7 @@ public class PanelModificationKeyboardColor extends PanelModification
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationKeyboardColor(String title, CKeyboardColor myKeyboardColor)
+	public PanelModificationProfilKeyboardColor(String title, CKeyboardColor myKeyboardColor)
 	{
 		super(title);
 		

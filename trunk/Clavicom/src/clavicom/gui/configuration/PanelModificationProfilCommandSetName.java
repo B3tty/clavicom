@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModification.java
+			Filename			: PanelModificationCommandSetName.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,35 +25,37 @@
 
 package clavicom.gui.configuration;
 
-import java.awt.Color;
+import clavicom.core.profil.CCommandSetName;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
 
-public abstract class PanelModification extends JPanel
+public class PanelModificationProfilCommandSetName extends PanelModificationProfil
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
+	CCommandSetName commandSetName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModification( String title )
+	public PanelModificationProfilCommandSetName(String title, CCommandSetName myCommandSetName)
 	{
-		setBorder( 
-				BorderFactory.createTitledBorder( 
-						BorderFactory.createLineBorder( Color.BLACK ), 
-						title ) );
+		super(title);
+		
+		commandSetName = myCommandSetName;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
 	
-	/**
-	 * mettre les données des composants dans les variable du profil
-	 * Retour : 
-	 * 		* 0 si rien n'a été changé
-	 * 		* 1 si quelque chose a changé
-	 */
-	public abstract int validateDataEntry();
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// si le commandSet a été changé, on change son nom
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

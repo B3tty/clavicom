@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationPreferedWords.java
+			Filename			: PanelModificationTransparency.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,34 +25,34 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CPreferedWords;
+import clavicom.core.profil.CTransparency;
 
-public class PanelModificationPreferedWords extends PanelModification
+public class PanelModificationProfilTransparency extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CPreferedWords preferedWord;
+	CTransparency transparency;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationPreferedWords(String title, CPreferedWords myPreferedWord)
+	public PanelModificationProfilTransparency(String title, CTransparency myTransparency)
 	{
 		super(title);
 		
-		preferedWord = myPreferedWord;
+		transparency = myTransparency;
 	}
 
 	
 
-	//----------------------------------------------------------- METHODES --//
+	//----------------------------------------------------------- METHODES --//	
 	
 	@Override
 	public int validateDataEntry()
 	{
-		// Si les mots préférés ont changé, on les change dans le profil
+		// Si la gestion de la transparence a changé, on la change dans le profil
 		
 		return 0;
 	}

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationCommandSetName.java
+			Filename			: PanelModificationDictionaryName.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,24 +25,23 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CCommandSetName;
+import clavicom.core.profil.CDictionaryName;
 
-
-public class PanelModificationCommandSetName extends PanelModification
+public class PanelModificationProfilDictionaryName extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CCommandSetName commandSetName;
+	CDictionaryName dictionaryName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationCommandSetName(String title, CCommandSetName myCommandSetName)
+	public PanelModificationProfilDictionaryName(String title, CDictionaryName myDictionaryName)
 	{
 		super(title);
 		
-		commandSetName = myCommandSetName;
+		dictionaryName = myDictionaryName;
 	}
 
 	
@@ -52,7 +51,7 @@ public class PanelModificationCommandSetName extends PanelModification
 	@Override
 	public int validateDataEntry()
 	{
-		// si le commandSet a été changé, on change son nom
+		// Si le dictionnaire a été changé, on change son nom
 		
 		return 0;
 	}

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationFont.java
+			Filename			: PanelModificationPreferedWords.java
 			Creation date		: 8 juin 07
 		
 			Project				: Clavicom
@@ -25,24 +25,24 @@
 
 package clavicom.gui.configuration;
 
-import clavicom.core.profil.CFont;
+import clavicom.core.profil.CPreferedWords;
 
-public class PanelModificationFont extends PanelModification
+public class PanelModificationProfilPreferedWords extends PanelModificationProfil
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-	CFont font;
-	
+	//---------------------------------------------------------- VARIABLES --//
+	CPreferedWords preferedWord;
+
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationFont(String title, CFont myFont)
+	public PanelModificationProfilPreferedWords(String title, CPreferedWords myPreferedWord)
 	{
 		super(title);
 		
-		font = myFont;
+		preferedWord = myPreferedWord;
 	}
 
 	
@@ -52,7 +52,7 @@ public class PanelModificationFont extends PanelModification
 	@Override
 	public int validateDataEntry()
 	{
-		// si la police a changé, on la met dans le font
+		// Si les mots préférés ont changé, on les change dans le profil
 		
 		return 0;
 	}
