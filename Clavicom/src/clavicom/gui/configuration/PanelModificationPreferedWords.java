@@ -25,13 +25,20 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationPreferedWords
+public class PanelModificationPreferedWords extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationPreferedWords(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

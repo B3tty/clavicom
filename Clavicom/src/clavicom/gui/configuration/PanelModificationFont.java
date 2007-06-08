@@ -25,13 +25,20 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationFont
+public class PanelModificationFont extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationFont(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

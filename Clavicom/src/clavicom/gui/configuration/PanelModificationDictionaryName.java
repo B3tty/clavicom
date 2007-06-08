@@ -25,13 +25,19 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationDictionaryName
+public class PanelModificationDictionaryName extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public PanelModificationDictionaryName(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 

@@ -25,13 +25,20 @@
 
 package clavicom.gui.configuration;
 
-public class PanelModificationSound
+public class PanelModificationSound extends PanelModification
 {
+
+	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
+	
+	public PanelModificationSound(String title)
+	{
+		super(title);
+	}
 
 	//----------------------------------------------------------- METHODES --//	
 
