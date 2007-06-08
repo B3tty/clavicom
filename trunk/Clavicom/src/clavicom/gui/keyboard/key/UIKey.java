@@ -28,7 +28,6 @@ package clavicom.gui.keyboard.key;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -45,10 +44,8 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;

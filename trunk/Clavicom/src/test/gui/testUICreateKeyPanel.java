@@ -26,11 +26,8 @@
 package test.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLevelEngine;
@@ -41,7 +38,6 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.edition.keyboard.PanelKeyCreation;
-import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 
 public class testUICreateKeyPanel

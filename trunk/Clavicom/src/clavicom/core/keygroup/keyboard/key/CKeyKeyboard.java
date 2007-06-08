@@ -29,7 +29,6 @@ import java.awt.Color;
 import java.util.List;
 import org.jdom.Attribute;
 import org.jdom.Element;
-import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.gui.language.UIString;

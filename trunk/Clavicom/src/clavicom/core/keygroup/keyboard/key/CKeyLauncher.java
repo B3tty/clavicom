@@ -26,10 +26,8 @@
 package clavicom.core.keygroup.keyboard.key;
 
 import java.awt.Color;
-
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
-import clavicom.core.keygroup.CColor;
 import clavicom.core.listener.OnClickKeyLauncherListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
