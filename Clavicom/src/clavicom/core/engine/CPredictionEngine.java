@@ -182,7 +182,7 @@ public class CPredictionEngine extends CStringsEngine implements
 				dictionaryWord = new CDictionaryWord( currentString, 0 );
 				
 				// Ajout au dictionnaire
-				dictionnary.addWord( dictionaryWord );
+				dictionnary.addWord( dictionnary.getUserDictionnaryLevel(),dictionaryWord );
 			}
 			
 			dictionaryWord.increaseFrequency();

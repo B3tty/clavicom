@@ -40,7 +40,7 @@ public class testFileIO
 		System.out.println("Début...");
 		
 		// Ouverture du fichier
-		FileInputStream fis = new FileInputStream("Ressources\\Application\\Dictionaries\\francais.cdc");
+		FileInputStream fis = new FileInputStream("Ressources\\Application\\Dictionaries\\francaisPlusFreq.cdc");
 		
 		// On construit et on lit autant d'octets qu'il y a dans le fichier
 		int x= fis.available();
@@ -49,8 +49,9 @@ public class testFileIO
 		
 		// On construit la String à partir du buffer
 		String content = new String(b,"UTF-8");
+		System.out.println( (content.split("\n")).length );
 		
-		System.out.println(content);
+		//System.out.println(content);
 		System.out.println("...fin !");
 	}
 }
