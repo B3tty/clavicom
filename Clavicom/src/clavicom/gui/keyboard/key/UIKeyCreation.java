@@ -27,7 +27,6 @@ package clavicom.gui.keyboard.key;
 
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
-import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 
 public class UIKeyCreation extends UIKeyOneLevel
 {

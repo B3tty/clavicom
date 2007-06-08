@@ -26,8 +26,6 @@
 package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
-
-import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;

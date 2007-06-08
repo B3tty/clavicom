@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
-import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
