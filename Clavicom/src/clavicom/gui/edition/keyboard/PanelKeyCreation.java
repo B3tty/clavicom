@@ -66,8 +66,8 @@ public class PanelKeyCreation extends JPanel
 	{
 		
 		GridLayout grdiLayout = new GridLayout( 3,6 );
-		grdiLayout.setHgap(10);
-		grdiLayout.setVgap(10);
+		grdiLayout.setHgap(5);
+		grdiLayout.setVgap(5);
 		setLayout( grdiLayout );
 		
 		// ===================================================================
@@ -216,10 +216,11 @@ public class PanelKeyCreation extends JPanel
 			Color myColorNormal,
 			Color myColorEntered,
 			Color myColorPressed,
-			String caption,
-			String exemple,
-			TEnumCreationKey type,
-			boolean isImage)
+			String caption, // texte affiché au dessus du boutton
+			String exemple, // texte affiché dans le boutton
+			TEnumCreationKey type, // type de la key
+			boolean isImage) // si c'est une image ou non
+							// ATTENTION : si c'est une image, il faut mettre le chemin d'une image valide
 	{
 
 		JPanel panel = new JPanel( new BorderLayout() );
