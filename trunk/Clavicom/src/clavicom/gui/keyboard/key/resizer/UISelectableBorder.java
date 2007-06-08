@@ -48,15 +48,16 @@ public class UISelectableBorder implements UIResizableBorder
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	private int dist = 6;
+	private int dist = 10;
 	private boolean isVisible;
 	private boolean isSelected;
 
 	int locations[] = { SwingConstants.NORTH, SwingConstants.SOUTH,
-			SwingConstants.WEST, SwingConstants.EAST,
-			SwingConstants.NORTH_WEST, SwingConstants.NORTH_EAST,
-			SwingConstants.SOUTH_WEST, SwingConstants.SOUTH_EAST, 0, // move
-			-1, // no location
+						SwingConstants.WEST, SwingConstants.EAST,
+						SwingConstants.NORTH_WEST, SwingConstants.NORTH_EAST,
+						SwingConstants.SOUTH_WEST, SwingConstants.SOUTH_EAST, 
+						 0, // move
+						-1, // no location
 	};
 
 	int cursors[] = { Cursor.N_RESIZE_CURSOR, Cursor.S_RESIZE_CURSOR,
