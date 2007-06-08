@@ -25,6 +25,7 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.EventListenerList;
@@ -48,9 +49,9 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyDynamicString(
-			CColor myColorNormal, 
-			CColor myColorClicked , 
-			CColor myColorEntered , 
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered , 
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)

@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
@@ -45,9 +47,9 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CKeyThreeLevel(
-			CColor myColorNormal, 
-			CColor myColorClicked, 
-			CColor myColorEntered, 
+			Color myColorNormal, 
+			Color myColorClicked, 
+			Color myColorEntered, 
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaptionNormal,

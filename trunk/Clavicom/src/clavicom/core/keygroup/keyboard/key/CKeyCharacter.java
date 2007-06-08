@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
@@ -50,8 +52,8 @@ public class CKeyCharacter extends CKeyThreeLevel
 	protected EventListenerList listenerList;
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
-	public CKeyCharacter(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+	public CKeyCharacter(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
 			String captionLeve1, String captionLeve2, String captionLeve3,
 			CCommand myCommandNormal, CCommand myCommandShift,
 			CCommand myCommandAltGr)
@@ -65,8 +67,8 @@ public class CKeyCharacter extends CKeyThreeLevel
 		this.listenerList = new EventListenerList();
 	}
 
-	public CKeyCharacter(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+	public CKeyCharacter(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
 			String captionLeve1, String captionLeve2, String captionLeve3)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,

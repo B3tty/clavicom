@@ -25,6 +25,7 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
 import java.util.List;
 import org.jdom.Attribute;
 import org.jdom.Element;
@@ -45,8 +46,8 @@ public abstract class CKeyKeyboard extends CKey
 	TPoint pointMax; // Point inférieur droit
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
-	public CKeyKeyboard(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax)
+	public CKeyKeyboard(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered);
 

@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.keyboard.key;
 
+import java.awt.Color;
+
 import org.jdom.Element;
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
@@ -40,8 +42,8 @@ public class CKeyString extends CKeyDynamicString
 
 						
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyString(CColor myColorNormal, CColor myColorClicked,
-			CColor myColorEntered, TPoint myPointMin, TPoint myPointMax,
+	public CKeyString(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
 			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,

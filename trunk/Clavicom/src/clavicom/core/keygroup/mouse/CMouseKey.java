@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.mouse;
 
+import java.awt.Color;
+
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.CKey;
 
@@ -38,7 +40,7 @@ public abstract class CMouseKey extends CKey
 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseKey( String myCaption, CColor myNormal, CColor myPressed, CColor myEntered)
+	public CMouseKey( String myCaption, Color myNormal, Color myPressed, Color myEntered)
 	{
 		super(myNormal, myPressed, myEntered);
 		

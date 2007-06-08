@@ -25,6 +25,8 @@
 
 package clavicom.core.keygroup.mouse;
 
+import java.awt.Color;
+
 import clavicom.core.keygroup.CColor;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
@@ -73,8 +75,8 @@ public class CMouse
 
 	// ----------------------------------------------------------- METHODES --//
 
-	public static CMouse CreateMouse(CColor myColorNormal,
-			CColor myColorClicked, CColor myColorEntered) throws Exception
+	public static CMouse CreateMouse(Color myColorNormal,
+			Color myColorClicked, Color myColorEntered) throws Exception
 	{
 		// Construction d'un cmouse avec toutes les touches et
 		// tous les cliques :
