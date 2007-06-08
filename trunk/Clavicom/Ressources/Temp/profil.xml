@@ -36,7 +36,7 @@
 		<on_defil active = "false"/>
 	</sound>
 	<transparency>
-		<keyboard_transparency>50</keyboard_transparency>
+		<keyboard_transparency>20</keyboard_transparency>
 		<key_transparency>20</key_transparency>
 	</transparency>
 	<font>

@@ -39,7 +39,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +57,9 @@ import clavicom.tools.TPoint;
 public class UIKeyboard extends JPanel implements ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	final int TAILLE_BORDURE_INTERIEURE = 5;	// Taille de la bordure intérieure
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
 	
-	final int TAILLE_CONTOUR = 2;				// Taille du contour
+	final int TAILLE_CONTOUR = 3;				// Taille du contour
 	final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 	
 	final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
@@ -281,7 +279,7 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		
 		// Création du Paint du premier calque
 		Color vGradientStartColor, vGradientEndColor;
-		vGradientStartColor =  bgdColor.brighter();
+		vGradientStartColor =  bgdColor.brighter().brighter();
 		vGradientEndColor = bgdColor;				
 
 		Paint vPaint = new GradientPaint(	0, 
@@ -296,42 +294,9 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// Dessin du premier Paint
 		buffer.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
 		
-		// Taille du second Layer
-		int vButtonHighlightHeight = getHeight() - (TAILLE_BORDURE_INTERIEURE * 2);
-		int vButtonHighlightWidth = getWidth() - (TAILLE_BORDURE_INTERIEURE * 2);
-
-		// Création du Paint du second calque
-		vGradientStartColor = bgdColor.brighter().brighter();
-		vGradientEndColor = bgdColor.brighter();				
-		
-		vPaint = new GradientPaint(	0,
-									TAILLE_BORDURE_INTERIEURE,
-									vGradientStartColor,
-									0,
-									TAILLE_BORDURE_INTERIEURE+(vButtonHighlightHeight/2), 
-									vGradientEndColor, 
-									false);
-
-		// Dessin du second Paint
-		buffer.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,.8f));
-		buffer.setPaint(vPaint);
-		buffer.setClip(new RoundRectangle2D.Float(	TAILLE_BORDURE_INTERIEURE,
-												TAILLE_BORDURE_INTERIEURE,
-												vButtonHighlightWidth,
-												vButtonHighlightHeight /2, 
-												TAILLE_ARC,TAILLE_ARC));
-		
-		buffer.fillRoundRect(	TAILLE_BORDURE_INTERIEURE,
-							TAILLE_BORDURE_INTERIEURE,
-							vButtonHighlightWidth,
-							vButtonHighlightHeight,
-							TAILLE_ARC,TAILLE_ARC);
-		
 		// Dessin du contour
 		buffer.setColor(bgdColor.darker());
 		buffer.setStroke(new BasicStroke(TAILLE_CONTOUR));
-		
-		buffer.setClip(0, 0, getWidth(), getHeight());
 		
 		buffer.drawRoundRect(	TAILLE_CONTOUR/2, 
 							TAILLE_CONTOUR/2, 
@@ -357,7 +322,7 @@ public class UIKeyboard extends JPanel implements ComponentListener
 			public void actionPerformed(ActionEvent event)
 			{
 				resizeTimer.stop();
-				recreateBackground();
+				imgBackground = recreateBackground();
 				repaint();
 			}
 		};

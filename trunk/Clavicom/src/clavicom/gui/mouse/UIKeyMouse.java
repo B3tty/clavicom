@@ -64,4 +64,10 @@ public class UIKeyMouse extends UIKey
 		// TODO Auto-generated method stub
 		return mouseKey.getCaption();
 	}
+
+	@Override
+	protected void onBoundsChanged()
+	{
+		// Rien à faire
+	}
 }

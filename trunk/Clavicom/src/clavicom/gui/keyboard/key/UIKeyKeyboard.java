@@ -25,7 +25,10 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.Point;
+
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+import clavicom.tools.TPoint;
 
 
 public abstract class UIKeyKeyboard extends UIKey
@@ -56,5 +59,29 @@ public abstract class UIKeyKeyboard extends UIKey
 		{
 			((CKeyKeyboard)getCoreKey()).addCaptionListener(this);
 		}
+	}
+	
+	@Override
+	protected void onBoundsChanged()
+	{
+		// Calcul des nouvelles positions
+		// On caste en CKeyKeyboard
+		CKeyKeyboard keyKeyboard = (CKeyKeyboard)(getCoreKey());
+		
+		// On récupère les points absolus
+		Point ptMin = this.getLocation();
+		Point ptMax = new Point(	(int)ptMin.getX() + getWidth(),
+									(int)ptMin.getY() + getHeight());
+		
+		// Calcul des points en relatif
+		TPoint tptMin = new TPoint(	(float)ptMin.getX()/(float)getParent().getWidth(),
+									(float)ptMin.getY()/(float)getParent().getHeight());
+		
+		TPoint tptMax = new TPoint(	(float)ptMax.getX()/(float)getParent().getWidth(),
+									(float)ptMax.getY()/(float)getParent().getHeight());
+		
+		// Affectation des nouveaux points à l'objet du noyau
+		keyKeyboard.setPointMin(tptMin);
+		keyKeyboard.setPointMax(tptMax);		
 	}
 }

@@ -57,7 +57,6 @@ public class CDictionary
 		// Chargement des preferedWords
 		LoadPreferedWords( preferedWords );
 	}
-
 	
 	//----------------------------------------------------------- METHODES --//
 	
