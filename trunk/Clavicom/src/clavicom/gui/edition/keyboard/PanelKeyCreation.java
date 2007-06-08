@@ -227,7 +227,7 @@ public class PanelKeyCreation extends JPanel
 		
 		JPanel panel2 = new JPanel( );
 		panel2.add( new JLabel( caption ) );
-		
+
 		panel.add( panel2 , BorderLayout.NORTH );
 		CKeyCreation keyLauncher = new CKeyCreation(
 				myColorNormal,
