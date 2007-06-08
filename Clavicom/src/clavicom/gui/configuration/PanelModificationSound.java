@@ -25,22 +25,37 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CSound;
+
 public class PanelModificationSound extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CSound sound;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationSound(String title)
+	public PanelModificationSound(String title, CSound mySound)
 	{
 		super(title);
+		
+		sound = mySound;
 	}
 
+	
+
 	//----------------------------------------------------------- METHODES --//	
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si la gestion du son a changé, on la change dans le profil
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

@@ -30,7 +30,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class PanelModification extends JPanel
+public abstract class PanelModification extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -46,6 +46,14 @@ public class PanelModification extends JPanel
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	
+	/**
+	 * mettre les données des composants dans les variable du profil
+	 * Retour : 
+	 * 		* 0 si rien n'a été changé
+	 * 		* 1 si quelque chose a changé
+	 */
+	public abstract int validateDataEntry();
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

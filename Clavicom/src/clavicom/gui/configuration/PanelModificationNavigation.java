@@ -25,21 +25,36 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CNavigation;
+
 public class PanelModificationNavigation extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CNavigation navigation;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationNavigation(String title)
+	public PanelModificationNavigation(String title, CNavigation myNavigation)
 	{
 		super(title);
+		
+		navigation = myNavigation;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si la navigation a changé, on la change dans le profil
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
