@@ -25,6 +25,8 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CCommandSetName;
+
 
 public class PanelModificationCommandSetName extends PanelModification
 {
@@ -32,15 +34,28 @@ public class PanelModificationCommandSetName extends PanelModification
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CCommandSetName commandSetName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationCommandSetName(String title)
+	public PanelModificationCommandSetName(String title, CCommandSetName myCommandSetName)
 	{
 		super(title);
+		
+		commandSetName = myCommandSetName;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// si le commandSet a été changé, on change son nom
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

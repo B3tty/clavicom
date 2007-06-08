@@ -25,6 +25,8 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CFont;
+
 public class PanelModificationFont extends PanelModification
 {
 
@@ -32,15 +34,28 @@ public class PanelModificationFont extends PanelModification
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	CFont font;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationFont(String title)
+	public PanelModificationFont(String title, CFont myFont)
 	{
 		super(title);
+		
+		font = myFont;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// si la police a changé, on la met dans le font
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

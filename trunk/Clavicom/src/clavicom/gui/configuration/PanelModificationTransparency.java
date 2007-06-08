@@ -25,22 +25,37 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CTransparency;
+
 public class PanelModificationTransparency extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CTransparency transparency;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationTransparency(String title)
+	public PanelModificationTransparency(String title, CTransparency myTransparency)
 	{
 		super(title);
+		
+		transparency = myTransparency;
 	}
 
+	
+
 	//----------------------------------------------------------- METHODES --//	
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si la gestion de la transparence a changé, on la change dans le profil
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

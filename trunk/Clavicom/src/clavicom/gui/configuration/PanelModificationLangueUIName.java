@@ -25,22 +25,37 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CLangueUIName;
+
 public class PanelModificationLangueUIName extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CLangueUIName langueUIName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelModificationLangueUIName(String title)
+	public PanelModificationLangueUIName(String title, CLangueUIName myLangueUIName)
 	{
 		super(title);
+		
+		langueUIName = myLangueUIName;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si la langue de l'UI à changé, on la change le nom du fichier UI
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

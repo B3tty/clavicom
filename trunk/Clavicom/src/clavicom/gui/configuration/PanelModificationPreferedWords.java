@@ -25,22 +25,37 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CPreferedWords;
+
 public class PanelModificationPreferedWords extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CPreferedWords preferedWord;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationPreferedWords(String title)
+	public PanelModificationPreferedWords(String title, CPreferedWords myPreferedWord)
 	{
 		super(title);
+		
+		preferedWord = myPreferedWord;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si les mots préférés ont changé, on les change dans le profil
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

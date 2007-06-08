@@ -25,22 +25,37 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CKeyboardColor;
+
 public class PanelModificationKeyboardColor extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CKeyboardColor keyboardColor;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationKeyboardColor(String title)
+	public PanelModificationKeyboardColor(String title, CKeyboardColor myKeyboardColor)
 	{
 		super(title);
+		
+		keyboardColor = myKeyboardColor;
 	}
 
+	
+
 	//----------------------------------------------------------- METHODES --//	
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si la ketboardColor a changé, on la met dans le profil
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

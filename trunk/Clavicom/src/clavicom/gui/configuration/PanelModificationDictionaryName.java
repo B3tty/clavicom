@@ -25,21 +25,36 @@
 
 package clavicom.gui.configuration;
 
+import clavicom.core.profil.CDictionaryName;
+
 public class PanelModificationDictionaryName extends PanelModification
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	CDictionaryName dictionaryName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationDictionaryName(String title)
+	public PanelModificationDictionaryName(String title, CDictionaryName myDictionaryName)
 	{
 		super(title);
+		
+		dictionaryName = myDictionaryName;
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	
+
+	//----------------------------------------------------------- METHODES --//
+	
+	@Override
+	public int validateDataEntry()
+	{
+		// Si le dictionnaire a été changé, on change son nom
+		
+		return 0;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
