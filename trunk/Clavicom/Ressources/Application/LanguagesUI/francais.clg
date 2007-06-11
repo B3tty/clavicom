@@ -360,7 +360,13 @@
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_SOUND">Son</message>
+<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL">Au défilement</message>
+<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISENTERED">Au survol</message>
+<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED">Au clic</message>
+	
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
 
