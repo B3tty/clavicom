@@ -25,6 +25,10 @@
 
 package clavicom.gui.configuration;
 
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
 import clavicom.core.profil.CTransparency;
 import clavicom.gui.language.UIString;
 
@@ -50,7 +54,44 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	
 	private void LoadComponents()
 	{
+		setLayout( new BorderLayout() );
+		JPanel panelGlobal = new JPanel( new BorderLayout() );
 		
+		JPanel keyboardT = new JPanel(new BorderLayout());
+		
+		JPanel p2 = new JPanel();
+		p2.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD") ));
+		keyboardT.add(p2, BorderLayout.NORTH );
+		
+		JSlider keyboardTransparency = new JSlider();
+		keyboardTransparency.setMaximum( 100 );
+		keyboardTransparency.setMinimum( 0 );
+		keyboardTransparency.setMajorTickSpacing(10);
+		keyboardTransparency.setMinorTickSpacing(10);
+		keyboardTransparency.setPaintTicks(true);
+		keyboardTransparency.setPaintLabels(true);
+		keyboardTransparency.setValue( transparency.getKeyboardTransparencyPourcent() );
+		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
+		panelGlobal.add(keyboardT, BorderLayout.NORTH);
+		
+		JPanel keysT = new JPanel(new BorderLayout());
+		
+		JPanel p3 = new JPanel();
+		p3.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS") ));
+		keysT.add(p3, BorderLayout.NORTH );
+		
+		JSlider keysTransparency = new JSlider();
+		keysTransparency.setMaximum( 100 );
+		keysTransparency.setMinimum( 0 );
+		keysTransparency.setMajorTickSpacing(10);
+		keysTransparency.setMinorTickSpacing(10);
+		keysTransparency.setPaintTicks(true);
+		keysTransparency.setPaintLabels(true);
+		keysTransparency.setValue( transparency.getKeyTransparencyPourcent() );
+		keysT.add(keysTransparency, BorderLayout.CENTER);
+		panelGlobal.add(keysT, BorderLayout.SOUTH);
+		
+		add( panelGlobal, BorderLayout.CENTER );
 	}
 
 	

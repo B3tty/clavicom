@@ -51,10 +51,11 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JRadioButton radioButtonStandard;
 	JRadioButton radioButtonDefilement;
 	JRadioButton radioButtonClickTempo;
-	JLabel labelTempoClicOrTempoDefil;
-	JPanel panelTempoDefilClic;
-	JTextField textTempoClicOrDefil;
+	JTextField textTempoDefil;
 	JCheckBox blocSelection;
+	JTextField textTempoClic;
+	JSlider slider;
+	JCheckBox rollOver;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfilNavigation(CNavigation myNavigation)
@@ -64,9 +65,45 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		navigation = myNavigation;
 		
 		LoadComponents();
+		
+		InitValues();
 	}
 
 	
+	private void InitValues()
+	{
+		if( navigation.getTypeNavigation() == TNavigationType.STANDARD )
+		{
+			SwitchStandardMode();
+			radioButtonStandard.setSelected(true);
+			radioButtonDefilement.setSelected(false);
+			radioButtonClickTempo.setSelected(false);
+			
+			
+		} else if( navigation.getTypeNavigation() == TNavigationType.DEFILEMENT )
+		{
+			SwitchDefilementMode();
+			radioButtonStandard.setSelected(false);
+			radioButtonDefilement.setSelected(true);
+			radioButtonClickTempo.setSelected(false);
+			
+			textTempoDefil.setText( String.valueOf( navigation.getTemporisationDefilement() ) );
+		} else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+		{
+			SwitchClicMode();
+			radioButtonStandard.setSelected(false);
+			radioButtonDefilement.setSelected(false);
+			radioButtonClickTempo.setSelected(true);
+			
+			textTempoClic.setText( String.valueOf( navigation.getTemporisationDefilement() ) );
+			blocSelection.setSelected( navigation.isBlockSelectionActive() );
+		}
+		
+		slider.setValue( navigation.getTemporisationClic() );
+		rollOver.setSelected( navigation.isRolloverActive() ); 
+	}
+
+
 	private void LoadComponents()
 	{
 		
@@ -83,10 +120,26 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		buttonGroup.add( radioButtonStandard );
 		radioButtonStandard.addActionListener(this);
 		
+		
 		// navigation clic temporisé
+		
+		JPanel panelClicTempo = new JPanel( new BorderLayout() );
 		radioButtonClickTempo = new JRadioButton( TNavigationType.CLICK_TEMPORISE.toString(), false );
 		buttonGroup.add( radioButtonClickTempo );
 		radioButtonClickTempo.addActionListener(this);
+		panelClicTempo.add( radioButtonClickTempo, BorderLayout.WEST );
+		
+		JPanel panelTempoClic = new JPanel();
+		
+		// on initialise avec la temporisation de défilement  
+		JLabel labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION") );
+		panelTempoClic.add( labelTempoClic );
+		
+		textTempoClic = new JTextField( navigation.getTemporisationDefilement() );
+		panelTempoClic.add( textTempoClic );
+		
+		panelClicTempo.add( panelTempoClic, BorderLayout.CENTER );
+		
 		
 		
 		// navigation défilement
@@ -94,52 +147,50 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		radioButtonDefilement = new JRadioButton( TNavigationType.DEFILEMENT.toString(), false );
 		buttonGroup.add( radioButtonDefilement );
 		radioButtonDefilement.addActionListener(this);
-		defilement.add( radioButtonDefilement, BorderLayout.NORTH );
+		defilement.add( radioButtonDefilement, BorderLayout.WEST );
+		
+		
+		JPanel panelTempoDefil = new JPanel();
+		
+		// on initialise avec la temporisation de défilement  
+		JLabel labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") );
+		panelTempoDefil.add( labelTempoDefil );
+		
+		textTempoDefil = new JTextField( navigation.getTemporisationDefilement() );
+		panelTempoDefil.add( textTempoDefil );
+		
+		defilement.add( panelTempoDefil, BorderLayout.CENTER );
+		
+		
 		
 		// checkBox BlocSelection
-		blocSelection = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
-		defilement.add( blocSelection, BorderLayout.CENTER );
+		blocSelection = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC"), navigation.isRolloverActive() );
+		defilement.add( blocSelection, BorderLayout.EAST );
 
 		
 		panelNavigationMode.add( radioButtonStandard );
-		panelNavigationMode.add( radioButtonClickTempo );
+		panelNavigationMode.add( panelClicTempo );
 		panelNavigationMode.add( defilement );
 		
 		panelGlobal.add( panelNavigationMode, BorderLayout.NORTH );
 		
-		JPanel panelCenter = new JPanel( new BorderLayout() );
-		// ========================================================================
-		// Séléction de la temporisation du défilement ou du clic temporisé
-		// ========================================================================
-		panelTempoDefilClic = new JPanel();
-		
-		// on initialise avec la temporisation de défilement  
-		labelTempoClicOrTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") );
-		panelTempoDefilClic.add( labelTempoClicOrTempoDefil );
-		
-		textTempoClicOrDefil = new JTextField( navigation.getTemporisationDefilement() );
-		panelTempoDefilClic.add( textTempoClicOrDefil );
-		
-		panelCenter.add( panelTempoDefilClic, BorderLayout.SOUTH );
 		
 		// ========================================================================
 		// Séléction du rollOver ou non
 		// ========================================================================
 		JPanel panelRollOver = new JPanel();
 		
-		JCheckBox rollOver = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
+		rollOver = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
 		panelRollOver.add( rollOver );
 		
-		panelCenter.add( panelRollOver, BorderLayout.CENTER );
-		
-		panelGlobal.add( panelCenter, BorderLayout.CENTER );
+		panelGlobal.add( panelRollOver, BorderLayout.CENTER );
 		
 		// ========================================================================
 		// Séléction de la temporisation du clic de la souricom
 		// ========================================================================
 		JPanel panelTempoSouricom = new JPanel();
 
-		JSlider slider = new JSlider();
+		slider = new JSlider();
 		slider.setMaximum( 100 );
 		slider.setMinimum( 0 );
 		slider.setMajorTickSpacing(10);
@@ -169,7 +220,45 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	public void actionPerformed(ActionEvent arg0)
 	{
 		// changement de radio boutton...
+		if( radioButtonStandard.isSelected() )
+		{
+			SwitchStandardMode();
+		} else if( radioButtonDefilement.isSelected() )
+		{
+			SwitchDefilementMode();
+		} else if( radioButtonClickTempo.isSelected() )
+		{
+			SwitchClicMode();
+		}
 		
+	}
+
+
+	private void SwitchClicMode()
+	{
+		textTempoClic.setEnabled( true );
+		
+		textTempoDefil.setEnabled( false );
+		blocSelection.setEnabled( false );
+	}
+
+
+	private void SwitchDefilementMode()
+	{
+		textTempoClic.setEnabled( false );
+		
+		textTempoDefil.setEnabled( true );
+		blocSelection.setEnabled( true );
+		
+	}
+
+
+	private void SwitchStandardMode()
+	{
+		textTempoClic.setEnabled( false );
+		
+		textTempoDefil.setEnabled( false );
+		blocSelection.setEnabled( false );
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -26,8 +26,8 @@
 	</keyboard_color>
 	<navigation>
 		<type value = "CLICK_TEMPORISE"/>
-		<mouse_speed value = "100"/>
-		<temporisation value = "152"/>
+		<mouse_speed value = "60"/>
+		<temporisation value = "20"/>
 		<rollover active = "true"/>
 	</navigation>
 	<sound>
@@ -37,7 +37,7 @@
 	</sound>
 	<transparency>
 		<keyboard_transparency>20</keyboard_transparency>
-		<key_transparency>20</key_transparency>
+		<key_transparency>45</key_transparency>
 	</transparency>
 	<font>
 		<name>Batang</name>

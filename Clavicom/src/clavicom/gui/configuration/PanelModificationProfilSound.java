@@ -25,6 +25,11 @@
 
 package clavicom.gui.configuration;
 
+import java.awt.BorderLayout;
+
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+
 import clavicom.core.profil.CSound;
 import clavicom.gui.language.UIString;
 
@@ -36,6 +41,9 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 
 	//---------------------------------------------------------- VARIABLES --//
 	CSound sound;
+	JCheckBox checkDefil;
+	JCheckBox checkEntered;
+	JCheckBox checkPressed;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -50,7 +58,21 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 	
 	private void LoadComponents()
 	{
+		setLayout( new BorderLayout() );
+		JPanel pan = new JPanel();
+		JPanel panelGlobal = new JPanel( new BorderLayout() );
 		
+		checkDefil = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL"), sound.isSoundOnDefil() );
+		panelGlobal.add( checkDefil, BorderLayout.NORTH );
+		
+		checkEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISENTERED"), sound.isSoundOnSurvol() );
+		panelGlobal.add( checkEntered, BorderLayout.CENTER );
+		
+		checkPressed = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED"), sound.isSoundOnClic() );
+		panelGlobal.add( checkPressed, BorderLayout.SOUTH );
+		pan.add(panelGlobal);
+		
+		add(pan, BorderLayout.CENTER);
 	}
 
 	

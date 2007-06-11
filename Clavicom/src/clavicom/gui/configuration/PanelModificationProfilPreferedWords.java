@@ -116,6 +116,13 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		buttons.add( buttonDeleteSelected );
 		
 		JButton buttonDeleteAll = new JButton( UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS") );
+		buttonDeleteAll.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				wordTableModel.removeAll( );
+			}
+		});
 		buttons.add( buttonDeleteAll );
 		
 		panelGlobal.add( buttons, BorderLayout.SOUTH );
@@ -162,6 +169,9 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 			fireTableDataChanged();
 		}
 		
+
+		
+
 
 		public Class<?> getColumnClass(int arg0)
 		{
@@ -231,6 +241,12 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		public void remove( int arg )
 		{
 			dictionaryWords.remove( arg );
+			fireTableDataChanged();
+		}
+		
+		public void removeAll()
+		{
+			dictionaryWords.clear();
 			fireTableDataChanged();
 		}
 		

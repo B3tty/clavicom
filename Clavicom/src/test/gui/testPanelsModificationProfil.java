@@ -29,7 +29,7 @@ import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.configuration.PanelModificationProfilPreferedWords;
+import clavicom.gui.configuration.PanelModificationProfilTransparency;
 import clavicom.gui.language.UIString;
 
 public class testPanelsModificationProfil
@@ -59,7 +59,9 @@ public class testPanelsModificationProfil
 			// PanelModificationProfilKeyboardColor p = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
 			// PanelModificationProfilLangueUIName p = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
 			// PanelModificationProfilNavigation p = new PanelModificationProfilNavigation( profil.getNavigation() );
-			PanelModificationProfilPreferedWords p = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );			
+			// PanelModificationProfilPreferedWords p = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );			
+			// PanelModificationProfilSound p = new PanelModificationProfilSound( profil.getSound() );
+			PanelModificationProfilTransparency p = new PanelModificationProfilTransparency( profil.getTransparency() );
 			
 			JFrame frame = new JFrame();
 			frame.setSize(500,800);
