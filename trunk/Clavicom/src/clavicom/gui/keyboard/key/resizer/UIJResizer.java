@@ -38,8 +38,11 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+import javax.swing.event.EventListenerList;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
+
+import clavicom.gui.listener.UIKeySelectionListener;
 
 
 public abstract class UIJResizer extends JComponent
@@ -50,8 +53,9 @@ public abstract class UIJResizer extends JComponent
 	final int INSET_SIZE = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	private UISelectableBorder resizableBorder;	// Bordure lors du resize
-	private boolean changeSelection;		
+	protected UISelectableBorder resizableBorder;	// Bordure lors du resize
+	protected boolean changeSelection;		
+	protected EventListenerList listeners;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIJResizer()
@@ -59,32 +63,65 @@ public abstract class UIJResizer extends JComponent
 		setLayout(new BorderLayout());
 		resizableBorder = new UISelectableBorder(INSET_SIZE);
 		resizableBorder.setVisible(false);
+		
+		listeners = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	//-----------------------------------------------------------------------
+	// Listeners (en générateur)
+	//-----------------------------------------------------------------------
+	public void addSelectionListener(UIKeySelectionListener listener) 
+	{
+        listeners.add(UIKeySelectionListener.class, listener);
+    }
+    
+    public void removeSelectionListener(UIKeySelectionListener listener) 
+    {
+        listeners.remove(UIKeySelectionListener.class, listener);
+    }
+    
+    public UIKeySelectionListener[] getSelectionListeners() 
+    {
+        return listeners.getListeners(UIKeySelectionListener.class);
+    }
+    
+	//-----------------------------------------------------------------------
+	// Divers
+	//-----------------------------------------------------------------------  
 	public boolean isEditable()
 	{
 		return resizableBorder.isVisible();
 	}
 	
 	public void setEditable(boolean myIsResizable)
-	{
+	{	
 		if(myIsResizable == true)
 		{
-			addMouseListener(resizeListener);
-			addMouseMotionListener(resizeListener);
+			addMouseListener(resizeMouseListener);
+			addMouseMotionListener(resizeMouseListener);
 			
 			super.setBorder(resizableBorder);	
 		}
 		else
 		{
-			removeMouseListener(resizeListener);
-			removeMouseMotionListener(resizeListener);
+			removeMouseListener(resizeMouseListener);
+			removeMouseMotionListener(resizeMouseListener);
 		}
 	}
 	
 	public void setSelected(boolean myIsSelected)
 	{
+		// Génération des evenements
+		if(myIsSelected == true)
+		{
+			fireKeySelected();
+		}
+		else
+		{
+			fireKeyUnselected();
+		}
+		
 		resizableBorder.setSelected(myIsSelected);
 		invalidate();
 	}
@@ -104,9 +141,10 @@ public abstract class UIJResizer extends JComponent
 		}
 	}
 	
-	protected abstract void onBoundsChanged();
+	public abstract void onBoundsChanged();
 
-	MouseInputListener resizeListener = new MouseInputAdapter()
+	
+	MouseInputListener resizeMouseListener = new MouseInputAdapter()
 	{
 		public void mouseEntered(MouseEvent me)
 		{
@@ -124,7 +162,7 @@ public abstract class UIJResizer extends JComponent
 			setCursor(Cursor.getDefaultCursor());
 			
 			// On cache le border que s'il n'est pas selectionné
-			if (resizableBorder.isSelected() == false)
+			if (isSelected() == false)
 			{
 				resizableBorder.setVisible(false);
 			}
@@ -220,6 +258,8 @@ public abstract class UIJResizer extends JComponent
 				// cursor shouldn't change while dragging
 				setCursor(Cursor.getPredefinedCursor(cursor));
 			}
+			// On indique que les dimensions ont changées
+			onBoundsChanged();
 			
 			// On indique qu'on fait un drag et qu'on ne changera pas la selection
 			// au relachement
@@ -239,11 +279,8 @@ public abstract class UIJResizer extends JComponent
 		}
 
 		public void mouseReleased(MouseEvent mouseEvent)
-		{
+		{			
 			startPos = null;
-			
-			// On indique que les dimensions ont changées
-			onBoundsChanged();
 			
 			if (changeSelection == true)
 			{
@@ -251,4 +288,24 @@ public abstract class UIJResizer extends JComponent
 			}
 		}
 	};
+	
+	
+	//-----------------------------------------------------------------------
+	// Listeners (en générateur)
+	//-----------------------------------------------------------------------	    
+    protected void fireKeySelected() 
+    {
+	    for ( UIKeySelectionListener listener : getSelectionListeners() )
+		{
+			listener.keySelected(this);
+		}
+    }
+    
+    protected void fireKeyUnselected() 
+    {
+	    for ( UIKeySelectionListener listener : getSelectionListeners() )
+		{
+			listener.keyUnselected(this);
+		}
+    }
 }

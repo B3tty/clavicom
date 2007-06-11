@@ -108,12 +108,13 @@ public class testUIKeyboard
 			
 			panel.add(uiKeyboard, BorderLayout.CENTER);
 			
-			JFrame frame = new JFrame();
+			JFrame frame = new JFrame ();
 			frame.setSize(900,400);
 			frame.add( panel );
 			
 			frame.setAlwaysOnTop(true);
-			frame.setFocusableWindowState(false);
+			//frame.setFocusableWindowState(false);
+			frame.setFocusable(false);
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);

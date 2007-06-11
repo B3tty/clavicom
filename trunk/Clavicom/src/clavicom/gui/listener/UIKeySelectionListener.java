@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UIKeyMouse.java
-			Creation date		: 7 juin 07
+			Filename			: KeySelectionListener.java
+			Creation date		: 11 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.mouse
+			Package				: listener
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,51 +23,23 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.mouse;
+package clavicom.gui.listener;
 
-import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.mouse.CMouseKey;
-import clavicom.gui.keyboard.key.UIKey;
+import java.util.EventListener;
 
-public class UIKeyMouse extends UIKey
+import clavicom.gui.keyboard.key.resizer.UIJResizer;
+
+public interface UIKeySelectionListener extends EventListener
 {
-
-	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	CMouseKey mouseKey;
+	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	
-	public UIKeyMouse( CMouseKey myMouseKey )
-	{
-		mouseKey = myMouseKey;
-	}
+	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	
-	@Override
-	public CKey getCoreKey()
-	{
-		return mouseKey;
-	}
-
+	public void keySelected(UIJResizer selectedKey);
+	public void keyUnselected(UIJResizer selectedKey);
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
-	@Override
-	protected void addListeners()
-	{
-	}
-
-	@Override
-	protected String getCaption()
-	{
-		// TODO Auto-generated method stub
-		return mouseKey.getCaption();
-	}
-
-	@Override
-	public void onBoundsChanged()
-	{
-		// Rien à faire
-	}
 }

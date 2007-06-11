@@ -100,5 +100,11 @@ public class UIKeyGroup
 		// Retour
 		return keys;
 	}
+
+	public List<UIKeyList> getKeyLists()
+	{
+		return keyLists;
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
