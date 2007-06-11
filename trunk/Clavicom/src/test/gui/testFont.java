@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationSound.java
-			Creation date		: 8 juin 07
+			Creation date		: 11 juin 07
+			Filename			: testFont.java
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.configuration
+			Package				: test
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,47 +23,25 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.configuration;
+package test.gui;
 
-import clavicom.core.profil.CSound;
-import clavicom.gui.language.UIString;
-
-public class PanelModificationProfilSound extends PanelModificationProfil
+public class testFont
 {
 
-	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		
+	}
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	CSound sound;
+	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	
-	public PanelModificationProfilSound(CSound mySound)
-	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND") );
-		
-		sound = mySound;
-		
-		LoadComponents();
-	}
-	
-	private void LoadComponents()
-	{
-		
-	}
-
-	
 
 	//----------------------------------------------------------- METHODES --//	
-	
-	@Override
-	public int validateDataEntry()
-	{
-		// Si la gestion du son a changé, on la change dans le profil
-		
-		return 0;
-	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

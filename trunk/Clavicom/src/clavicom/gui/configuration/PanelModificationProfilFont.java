@@ -25,7 +25,18 @@
 
 package clavicom.gui.configuration;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import clavicom.core.profil.CFont;
+import clavicom.core.profil.CProfil;
+import clavicom.gui.language.UIString;
 
 public class PanelModificationProfilFont extends PanelModificationProfil
 {
@@ -35,14 +46,65 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 
 	//---------------------------------------------------------- VARIABLES --//	
 	CFont font;
+	JList list;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationProfilFont(String title, CFont myFont)
+	public PanelModificationProfilFont(CFont myFont)
 	{
-		super(title);
+		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT") );
 		
 		font = myFont;
+		
+		LoadComponents();
+	}
+	
+	private void LoadComponents()
+	{
+		setLayout(new BorderLayout());
+
+		JPanel panel = new JPanel();
+		panel.add(new JLabel(UIString
+				.getUIString("LB_CONFPROFIL_PANNEL_FONT")));
+		add(panel, BorderLayout.NORTH);
+		
+		
+		
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	    String [] polices = ge.getAvailableFontFamilyNames();
+	    CFont[] cfonts = new CFont[ polices.length ];
+	    CFont cFont;
+	    Font font;
+	    CFont selectedCFont = null;
+	    CProfil profil = CProfil.getInstance();
+	    
+	    for ( int i = 0 ; i < polices.length ; i++ )
+	    {
+	    	font = new Font( polices[i], Font.PLAIN, 12 );
+	    	cFont = new CFont( font );
+	    	
+	    	cfonts[ i ] = cFont;
+	    	
+	    	// on recherche la cFont séléctionné
+	    	if( cFont.toString().equals( profil.getKeyboardFont().toString() ) )
+	    	{
+	    		selectedCFont = cFont;
+	    	}
+	    }
+	    
+	    list = new JList( cfonts );
+	    
+	    JScrollPane sc = new JScrollPane( list );
+	    
+	    add( sc, BorderLayout.CENTER  );
+	    
+	    
+	    
+	    // séléction de la police du profil
+	    if( selectedCFont != null )
+	    {
+	    	list.setSelectedValue(selectedCFont, true);
+	    }
 	}
 
 	

@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationSound.java
-			Creation date		: 8 juin 07
+			Filename			: CFile.java
+			Creation date		: 11 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.configuration
+			Package				: clavicom.tools
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,46 +23,30 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.configuration;
+package clavicom.tools;
 
-import clavicom.core.profil.CSound;
-import clavicom.gui.language.UIString;
+import java.io.File;
 
-public class PanelModificationProfilSound extends PanelModificationProfil
+public class CFile extends File
 {
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	CSound sound;
+	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-	
-	public PanelModificationProfilSound(CSound mySound)
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CFile(String arg0)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND") );
-		
-		sound = mySound;
-		
-		LoadComponents();
-	}
-	
-	private void LoadComponents()
-	{
-		
+		super(arg0);
 	}
 
-	
-
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
 	
 	@Override
-	public int validateDataEntry()
+	public String toString()
 	{
-		// Si la gestion du son a changé, on la change dans le profil
-		
-		return 0;
+		return getName().substring(0, getName().length()-4);
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

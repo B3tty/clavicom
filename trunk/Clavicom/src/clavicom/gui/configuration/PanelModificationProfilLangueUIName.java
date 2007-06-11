@@ -25,7 +25,18 @@
 
 package clavicom.gui.configuration;
 
+import java.awt.BorderLayout;
+import java.io.File;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import clavicom.CFilePaths;
 import clavicom.core.profil.CLangueUIName;
+import clavicom.core.profil.CProfil;
+import clavicom.gui.language.UIString;
+import clavicom.tools.CFile;
 
 public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 {
@@ -35,14 +46,60 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 
 	//---------------------------------------------------------- VARIABLES --//
 	CLangueUIName langueUIName;
+	JComboBox combo;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelModificationProfilLangueUIName(String title, CLangueUIName myLangueUIName)
+	public PanelModificationProfilLangueUIName(CLangueUIName myLangueUIName)
 	{
-		super(title);
+		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_LANGUAGE") );
 		
 		langueUIName = myLangueUIName;
+		
+		LoadComponents();
+	}
+	
+	private void LoadComponents()
+	{
+		setLayout(new BorderLayout());
+		
+		JPanel panel1 = new JPanel();
+		panel1.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE") ) );
+		add( panel1, BorderLayout.NORTH );
+		
+		combo = new JComboBox();
+
+		// chargement de la liste des fichiers de langue UI
+		File langueUIDirectory = new File( CFilePaths.getLanguagesUI() );
+
+		if (langueUIDirectory.isDirectory())
+		{
+			File[] list = langueUIDirectory.listFiles();
+			if (list != null)
+			{
+				CProfil profil = CProfil.getInstance();
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile languageUIFile = new CFile( list[i].getAbsolutePath() );
+						combo.addItem( languageUIFile );
+						
+						// si le nom du languageUI est le même que celui en train d'être chargé, on le séléctione
+						if( languageUIFile.toString().equals( 
+								profil.getLangueUI().getLanguageFileName().substring
+									(0, profil.getLangueUI().getLanguageFileName().length()-4) ) )
+						{
+							combo.setSelectedItem( languageUIFile );
+						}
+					}
+				}
+			}
+		}
+		
+		add( combo, BorderLayout.CENTER );
+		
 	}
 
 	

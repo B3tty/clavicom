@@ -25,8 +25,10 @@
 
 package clavicom.gui.keyboard.key;
 
+import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
+import clavicom.core.listener.OnClickUIKeyCreationListener;
 
 public class UIKeyCreation extends UIKeyOneLevel
 {
@@ -35,6 +37,8 @@ public class UIKeyCreation extends UIKeyOneLevel
 	//---------------------------------------------------------- VARIABLES --//	
 	CKeyCreation coreKey;
 	
+	EventListenerList listenerListCreation;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyCreation(CKeyCreation myCoreKey)
 	{
@@ -42,6 +46,8 @@ public class UIKeyCreation extends UIKeyOneLevel
 		super();
 		
 		coreKey = myCoreKey;
+		
+		listenerListCreation = new EventListenerList();
 		
 		addListeners();
 	}
@@ -53,6 +59,30 @@ public class UIKeyCreation extends UIKeyOneLevel
 		return coreKey;
 	}
 	
+	
+	
+	
+	//	 Listener ==============================================
+	public void addOnClickUIKeyCreationListener(OnClickUIKeyCreationListener l)
+	{
+		listenerListCreation.add(OnClickUIKeyCreationListener.class, l);
+	}
+
+	public void removeOnClickUIKeyCreationListener(OnClickUIKeyCreationListener l)
+	{
+		listenerListCreation.remove(OnClickUIKeyCreationListener.class, l);
+	}
+
+	protected void fireOnClickUIKeyCreation()
+	{
+		OnClickUIKeyCreationListener[] listeners = (OnClickUIKeyCreationListener[]) listenerListCreation
+				.getListeners(OnClickUIKeyCreationListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickUIKeyCreation(this);
+		}
+	}
+	// fin Listener ============================================
 	
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

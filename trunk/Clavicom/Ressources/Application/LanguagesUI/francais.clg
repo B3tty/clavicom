@@ -329,4 +329,40 @@
 	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
 	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
 	
+	<!-- CONF profil -->
+	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_DICTIONARY">Dictionnaire</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT">Police</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR">Couleur du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR">Couleur de fond du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR">Couleur par defaut d'une touche</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR">Couleur par defaut d'une touche pour le survol</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR">Couleur par defaut d'une touche au clic</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE">Langue</message>
+	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE">Choisissez le language</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION">Navigation</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD">Standard</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT">Defilement</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER">Changement de couleur de la touche au passage de la souris</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse de la souricom</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND">Son</message>
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
+	
+	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
+
+	
 </language>
