@@ -54,12 +54,15 @@ public class UIKeyList
 	//--------------------------------------------------------- CONSTANTES --//
 	List<UIKeyKeyboard> keys;				// Liste des UIKey
 	List<UIKeyThreeLevel> threeLevelKeys;	// Liste des UIKeyThreeLevel
+	
+	CKeyList coreKeyList;					// Objet du noyau
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//		
-	public UIKeyList(CKeyList coreKeyList)
+	public UIKeyList(CKeyList myCoreKeyList)
 	{
 		// Initialisation des attributs
+		coreKeyList = myCoreKeyList;
 		keys = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		
@@ -162,5 +165,10 @@ public class UIKeyList
 		return keys.remove(key);
 	}
 
+	public CKeyList getCoreKeyList()
+	{
+		return coreKeyList;
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
