@@ -26,6 +26,7 @@
 package clavicom.gui.configuration;
 
 import clavicom.core.profil.CTransparency;
+import clavicom.gui.language.UIString;
 
 public class PanelModificationProfilTransparency extends PanelModificationProfil
 {
@@ -38,11 +39,18 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public PanelModificationProfilTransparency(String title, CTransparency myTransparency)
+	public PanelModificationProfilTransparency(CTransparency myTransparency)
 	{
-		super(title);
+		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY") );
 		
 		transparency = myTransparency;
+		
+		LoadComponents();
+	}
+	
+	private void LoadComponents()
+	{
+		
 	}
 
 	

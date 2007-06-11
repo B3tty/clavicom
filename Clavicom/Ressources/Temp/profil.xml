@@ -40,7 +40,7 @@
 		<key_transparency>20</key_transparency>
 	</transparency>
 	<font>
-		<name>Arial</name>
+		<name>Batang</name>
 		<size>0.2</size>
 		<auto_size>true</auto_size>
 		<bold>true</bold>
@@ -385,5 +385,11 @@
 	<prefered_words>
 		<prefered_word frequency="5">coucou</prefered_word>
 		<prefered_word frequency="10">salut</prefered_word>
+		<prefered_word frequency="6">DTC</prefered_word>
+		<prefered_word frequency="1">cucu</prefered_word>
+		<prefered_word frequency="10">salut2</prefered_word>
+		<prefered_word frequency="1">thomas</prefered_word>
+		<prefered_word frequency="0">guillaume</prefered_word>
+		<prefered_word frequency="100">icom</prefered_word>
 	</prefered_words>
 </profil>

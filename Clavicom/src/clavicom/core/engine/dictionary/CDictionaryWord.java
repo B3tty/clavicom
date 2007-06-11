@@ -64,6 +64,12 @@ public class CDictionaryWord
 	{
 		frequency++;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return word;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

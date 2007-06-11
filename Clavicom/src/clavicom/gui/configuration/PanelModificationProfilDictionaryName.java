@@ -25,7 +25,18 @@
 
 package clavicom.gui.configuration;
 
+import java.awt.BorderLayout;
+import java.io.File;
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import clavicom.CFilePaths;
 import clavicom.core.profil.CDictionaryName;
+import clavicom.core.profil.CProfil;
+import clavicom.gui.language.UIString;
+import clavicom.tools.CFile;
 
 public class PanelModificationProfilDictionaryName extends PanelModificationProfil
 {
@@ -35,13 +46,61 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 
 	//---------------------------------------------------------- VARIABLES --//
 	CDictionaryName dictionaryName;
+	
+	JComboBox combo;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelModificationProfilDictionaryName(String title, CDictionaryName myDictionaryName)
+	public PanelModificationProfilDictionaryName(CDictionaryName myDictionaryName)
 	{
-		super(title);
+		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY") );
 		
 		dictionaryName = myDictionaryName;
+		
+		LoadComponents();
+	}
+	
+	private void LoadComponents()
+	{
+		setLayout(new BorderLayout());
+
+		JPanel panel = new JPanel();
+		panel.add(new JLabel(UIString
+				.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY")));
+		add(panel, BorderLayout.NORTH);
+
+		combo = new JComboBox();
+
+		// chargement de la liste des fichiers de commandSet
+		File commandSetDirectory = new File( CFilePaths.getDictionaries() );
+
+		if (commandSetDirectory.isDirectory())
+		{
+			File[] list = commandSetDirectory.listFiles();
+			if (list != null)
+			{
+				CProfil profil = CProfil.getInstance();
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile dictionnaryFile = new CFile( list[i].getAbsolutePath() );
+						combo.addItem( dictionnaryFile );
+						
+						// si le nom du dictionaire est le même que celui en train d'être chargé, on le séléctione
+						if( dictionnaryFile.toString().equals( 
+								profil.getDictionnaryName().getDictionaryName().substring
+									(0, profil.getDictionnaryName().getDictionaryName().length()-4) ) )
+						{
+							combo.setSelectedItem( dictionnaryFile );
+						}
+					}
+				}
+			}
+		}
+
+		
+		add( combo, BorderLayout.CENTER );
 	}
 
 	

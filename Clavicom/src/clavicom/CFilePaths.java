@@ -33,16 +33,15 @@ public class CFilePaths
 	private static String ressources = "Ressources\\"; 
 	private static String application = ressources + "Application\\";
 	
-	private static String commandSets = application + "CommandSet\\";
+	private static String commandSets = application + "CommandSets\\";
 	private static String defaultProfile = application + "DefaultProfiles\\";
 	private static String dictionaries = application + "Dictionaries\\";
 	private static String keyboardModels = application + "KeybordModels\\";
-	private static String languagesUI = application + "Languages\\";
+	private static String languagesUI = application + "LanguagesUI\\";
 	private static String shortcutSets = application + "ShortcutSets\\";
 	private static String configFile = application + "config.xml";
 	
 	private static String profils = ressources + "Profiles\\";
-	
 	
 	// ========================================================================
 	// Getters

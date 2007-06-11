@@ -34,6 +34,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.CKey;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 
 public class PanelOptionColor extends JPanel implements ActionListener
@@ -66,7 +67,7 @@ public class PanelOptionColor extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent arg0)
 	{
-		Color newColor = JColorChooser.showDialog( this, "Choix de la couleur", key.getColor( colorEnum ) );
+		Color newColor = JColorChooser.showDialog( this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
 		
 		if( newColor != null )
 		{

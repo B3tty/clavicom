@@ -25,6 +25,7 @@
 
 package clavicom.core.profil;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.event.EventListenerList;
@@ -245,7 +246,7 @@ public class CFont
 		}
 		
 		// Vérification que la police a le bon nom
-		if (Font.getFont(fontName) == null)
+		if (Font.getFont( fontName ) == null)
 		{
 			fontName = DEFAULT_FONT_NAME;
 			fireNewMessage (new CMessage(	UIString.getUIString("MSG_FONT_MISSING_FONT_1") + 
@@ -280,6 +281,31 @@ public class CFont
 	}
 	
 	
+	public CFont( Font myUsedFont )
+	{
+		this( myUsedFont,
+				false,
+				new CColor( Color.BLACK ),
+				false,
+				true,
+				12);
+	}
+	
+	public CFont( 
+			Font myUsedFont, 
+			boolean myAutoSize, 
+			CColor myFontColor, 
+			boolean myAutoColor,
+			boolean myShadow,
+			float myHeightFactor)
+	{
+		usedFont = myUsedFont;
+		autoSize = myAutoSize;
+		fontColor = myFontColor;
+		autoColor = myAutoColor;
+		shadow = myShadow;
+		heightFactor = myHeightFactor;
+	}
 	//----------------------------------------------------------- METHODES --//	
 	public Element buildNode()
 	{		
@@ -418,6 +444,12 @@ public class CFont
 	public void setHeightFactor(float heightFactor)
 	{
 		this.heightFactor = heightFactor;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return usedFont.getName();
 	}
 
 

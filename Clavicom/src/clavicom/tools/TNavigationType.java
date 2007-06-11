@@ -25,6 +25,8 @@
 
 package clavicom.tools;
 
+import clavicom.gui.language.UIString;
+
 public final class TNavigationType 
 {
     private TNavigationType() 
@@ -84,6 +86,28 @@ public final class TNavigationType
     	else
     	{
     		return null;
+    	}
+    }
+    
+    
+    @Override
+    public String toString()
+    {
+    	if (this == STANDARD)
+    	{
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD");
+    	}
+    	else if (this == DEFILEMENT)
+    	{
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT");
+    	}
+    	else if (this == CLICK_TEMPORISE)
+    	{
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE");
+    	}    	
+    	else
+    	{
+    		return "";
     	}
     }
 } 
