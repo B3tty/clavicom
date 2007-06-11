@@ -44,8 +44,10 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
@@ -53,8 +55,8 @@ import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.tools.TColorKeyEnum;
-import clavicom.tools.TUIKeyState;
 import clavicom.tools.TImageUtils;
+import clavicom.tools.TUIKeyState;
 
 public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
 {
@@ -216,12 +218,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// TODO
 			//setPreferredSize(new Dimension(100,50));
-			setEditable( false );
+			setEditable( true );
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
 		//-----------------------------------------------------------------------
-		// Listeners
+		// Listeners (en écouteur)
 		//-----------------------------------------------------------------------
 		public abstract CKey getCoreKey();
 		
@@ -366,25 +368,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{
 			// Appel du père
 			super.paintComponent(myGraphic);
-			try
-			{
 
-				
-				// Récupération du Graphics2D
-				Graphics2D g2 = (Graphics2D) myGraphic;
-				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				
-				// Application de la transparence
-				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-				
-				// Dessin de l'image			
-				g2.drawImage(currentImage, 0, 0, null);
-			}
-			catch (Exception ex)
-			{
-				// A COMPLETER
-				ex.printStackTrace();
-			}
+			// Récupération du Graphics2D
+			Graphics2D g2 = (Graphics2D) myGraphic;
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			
+			// Application de la transparence
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+
+			// Dessin			
+			g2.drawImage(currentImage, 0, 0, null);
 		}
 		
 		//--------------------------------------------------- METHODES PRIVEES --//
@@ -671,7 +664,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// Méthode appelée à chaque tic du timer
 				public void actionPerformed(ActionEvent event)
 				{
-					System.out.println("timer key !");
 					resizeTimer.stop();
 					recreateNormalImages();
 					selectGoodImage();

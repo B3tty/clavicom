@@ -52,14 +52,6 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 		return coreKey;
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
-//	protected void addListeners()
-//	{
-//		// Ajout des listeners supérieurs
-//		super.addListeners();
-//		
-//		// Ajout au listener de caption
-//		coreKey.addCaptionListener(this);
-//	}
 	
 	@Override
 	protected String getCaption()

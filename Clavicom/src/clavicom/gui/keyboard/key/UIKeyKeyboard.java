@@ -28,6 +28,7 @@ package clavicom.gui.keyboard.key;
 import java.awt.Dimension;
 import java.awt.Point;
 
+
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.tools.TPoint;
 
@@ -37,7 +38,7 @@ public abstract class UIKeyKeyboard extends UIKey
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyKeyboard()
 	{
@@ -63,7 +64,7 @@ public abstract class UIKeyKeyboard extends UIKey
 	}
 	
 	@Override
-	protected void onBoundsChanged()
+	public void onBoundsChanged()
 	{				
 		// Calcul des nouvelles positions
 		// On caste en CKeyKeyboard
@@ -85,8 +86,8 @@ public abstract class UIKeyKeyboard extends UIKey
 		keyKeyboard.setPointMin(tptMin);
 		keyKeyboard.setPointMax(tptMax);	
 		
-		System.out.println(	"Après resize... Min : [" + keyKeyboard.getPointMin().getX() + "|" + keyKeyboard.getPointMin().getY() +
-							"] Max : [" + keyKeyboard.getPointMax().getX() + "|" + keyKeyboard.getPointMax().getY() + "]");
+//		System.out.println(	"Après resize... Min : [" + keyKeyboard.getPointMin().getX() + "|" + keyKeyboard.getPointMin().getY() +
+//							"] Max : [" + keyKeyboard.getPointMax().getX() + "|" + keyKeyboard.getPointMax().getY() + "]");
 	}
 	
 	public void replaceKey()
@@ -111,4 +112,5 @@ public abstract class UIKeyKeyboard extends UIKey
 		setPreferredSize(new Dimension (	absMaxX - absMinX,
 											absMaxY - absMinY));
 	}
+
 }

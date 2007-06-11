@@ -156,6 +156,11 @@ public class UIKeyList
 	{
 		return threeLevelKeys;
 	}
+	
+	public boolean removeKey(UIKeyKeyboard key)
+	{
+		return keys.remove(key);
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

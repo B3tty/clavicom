@@ -34,11 +34,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Paint;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +54,12 @@ import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
+import clavicom.gui.keyboard.key.resizer.UIJResizer;
+import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends JPanel implements ComponentListener
+public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -65,11 +70,13 @@ public class UIKeyboard extends JPanel implements ComponentListener
 	final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
 	
+	final int TRANSLATION_STEP = 5;
 
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
 	private List<UIKeyKeyboard> allKeys;			// Liste des keys
 	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
+	private List<UIKeyKeyboard> selectedKeys;			// Liste des key selectionnées
 	
 	private float opacity;
 	
@@ -77,6 +84,8 @@ public class UIKeyboard extends JPanel implements ComponentListener
 	
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
 												// le calcul des images
+	
+	private boolean isEdited;					// Indique si le clavier est en edition
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
@@ -88,9 +97,20 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		keyGroups = new ArrayList<UIKeyGroup>();
 		allKeys = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
+		selectedKeys = new ArrayList<UIKeyKeyboard>();
 		
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
+		
+		// Ajout en tant que listener de keys
+		addKeyListener(keyListener); 
+		
+		// On se met focusable
+		setFocusable(true);
+		requestFocus();
+		
+		// Par défaut on n'est pas en édition
+		isEdited = false;
 		
 		// Récupération de l'opacité
 		opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() / 100;
@@ -137,18 +157,36 @@ public class UIKeyboard extends JPanel implements ComponentListener
 
 	//----------------------------------------------------------- METHODES --//	
 	//-----------------------------------------------------------------------
+	// Selection
+	//-----------------------------------------------------------------------	
+	public void edit()
+	{
+		// Maj des keys
+		updateEdit(true);
+		 
+		// Changement de l'état
+		isEdited = true;
+	}
+	
+	public void unEdit()
+	{
+		// Changement de l'état
+		isEdited = false;
+		
+		// Maj des keys
+		updateEdit(false);
+	}
+	
+	//-----------------------------------------------------------------------
 	// Dessin
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
-	{
+	{		
 		// Appel au père
 		super.paintComponents(myGraphic);
 		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
-		
-		// On replace les touches
-		//replaceUIKeys();
 		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
@@ -165,6 +203,19 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		
 		g2.drawImage(imgBackground, 0, 0, null);
 	}
+	
+	//-----------------------------------------------------------------------
+	// Méthodes de réaction à la selection de key
+	//-----------------------------------------------------------------------	
+	public void keySelected(UIJResizer selectedKey)
+	{
+		selectedKeys.add((UIKeyKeyboard)selectedKey);
+	}
+
+	public void keyUnselected(UIJResizer unselectedKey)
+	{
+		selectedKeys.remove((UIKeyKeyboard)unselectedKey);
+	}
 
 	//-----------------------------------------------------------------------
 	// ComponentListener
@@ -180,12 +231,15 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// TODO Auto-generated method stub
 		
 	}
-	
+	@Override
+	public void resize(Dimension arg0)
+	{
+		// TODO Auto-generated method stub
+	//	super.resize(arg0);
+	}
+    
 	public void componentResized(ComponentEvent arg0)
 	{
-		// On repositionne les touches
-		replaceUIKeys();
-		
 		// On recalcule le fond
 		// On ettend l'image
 		if (imgBackground != null)
@@ -193,21 +247,42 @@ public class UIKeyboard extends JPanel implements ComponentListener
 			imgBackground = TImageUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 		}
 		
-		// On réarme le timer
-		repaint();
-		//resizeTimer.restart();
+		//On réarme le timer
+		resizeTimer.restart();
+		
+		// On redessine
+		//repaint();
 	}
-
-	public void componentShown(ComponentEvent arg0)
+	
+	@Override
+	public void paint(Graphics arg0)
 	{
-//		// On repositionne les touches
-//		replaceUIKeys();
-//		
-//		// On redessine
-//		repaint();
+		// On replace les key. Sinon les touches seront placées
+		// comme dans un panel normal
+		replaceUIKeys();
+		
+		// Appel au père
+		super.paint(arg0);
+	}
+	
+	public void componentShown(ComponentEvent arg0)
+	{		
+		// Rien à ajouter
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	//-----------------------------------------------------------------------
+	// Edition
+	//-----------------------------------------------------------------------
+	private void updateEdit( boolean inEdition)
+	{
+		// Maj des keys
+		for (UIKeyKeyboard currentKey : allKeys)
+		{
+			currentKey.setEditable(false);
+		}
+	}
+	
 	//-----------------------------------------------------------------------
 	// Construction
 	//-----------------------------------------------------------------------		
@@ -243,7 +318,20 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		{						
 			// Ajout au panel
 			add(currentKey);
+			
+			// Ajout en tant que listener
+			currentKey.addSelectionListener(this);
 		}
+	}
+	
+	@Override
+	public void invalidate()
+	{
+		// Appel au père
+		super.invalidate();
+		
+		// On replace les touches
+		replaceUIKeys();
 	}
 	
 	//-----------------------------------------------------------------------
@@ -317,4 +405,110 @@ public class UIKeyboard extends JPanel implements ComponentListener
 		// chaque 500 millième de seconde
 		return new Timer(RESIZE_TIMER_DURATION,action);
 	}
+	
+	//-----------------------------------------------------------------------
+	// Keylistener
+	//-----------------------------------------------------------------------
+	/**
+	 * Effectue une translation de x, y de toutes les touches selectionnées
+	 */
+	private void translateSelectedKeys(int xTranslation, int yTranslation)
+	{
+		for (UIJResizer currentKey : selectedKeys)
+		{						
+			Rectangle bounds = currentKey.getBounds();
+			bounds.translate(xTranslation, yTranslation);
+			currentKey.setBounds(bounds);
+			currentKey.onBoundsChanged();
+			currentKey.invalidate();
+		}		
+	}
+	
+	/**
+	 * Supprime toutes les keys selectionnées
+	 */
+	private void deleteSelectedKeys()
+	{
+		// Suppression des listes
+		for (UIKeyKeyboard currentKey : selectedKeys)
+		{						
+			if(allKeys.contains(currentKey))
+			{
+				allKeys.remove(currentKey);
+			}
+			
+			if(threeLevelKeys.contains(currentKey))
+			{
+				threeLevelKeys.remove(currentKey);
+			}
+		}
+		
+		// Suppression des groupes
+		for(UIKeyGroup currentGroup : keyGroups)
+		{
+			// ..les listes...
+			for(UIKeyList currentList : currentGroup.getKeyLists())
+			{
+				/// ...et les keys
+				for(UIKeyKeyboard currentKey : currentList.getKeys())
+				{
+					// On regarde si la key de la liste est une des keys à 
+					// supprimer
+					if(selectedKeys.contains(currentKey))
+					{
+						// Suppression de la key
+						currentList.removeKey(currentKey);
+						
+						// Suppression de la key dans la liste des selectionnées
+						selectedKeys.remove(currentKey);
+					}
+				}
+			}
+		}		
+		
+		invalidate();
+	}
+	
+	private KeyListener keyListener = new KeyListener()
+	{
+		public void keyPressed(KeyEvent arg0)
+		{
+			switch(arg0.getKeyCode())
+			{
+				// DEPLACEMENT
+				case (KeyEvent.VK_DOWN) :
+					translateSelectedKeys(0,TRANSLATION_STEP);
+					break;
+				
+				case (KeyEvent.VK_UP) :
+					translateSelectedKeys(0,-TRANSLATION_STEP);
+					break;
+				
+				case (KeyEvent.VK_LEFT) :
+					translateSelectedKeys(-TRANSLATION_STEP,0);
+					break;
+					
+				case (KeyEvent.VK_RIGHT) :
+					translateSelectedKeys(TRANSLATION_STEP,0);
+					break;
+					
+				// SUPPRESSION
+				case (KeyEvent.VK_DELETE) :
+					deleteSelectedKeys();
+					break;
+			}
+		}
+
+		public void keyReleased(KeyEvent arg0)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void keyTyped(KeyEvent arg0)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+	};
 }
