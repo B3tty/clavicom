@@ -86,14 +86,16 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 												// le calcul des images
 	
 	private boolean isEdited;					// Indique si le clavier est en edition
+	private CKeyboard coreKeyboard;				// Element du noyau
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
 	 */
-	public UIKeyboard(CKeyboard coreKeyboard)
+	public UIKeyboard(CKeyboard myCoreKeyboard)
 	{
 		// Initialisation des attributs
+		coreKeyboard = myCoreKeyboard;
 		keyGroups = new ArrayList<UIKeyGroup>();
 		allKeys = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
@@ -125,6 +127,9 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		{
 			// Création du UIKeyGroup
 			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i));
+			
+			// Ajout au KeyGroups
+			keyGroups.add(currentKeyGroup);
 			
 			// Demande de récupération des ThreeLevelKeys
 			currentThreeLevelKeys.clear();
@@ -288,6 +293,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	//-----------------------------------------------------------------------		
 	private void replaceUIKeys()
 	{
+		Graphics2D g2 = (Graphics2D) getGraphics();
+		
+		g2.clearRect(0, 0, getWidth(), getHeight());
+		
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
 			// On caste en CKeyKeyboard
@@ -421,7 +430,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			currentKey.setBounds(bounds);
 			currentKey.onBoundsChanged();
 			currentKey.invalidate();
-		}		
+		}
 	}
 	
 	/**
@@ -443,7 +452,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			}
 		}
 		
-		// Suppression des groupes
+		// On parcours les groupes...
 		for(UIKeyGroup currentGroup : keyGroups)
 		{
 			// ..les listes...
@@ -456,12 +465,25 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 					// supprimer
 					if(selectedKeys.contains(currentKey))
 					{
-						// Suppression de la key
+						// Suppression de la UIKey
 						currentList.removeKey(currentKey);
 						
-						// Suppression de la key dans la liste des selectionnées
+						// Suppression de la CKey
+						currentList.getCoreKeyList()
+						
+						// ICI.......; TODO
+						
+						// Suppression de la UIKey dans la liste des selectionnées
 						selectedKeys.remove(currentKey);
+						
+						// On regarde si la liste est vide
 					}
+				}
+				
+				// On vide la 
+				if(currentList.getKeys().size() == 0)
+				{
+					
 				}
 			}
 		}		

@@ -38,11 +38,13 @@ public class UIKeyGroup
 
 	//---------------------------------------------------------- VARIABLES --//	
 	List<UIKeyList> keyLists;
+	CKeyGroup		coreKeyGroup;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyGroup (CKeyGroup coreKeyGroup)
+	public UIKeyGroup (CKeyGroup myCoreKeyGroup)
 	{
 		// Initialisation des attributs
+		coreKeyGroup = myCoreKeyGroup;
 		keyLists = new ArrayList<UIKeyList>();
 		
 		// Récupération du nombre de listes 
@@ -104,6 +106,11 @@ public class UIKeyGroup
 	public List<UIKeyList> getKeyLists()
 	{
 		return keyLists;
+	}
+
+	public CKeyGroup getCoreKeyGroup()
+	{
+		return coreKeyGroup;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
