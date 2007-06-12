@@ -137,6 +137,7 @@ public class TXMLNames
 	public static String PR_ELEMENT_DICTIONARY_NAME			= "dictionary_name";
 	
 	public static String PR_ELEMENT_COMMANDSET_NAME			= "commandset_name";
+	public static String PR_ELEMENT_SHORTCUTSET_NAME			= "shortcutset_name";
 	
 	public static String PR_ELEMENT_KEYBOARD			= "keyboard";
 	public static String PR_ELEMENT_KEY_GROUP			= "keygroup";
