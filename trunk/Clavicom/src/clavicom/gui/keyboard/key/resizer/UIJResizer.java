@@ -123,7 +123,11 @@ public abstract class UIJResizer extends JComponent
 		}
 		
 		resizableBorder.setSelected(myIsSelected);
-		invalidate();
+	}
+	
+	public void eraseBorder()
+	{
+		resizableBorder.setVisible(false);
 	}
 	
 	public boolean isSelected()
