@@ -1,68 +1,398 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>francais.clg</language_ui>
-  <commandset_name>francais.css</commandset_name>
-  <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
-  <keyboard_color>
-    <back_color>
-      <red>215</red>
-      <green>100</green>
-      <blue>98</blue>
-    </back_color>
-    <default_normal>
-      <red>215</red>
-      <green>100</green>
-      <blue>98</blue>
-    </default_normal>
-    <default_clicked>
-      <red>50</red>
-      <green>100</green>
-      <blue>80</blue>
-    </default_clicked>
-    <default_entered>
-      <red>29</red>
-      <green>19</green>
-      <blue>99</blue>
-    </default_entered>
-  </keyboard_color>
-  <transparency>
-    <keyboard_transparency>20</keyboard_transparency>
-    <key_transparency>45</key_transparency>
-  </transparency>
-  <sound>
-    <on_defil active="false" />
-    <on_click active="true" />
-    <on_survol active="true" />
-  </sound>
-  <navigation>
-    <type value="CLICK_TEMPORISE" />
-    <rollover active="true" />
-    <mouse_speed value="60" />
-    <temporisation value="20" />
-  </navigation>
-  <font>
-    <name>Arial</name>
-    <auto_size>true</auto_size>
-    <auto_color>false</auto_color>
-    <color>
-      <red>102</red>
-      <green>0</green>
-      <blue>102</blue>
-    </color>
-    <bold>true</bold>
-    <italic>false</italic>
-    <shadow>true</shadow>
-  </font>
-  <keyboard />
-  <prefered_words>
-    <prefered_word frequency="5">coucou</prefered_word>
-    <prefered_word frequency="10">salut</prefered_word>
-    <prefered_word frequency="6">DTC</prefered_word>
-    <prefered_word frequency="1">cucu</prefered_word>
-    <prefered_word frequency="10">salut2</prefered_word>
-    <prefered_word frequency="1">thomas</prefered_word>
-    <prefered_word frequency="0">guillaume</prefered_word>
-    <prefered_word frequency="100">icom</prefered_word>
-  </prefered_words>
+	<language_ui>francais.clg</language_ui>
+	<commandset_name>francais.css</commandset_name>
+	<dictionary_name>francaisPlusFreq.cdc</dictionary_name>
+	<keyboard_color>
+		<back_color>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</back_color>
+		<default_normal>
+			<red>215</red>
+			<green>100</green>
+			<blue>98</blue>
+		</default_normal>
+		<default_clicked>
+			<red>50</red>
+			<green>100</green>
+			<blue>80</blue>
+		</default_clicked>
+		<default_entered>
+			<red>29</red>
+			<green>19</green>
+			<blue>99</blue>
+		</default_entered>
+	</keyboard_color>
+	<navigation>
+		<type value="CLICK_TEMPORISE"/>
+		<mouse_speed value="60"/>
+		<temporisation value="20"/>
+		<rollover active="true"/>
+	</navigation>
+	<sound>
+		<on_click active="true"/>
+		<on_survol active="true"/>
+		<on_defil active="false"/>
+	</sound>
+	<transparency>
+		<keyboard_transparency>20</keyboard_transparency>
+		<key_transparency>45</key_transparency>
+	</transparency>
+	<font>
+		<name>Batang</name>
+		<size>0.2</size>
+		<auto_size>true</auto_size>
+		<bold>false</bold>
+		<italic>false</italic>
+		<auto_color>false</auto_color>
+		<color>
+			<red>102</red>
+			<green>0</green>
+			<blue>102</blue>
+		</color>
+		<shadow>true</shadow>
+	</font>
+	<keyboard>
+		<keygroup order="0" caption="groupe de ouf" visible="true">
+			<keylist order="0">
+				<keycharacter order="0" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.1</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.2</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
+					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
+					<caption_level_3>keycharacter 0 - Level 3</caption_level_3>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<commands>
+						<command_normal id="22"></command_normal>
+						<command_shift id="1"></command_shift>
+						<command_altgr id="2"></command_altgr>
+					</commands>
+				</keycharacter>
+				<keylevel order="1" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.2</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.3</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>Keylevel 1</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<level>ALT_GR</level>
+				</keylevel>
+			</keylist>
+			<keylist order="1">
+				<keystring order="0" caption_image="false">
+					<order_dynamic>12</order_dynamic>
+					<base_string>coucou write</base_string>
+					<coordinates>
+						<point position="min">
+							<x>0.3</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.4</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyString 2</caption>
+					<colors>
+						<color_normal>
+							<red>189</red>
+							<green>189</green>
+							<blue>189</blue>
+						</color_normal>
+						<color_clicked>
+							<red>204</red>
+							<green>0</green>
+							<blue>204</blue>
+						</color_clicked>
+						<color_entered>
+							<red>255</red>
+							<green>153</green>
+							<blue>255</blue>
+						</color_entered>
+					</colors>
+				</keystring>
+				<keylauncher order="1" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.4</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.5</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyLauncher 3</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<applicationpath>C:\Program
+						Files\QuickTime\QuickTimePlayer.exe</applicationpath>
+				</keylauncher>
+				<keylastword order="2" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.5</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.6</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyLastWord 4</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>0</order_dynamic>
+				</keylastword>
+				<keyprediction order="3" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.6</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.7</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyPrediction 5</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>0</order_dynamic>
+				</keyprediction>
+				<keyprediction order="4" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.7</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.8</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyPrediction 6</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<order_dynamic>1</order_dynamic>
+				</keyprediction>
+				<keyclavicom order="5" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.8</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.9</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyClavicom 7 - SWITCH_MOUSE_KEYBOARD</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<action>SWITCH_KEYBOARD_MOUSE</action>
+				</keyclavicom>
+				<keyshortcut order="6" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.9</x>
+							<y>0.5</y>
+						</point>
+						<point position="max">
+							<x>1.0</x>
+							<y>0.8</y>
+						</point>
+					</coordinates>
+					<caption>KeyShortcut 8</caption>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<command id="1"></command>
+				</keyshortcut>
+				<keycharacter order="7" caption_image="false">
+					<coordinates>
+						<point position="min">
+							<x>0.4</x>
+							<y>0.4</y>
+						</point>
+						<point position="max">
+							<x>0.6</x>
+							<y>0.8</y>
+						</point>
+					</coordinates>
+					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
+					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
+					<caption_level_3>keycharacter 0 - Level 3</caption_level_3>
+					<colors>
+						<color_normal>
+							<red>215</red>
+							<green>100</green>
+							<blue>98</blue>
+						</color_normal>
+						<color_clicked>
+							<red>50</red>
+							<green>100</green>
+							<blue>80</blue>
+						</color_clicked>
+						<color_entered>
+							<red>29</red>
+							<green>19</green>
+							<blue>99</blue>
+						</color_entered>
+					</colors>
+					<commands>
+						<command_normal id="69"></command_normal>
+						<command_shift id="1"></command_shift>
+						<command_altgr id="2"></command_altgr>
+					</commands>
+				</keycharacter>
+			</keylist>
+		</keygroup>
+	</keyboard>
+	<prefered_words>
+		<prefered_word frequency="5">coucou</prefered_word>
+		<prefered_word frequency="10">salut</prefered_word>
+		<prefered_word frequency="6">DTC</prefered_word>
+		<prefered_word frequency="1">cucu</prefered_word>
+		<prefered_word frequency="10">salut2</prefered_word>
+		<prefered_word frequency="1">thomas</prefered_word>
+		<prefered_word frequency="0">guillaume</prefered_word>
+		<prefered_word frequency="100">icom</prefered_word>
+	</prefered_words>
 </profil>
-
