@@ -65,7 +65,7 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 	private void LoadComponents()
 	{
 		setLayout( new BorderLayout() );
-		JPanel panel = new JPanel( new GridLayout(1,4) );
+		JPanel panel = new JPanel( new GridLayout(2,2) );
 		
 		
 		buttonBackColor = new JButton();

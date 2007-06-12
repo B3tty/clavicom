@@ -245,16 +245,16 @@ public class CFont
 		
 		// Vérification que la police a le bon nom
 		if (Font.getFont( fontName ) == null)
-		{
-			fontName = DEFAULT_FONT_NAME;
-			
+		{			
 			CMessageEngine.newError(
 										UIString.getUIString("MSG_FONT_MISSING_FONT_1") + 
-										fontName,
+										fontName +
+										UIString.getUIString("MSG_FONT_MISSING_FONT_2"),
 										UIString.getUIString("MSG_FONT_MISSING_FONT_REPLACE_1") + 
 										DEFAULT_FONT_NAME + 
 										UIString.getUIString("MSG_FONT_MISSING_FONT_REPLACE_2"));
 									
+			fontName = DEFAULT_FONT_NAME;
 			
 		}		
 	}

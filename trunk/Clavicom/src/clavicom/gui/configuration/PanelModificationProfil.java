@@ -25,9 +25,6 @@
 
 package clavicom.gui.configuration;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public abstract class PanelModificationProfil extends JPanel
@@ -39,10 +36,10 @@ public abstract class PanelModificationProfil extends JPanel
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfil( String title )
 	{
-		setBorder( 
-				BorderFactory.createTitledBorder( 
-						BorderFactory.createLineBorder( Color.BLACK ), 
-						title ) );
+//		setBorder( 
+//				BorderFactory.createTitledBorder( 
+//						BorderFactory.createLineBorder( Color.BLACK ), 
+//						title ) );
 	}
 
 	//----------------------------------------------------------- METHODES --//	

@@ -209,11 +209,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100});
 	    comboEst.add(comboSize, BorderLayout.EAST);
 	    panelHaut.add( comboEst, BorderLayout.EAST );
-	    
-	    JPanel panelHautBis = new JPanel();
-	    panelHautBis.add(panelHaut);
-	    //panelOption.add(panelHautBis, BorderLayout.NORTH);
-	    
+
 	    
 	    JPanel panelCentre = new JPanel( new BorderLayout() );
 	    
@@ -257,22 +253,12 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 			}
 		});
 	    buttonEstColor.add(buttonColor, BorderLayout.EAST);
-	    panelCentre.add( buttonEstColor, BorderLayout.EAST );
-	    
-	    JPanel panelCentreBis = new JPanel();
-	    panelCentreBis.add(panelCentre);
-	    //panelOption.add(panelCentreBis, BorderLayout.CENTER);
-	    
-	    
-	    JPanel panelBas = new JPanel( new BorderLayout() );
-	    
+
+
+
 	    shadow = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SHADOW"), font.isShadow() );
-	    panelBas.add( shadow, BorderLayout.CENTER );
-	    
-	    JPanel panelBasBis = new JPanel();
-	    panelBasBis.add(panelBas);
-	    //panelOption.add(panelBasBis, BorderLayout.SOUTH);
-	    
+
+
 	    
 	    panelOption.add(autoSize);
 	    panelOption.add(comboEst);
@@ -316,7 +302,57 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		}
 		
 		
-		/// a finir
+		// si la check box autosize a changé
+		if( font.isAutoSize() != autoSize.isSelected() )
+		{
+			font.setAutoSize( autoSize.isSelected() );
+			retour = 1;
+		}
+		
+		
+		// si la taille à changé
+		if( comboSize.getSelectedItem() != null )
+		{
+			Object object2 = comboSize.getSelectedItem();
+			if( object2 != null )
+			{
+				if( object2 instanceof Integer )
+				{
+					int size = (Integer)object2;
+					float heightFactor = (float)(size/100);
+					if( font.getHeightFactor() != heightFactor )
+					{
+						font.setHeightFactor( heightFactor );
+						retour = 1;
+					}
+				}
+			}
+		}
+		
+		// si la check box autocolor a changé
+		if( font.isAutoColor() != autoColor.isSelected() )
+		{
+			font.setAutoColor( autoColor.isSelected() );
+			retour = 1;
+		}
+		
+		
+		// si la color à changé
+		Color color = buttonColor.getBackground();
+		if( color != font.getFontColor().getColor() )
+		{
+			font.getFontColor().setColor( color );
+			retour = 1;
+		}
+		
+		// si la check box shadows a changé
+		if( font.isShadow() != shadow.isSelected() )
+		{
+			font.setShadow( shadow.isSelected() );
+			retour = 1;
+		}
+		
+		
 		
 		return retour;
 	}
