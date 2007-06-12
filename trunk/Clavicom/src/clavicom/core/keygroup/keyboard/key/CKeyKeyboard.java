@@ -260,7 +260,7 @@ public abstract class CKeyKeyboard extends CKey
 		eltCoord.addContent(eltPointMax);
 
 		// color
-		Element color = super.BuildNode();
+		Element color = super.BuildNode( myNode );
 
 		// Ajout des noeuds
 		myNode.addContent(eltCoord);
