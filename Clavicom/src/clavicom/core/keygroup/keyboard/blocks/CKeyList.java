@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jdom.Attribute;
 import org.jdom.Element;
+
+import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
@@ -256,5 +258,11 @@ public class CKeyList
 		}
 		
 		return list;
+	}
+
+	public void removeKey(CKey coreKey)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

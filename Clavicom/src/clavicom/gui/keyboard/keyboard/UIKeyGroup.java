@@ -113,5 +113,10 @@ public class UIKeyGroup
 		return coreKeyGroup;
 	}
 	
+	public void removeUIList(UIKeyList list)
+	{
+		keyLists.remove(list);
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
