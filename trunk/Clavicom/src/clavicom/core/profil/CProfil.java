@@ -65,7 +65,7 @@ public class CProfil
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public void loadProfileLanguageUIName() throws Exception
+	public Element openFile() throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
@@ -82,8 +82,13 @@ public class CProfil
 		}
 
 		//On initialise un nouvel élément racine avec l'élément racine du document.
-		Element racine = document.getRootElement();
+		return document.getRootElement();
+	}
+	
+	public void loadProfileLanguageUIName() throws Exception
+	{
 		
+		Element racine = openFile();
 		
 		// ======================================================================
 		// chargement de la langueUI
@@ -100,6 +105,49 @@ public class CProfil
 		catch(Exception ex)
 		{
 			throw new Exception("[Chargement du profil] : " + ex.getMessage() );
+		}
+	}
+	
+	public void loadProfileCommandSetName() throws Exception
+	{
+		Element racine = openFile();
+		
+		// ======================================================================
+		// chargement du nom du fichier de commande set à utiliser
+		// ======================================================================
+		Element commandSet_elem = racine.getChild( TXMLNames.PR_ELEMENT_COMMANDSET_NAME );
+		if( commandSet_elem == null )
+		{
+			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML" + TXMLNames.PR_ELEMENT_COMMANDSET_NAME );
+		}
+		try
+		{
+			commandSetName = new CCommandSetName( commandSet_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[Chargement du profil]"  + ex.getMessage() );
+		}
+	}
+	public void loadProfileShortCutName() throws Exception
+	{
+		Element racine = openFile();
+		
+		// ======================================================================
+		// chargement du nom du fichier de commande set à utiliser
+		// ======================================================================
+		Element shortCut_elem = racine.getChild( TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
+		if( shortCut_elem == null )
+		{
+			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML" + TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
+		}
+		try
+		{
+			commandSetName = new CCommandSetName( shortCut_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[Chargement du profil]"  + ex.getMessage() );
 		}
 	}
 	
@@ -243,42 +291,9 @@ public class CProfil
 	
 	public void loadProfile ( ) throws Exception
 	{
-		// ======================================================================
-		// chargement du fichier de profil
-		// ======================================================================
-		SAXBuilder sxb = new SAXBuilder();
-		Document document = null;
-		try
-		{
-			document = sxb.build(new File( profilFilePath ));
-		}
-		catch(Exception e)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_COMMANDSET_OPEN_FILE" ) + profilFilePath + "\n" + e.getMessage());
-		}
-
+		
 		//On initialise un nouvel élément racine avec l'élément racine du document.
-		Element racine = document.getRootElement();
-		
-		
-		
-		
-		// ======================================================================
-		// chargement du nom du fichier de commande set à utiliser
-		// ======================================================================
-		Element commandSet_elem = racine.getChild( TXMLNames.PR_ELEMENT_COMMANDSET_NAME );
-		if( commandSet_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_COMMANDSET_NAME );
-		}
-		try
-		{
-			commandSetName = new CCommandSetName( commandSet_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
+		Element racine = openFile();
 
 		// ======================================================================
 		// chargement du dictionnaire

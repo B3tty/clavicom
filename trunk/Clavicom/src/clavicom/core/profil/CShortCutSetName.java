@@ -30,49 +30,49 @@ import org.jdom.Element;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
-public class CCommandSetName
+public class CShortCutSetName
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	String commandSetName;
+	String shortcutSetName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CCommandSetName( Element node ) throws Exception
+	public CShortCutSetName( Element node ) throws Exception
 	{
 		if( node == null )
 		{
-			throw new Exception( "[Chargement du nom du fichier de jeu de commande] : Impossible de trouver le noeud XML");
+			throw new Exception( "[Chargement du nom du fichier de racourcis] : Impossible de trouver le noeud XML");
 		}
 		
-		commandSetName = node.getText();
+		shortcutSetName = node.getText();
 		
-		if( commandSetName.equals( "" ))
+		if( shortcutSetName.equals( "" ))
 		{
-			throw new Exception( "[Chargement du nom du fichier de jeu de commande] : Nom de fichier de commandSet absent");
+			throw new Exception( "[Chargement du nom du fichier de racourcis] : Nom de fichier de raccourcis absent" + UIString.getUIString("EX_PROFIL_COMMANDSET_NAME_MISSING") );
 		}
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public String getcommandSetName()
+	public String getShortCutName()
 	{
-		return commandSetName;
+		return shortcutSetName;
 	}
 
-	public void setcommandSetName(String commandSetName)
+	public void setShortCutName(String shortCutName)
 	{
-		this.commandSetName = commandSetName;
+		this.shortcutSetName = shortCutName;
 	}
 	
 	
 	public Element buildNode()
 	{
-		Element commandSetName_elem = new Element( TXMLNames.PR_ELEMENT_COMMANDSET_NAME );
+		Element shortCutName_elem = new Element( TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
 		
-		commandSetName_elem.setText( commandSetName );
+		shortCutName_elem.setText( shortcutSetName );
 		
-		return commandSetName_elem;
+		return shortCutName_elem;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
