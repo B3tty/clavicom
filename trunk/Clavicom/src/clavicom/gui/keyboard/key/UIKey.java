@@ -28,6 +28,7 @@ package clavicom.gui.keyboard.key;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -81,6 +82,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		final int TAILLE_CONTOUR = 2;				// Taille du contour
 		final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 		
+		final int DEFAULT_FONT_SIZE = 12;			// Taille par défaut de la police
+		
 		//---------------------------------------------------------- ATTRIBUTS --//	
 		
 		private TUIKeyState state;					// Etat de la touche
@@ -101,6 +104,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		private BufferedImage originalCaptionImage;	// Image correspondant à la caption
 		
 		private float opacity;						// Opacité du bouton (de 0 à 1)
+		
+		private int fontSize;						// Entier indiquant la taille de la police
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -196,6 +201,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		public UIKey()
 		{ 
 			super();
+			
+			// Initialisation des attributs
+			fontSize = DEFAULT_FONT_SIZE;
 			
 			// Création des mouseAdapters
 			mouseAdapterEdit = new MouseAdapterEdit();
@@ -602,9 +610,28 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				// Récupération du CFont du profil
 				CFont profilFont = CProfil.getInstance().getKeyboardFont();
+			
+				// Création du style de police
+				int fontStyle = Font.PLAIN;
 				
-				// On met la bonne police
-				bg.setFont(profilFont.getUsedFont());
+				if(profilFont.isBold())
+				{
+					fontStyle += Font.BOLD;
+				}
+				
+				if(profilFont.isItalic())
+				{
+					fontStyle += Font.ITALIC;
+				}
+				
+				// Création de la bonne police
+				Font captionFont = new Font(	profilFont.getFontName(), 
+												fontStyle,
+												fontSize);
+				
+				
+				// Application de la font
+				bg.setFont(captionFont);
 
 				// Ajout de l'ombre
 				if (profilFont.isShadow())

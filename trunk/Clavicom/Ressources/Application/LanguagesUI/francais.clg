@@ -237,8 +237,6 @@
 	<message id = "EX_PROFIL_FONT_BAD_CAST_1">[Chargement de la police] La chaîne "</message>
 	<message id = "EX_PROFIL_FONT_BAD_CAST_2">" n'est pas un "</message>
 	<message id = "EX_PROFIL_FONT_BAD_CAST_3">" valide.</message>
-	<message id = "EX_PROFIL_FONT_IMPOSSIBLE_LOAD_1">[Chargement de la police] Impossible de charger la police "</message>	
-	<message id = "EX_PROFIL_FONT_IMPOSSIBLE_LOAD_2">".</message>	
 	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_1">[Chargement de la police] Element "</message>
 	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_2">" attendu manquant.</message>
 	<message id = "EX_PROFIL_FONT_BAD_COLOR">[Chargement de la police] Impossible de créer la couleur</message>

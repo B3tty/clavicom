@@ -45,12 +45,14 @@ public class CFont
 	final int DEFAULT_FONT_SIZE = 12;
 	final float DEFAULT_FONT_HEIGHT_FACTOR = 1f;
 	//---------------------------------------------------------- VARIABLES --//	
-	Font usedFont;
 	boolean autoSize;
 	
+	String fontName;
 	CColor fontColor;
 	boolean autoColor;
 	boolean shadow;
+	boolean bold;
+	boolean italic;
 	
 	float heightFactor;
 	
@@ -137,8 +139,7 @@ public class CFont
 									TXMLNames.PR_ELEMENT_FONT_BOLD + 
 									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}		
-		
-		boolean bold;
+
 		try
 		{
 			bold = Boolean.parseBoolean(strBold);
@@ -160,8 +161,7 @@ public class CFont
 									TXMLNames.PR_ELEMENT_FONT_ITALIC + 
 									UIString.getUIString("EX_PROFIL_FONT_ELEMENT_MISSING_2"));
 		}		
-		
-		boolean italic;
+
 		try
 		{
 			italic = Boolean.parseBoolean(strItalic);
@@ -255,56 +255,27 @@ public class CFont
 											DEFAULT_FONT_NAME +
 											UIString.getUIString("MSG_FONT_MISSING_FONT_3")));
 			
-		}
-		
-		// Création du style
-		int style = Font.PLAIN;
-		if(bold == true)
-		{
-			style += Font.BOLD;
-		}
-		
-		if(italic == true)
-		{
-			style += Font.ITALIC;
-		}
-		
-		usedFont = new Font(fontName,style,DEFAULT_FONT_SIZE);
-		
-		if(usedFont == null)
-		{
-			throw new Exception (	UIString.getUIString("EX_PROFIL_FONT_IMPOSSIBLE_LOAD_1") +
-									fontName + 
-									UIString.getUIString("EX_PROFIL_FONT_IMPOSSIBLE_LOAD_2"));
-		}	
-		
+		}		
 	}
 	
-	
-	public CFont( Font myUsedFont )
-	{
-		this( myUsedFont,
-				false,
-				new CColor( Color.BLACK ),
-				false,
-				true,
-				12);
-	}
-	
-	public CFont( 
-			Font myUsedFont, 
+	public CFont(
+			String myFontName,
 			boolean myAutoSize, 
 			CColor myFontColor, 
 			boolean myAutoColor,
 			boolean myShadow,
-			float myHeightFactor)
+			float myHeightFactor,
+			boolean myBold,
+			boolean myItalic)
 	{
-		usedFont = myUsedFont;
+		fontName = myFontName;
 		autoSize = myAutoSize;
 		fontColor = myFontColor;
 		autoColor = myAutoColor;
 		shadow = myShadow;
 		heightFactor = myHeightFactor;
+		bold = myBold;
+		italic = myItalic;
 	}
 	//----------------------------------------------------------- METHODES --//	
 	public Element buildNode()
@@ -314,7 +285,7 @@ public class CFont
 		
 		// Ajout du nom de la police
 		Element eltName = new Element (TXMLNames.PR_ELEMENT_FONT_NAME);
-		eltName.setText(usedFont.getFamily());
+		eltName.setText(fontName);
 		eltFont.addContent(eltName);
 		
 		// Ajout de l'autosize
@@ -326,7 +297,7 @@ public class CFont
 		if (autoSize == false)
 		{
 			Element eltSize = new Element (TXMLNames.PR_ELEMENT_FONT_SIZE);
-			eltSize.setText(String.valueOf(usedFont.getSize()));
+			eltSize.setText(String.valueOf(heightFactor));
 			eltFont.addContent(eltSize);	
 		}
 		
@@ -346,12 +317,12 @@ public class CFont
 		
 		// Ajout du bold
 		Element eltBold = new Element (TXMLNames.PR_ELEMENT_FONT_BOLD);
-		eltBold.setText(String.valueOf(usedFont.isBold()));
+		eltBold.setText(String.valueOf(bold));
 		eltFont.addContent(eltBold);
 		
 		// Ajout du italic
 		Element eltItalic = new Element (TXMLNames.PR_ELEMENT_FONT_ITALIC);
-		eltItalic.setText(String.valueOf(usedFont.isItalic()));
+		eltItalic.setText(String.valueOf(italic));
 		eltFont.addContent(eltItalic);
 		
 		// Ajout de l'ombre
@@ -385,18 +356,6 @@ public class CFont
 	public void setAutoSize(boolean autoSize)
 	{
 		this.autoSize = autoSize;
-	}
-
-
-	public Font getUsedFont()
-	{
-		return usedFont;
-	}
-
-
-	public void setUsedFont(Font usedFont)
-	{
-		this.usedFont = usedFont;
 	}
 
 	public boolean isAutoColor()
@@ -446,12 +405,35 @@ public class CFont
 		this.heightFactor = heightFactor;
 	}
 	
-	@Override
-	public String toString()
+	public boolean isBold()
 	{
-		return usedFont.getName();
+		return bold;
 	}
 
+	public void setBold(boolean bold)
+	{
+		this.bold = bold;
+	}
+
+	public String getFontName()
+	{
+		return fontName;
+	}
+
+	public void setFontName(String fontName)
+	{
+		this.fontName = fontName;
+	}
+
+	public boolean isItalic()
+	{
+		return italic;
+	}
+
+	public void setItalic(boolean italic)
+	{
+		this.italic = italic;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	// Listeners
