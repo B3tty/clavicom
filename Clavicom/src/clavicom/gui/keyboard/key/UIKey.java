@@ -215,10 +215,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
-			
-			// TODO
-			//setPreferredSize(new Dimension(100,50));
-			setEditable( true );
 		}
 		
 		//----------------------------------------------------------- METHODES --//	

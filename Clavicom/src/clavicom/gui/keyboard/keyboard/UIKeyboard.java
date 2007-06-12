@@ -52,6 +52,7 @@ import javax.swing.Timer;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
@@ -149,6 +150,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 				allKeys.addAll(currentKeys);
 			}
 		}
+		
 		// Création du Timer resize
 		resizeTimer = createResizeTimer();
 		
@@ -284,7 +286,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		// Maj des keys
 		for (UIKeyKeyboard currentKey : allKeys)
 		{
-			currentKey.setEditable(false);
+			currentKey.setEditable(inEdition);
 		}
 	}
 	
@@ -292,11 +294,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	// Construction
 	//-----------------------------------------------------------------------		
 	private void replaceUIKeys()
-	{
-		Graphics2D g2 = (Graphics2D) getGraphics();
-		
-		g2.clearRect(0, 0, getWidth(), getHeight());
-		
+	{		
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
 			// On caste en CKeyKeyboard
@@ -438,6 +436,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	 */
 	private void deleteSelectedKeys()
 	{
+		List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
+		List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
+		List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
+		
 		// Suppression des listes
 		for (UIKeyKeyboard currentKey : selectedKeys)
 		{						
@@ -450,6 +452,9 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			{
 				threeLevelKeys.remove(currentKey);
 			}
+			
+			// Suppression du panel
+			remove(currentKey);
 		}
 		
 		// On parcours les groupes...
@@ -466,7 +471,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 					if(selectedKeys.contains(currentKey))
 					{
 						// UI
-						currentList.removeKey(currentKey);
+						uiKeysToDelete.add(currentKey);
 						
 						// Noyau
 						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
@@ -477,10 +482,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 				}
 				
 				// On supprime la liste si elle est vide
-				if (currentList.getKeys().size() == 0)
+				if (currentList.getCoreKeyList().keyCount() == 0)
 				{
 					// UI
-					currentGroup.removeUIList(currentList);
+					uiListsToDelete.add(currentList);
 					
 					// Noyau
 					currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
@@ -488,17 +493,34 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			}
 			
 			// On supprime le groupe si il est vide
-			if (currentGroup.getKeyLists().size() == 0)
+			if (currentGroup.getCoreKeyGroup().listCount() == 0)
 			{
 				// UI
-				keyGroups.remove(currentGroup);
+				uiGroupsToDelete.add(currentGroup);
 				
 				// Noyau
 				coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
 			}
 		}		
 		
-		invalidate();
+		// Suppression des objets interface
+		for(UIKeyGroup currentGroup : keyGroups)
+		{
+			
+			for(UIKeyList currentList : currentGroup.getKeyLists())
+			{
+				// Les touches
+				currentList.removeKeys(uiKeysToDelete);
+			}
+			
+			// les listes
+			currentGroup.removeLists(uiListsToDelete);
+		}
+		
+		// Les groupes
+		keyGroups.removeAll(uiGroupsToDelete);		
+		
+		repaint();
 	}
 	
 	private KeyListener keyListener = new KeyListener()
@@ -527,6 +549,19 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 				// SUPPRESSION
 				case (KeyEvent.VK_DELETE) :
 					deleteSelectedKeys();
+					break;
+					
+				case (KeyEvent.VK_SPACE): 
+					try
+					{
+						CProfil.getInstance().SaveProfil("Ressources\\Temp\\profil2.xml");
+					}
+					catch (Exception ex)
+					{
+						ex.printStackTrace();
+					}
+				
+					System.out.println("Profil saved !");
 					break;
 			}
 		}

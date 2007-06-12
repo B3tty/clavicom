@@ -117,6 +117,11 @@ public class UIKeyGroup
 	{
 		keyLists.remove(list);
 	}
+
+	public void removeLists(List<UIKeyList> listsToDelete)
+	{
+		keyLists.removeAll(listsToDelete);		
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

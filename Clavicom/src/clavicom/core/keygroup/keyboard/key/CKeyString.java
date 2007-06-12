@@ -69,7 +69,7 @@ public class CKeyString extends CKeyDynamicString
 	//----------------------------------------------------------- METHODES --//	
 	
 	
-	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific3(Element eltKeyNode) throws Exception
 	{
 		// Ajout de la chaine
 		Element eltBaseString = new Element(TXMLNames.KY_ELEMENT_STRING_BASESTRING);

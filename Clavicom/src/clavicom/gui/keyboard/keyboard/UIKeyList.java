@@ -38,6 +38,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
@@ -168,6 +169,12 @@ public class UIKeyList
 	public CKeyList getCoreKeyList()
 	{
 		return coreKeyList;
+	}
+
+	public void removeKeys(List<UIKey> keysToDelete)
+	{
+		keys.removeAll(keysToDelete);
+		threeLevelKeys.retainAll(keysToDelete);
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

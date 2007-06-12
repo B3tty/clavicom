@@ -125,12 +125,12 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	
 	
 	
-	public void completeNodeSpecific(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
 	{
 		// Ajout des informations spécifiques 
 		try
 		{
-			completeNodeSpecific2(eltKeyNode);
+			completeNodeSpecific3(eltKeyNode);
 		}
 		catch (Exception ex)
 		{ 
@@ -187,7 +187,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		return listCommands;
 	}
 	
-	public abstract void completeNodeSpecific2(Element eltKeyNode) throws Exception;
+	public abstract void completeNodeSpecific3(Element eltKeyNode) throws Exception;
 	
 	@Override
 	public void Click()

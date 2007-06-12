@@ -124,7 +124,6 @@ public class CMouse
 				"** clic gauche - relachement **", myColorNormal,
 				myColorClicked, myColorEntered);
 		mouse.setLeftRelease(leftRelease);
-
 		try
 		{
 			// Touche passer dans le mode SourisMouvement
