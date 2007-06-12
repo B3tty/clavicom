@@ -25,15 +25,15 @@
 		</default_entered>
 	</keyboard_color>
 	<navigation>
-		<type value = "CLICK_TEMPORISE"/>
-		<mouse_speed value = "60"/>
-		<temporisation value = "20"/>
-		<rollover active = "true"/>
+		<type value="CLICK_TEMPORISE"/>
+		<mouse_speed value="60"/>
+		<temporisation value="20"/>
+		<rollover active="true"/>
 	</navigation>
 	<sound>
-		<on_click active = "true"/>
-		<on_survol active = "true"/>
-		<on_defil active = "false"/>
+		<on_click active="true"/>
+		<on_survol active="true"/>
+		<on_defil active="false"/>
 	</sound>
 	<transparency>
 		<keyboard_transparency>20</keyboard_transparency>
@@ -56,7 +56,7 @@
 	<keyboard>
 		<keygroup order="0" caption="groupe de ouf" visible="true">
 			<keylist order="0">
-				<keycharacter order="0" caption_image="false" >
+				<keycharacter order="0" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.1</x>
@@ -65,7 +65,7 @@
 						<point position="max">
 							<x>0.2</x>
 							<y>0.2</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
 					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>
@@ -93,7 +93,7 @@
 						<command_altgr id="2"></command_altgr>
 					</commands>
 				</keycharacter>
-				<keylevel order="1" caption_image="false" >
+				<keylevel order="1" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.2</x>
@@ -124,39 +124,41 @@
 					</colors>
 					<level>ALT_GR</level>
 				</keylevel>
-	<keystring order="2" caption_image="false">
-		<order_dynamic>12</order_dynamic>
-		<base_string>coucou write</base_string>
-		<coordinates>
-			<point position="min">
-				<x>0.3</x>
-				<y>0</y>
-			</point>
-			<point position="max">
-				<x>0.4</x>
-				<y>0.2</y>
-			</point>
-		</coordinates>
-		<caption>KeyString 2</caption>
-		<colors>
-			<color_normal>
-				<red>189</red>
-				<green>189</green>
-				<blue>189</blue>
-			</color_normal>
-			<color_clicked>
-				<red>204</red>
-				<green>0</green>
-				<blue>204</blue>
-			</color_clicked>
-			<color_entered>
-				<red>255</red>
-				<green>153</green>
-				<blue>255</blue>
-			</color_entered>
-		</colors>
-	</keystring>
-				<keylauncher order="3" caption_image="false" >
+			</keylist>
+			<keylist order="1">
+				<keystring order="0" caption_image="false">
+					<order_dynamic>12</order_dynamic>
+					<base_string>coucou write</base_string>
+					<coordinates>
+						<point position="min">
+							<x>0.3</x>
+							<y>0</y>
+						</point>
+						<point position="max">
+							<x>0.4</x>
+							<y>0.2</y>
+						</point>
+					</coordinates>
+					<caption>KeyString 2</caption>
+					<colors>
+						<color_normal>
+							<red>189</red>
+							<green>189</green>
+							<blue>189</blue>
+						</color_normal>
+						<color_clicked>
+							<red>204</red>
+							<green>0</green>
+							<blue>204</blue>
+						</color_clicked>
+						<color_entered>
+							<red>255</red>
+							<green>153</green>
+							<blue>255</blue>
+						</color_entered>
+					</colors>
+				</keystring>
+				<keylauncher order="1" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.4</x>
@@ -165,7 +167,7 @@
 						<point position="max">
 							<x>0.5</x>
 							<y>0.2</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption>KeyLauncher 3</caption>
 					<colors>
@@ -185,9 +187,10 @@
 							<blue>99</blue>
 						</color_entered>
 					</colors>
-					<applicationpath>C:\Program Files\QuickTime\QuickTimePlayer.exe</applicationpath>
+					<applicationpath>C:\Program
+						Files\QuickTime\QuickTimePlayer.exe</applicationpath>
 				</keylauncher>
-				<keylastword order="4" caption_image="false" >
+				<keylastword order="2" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.5</x>
@@ -196,7 +199,7 @@
 						<point position="max">
 							<x>0.6</x>
 							<y>0.2</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption>KeyLastWord 4</caption>
 					<colors>
@@ -218,7 +221,7 @@
 					</colors>
 					<order_dynamic>0</order_dynamic>
 				</keylastword>
-				<keyprediction order="5" caption_image="false" >
+				<keyprediction order="3" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.6</x>
@@ -227,7 +230,7 @@
 						<point position="max">
 							<x>0.7</x>
 							<y>0.2</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption>KeyPrediction 5</caption>
 					<colors>
@@ -249,7 +252,7 @@
 					</colors>
 					<order_dynamic>0</order_dynamic>
 				</keyprediction>
-				<keyprediction order="6" caption_image="false" >
+				<keyprediction order="4" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.7</x>
@@ -280,7 +283,7 @@
 					</colors>
 					<order_dynamic>1</order_dynamic>
 				</keyprediction>
-				<keyclavicom order="7" caption_image="false" >
+				<keyclavicom order="5" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.8</x>
@@ -311,7 +314,7 @@
 					</colors>
 					<action>SWITCH_KEYBOARD_MOUSE</action>
 				</keyclavicom>
-				<keyshortcut order="8" caption_image="false" >
+				<keyshortcut order="6" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.9</x>
@@ -320,7 +323,7 @@
 						<point position="max">
 							<x>1.0</x>
 							<y>0.8</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption>KeyShortcut 8</caption>
 					<colors>
@@ -342,7 +345,7 @@
 					</colors>
 					<command id="1"></command>
 				</keyshortcut>
-				<keycharacter order="9" caption_image="false" >
+				<keycharacter order="7" caption_image="false">
 					<coordinates>
 						<point position="min">
 							<x>0.4</x>
@@ -351,7 +354,7 @@
 						<point position="max">
 							<x>0.6</x>
 							<y>0.8</y>
-						</point>	
+						</point>
 					</coordinates>
 					<caption_level_1>keycharacter 0 - Level 1</caption_level_1>
 					<caption_level_2>keycharacter 0 - Level 2</caption_level_2>

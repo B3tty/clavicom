@@ -240,7 +240,7 @@ public class CNavigation
 		
 		// Ajout du type
 		Element eltTypeNavigation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_TYPE);
-		eltTypeNavigation.setAttribute(TXMLNames.PR_ELEMENT_NAVIGATION_TYPE, TNavigationType.getString(typeNavigation));
+		eltTypeNavigation.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_TYPE_VALUE, TNavigationType.getString(typeNavigation));
 		eltNavigation.addContent(eltTypeNavigation);
 		
 		// Ajout du rollover

@@ -58,7 +58,7 @@ public class testUIKeyboard
 			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
 			// Chemins
-			String input = "Ressources\\Temp\\profil.xml";
+			String input = "Ressources\\Temp\\profil2.xml";
 			
 			// Chargement du profil
 			CProfil.createInstance(input);
@@ -105,6 +105,8 @@ public class testUIKeyboard
 			
 			UIKeyboard uiKeyboard = new UIKeyboard(keyboard);
 			uiKeyboard.setPreferredSize(new Dimension(100,100));
+			
+			uiKeyboard.edit();
 			
 			panel.add(uiKeyboard, BorderLayout.CENTER);
 			

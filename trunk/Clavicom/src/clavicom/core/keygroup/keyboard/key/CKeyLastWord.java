@@ -55,7 +55,7 @@ public class CKeyLastWord extends CKeyDynamicString
 	
 	
 	
-	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific3(Element eltKeyNode) throws Exception
 	{
 		// Rien à rajouter		
 	}

@@ -168,22 +168,22 @@ public class CKeyboardColor
 
 		// back color
 		Element backColorElement = backColor.BuildNode();
-		backColorElement.setName( UIString.getUIString("PR_ELEMENT_KEYBOARD_COLOR_BACK") );
+		backColorElement.setName( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_BACK);
 		keyboard_color.addContent( backColorElement );
 		
 		// normal
 		Element defaultKeyNormalElement = defaultKeyNormal.BuildNode();
-		defaultKeyNormalElement.setName( UIString.getUIString("PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_NORMAL") );
+		defaultKeyNormalElement.setName( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_NORMAL);
 		keyboard_color.addContent(  defaultKeyNormalElement );
 		
 		// clicked
 		Element defaultKeyClickedElement = defaultKeyClicked.BuildNode();
-		defaultKeyClickedElement.setName( UIString.getUIString("PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED") );
+		defaultKeyClickedElement.setName( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_CLICKED);
 		keyboard_color.addContent( defaultKeyClickedElement );
 		
 		// entered
 		Element defaultKeyEnteredElement = defaultKeyEntered.BuildNode();
-		defaultKeyEnteredElement.setName( UIString.getUIString("PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_ENTERED") );
+		defaultKeyEnteredElement.setName( TXMLNames.PR_ELEMENT_KEYBOARD_COLOR_DEFAULT_ENTERED );
 		keyboard_color.addContent(  defaultKeyEnteredElement );
 		
 		

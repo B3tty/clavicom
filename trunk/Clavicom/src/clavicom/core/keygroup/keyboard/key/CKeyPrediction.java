@@ -59,7 +59,7 @@ public class CKeyPrediction extends CKeyDynamicString
 		return TXMLNames.KY_ELEMENT_PREDICTION;
 	}
 	
-	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
+	public void completeNodeSpecific3(Element eltKeyNode) throws Exception
 	{
 		// Rien à ajouter		
 	}

@@ -161,7 +161,7 @@ public class CKeyShortcut extends CKeyOneLevel
 	{
 		// Ajout de la commande
 		Element eltCommand = new Element(TXMLNames.KY_ELEMENT_SHORTCUT_COMMAND);
-		eltCommand.setAttribute(TXMLNames.KY_ATTRIBUTE_SHORTCUT_COMMAND_ID,command.GetCaption());
+		eltCommand.setAttribute(TXMLNames.KY_ATTRIBUTE_SHORTCUT_COMMAND_ID,String.valueOf(command.GetID()));
 		
 		eltKeyNode.addContent(eltCommand);
 	}
