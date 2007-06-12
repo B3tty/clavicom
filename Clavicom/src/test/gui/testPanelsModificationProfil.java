@@ -29,6 +29,12 @@ import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.configuration.PanelModificationProfilCommandSetName;
+import clavicom.gui.configuration.PanelModificationProfilDictionaryName;
+import clavicom.gui.configuration.PanelModificationProfilFont;
+import clavicom.gui.configuration.PanelModificationProfilKeyboardColor;
+import clavicom.gui.configuration.PanelModificationProfilNavigation;
+import clavicom.gui.configuration.PanelModificationProfilPreferedWords;
 import clavicom.gui.configuration.PanelModificationProfilTransparency;
 import clavicom.gui.language.UIString;
 
@@ -52,16 +58,16 @@ public class testPanelsModificationProfil
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
-			
+
 			// PanelModificationProfilCommandSetName p = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
 			// PanelModificationProfilDictionaryName p = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
-			// PanelModificationProfilFont p = new PanelModificationProfilFont( profil.getKeyboardFont() );
+			PanelModificationProfilFont p = new PanelModificationProfilFont( profil.getKeyboardFont() );
 			// PanelModificationProfilKeyboardColor p = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
 			// PanelModificationProfilLangueUIName p = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
 			// PanelModificationProfilNavigation p = new PanelModificationProfilNavigation( profil.getNavigation() );
 			// PanelModificationProfilPreferedWords p = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );			
 			// PanelModificationProfilSound p = new PanelModificationProfilSound( profil.getSound() );
-			PanelModificationProfilTransparency p = new PanelModificationProfilTransparency( profil.getTransparency() );
+			// PanelModificationProfilTransparency p = new PanelModificationProfilTransparency( profil.getTransparency() );
 			
 			JFrame frame = new JFrame();
 			frame.setSize(500,800);

@@ -27,21 +27,17 @@ package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
 import java.io.File;
-
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import clavicom.CFilePaths;
 import clavicom.core.profil.CDictionaryName;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.CFile;
 
 public class PanelModificationProfilDictionaryName extends PanelModificationProfil
 {
 
-	
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
@@ -88,8 +84,7 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 						
 						// si le nom du dictionaire est le même que celui en train d'être chargé, on le séléctione
 						if( dictionnaryFile.toString().equals( 
-								dictionaryName.getDictionaryName().substring
-									(0, dictionaryName.getDictionaryName().length()-4) ) )
+								dictionaryName.getDictionaryName() ) )
 						{
 							combo.setSelectedItem( dictionnaryFile );
 						}
@@ -115,14 +110,14 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 			Object object = combo.getSelectedItem();
 			if( object instanceof CFile )
 			{
-				CFile commandSetFile = (CFile)object;
-				if( commandSetFile != null )
+				CFile dictionaryFile = (CFile)object;
+				if( dictionaryFile != null )
 				{
 					// s'il à changé
-					if( commandSetFile.toString().equals( 
-							dictionaryName.getDictionaryName().substring
-								(0, dictionaryName.getDictionaryName().length()-4) ) )
+					if( dictionaryFile.toString().equals( 
+							dictionaryName.getDictionaryName() ) )
 					{
+						dictionaryName.setDictionaryName( dictionaryFile.getName() );
 						return 1;
 					}
 				}

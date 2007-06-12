@@ -35,7 +35,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
-import javax.swing.JTextField;
 import clavicom.core.profil.CNavigation;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TNavigationType;
@@ -51,10 +50,10 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JRadioButton radioButtonStandard;
 	JRadioButton radioButtonDefilement;
 	JRadioButton radioButtonClickTempo;
-	JTextField textTempoDefil;
+	JSlider sliderTempoDefil;
 	JCheckBox blocSelection;
-	JTextField textTempoClic;
-	JSlider slider;
+	JSlider sliderTempoClic;
+	JSlider sliderMouseSpeed;
 	JCheckBox rollOver;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -87,7 +86,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonDefilement.setSelected(true);
 			radioButtonClickTempo.setSelected(false);
 			
-			textTempoDefil.setText( String.valueOf( navigation.getTemporisationDefilement() ) );
+			sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
 		} else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			SwitchClicMode();
@@ -95,11 +94,11 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonDefilement.setSelected(false);
 			radioButtonClickTempo.setSelected(true);
 			
-			textTempoClic.setText( String.valueOf( navigation.getTemporisationDefilement() ) );
+			sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
 			blocSelection.setSelected( navigation.isBlockSelectionActive() );
 		}
 		
-		slider.setValue( navigation.getTemporisationClic() );
+		sliderMouseSpeed.setValue( navigation.getTemporisationClic() );
 		rollOver.setSelected( navigation.isRolloverActive() ); 
 	}
 
@@ -135,8 +134,15 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		JLabel labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION") );
 		panelTempoClic.add( labelTempoClic );
 		
-		textTempoClic = new JTextField( navigation.getTemporisationDefilement() );
-		panelTempoClic.add( textTempoClic );
+		sliderTempoClic = new JSlider();
+		sliderTempoClic.setMaximum( 100 );
+		sliderTempoClic.setMinimum( 0 );
+		sliderTempoClic.setMajorTickSpacing(10);
+		sliderTempoClic.setMinorTickSpacing(10);
+		sliderTempoClic.setPaintTicks(true);
+		sliderTempoClic.setPaintLabels(true);
+		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
+		panelTempoClic.add( sliderTempoClic );
 		
 		panelClicTempo.add( panelTempoClic, BorderLayout.CENTER );
 		
@@ -156,8 +162,15 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		JLabel labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") );
 		panelTempoDefil.add( labelTempoDefil );
 		
-		textTempoDefil = new JTextField( navigation.getTemporisationDefilement() );
-		panelTempoDefil.add( textTempoDefil );
+		sliderTempoDefil = new JSlider();
+		sliderTempoDefil.setMaximum( 100 );
+		sliderTempoDefil.setMinimum( 0 );
+		sliderTempoDefil.setMajorTickSpacing(10);
+		sliderTempoDefil.setMinorTickSpacing(10);
+		sliderTempoDefil.setPaintTicks(true);
+		sliderTempoDefil.setPaintLabels(true);
+		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
+		panelTempoDefil.add( sliderTempoDefil );
 		
 		defilement.add( panelTempoDefil, BorderLayout.CENTER );
 		
@@ -190,14 +203,14 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		// ========================================================================
 		JPanel panelTempoSouricom = new JPanel();
 
-		slider = new JSlider();
-		slider.setMaximum( 100 );
-		slider.setMinimum( 0 );
-		slider.setMajorTickSpacing(10);
-		slider.setMinorTickSpacing(10);
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true); 
-		panelTempoSouricom.add( slider );
+		sliderMouseSpeed = new JSlider();
+		sliderMouseSpeed.setMaximum( 100 );
+		sliderMouseSpeed.setMinimum( 0 );
+		sliderMouseSpeed.setMajorTickSpacing(10);
+		sliderMouseSpeed.setMinorTickSpacing(10);
+		sliderMouseSpeed.setPaintTicks(true);
+		sliderMouseSpeed.setPaintLabels(true); 
+		panelTempoSouricom.add( sliderMouseSpeed );
 		
 		
 		panelGlobal.add( panelTempoSouricom, BorderLayout.SOUTH );
@@ -212,8 +225,57 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	public int validateDataEntry()
 	{
 		// Si la navigation a changé, on la change dans le profil
+		int retour = 0;
 		
-		return 0;
+		if( radioButtonStandard.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.STANDARD )
+			{
+				navigation.setTypeNavigation( TNavigationType.STANDARD );
+				
+				retour = 1;
+			}
+		}else if( radioButtonDefilement.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.DEFILEMENT )
+			{
+				navigation.setTypeNavigation( TNavigationType.DEFILEMENT );
+
+				navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
+				
+				navigation.setBlockSelectionActive( rollOver.isSelected() );
+				
+				retour = 1;
+			}
+		}else if( radioButtonClickTempo.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.CLICK_TEMPORISE )
+			{
+				navigation.setTypeNavigation( TNavigationType.CLICK_TEMPORISE );
+				navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
+				
+				retour = 1;
+			}
+		}
+		
+		// sliderMouseSpeed
+		if( sliderMouseSpeed.getValue() != navigation.getMouseSpeed() )
+		{
+			navigation.setMouseSpeed( sliderMouseSpeed.getValue() );
+			retour = 1;
+		}
+		
+		// rollOver
+		if( rollOver.isSelected() != navigation.isRolloverActive() )
+		{
+			navigation.setRolloverActive( rollOver.isSelected() );
+			retour = 1;
+		}
+		
+		return retour;
 	}
 
 
@@ -236,18 +298,18 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 	private void SwitchClicMode()
 	{
-		textTempoClic.setEnabled( true );
+		sliderTempoClic.setEnabled( true );
 		
-		textTempoDefil.setEnabled( false );
+		sliderTempoDefil.setEnabled( false );
 		blocSelection.setEnabled( false );
 	}
 
 
 	private void SwitchDefilementMode()
 	{
-		textTempoClic.setEnabled( false );
+		sliderTempoClic.setEnabled( false );
 		
-		textTempoDefil.setEnabled( true );
+		sliderTempoDefil.setEnabled( true );
 		blocSelection.setEnabled( true );
 		
 	}
@@ -255,9 +317,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 	private void SwitchStandardMode()
 	{
-		textTempoClic.setEnabled( false );
+		sliderTempoClic.setEnabled( false );
 		
-		textTempoDefil.setEnabled( false );
+		sliderTempoDefil.setEnabled( false );
 		blocSelection.setEnabled( false );
 	}
 

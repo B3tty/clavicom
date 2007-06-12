@@ -88,8 +88,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 
 		JScrollPane panelTable = new JScrollPane( table );
 		panelGlobal.add( panelTable, BorderLayout.CENTER );
-		
-		LoadTable();
+	
 		
 		// boutton
 		JPanel buttons = new JPanel();
@@ -133,16 +132,31 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 
 	//----------------------------------------------------------- METHODES --//
 	
-	private void LoadTable()
-	{
-		// chargement de la table
-		
-	}
+	
 
 	@Override
 	public int validateDataEntry()
 	{
 		// Si les mots préférés ont changé, on les change dans le profil
+		
+		// si la taille de la liste à changé, c'est différant
+		if( preferedWord.getSize() != wordTableModel.getRowCount() )
+		{
+			// on vide les prefered word
+			preferedWord.clearPreferedWord();
+			
+			// et on les re-remplit
+			for( int i = 0 ; i < wordTableModel.getRowCount() ; ++i )
+			{
+				CDictionaryWord dictionaryWord = (CDictionaryWord)wordTableModel.getValueAt(i, 0);
+				if( dictionaryWord != null )
+				{
+					preferedWord.addPreferedWord( dictionaryWord );
+				}
+			}
+			
+			return 1;
+		}
 		
 		return 0;
 	}
@@ -201,7 +215,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 			{
 				if( arg1 == 0 )
 				{
-					return dicitonaryWord.getWord();
+					return dicitonaryWord;
 				}
 				else
 				{

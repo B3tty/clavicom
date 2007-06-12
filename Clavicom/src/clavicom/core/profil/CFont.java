@@ -257,6 +257,20 @@ public class CFont
 		}		
 	}
 	
+	
+	public CFont( String myFontName )
+	{
+		this( 
+				myFontName,
+				false,
+				new CColor( Color.black ),
+				false,
+				true,
+				50,
+				false,
+				false);
+	}
+	
 	public CFont(
 			String myFontName,
 			boolean myAutoSize, 
@@ -276,6 +290,7 @@ public class CFont
 		bold = myBold;
 		italic = myItalic;
 	}
+	
 	//----------------------------------------------------------- METHODES --//	
 	public Element buildNode()
 	{		
@@ -446,4 +461,9 @@ public class CFont
 		}
 	}
 	
+	@Override
+	public String toString()
+	{
+		return getFontName();
+	}
 }

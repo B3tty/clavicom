@@ -46,7 +46,7 @@ public class CFile extends File
 	@Override
 	public String toString()
 	{
-		return getName().substring(0, getName().length()-4);
+		return getName();
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

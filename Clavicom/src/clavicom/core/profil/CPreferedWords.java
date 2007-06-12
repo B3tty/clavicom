@@ -99,6 +99,11 @@ public class CPreferedWords
 		}
 	}
 	
+	public void clearPreferedWord(  )
+	{
+		preferedWords.clear();
+	}
+	
 	public void removePreferedWord( CDictionaryWord preferedWord )
 	{
 		preferedWords.remove( preferedWord );
