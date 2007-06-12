@@ -41,8 +41,8 @@
 	</transparency>
 	<font>
 		<name>Batang</name>
-		<size>0.2</size>
-		<auto_size>true</auto_size>
+		<size>1</size>
+		<auto_size>false</auto_size>
 		<bold>false</bold>
 		<italic>false</italic>
 		<auto_color>false</auto_color>

@@ -106,6 +106,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		private float opacity;						// Opacité du bouton (de 0 à 1)
 		
 		private int fontSize;						// Entier indiquant la taille de la police
+													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
+													// CFont, mais de la vraie taille
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -384,6 +386,20 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			g2.drawImage(currentImage, 0, 0, null);
 		}
 		
+		//-----------------------------------------------------------------------
+		// Getters / Setters
+		//-----------------------------------------------------------------------	
+
+		public int getFontSize()
+		{
+			return fontSize;
+		}
+
+		public void setFontSize(int fontSize)
+		{
+			this.fontSize = fontSize;
+		}		
+		
 		//--------------------------------------------------- METHODES PRIVEES --//
 		/**
 		 * Méthodes ou l'objet doit IMPERATIVEMENT s'abonner en tant que listener
@@ -599,15 +615,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 			else
 			// Dessin du texte
-			{
-				// Calcul des positions de dessin du texte
-				FontMetrics fontMetrics = bg.getFontMetrics();
-				int captionWidth= fontMetrics.stringWidth(getCaption());
-				int captionHeight= fontMetrics.getHeight();
-				
-				int xPosition = (getWidth()/2) - (captionWidth/2);
-				int yPosition = (getHeight()/2) + (captionHeight/3);
-				
+			{				
 				// Récupération du CFont du profil
 				CFont profilFont = CProfil.getInstance().getKeyboardFont();
 			
@@ -629,9 +637,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 												fontStyle,
 												fontSize);
 				
-				
 				// Application de la font
 				bg.setFont(captionFont);
+				
+				// Calcul des positions de dessin du texte
+				FontMetrics fontMetrics = bg.getFontMetrics();
+				int captionWidth= fontMetrics.stringWidth(getCaption());
+				int captionHeight= fontMetrics.getHeight();
+				
+				int xPosition = (getWidth()/2) - (captionWidth/2);
+				int yPosition = (getHeight()/2) + (captionHeight/3);
 
 				// Ajout de l'ombre
 				if (profilFont.isShadow())
