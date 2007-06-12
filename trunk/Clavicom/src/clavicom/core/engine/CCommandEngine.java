@@ -41,10 +41,9 @@ import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.gui.language.UIString;
-import clavicom.gui.message.CMessage;
-import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TKeyAction;
 
 public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringListener
@@ -104,32 +103,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 
 	//----------------------------------------------------------- METHODES --//
 	
-	// ========================================================|
-	// Listener ===============================================|
-	// ========================================================|
-	public void addNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.add(NewMessageListener.class, l);
-	}
-	
-	public void removeNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.remove(NewMessageListener.class, l);
-	}
-	
-	
-	protected void fireNewMessage( CMessage message )
-	{
-		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
-				.getListeners(NewMessageListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
-		{
-			listeners[i].newMessage( message );
-		}
-	}
-	// ========================================================|
-	// fin Listener ==========================================|
-	// ========================================================|
 	
 	protected void executeCommande( List<CCommand> commandList )
 	{
@@ -143,8 +116,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 		catch ( AWTException e )
 		{
-			CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
-			fireNewMessage( message );
+			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
 			return;
 		}
 		
@@ -161,8 +133,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 					}
 					catch(Exception ex)
 					{
-						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
-						fireNewMessage( message );
+						CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						return;
 					}
 				}
@@ -174,8 +145,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 					}
 					catch(Exception ex)
 					{
-						CMessage message = new CMessage( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
-						fireNewMessage( message );
+						CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
 						return;
 					}
 				}
@@ -216,8 +186,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 		catch ( Exception e )
 		{
-			CMessage message = new CMessage( e.getMessage() );
-			fireNewMessage( message );
+			CMessageEngine.newError( e.getMessage() );
 			return;
 		}
 		

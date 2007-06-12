@@ -33,9 +33,8 @@ import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyLauncherListener;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
-import clavicom.gui.message.CMessage;
-import clavicom.gui.message.NewMessageListener;
 import org.jdesktop.jdic.desktop.Desktop;
 import org.jdesktop.jdic.desktop.DesktopException;
 
@@ -86,14 +85,11 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 		// lancement de l'application
 		try
 		{
-			// String s = keyLauncher.getApplicationPath();
-			String s = "C:\\Program Files\\QuickTime\\QuickTimePlayer.exe";
-			Desktop.open( new File ( s ) );
+			Desktop.open( new File ( keyLauncher.getApplicationPath() ) );
 		}
 		catch ( DesktopException e )
 		{
-			CMessage message = new CMessage( e.getMessage() );
-			fireNewMessage( message );
+			CMessageEngine.newError( e.getMessage() );
 			return;
 		}
 		
@@ -102,33 +98,6 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 
 	//----------------------------------------------------------- METHODES --//	
 	
-	
-	// ========================================================|
-	// Listener ===============================================|
-	// ========================================================|
-	public void addNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.add(NewMessageListener.class, l);
-	}
-	
-	public void removeNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.remove(NewMessageListener.class, l);
-	}
-	
-	protected void fireNewMessage( CMessage message )
-	{
-		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
-				.getListeners(NewMessageListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
-		{
-			listeners[i].newMessage( message );
-		}
-	}
-	
-	// ========================================================|
-	// fin Listener ==========================================|
-	// ========================================================|
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
