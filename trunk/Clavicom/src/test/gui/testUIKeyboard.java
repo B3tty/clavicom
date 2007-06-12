@@ -38,10 +38,12 @@ import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
+import clavicom.gui.message.UIMessageEngine;
 
 public class testUIKeyboard
 {
@@ -49,6 +51,8 @@ public class testUIKeyboard
 	{
 		try
 		{
+			CMessageEngine.createInstance();
+			UIMessageEngine test = new UIMessageEngine();
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			

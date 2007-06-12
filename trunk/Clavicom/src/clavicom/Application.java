@@ -65,7 +65,7 @@ public class Application
 		// Gestionnaire des paramètres de l'application		
 		try
 		{
-			CSettings.loadSettings(CFilePaths.getConfigFile());
+			CSettings.loadSettings("erygtrhf");
 		}
 		catch (Exception ex)
 		{
