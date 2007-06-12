@@ -33,6 +33,7 @@ import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
+import clavicom.core.message.CMessageEngine;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -246,11 +247,14 @@ public class CFont
 		if (Font.getFont( fontName ) == null)
 		{
 			fontName = DEFAULT_FONT_NAME;
-			fireNewMessage (new CMessage(	UIString.getUIString("MSG_FONT_MISSING_FONT_1") + 
-											fontName + 
-											UIString.getUIString("MSG_FONT_MISSING_FONT_2") + 
-											DEFAULT_FONT_NAME +
-											UIString.getUIString("MSG_FONT_MISSING_FONT_3")));
+			
+			CMessageEngine.newError(
+										UIString.getUIString("MSG_FONT_MISSING_FONT_1") + 
+										fontName,
+										UIString.getUIString("MSG_FONT_MISSING_FONT_REPLACE_1") + 
+										DEFAULT_FONT_NAME + 
+										UIString.getUIString("MSG_FONT_MISSING_FONT_REPLACE_2"));
+									
 			
 		}		
 	}
@@ -346,18 +350,6 @@ public class CFont
 		return eltFont;
 	}
 	
-	// Listeners
-	public void addNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.add(NewMessageListener.class, l);
-	}
-	
-	
-	public void removeNewMessageListener(NewMessageListener l)
-	{
-		this.listenerNewMessageList.remove(NewMessageListener.class, l);
-	}	
-	
 	
 	public boolean isAutoSize()
 	{
@@ -448,16 +440,6 @@ public class CFont
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
-	// Listeners
-	protected void fireNewMessage( CMessage message )
-	{
-		NewMessageListener[] listeners = (NewMessageListener[]) listenerNewMessageList
-				.getListeners(NewMessageListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
-		{
-			listeners[i].newMessage( message );
-		}
-	}
 	
 	@Override
 	public String toString()

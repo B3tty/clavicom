@@ -50,11 +50,11 @@ public class testSettings
 			String s = "Ressources\\Application\\config.xml";
 			String s_out = "Ressources\\Application\\config_out.xml";
 			
-			CSettings.LoadSettings( s );
+			CSettings.loadSettings( s );
 			
-			System.out.println( CSettings.getDefaultProfilsPath() );
+			System.out.println( CSettings.getDefaultProfilePath() );
 			
-			CSettings.SaveSettings( s_out );
+			CSettings.saveSettings( s_out );
 	
 			
 		}

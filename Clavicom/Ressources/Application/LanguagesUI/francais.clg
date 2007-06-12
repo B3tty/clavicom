@@ -275,9 +275,10 @@
 	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">Une ou pluseurs lettres ne sont pas connues</message>
 	
 	<message id = "MSG_FONT_MISSING_FONT_1">Impossible de charger la police "</message>
-	<message id = "MSG_FONT_MISSING_FONT_2">". La police "</message>
-	<message id = "MSG_FONT_MISSING_FONT_3">" a été chargée par défaut.</message>
-		
+	<message id = "MSG_FONT_MISSING_FONT_2">". "</message>
+	
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_1">La police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_2">" sera chargée par défaut."</message>	
 	
 	
 	<!-- ==========================================================================
