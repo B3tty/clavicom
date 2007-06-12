@@ -25,6 +25,7 @@
 
 package clavicom.core.profil;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.event.EventListenerList;
