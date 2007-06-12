@@ -58,7 +58,7 @@ public class CProfil
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	private CProfil( String myProfilFilePath ) throws Exception
+	private CProfil( String myProfilFilePath )
 	{
 		profilFilePath = myProfilFilePath;
 	}
@@ -103,7 +103,7 @@ public class CProfil
 		}
 	}
 	
-	public static void createInstance(String profilFilePath) throws Exception 
+	public static void createInstance(String profilFilePath)
 	{
 		profil = new CProfil(profilFilePath);
 	}
