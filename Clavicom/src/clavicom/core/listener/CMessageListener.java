@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: NewMessageListener.java
-			Creation date		: 30 mai 07
+			Filename			: CMessageListener.java
+			Creation date		: 12 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.message
+			Package				: clavicom.core.listener
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,11 +23,14 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.message;
+package clavicom.core.listener;
 
 import java.util.EventListener;
 
-public interface NewMessageListener extends EventListener
+public interface CMessageListener extends EventListener
 {
-	public void newMessage ( CMessage message );
+	public void onNewFatalError(String newMessage, String detail);
+	public void onNewError(String newMessage, String detail);
+	public void onNewWarning(String newMessage, String detail);
+	public void onNewInfo(String newMessage, String detail);
 }

@@ -34,8 +34,6 @@ import org.jdom.Element;
 
 import clavicom.core.keygroup.CColor;
 import clavicom.gui.language.UIString;
-import clavicom.gui.message.CMessage;
-import clavicom.gui.message.NewMessageListener;
 import clavicom.tools.TXMLNames;
 
 public class CFont
