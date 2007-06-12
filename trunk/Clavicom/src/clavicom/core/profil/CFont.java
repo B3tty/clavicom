@@ -42,8 +42,7 @@ public class CFont
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final String DEFAULT_FONT_NAME = "Arial";
-	final int DEFAULT_FONT_SIZE = 12;
-	final float DEFAULT_FONT_HEIGHT_FACTOR = 1f;
+	final float DEFAULT_FONT_HEIGHT_FACTOR = .1f;
 	//---------------------------------------------------------- VARIABLES --//	
 	boolean autoSize;
 	
@@ -128,7 +127,7 @@ public class CFont
 		}
 		else
 		{
-			heightFactor = DEFAULT_FONT_SIZE;
+			heightFactor = DEFAULT_FONT_HEIGHT_FACTOR;
 		}
 		
 		// Bold		

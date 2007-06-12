@@ -72,6 +72,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 												// images est lancé, pendant un resize	
 	
 	final int TRANSLATION_STEP = 5;
+	final float FONT_REDUCTION_FACTOR = .2f;
 
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
@@ -254,6 +255,9 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			imgBackground = TImageUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 		}
 		
+		// On recalcule la taille de police
+		updateKeyFontSize();
+		
 		//On réarme le timer
 		resizeTimer.restart();
 		
@@ -331,11 +335,31 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		}
 	}
 	
+	protected void updateKeyFontSize()
+	{
+		System.out.println("UPDTATE !!!");
+		// Calcul de la taille
+		float heightFactor = CProfil.getInstance().getKeyboardFont().getHeightFactor();
+		
+		// Calcul de la valeur
+		int fontSize = Math.round(getHeight()*heightFactor* FONT_REDUCTION_FACTOR);
+		System.out.println("Height factor : " + heightFactor + " Size : " + fontSize);
+		
+		// Changement de la taille de toutes les keys
+		for (UIKeyKeyboard currentKey : allKeys)
+		{						
+			currentKey.setFontSize(fontSize);
+		}
+	}
+	
 	@Override
 	public void invalidate()
 	{
 		// Appel au père
 		super.invalidate();
+		
+		// On recalcule la taille de police
+		updateKeyFontSize();
 		
 		// On replace les touches
 		replaceUIKeys();
@@ -404,6 +428,8 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			{
 				resizeTimer.stop();
 				imgBackground = recreateBackground();
+				//replaceUIKeys();
+				updateKeyFontSize();
 				repaint();
 			}
 		};
