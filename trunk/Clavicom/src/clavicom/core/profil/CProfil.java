@@ -45,6 +45,7 @@ public class CProfil
 	
 	CLangueUIName langueUI;			// Langue de l'interface utilisateur
 	CCommandSetName commandSetName; // nom du fichier du commandSet
+	CShortCutSetName shortcutSetName; // nom du fichier du shortcutSet
 	CDictionaryName dictionnaryName;	// nom du fichier de dictionnaire
 	CKeyboardColor defaultColor;	// Couleur par défaut du clavicom
 	CTransparency transparency;		// Transparence
@@ -143,7 +144,7 @@ public class CProfil
 		}
 		try
 		{
-			commandSetName = new CCommandSetName( shortCut_elem );
+			shortcutSetName = new CShortCutSetName( shortCut_elem );
 		}
 		catch(Exception ex)
 		{
@@ -211,6 +212,16 @@ public class CProfil
 		return keyboardFont;
 	}
 	
+	public CShortCutSetName getShortcutSetName()
+	{
+		return shortcutSetName;
+	}
+
+	public void setShortcutSetName(CShortCutSetName shortcutSetName)
+	{
+		this.shortcutSetName = shortcutSetName;
+	}
+
 	public void SaveProfil( String profilFilePath ) throws Exception
 	{
 		// ===============================================================
