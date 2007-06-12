@@ -194,7 +194,6 @@ public class CKeyGroup
 
 	public void removeList(CKeyList coreKeyList)
 	{
-		// TODO Auto-generated method stub
-		
+		keyListList.remove( coreKeyList );
 	}
 }
