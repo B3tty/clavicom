@@ -78,7 +78,6 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 			File[] list = commandSetDirectory.listFiles();
 			if (list != null)
 			{
-				CProfil profil = CProfil.getInstance();
 				for (int i = 0; i < list.length; i++)
 				{
 					// on ne met pas le .svn
@@ -89,8 +88,8 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 						
 						// si le nom du dictionaire est le même que celui en train d'être chargé, on le séléctione
 						if( dictionnaryFile.toString().equals( 
-								profil.getDictionnaryName().getDictionaryName().substring
-									(0, profil.getDictionnaryName().getDictionaryName().length()-4) ) )
+								dictionaryName.getDictionaryName().substring
+									(0, dictionaryName.getDictionaryName().length()-4) ) )
 						{
 							combo.setSelectedItem( dictionnaryFile );
 						}
@@ -111,6 +110,24 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 	public int validateDataEntry()
 	{
 		// Si le dictionnaire a été changé, on change son nom
+		if( combo.getSelectedItem() != null )
+		{
+			Object object = combo.getSelectedItem();
+			if( object instanceof CFile )
+			{
+				CFile commandSetFile = (CFile)object;
+				if( commandSetFile != null )
+				{
+					// s'il à changé
+					if( commandSetFile.toString().equals( 
+							dictionaryName.getDictionaryName().substring
+								(0, dictionaryName.getDictionaryName().length()-4) ) )
+					{
+						return 1;
+					}
+				}
+			}
+		}
 		
 		return 0;
 	}

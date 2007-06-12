@@ -262,7 +262,6 @@ public class CKeyList
 
 	public void removeKey(CKey coreKey)
 	{
-		// TODO Auto-generated method stub
-		
+		keyList.remove( coreKey );
 	}
 }

@@ -76,7 +76,6 @@ public class PanelModificationProfilCommandSetName extends
 			File[] list = commandSetDirectory.listFiles();
 			if (list != null)
 			{
-				CProfil profil = CProfil.getInstance();
 				for (int i = 0; i < list.length; i++)
 				{
 					// on ne met pas le .svn
@@ -87,8 +86,8 @@ public class PanelModificationProfilCommandSetName extends
 						
 						// si le nom du commandSet est le même que celui en train d'être chargé, on le séléctione
 						if( commandSetFile.toString().equals( 
-								profil.getCommandSetName().getcommandSetName().substring
-									(0, profil.getCommandSetName().getcommandSetName().length()-4) ) )
+								commandSetName.getcommandSetName().substring
+									(0, commandSetName.getcommandSetName().length()-4) ) )
 						{
 							combo.setSelectedItem( commandSetFile );
 						}
@@ -106,6 +105,25 @@ public class PanelModificationProfilCommandSetName extends
 	public int validateDataEntry()
 	{
 		// si le commandSet a été changé, on change son nom
+		
+		if( combo.getSelectedItem() != null )
+		{
+			Object object = combo.getSelectedItem();
+			if( object instanceof CFile )
+			{
+				CFile commandSetFile = (CFile)object;
+				if( commandSetFile != null )
+				{
+					// s'il à changé
+					if( commandSetFile.toString().equals( 
+							commandSetName.getcommandSetName().substring
+								(0, commandSetName.getcommandSetName().length()-4) ) )
+					{
+						return 1;
+					}
+				}
+			}
+		}
 
 		return 0;
 	}
