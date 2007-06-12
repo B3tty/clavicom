@@ -126,7 +126,7 @@ public class TXMLNames
 	public static String CO_ELEMENT_COLOR_B 			= "blue";
 	
 	// Settings
-	public static String SE_ELEMENT_DEFAULT_PROFIL		= "defaultProfilsPath";
+	public static String SE_ELEMENT_DEFAULT_PROFILE		= "default_profile_path";
 	public static String SE_ELEMENT_SETTINGS			= "settings";
 	
 	// Profil

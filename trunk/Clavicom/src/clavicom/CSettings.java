@@ -38,24 +38,14 @@ import clavicom.tools.TXMLNames;
 public class CSettings
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	
 	//---------------------------------------------------------- VARIABLES --//
-	static String defaultProfilsPath;
+	static String defaultProfilePath;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 
-	public static String getDefaultProfilsPath()
-	{
-		return defaultProfilsPath;
-	}
-	
-	public static String getCommandSetsPath()
-	{
-		return "";
-	}
-
 	//----------------------------------------------------------- METHODES --//
-	public static void LoadSettings( String configFilePath ) throws Exception
+	public static void loadSettings( String configFilePath ) throws Exception
 	{
 		
 		SAXBuilder sxb = new SAXBuilder();
@@ -73,22 +63,22 @@ public class CSettings
 		Element racine = document.getRootElement();
 		
 		// récupération de l'element defaultProfilsPath
-		Element defaultProfilsPath_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_PROFIL );
+		Element defaultProfilsPath_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
 		
 		if( defaultProfilsPath_elem == null  )
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_SETTINGS" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
 		}
 		
-		defaultProfilsPath = defaultProfilsPath_elem.getText();
+		defaultProfilePath = defaultProfilsPath_elem.getText();
 	}
 	
-	public static void SaveSettings( String configFilePath ) throws Exception
+	public static void saveSettings( String configFilePath ) throws Exception
 	{
 		Element racine = new Element( TXMLNames.SE_ELEMENT_SETTINGS );
 		
-		Element defaultProfilsPath_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_PROFIL );
-		defaultProfilsPath_elem.setText( defaultProfilsPath );
+		Element defaultProfilsPath_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
+		defaultProfilsPath_elem.setText( defaultProfilePath );
 		racine.addContent( defaultProfilsPath_elem );
 		
 		org.jdom.Document documentOut = new org.jdom.Document(racine);
@@ -98,6 +88,17 @@ public class CSettings
 		sortie.output( documentOut,	new FileOutputStream( configFilePath ) );
 		
 	}
+
+	public static String getDefaultProfilePath()
+	{
+		return defaultProfilePath;
+	}
+
+	public static void setDefaultProfilePath(String defaultProfilePath)
+	{
+		CSettings.defaultProfilePath = defaultProfilePath;
+	}
+	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

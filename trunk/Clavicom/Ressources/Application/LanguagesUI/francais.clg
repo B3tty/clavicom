@@ -264,6 +264,10 @@
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
+	<!-- Message engine -->
+	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>
+	<message id = "MSG_ENGINE_TITLE_WARNING">Avertissement</message>
+	<message id = "MSG_ENGINE_TITLE_INFO">Information</message>
 	
 	<!-- Command engine -->
 	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Impossible de creer le robot envoyant les caractères</message>
