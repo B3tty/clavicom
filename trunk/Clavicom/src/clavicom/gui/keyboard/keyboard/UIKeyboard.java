@@ -465,26 +465,36 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 					// supprimer
 					if(selectedKeys.contains(currentKey))
 					{
-						// Suppression de la UIKey
+						// UI
 						currentList.removeKey(currentKey);
 						
-						// Suppression de la CKey
-						currentList.getCoreKeyList()
-						
-						// ICI.......; TODO
+						// Noyau
+						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
 						
 						// Suppression de la UIKey dans la liste des selectionnées
 						selectedKeys.remove(currentKey);
-						
-						// On regarde si la liste est vide
 					}
 				}
 				
-				// On vide la 
-				if(currentList.getKeys().size() == 0)
+				// On supprime la liste si elle est vide
+				if (currentList.getKeys().size() == 0)
 				{
+					// UI
+					currentGroup.removeUIList(currentList);
 					
+					// Noyau
+					currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
 				}
+			}
+			
+			// On supprime le groupe si il est vide
+			if (currentGroup.getKeyLists().size() == 0)
+			{
+				// UI
+				keyGroups.remove(currentGroup);
+				
+				// Noyau
+				coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
 			}
 		}		
 		

@@ -191,4 +191,10 @@ public class CKeyGroup
 		
 		return key_groupe;
 	}
+
+	public void removeList(CKeyList coreKeyList)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }
