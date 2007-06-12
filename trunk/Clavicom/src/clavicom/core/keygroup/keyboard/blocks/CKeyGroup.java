@@ -26,6 +26,7 @@
 package clavicom.core.keygroup.keyboard.blocks;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.jdom.Attribute;
@@ -195,5 +196,10 @@ public class CKeyGroup
 	public void removeList(CKeyList coreKeyList)
 	{
 		keyListList.remove( coreKeyList );
+	}
+	
+	public void removeAllList(Collection<?> coreKeyListList)
+	{
+		keyListList.removeAll( coreKeyListList );
 	}
 }
