@@ -65,8 +65,8 @@ public class testTabPanels
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
 			
-			profil.LoadProfilLanguageUIName();
-			profil.LoadProfilFile();
+			profil.loadProfileLanguageUIName();
+			profil.loadProfile();
 
 			GlobalProfilModification panelGlobal = new GlobalProfilModification( profil );
 			
