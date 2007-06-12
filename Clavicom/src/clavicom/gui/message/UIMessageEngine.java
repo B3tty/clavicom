@@ -47,34 +47,50 @@ public class UIMessageEngine implements CMessageListener
 	//----------------------------------------------------------- METHODES --//
 	public void onNewFatalError(String newMessage, String detail)
 	{
-//		if (detail == null)
-//		{
+		if (detail == null)
+		{
 			JOptionPane.showMessageDialog(null, newMessage);
-//		}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, newMessage + "\n\n" + detail);
+		}
 	}
 	
 	public void onNewError(String newMessage, String detail)
 	{
-//		if (detail == null)
-//		{
+		if (detail == null)
+		{
 			JOptionPane.showMessageDialog(null, newMessage);
-//		}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, newMessage + "\n\n" + detail);
+		}
 	}
 
 	public void onNewInfo(String newMessage, String detail)
 	{
-//		if (detail == null)
-//		{
+		if (detail == null)
+		{
 			JOptionPane.showMessageDialog(null, newMessage);
-//		}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, newMessage + "\n\n" + detail);
+		}
 	}
 
 	public void onNewWarning(String newMessage, String detail)
 	{
-//		if (detail == null)
-//		{
+		if (detail == null)
+		{
 			JOptionPane.showMessageDialog(null, newMessage);
-//		}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, newMessage + "\n\n" + detail);
+		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

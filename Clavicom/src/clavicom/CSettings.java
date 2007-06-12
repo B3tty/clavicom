@@ -47,7 +47,6 @@ public class CSettings
 	//----------------------------------------------------------- METHODES --//
 	public static void loadSettings( String configFilePath ) throws Exception
 	{
-		
 		SAXBuilder sxb = new SAXBuilder();
 		Document document = null;
 		try
