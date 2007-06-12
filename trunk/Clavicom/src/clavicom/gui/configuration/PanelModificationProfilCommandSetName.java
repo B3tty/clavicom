@@ -32,7 +32,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import clavicom.CFilePaths;
 import clavicom.core.profil.CCommandSetName;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.CFile;
 
@@ -86,8 +85,7 @@ public class PanelModificationProfilCommandSetName extends
 						
 						// si le nom du commandSet est le même que celui en train d'être chargé, on le séléctione
 						if( commandSetFile.toString().equals( 
-								commandSetName.getcommandSetName().substring
-									(0, commandSetName.getcommandSetName().length()-4) ) )
+								commandSetName.getcommandSetName() ) )
 						{
 							combo.setSelectedItem( commandSetFile );
 						}
@@ -116,9 +114,9 @@ public class PanelModificationProfilCommandSetName extends
 				{
 					// s'il à changé
 					if( commandSetFile.toString().equals( 
-							commandSetName.getcommandSetName().substring
-								(0, commandSetName.getcommandSetName().length()-4) ) )
+							commandSetName.getcommandSetName() ) )
 					{
+						commandSetName.setcommandSetName( commandSetFile.getName() );
 						return 1;
 					}
 				}

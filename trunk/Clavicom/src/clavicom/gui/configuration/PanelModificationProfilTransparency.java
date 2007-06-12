@@ -40,6 +40,8 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 
 	//---------------------------------------------------------- VARIABLES --//
 	CTransparency transparency;
+	JSlider keyboardTransparency;
+	JSlider keysTransparency;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -63,7 +65,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		p2.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD") ));
 		keyboardT.add(p2, BorderLayout.NORTH );
 		
-		JSlider keyboardTransparency = new JSlider();
+		keyboardTransparency = new JSlider();
 		keyboardTransparency.setMaximum( 100 );
 		keyboardTransparency.setMinimum( 0 );
 		keyboardTransparency.setMajorTickSpacing(10);
@@ -80,7 +82,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		p3.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS") ));
 		keysT.add(p3, BorderLayout.NORTH );
 		
-		JSlider keysTransparency = new JSlider();
+		keysTransparency = new JSlider();
 		keysTransparency.setMaximum( 100 );
 		keysTransparency.setMinimum( 0 );
 		keysTransparency.setMajorTickSpacing(10);
@@ -102,8 +104,19 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	public int validateDataEntry()
 	{
 		// Si la gestion de la transparence a changé, on la change dans le profil
+		int retour = 0;
+		if( keyboardTransparency.getValue() != transparency.getKeyboardTransparencyPourcent() )
+		{
+			transparency.setKeyboardTrancparencyPourcent( keyboardTransparency.getValue() );
+			retour = 1;
+		}
+		if( keysTransparency.getValue() != transparency.getKeyTransparencyPourcent() );
+		{
+			transparency.setKeyTransparencyPourcent( keysTransparency.getValue() );
+			retour = 1;
+		}
 		
-		return 0;
+		return retour;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

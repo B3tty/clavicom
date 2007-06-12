@@ -31,14 +31,11 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import clavicom.core.profil.CKeyboardColor;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
 public class PanelModificationProfilKeyboardColor extends PanelModificationProfil
@@ -49,7 +46,6 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 
 	//---------------------------------------------------------- VARIABLES --//
 	CKeyboardColor keyboardColor;
-	CProfil profil;
 	JButton buttonBackColor;
 	JButton buttonNormal;
 	JButton buttonEnteredColor;
@@ -71,21 +67,20 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 		setLayout( new BorderLayout() );
 		JPanel panel = new JPanel( new GridLayout(1,4) );
 		
-		profil = CProfil.getInstance();
 		
 		buttonBackColor = new JButton();
 		buttonBackColor.addActionListener( new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), profil.getDefaultColor().getBackColor().getColor() );
+				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getBackColor().getColor() );
 				
 				if( newColor != null )
 				{
-					if( newColor != profil.getDefaultColor().getBackColor().getColor() )
+					if( newColor != keyboardColor.getBackColor().getColor() )
 					{
 						// la couleur à changé
-						profil.getDefaultColor().getBackColor().setColor( newColor );
+						keyboardColor.getBackColor().setColor( newColor );
 
 						buttonBackColor.setBackground( newColor );
 					}
@@ -97,9 +92,8 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 			DisplayColor
 			(
 				buttonBackColor,
-				profil.getDefaultColor().getBackColor().getColor(),
-				UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR" ),
-				profil
+				keyboardColor.getBackColor().getColor(),
+				UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR" )
 			)
 		);
 		
@@ -109,14 +103,14 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), profil.getDefaultColor().getDefaultKeyNormal().getColor() );
+				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyNormal().getColor() );
 				
 				if( newColor != null )
 				{
-					if( newColor != profil.getDefaultColor().getDefaultKeyNormal().getColor() )
+					if( newColor != keyboardColor.getDefaultKeyNormal().getColor() )
 					{
 						// la couleur à changé
-						profil.getDefaultColor().getDefaultKeyNormal().setColor( newColor );
+						keyboardColor.getDefaultKeyNormal().setColor( newColor );
 
 						buttonNormal.setBackground( newColor );
 					}
@@ -128,9 +122,8 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 				DisplayColor
 				(
 					buttonNormal,
-					profil.getDefaultColor().getDefaultKeyNormal().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR" ),
-					profil
+					keyboardColor.getDefaultKeyNormal().getColor(),
+					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR" )
 				)
 		);
 		
@@ -139,14 +132,14 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), profil.getDefaultColor().getDefaultKeyEntered().getColor() );
+				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyEntered().getColor() );
 				
 				if( newColor != null )
 				{
-					if( newColor != profil.getDefaultColor().getDefaultKeyEntered().getColor() )
+					if( newColor != keyboardColor.getDefaultKeyEntered().getColor() )
 					{
 						// la couleur à changé
-						profil.getDefaultColor().getDefaultKeyEntered().setColor( newColor );
+						keyboardColor.getDefaultKeyEntered().setColor( newColor );
 
 						buttonEnteredColor.setBackground( newColor );
 					}
@@ -158,9 +151,8 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 				DisplayColor
 				(
 					buttonEnteredColor,
-					profil.getDefaultColor().getDefaultKeyEntered().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR" ),
-					profil
+					keyboardColor.getDefaultKeyEntered().getColor(),
+					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR" )
 				)
 		);
 		
@@ -169,14 +161,14 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), profil.getDefaultColor().getDefaultKeyClicked().getColor() );
+				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyClicked().getColor() );
 				
 				if( newColor != null )
 				{
-					if( newColor != profil.getDefaultColor().getDefaultKeyClicked().getColor() )
+					if( newColor != keyboardColor.getDefaultKeyClicked().getColor() )
 					{
 						// la couleur à changé
-						profil.getDefaultColor().getDefaultKeyClicked().setColor( newColor );
+						keyboardColor.getDefaultKeyClicked().setColor( newColor );
 
 						buttonClickedColor.setBackground( newColor );
 					}
@@ -188,9 +180,8 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 				DisplayColor
 				(
 					buttonClickedColor,
-					profil.getDefaultColor().getDefaultKeyClicked().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR" ),
-					profil
+					keyboardColor.getDefaultKeyClicked().getColor(),
+					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR" )
 				)
 		);
 		
@@ -205,9 +196,31 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 	@Override
 	public int validateDataEntry()
 	{
-		// Si la ketboardColor a changé, on la met dans le profil
+		// Si la keyboardColor a changé, on la met dans le profil
+		int retour = 0;
 		
-		return 0;
+		if( buttonBackColor.getBackground() != keyboardColor.getBackColor().getColor() )
+		{
+			keyboardColor.getBackColor().setColor( buttonBackColor.getBackground() );
+			retour = 1;
+		}
+		if( buttonClickedColor.getBackground() != keyboardColor.getDefaultKeyClicked().getColor() )
+		{
+			keyboardColor.getDefaultKeyClicked().setColor( buttonClickedColor.getBackground() );
+			retour = 1;
+		}
+		if( buttonEnteredColor.getBackground() != keyboardColor.getDefaultKeyEntered().getColor() )
+		{
+			keyboardColor.getDefaultKeyEntered().setColor( buttonEnteredColor.getBackground() );
+			retour = 1;
+		}
+		if( buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal().getColor() )
+		{
+			keyboardColor.getDefaultKeyNormal().setColor( buttonNormal.getBackground() );
+			retour = 1;
+		}
+		
+		return retour;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -215,8 +228,7 @@ public class PanelModificationProfilKeyboardColor extends PanelModificationProfi
 	protected JPanel DisplayColor( 
 			JButton buttonColor,
 			Color defautColor,
-			String typeColor,
-			CProfil profil)
+			String typeColor)
 	{
 		JPanel panel = new JPanel( new BorderLayout() );
 		

@@ -27,14 +27,11 @@ package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
 import java.io.File;
-
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import clavicom.CFilePaths;
 import clavicom.core.profil.CLangueUIName;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.CFile;
 
@@ -77,7 +74,6 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 			File[] list = langueUIDirectory.listFiles();
 			if (list != null)
 			{
-				CProfil profil = CProfil.getInstance();
 				for (int i = 0; i < list.length; i++)
 				{
 					// on ne met pas le .svn
@@ -88,8 +84,8 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 						
 						// si le nom du languageUI est le même que celui en train d'être chargé, on le séléctione
 						if( languageUIFile.toString().equals( 
-								profil.getLangueUI().getLanguageFileName().substring
-									(0, profil.getLangueUI().getLanguageFileName().length()-4) ) )
+								langueUIName.getLanguageFileName().substring
+									(0, langueUIName.getLanguageFileName().length()-4) ) )
 						{
 							combo.setSelectedItem( languageUIFile );
 						}
@@ -110,6 +106,24 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 	public int validateDataEntry()
 	{
 		// Si la langue de l'UI à changé, on la change le nom du fichier UI
+		if( combo.getSelectedItem() != null )
+		{
+			Object object = combo.getSelectedItem();
+			if( object instanceof CFile )
+			{
+				CFile langueUIFile = (CFile)object;
+				if( langueUIFile != null )
+				{
+					// s'il à changé
+					if( langueUIFile.toString().equals( 
+							langueUIName.getLanguageFileName() ) )
+					{
+						langueUIName.setLanguageFileName( langueUIFile.getName() );
+						return 1;
+					}
+				}
+			}
+		}
 		
 		return 0;
 	}
