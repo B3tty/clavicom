@@ -65,7 +65,7 @@ public class CProfil
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public void LoadProfilLanguageUIName() throws Exception
+	public void loadProfileLanguageUIName() throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
@@ -241,7 +241,7 @@ public class CProfil
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	public void LoadProfilFile ( ) throws Exception
+	public void loadProfile ( ) throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
