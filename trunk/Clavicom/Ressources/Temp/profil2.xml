@@ -41,7 +41,7 @@
     <temporisation value="20" />
   </navigation>
   <font>
-    <name>Arial</name>
+    <name>Castellar</name>
     <auto_size>false</auto_size>
     <size>0.4</size>
     <auto_color>false</auto_color>
@@ -50,7 +50,7 @@
       <green>0</green>
       <blue>102</blue>
     </color>
-    <bold>true</bold>
+    <bold>false</bold>
     <italic>false</italic>
     <shadow>true</shadow>
   </font>

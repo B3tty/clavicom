@@ -108,11 +108,15 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		int pourcent = Math.round( font.getHeightFactor() * 100f );
 		int modulo = pourcent % 5;
 		comboSize.setSelectedItem( pourcent - modulo );
+		
 	}
 
 	private void LoadComponents()
 	{
-		setLayout(new BorderLayout());		
+		BorderLayout borderL = new BorderLayout();
+		borderL.setHgap(5);
+		borderL.setVgap(5);
+		setLayout(borderL);		
 		
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	    String [] polices = ge.getAvailableFontFamilyNames();
@@ -129,7 +133,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    	cfonts[ i ] = cFont;
 	    	
 	    	// on recherche la cFont séléctionné
-	    	if( cFont.toString().equals( fontTmp.toString() ) )
+	    	if( cFont.toString().equals( font.getFontName() ) )
 	    	{
 	    		selectedCFont = cFont;
 	    	}
@@ -180,7 +184,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    // panel des option  (autoSize, color ...)
 	    // =======================================================
 		
-	    JPanel panelOption = new JPanel( new GridLayout(3,2) );
+	    GridLayout gridL = new GridLayout(3,2);
+	    gridL.setHgap(5);
+	    gridL.setVgap(5);
+	    JPanel panelOption = new JPanel( gridL );
 	    
 	    JPanel panelHaut = new JPanel( new BorderLayout() );
 	    
@@ -359,3 +366,4 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
+

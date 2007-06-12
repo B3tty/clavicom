@@ -244,7 +244,8 @@ public class CFont
 		}
 		
 		// Vérification que la police a le bon nom
-		if (Font.getFont( fontName ) == null)
+		Font police = new Font( fontName, Font.PLAIN, 12);
+		if (police == null)
 		{			
 			CMessageEngine.newError(
 										UIString.getUIString("MSG_FONT_MISSING_FONT_1") + 
