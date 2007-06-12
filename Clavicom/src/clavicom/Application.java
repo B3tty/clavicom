@@ -27,9 +27,12 @@ package clavicom;
 
 import javax.swing.JFrame;
 
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 
 import clavicom.core.profil.CProfil;
+import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 
 public class Application
@@ -53,7 +56,7 @@ public class Application
 	public static void main(String[] args)
 	{
 		//----------------------------------------------------------------
-		// Gestion des messages
+		// Gestion des messages d'erreur
 		//----------------------------------------------------------------
 		CMessageEngine.createInstance();
 		uiMessageEngine = new UIMessageEngine();
@@ -61,34 +64,109 @@ public class Application
 		//----------------------------------------------------------------
 		// Chargement des différents outils
 		//----------------------------------------------------------------
-		
 		// Gestionnaire des paramètres de l'application		
 		try
 		{
-			CSettings.loadSettings("erygtrhf");
+			CSettings.loadSettings(CFilePaths.getConfigFile());
 		}
 		catch (Exception ex)
 		{
-			CMessageEngine.newError( 	"Can't load config file " + 
-										CFilePaths.getConfigFile(),
-									 	"Try to find this file or reinstall application.");
-		}
+			CMessageEngine.newError( 		"Impossible de charger le fichier \"" + 
+											CFilePaths.getConfigFile()
+											+ "\"",
+									 		"Remplacez ce fichier ou reinstallez l'application.");
+			
+			// TODO : charger le profil par défaut
+		}	
 		
-		// Chargement du profil
+		// Création du profil
+		CProfil.createInstance(CSettings.getDefaultProfilePath());
+		
+		// Récupération de la langue du profil
 		try
 		{
-			CProfil.createInstance(CSettings.getDefaultProfilePath());
+			CProfil.getInstance().loadProfileLanguageUIName();
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());			
+		}
+		
+		// Chargement de la langue du profil
+		try
+		{
+			UIString.LoadUIStringFile(  CFilePaths.getLanguagesUI() + 
+										CProfil.getInstance().getLangueUI().getLanguageFileName());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());			
+		}
+		
+		// Récupération du nom du commandset
+		try
+		{
+			CProfil.getInstance().loadProfileCommandSetName();
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());
+			
+			// TODO : charger le profil par défaut
+		}
+		
+		// Chargement du commandset
+		try
+		{
+			CCommandSet.CreateInstance( CFilePaths.getCommandSets() +
+										CProfil.getInstance().getCommandSetName().getcommandSetName());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());
+			
+			// TODO : charger le profil par défaut
+		}
+		
+		// Récupération du nom du shortcutset
+		try
+		{
+			CProfil.getInstance().loadProfileShortCutName();
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());
+			
+			// TODO : charger le profil par défaut
+		}
+		
+		// Chargement du commandset
+		try
+		{
+			CShortcutSet.CreateInstance(	CFilePaths.getShortcutSets() + 
+											CProfil.getInstance().getShortcutSetName().getShortCutName());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(ex.getMessage());
+			
+			// TODO : charger le profil par défaut
+		}
+		
+		// Chargement du reste du profil
+		try
+		{
+			CProfil.getInstance().loadProfile();
 		}
 		catch (Exception ex)
 		{
 			CMessageEngine.newError(ex.getMessage());
 		}
+
 		
 		
-//		// Chargement des chaînes de l'application
 //
 //		//		 Chargement des UIString et shortcutset
-//		UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 //		CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
 //		CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 //		

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
   <language_ui>francais.clg</language_ui>
-  <commandset_name>francais.css</commandset_name>
+  <commandset_name>francais.ccs</commandset_name>
   <shortcutset_name>default.css</shortcutset_name>
   <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
   <keyboard_color>
