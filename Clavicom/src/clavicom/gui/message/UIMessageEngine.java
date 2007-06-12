@@ -25,6 +25,7 @@
 
 package clavicom.gui.message;
 
+
 import javax.swing.JOptionPane;
 
 import clavicom.core.listener.CMessageListener;
@@ -46,34 +47,34 @@ public class UIMessageEngine implements CMessageListener
 	//----------------------------------------------------------- METHODES --//
 	public void onNewFatalError(String newMessage, String detail)
 	{
-		if (detail == null)
-		{
+//		if (detail == null)
+//		{
 			JOptionPane.showMessageDialog(null, newMessage);
-		}
+//		}
 	}
 	
 	public void onNewError(String newMessage, String detail)
 	{
-		if (detail == null)
-		{
+//		if (detail == null)
+//		{
 			JOptionPane.showMessageDialog(null, newMessage);
-		}
+//		}
 	}
 
 	public void onNewInfo(String newMessage, String detail)
 	{
-		if (detail == null)
-		{
+//		if (detail == null)
+//		{
 			JOptionPane.showMessageDialog(null, newMessage);
-		}
+//		}
 	}
 
 	public void onNewWarning(String newMessage, String detail)
 	{
-		if (detail == null)
-		{
+//		if (detail == null)
+//		{
 			JOptionPane.showMessageDialog(null, newMessage);
-		}
+//		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

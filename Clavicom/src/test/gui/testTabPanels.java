@@ -28,8 +28,8 @@ package test.gui;
 import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.configuration.GlobalProfilModification;
 import clavicom.gui.configuration.PanelModificationProfilCommandSetName;
 import clavicom.gui.configuration.PanelModificationProfilDictionaryName;
 import clavicom.gui.configuration.PanelModificationProfilFont;
@@ -38,16 +38,13 @@ import clavicom.gui.configuration.PanelModificationProfilNavigation;
 import clavicom.gui.configuration.PanelModificationProfilPreferedWords;
 import clavicom.gui.configuration.PanelModificationProfilTransparency;
 import clavicom.gui.language.UIString;
-import clavicom.gui.message.UIMessageEngine;
 
-public class testPanelsModificationProfil
+public class testTabPanels
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-			CMessageEngine.createInstance();
-			UIMessageEngine messageEngine = new UIMessageEngine();
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
@@ -62,22 +59,12 @@ public class testPanelsModificationProfil
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
-			
-			
 
-			// PanelModificationProfilCommandSetName p = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
-			// PanelModificationProfilDictionaryName p = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
-			// PanelModificationProfilFont p = new PanelModificationProfilFont( profil.getKeyboardFont() );
-			// PanelModificationProfilKeyboardColor p = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
-			// PanelModificationProfilLangueUIName p = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
-			PanelModificationProfilNavigation p = new PanelModificationProfilNavigation( profil.getNavigation() );
-			// PanelModificationProfilPreferedWords p = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );			
-			// PanelModificationProfilSound p = new PanelModificationProfilSound( profil.getSound() );
-			// PanelModificationProfilTransparency p = new PanelModificationProfilTransparency( profil.getTransparency() );
+			GlobalProfilModification panelGlobal = new GlobalProfilModification( profil );
 			
 			JFrame frame = new JFrame();
 			frame.setSize(500,800);
-			frame.add( p );
+			frame.add( panelGlobal );
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
