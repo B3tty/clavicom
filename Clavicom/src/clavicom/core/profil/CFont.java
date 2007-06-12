@@ -65,7 +65,7 @@ public class CFont
 		heightFactor = DEFAULT_FONT_HEIGHT_FACTOR;
 		
 		// Récupération du nom de la police
-		String fontName = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_NAME);
+		fontName = nodeFont.getChildText(TXMLNames.PR_ELEMENT_FONT_NAME);
 		
 		if(fontName == null || fontName.equals(""))
 		{

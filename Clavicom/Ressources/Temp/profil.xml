@@ -126,7 +126,7 @@
 				</keylevel>
 			</keylist>
 			<keylist order="1">
-				<keystring order="0" caption_image="false">
+				<keystring order="0" caption_image="true">
 					<order_dynamic>12</order_dynamic>
 					<base_string>coucou write</base_string>
 					<coordinates>
@@ -139,7 +139,7 @@
 							<y>0.2</y>
 						</point>
 					</coordinates>
-					<caption>KeyString 2</caption>
+					<caption>Ressources/Application/Pictures/firefox.png</caption>
 					<colors>
 						<color_normal>
 							<red>189</red>

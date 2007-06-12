@@ -42,6 +42,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +73,9 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
 	
-	final int TRANSLATION_STEP = 5;
+	final int NORMAL_TRANSLATION_STEP = 10;
+	final int FINE_TRANSLATION_STEP = 1;
+	
 	final float FONT_REDUCTION_FACTOR = .2f;
 
 	//---------------------------------------------------------- VARIABLES --//	
@@ -105,9 +109,6 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
-		
-		// Ajout en tant que listener de keys
-		addKeyListener(keyListener); 
 		
 		// On se met focusable
 		setFocusable(true);
@@ -169,6 +170,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	//-----------------------------------------------------------------------	
 	public void edit()
 	{
+		// Ajout des listeners
+		addKeyListener(keyListener);
+		addMouseListener(mouseListener);
+		
 		// Maj des keys
 		updateEdit(true);
 		 
@@ -178,6 +183,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	
 	public void unEdit()
 	{
+		// Ajout des listeners
+		removeKeyListener(keyListener);
+		removeMouseListener(mouseListener);
+		
 		// Changement de l'état
 		isEdited = false;
 		
@@ -337,13 +346,11 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	
 	protected void updateKeyFontSize()
 	{
-		System.out.println("UPDTATE !!!");
 		// Calcul de la taille
 		float heightFactor = CProfil.getInstance().getKeyboardFont().getHeightFactor();
 		
 		// Calcul de la valeur
 		int fontSize = Math.round(getHeight()*heightFactor* FONT_REDUCTION_FACTOR);
-		System.out.println("Height factor : " + heightFactor + " Size : " + fontSize);
 		
 		// Changement de la taille de toutes les keys
 		for (UIKeyKeyboard currentKey : allKeys)
@@ -445,12 +452,22 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	/**
 	 * Effectue une translation de x, y de toutes les touches selectionnées
 	 */
-	private void translateSelectedKeys(int xTranslation, int yTranslation)
+	private void translateSelectedKeys(int xTranslation, int yTranslation, boolean isControlDown)
 	{
+		int step;
+		if (isControlDown)
+		{
+			step = FINE_TRANSLATION_STEP;
+		}
+		else
+		{
+			step = NORMAL_TRANSLATION_STEP;
+		}
+		
 		for (UIJResizer currentKey : selectedKeys)
 		{						
 			Rectangle bounds = currentKey.getBounds();
-			bounds.translate(xTranslation, yTranslation);
+			bounds.translate(xTranslation*step, yTranslation*step);
 			currentKey.setBounds(bounds);
 			currentKey.onBoundsChanged();
 			currentKey.invalidate();
@@ -549,27 +566,53 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		repaint();
 	}
 	
+	private void unselectAllKeys()
+	{
+		// On commence par se désabonner au keys selectionnées,
+		// pour ne pas qu'elles envoient d'evenement pour dire
+		// que la selection a changé
+		for (UIKeyKeyboard currentKey : selectedKeys)
+		{
+			currentKey.removeSelectionListener(this);
+		}
+		
+		// On les deselectionne une par une
+		for (UIKeyKeyboard currentKey : selectedKeys)
+		{
+			currentKey.eraseBorder();
+			currentKey.setSelected(false);
+		}
+		
+		// On se réabonne
+		for (UIKeyKeyboard currentKey : selectedKeys)
+		{
+			currentKey.addSelectionListener(this);
+		}
+		
+		// On vide la selection
+		selectedKeys.clear();
+	}
+	
 	private KeyListener keyListener = new KeyListener()
 	{
 		public void keyPressed(KeyEvent arg0)
 		{
 			switch(arg0.getKeyCode())
 			{
-				// DEPLACEMENT
 				case (KeyEvent.VK_DOWN) :
-					translateSelectedKeys(0,TRANSLATION_STEP);
+					translateSelectedKeys(0,1,arg0.isControlDown());
 					break;
 				
 				case (KeyEvent.VK_UP) :
-					translateSelectedKeys(0,-TRANSLATION_STEP);
+					translateSelectedKeys(0,-1,arg0.isControlDown());
 					break;
 				
 				case (KeyEvent.VK_LEFT) :
-					translateSelectedKeys(-TRANSLATION_STEP,0);
+					translateSelectedKeys(-1,0,arg0.isControlDown());
 					break;
 					
 				case (KeyEvent.VK_RIGHT) :
-					translateSelectedKeys(TRANSLATION_STEP,0);
+					translateSelectedKeys(1,0,arg0.isControlDown());
 					break;
 					
 				// SUPPRESSION
@@ -603,5 +646,39 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 			// TODO Auto-generated method stub
 			
 		}
+	};
+	
+	private MouseListener mouseListener = new MouseListener()
+	{
+
+		public void mouseClicked(MouseEvent arg0)
+		{
+//			 TODO Auto-generated method stub
+		}
+
+		public void mouseEntered(MouseEvent arg0)
+		{
+			// TODO Auto-generated method stub
+		}
+
+		public void mouseExited(MouseEvent arg0)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mousePressed(MouseEvent arg0)
+		{
+			// On deselectionne les keys
+			unselectAllKeys();
+			repaint();
+		}
+
+		public void mouseReleased(MouseEvent arg0)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
 	};
 }

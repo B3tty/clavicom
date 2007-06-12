@@ -615,7 +615,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 			else
 			// Dessin du texte
-			{				
+			{
+				
 				// Récupération du CFont du profil
 				CFont profilFont = CProfil.getInstance().getKeyboardFont();
 			
@@ -646,7 +647,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				int captionHeight= fontMetrics.getHeight();
 				
 				int xPosition = (getWidth()/2) - (captionWidth/2);
-				int yPosition = (getHeight()/2) + (captionHeight/3);
+				int yPosition = (getHeight()/2) + (captionHeight/3);;
 
 				// Ajout de l'ombre
 				if (profilFont.isShadow())
