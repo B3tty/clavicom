@@ -67,10 +67,10 @@ public class testPanelsModificationProfil
 
 			// PanelModificationProfilCommandSetName p = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
 			// PanelModificationProfilDictionaryName p = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
-			// PanelModificationProfilFont p = new PanelModificationProfilFont( profil.getKeyboardFont() );
+			PanelModificationProfilFont p = new PanelModificationProfilFont( profil.getKeyboardFont() );
 			// PanelModificationProfilKeyboardColor p = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
 			// PanelModificationProfilLangueUIName p = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
-			PanelModificationProfilNavigation p = new PanelModificationProfilNavigation( profil.getNavigation() );
+			// PanelModificationProfilNavigation p = new PanelModificationProfilNavigation( profil.getNavigation() );
 			// PanelModificationProfilPreferedWords p = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );			
 			// PanelModificationProfilSound p = new PanelModificationProfilSound( profil.getSound() );
 			// PanelModificationProfilTransparency p = new PanelModificationProfilTransparency( profil.getTransparency() );

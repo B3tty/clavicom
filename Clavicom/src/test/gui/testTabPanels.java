@@ -28,6 +28,7 @@ package test.gui;
 import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.GlobalProfilModification;
 import clavicom.gui.configuration.PanelModificationProfilCommandSetName;
@@ -38,6 +39,7 @@ import clavicom.gui.configuration.PanelModificationProfilNavigation;
 import clavicom.gui.configuration.PanelModificationProfilPreferedWords;
 import clavicom.gui.configuration.PanelModificationProfilTransparency;
 import clavicom.gui.language.UIString;
+import clavicom.gui.message.UIMessageEngine;
 
 public class testTabPanels
 {
@@ -45,6 +47,9 @@ public class testTabPanels
 	{
 		try
 		{
+			
+			CMessageEngine.createInstance();
+			new UIMessageEngine();
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
@@ -59,6 +64,9 @@ public class testTabPanels
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
+			
+			profil.LoadProfilLanguageUIName();
+			profil.LoadProfilFile();
 
 			GlobalProfilModification panelGlobal = new GlobalProfilModification( profil );
 			

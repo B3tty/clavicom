@@ -42,14 +42,14 @@ public class CLangueUIName
 	{
 		if( node == null )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_LANGUAGE_UI_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+			throw new Exception( "[Chargement du nom du profil] : Noeud XML non-existant");
 		}
 		
 		languageFileName = node.getText();
 		
 		if( languageFileName == "" )
 		{
-			throw new Exception( "[" + UIString.getUIString("EX_LANGUAGE_UI_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") );
+			throw new Exception( "[Chargement du nom du profil] : Noeud XML Vide") ;
 		}
 	}
 

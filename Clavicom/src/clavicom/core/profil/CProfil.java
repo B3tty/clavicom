@@ -54,16 +54,55 @@ public class CProfil
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	CFont keyboardFont;				// Police de caractère utilisée pour le clavier
 	
+	String profilFilePath;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	private CProfil( String profilFilePath ) throws Exception
+	private CProfil( String myProfilFilePath ) throws Exception
 	{
-		// chargement du fichier de profil
-		LoadProfilFile( profilFilePath );
+		profilFilePath = myProfilFilePath;
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	
+	public void LoadProfilLanguageUIName() throws Exception
+	{
+		// ======================================================================
+		// chargement du fichier de profil
+		// ======================================================================
+		SAXBuilder sxb = new SAXBuilder();
+		Document document = null;
+		try
+		{
+			document = sxb.build(new File( profilFilePath ));
+		}
+		catch(Exception e)
+		{
+			throw new Exception("[Chargement du profil] : Impossible d'ouvrir le fichier de profil" + "\n" + e.getMessage());
+		}
+
+		//On initialise un nouvel élément racine avec l'élément racine du document.
+		Element racine = document.getRootElement();
+		
+		
+		// ======================================================================
+		// chargement de la langueUI
+		// ======================================================================
+		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		if( langueUI_elem == null )
+		{
+			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML " + TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		}
+		try
+		{
+			langueUI = new CLangueUIName( langueUI_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[Chargement du profil] : " + ex.getMessage() );
+		}
+	}
+	
 	public static void createInstance(String profilFilePath) throws Exception 
 	{
 		profil = new CProfil(profilFilePath);
@@ -202,7 +241,7 @@ public class CProfil
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private void LoadProfilFile ( String profilFilePath ) throws Exception
+	public void LoadProfilFile ( ) throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
@@ -222,22 +261,7 @@ public class CProfil
 		Element racine = document.getRootElement();
 		
 		
-		// ======================================================================
-		// chargement de la langueUI
-		// ======================================================================
-		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
-		if( langueUI_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_LANGUAGE_UI );
-		}
-		try
-		{
-			langueUI = new CLangueUIName( langueUI_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
+		
 		
 		// ======================================================================
 		// chargement du nom du fichier de commande set à utiliser
