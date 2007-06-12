@@ -55,6 +55,10 @@ public class UIMessageEngine implements CMessageListener
 		{
 			JOptionPane.showMessageDialog(null, newMessage + "\n\n" + detail);
 		}
+		
+		
+		// On ferme l'application
+		System.exit(0);
 	}
 	
 	public void onNewError(String newMessage, String detail)
