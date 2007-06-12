@@ -26,7 +26,6 @@
 package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
@@ -55,6 +54,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JSlider sliderTempoClic;
 	JSlider sliderMouseSpeed;
 	JCheckBox rollOver;
+	JLabel labelTempoDefil;
+	JLabel labelTempoClic;
+	JLabel labelTempoSouriom;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfilNavigation(CNavigation myNavigation)
@@ -102,16 +104,16 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		rollOver.setSelected( navigation.isRolloverActive() ); 
 	}
 
-
 	private void LoadComponents()
 	{
+		setLayout( new BorderLayout() );
 		
-		JPanel panelGlobal = new JPanel( new BorderLayout() ); 
+		JPanel panelGlobal = new JPanel( ); 
+		panelGlobal.setLayout( null );
 		
 		// ========================================================================
 		// Groupe de radio boutton pour la séléction du mode
 		// ========================================================================
-		JPanel panelNavigationMode = new JPanel( new GridLayout( 3, 1 ) );
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
 		// navigation standard
@@ -119,20 +121,29 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		buttonGroup.add( radioButtonStandard );
 		radioButtonStandard.addActionListener(this);
 		
+		panelGlobal.add( radioButtonStandard );
+		
+
+		
+		
+		// ========================================================================
+		// Séléction du clic temporisé
+		// ========================================================================
 		
 		// navigation clic temporisé
-		
-		JPanel panelClicTempo = new JPanel( new BorderLayout() );
 		radioButtonClickTempo = new JRadioButton( TNavigationType.CLICK_TEMPORISE.toString(), false );
 		buttonGroup.add( radioButtonClickTempo );
 		radioButtonClickTempo.addActionListener(this);
-		panelClicTempo.add( radioButtonClickTempo, BorderLayout.WEST );
 		
-		JPanel panelTempoClic = new JPanel();
+		panelGlobal.add( radioButtonClickTempo );
+		
+		
 		
 		// on initialise avec la temporisation de défilement  
-		JLabel labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION") );
-		panelTempoClic.add( labelTempoClic );
+		labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION") + " : " );
+		panelGlobal.add( labelTempoClic );
+		
+
 		
 		sliderTempoClic = new JSlider();
 		sliderTempoClic.setMaximum( 100 );
@@ -142,25 +153,27 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setPaintTicks(true);
 		sliderTempoClic.setPaintLabels(true);
 		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
-		panelTempoClic.add( sliderTempoClic );
 		
-		panelClicTempo.add( panelTempoClic, BorderLayout.CENTER );
+		panelGlobal.add( sliderTempoClic );
 		
 		
+		
+		// ========================================================================
+		// Séléction du défilement
+		// ========================================================================
 		
 		// navigation défilement
-		JPanel defilement = new JPanel( new BorderLayout() );
 		radioButtonDefilement = new JRadioButton( TNavigationType.DEFILEMENT.toString(), false );
 		buttonGroup.add( radioButtonDefilement );
 		radioButtonDefilement.addActionListener(this);
-		defilement.add( radioButtonDefilement, BorderLayout.WEST );
+		panelGlobal.add( radioButtonDefilement );
 		
 		
-		JPanel panelTempoDefil = new JPanel();
 		
 		// on initialise avec la temporisation de défilement  
-		JLabel labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") );
-		panelTempoDefil.add( labelTempoDefil );
+		labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") + " : " );
+		panelGlobal.add( labelTempoDefil );
+		
 		
 		sliderTempoDefil = new JSlider();
 		sliderTempoDefil.setMaximum( 100 );
@@ -170,38 +183,27 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoDefil.setPaintTicks(true);
 		sliderTempoDefil.setPaintLabels(true);
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
-		panelTempoDefil.add( sliderTempoDefil );
 		
-		defilement.add( panelTempoDefil, BorderLayout.CENTER );
-		
+		panelGlobal.add( sliderTempoDefil );
 		
 		
 		// checkBox BlocSelection
 		blocSelection = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC"), navigation.isRolloverActive() );
-		defilement.add( blocSelection, BorderLayout.EAST );
+		panelGlobal.add( blocSelection );
 
-		
-		panelNavigationMode.add( radioButtonStandard );
-		panelNavigationMode.add( panelClicTempo );
-		panelNavigationMode.add( defilement );
-		
-		panelGlobal.add( panelNavigationMode, BorderLayout.NORTH );
-		
-		
 		// ========================================================================
 		// Séléction du rollOver ou non
 		// ========================================================================
-		JPanel panelRollOver = new JPanel();
-		
+
 		rollOver = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
-		panelRollOver.add( rollOver );
-		
-		panelGlobal.add( panelRollOver, BorderLayout.CENTER );
-		
+		panelGlobal.add( rollOver );
+
 		// ========================================================================
 		// Séléction de la temporisation du clic de la souricom
 		// ========================================================================
-		JPanel panelTempoSouricom = new JPanel();
+		
+		labelTempoSouriom = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED") + " : " );
+		panelGlobal.add( labelTempoSouriom );
 
 		sliderMouseSpeed = new JSlider();
 		sliderMouseSpeed.setMaximum( 100 );
@@ -209,13 +211,58 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderMouseSpeed.setMajorTickSpacing(10);
 		sliderMouseSpeed.setMinorTickSpacing(10);
 		sliderMouseSpeed.setPaintTicks(true);
-		sliderMouseSpeed.setPaintLabels(true); 
-		panelTempoSouricom.add( sliderMouseSpeed );
+		sliderMouseSpeed.setPaintLabels(true);
+		
+		panelGlobal.add( sliderMouseSpeed );
 		
 		
-		panelGlobal.add( panelTempoSouricom, BorderLayout.SOUTH );
+		// ========================================================================
+		// Placement des composants
+		// ========================================================================
+		radioButtonStandard.setLocation( 10, 10 );
 		
-		add( panelGlobal );
+		radioButtonClickTempo.setLocation( 10, 85 );
+		labelTempoClic.setLocation( 165, 60 );
+		sliderTempoClic.setLocation( 155, 90 );
+		
+		radioButtonDefilement.setLocation( 10, 185 );
+		labelTempoDefil.setLocation( 165, 160 );
+		sliderTempoDefil.setLocation( 155, 190 );
+		blocSelection.setLocation( 255, 250 );
+		
+		rollOver.setLocation( 16, 300 );
+		
+		labelTempoSouriom.setLocation( 20, 330 );
+		sliderMouseSpeed.setLocation( 10, 360 );
+
+		
+		
+		
+		
+		// ========================================================================
+		// taille des composants
+		// ========================================================================
+		
+		radioButtonStandard.setSize( 100, 30 );
+		
+		radioButtonClickTempo.setSize( 120, 30 );
+		labelTempoClic.setSize( 200, 30 );
+		sliderTempoClic.setSize( 300, 50 );
+		
+		radioButtonDefilement.setSize( 120, 30 );
+		labelTempoDefil.setSize( 200, 30 );
+		sliderTempoDefil.setSize( 300, 50 );
+		blocSelection.setSize( 200, 30 );
+		
+		rollOver.setSize( 400, 30 );
+		
+		labelTempoSouriom.setSize( 200, 30 );
+		sliderMouseSpeed.setSize( 300, 50 );
+		
+		
+		
+
+		add( panelGlobal, BorderLayout.CENTER );
 	}
 
 
@@ -302,6 +349,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		sliderTempoDefil.setEnabled( false );
 		blocSelection.setEnabled( false );
+		
+		labelTempoClic.setEnabled( true );
+		labelTempoDefil.setEnabled( false );
 	}
 
 
@@ -312,6 +362,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoDefil.setEnabled( true );
 		blocSelection.setEnabled( true );
 		
+		labelTempoClic.setEnabled( false );
+		labelTempoDefil.setEnabled( true );
+		
 	}
 
 
@@ -321,6 +374,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		sliderTempoDefil.setEnabled( false );
 		blocSelection.setEnabled( false );
+		
+		labelTempoClic.setEnabled( false );
+		labelTempoDefil.setEnabled( false );
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
