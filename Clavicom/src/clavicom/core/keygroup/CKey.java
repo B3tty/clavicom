@@ -28,6 +28,7 @@ package clavicom.core.keygroup;
 import javax.swing.event.EventListenerList;
 import java.awt.Color;
 
+import org.jdom.Attribute;
 import org.jdom.Element;
 
 import clavicom.core.listener.CKeyColorChangedListener;
@@ -203,7 +204,7 @@ public abstract class CKey
 		fireColorChanged(colorEnum);
 	}
 	
-	public Element BuildNode ( )
+	public Element BuildNode ( Element root )
 	{
 		// ==================================================================
 		// Création du noeud colors
@@ -221,6 +222,9 @@ public abstract class CKey
 		Element color_entered = entered.BuildNode( );
 		color_entered.setName( TXMLNames.CO_ELEMENT_COLOR_ENTERED );
 		colors.addContent( color_entered );
+		
+		Attribute captionImageAttribut = new Attribute( TXMLNames.KY_ATTRIBUTE_CAPTION_IMAGE, String.valueOf( captionImage ) );
+		root.setAttribute( captionImageAttribut );
 		
 		return colors;
 	}
