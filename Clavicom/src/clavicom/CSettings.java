@@ -40,7 +40,8 @@ public class CSettings
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//
-	static String defaultProfilePath;
+	static String lastProfilePath;
+	static String defaultProfileName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 
@@ -61,24 +62,42 @@ public class CSettings
 		//On initialise un nouvel élément racine avec l'élément racine du document.
 		Element racine = document.getRootElement();
 		
-		// récupération de l'element defaultProfilsPath
-		Element defaultProfilsPath_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
+		// récupération de l'element lastProfilePath
+		Element lastProfilePath_elem = racine.getChild( TXMLNames.SE_ELEMENT_LAST_PROFILE );
 		
-		if( defaultProfilsPath_elem == null  )
+		if( lastProfilePath_elem == null  )
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_SETTINGS" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
 		}
 		
-		defaultProfilePath = defaultProfilsPath_elem.getText();
+		lastProfilePath = lastProfilePath_elem.getText();
+		
+		// récupération de l'element defaultProfilePath
+		Element defaultProfileName_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
+		
+		if( defaultProfileName_elem == null  )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_SETTINGS" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ));
+		}
+		
+		defaultProfileName = defaultProfileName_elem.getText();
 	}
 	
 	public static void saveSettings( String configFilePath ) throws Exception
 	{
 		Element racine = new Element( TXMLNames.SE_ELEMENT_SETTINGS );
 		
-		Element defaultProfilsPath_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
-		defaultProfilsPath_elem.setText( defaultProfilePath );
-		racine.addContent( defaultProfilsPath_elem );
+		// Enregistrement du lastProfile
+		Element lastProfilePath_elem = new Element( TXMLNames.SE_ELEMENT_LAST_PROFILE );
+		lastProfilePath_elem.setText( lastProfilePath );
+		racine.addContent( lastProfilePath_elem );
+		
+		// Enregistrement du defaultProfile
+		Element defaultProfileName_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
+		defaultProfileName_elem.setText( defaultProfileName );
+		racine.addContent( defaultProfileName_elem );
+		
+		// Sauvegarde
 		
 		org.jdom.Document documentOut = new org.jdom.Document(racine);
 
@@ -88,16 +107,26 @@ public class CSettings
 		
 	}
 
-	public static String getDefaultProfilePath()
+	public static String getLastProfilePath()
 	{
-		return defaultProfilePath;
+		return lastProfilePath;
 	}
 
-	public static void setDefaultProfilePath(String defaultProfilePath)
+	public static void setLastProfilePath(String lastofilePath)
 	{
-		CSettings.defaultProfilePath = defaultProfilePath;
+		CSettings.lastProfilePath = lastofilePath;
 	}
-	
+
+	public static String getDefaultProfileName()
+	{
+		return defaultProfileName;
+	}
+
+	public static void setDefaultProfileName(String defaultProfileName)
+	{
+		CSettings.defaultProfileName = defaultProfileName;
+	}
+		
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

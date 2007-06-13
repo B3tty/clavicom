@@ -264,6 +264,15 @@
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
+	<!-- Application (main seulement)-->
+	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_1">Impossible de charger le dictionnaire "</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_2">".</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LEVEL_ENGINE_1">Impossible de charger le moteur de niveau.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_COMMAND_ENGINE_1">Impossible de charger le moteur de commande.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1">Impossible de charger le moteur de derniers mots.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1">Impossible de charger le moteur de lancement d'application.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Impossible de charger le moteur de prediction.</message>
+		
 	<!-- Message engine -->
 	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>
 	<message id = "MSG_ENGINE_TITLE_WARNING">Avertissement</message>

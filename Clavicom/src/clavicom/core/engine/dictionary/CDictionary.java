@@ -76,10 +76,7 @@ public class CDictionary
 	
 	private void LoadDictionary(CDictionaryName dictionaryName) throws Exception
 	{
-
-		String dictionaryPath = CFilePaths.getDictionaries() + dictionaryName.getDictionaryName();
-		
-
+		String dictionaryPath = CFilePaths.getDictionariesFolder() + dictionaryName.getDictionaryName();
 
 		// Ouverture du fichier
 		FileInputStream fis = new FileInputStream( dictionaryPath );

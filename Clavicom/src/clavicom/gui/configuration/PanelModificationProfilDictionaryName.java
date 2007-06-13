@@ -67,7 +67,7 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 		combo = new JComboBox();
 
 		// chargement de la liste des fichiers de commandSet
-		File commandSetDirectory = new File( CFilePaths.getDictionaries() );
+		File commandSetDirectory = new File( CFilePaths.getDictionariesFolder() );
 
 		if (commandSetDirectory.isDirectory())
 		{

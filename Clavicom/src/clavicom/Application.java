@@ -27,11 +27,18 @@ package clavicom;
 
 import javax.swing.JFrame;
 
+import clavicom.core.engine.CCommandEngine;
+import clavicom.core.engine.CLastWordEngine;
+import clavicom.core.engine.CLauncherEngine;
+import clavicom.core.engine.CLevelEngine;
+import clavicom.core.engine.CPredictionEngine;
+import clavicom.core.engine.CStringsEngine;
+import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
-
 import clavicom.core.profil.CProfil;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 
@@ -47,183 +54,79 @@ public class Application
 	
 	//----------------------------------------------------------------
 	// GUI
-	//----------------------------------------------------------------
-	private static UIMessageEngine uiMessageEngine;
+	//----------------------------------------------------------------	
+	// Outils
+	@SuppressWarnings("unused")
+	private static UIMessageEngine 		toolMessageEngine;		// Moteur de messages
+	
+	@SuppressWarnings("unused")
+	private static CDictionary			toolDictionnary;		// Dictionnaire
+	
+	@SuppressWarnings("unused")
+	private static CLevelEngine			toolLevelEngine;		// Moteur de niveau
+	
+	@SuppressWarnings("unused")
+	private static CCommandEngine		toolCommandEngine;		// Moteur de commandes
+	
+	@SuppressWarnings("unused")
+	private static CLastWordEngine		toolLastWordEngine;		// Moteur de derniers mots
+	
+	@SuppressWarnings("unused")
+	private static CLauncherEngine		toolLauncherEngine;		// Moteur de lancement d'applications
+	
+	@SuppressWarnings("unused")
+	private static CPredictionEngine	toolPredictionEngine;	// Moteur de prediction de mots
+	
+	@SuppressWarnings("unused")
+	private static CStringsEngine		toolStringEngine;		// Moteur de chaines
+	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
 	//----------------------------------------------------------- METHODES --//	
+	/**
+	 * Point d'entrée de l'application
+	 */
 	public static void main(String[] args)
 	{
-		//----------------------------------------------------------------
-		// Gestion des messages d'erreur
-		//----------------------------------------------------------------
-		CMessageEngine.createInstance();
-		uiMessageEngine = new UIMessageEngine();
+		// Chargement du moteur de messages
+		loadMessageEngine();
 		
-		//----------------------------------------------------------------
-		// Chargement des différents outils
-		//----------------------------------------------------------------
-		// Gestionnaire des paramètres de l'application		
-		try
-		{
-			CSettings.loadSettings(CFilePaths.getConfigFile());
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError( 		"Impossible de charger le fichier \"" + 
-											CFilePaths.getConfigFile()
-											+ "\"",
-									 		"Remplacez ce fichier ou reinstallez l'application.");
-			
-			// TODO : charger le profil par défaut
-		}	
+		// Chargement du gestionnaires de paramètres
+		loadSettings();
 		
-		// Création du profil
-		CProfil.createInstance(CSettings.getDefaultProfilePath());
+		// Chargement du profil
+		loadAnyProfile();
 		
-		// Récupération de la langue du profil
-		try
-		{
-			CProfil.getInstance().loadProfileLanguageUIName();
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());			
-		}
+		// -> ICI, un profil est chargé (le dernier ou celui par défaut)
 		
-		// Chargement de la langue du profil
-		try
-		{
-			UIString.LoadUIStringFile(  CFilePaths.getLanguagesUI() + 
-										CProfil.getInstance().getLangueUI().getLanguageFileName());
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());			
-		}
+		// Chargement du dictionnaire
+		loadDictionnary();
 		
-		// Récupération du nom du commandset
-		try
-		{
-			CProfil.getInstance().loadProfileCommandSetName();
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());
-			
-			// TODO : charger le profil par défaut
-		}
+		// Chargement du moteur de niveaux
+		loadLevelEngine();
 		
-		// Chargement du commandset
-		try
-		{
-			CCommandSet.CreateInstance( CFilePaths.getCommandSets() +
-										CProfil.getInstance().getCommandSetName().getcommandSetName());
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());
-			
-			// TODO : charger le profil par défaut
-		}
+		// Chargement du moteur de lancements d'applications
+		loadLauncherEngine();
 		
-		// Récupération du nom du shortcutset
-		try
-		{
-			CProfil.getInstance().loadProfileShortCutName();
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());
-			
-			// TODO : charger le profil par défaut
-		}
+		// Chargement du moteur de commandes
+		loadCommandEngine();
 		
-		// Chargement du commandset
-		try
-		{
-			CShortcutSet.CreateInstance(	CFilePaths.getShortcutSets() + 
-											CProfil.getInstance().getShortcutSetName().getShortCutName());
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());
-			
-			// TODO : charger le profil par défaut
-		}
-		
-		// Chargement du reste du profil
-		try
-		{
-			CProfil.getInstance().loadProfile();
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(ex.getMessage());
-		}
+		// Chargment du moteur de derniers mots
+		loadLastWordEngine();
 
+		// Chargement du moteur de prédiction
+		loadPredictionEngine();
 		
 		
-//
-//		//		 Chargement des UIString et shortcutset
-//		CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
-//		CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
-//		
-//		// Chemins
-//		String input = "Ressources\\Temp\\profil2.xml";
-//		
-//		// Chargement du profil
-//		CProfil.createInstance(input);
-//		CProfil profil = CProfil.getInstance();
-//		
-//		CKeyboard keyboard = profil.getKeyboard();
-//		
-//		// Chargement du commandEngine
-//		CLevelEngine levelEngine = new CLevelEngine( keyboard );
-//		
-//		CDictionary dictionary = null;
-//		try
-//		{
-//			//dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
-//		}
-//		catch (Exception ex)
-//		{
-//			System.out.println("argh1 !!!");
-//			Thread.sleep( 3000 );
-//			
-//			System.out.println("argh2 !!!");
-//			ex.printStackTrace();
-//		}
-//		
-//		
-//		
-//		/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-//		/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
-//		/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
-//		
-//		// on simule l'appuis sur une touche
-////			CKeyGroup group = keyboard.getKeyGroup( 0 );
-////			CKeyList list = group.getkeyList( 0 );
-////			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
-////			
-////			
-////			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
-////			JScrollPane sp = new JScrollPane( panelOptionCharacter );
-//		
-//		
-//		
-//		JPanel panel = new JPanel();
-//		panel.setLayout(new BorderLayout());
-//		
-//		UIKeyboard uiKeyboard = new UIKeyboard(keyboard);
-//		uiKeyboard.setPreferredSize(new Dimension(100,100));
-//		
-//		uiKeyboard.edit();
-//		
-//		panel.add(uiKeyboard, BorderLayout.CENTER);
-		
+		// <TEMPORAIRE>
+		// TODO --> Création des fenetres,...		
 		JFrame frame = new JFrame ();
+		
+		UIKeyboard test = new UIKeyboard(CProfil.getInstance().getKeyboard());
+		test.edit();
+		frame.add(test);
+		
 		frame.setSize(900,400);
 		
 		frame.setAlwaysOnTop(true);
@@ -232,8 +135,205 @@ public class Application
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
+		// </TEMPORAIRE>
 
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	//-----------------------------------------------------------------------
+	// Chargement
+	//-----------------------------------------------------------------------
+	/**
+	 * Charge le moteur d'affichage de messages
+	 */
+	private static void loadMessageEngine()
+	{
+		CMessageEngine.createInstance();
+		toolMessageEngine = new UIMessageEngine();
+	}
+	
+	private static void loadSettings()
+	{
+		try
+		{
+			CSettings.loadSettings(CFilePaths.getConfigFileFolder());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newFatalError( 		"Erreur lors du chargement du fichier \"" + 
+												CFilePaths.getConfigFileFolder()
+												+ "\"",
+									 			"Remplacez ce fichier ou réinstallez l'application.");
+		}	
+	}
+	
+	/**
+	 * Charge un profile (celui qui aura servi à créer l'instance du profil)
+	 * @throws Exception
+	 */
+	private static void loadProfile() throws Exception
+	{		
+		// Récupération de la langue du profil
+		CProfil.getInstance().loadProfileLanguageUIName();
+
+		
+		// Chargement de la langue du profil
+		UIString.LoadUIStringFile(  CFilePaths.getLanguagesUIFolder() + 
+										CProfil.getInstance().getLangueUI().getLanguageFileName());
+		
+		// Récupération du nom du commandset
+		CProfil.getInstance().loadProfileCommandSetName();
+		
+		// Chargement du commandset
+		CCommandSet.CreateInstance( CFilePaths.getCommandSetsFolder() +
+										CProfil.getInstance().getCommandSetName().getcommandSetName());
+		
+		// Récupération du nom du shortcutset
+		CProfil.getInstance().loadProfileShortCutName();
+		
+		// Chargement du commandset
+		CShortcutSet.CreateInstance(	CFilePaths.getShortcutSetsFolder() + 
+											CProfil.getInstance().getShortcutSetName().getShortCutName());
+		
+		// Chargement du reste du profil
+		CProfil.getInstance().loadProfile();
+	}
+	
+	/**
+	 * Charge un profil. Essaye de charger le dernier profil, et en cas d'echec le 
+	 * profil par défaut.
+	 *
+	 */
+	private static void loadAnyProfile()
+	{
+		// On tente de charger le dernier profil
+		CProfil.createInstance(CSettings.getLastProfilePath());
+		
+		try
+		{
+			loadProfile();
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	"Impossible de charger le dernier profil : le profil par défaut va être chargé.",
+										ex.getMessage());
+			
+			try
+			{
+				CProfil.createInstance( CFilePaths.getDefaultProfileFolder() +
+										CSettings.getDefaultProfileName());
+			}
+			catch (Exception ex2)
+			{
+				CMessageEngine.newFatalError(	"Impossible de charger le profil par défaut",
+												ex2.getMessage());				
+			}
+		}
+	}
+	
+	/**
+	 * Charge le dictionnaire du profil
+	 *
+	 */
+	private static void loadDictionnary()
+	{
+		try
+		{
+			toolDictionnary = new CDictionary(	CProfil.getInstance().getDictionnaryName(),
+												CProfil.getInstance().getPreferedWords());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
+											CProfil.getInstance().getDictionnaryName().getDictionaryName() +
+											UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
+											ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de niveau
+	 */
+	private static void loadLevelEngine()
+	{
+		try
+		{
+			toolLevelEngine  = new CLevelEngine(CProfil.getInstance().getKeyboard());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_LEVEL_ENGINE_1"),
+											ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de commandes
+	 */
+	private static void loadCommandEngine()
+	{
+		try
+		{
+			toolCommandEngine  = new CCommandEngine(	CProfil.getInstance().getKeyboard(),
+														toolLevelEngine);
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_COMMAND_ENGINE_1"),
+											ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de derniers mots
+	 */
+	private static void loadLastWordEngine()
+	{
+		try
+		{
+			toolLastWordEngine = new CLastWordEngine(	CProfil.getInstance().getKeyboard(),
+														toolLevelEngine);
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de lancement d'application
+	 */
+	private static void loadLauncherEngine()
+	{
+		try
+		{
+			toolLauncherEngine = new CLauncherEngine(CProfil.getInstance().getKeyboard());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de lancement d'application
+	 */
+	private static void loadPredictionEngine()
+	{
+		try
+		{
+			toolPredictionEngine = new CPredictionEngine(	CProfil.getInstance().getKeyboard(),
+															toolLevelEngine,
+															toolDictionnary,
+															CProfil.getInstance().getPreferedWords());
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
 }

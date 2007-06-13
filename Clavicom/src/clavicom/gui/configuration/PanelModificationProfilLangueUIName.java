@@ -67,7 +67,7 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 		combo = new JComboBox();
 
 		// chargement de la liste des fichiers de langue UI
-		File langueUIDirectory = new File( CFilePaths.getLanguagesUI() );
+		File langueUIDirectory = new File( CFilePaths.getLanguagesUIFolder() );
 
 		if (langueUIDirectory.isDirectory())
 		{

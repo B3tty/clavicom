@@ -27,7 +27,6 @@ package clavicom.core.profil;
 
 import org.jdom.Element;
 
-import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
 public class CCommandSetName
