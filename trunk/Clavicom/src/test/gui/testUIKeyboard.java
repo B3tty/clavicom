@@ -52,7 +52,7 @@ public class testUIKeyboard
 		try
 		{
 			CMessageEngine.createInstance();
-			UIMessageEngine test = new UIMessageEngine();
+			/*UIMessageEngine test = */new UIMessageEngine();
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			

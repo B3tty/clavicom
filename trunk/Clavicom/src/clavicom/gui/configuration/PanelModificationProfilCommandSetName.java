@@ -68,7 +68,7 @@ public class PanelModificationProfilCommandSetName extends
 		combo = new JComboBox();
 
 		// chargement de la liste des fichiers de commandSet
-		File commandSetDirectory = new File( CFilePaths.getCommandSets() );
+		File commandSetDirectory = new File( CFilePaths.getCommandSetsFolder() );
 
 		if (commandSetDirectory.isDirectory())
 		{

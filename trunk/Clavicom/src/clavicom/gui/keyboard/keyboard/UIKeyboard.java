@@ -91,6 +91,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
 												// le calcul des images
 	
+	@SuppressWarnings("unused")
 	private boolean isEdited;					// Indique si le clavier est en edition
 	private CKeyboard coreKeyboard;				// Element du noyau
 	

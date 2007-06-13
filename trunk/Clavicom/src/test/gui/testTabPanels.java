@@ -31,13 +31,6 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.GlobalProfilModification;
-import clavicom.gui.configuration.PanelModificationProfilCommandSetName;
-import clavicom.gui.configuration.PanelModificationProfilDictionaryName;
-import clavicom.gui.configuration.PanelModificationProfilFont;
-import clavicom.gui.configuration.PanelModificationProfilKeyboardColor;
-import clavicom.gui.configuration.PanelModificationProfilNavigation;
-import clavicom.gui.configuration.PanelModificationProfilPreferedWords;
-import clavicom.gui.configuration.PanelModificationProfilTransparency;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 

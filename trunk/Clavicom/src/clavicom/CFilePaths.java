@@ -48,42 +48,42 @@ public class CFilePaths
 	// ========================================================================
 
 	
-	public static String getCommandSets()
+	public static String getCommandSetsFolder()
 	{
 		return commandSets;
 	}
 
-	public static String getConfigFile()
+	public static String getConfigFileFolder()
 	{
 		return configFile;
 	}
 
-	public static String getDefaultProfile()
+	public static String getDefaultProfileFolder()
 	{
 		return defaultProfile;
 	}
 
-	public static String getDictionaries()
+	public static String getDictionariesFolder()
 	{
 		return dictionaries;
 	}
 
-	public static String getKeyboardModels()
+	public static String getKeyboardModelsFolder()
 	{
 		return keyboardModels;
 	}
 
-	public static String getLanguagesUI()
+	public static String getLanguagesUIFolder()
 	{
 		return languagesUI;
 	}
 
-	public static String getProfils()
+	public static String getProfilsFolder()
 	{
 		return profils;
 	}
 
-	public static String getShortcutSets()
+	public static String getShortcutSetsFolder()
 	{
 		return shortcutSets;
 	}

@@ -52,7 +52,7 @@ public class testSettings
 			
 			CSettings.loadSettings( s );
 			
-			System.out.println( CSettings.getDefaultProfilePath() );
+			System.out.println( CSettings.getLastProfilePath() );
 			
 			CSettings.saveSettings( s_out );
 	
