@@ -176,6 +176,8 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    exempleText.setWrapStyleWord(true);
 	    exempleText.setBorder( BorderFactory.createLineBorder( Color.black ) );
 	    //exempleText.setForeground( font.getFontColor().getColor() );
+	    exempleText.setRows( 3 );
+	    
 	    exemplePanel.add( exempleText, BorderLayout.CENTER  );
 	    add( exemplePanel, BorderLayout.CENTER  );
 	    

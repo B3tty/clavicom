@@ -102,7 +102,7 @@ public class Application
 		
 		// Chargement du dictionnaire
 		// TODO -> Décommenter
-		// loadDictionnary();
+		loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		loadLevelEngine();

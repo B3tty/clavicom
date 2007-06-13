@@ -39,6 +39,7 @@ public class GlobalProfilModification extends JTabbedPane
 
 	//---------------------------------------------------------- VARIABLES --//
 	PanelModificationProfilCommandSetName panelCommandSetName;
+	PanelModificationProfilShortcutSetName panelShortcutSetName;
 	PanelModificationProfilDictionaryName panelDictionaryName;
 	PanelModificationProfilFont panelFont;
 	PanelModificationProfilKeyboardColor panelKeyboardColor;
@@ -47,6 +48,7 @@ public class GlobalProfilModification extends JTabbedPane
 	PanelModificationProfilSound panelSound;
 	PanelModificationProfilTransparency panelTransparency;
 	PanelModificationProfilLangueUIName panelLangueUI;
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public GlobalProfilModification( CProfil profil )
@@ -59,6 +61,12 @@ public class GlobalProfilModification extends JTabbedPane
 		panelCommandSetName = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
 		panel.add( panelCommandSetName );
 		addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_COMMANDSET"), panel);
+		
+		// panel des shortcut Set
+		panel = new JPanel(); 
+		panelShortcutSetName = new PanelModificationProfilShortcutSetName( profil.getShortcutSetName() );
+		panel.add( panelShortcutSetName );
+		addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET"), panel);
 		
 		// panel des dictionary name
 		panel = new JPanel(); 

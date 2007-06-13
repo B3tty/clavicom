@@ -27,6 +27,8 @@ package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
 
+import javax.swing.event.EventListenerList;
+import clavicom.core.listener.onClicMouseMoveListener;
 import clavicom.tools.TMouseKeyMoveEnum;
 
 public class CMouseKeyMove extends CMouseKey
@@ -35,6 +37,8 @@ public class CMouseKeyMove extends CMouseKey
 
 	//---------------------------------------------------------- VARIABLES --//
 	TMouseKeyMoveEnum direction;
+	
+	protected EventListenerList listenerList;
 	
 	static int speedLevel; // vitesse du mouvement
 
@@ -48,9 +52,42 @@ public class CMouseKeyMove extends CMouseKey
 	{
 		super( caption, myColorNormal, myColorClicked, myColorEntered );
 		direction = mydirection;
+		
+		listenerList = new EventListenerList();
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	
+	// ========================================================|
+	// Listener ===============================================|
+	// ========================================================|
+	public void addOnClicMouseMoveListener(onClicMouseMoveListener l)
+	{
+		this.listenerList.add(onClicMouseMoveListener.class, l);
+	}
+
+	public void removeOnClicMouseMoveListener(onClicMouseMoveListener l)
+	{
+		this.listenerList.remove(onClicMouseMoveListener.class, l);
+	}
+
+	protected void fireOnClicMouseMove( )
+	{
+		onClicMouseMoveListener[] listeners = (onClicMouseMoveListener[]) listenerList
+				.getListeners(onClicMouseMoveListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClicMouseMove( this );
+		}
+	}
+	// ========================================================|
+	// fin Listeners ==========================================|
+	// ========================================================|
+	
+	
+	
 	
 	public TMouseKeyMoveEnum GetDirection(){ return direction; }
 	
@@ -61,6 +98,6 @@ public class CMouseKeyMove extends CMouseKey
 	@Override
 	public void Click()
 	{
-		// fire
+		fireOnClicMouseMove();
 	}
 }

@@ -41,29 +41,20 @@ public class CMouse
 
 	// keyMove
 	CMouseKeyMove moveLeft;
-
 	CMouseKeyMove moveRight;
-
 	CMouseKeyMove moveUp;
-
 	CMouseKeyMove moveDown;
 
 	// keyClic
 	CMouseKeyClick leftClick;
-
 	CMouseKeyClick rightClick;
-
 	CMouseKeyClick leftDubbleClick;
-
 	CMouseKeyClick leftPress;
-
 	CMouseKeyClick leftRelease;
 
 	// keyClavicom
 	CKeyClavicom moveMouseMode;
-
 	CKeyClavicom clickMouseMode;
-
 	CKeyClavicom switchMouseKeyboard;
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
