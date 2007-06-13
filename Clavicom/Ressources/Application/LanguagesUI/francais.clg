@@ -371,7 +371,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER">Changement de couleur de la touche au passage de la souris</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse de la souricom</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>

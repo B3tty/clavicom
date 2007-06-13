@@ -295,7 +295,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------		
+		//-----------------------------------------------------------------------
+		@Override
+		public void invalidate()
+		{
+			// TODO Auto-generated method stub
+			super.invalidate();
+			
+			recreateNormalImages();
+			selectGoodImage();
+		}
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */

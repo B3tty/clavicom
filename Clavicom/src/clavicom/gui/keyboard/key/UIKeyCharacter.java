@@ -25,6 +25,7 @@
 
 package clavicom.gui.keyboard.key;
 
+import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 
@@ -36,10 +37,10 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 	CKeyCharacter coreKey;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyCharacter(CKeyCharacter myCoreKey)
+	public UIKeyCharacter(CKeyCharacter myCoreKey, CLevelEngine myLevelEngine)
 	{
 		// Appel de la mère
-		super();
+		super(myLevelEngine);
 		
 		coreKey = myCoreKey;
 		addListeners();
@@ -52,11 +53,4 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 		return coreKey;
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
-	
-	@Override
-	protected String getCaption()
-	{
-		// TODO Auto-generated method stub
-		return "RIEN";
-	}
 }

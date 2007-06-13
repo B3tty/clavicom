@@ -28,6 +28,7 @@ package clavicom.gui.keyboard.keyboard;
 import java.util.ArrayList;
 import java.util.List;
 
+import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -60,7 +61,7 @@ public class UIKeyList
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//		
-	public UIKeyList(CKeyList myCoreKeyList)
+	public UIKeyList(CKeyList myCoreKeyList, CLevelEngine levelEngine)
 	{
 		// Initialisation des attributs
 		coreKeyList = myCoreKeyList;
@@ -83,7 +84,7 @@ public class UIKeyList
 			if (currentCoreKey instanceof CKeyCharacter)
 			{
 				// Construction d'une UIKey du bon type
-				UIKeyCharacter uiKey = new UIKeyCharacter((CKeyCharacter)currentCoreKey);
+				UIKeyCharacter uiKey = new UIKeyCharacter((CKeyCharacter)currentCoreKey,levelEngine);
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
