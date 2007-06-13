@@ -13,7 +13,7 @@ public class alwaysVisible
 		JFrame frame = new JFrame();
 		frame.setAlwaysOnTop(true);
 		frame.setSize(200,200);
-		frame.show();
+		frame.setVisible( true );
 
 	}
 

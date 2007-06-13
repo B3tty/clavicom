@@ -1,7 +1,6 @@
 package touches;
 
 import java.awt.AWTException;
-import java.awt.AWTKeyStroke;
 import java.awt.GridLayout;
 import java.awt.KeyboardFocusManager;
 import java.awt.Robot;
@@ -9,14 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
-import javax.swing.text.Keymap;
 
 public class robotEtFocus 
 {
@@ -66,18 +61,21 @@ public class robotEtFocus
 //				System.out.println( KeyEvent.VK_CIRCUMFLEX ); 
 //				
 //
-				System.out.println(KeyEvent.VK_EXCLAMATION_MARK);
-				int e1 = KeyEvent.VK_CIRCUMFLEX;
-				int e2 = KeyEvent.VK_A;
-				//int e3 = KeyEvenP;
+				//System.out.println(KeyEvent.VK_EXCLAMATION_MARK);
+				int e1 = 130;
+				int e2 = KeyEvent.VK_ALT;
+				int e3 = KeyEvent.VK_CONTROL;
 				
 				//KeyStroke s1 = KeyStroke.getKeyStroke(KeyEvent.VK_4, KeyEvent.ALT_GRAPH_DOWN_MASK, false);
 				robot.keyPress( e2 );
-//				robot.keyPress( e3 );
-//				robot.keyPress( e1 );
-//				robot.keyRelease( e1 );
-//				robot.keyRelease( e2 );
-//				robot.keyRelease( e3 );
+				robot.keyPress( e3 );
+				robot.keyPress( e1 );
+				robot.keyRelease( e1 );
+				robot.keyRelease( e2 );
+				robot.keyRelease( e3 );
+				
+				
+				
 				
 				// =========================
 				
@@ -133,9 +131,9 @@ public class robotEtFocus
 //		panel.add( button2 );
 		
 		frame.add(panel);
-		frame.show();
+		frame.setVisible( true );
 		
-		KeyboardFocusManager kfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+		KeyboardFocusManager.getCurrentKeyboardFocusManager();
 
 	}
 

@@ -63,7 +63,7 @@ public class Raccourci
 		panel.add( button );
 		
 		frame.add(panel);
-		frame.show();
+		frame.setVisible( true );
 
 	}
 
