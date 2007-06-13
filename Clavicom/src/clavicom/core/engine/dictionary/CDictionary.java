@@ -206,7 +206,6 @@ public class CDictionary
 		
 		
 		
-		
 		// ====================================================================================
 		// récupération des mots de l'utilisateur
 		// ====================================================================================
@@ -227,7 +226,6 @@ public class CDictionary
 			currentLevel = currentLevelTemp;
 			
 		}
-		
 		List<String> shortListUser = new ArrayList<String>();
 		
 		// si la requete donne bien quelque chose
@@ -246,7 +244,6 @@ public class CDictionary
 				shortListUser.add( dictionaryWord.getWord() );
 			}
 		}
-		
 		
 		
 		
@@ -277,7 +274,6 @@ public class CDictionary
 			index = nbOfWord;
 		}
 		finalList = finalList.subList(0, index);
-		
 		
 		return finalList;
 	}

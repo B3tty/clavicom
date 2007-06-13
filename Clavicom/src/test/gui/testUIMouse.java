@@ -28,13 +28,14 @@ package test.gui;
 import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.configuration.GlobalProfilModification;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.mouse.UIMouse;
 
-public class testTabPanels
+public class testUIMouse
 {
 	public static void main(String[] args)
 	{
@@ -66,13 +67,15 @@ public class testTabPanels
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			
+			CMouse mouse = CMouse.CreateMouse(
+					profil.getDefaultColor().getDefaultKeyNormal().getColor(), 
+					profil.getDefaultColor().getDefaultKeyClicked().getColor(), 
+					profil.getDefaultColor().getDefaultKeyEntered().getColor());
+			UIMouse uimouse = new UIMouse( mouse );
 
-			GlobalProfilModification panelGlobal = new GlobalProfilModification( profil );
-			
 			JFrame frame = new JFrame();
 			frame.setSize(500,800);
-			frame.add( panelGlobal );
+			frame.add( uimouse );
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);

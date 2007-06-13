@@ -26,11 +26,8 @@
 package test.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLevelEngine;
@@ -41,7 +38,6 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 
@@ -107,12 +103,12 @@ public class testUIKeyboard
 			JPanel panel = new JPanel();
 			panel.setLayout(new BorderLayout());
 			
-			UIKeyboard uiKeyboard = new UIKeyboard(keyboard);
-			uiKeyboard.setPreferredSize(new Dimension(100,100));
-			
-			uiKeyboard.edit();
-			
-			panel.add(uiKeyboard, BorderLayout.CENTER);
+//			UIKeyboard uiKeyboard = new UIKeyboard(keyboard, );
+//			uiKeyboard.setPreferredSize(new Dimension(100,100));
+//			
+//			uiKeyboard.edit();
+//			
+//			panel.add(uiKeyboard, BorderLayout.CENTER);
 			
 			JFrame frame = new JFrame ();
 			frame.setSize(900,400);

@@ -1,249 +1,348 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelModificationKeyboardColor.java
-			Creation date		: 8 juin 07
-		
-			Project				: Clavicom
-			Package				: clavicom.gui.configuration
+ Filename			: PanelModificationKeyboardColor.java
+ Creation date		: 8 juin 07
+ 
+ Project				: Clavicom
+ Package				: clavicom.gui.configuration
 
-			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
-			Copyright (C)		: (2007) Centre ICOM'
+ Developed by		: Thomas DEVAUX & Guillaume REBESCHE
+ Copyright (C)		: (2007) Centre ICOM'
 
-							-------------------------
+ -------------------------
 
-	This program is free software. You can redistribute it and/or modify it 
- 	under the terms of the GNU Lesser General Public License as published by 
-	the Free Software Foundation. Either version 2.1 of the License, or (at your 
-    option) any later version.
+ This program is free software. You can redistribute it and/or modify it 
+ under the terms of the GNU Lesser General Public License as published by 
+ the Free Software Foundation. Either version 2.1 of the License, or (at your 
+ option) any later version.
 
-	This program is distributed in the hope that it will be useful, but WITHOUT 
-	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
-    more details.
+ This program is distributed in the hope that it will be useful, but WITHOUT 
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
+ more details.
 
-+-----------------------------------------------------------------------------*/
+ +-----------------------------------------------------------------------------*/
 
 package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Spring;
+import javax.swing.SpringLayout;
+
 import clavicom.core.profil.CKeyboardColor;
 import clavicom.gui.language.UIString;
 
-public class PanelModificationProfilKeyboardColor extends PanelModificationProfil
+public class PanelModificationProfilKeyboardColor extends
+		PanelModificationProfil
 {
 
-	
-	//--------------------------------------------------------- CONSTANTES --//
+	// --------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
+	// ---------------------------------------------------------- VARIABLES --//
 	CKeyboardColor keyboardColor;
+
 	JButton buttonBackColor;
+
 	JButton buttonNormal;
+
 	JButton buttonEnteredColor;
+
 	JButton buttonClickedColor;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-	
+	// ------------------------------------------------------ CONSTRUCTEURS --//
+
 	public PanelModificationProfilKeyboardColor(CKeyboardColor myKeyboardColor)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR") );
-		
+		super(UIString.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR"));
+
 		keyboardColor = myKeyboardColor;
-		
+
 		LoadComponents();
 	}
-	
+
 	private void LoadComponents()
 	{
-		setLayout( new BorderLayout() );
-		JPanel panel = new JPanel( new GridLayout(2,2) );
+		setLayout(new BorderLayout());
+		
+		SpringLayout springLayout = new SpringLayout();
+		JPanel panel = new JPanel( springLayout );
 		
 		
+
 		buttonBackColor = new JButton();
-		buttonBackColor.addActionListener( new ActionListener()
+		buttonBackColor.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getBackColor().getColor() );
-				
-				if( newColor != null )
+				Color newColor = JColorChooser.showDialog(null, UIString
+						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
+						.getBackColor().getColor());
+
+				if (newColor != null)
 				{
-					if( newColor != keyboardColor.getBackColor().getColor() )
+					if (newColor != keyboardColor.getBackColor().getColor())
 					{
 						// la couleur à changé
-						keyboardColor.getBackColor().setColor( newColor );
+						keyboardColor.getBackColor().setColor(newColor);
 
-						buttonBackColor.setBackground( newColor );
+						buttonBackColor.setBackground(newColor);
 					}
 				}
 			}
 		});
-		panel.add
-		( 
-			DisplayColor
-			(
+
+		DisplayColor(
 				buttonBackColor,
 				keyboardColor.getBackColor().getColor(),
-				UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR" )
-			)
-		);
-		
-		
+				UIString
+						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR"),
+				panel);
+
 		buttonNormal = new JButton();
-		buttonNormal.addActionListener( new ActionListener()
+		buttonNormal.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyNormal().getColor() );
-				
-				if( newColor != null )
+				Color newColor = JColorChooser.showDialog(null, UIString
+						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
+						.getDefaultKeyNormal().getColor());
+
+				if (newColor != null)
 				{
-					if( newColor != keyboardColor.getDefaultKeyNormal().getColor() )
+					if (newColor != keyboardColor.getDefaultKeyNormal()
+							.getColor())
 					{
 						// la couleur à changé
-						keyboardColor.getDefaultKeyNormal().setColor( newColor );
+						keyboardColor.getDefaultKeyNormal().setColor(newColor);
 
-						buttonNormal.setBackground( newColor );
+						buttonNormal.setBackground(newColor);
 					}
 				}
 			}
 		});
-		panel.add
-		( 
-				DisplayColor
-				(
-					buttonNormal,
-					keyboardColor.getDefaultKeyNormal().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR" )
-				)
-		);
-		
+		DisplayColor(buttonNormal, keyboardColor.getDefaultKeyNormal()
+				.getColor(), UIString
+				.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR"),
+				panel);
+
 		buttonEnteredColor = new JButton();
-		buttonEnteredColor.addActionListener( new ActionListener()
+		buttonEnteredColor.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyEntered().getColor() );
-				
-				if( newColor != null )
+				Color newColor = JColorChooser.showDialog(null, UIString
+						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
+						.getDefaultKeyEntered().getColor());
+
+				if (newColor != null)
 				{
-					if( newColor != keyboardColor.getDefaultKeyEntered().getColor() )
+					if (newColor != keyboardColor.getDefaultKeyEntered()
+							.getColor())
 					{
 						// la couleur à changé
-						keyboardColor.getDefaultKeyEntered().setColor( newColor );
+						keyboardColor.getDefaultKeyEntered().setColor(newColor);
 
-						buttonEnteredColor.setBackground( newColor );
+						buttonEnteredColor.setBackground(newColor);
 					}
 				}
 			}
 		});
-		panel.add
-		(
-				DisplayColor
-				(
-					buttonEnteredColor,
-					keyboardColor.getDefaultKeyEntered().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR" )
-				)
-		);
-		
+		DisplayColor(
+				buttonEnteredColor,
+				keyboardColor.getDefaultKeyEntered().getColor(),
+				UIString
+						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR"),
+				panel);
+
 		buttonClickedColor = new JButton();
-		buttonClickedColor.addActionListener( new ActionListener()
+		buttonClickedColor.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), keyboardColor.getDefaultKeyClicked().getColor() );
-				
-				if( newColor != null )
+				Color newColor = JColorChooser.showDialog(null, UIString
+						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
+						.getDefaultKeyClicked().getColor());
+
+				if (newColor != null)
 				{
-					if( newColor != keyboardColor.getDefaultKeyClicked().getColor() )
+					if (newColor != keyboardColor.getDefaultKeyClicked()
+							.getColor())
 					{
 						// la couleur à changé
-						keyboardColor.getDefaultKeyClicked().setColor( newColor );
+						keyboardColor.getDefaultKeyClicked().setColor(newColor);
 
-						buttonClickedColor.setBackground( newColor );
+						buttonClickedColor.setBackground(newColor);
 					}
 				}
 			}
 		});
-		panel.add
-		(
-				DisplayColor
-				(
-					buttonClickedColor,
-					keyboardColor.getDefaultKeyClicked().getColor(),
-					UIString.getUIString( "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR" )
-				)
-		);
+		DisplayColor(
+				buttonClickedColor,
+				keyboardColor.getDefaultKeyClicked().getColor(),
+				UIString
+						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR"),
+				panel);
 		
 		
-		add( panel, BorderLayout.CENTER );
+		
+		makeCompactGrid(panel,
+                4, 2, //rows, cols
+                6, 6,        //initX, initY
+                6, 6);       //xPad, yPad
+		
+		
+
+		JPanel panelGlobal = new JPanel( );
+		panelGlobal.add( panel );
+		add(panelGlobal, BorderLayout.CENTER);
 	}
 
-	
+	// ----------------------------------------------------------- METHODES --//
 
-	//----------------------------------------------------------- METHODES --//	
-	
 	@Override
 	public int validateDataEntry()
 	{
 		// Si la keyboardColor a changé, on la met dans le profil
 		int retour = 0;
-		
-		if( buttonBackColor.getBackground() != keyboardColor.getBackColor().getColor() )
+
+		if (buttonBackColor.getBackground() != keyboardColor.getBackColor()
+				.getColor())
 		{
-			keyboardColor.getBackColor().setColor( buttonBackColor.getBackground() );
+			keyboardColor.getBackColor().setColor(
+					buttonBackColor.getBackground());
 			retour = 1;
 		}
-		if( buttonClickedColor.getBackground() != keyboardColor.getDefaultKeyClicked().getColor() )
+		if (buttonClickedColor.getBackground() != keyboardColor
+				.getDefaultKeyClicked().getColor())
 		{
-			keyboardColor.getDefaultKeyClicked().setColor( buttonClickedColor.getBackground() );
+			keyboardColor.getDefaultKeyClicked().setColor(
+					buttonClickedColor.getBackground());
 			retour = 1;
 		}
-		if( buttonEnteredColor.getBackground() != keyboardColor.getDefaultKeyEntered().getColor() )
+		if (buttonEnteredColor.getBackground() != keyboardColor
+				.getDefaultKeyEntered().getColor())
 		{
-			keyboardColor.getDefaultKeyEntered().setColor( buttonEnteredColor.getBackground() );
+			keyboardColor.getDefaultKeyEntered().setColor(
+					buttonEnteredColor.getBackground());
 			retour = 1;
 		}
-		if( buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal().getColor() )
+		if (buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal()
+				.getColor())
 		{
-			keyboardColor.getDefaultKeyNormal().setColor( buttonNormal.getBackground() );
+			keyboardColor.getDefaultKeyNormal().setColor(
+					buttonNormal.getBackground());
 			retour = 1;
 		}
-		
+
 		return retour;
 	}
 
-	//--------------------------------------------------- METHODES PRIVEES --//
-	
-	protected JPanel DisplayColor( 
-			JButton buttonColor,
-			Color defautColor,
-			String typeColor)
-	{
-		JPanel panel = new JPanel( new BorderLayout() );
-		
-		JPanel panel1 = new JPanel();
-		panel1.add( new JLabel(typeColor) );
-		panel.add( panel1, BorderLayout.NORTH );
-		
-		buttonColor.setBackground( defautColor );
-		buttonColor.setPreferredSize( new Dimension( 30, 20 ) );
-		JPanel panel2 = new JPanel();
-		panel2.add( buttonColor );
-		
-		panel.add( panel2, BorderLayout.CENTER );
-		
+	// --------------------------------------------------- METHODES PRIVEES --//
 
-		return panel;
+	protected void DisplayColor(JButton buttonColor, Color defautColor,
+			String typeColor, 
+			JPanel panel3)
+	{
+		JPanel panel1 = new JPanel();
+		panel1.add(new JLabel(typeColor));
+		panel3.add(panel1);
+
+		buttonColor.setBackground(defautColor);
+		buttonColor.setPreferredSize(new Dimension(30, 20));
+		JPanel panel2 = new JPanel();
+		panel2.add(buttonColor);
+
+		panel3.add(panel2);
 	}
+	
+	
+	
+	/**
+     * Aligns the first <code>rows</code> * <code>cols</code>
+     * components of <code>parent</code> in
+     * a grid. Each component in a column is as wide as the maximum
+     * preferred width of the components in that column;
+     * height is similarly determined for each row.
+     * The parent is made just big enough to fit them all.
+     *
+     * @param rows number of rows
+     * @param cols number of columns
+     * @param initialX x location to start the grid at
+     * @param initialY y location to start the grid at
+     * @param xPad x padding between cells
+     * @param yPad y padding between cells
+     */
+    protected static void makeCompactGrid(Container parent,
+                                       int rows, int cols,
+                                       int initialX, int initialY,
+                                       int xPad, int yPad) {
+        SpringLayout layout;
+        try {
+            layout = (SpringLayout)parent.getLayout();
+        } catch (ClassCastException exc) {
+            System.err.println("The first argument to makeCompactGrid must use SpringLayout.");
+            return;
+        }
+
+        //Align all cells in each column and make them the same width.
+        Spring x = Spring.constant(initialX);
+        for (int c = 0; c < cols; c++) {
+            Spring width = Spring.constant(0);
+            for (int r = 0; r < rows; r++) {
+                width = Spring.max(width,
+                                   getConstraintsForCell(r, c, parent, cols).
+                                       getWidth());
+            }
+            for (int r = 0; r < rows; r++) {
+                SpringLayout.Constraints constraints =
+                        getConstraintsForCell(r, c, parent, cols);
+                constraints.setX(x);
+                constraints.setWidth(width);
+            }
+            x = Spring.sum(x, Spring.sum(width, Spring.constant(xPad)));
+        }
+
+        //Align all cells in each row and make them the same height.
+        Spring y = Spring.constant(initialY);
+        for (int r = 0; r < rows; r++) {
+            Spring height = Spring.constant(0);
+            for (int c = 0; c < cols; c++) {
+                height = Spring.max(height,
+                                    getConstraintsForCell(r, c, parent, cols).
+                                        getHeight());
+            }
+            for (int c = 0; c < cols; c++) {
+                SpringLayout.Constraints constraints =
+                        getConstraintsForCell(r, c, parent, cols);
+                constraints.setY(y);
+                constraints.setHeight(height);
+            }
+            y = Spring.sum(y, Spring.sum(height, Spring.constant(yPad)));
+        }
+
+        //Set the parent's size.
+        SpringLayout.Constraints pCons = layout.getConstraints(parent);
+        pCons.setConstraint(SpringLayout.SOUTH, y);
+        pCons.setConstraint(SpringLayout.EAST, x);
+    }
+    
+    /* Used by makeCompactGrid. */
+    protected static SpringLayout.Constraints getConstraintsForCell(
+                                                int row, int col,
+                                                Container parent,
+                                                int cols) {
+        SpringLayout layout = (SpringLayout) parent.getLayout();
+        Component c = parent.getComponent(row * cols + col);
+        return layout.getConstraints(c);
+    }
 }
