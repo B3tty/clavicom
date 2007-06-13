@@ -140,7 +140,7 @@ public class CProfil
 		Element shortCut_elem = racine.getChild( TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
 		if( shortCut_elem == null )
 		{
-			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML" + TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
+			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML " + TXMLNames.PR_ELEMENT_SHORTCUTSET_NAME );
 		}
 		try
 		{
@@ -241,6 +241,11 @@ public class CProfil
 		// Attachement du nom du fichier de commande set à utiliser
 		// ===============================================================
 		racine.addContent( commandSetName.buildNode() );
+		
+		// ===============================================================
+		// Attachement du nom du fichier de shortcut set à utiliser
+		// ===============================================================
+		racine.addContent( shortcutSetName.buildNode() );
 
 		// ===============================================================
 		// Attachement du dictionnaire
