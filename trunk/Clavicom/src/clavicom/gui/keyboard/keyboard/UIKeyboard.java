@@ -51,7 +51,9 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.UIKey;
@@ -60,9 +62,10 @@ import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.tools.TImageUtils;
+import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener
+public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -82,7 +85,8 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
 	private List<UIKeyKeyboard> allKeys;			// Liste des keys
 	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
-	private List<UIKeyKeyboard> selectedKeys;			// Liste des key selectionnées
+	private List<UIKeyKeyboard> selectedKeys;		// Liste des key selectionnées
+	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
 	
 	private float opacity;
 	
@@ -95,11 +99,13 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	private boolean isEdited;					// Indique si le clavier est en edition
 	private CKeyboard coreKeyboard;				// Element du noyau
 	
+	private CLevelEngine levelEngine;			// Gestionnaire de niveau
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
 	 */
-	public UIKeyboard(CKeyboard myCoreKeyboard)
+	public UIKeyboard(CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
 	{
 		// Initialisation des attributs
 		coreKeyboard = myCoreKeyboard;
@@ -107,6 +113,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		allKeys = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
+		levelEngine = myLevelEngine;
 		
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
@@ -130,7 +137,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		for (int i = 0 ; i < groupCount ; ++i)
 		{
 			// Création du UIKeyGroup
-			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i));
+			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i),levelEngine);
 			
 			// Ajout au KeyGroups
 			keyGroups.add(currentKeyGroup);
@@ -157,6 +164,9 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		// Création du Timer resize
 		resizeTimer = createResizeTimer();
 		
+		// On s'ajoute en tant que listener de changement de niveau		
+		levelEngine.addChangeLevelListener(this);
+		
 		// Ajout des touches au panel
 		addUIKeys();
 		
@@ -165,7 +175,19 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		addComponentListener(this);
 	}
 
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
+	//-----------------------------------------------------------------------
+	// Changement de niveau
+	//-----------------------------------------------------------------------
+	public void changeLevel(TLevelEnum level)
+	{
+		for (UIKeyThreeLevel currentKey : threeLevelKeys)
+		{
+			currentKey.invalidate();
+			currentKey.repaint();
+		}
+	}
+	
 	//-----------------------------------------------------------------------
 	// Selection
 	//-----------------------------------------------------------------------	

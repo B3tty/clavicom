@@ -101,7 +101,8 @@ public class Application
 		// -> ICI, un profil est chargé (le dernier ou celui par défaut)
 		
 		// Chargement du dictionnaire
-		loadDictionnary();
+		// TODO -> Décommenter
+		// loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		loadLevelEngine();
@@ -123,14 +124,14 @@ public class Application
 		// TODO --> Création des fenetres,...		
 		JFrame frame = new JFrame ();
 		
-		UIKeyboard test = new UIKeyboard(CProfil.getInstance().getKeyboard());
-		test.edit();
+		UIKeyboard test = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		test.unEdit();
 		frame.add(test);
 		
 		frame.setSize(900,400);
 		
 		frame.setAlwaysOnTop(true);
-		//frame.setFocusableWindowState(false);
+		frame.setFocusableWindowState(false);
 		frame.setFocusable(false);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

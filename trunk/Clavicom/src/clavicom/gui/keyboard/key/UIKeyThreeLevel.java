@@ -25,25 +25,31 @@
 
 package clavicom.gui.keyboard.key;
 
+import clavicom.core.engine.CLevelEngine;
+import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
+
 public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyThreeLevel()
+	//---------------------------------------------------------- VARIABLES --//
+	private CLevelEngine levelEngine;
+	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public UIKeyThreeLevel(CLevelEngine myLevelEngine)
 	{
 		// Appel à la mère
 		super();
+		
+		levelEngine = myLevelEngine;
 	}
 	
-	//----------------------------------------------------------- METHODES --//	
+	//----------------------------------------------------------- METHODES --//
 	protected String getCaption()
 	{
-		// TODO
+		// Retoure la chaîne correspondant au niveau en cours
 		
-		return null;
+		return ((CKeyThreeLevel)getCoreKey()).getCaption(levelEngine.getCurrentLevel());
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
