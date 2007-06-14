@@ -3,6 +3,7 @@
 
 || *Fonction* || *Explications* || *Fait* ||
 || Images sur les boutons || Pouvoir mettre des images sur les boutons || ||
+|| Boutons son || Boutons permettant de lire les fichier wav || ||
 || Ctrl+Z de l'éditeur || Faire un Undo pour l'éditeur || ||
 || liste de keyEvent || Vérifier le gros switch pour savoir si toutes les commandes y sont présentes || ||
 || Editeur de commandSet || Réaliser un éditeur pour creer son propre commandeSet || ||
