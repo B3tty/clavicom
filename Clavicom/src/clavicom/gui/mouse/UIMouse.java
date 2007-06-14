@@ -26,19 +26,13 @@
 package clavicom.gui.mouse;
 
 import java.awt.BorderLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-import clavicom.core.engine.mouse.CMouseEngine;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
