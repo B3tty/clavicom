@@ -42,6 +42,8 @@ package test.gui;
 
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
@@ -58,12 +60,19 @@ public class testTransparency2 {
     public static void main(String[] args) 
     {
     	System.setProperty("sun.java2d.noddraw", "true");
+    	
+    
     	frame = new JFrame();
 		
         //frame.setUndecorated(true);
         frame.setFocusableWindowState(false);
+        //frame.setSize(500,500);
+
         frame.setSize(500,500);
 
+			
+        //frame.pack();
+        frame.setLocation(100, 100);
         WindowUtils.setWindowAlpha(frame, 1f);
         
         //frame.setExtendedState( Frame.MAXIMIZED_BOTH );

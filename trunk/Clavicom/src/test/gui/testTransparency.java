@@ -266,14 +266,14 @@ public class testTransparency {
         };
         frame.addMouseListener(handler);
         frame.addMouseMotionListener(handler);
-        ClockFace face = new ClockFace(new Dimension(150, 150));
+        ClockFace face = new ClockFace(new Dimension(600, 600));
         frame.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
         frame.getContentPane().add(face);
         frame.setUndecorated(true);
         frame.pack();
         frame.setLocation(100, 100);
         try {
-            Shape mask = new Area(new Ellipse2D.Float(0, 0, 150, 150));
+            Shape mask = new Area(new Ellipse2D.Float(0, 0, 600, 600));
             WindowUtils.setWindowMask(frame, mask);
             WindowUtils.setWindowAlpha(frame, .2f);
             frame.setIconImage(face.getIconImage());
