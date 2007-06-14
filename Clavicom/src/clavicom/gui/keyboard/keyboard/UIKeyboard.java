@@ -48,7 +48,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import clavicom.core.engine.CLevelEngine;
@@ -61,11 +61,12 @@ import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
+import clavicom.gui.windows.UIMovingPanel;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
+public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -105,8 +106,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
 	 */
-	public UIKeyboard(CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
+	public UIKeyboard(JFrame parentFrame, CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
 	{
+		super(parentFrame);
+		
 		// Initialisation des attributs
 		coreKeyboard = myCoreKeyboard;
 		keyGroups = new ArrayList<UIKeyGroup>();
@@ -704,4 +707,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		}
 
 	};
+	
+	protected void boundChanged()
+	{
+		invalidate();
+		repaint();
+	}
 }

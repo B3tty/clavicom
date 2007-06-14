@@ -41,6 +41,7 @@ import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.windows.UITranslucentFrame;
 
 public class Application
 {
@@ -102,7 +103,7 @@ public class Application
 		
 		// Chargement du dictionnaire
 		// TODO -> Décommenter
-		loadDictionnary();
+		//loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		loadLevelEngine();
@@ -122,9 +123,11 @@ public class Application
 		
 		// <TEMPORAIRE>
 		// TODO --> Création des fenetres,...		
-		JFrame frame = new JFrame ();
+		UITranslucentFrame frame = new UITranslucentFrame ();
 		
-		UIKeyboard test = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		UIKeyboard test = new UIKeyboard(frame,CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		test.setEditable(true);
+		
 		test.unEdit();
 		frame.add(test);
 		
