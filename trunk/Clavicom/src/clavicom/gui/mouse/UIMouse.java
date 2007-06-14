@@ -26,10 +26,18 @@
 package clavicom.gui.mouse;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
+import clavicom.tools.TUIKeyState;
 
 public class UIMouse extends JPanel
 {
@@ -58,10 +66,18 @@ public class UIMouse extends JPanel
 	
 	JPanel panelSwitchKeyboard;
 	JPanel panelUIKey;
+	
+	
+	// TMP
+	int SelectedKey = 0;
+	List<UIKeyMouse> selectionList;
+	Timer clickTimer;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIMouse( CMouse myMouse )
 	{
+		
+		
 		
 		mouse = myMouse;
 		
@@ -86,6 +102,16 @@ public class UIMouse extends JPanel
 		panelSwitchKeyboard = new JPanel( new BorderLayout() );
 		panelUIKey = new JPanel();
 		
+		// TMP
+		selectionList = new ArrayList<UIKeyMouse>();
+		selectionList.add( leftClick );
+		selectionList.add( rightClick );
+		selectionList.add( leftDubbleClick );
+		selectionList.add( leftPress );
+		selectionList.add( leftRelease );
+		clickTimer = createSelectTimer();
+		clickTimer.start();
+		
 		
 		
 		// =============================================================================
@@ -100,7 +126,8 @@ public class UIMouse extends JPanel
 		// =============================================================================
 		// Placement des UIKey
 		// =============================================================================
-		SwitchMoveMode();
+		//SwitchMoveMode();
+		SwitchClickMode();
 		add( panelUIKey, BorderLayout.CENTER );
 	}
 	
@@ -109,7 +136,14 @@ public class UIMouse extends JPanel
 	
 	protected void SwitchClickMode()
 	{
+		panelUIKey.removeAll();
 		panelUIKey.setLayout( new BoxLayout( panelUIKey, BoxLayout.PAGE_AXIS ) );
+		
+		panelUIKey.add( leftClick );
+		panelUIKey.add( rightClick );
+		panelUIKey.add( leftDubbleClick );
+		panelUIKey.add( leftPress );
+		panelUIKey.add( leftRelease );
 	}
 	
 	protected void SwitchMoveMode()
@@ -123,6 +157,46 @@ public class UIMouse extends JPanel
 		panelUIKey.add( moveDown );
 	}
 	
+	
+	// ================================================
+	// TMP
+	// ================================================
+	protected Timer createSelectTimer()
+	{
+		// Création d'une instance de listener
+		// associée au timer
+		ActionListener action = new ActionListener()
+		{
+			// Méthode appelée à chaque tic du timer
+			public void actionPerformed(ActionEvent event)
+			{
+				// déselection
+				UIKeyMouse mouseKey =  selectionList.get(SelectedKey);
+				mouseKey.forceState( TUIKeyState.NORMAL );
+				
+				if( SelectedKey == 4 )
+				{
+					SelectedKey = 0;
+				}
+				else
+				{
+					SelectedKey += 1;
+				}
+				
+				UIKeyMouse mouseKey2 =  selectionList.get(SelectedKey);
+				mouseKey2.forceState( TUIKeyState.ENTERED );
+				
+				mouseKey2.simulateClick();
+			}
+		};
+		
+		
+		// Création d'un timer qui génère un tic
+		return new Timer( 1000 ,action );
+	}
+	// ================================================
+	// FIN TMP
+	// ================================================
 	
 
 	public UIKeyClavicom getClickMouseMode()
