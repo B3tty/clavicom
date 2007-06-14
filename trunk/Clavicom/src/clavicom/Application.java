@@ -47,8 +47,9 @@ public class Application
 
 	//--------------------------------------------------------- CONSTANTES --//
 	private static final int SPLASH_WAIT = 100;	// Temps d'attente entre deux messages (en ms)
-	
-	//---------------------------------------------------------- VARIABLES --//	
+	private static final int SPLASH_WAIT_TOTAL_MIN = 5000;	// Temps d'attente minimum total
+	//---------------------------------------------------------- VARIABLES --//
+
 	//----------------------------------------------------------------
 	// Outils
 	//----------------------------------------------------------------
@@ -95,7 +96,7 @@ public class Application
 		loadMessageEngine();
 		
 		// Chargement du splashscreen
-		UISplashScreen splash = new UISplashScreen(CFilePaths.getSplashScreenFile(), SPLASH_WAIT);
+		UISplashScreen splash = new UISplashScreen(CFilePaths.getSplashScreenFile(), SPLASH_WAIT, SPLASH_WAIT_TOTAL_MIN);
 		
 		// Chargement du gestionnaires de paramètres
 		splash.newStep("Loading parameters...");
