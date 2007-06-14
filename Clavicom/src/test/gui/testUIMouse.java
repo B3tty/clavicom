@@ -26,6 +26,9 @@
 package test.gui;
 
 import javax.swing.JFrame;
+
+import clavicom.core.engine.CMouseClickEngine;
+import clavicom.core.engine.CMouseMoveEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -67,13 +70,21 @@ public class testUIMouse
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
+			
+			
 			CMouse mouse = CMouse.CreateMouse(
 					profil.getDefaultColor().getDefaultKeyNormal().getColor(), 
 					profil.getDefaultColor().getDefaultKeyClicked().getColor(), 
 					profil.getDefaultColor().getDefaultKeyEntered().getColor());
+			
+			new CMouseMoveEngine( mouse );
+			new CMouseClickEngine( mouse );
+			
 			UIMouse uimouse = new UIMouse( mouse );
 
 			JFrame frame = new JFrame();
+			frame.setFocusableWindowState(true);
+			frame.setAlwaysOnTop(true);
 			frame.setSize(500,800);
 			frame.add( uimouse );
 			

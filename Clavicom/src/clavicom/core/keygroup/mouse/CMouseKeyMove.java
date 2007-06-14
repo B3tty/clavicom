@@ -40,7 +40,7 @@ public class CMouseKeyMove extends CMouseKey
 	
 	protected EventListenerList listenerList;
 	
-	static int speedLevel; // vitesse du mouvement
+
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CMouseKeyMove( 
@@ -91,8 +91,6 @@ public class CMouseKeyMove extends CMouseKey
 	
 	public TMouseKeyMoveEnum GetDirection(){ return direction; }
 	
-	public static int GetSpeedLevel(){ return speedLevel; }
-	public static void SetSpeedLevel( int mySpeedLevel ){speedLevel = mySpeedLevel; }
 	//--------------------------------------------------- METHODES PRIVEES --//
 
 	@Override

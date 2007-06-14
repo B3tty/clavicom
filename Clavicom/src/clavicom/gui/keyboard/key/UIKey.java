@@ -698,6 +698,25 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 		}
 		
+		/**
+		 * Force l'état de la touche
+		 * @param myState
+		 */
+		public void forceState(TUIKeyState myState)
+		{
+			state = myState;
+			selectGoodImage();
+			repaint();
+		}
+		
+		/**
+		 * Simule l'appui sur la touche
+		 *
+		 */
+		public void simulateClick()
+		{
+			getCoreKey().Click();
+		}
 		
 		/**
 		 * Créé un Timer de redimension

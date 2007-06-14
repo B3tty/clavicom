@@ -116,7 +116,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 		catch ( AWTException e )
 		{
-			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ) );
+			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ), e.getMessage() );
 			return;
 		}
 		

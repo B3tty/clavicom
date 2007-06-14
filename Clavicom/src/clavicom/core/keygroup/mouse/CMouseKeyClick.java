@@ -26,7 +26,8 @@
 package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
-
+import javax.swing.event.EventListenerList;
+import clavicom.core.listener.onClicMouseClickListener;
 import clavicom.tools.TMouseKeyClickEnum;
 
 public class CMouseKeyClick extends CMouseKey
@@ -35,6 +36,8 @@ public class CMouseKeyClick extends CMouseKey
 
 	//---------------------------------------------------------- VARIABLES --//
 	TMouseKeyClickEnum click;
+	
+	protected EventListenerList listenerList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CMouseKeyClick( 
@@ -46,16 +49,47 @@ public class CMouseKeyClick extends CMouseKey
 	{
 		super( caption, myColorNormal, myColorClicked, myColorEntered );
 		click = myClick;
+		
+		listenerList = new EventListenerList();
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	
+	
+	// ========================================================|
+	// Listener ===============================================|
+	// ========================================================|
+	public void addOnClicMouseClickListener(onClicMouseClickListener l)
+	{
+		this.listenerList.add(onClicMouseClickListener.class, l);
+	}
+
+	public void removeOnClicMouseClickListener(onClicMouseClickListener l)
+	{
+		this.listenerList.remove(onClicMouseClickListener.class, l);
+	}
+
+	protected void fireOnClicMouseClick( )
+	{
+		onClicMouseClickListener[] listeners = (onClicMouseClickListener[]) listenerList
+				.getListeners(onClicMouseClickListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClicMouseClick( this );
+		}
+	}
+	// ========================================================|
+	// fin Listeners ==========================================|
+	// ========================================================|
+	
+	
 	
 	public TMouseKeyClickEnum GetClick(){return click;}
 
 	@Override
 	public void Click()
 	{
-		// fire...
+		fireOnClicMouseClick();
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
