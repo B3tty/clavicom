@@ -39,12 +39,6 @@ package test.gui;
  * Lesser General Public License for more details.  
  */
 
-
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.JFrame;
 
 import com.sun.jna.examples.WindowUtils;
