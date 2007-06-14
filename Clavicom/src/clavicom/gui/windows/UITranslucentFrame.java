@@ -50,6 +50,8 @@ public class UITranslucentFrame extends JFrame
 //        
         WindowUtils.setWindowMask(this, mask);
     	WindowUtils.setWindowAlpha(this, .5f);
+    	
+    	setUndecorated(true);
 
         //setUndecorated(true);
         pack();

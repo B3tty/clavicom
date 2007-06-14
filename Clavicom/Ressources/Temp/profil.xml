@@ -27,8 +27,9 @@
 	</keyboard_color>
 	<navigation>
 		<type value="CLICK_TEMPORISE"/>
-		<mouse_speed value="100"/>
+		<mouse_speed value="20"/>
 		<temporisation value="20"/>
+		<mouse_temporisation value="1000"/>
 		<rollover active="true"/>
 	</navigation>
 	<sound>

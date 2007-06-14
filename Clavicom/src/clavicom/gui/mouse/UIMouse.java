@@ -26,8 +26,11 @@
 package clavicom.gui.mouse;
 
 import java.awt.BorderLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +38,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import clavicom.core.engine.mouse.CMouseEngine;
 import clavicom.core.keygroup.mouse.CMouse;
+import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.tools.TUIKeyState;
+import clavicom.tools.TUIMouseDefilementEnum;
 
 public class UIMouse extends JPanel
 {
@@ -66,12 +72,11 @@ public class UIMouse extends JPanel
 	
 	JPanel panelSwitchKeyboard;
 	JPanel panelUIKey;
+
+	int indexSelectedKey;
+	List<UIKey> selectedList;
+	Timer selectionTimer;
 	
-	
-	// TMP
-	int SelectedKey = 0;
-	List<UIKeyMouse> selectionList;
-	Timer clickTimer;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIMouse( CMouse myMouse )
@@ -101,18 +106,7 @@ public class UIMouse extends JPanel
 		
 		panelSwitchKeyboard = new JPanel( new BorderLayout() );
 		panelUIKey = new JPanel();
-		
-		// TMP
-		selectionList = new ArrayList<UIKeyMouse>();
-		selectionList.add( leftClick );
-		selectionList.add( rightClick );
-		selectionList.add( leftDubbleClick );
-		selectionList.add( leftPress );
-		selectionList.add( leftRelease );
-		clickTimer = createSelectTimer();
-		clickTimer.start();
-		
-		
+
 		
 		// =============================================================================
 		// Placement du panelSwitchKeyboard
@@ -126,15 +120,19 @@ public class UIMouse extends JPanel
 		// =============================================================================
 		// Placement des UIKey
 		// =============================================================================
-		//SwitchMoveMode();
-		SwitchClickMode();
+		SwitchMoveMode();
+		//SwitchClickMode();
 		add( panelUIKey, BorderLayout.CENTER );
+		
+		
+		
+
 	}
 	
 	
 	// ----------------------------------------------------------- METHODES --//
 	
-	protected void SwitchClickMode()
+	protected void SwitchClickMode(  )
 	{
 		panelUIKey.removeAll();
 		panelUIKey.setLayout( new BoxLayout( panelUIKey, BoxLayout.PAGE_AXIS ) );
@@ -144,6 +142,9 @@ public class UIMouse extends JPanel
 		panelUIKey.add( leftDubbleClick );
 		panelUIKey.add( leftPress );
 		panelUIKey.add( leftRelease );
+		
+		selectionTimer = createSelectTimer( TUIMouseDefilementEnum.DEFILEMENT_CLICK );
+		selectionTimer.start();
 	}
 	
 	protected void SwitchMoveMode()
@@ -155,14 +156,34 @@ public class UIMouse extends JPanel
 		panelUIKey.add( moveRight );
 		panelUIKey.add( moveUp );
 		panelUIKey.add( moveDown );
+		
+		selectionTimer = createSelectTimer( TUIMouseDefilementEnum.DEFILEMENT_MOVE );
+		selectionTimer.start();
 	}
 	
 	
-	// ================================================
-	// TMP
-	// ================================================
-	protected Timer createSelectTimer()
+	
+	protected Timer createSelectTimer( TUIMouseDefilementEnum type )
 	{
+		// création de la liste des touches
+		selectedList = new ArrayList<UIKey>();
+		if( type == TUIMouseDefilementEnum.DEFILEMENT_CLICK )
+		{
+			selectedList.add( leftClick );
+			selectedList.add( rightClick );
+			selectedList.add( leftDubbleClick );
+			selectedList.add( leftPress );
+			selectedList.add( leftRelease );
+		} else if( type == TUIMouseDefilementEnum.DEFILEMENT_MOVE )
+		{
+			selectedList.add( moveLeft );
+			selectedList.add( moveRight );
+			selectedList.add( moveUp );
+			selectedList.add( moveDown );
+		}
+		
+		indexSelectedKey = 0;
+		
 		// Création d'une instance de listener
 		// associée au timer
 		ActionListener action = new ActionListener()
@@ -170,23 +191,30 @@ public class UIMouse extends JPanel
 			// Méthode appelée à chaque tic du timer
 			public void actionPerformed(ActionEvent event)
 			{
-				// déselection
-				UIKeyMouse mouseKey =  selectionList.get(SelectedKey);
-				mouseKey.forceState( TUIKeyState.NORMAL );
-				
-				if( SelectedKey == 4 )
+				// déselection de l'ancienne key
+				UIKey mouseKey =  selectedList.get( indexSelectedKey );
+				if( mouseKey != null )
 				{
-					SelectedKey = 0;
+					mouseKey.forceState( TUIKeyState.NORMAL );
+				}
+				
+				if( indexSelectedKey >= (selectedList.size() - 1)  )
+				{
+					indexSelectedKey = 0;
 				}
 				else
 				{
-					SelectedKey += 1;
+					indexSelectedKey += 1;
 				}
 				
-				UIKeyMouse mouseKey2 =  selectionList.get(SelectedKey);
-				mouseKey2.forceState( TUIKeyState.ENTERED );
+				// séléction de la nouvelle touche
+				UIKey mouseKey2 = selectedList.get( indexSelectedKey );
+				if( mouseKey2 != null )
+				{
+					mouseKey2.forceState( TUIKeyState.ENTERED );
+				}
 				
-				mouseKey2.simulateClick();
+				
 			}
 		};
 		
@@ -329,6 +357,9 @@ public class UIMouse extends JPanel
 		this.switchMouseKeyboard = switchMouseKeyboard;
 	}
 
+
+	
+	
 	
 	
 

@@ -23,35 +23,59 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.engine;
+package clavicom.core.engine.mouse;
 
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import javax.swing.Timer;
+import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyClick;
+import clavicom.core.keygroup.mouse.CMouseKeyMove;
 import clavicom.core.listener.onClicMouseClickListener;
+import clavicom.core.listener.onClicMouseMoveListener;
 import clavicom.core.message.CMessageEngine;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TMouseKeyClickEnum;
+import clavicom.tools.TMouseKeyMoveEnum;
 
-public class CMouseClickEngine implements onClicMouseClickListener
+public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
 	Robot robot = null;
 	
+	Timer moveTimer;
+	TMouseKeyMoveEnum currentMove;
+	
+	protected EventListenerList listenerList;
+	
+	VirtualPointer virtualPointer;
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseClickEngine( CMouse mouse )
+	public CMouseEngine( CMouse mouse )
 	{
 		
 		
 
 		// =============================================================
-		// Abonnement aux listener
+		// Abonnement aux listener de move
+		// =============================================================
+		mouse.getMoveDown().addOnClicMouseMoveListener( this );
+		mouse.getMoveLeft().addOnClicMouseMoveListener( this );
+		mouse.getMoveRight().addOnClicMouseMoveListener( this );
+		mouse.getMoveUp().addOnClicMouseMoveListener( this );
+		
+		
+		// =============================================================
+		// Abonnement aux listener de click
 		// =============================================================
 		mouse.getLeftClick().addOnClicMouseClickListener( this );
 		mouse.getLeftDubbleClick().addOnClicMouseClickListener( this );
@@ -68,13 +92,43 @@ public class CMouseClickEngine implements onClicMouseClickListener
 		{
 			CMessageEngine.newError( UIString.getUIString("MSG_COMMAND_ENGINE_NO_ROBOT"), e.getMessage());
 		}
+		
+		
+		try
+		{
+			robot = new Robot();
+		}
+		catch (AWTException e)
+		{
+			CMessageEngine.newError( UIString.getUIString("MSG_COMMAND_ENGINE_NO_ROBOT"), e.getMessage());
+		}
+		
+		listenerList = new EventListenerList();
+		
+		virtualPointer = new VirtualPointer( );
+		virtualPointer.setVisible( true );
+		
+		// création du timer
+		moveTimer = createMoveTimer();
+		
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
 	
 	
+	
 
+	public void onClicMouseMove( CMouseKeyMove keyMove )
+	{
+
+		// on regarde quel movement il veut faire
+		currentMove = keyMove.GetDirection();
+		
+		moveTimer.start();
+		
+	}
+	
 	public void onClicMouseClick(CMouseKeyClick keyClic)
 	{
 
@@ -91,8 +145,8 @@ public class CMouseClickEngine implements onClicMouseClickListener
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
-			robot.mousePress( InputEvent.BUTTON2_MASK );
-			robot.mouseRelease( InputEvent.BUTTON2_MASK );
+			robot.mousePress( InputEvent.BUTTON3_MASK );
+			robot.mouseRelease( InputEvent.BUTTON3_MASK );
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{
 			robot.mousePress( InputEvent.BUTTON1_MASK );
@@ -103,10 +157,58 @@ public class CMouseClickEngine implements onClicMouseClickListener
 
 	}
 
+	
+	protected Timer createMoveTimer()
+	{
+		// Création d'une instance de listener
+		// associée au timer
+		ActionListener action = new ActionListener()
+		{
+			// Méthode appelée à chaque tic du timer
+			public void actionPerformed(ActionEvent event)
+			{
+				if( robot != null )
+				{
+					int x = (int)virtualPointer.getLocation().getX();
+					int y = (int)virtualPointer.getLocation().getY();
+					
+					// on regarde quel mouvement on doit faire
+					if( currentMove == TMouseKeyMoveEnum.DOWN )
+					{
+						y += 1;
+					} else if( currentMove == TMouseKeyMoveEnum.LEFT )
+					{
+						x -= 1;
+					} else if( currentMove == TMouseKeyMoveEnum.RIGHT )
+					{
+						x += 1;
+					} else if( currentMove == TMouseKeyMoveEnum.UP )
+					{
+						y -= 1;
+					}
+					
+					virtualPointer.setLocation( x, y );
+					
+				}
+			}
+		};
+		
+		CProfil profil = CProfil.getInstance();
+		int vitesse = profil.getNavigation().getMouseSpeed();
+		
+		// on inverse la valeur
+		int duration = 101 - vitesse;
+		
+		// on la multiplie par deux pour que ca coresponde mieux aux
+		// attentes de l'utilisateur
+		duration = (duration / 10) * 2;
+
+		// Création d'un timer qui génère un tic
+		return new Timer( duration ,action );
+	}
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
-	
-	
 	
 	
 

@@ -39,6 +39,7 @@
     <type value="CLICK_TEMPORISE" />
     <rollover active="true" />
     <mouse_speed value="60" />
+	<mouse_temporisation value="1000"/>
     <temporisation value="20" />
   </navigation>
   <font>
