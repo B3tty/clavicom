@@ -40,6 +40,7 @@ package test.gui;
  */
 
 
+import java.awt.Dimension;
 import java.awt.Frame;
 
 import javax.swing.JFrame;
@@ -59,23 +60,16 @@ public class testTransparency2 {
     	System.setProperty("sun.java2d.noddraw", "true");
     	frame = new JFrame();
 		
-        frame.setUndecorated(true);
+        //frame.setUndecorated(true);
         frame.setFocusableWindowState(false);
+        frame.setSize(500,500);
 
-        frame.setLocation(100, 100);
+        WindowUtils.setWindowAlpha(frame, 1f);
         
-        try 
-        {
-            WindowUtils.setWindowAlpha(frame, .01f);
-            
-            frame.setExtendedState( Frame.MAXIMIZED_BOTH );
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }
-        catch(UnsatisfiedLinkError e) 
-        {
-            System.exit(1);
-        }
+        //frame.setExtendedState( Frame.MAXIMIZED_BOTH );
+        frame.setVisible(true);
+        frame.requestFocus();
+
     }
 }
 

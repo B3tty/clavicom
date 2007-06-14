@@ -275,7 +275,7 @@ public class testTransparency {
         try {
             Shape mask = new Area(new Ellipse2D.Float(0, 0, 150, 150));
             WindowUtils.setWindowMask(frame, mask);
-            WindowUtils.setWindowAlpha(frame, .7f);
+            WindowUtils.setWindowAlpha(frame, .2f);
             frame.setIconImage(face.getIconImage());
             frame.setResizable(false);
             frame.setVisible(true);
