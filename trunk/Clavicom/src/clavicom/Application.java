@@ -25,6 +25,7 @@
 
 package clavicom;
 
+import splashscreen.UISplashScreen;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -45,6 +46,7 @@ public class Application
 {
 
 	//--------------------------------------------------------- CONSTANTES --//
+	private static final int SPLASH_WAIT = 100;	// Temps d'attente entre deux messages (en ms)
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	//----------------------------------------------------------------
@@ -87,35 +89,47 @@ public class Application
 	 * Point d'entrée de l'application
 	 */
 	public static void main(String[] args)
-	{
+	{		
 		// Chargement du moteur de messages
+		// -> pas de splash screen car on en a besoin en cas d'erreur
 		loadMessageEngine();
 		
+		// Chargement du splashscreen
+		UISplashScreen splash = new UISplashScreen(CFilePaths.getSplashScreenFile(), SPLASH_WAIT);
+		
 		// Chargement du gestionnaires de paramètres
+		splash.newStep("Loading parameters...");
 		loadSettings();
 		
 		// Chargement du profil
+		splash.newStep("Loading profile...");
 		loadAnyProfile();
 		
 		// -> ICI, un profil est chargé (le dernier ou celui par défaut)
 		
 		// Chargement du dictionnaire
 		// TODO -> Décommenter
-		//loadDictionnary();
+		splash.newStep("Loading dictionnary...");
+		loadDictionnary();
 		
 		// Chargement du moteur de niveaux
+		splash.newStep("Loading level engine...");
 		loadLevelEngine();
 		
 		// Chargement du moteur de lancements d'applications
+		splash.newStep("Loading launcher engine...");
 		loadLauncherEngine();
 		
 		// Chargement du moteur de commandes
+		splash.newStep("Loading command engine...");
 		loadCommandEngine();
 		
 		// Chargment du moteur de derniers mots
+		splash.newStep("Loading last word engine...");
 		loadLastWordEngine();
 
 		// Chargement du moteur de prédiction
+		splash.newStep("Loading prediction engine...");
 		loadPredictionEngine();
 		
 		
@@ -137,12 +151,12 @@ public class Application
 		frame.setFocusableWindowState(false);
 		frame.setFocusable(false);
 		
-		
+		splash.newStep("Load complete !");
+		splash.close();
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 		// </TEMPORAIRE>
-
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
