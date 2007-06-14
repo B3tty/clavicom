@@ -39,9 +39,11 @@ public class CFilePaths
 	private static String keyboardModels = application + "KeybordModels\\";
 	private static String languagesUI = application + "LanguagesUI\\";
 	private static String shortcutSets = application + "ShortcutSets\\";
-	private static String configFile = application + "config.xml";
-	
+	private static String pictures = application + "Pictures\\";
 	private static String profils = ressources + "Profiles\\";
+	
+	private static String configFile = application + "config.xml";
+	private static String splashScreenFile = pictures + "splash.png";
 	
 	// ========================================================================
 	// Getters
@@ -87,6 +89,21 @@ public class CFilePaths
 	{
 		return shortcutSets;
 	}
+
+	public static String getPictures()
+	{
+		return pictures;
+	}
+
+	public static void setPicturesFolder(String pictures)
+	{
+		CFilePaths.pictures = pictures;
+	}
+
+	public static String getSplashScreenFile()
+	{
+		return splashScreenFile;
+	}	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
