@@ -61,17 +61,24 @@ public class UISplashScreen extends JWindow implements Runnable
 	private String currentAction;		// Texte indiquant l'action courante
 	private int waitTime;				// Temps d'attente entre chaque opération
 	
+	private long startTime, stopTime;	// Temps au début, et à la fermeture
+	private long minimumTime;			// Temps d'attente minimum total
+	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	/**
 	 *  Construit et affiche le splash screen
 	 *  
 	 */
-	public UISplashScreen(String imageFile, int waitTime) 
-	{
+	public UISplashScreen(String imageFile, int waitTime, int minimumTime) 
+	{		
 		// Initialisation des attributs
 		this.imageFile = imageFile;
 		this.waitTime = waitTime;
+		this.minimumTime = minimumTime;
+		
+		// Sauvegarde du temps
+		startTime = System.currentTimeMillis(); 
 		
 		// Affichage du splashscreen
 		run();
@@ -143,7 +150,20 @@ public class UISplashScreen extends JWindow implements Runnable
 	{
 		if (!isAlive)
 		{
-			dispose();
+			stopTime = System.currentTimeMillis();
+			long diff = stopTime - startTime;
+			if(diff < minimumTime)
+			{
+				try
+				{
+					Thread.sleep(diff);
+				}
+				catch (Exception e)
+				{
+					System.out.println("Sleep raté...");
+				}
+			}
+			dispose(); 
 		}
 		else
 		{
