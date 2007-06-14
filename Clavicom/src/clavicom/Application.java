@@ -25,8 +25,6 @@
 
 package clavicom;
 
-import javax.swing.JFrame;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -122,8 +120,10 @@ public class Application
 		
 		
 		// <TEMPORAIRE>
+		System.setProperty("sun.java2d.noddraw", "true");
+		
 		// TODO --> Création des fenetres,...		
-		UITranslucentFrame frame = new UITranslucentFrame ();
+		UITranslucentFrame frame = new UITranslucentFrame (.9f);
 		
 		UIKeyboard test = new UIKeyboard(frame,CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		test.setEditable(true);
@@ -137,7 +137,8 @@ public class Application
 		frame.setFocusableWindowState(false);
 		frame.setFocusable(false);
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 		// </TEMPORAIRE>

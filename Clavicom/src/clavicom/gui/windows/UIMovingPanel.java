@@ -63,11 +63,7 @@ public abstract class UIMovingPanel extends JPanel
 	public UIMovingPanel(JFrame myParentFrame)
 	{
 		parentFrame = myParentFrame;
-		
-		//setLayout(new BorderLayout());
 		resizableBorder = new UIInvisibleBorder(10);
-//		resizableBorder.setVisible(false);
-//		resizableBorder.setSelected(false);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
