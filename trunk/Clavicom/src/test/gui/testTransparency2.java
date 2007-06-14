@@ -39,6 +39,7 @@ package test.gui;
  * Lesser General Public License for more details.  
  */
 
+
 import javax.swing.JFrame;
 
 import com.sun.jna.examples.WindowUtils;
@@ -54,19 +55,12 @@ public class testTransparency2 {
     public static void main(String[] args) 
     {
     	System.setProperty("sun.java2d.noddraw", "true");
-    	
-    
     	frame = new JFrame();
 		
         //frame.setUndecorated(true);
         frame.setFocusableWindowState(false);
-        //frame.setSize(500,500);
-
         frame.setSize(500,500);
 
-			
-        //frame.pack();
-        frame.setLocation(100, 100);
         WindowUtils.setWindowAlpha(frame, 1f);
         
         //frame.setExtendedState( Frame.MAXIMIZED_BOTH );

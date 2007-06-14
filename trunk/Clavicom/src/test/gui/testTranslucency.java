@@ -25,9 +25,8 @@
 
 package test.gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.JPanel;
 
 import clavicom.core.engine.CCommandEngine;
@@ -40,7 +39,6 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 import clavicom.gui.windows.UITranslucentFrame;
@@ -94,6 +92,8 @@ public class testTranslucency
 			
 			
 			
+			
+			
 			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
 			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
@@ -107,39 +107,48 @@ public class testTranslucency
 //			JScrollPane sp = new JScrollPane( panelOptionCharacter );
 			
 			
-			
-			JPanel panel = new JPanel();
-			panel.setLayout(new BorderLayout());
-
+		
 			//panel.setBackground(Color.BLUE);
-			
-			UITranslucentFrame frame = new UITranslucentFrame ();
+
 			
 //			UIMovingPanel panel3 = new UIMovingPanel(frame);
 //			panel.add(panel3);
 //			panel3.setBackground(Color.BLUE);
 //			panel3.setEditable(true);
 			
-			UIKeyboard uiKeyboard = new UIKeyboard(frame, keyboard,levelEngine );
-			uiKeyboard.setPreferredSize(new Dimension(100,100));
-			
-			uiKeyboard.setEditable(true);
-			
-			uiKeyboard.edit();
-			
-			panel.add(uiKeyboard);
+//			UIKeyboard uiKeyboard = new UIKeyboard(frame, keyboard,levelEngine );
+//			uiKeyboard.setPreferredSize(new Dimension(100,100));
+//			
+//			uiKeyboard.setEditable(true);
+//			
+//			uiKeyboard.edit();
+
+//			panel.add(uiKeyboard);
 			
 			//panel.add(uiKeyboard, BorderLayout.CENTER);
 			// JFrame frame = new JFrame ();
-			frame.setSize(900,400);
-			frame.add( panel );
 			
-			frame.setAlwaysOnTop(true);
+			System.setProperty("sun.java2d.noddraw", "true");
+	        
+	        UITranslucentFrame frame = new UITranslucentFrame(.5f);
+	        
+	        //ClockFace face = new ClockFace(new Dimension(800, 800));
+	        JPanel test = new JPanel();
+	        test.setBackground(Color.BLUE);
+	        frame.setPreferredSize(new Dimension(400,400));
+	        frame.add(test);
+	        
+	        frame.pack();
+	        
+	        frame.setLocation(400,400);
+
+	        frame.setVisible(true);
+	        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        
 			//frame.setFocusableWindowState(false);
-			frame.setFocusable(false);
+			//frame.setFocusable(false);
 			
 			//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setVisible(true);
 			
 		}
 		catch(Exception e)

@@ -25,10 +25,6 @@
 
 package clavicom.gui.windows;
 
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.awt.geom.Rectangle2D;
-
 import javax.swing.JFrame;
 
 import com.sun.jna.examples.WindowUtils;
@@ -38,32 +34,39 @@ public class UITranslucentFrame extends JFrame
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	float transparency;			// Transparence de la fenêtre
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UITranslucentFrame()
+	public UITranslucentFrame(float myTransparency)
 	{
 		// Appel au père
 		super();
-		
-    	System.setProperty("sun.java2d.noddraw", "true");
-        Shape mask = new Area(new Rectangle2D.Float(0, 0, 100, 100));
-//        
-        WindowUtils.setWindowMask(this, mask);
-    	WindowUtils.setWindowAlpha(this, .5f);
-    	
-    	setUndecorated(true);
+	
+		// On enleve la barre de fenêtre
+        setUndecorated(true);
 
-        //setUndecorated(true);
+        // On pack
         pack();
         
+        // On applique la transparence
+        setTransparency(myTransparency);
 	}
+	
 	//----------------------------------------------------------- METHODES --//	
-	@Override
-	public void repaint()
+	public void setTransparency(float newTransparency)
 	{
-		// TODO Auto-generated method stub
-		super.repaint();
+		transparency = newTransparency;
+		
+		if(newTransparency > 0)
+		{
+			WindowUtils.setWindowAlpha(this, transparency);
+		}
 	}
-
+	
+	public float getTransparency()
+	{
+		return transparency;
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
