@@ -36,7 +36,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.gui.language.UIString;
 
 
-public class PanelOptionKeyString extends PanelOptionOneLevelKey
+public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -48,7 +48,7 @@ public class PanelOptionKeyString extends PanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyString( CKeyString myKeyString )
+	public UIPanelOptionKeyString( CKeyString myKeyString )
 	{
 		super( myKeyString );
 

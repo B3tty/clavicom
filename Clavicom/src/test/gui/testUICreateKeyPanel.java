@@ -26,7 +26,6 @@
 package test.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,7 +38,7 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.edition.keyboard.PanelKeyCreation;
+import clavicom.gui.edition.keyboard.UIPanelKeyCreation;
 import clavicom.gui.language.UIString;
 
 public class testUICreateKeyPanel
@@ -110,7 +109,7 @@ public class testUICreateKeyPanel
 			JPanel panel = new JPanel();
 			panel.setLayout(new BorderLayout());
 			
-			PanelKeyCreation panelKeyCreation = new PanelKeyCreation(
+			UIPanelKeyCreation panelKeyCreation = new UIPanelKeyCreation(
 					profil.getDefaultColor().getDefaultKeyNormal().getColor(),
 					profil.getDefaultColor().getDefaultKeyEntered().getColor(),
 					profil.getDefaultColor().getDefaultKeyClicked().getColor());

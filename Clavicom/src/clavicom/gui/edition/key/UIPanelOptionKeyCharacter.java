@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionThreeLevelKey.java
+			Filename			: PanelOptionKeyCharacter.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -25,25 +25,49 @@
 
 package clavicom.gui.edition.key;
 
-import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.tools.TLevelEnum;
 
-public class PanelOptionThreeLevelKey extends PanelOptionKeyboardKey
+public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyThreeLevel keyThreeLevel;
+	CKeyCharacter keyCharacter;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionThreeLevelKey( CKeyThreeLevel myKeyThreeLevel )
+	public UIPanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
 	{
-		super( myKeyThreeLevel );
+
+		super( myKeyCharacter );
 		
-		keyThreeLevel = myKeyThreeLevel;
+		keyCharacter = myKeyCharacter;
+
+		JPanel characters = new JPanel();
+		
+		JPanel panellevelNormal = new JPanel();
+		panellevelNormal.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
+		characters.add( panellevelNormal );
+		
+		JPanel panellevelShift = new JPanel();
+		panellevelShift.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
+		characters.add( panellevelShift  );
+		
+		JPanel panellevelAltGr = new JPanel();
+		panellevelAltGr.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
+		characters.add( panellevelAltGr  );
+		
+		add( characters, BorderLayout.CENTER );
+		
 	}
 	//----------------------------------------------------------- METHODES --//	
+
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

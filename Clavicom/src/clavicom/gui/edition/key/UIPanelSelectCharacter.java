@@ -49,7 +49,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 
-public class PanelSelectCharacter extends JPanel implements ActionListener
+public class UIPanelSelectCharacter extends JPanel implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -61,7 +61,7 @@ public class PanelSelectCharacter extends JPanel implements ActionListener
 	JList list;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelSelectCharacter( 
+	public UIPanelSelectCharacter( 
 			CKeyCharacter myKeyCharacter, 
 			CCommandSet commandSet,
 			TLevelEnum myLevel,

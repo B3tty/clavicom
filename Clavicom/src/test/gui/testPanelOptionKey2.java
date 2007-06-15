@@ -36,7 +36,7 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.edition.key.PanelOptionKey;
+import clavicom.gui.edition.key.UIPanelOptionKey;
 import clavicom.gui.language.UIString;
 
 public class testPanelOptionKey2
@@ -68,7 +68,7 @@ public class testPanelOptionKey2
 		CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
 		
 		
-		PanelOptionKey panelOptionColor = new PanelOptionKey( keyCharacter );
+		UIPanelOptionKey panelOptionColor = new UIPanelOptionKey( keyCharacter );
 		
 		JFrame frame = new JFrame();
 		frame.setSize(500,500);

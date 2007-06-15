@@ -225,6 +225,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
+			
+			//setLayout(new FlowLayout());
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
@@ -305,6 +307,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			recreateNormalImages();
 			selectGoodImage();
 		}
+		
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */
@@ -339,7 +342,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Appelé lors du redimensionnement du composant
 		 */
 		public void componentResized(ComponentEvent e)
-		{			
+		{	
 			// On ettend l'image
 			if (currentImage != null)
 			{

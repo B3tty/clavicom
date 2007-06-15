@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.edition.key.PanelOptionKeyCharacter;
+import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
 import clavicom.gui.language.UIString;
 
 public class testPanelOptionKeyCharacter
@@ -73,7 +73,7 @@ public class testPanelOptionKeyCharacter
 			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
 			
 			
-			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
+			UIPanelOptionKeyCharacter panelOptionCharacter = new UIPanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
 			JScrollPane sp = new JScrollPane( panelOptionCharacter );
 			
 			JFrame frame = new JFrame();

@@ -40,7 +40,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.gui.language.UIString;
 
 
-public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey
+public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -52,7 +52,7 @@ public class PanelOptionKeyLauncher extends PanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyLauncher( CKeyLauncher myKeyLauncher )
+	public UIPanelOptionKeyLauncher( CKeyLauncher myKeyLauncher )
 	{
 		super( myKeyLauncher );
 		

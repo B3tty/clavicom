@@ -40,7 +40,7 @@ import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
-import clavicom.gui.windows.UITranslucentFrame;
+import clavicom.gui.windows.UIKeyboardFrame;
 
 public class Application
 {
@@ -112,7 +112,6 @@ public class Application
 		// -> ICI, un profil est chargé (le dernier ou celui par défaut)
 		
 		// Chargement du dictionnaire
-		// TODO -> Décommenter
 		splash.newStep("Loading dictionnary...");
 		loadDictionnary();
 		
@@ -136,28 +135,31 @@ public class Application
 		splash.newStep("Loading prediction engine...");
 		loadPredictionEngine();
 		
-		// <TEMPORAIRE>
+		// Création des fenêtres
 		splash.newStep("Creating windows...");
 		
-		// TODO --> Création des fenetres,...		
-		UITranslucentFrame frame = new UITranslucentFrame (.9f);
+		// TODO --> Création des fenetres,...
+		UIKeyboard uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
 		
-		UIKeyboard test = new UIKeyboard(frame,CProfil.getInstance().getKeyboard(), toolLevelEngine);
-		test.setEditable(true);
-		
-		test.unEdit();
-		frame.add(test);
-		
-		frame.setSize(900,400);
-		
-		frame.setAlwaysOnTop(true);
-		frame.setFocusableWindowState(false);
-		frame.setFocusable(false);
+//		
+		//frame.add(uiKeyboard);
+//		test.setEditable(true);
+//		
+//	   	test.unEdit();
+//		frame.add(test);
+//		
+//		frame.setSize(900,400);
+//		
+//		frame.setAlwaysOnTop(true);
+//		frame.setFocusableWindowState(false);
+//		frame.setFocusable(false);
 		
 		splash.newStep("Load complete !");
 		splash.close();
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		mainFrame.setSize(800,400);
+		mainFrame.setVisible(true);
 		
 		// </TEMPORAIRE>
 	}

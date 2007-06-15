@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.gui.language.UIString;
 
-public class PanelOptionKeyShortCut extends PanelOptionOneLevelKey
+public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -48,7 +48,7 @@ public class PanelOptionKeyShortCut extends PanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyShortCut( CKeyShortcut myKeyShortCut, CShortcutSet shortCutSet )
+	public UIPanelOptionKeyShortCut( CKeyShortcut myKeyShortCut, CShortcutSet shortCutSet )
 	{
 		super( myKeyShortCut );
 

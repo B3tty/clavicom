@@ -48,8 +48,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.event.EventListenerList;
 
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
@@ -61,12 +62,12 @@ import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
-import clavicom.gui.windows.UIMovingPanel;
+import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
+public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -102,13 +103,15 @@ public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKe
 	
 	private CLevelEngine levelEngine;			// Gestionnaire de niveau
 	
+	private EventListenerList listeners;		// Listeners sur le keyboard
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
 	 */
-	public UIKeyboard(JFrame parentFrame, CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
+	public UIKeyboard(CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
 	{
-		super(parentFrame);
+		super();
 		
 		// Initialisation des attributs
 		coreKeyboard = myCoreKeyboard;
@@ -179,6 +182,24 @@ public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKe
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	//-----------------------------------------------------------------------
+	// Listeners (en générateur)
+	//-----------------------------------------------------------------------
+	public void addSelectionChangeListener(UIKeyboardSelectionChanged listener) 
+	{
+        listeners.add(UIKeyboardSelectionChanged.class, listener);
+    }
+    
+    public void removeSelectionChangeListener(UIKeyboardSelectionChanged listener) 
+    {
+        listeners.remove(UIKeyboardSelectionChanged.class, listener);
+    }
+    
+    public UIKeyboardSelectionChanged[] getSelectionChangeListeners() 
+    {
+        return listeners.getListeners(UIKeyboardSelectionChanged.class);
+    }
+    
 	//-----------------------------------------------------------------------
 	// Changement de niveau
 	//-----------------------------------------------------------------------
@@ -253,11 +274,13 @@ public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKe
 	public void keySelected(UIJResizer selectedKey)
 	{
 		selectedKeys.add((UIKeyKeyboard)selectedKey);
+		fireSelectionChanged();
 	}
 
 	public void keyUnselected(UIJResizer unselectedKey)
 	{
 		selectedKeys.remove((UIKeyKeyboard)unselectedKey);
+		fireSelectionChanged();
 	}
 
 	//-----------------------------------------------------------------------
@@ -317,6 +340,17 @@ public class UIKeyboard extends UIMovingPanel implements ComponentListener, UIKe
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	//-----------------------------------------------------------------------
+	// Listeners (en générateur)
+	//-----------------------------------------------------------------------	    
+    protected void fireSelectionChanged() 
+    {
+	    for ( UIKeyboardSelectionChanged listener : getSelectionChangeListeners() )
+		{
+			listener.selectionChanged(this.selectedKeys);
+		}
+    }
+    
 	//-----------------------------------------------------------------------
 	// Edition
 	//-----------------------------------------------------------------------
