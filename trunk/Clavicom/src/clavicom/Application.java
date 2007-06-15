@@ -47,7 +47,7 @@ public class Application
 
 	//--------------------------------------------------------- CONSTANTES --//
 	private static final int SPLASH_WAIT = 100;	// Temps d'attente entre deux messages (en ms)
-	private static final int SPLASH_WAIT_TOTAL_MIN = 5000;	// Temps d'attente minimum total
+	private static final int SPLASH_WAIT_TOTAL_MIN = 2000;	// Temps d'attente minimum total
 	//---------------------------------------------------------- VARIABLES --//
 
 	//----------------------------------------------------------------
@@ -158,7 +158,7 @@ public class Application
 		splash.newStep("Load complete !");
 		splash.close();
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setSize(800,400);
+		mainFrame.setSize(800,600);
 		mainFrame.setVisible(true);
 		
 		// </TEMPORAIRE>
