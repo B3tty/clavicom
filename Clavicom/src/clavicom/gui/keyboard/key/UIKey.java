@@ -28,6 +28,7 @@ package clavicom.gui.keyboard.key;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
@@ -226,7 +227,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
 			
-			//setLayout(new FlowLayout());
+			setLayout(new FlowLayout()); // XXX
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
@@ -297,17 +298,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		//-----------------------------------------------------------------------
 		// Dessin
-		//-----------------------------------------------------------------------
-		@Override
-		public void invalidate()
-		{
-			// TODO Auto-generated method stub
-			super.invalidate();
-			
-			recreateNormalImages();
-			selectGoodImage();
-		}
-		
+		//-----------------------------------------------------------------------		
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */
@@ -355,17 +346,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		public void componentHidden(ComponentEvent e)
 		{
-			// Rien à ajouter
+			// Rien à faire
 		}
 		
 		public void componentMoved(ComponentEvent e)
 		{
-			// Rien à ajouter
+			// Rien à faire
 		}
 		
 		public void componentShown(ComponentEvent e)
 		{
-			// Rien à ajouter
+			repaint();
 		}
 		
 		/**
