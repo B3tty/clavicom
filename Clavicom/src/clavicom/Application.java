@@ -91,6 +91,9 @@ public class Application
 	 */
 	public static void main(String[] args)
 	{		
+		// Initialisation des propriétés graphiques
+		initGraphicProperties();
+		
 		// Chargement du moteur de messages
 		// -> pas de splash screen car on en a besoin en cas d'erreur
 		loadMessageEngine();
@@ -133,9 +136,8 @@ public class Application
 		splash.newStep("Loading prediction engine...");
 		loadPredictionEngine();
 		
-		
 		// <TEMPORAIRE>
-		System.setProperty("sun.java2d.noddraw", "true");
+		splash.newStep("Creating windows...");
 		
 		// TODO --> Création des fenetres,...		
 		UITranslucentFrame frame = new UITranslucentFrame (.9f);
@@ -164,6 +166,15 @@ public class Application
 	//-----------------------------------------------------------------------
 	// Chargement
 	//-----------------------------------------------------------------------
+	
+	/**
+	 * Initialise les propriétés graphiques
+	 */
+	private static void initGraphicProperties()
+	{
+		System.setProperty("sun.java2d.noddraw", "true");
+	}
+	
 	/**
 	 * Charge le moteur d'affichage de messages
 	 */
