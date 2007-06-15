@@ -26,6 +26,8 @@
 package test.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import clavicom.core.engine.CCommandEngine;
@@ -59,7 +61,15 @@ public class testUICreateKeyPanel
 			
 			// Chargement du profil
 			CProfil.createInstance(input);
+			
 			CProfil profil = CProfil.getInstance();
+			
+			profil.loadProfileLanguageUIName();
+			profil.loadProfileCommandSetName();
+			profil.loadProfileShortCutName();
+			profil.loadProfile();
+			
+			
 			
 			CKeyboard keyboard = profil.getKeyboard();
 			
@@ -109,7 +119,8 @@ public class testUICreateKeyPanel
 			
 			JFrame frame = new JFrame();
 			frame.setSize(900,400);
-			frame.add( panel );
+			frame.add( panel);
+			
 			
 			frame.setAlwaysOnTop(true);
 			frame.setFocusableWindowState(false);
