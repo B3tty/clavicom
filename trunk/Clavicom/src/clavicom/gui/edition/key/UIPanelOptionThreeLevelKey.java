@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionKeyCharacter.java
+			Filename			: PanelOptionThreeLevelKey.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -25,49 +25,25 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.tools.TLevelEnum;
+import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
 
-public class PanelOptionKeyCharacter extends PanelOptionThreeLevelKey
+public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyCharacter keyCharacter;
+	CKeyThreeLevel keyThreeLevel;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
+	public UIPanelOptionThreeLevelKey( CKeyThreeLevel myKeyThreeLevel )
 	{
-
-		super( myKeyCharacter );
+		super( myKeyThreeLevel );
 		
-		keyCharacter = myKeyCharacter;
-
-		JPanel characters = new JPanel();
-		
-		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
-		characters.add( panellevelNormal );
-		
-		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
-		characters.add( panellevelShift  );
-		
-		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new PanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
-		characters.add( panellevelAltGr  );
-		
-		add( characters, BorderLayout.CENTER );
-		
+		keyThreeLevel = myKeyThreeLevel;
 	}
 	//----------------------------------------------------------- METHODES --//	
-
-
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

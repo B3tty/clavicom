@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.edition.key.PanelOptionKeyLauncher;
+import clavicom.gui.edition.key.UIPanelOptionKeyLauncher;
 import clavicom.gui.language.UIString;
 
 
@@ -74,7 +74,7 @@ public class testPanelOptionKeyLauncher
 			CKeyLauncher keyLauncher = (CKeyLauncher)list.getKeyKeyboard( 3 );
 			
 			
-			PanelOptionKeyLauncher panelOptionclavicom = new PanelOptionKeyLauncher( keyLauncher );
+			UIPanelOptionKeyLauncher panelOptionclavicom = new UIPanelOptionKeyLauncher( keyLauncher );
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();

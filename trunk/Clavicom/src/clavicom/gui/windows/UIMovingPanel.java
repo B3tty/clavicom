@@ -46,7 +46,7 @@ import clavicom.gui.keyboard.key.resizer.UIInvisibleBorder;
 import clavicom.gui.keyboard.key.resizer.UIResizableBorder;
 
 
-public abstract class UIMovingPanel extends JPanel
+public class UIMovingPanel extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int MINIMUM_HEIGHT = 10;
@@ -249,8 +249,6 @@ public abstract class UIMovingPanel extends JPanel
 			if ((newSize.getWidth() > MINIMUM_WIDTH) && (newSize.getHeight() > MINIMUM_HEIGHT))
 			{
 				parentFrame.setBounds(newSize);
-				
-				boundChanged();
 			}
 		}
 
@@ -258,8 +256,5 @@ public abstract class UIMovingPanel extends JPanel
 		{			
 			startPos = null;
 		}
-	};
-	
-	protected abstract void boundChanged();
-	
+	};	
 }

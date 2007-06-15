@@ -28,63 +28,82 @@ package clavicom.gui.edition.key;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TLevelEnum;
+import clavicom.tools.TKeyClavicomActionType;
 
 
-public class PanelOptionKeyLevel extends PanelOptionOneLevelKey implements ActionListener
+public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	CKeyLevel keyLevel;
-	JComboBox combo;
+	CKeyClavicom keyClavicom;
+	JComboBox comboBox;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionKeyLevel( CKeyLevel myKeyLevel )
+	public UIPanelOptionKeyClavicom( CKeyClavicom myKeyClavicom )
 	{
-		super( myKeyLevel );
-
-		keyLevel = myKeyLevel;
-
-		JPanel panel = new JPanel();
+		super( myKeyClavicom );
 		
-		combo = new JComboBox();
-		combo.addItem( TLevelEnum.SHIFT );
-		combo.addItem( TLevelEnum.ALT_GR );
+		keyClavicom = myKeyClavicom;
 		
-		combo.addActionListener( this );
+		comboBox = new JComboBox();
+		comboBox.addItem( TKeyClavicomActionType.NONE );
+		comboBox.addItem( TKeyClavicomActionType.OPEN_CONFIGURATION );
+		comboBox.addItem( TKeyClavicomActionType.CLOSE_APPLICATION );
+		comboBox.addItem( TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE );
 		
-		combo.setSelectedItem( keyLevel.GetLevel() );
-		
-		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
-		panel.add( combo );
-
-		add( panel, BorderLayout.CENTER );
-		
-	}
-	//----------------------------------------------------------- METHODES --//
-	
-	public void actionPerformed(ActionEvent arg0)
-	{
-		if( keyLevel != null )
+		if( (keyClavicom != null) )
 		{
-			Object object = combo.getSelectedItem();
-			if( object != null )
+			if( keyClavicom.getAction() != null )
 			{
-				if ( object instanceof TLevelEnum )
-				{
-					keyLevel.setLevel( (TLevelEnum)object );
-				}
+				comboBox.setSelectedItem( TKeyClavicomActionType.getString( keyClavicom.getAction() ) );
 			}
 		}
+		
+		comboBox.addActionListener( this );
+		
+		JPanel panel = new JPanel();
+		
+		panel.add( new JLabel( UIString.getUIString("LB_KEYCLAVICOM_ACTION") ) );
+		panel.add( comboBox );
+		
+		add( panel, BorderLayout.CENTER );
+		
+		
+		
 	}
+	//----------------------------------------------------------- METHODES --//	
+
+	public void actionPerformed(ActionEvent arg0)
+	{
+		// si une action a été séléctionnée
+		Object object = comboBox.getSelectedItem();
+		if( object != null )
+		{
+			if( object instanceof TKeyClavicomActionType )
+			{
+				TKeyClavicomActionType action = (TKeyClavicomActionType)object;
+				
+				// si l'action est différente de l'ancienne
+				if( action != keyClavicom.getAction() )
+				{
+					keyClavicom.setAction( action );
+				}
+			} 
+		}
+		
+	}
+
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

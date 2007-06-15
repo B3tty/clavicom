@@ -27,7 +27,7 @@ package clavicom.gui.edition.key;
 
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 
-public class PanelOptionOneLevelKey extends PanelOptionKeyboardKey
+public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 {
 
 
@@ -38,7 +38,7 @@ public class PanelOptionOneLevelKey extends PanelOptionKeyboardKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public PanelOptionOneLevelKey(CKeyOneLevel myKeyOneLevel)
+	public UIPanelOptionOneLevelKey(CKeyOneLevel myKeyOneLevel)
 	{
 		super( myKeyOneLevel );
 		

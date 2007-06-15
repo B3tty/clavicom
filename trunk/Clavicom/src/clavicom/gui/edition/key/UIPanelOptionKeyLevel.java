@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionColor.java
+			Filename			: PanelOptionKeyCharacter.java
 			Creation date		: 5 juin 07
 		
 			Project				: Clavicom
@@ -25,63 +25,66 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import clavicom.core.keygroup.CKey;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TColorKeyEnum;
+import clavicom.tools.TLevelEnum;
 
-public class PanelOptionColor extends JPanel implements ActionListener
+
+public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements ActionListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	CKey key;
-	JButton colorButton;
-	TColorKeyEnum colorEnum;
+
+	CKeyLevel keyLevel;
+	JComboBox combo;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public PanelOptionColor( CKey myKey, TColorKeyEnum myColorEnum )
-	{
-		key = myKey;
-		colorEnum = myColorEnum;
-		
-		add( new JLabel( colorEnum.toString() ) );
-		
-		colorButton = new JButton();
-		colorButton.setPreferredSize( new Dimension(30,20) );
-		colorButton.setBackground( key.getColor( colorEnum ) );
-		
-		
-		add( colorButton );
-		
-		colorButton.addActionListener( this );
 	
-	}
+	public UIPanelOptionKeyLevel( CKeyLevel myKeyLevel )
+	{
+		super( myKeyLevel );
 
+		keyLevel = myKeyLevel;
+
+		JPanel panel = new JPanel();
+		
+		combo = new JComboBox();
+		combo.addItem( TLevelEnum.SHIFT );
+		combo.addItem( TLevelEnum.ALT_GR );
+		
+		combo.addActionListener( this );
+		
+		combo.setSelectedItem( keyLevel.GetLevel() );
+		
+		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
+		panel.add( combo );
+
+		add( panel, BorderLayout.CENTER );
+		
+	}
+	//----------------------------------------------------------- METHODES --//
+	
 	public void actionPerformed(ActionEvent arg0)
 	{
-		Color newColor = JColorChooser.showDialog( this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
-		
-		if( newColor != null )
+		if( keyLevel != null )
 		{
-			if( newColor != key.getColor( colorEnum ) )
+			Object object = combo.getSelectedItem();
+			if( object != null )
 			{
-				// la couleur à changé
-				key.setColor( newColor, colorEnum );
-
-				colorButton.setBackground( newColor );
+				if ( object instanceof TLevelEnum )
+				{
+					keyLevel.setLevel( (TLevelEnum)object );
+				}
 			}
 		}
 	}
 
-	//----------------------------------------------------------- METHODES --//
-	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

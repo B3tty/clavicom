@@ -37,7 +37,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.edition.key.PanelOptionKeyShortCut;
+import clavicom.gui.edition.key.UIPanelOptionKeyShortCut;
 import clavicom.gui.language.UIString;
 
 public class testPanelOptionKeyShortCut
@@ -74,7 +74,7 @@ public class testPanelOptionKeyShortCut
 			
 			
 			
-			PanelOptionKeyShortCut panelOptionclavicom = new PanelOptionKeyShortCut( keyShortCut, CShortcutSet.GetInstance() );
+			UIPanelOptionKeyShortCut panelOptionclavicom = new UIPanelOptionKeyShortCut( keyShortCut, CShortcutSet.GetInstance() );
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();
