@@ -26,6 +26,9 @@
 package clavicom.gui.windows;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -43,10 +46,12 @@ import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged
+public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	private final float PANEL_OPTION_PROPORTION_X = 1f;
+	private final float PANEL_OPTION_PROPORTION_Y = .3f;
+	
 	//---------------------------------------------------------- VARIABLES --//
 	// Panel principal
 	UIMovingPanel mainPanel;
@@ -109,6 +114,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		panelOptions.add(panelModification,BorderLayout.EAST);
 		panelOptions.add(creationComponent,BorderLayout.CENTER);
 		
+		// Réglage des tailles préférées
+		
 		// Ajout au panel principal
 		mainPanel.add(panelOptions, BorderLayout.NORTH);
 		mainPanel.add(panelKeyboard, BorderLayout.CENTER);
@@ -119,18 +126,58 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Initialisation des options
 		mainPanel.setEditable(true);
 		mainPanel.setEditable(true);
+		
+		addComponentListener(this);
+	}
+
+	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	/**
-	 * Appelé lorsque la selection a changé.
-	 */
-	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
+	@Override
+	public void setVisible(boolean arg0)
 	{
-		// On met à jour la sélection de keys
-		this.selectedKeys = selectedKeys;		
+		// TODO Auto-generated method stub
+		
+		
+		if(arg0 == true)
+		{
+			updateSize();
+		}
+		
+		super.setVisible(arg0);
+	}
+	
+	public void componentHidden(ComponentEvent arg0)
+	{
+		// Rien à ajouter
 	}
 
+	public void componentMoved(ComponentEvent arg0)
+	{
+		// Rien à ajouter
+	}
 
+	public void componentResized(ComponentEvent arg0)
+	{
+		// Maj de la taille
+		updateSize();
+	}
+
+	public void componentShown(ComponentEvent arg0)
+	{
+		// Maj de la taille
+		updateSize();
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	private void updateSize()
+	{
+		// Dimension du panneau d'options
+		panelOptions.setPreferredSize(new Dimension(	Math.round(getWidth()*PANEL_OPTION_PROPORTION_X), 
+														Math.round(getHeight()*PANEL_OPTION_PROPORTION_Y)));
+	}
 }
