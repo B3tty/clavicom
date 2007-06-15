@@ -40,7 +40,6 @@ import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.keyboard.UIPanelKeyCreation;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
-import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 
@@ -79,15 +78,16 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{
+		
 		// TODO : passer la couleur
 		super(.9f);
+		panelKeyboard.edit();
 		
 		// Recopie des attributs
 		this.panelKeyboard = panelKeyboard;
 		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		mainPanel.setEditable(true);
 		
 		// Changement de layout
 		mainPanel.setLayout(new BorderLayout());
@@ -117,6 +117,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		add(mainPanel);
 		
 		// Initialisation des options
+		mainPanel.setEditable(true);
 		mainPanel.setEditable(true);
 	}
 	

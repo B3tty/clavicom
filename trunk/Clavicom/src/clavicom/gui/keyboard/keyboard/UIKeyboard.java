@@ -120,6 +120,7 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
 		levelEngine = myLevelEngine;
+		listeners = new EventListenerList();
 		
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
@@ -471,10 +472,10 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 		buffer.setStroke(new BasicStroke(TAILLE_CONTOUR));
 		
 		buffer.drawRoundRect(	TAILLE_CONTOUR/2, 
-							TAILLE_CONTOUR/2, 
-							getWidth()-TAILLE_CONTOUR, 
-							getHeight()-TAILLE_CONTOUR,
-							TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
+								TAILLE_CONTOUR/2, 
+								getWidth()-TAILLE_CONTOUR, 
+								getHeight()-TAILLE_CONTOUR,
+								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
 		
 		// Retour
 		return image;
