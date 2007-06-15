@@ -226,7 +226,7 @@ public class PanelKeyCreation extends JPanel
 		JPanel panel = new JPanel( new BorderLayout() );
 		
 		JPanel panel2 = new JPanel( );
-		panel2.add( new JLabel( caption ) );
+		//panel2.add( new JLabel( caption ) );
 
 		panel.add( panel2 , BorderLayout.NORTH );
 		CKeyCreation keyLauncher = new CKeyCreation(
@@ -234,7 +234,8 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				new TPoint(0,0),new TPoint(0,0),
-				exemple,
+				/*exemple,*/
+				caption,
 				type);
 		
 		keyLauncher.setCaptionImage( isImage );
