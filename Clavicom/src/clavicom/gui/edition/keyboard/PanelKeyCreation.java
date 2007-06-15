@@ -66,8 +66,8 @@ public class PanelKeyCreation extends JPanel
 	{
 		
 		GridLayout grdiLayout = new GridLayout( 3,6 );
-		grdiLayout.setHgap(5);
-		grdiLayout.setVgap(5);
+		grdiLayout.setHgap(2);
+		grdiLayout.setVgap(2);
 		setLayout( grdiLayout );
 		
 		// ===================================================================
@@ -78,7 +78,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER"),
-				"a",
 				TEnumCreationKey.T_KEY_CHARACTER,
 				false
 				);
@@ -88,7 +87,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
-				"Word",
 				TEnumCreationKey.T_KEY_LAUNCHER,
 				false
 				);
@@ -99,7 +97,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD"),
-				"",
 				TEnumCreationKey.T_KEY_LASTWORD,
 				false
 				);
@@ -111,7 +108,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION"),
-				"",
 				TEnumCreationKey.T_KEY_PREDICTION,
 				false
 				);
@@ -122,7 +118,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
-				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT_EXEMPLE"),
 				TEnumCreationKey.T_KEY_SHORTCUT,
 				false
 				);
@@ -134,7 +129,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
-				UIString.getUIString("LB_KEYCREATION_KEYSTRING_EXEMPLE"),
 				TEnumCreationKey.T_KEY_STRING,
 				false
 				);
@@ -145,7 +139,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_SHIFT"),
-				"Shift",
 				TEnumCreationKey.T_KEY_LEVEL_SHIFT,
 				false
 				);
@@ -157,7 +150,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_ALTGR"),
-				"Alt Gr",
 				TEnumCreationKey.T_KEY_LEVEL_ALTGR,
 				false
 				);
@@ -169,7 +161,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
-				"** chemin image close **",
 				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
 				false /* TODO - true */
 				);
@@ -181,7 +172,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION"),
-				"** chemin image configuration **",
 				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION,
 				false /* TODO - true */
 				);
@@ -194,7 +184,6 @@ public class PanelKeyCreation extends JPanel
 				myColorEntered,
 				myColorPressed,
 				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
-				"** chemin image switch souricom **",
 				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM,
 				false /* TODO - true */
 				);
@@ -217,7 +206,6 @@ public class PanelKeyCreation extends JPanel
 			Color myColorEntered,
 			Color myColorPressed,
 			String caption, // texte affiché au dessus du boutton
-			String exemple, // texte affiché dans le boutton
 			TEnumCreationKey type, // type de la key
 			boolean isImage) // si c'est une image ou non
 							// ATTENTION : si c'est une image, il faut mettre le chemin d'une image valide
@@ -225,16 +213,11 @@ public class PanelKeyCreation extends JPanel
 
 		JPanel panel = new JPanel( new BorderLayout() );
 		
-		JPanel panel2 = new JPanel( );
-		//panel2.add( new JLabel( caption ) );
-
-		panel.add( panel2 , BorderLayout.NORTH );
 		CKeyCreation keyLauncher = new CKeyCreation(
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
 				new TPoint(0,0),new TPoint(0,0),
-				/*exemple,*/
 				caption,
 				type);
 		
