@@ -30,16 +30,21 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
 import clavicom.gui.keyboard.key.UIKeyCreation;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TPoint;
 
-public class UIPanelKeyCreation extends JPanel
+public class UIKeyCreationToolbar extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+	Color COLOR_NORMAL = new Color(230,230,230);
+	Color COLOR_PRESSED = new Color(100,200,220);
+	Color COLOR_ENTERED = new Color(22,90,107);
+	
 	//---------------------------------------------------------- VARIABLES --//
 	UIKeyCreation uiKeyCharacter;
 	UIKeyCreation uiKeyLastWord;
@@ -58,16 +63,12 @@ public class UIPanelKeyCreation extends JPanel
 	UIKeyCreation uiKeyClavicomSwitchSouricom;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIPanelKeyCreation(
+	public UIKeyCreationToolbar(
 			Color myColorNormal,
 			Color myColorEntered,
 			Color myColorPressed)
 	{
-		
-		GridLayout grdiLayout = new GridLayout( 3,6 );
-		grdiLayout.setHgap(2);
-		grdiLayout.setVgap(2);
-		setLayout( grdiLayout );
+		setLayout( new GridLayout(2, 6, 2, 2) );
 		
 		// ===================================================================
 		// création de toutes les touches
@@ -76,18 +77,18 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyCharacterPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER"),
-				TEnumCreationKey.T_KEY_CHARACTER,
-				false
+				TEnumCreationKey.T_KEY_CHARACTER
 				);
 		
 		CreateKey(
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyLauncherPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
-				TEnumCreationKey.T_KEY_LAUNCHER,
-				false
+				TEnumCreationKey.T_KEY_LAUNCHER
 				);
 		
 	
@@ -95,9 +96,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyLastWordPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD"),
-				TEnumCreationKey.T_KEY_LASTWORD,
-				false
+				TEnumCreationKey.T_KEY_LASTWORD
 				);
 		
 		
@@ -106,9 +107,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyPredictionPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION"),
-				TEnumCreationKey.T_KEY_PREDICTION,
-				false
+				TEnumCreationKey.T_KEY_PREDICTION
 				);
 		
 		
@@ -116,9 +117,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyShortCutPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
-				TEnumCreationKey.T_KEY_SHORTCUT,
-				false
+				TEnumCreationKey.T_KEY_SHORTCUT
 				);
 		
 		
@@ -127,9 +128,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyStringPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
-				TEnumCreationKey.T_KEY_STRING,
-				false
+				TEnumCreationKey.T_KEY_STRING
 				);
 		
 		
@@ -137,9 +138,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyLevelSHIFTPicture(),
 				UIString.getUIString("LB_KEYCREATION_SHIFT"),
-				TEnumCreationKey.T_KEY_LEVEL_SHIFT,
-				false
+				TEnumCreationKey.T_KEY_LEVEL_SHIFT
 				);
 		
 		
@@ -148,9 +149,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyLevelALTGRPicture(),
 				UIString.getUIString("LB_KEYCREATION_ALTGR"),
-				TEnumCreationKey.T_KEY_LEVEL_ALTGR,
-				false
+				TEnumCreationKey.T_KEY_LEVEL_ALTGR
 				);
 		
 		
@@ -159,9 +160,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyClavicomClosePicture(),
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
-				false /* TODO - true */
+				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION
 				);
 		
 		
@@ -170,9 +171,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyClavicomConfigurationPicture(),
 				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION,
-				false /* TODO - true */
+				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION
 				);
 		
 		
@@ -182,9 +183,9 @@ public class UIPanelKeyCreation extends JPanel
 				myColorNormal,
 				myColorEntered,
 				myColorPressed,
+				CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
 				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
-				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM,
-				false /* TODO - true */
+				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM
 				);
 		
 		
@@ -200,32 +201,27 @@ public class UIPanelKeyCreation extends JPanel
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	protected void CreateKey(
-			Color myColorNormal,
-			Color myColorEntered,
-			Color myColorPressed,
-			String caption, // texte affiché au dessus du boutton
-			TEnumCreationKey type, // type de la key
-			boolean isImage) // si c'est une image ou non
-							// ATTENTION : si c'est une image, il faut mettre le chemin d'une image valide
+	protected void CreateKey(	Color myColorNormal,
+								Color myColorEntered,
+								Color myColorPressed,
+								String filePath,
+								String caption, 			// texte affiché en tip
+								TEnumCreationKey type) 		// Type de la key
 	{
-
-		JPanel panel = new JPanel( new BorderLayout() );
-		
+		// Création de l'objet du noyau
 		CKeyCreation keyLauncher = new CKeyCreation(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
+				COLOR_NORMAL,
+				COLOR_ENTERED,
+				COLOR_PRESSED,
 				new TPoint(0,0),new TPoint(0,0),
-				caption,
+				filePath,
 				type);
 		
-		keyLauncher.setCaptionImage( isImage );
+		keyLauncher.setCaptionImage( true );
 		
+		// Création de l'objet UI
 		uiKeyLauncher = new UIKeyCreation( keyLauncher );
-		panel.add( uiKeyLauncher, BorderLayout.CENTER );
-		
-		add( panel );
+		add( uiKeyLauncher, BorderLayout.CENTER );
 	}
 }
 

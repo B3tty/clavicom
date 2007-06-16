@@ -25,8 +25,10 @@
 
 package clavicom.gui.windows;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
@@ -41,7 +43,7 @@ import clavicom.gui.edition.key.UIPanelOptionKeyLevel;
 import clavicom.gui.edition.key.UIPanelOptionKeyShortCut;
 import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
-import clavicom.gui.edition.keyboard.UIPanelKeyCreation;
+import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
@@ -49,8 +51,9 @@ import clavicom.gui.listener.UIKeyboardSelectionChanged;
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	private final float PANEL_OPTION_PROPORTION_X = 1f;
-	private final float PANEL_OPTION_PROPORTION_Y = .3f;
+	private final int PANEL_OPTIONS_BOTTOM_SPACE = 5;
+	private final int PANEL_OPTIONS_RIGHT_SPACE = 5;
+	private final int PANEL_KEY_MODIFICATION_LEFT_SPACE = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//
 	// Panel principal
@@ -65,10 +68,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	
 	// Sous panels
 	UIKeyboard panelKeyboard;			// Panel contenant le clavier
-	UIPanelKeyCreation creationComponent;	// Panel contenant les touches d'edition
+	UIKeyCreationToolbar creationToolbar;	// Panel contenant les touches d'edition
 	
 	// Panels de modification de touche
-	UIPanelKeyCreation panelKeyCreation;
 	UIPanelOptionKeyboardKey panelOptionKeyKeyboard;
 	UIPanelOptionKeyCharacter panelOptionKeyCharacter;
 	UIPanelOptionKeyClavicom panelOptionKeyClavicom;
@@ -83,7 +85,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{
-		
 		// TODO : passer la couleur
 		super(.9f);
 		panelKeyboard.edit();
@@ -93,38 +94,102 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		
-		// Changement de layout
-		mainPanel.setLayout(new BorderLayout());
-		
 		panelOptions = new JPanel();
 		panelModification = new JPanel();
-		panelOptions.setLayout(new BorderLayout());
 		
-		// TEMP
-		//panelModification.setPreferredSize(new Dimension(100,100));
-		//panelModification.setBackground(Color.RED);
-		
-		creationComponent = new UIPanelKeyCreation(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
+		creationToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
+
+		
+		// -------------- Layout du panel principal ----------------------------
+		GridBagLayout gbLayoutMain = new GridBagLayout();
+		mainPanel.setLayout(gbLayoutMain);
+		
+		// Contraintes du panel d'option
+		GridBagConstraints gbConstOptions = new GridBagConstraints (	
+				0,							// Numéro de ligne
+	            0,							// Numéro de colonne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,						// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	          								// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, 0, PANEL_OPTIONS_BOTTOM_SPACE, PANEL_OPTIONS_RIGHT_SPACE),		
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelOptions, gbConstOptions);
+
+		// Contraintes du panel du keyboard
+		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
+				0,							// Numéro de ligne
+	            1,							// Numéro de colonne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,						// Taille horizontale relative
+	            80,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
+	
+		// -------------- Layout du panel d'options ----------------------------
+		GridBagLayout gbLayoutOptions = new GridBagLayout();
+		panelOptions.setLayout(gbLayoutOptions);
+			
+		// Contraintes du panel avec la liste d'outils
+		GridBagConstraints gbConstToolbar = new GridBagConstraints (	
+				0,							// Numéro de ligne
+	            0,							// Numéro de colonne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            60,							// Taille horizontale relative
+	            100,						// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutOptions.setConstraints(creationToolbar, gbConstToolbar);
+		
+		// Contraintes du panel de modification de touche
+		GridBagConstraints gbConstKeyModification = new GridBagConstraints (	
+				0,							// Numéro de ligne
+	            1,							// Numéro de colonne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            40,							// Taille horizontale relative
+	            100,						// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            							// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, PANEL_KEY_MODIFICATION_LEFT_SPACE, 0, 0),
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutOptions.setConstraints(panelModification, gbConstKeyModification);		
+		
+		// TEMP
+		panelModification.setBackground(Color.RED);
 		
 		// Mise en place des panels
-		// Options en haut
-		panelOptions.add(panelModification,BorderLayout.EAST);
-		panelOptions.add(creationComponent,BorderLayout.CENTER);
+		panelOptions.add(creationToolbar);
+		panelOptions.add(panelModification);
 		
-		// Réglage des tailles préférées
-		
-		// Ajout au panel principal
-		mainPanel.add(panelOptions, BorderLayout.NORTH);
-		mainPanel.add(panelKeyboard, BorderLayout.CENTER);
+		mainPanel.add(panelOptions);
+		mainPanel.add(panelKeyboard);
 		
 		// Ajout du panel principal à la frame
 		add(mainPanel);
 		
 		// Initialisation des options
-		mainPanel.setEditable(true);
 		mainPanel.setEditable(true);
 		
 		addComponentListener(this);
@@ -133,23 +198,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
 	{
 		// TODO Auto-generated method stub
-		
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	@Override
-	public void setVisible(boolean arg0)
-	{
-		// TODO Auto-generated method stub
-		
-		
-		if(arg0 == true)
-		{
-			updateSize();
-		}
-		
-		super.setVisible(arg0);
-	}
 	
 	public void componentHidden(ComponentEvent arg0)
 	{
@@ -163,21 +214,17 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void componentResized(ComponentEvent arg0)
 	{
-		// Maj de la taille
-		updateSize();
+		//  Rien à ajouter
 	}
 
 	public void componentShown(ComponentEvent arg0)
 	{
-		// Maj de la taille
-		updateSize();
+		// Rien à ajouter
+	}
+	public void Temp()
+	{
+		panelOptions.setVisible(true);
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
-	private void updateSize()
-	{
-		// Dimension du panneau d'options
-		panelOptions.setPreferredSize(new Dimension(	Math.round(getWidth()*PANEL_OPTION_PROPORTION_X), 
-														Math.round(getHeight()*PANEL_OPTION_PROPORTION_Y)));
-	}
 }

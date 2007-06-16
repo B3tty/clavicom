@@ -44,14 +44,13 @@ public class CKeyCreation extends CKeyOneLevel
 	protected EventListenerList listenerList;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyCreation(
-			Color myColorNormal, 
-			Color myColorClicked , 
-			Color myColorEntered , 
-			TPoint myPointMin, 
-			TPoint myPointMax,
-			String myCaption,
-			TEnumCreationKey myKeyType)
+	public CKeyCreation(	Color myColorNormal, 
+							Color myColorClicked , 
+							Color myColorEntered , 
+							TPoint myPointMin, 
+							TPoint myPointMax,
+							String myCaption,
+							TEnumCreationKey myKeyType)
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 		

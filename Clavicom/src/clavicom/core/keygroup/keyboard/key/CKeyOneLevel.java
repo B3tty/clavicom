@@ -45,8 +45,8 @@ public abstract class CKeyOneLevel extends CKeyKeyboard
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 
 	public CKeyOneLevel(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
-			String myCaption)
+						Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+						String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
 				myPointMax);
