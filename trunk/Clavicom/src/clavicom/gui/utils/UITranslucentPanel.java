@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UITranslucentFrame.java
-			Creation date		: 14 juin 07
+			Filename			: UITranslucentPanel.java
+			Creation date		: 16 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.windows
+			Package				: clavicom.gui.utils
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,50 +23,34 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.windows;
+package clavicom.gui.utils;
 
-import javax.swing.JFrame;
+import java.awt.Graphics;
 
-import com.sun.jna.examples.WindowUtils;
+import javax.swing.JPanel;
 
-public class UITranslucentFrame extends JFrame
+public class UITranslucentPanel extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	float transparency;			// Transparence de la fenêtre
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UITranslucentFrame(float myTransparency)
-	{
-		// Appel au père
+	public UITranslucentPanel()
+	{	
 		super();
-	
-		// On enleve la barre de fenêtre
-        setUndecorated(true);
-
-        // On pack
-        pack();
-        
-        // On applique la transparence
-        setTransparency(myTransparency);
+		setOpaque(false);
 	}
-	
 	//----------------------------------------------------------- METHODES --//	
-	public void setTransparency(float newTransparency)
+	@Override
+	protected void paintComponent(Graphics myGraphic)
 	{
-		transparency = newTransparency;
+		//setBackground(new Color(0,0,0,0));
+		// Appel du père
 		
-		if(newTransparency > 0)
-		{
-			WindowUtils.setWindowAlpha(this, transparency);
-		}
+		super.paintComponent(myGraphic);
 	}
-	
-	public float getTransparency()
-	{
-		return transparency;
-	}
-	
+
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

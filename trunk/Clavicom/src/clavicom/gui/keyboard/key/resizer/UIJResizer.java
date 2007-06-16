@@ -38,6 +38,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import javax.swing.event.EventListenerList;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
@@ -178,6 +179,12 @@ public abstract class UIJResizer extends JComponent
 
 		public void mousePressed(MouseEvent me)
 		{
+			// Si c'est pas le clic gauche, on annule
+			if (!SwingUtilities.isLeftMouseButton(me))
+            {
+                return;
+            }
+			
 			UIResizableBorder border = (UIResizableBorder) getBorder();
 			cursor = border.getResizeCursor(me);
 			startPos = me.getPoint();

@@ -45,17 +45,17 @@ public class CFilePaths
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
-	private static String toolKeyCharacterPicture = pictures + "firefox.png";
-	private static String toolKeyLauncherPicture = pictures + "firefox.png";
-	private static String toolKeyLastWordPicture = pictures + "firefox.png";
-	private static String toolKeyPredictionPicture = pictures + "firefox.png";
-	private static String toolKeyShortCutPicture = pictures + "firefox.png";
-	private static String toolKeyStringPicture = pictures + "firefox.png";
-	private static String toolKeyLevelSHIFTPicture = pictures + "firefox.png";
-	private static String toolKeyLevelALTGRPicture = pictures + "firefox.png";
-	private static String toolKeyClavicomClosePicture = pictures + "firefox.png";
-	private static String toolKeyClavicomConfigurationPicture = pictures + "firefox.png";
-	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "firefox.png";
+	private static String toolKeyCharacterPicture = pictures + "character.png";
+	private static String toolKeyLauncherPicture = pictures + "launch.png";
+	private static String toolKeyLastWordPicture = pictures + "last_word.png";
+	private static String toolKeyPredictionPicture = pictures + "prediction.png";
+	private static String toolKeyShortCutPicture = pictures + "shortcut.png";
+	private static String toolKeyStringPicture = pictures + "string.png";
+	private static String toolKeyLevelSHIFTPicture = pictures + "shift.png";
+	private static String toolKeyLevelALTGRPicture = pictures + "altgr.png";
+	private static String toolKeyClavicomClosePicture = pictures + "close.png";
+	private static String toolKeyClavicomConfigurationPicture = pictures + "configuration.png";
+	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "mouse.png";
 
 	// ========================================================================
 	// Getters

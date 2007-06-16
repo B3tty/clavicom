@@ -41,7 +41,7 @@ import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
-import clavicom.gui.windows.UITranslucentFrame;
+import clavicom.gui.utils.UITranslucentFrame;
 
 public class testTranslucency
 {
