@@ -59,9 +59,6 @@ public class UIKeyCreation extends UIKeyOneLevel
 		return coreKey;
 	}
 	
-	
-	
-	
 	//	 Listener ==============================================
 	public void addOnClickUIKeyCreationListener(OnClickUIKeyCreationListener l)
 	{
