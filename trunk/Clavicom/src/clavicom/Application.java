@@ -138,27 +138,16 @@ public class Application
 		// Création des fenêtres
 		splash.newStep("Creating windows...");
 		
+		// <TEMPORAIRE>
 		// TODO --> Création des fenetres,...
 		UIKeyboard uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
 		
-//		
-		//frame.add(uiKeyboard);
-//		test.setEditable(true);
-//		
-//	   	test.unEdit();
-//		frame.add(test);
-//		
-//		frame.setSize(900,400);
-//		
-//		frame.setAlwaysOnTop(true);
-//		frame.setFocusableWindowState(false);
-//		frame.setFocusable(false);
+		mainFrame.setSize(1000,600);
 		
 		splash.newStep("Load complete !");
 		splash.close();
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setSize(800,600);
+		
 		mainFrame.setVisible(true);
 		
 		// </TEMPORAIRE>

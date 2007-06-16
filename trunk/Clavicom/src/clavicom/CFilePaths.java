@@ -45,6 +45,18 @@ public class CFilePaths
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
+	private static String toolKeyCharacterPicture = pictures + "firefox.png";
+	private static String toolKeyLauncherPicture = pictures + "firefox.png";
+	private static String toolKeyLastWordPicture = pictures + "firefox.png";
+	private static String toolKeyPredictionPicture = pictures + "firefox.png";
+	private static String toolKeyShortCutPicture = pictures + "firefox.png";
+	private static String toolKeyStringPicture = pictures + "firefox.png";
+	private static String toolKeyLevelSHIFTPicture = pictures + "firefox.png";
+	private static String toolKeyLevelALTGRPicture = pictures + "firefox.png";
+	private static String toolKeyClavicomClosePicture = pictures + "firefox.png";
+	private static String toolKeyClavicomConfigurationPicture = pictures + "firefox.png";
+	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "firefox.png";
+
 	// ========================================================================
 	// Getters
 	// ========================================================================
@@ -103,7 +115,64 @@ public class CFilePaths
 	public static String getSplashScreenFile()
 	{
 		return splashScreenFile;
-	}	
+	}
+
+	public static String getToolKeyCharacterPicture()
+	{
+		return toolKeyCharacterPicture;
+	}
+
+	public static String getToolKeyClavicomClosePicture()
+	{
+		return toolKeyClavicomClosePicture;
+	}
+
+	public static String getToolKeyClavicomConfigurationPicture()
+	{
+		return toolKeyClavicomConfigurationPicture;
+	}
+
+	public static String getToolKeyClavicomSwitchSouricomPicture()
+	{
+		return toolKeyClavicomSwitchSouricomPicture;
+	}
+
+	public static String getToolKeyLauncherPicture()
+	{
+		return toolKeyLauncherPicture;
+	}
+
+	public static String getToolKeyLevelALTGRPicture()
+	{
+		return toolKeyLevelALTGRPicture;
+	}
+
+	public static String getToolKeyLevelSHIFTPicture()
+	{
+		return toolKeyLevelSHIFTPicture;
+	}
+
+	public static String getToolKeyPredictionPicture()
+	{
+		return toolKeyPredictionPicture;
+	}
+
+	public static String getToolKeyShortCutPicture()
+	{
+		return toolKeyShortCutPicture;
+	}
+
+	public static String getToolKeyStringPicture()
+	{
+		return toolKeyStringPicture;
+	}
+	
+	public static String getToolKeyLastWordPicture()
+	{
+		return toolKeyLastWordPicture;
+	}
+	
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
