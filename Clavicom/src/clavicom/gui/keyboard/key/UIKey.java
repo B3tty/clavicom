@@ -48,6 +48,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import clavicom.core.keygroup.CKey;
@@ -109,6 +110,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		private int fontSize;						// Entier indiquant la taille de la police
 													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
 													// CFont, mais de la vraie taille
+		private boolean isTransparent;				// Indique si la touche est transparente
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -129,6 +131,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			public void mousePressed(MouseEvent e) 
 			{
+				// Si c'est pas le clic gauche, on annule
+				if (!SwingUtilities.isLeftMouseButton(e))
+	            {
+	                return;
+	            }
+				
 				mousePressedSpecific(e);
 			}
 			
@@ -214,6 +222,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On définit la transparence
 			setOpaque(false);
+			isTransparent = true;
 			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTransparencyPourcent() / 100;
 			
 			// Ajout en tant que listener de component
@@ -383,7 +392,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			
 			// Application de la transparence
-			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+			if (isTransparent == true)
+			{
+				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+			}
 
 			// Dessin			
 			g2.drawImage(currentImage, 0, 0, null);
@@ -403,6 +415,23 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			this.fontSize = fontSize;
 		}		
 		
+		
+		public float getOpacity()
+		{
+			return opacity;
+		}
+
+		public void setOpacity(float opacity)
+		{
+			this.opacity = opacity;
+			repaint();
+		}
+		
+		public void setTransparent(boolean isTransparent)
+		{
+			this.isTransparent = isTransparent;
+		}
+
 		//--------------------------------------------------- METHODES PRIVEES --//
 		/**
 		 * Méthodes ou l'objet doit IMPERATIVEMENT s'abonner en tant que listener

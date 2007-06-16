@@ -39,7 +39,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
-import clavicom.gui.windows.UIMovingPanel;
+import clavicom.gui.utils.UIMovingPanel;
 
 public class testUIResizer
 {

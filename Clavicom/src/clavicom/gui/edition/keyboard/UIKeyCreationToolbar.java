@@ -41,26 +41,14 @@ import clavicom.tools.TPoint;
 public class UIKeyCreationToolbar extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	Color COLOR_NORMAL = new Color(230,230,230);
-	Color COLOR_PRESSED = new Color(100,200,220);
-	Color COLOR_ENTERED = new Color(22,90,107);
+	private final Color COLOR_NORMAL = new Color(180,180,180);
+	private final Color COLOR_PRESSED = new Color(100,200,220);
+	private final Color COLOR_ENTERED = new Color(22,90,107);
+	
+	private final int SPACE_BETWEEN_KEYS = 2;
 	
 	//---------------------------------------------------------- VARIABLES --//
-	UIKeyCreation uiKeyCharacter;
-	UIKeyCreation uiKeyLastWord;
-	UIKeyCreation uiKeyLauncher;
-	UIKeyCreation uiKeyPrediction;
-	UIKeyCreation uiKeyShortCut;
-	UIKeyCreation uiKeyString;
-	
-	// KeyLevel
-	UIKeyCreation uiKeyLevelSHIFT;
-	UIKeyCreation uiKeyLevelALTGR;
-	
-	// KeyClavicom
-	UIKeyCreation uiKeyClavicomClose;
-	UIKeyCreation uiKeyClavicomConfiguration;
-	UIKeyCreation uiKeyClavicomSwitchSouricom;
+	private UIKeyCreation uiKeyLauncher;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIKeyCreationToolbar(
@@ -68,143 +56,72 @@ public class UIKeyCreationToolbar extends JPanel
 			Color myColorEntered,
 			Color myColorPressed)
 	{
-		setLayout( new GridLayout(2, 6, 2, 2) );
+		setLayout( new GridLayout(2, 6, SPACE_BETWEEN_KEYS, SPACE_BETWEEN_KEYS) );
 		
 		// ===================================================================
 		// création de toutes les touches
 		// ===================================================================
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyCharacterPicture(),
+		CreateKey(CFilePaths.getToolKeyCharacterPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER"),
 				TEnumCreationKey.T_KEY_CHARACTER
 				);
 		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyLauncherPicture(),
+		CreateKey(CFilePaths.getToolKeyLauncherPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
 				TEnumCreationKey.T_KEY_LAUNCHER
 				);
-		
 	
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyLastWordPicture(),
+		CreateKey(CFilePaths.getToolKeyLastWordPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD"),
 				TEnumCreationKey.T_KEY_LASTWORD
 				);
 		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyPredictionPicture(),
+		CreateKey(CFilePaths.getToolKeyPredictionPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION"),
 				TEnumCreationKey.T_KEY_PREDICTION
 				);
 		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyShortCutPicture(),
+		CreateKey(CFilePaths.getToolKeyShortCutPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
 				TEnumCreationKey.T_KEY_SHORTCUT
 				);
 		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyStringPicture(),
+		CreateKey(CFilePaths.getToolKeyStringPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
 				TEnumCreationKey.T_KEY_STRING
 				);
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyLevelSHIFTPicture(),
+
+		CreateKey(CFilePaths.getToolKeyLevelSHIFTPicture(),
 				UIString.getUIString("LB_KEYCREATION_SHIFT"),
 				TEnumCreationKey.T_KEY_LEVEL_SHIFT
 				);
 		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyLevelALTGRPicture(),
+		CreateKey(CFilePaths.getToolKeyLevelALTGRPicture(),
 				UIString.getUIString("LB_KEYCREATION_ALTGR"),
 				TEnumCreationKey.T_KEY_LEVEL_ALTGR
 				);
 		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyClavicomClosePicture(),
+		CreateKey(CFilePaths.getToolKeyClavicomClosePicture(),
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
 				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION
 				);
 		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyClavicomConfigurationPicture(),
+		CreateKey(CFilePaths.getToolKeyClavicomConfigurationPicture(),
 				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION"),
 				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION
 				);
 		
-		
-		
-		
-		CreateKey(
-				myColorNormal,
-				myColorEntered,
-				myColorPressed,
-				CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
+		CreateKey(CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
 				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
 				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM
 				);
-		
-		
-		
-		
-		// ===================================================================
-		// Placement de toutes les touches
-		// ===================================================================
-	
 	}
 
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	protected void CreateKey(	Color myColorNormal,
-								Color myColorEntered,
-								Color myColorPressed,
-								String filePath,
+	protected void CreateKey(	String filePath,
 								String caption, 			// texte affiché en tip
 								TEnumCreationKey type) 		// Type de la key
 	{
@@ -221,6 +138,10 @@ public class UIKeyCreationToolbar extends JPanel
 		
 		// Création de l'objet UI
 		uiKeyLauncher = new UIKeyCreation( keyLauncher );
+		
+		// On désactive la transparence
+		uiKeyLauncher.setTransparent(false);
+		
 		add( uiKeyLauncher, BorderLayout.CENTER );
 	}
 }

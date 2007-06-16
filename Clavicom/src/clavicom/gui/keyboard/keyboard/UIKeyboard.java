@@ -48,7 +48,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
@@ -63,11 +63,12 @@ import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
+import clavicom.gui.utils.UITranslucentPanel;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
+public class UIKeyboard extends UITranslucentPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -730,6 +731,12 @@ public class UIKeyboard extends JPanel implements ComponentListener, UIKeySelect
 
 		public void mousePressed(MouseEvent arg0)
 		{
+			// Si c'est pas le clic gauche, on annule
+			if (!SwingUtilities.isLeftMouseButton(arg0))
+            {
+                return;
+            }
+			
 			// On deselectionne les keys
 			unselectAllKeys();
 			repaint();

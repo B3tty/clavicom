@@ -25,7 +25,6 @@
 
 package clavicom.gui.windows;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -47,6 +46,8 @@ import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
+import clavicom.gui.utils.UIMovingPanel;
+import clavicom.gui.utils.UITranslucentFrame;
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
@@ -86,12 +87,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{
 		// TODO : passer la couleur
-		super(.9f);
+		super(1f);
 		panelKeyboard.edit();
 		
 		// Recopie des attributs
 		this.panelKeyboard = panelKeyboard;
-		
+
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
 		panelOptions = new JPanel();
@@ -101,6 +102,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
 
+		// Application de la couleur de fond
+		mainPanel.setOpaque(false);
 		
 		// -------------- Layout du panel principal ----------------------------
 		GridBagLayout gbLayoutMain = new GridBagLayout();
@@ -108,13 +111,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Contraintes du panel d'option
 		GridBagConstraints gbConstOptions = new GridBagConstraints (	
-				0,							// Numéro de ligne
-	            0,							// Numéro de colonne
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,						// Taille horizontale relative
 	            20,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	          								// Espace autours (haut, gauche, bas, droite)
 	            new Insets(0, 0, PANEL_OPTIONS_BOTTOM_SPACE, PANEL_OPTIONS_RIGHT_SPACE),		
@@ -125,13 +128,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 		// Contraintes du panel du keyboard
 		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
-				0,							// Numéro de ligne
-	            1,							// Numéro de colonne
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,						// Taille horizontale relative
 	            80,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
@@ -145,13 +148,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			
 		// Contraintes du panel avec la liste d'outils
 		GridBagConstraints gbConstToolbar = new GridBagConstraints (	
-				0,							// Numéro de ligne
-	            0,							// Numéro de colonne
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            60,							// Taille horizontale relative
 	            100,						// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
@@ -161,13 +164,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Contraintes du panel de modification de touche
 		GridBagConstraints gbConstKeyModification = new GridBagConstraints (	
-				0,							// Numéro de ligne
-	            1,							// Numéro de colonne
+				1,							// Numéro de colonne
+	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            40,							// Taille horizontale relative
 	            100,						// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Manière d'agrandir le composant
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            							// Espace autours (haut, gauche, bas, droite)
 	            new Insets(0, PANEL_KEY_MODIFICATION_LEFT_SPACE, 0, 0),
@@ -176,9 +179,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	    );
 		gbLayoutOptions.setConstraints(panelModification, gbConstKeyModification);		
 		
-		// TEMP
-		panelModification.setBackground(Color.RED);
-		
 		// Mise en place des panels
 		panelOptions.add(creationToolbar);
 		panelOptions.add(panelModification);
@@ -186,12 +186,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		mainPanel.add(panelOptions);
 		mainPanel.add(panelKeyboard);
 		
-		// Ajout du panel principal à la frame
 		add(mainPanel);
 		
 		// Initialisation des options
 		mainPanel.setEditable(true);
 		
+		// Ajout du ComponentListener
 		addComponentListener(this);
 	}
 
