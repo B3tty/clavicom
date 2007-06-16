@@ -87,7 +87,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{
 		// TODO : passer la couleur
-		super(1f);
+		super(.98f);
 		panelKeyboard.edit();
 		
 		// Recopie des attributs
@@ -193,6 +193,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Ajout du ComponentListener
 		addComponentListener(this);
+		
+//		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey(new CKeyPrediction(Color.RED, Color.GREEN, Color.BLUE, new TPoint(15,20), new TPoint(40,60),""));
+//		panelModification.add(panelOptionKeyKeyboard);
 	}
 
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)

@@ -76,7 +76,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	final int TAILLE_CONTOUR = 3;				// Taille du contour
 	final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 	
-	final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
+	final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
 	
 	final int NORMAL_TRANSLATION_STEP = 10;
