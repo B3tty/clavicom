@@ -53,21 +53,24 @@ public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 		JPanel characters = new JPanel();
 		
 		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.NORMAL ), TLevelEnum.NORMAL ) );
+		selectCharacterNormal = new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.NORMAL ), TLevelEnum.NORMAL );
+		panellevelNormal.add( selectCharacterNormal );
 		characters.add( panellevelNormal );
 		
 		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.SHIFT ), TLevelEnum.SHIFT ) );
+		selectCharacterShift = new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.SHIFT ), TLevelEnum.SHIFT );
+		panellevelShift.add( selectCharacterShift  );
 		characters.add( panellevelShift  );
 		
 		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.ALT_GR), TLevelEnum.ALT_GR ) );
+		selectCharacterAltGr = new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.ALT_GR), TLevelEnum.ALT_GR ); 
+		panellevelAltGr.add( selectCharacterAltGr );
 		characters.add( panellevelAltGr  );
 		
 		add( characters, BorderLayout.CENTER );
 	}
 	//----------------------------------------------------------- METHODES --//	
-	public void setValuesKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet)
+	public void setValuesKeyCharacter( CKeyCharacter myKeyCharacter)
 	{
 		// Appel au père
 		setValuesKeyThreeLevel(myKeyCharacter);

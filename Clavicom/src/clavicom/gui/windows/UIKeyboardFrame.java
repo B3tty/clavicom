@@ -37,6 +37,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import clavicom.core.keygroup.CKey;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
+import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
 import clavicom.gui.edition.key.UIPanelOptionKeyClavicom;
@@ -115,8 +124,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Initialisation des objets
 		initFrame();
 		
-		// Ajout du ComponentListener
+		// Ajout aux listeners
 		addComponentListener(this);
+		panelKeyboard.addSelectionChangeListener(this);
 		
 //		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey(new CKeyPrediction(Color.RED, Color.GREEN, Color.BLUE, new TPoint(15,20), new TPoint(40,60),""));
 //		panelModification.add(panelOptionKeyKeyboard);
@@ -124,7 +134,64 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
 	{
+		if (isEdited == false)
+		{
+			return;
+		}
 		
+		if (selectedKeys.size() == 0)
+		{
+			panelModification.setVisible(false);
+			return;
+		}
+		
+		panelModification.setVisible(false);
+		CKey currentCoreKey = selectedKeys.get(0).getCoreKey();
+		
+		panelModification.removeAll();
+		
+		if (currentCoreKey instanceof CKeyCharacter)
+		{
+			panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)currentCoreKey);
+			panelModification.add(panelOptionKeyCharacter);
+		}
+		else if (currentCoreKey instanceof CKeyPrediction)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyLastWord)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyLauncher)
+		{
+			panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)currentCoreKey);
+			panelModification.add(panelOptionKeyLauncher);
+		}
+		else if (currentCoreKey instanceof CKeyLevel)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyShortcut)
+		{
+			panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)currentCoreKey);
+			panelModification.add(panelOptionKeyShortcut);
+		}
+		else if (currentCoreKey instanceof CKeyString)
+		{
+			panelOptionKeyString.setValuesKeyString((CKeyString)currentCoreKey);
+			panelModification.add(panelOptionKeyString);
+		}
+		else if (currentCoreKey instanceof CKeyClavicom)
+		{
+			panelOptionKeyClavicom.setValuesKeyClavicom((CKeyClavicom)currentCoreKey);
+			panelModification.add(panelOptionKeyClavicom);
+		}
+		
+		panelModification.setVisible(true);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

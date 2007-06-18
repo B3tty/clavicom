@@ -81,7 +81,7 @@ public class testPanelOptionKeyCharacter
 			
 			
 			UIPanelOptionKeyCharacter panelOptionCharacter = new UIPanelOptionKeyCharacter( );
-			panelOptionCharacter.setValuesKeyCharacter(keyCharacter, CCommandSet.GetInstance());
+			panelOptionCharacter.setValuesKeyCharacter(keyCharacter);
 			
 			JScrollPane sp = new JScrollPane( panelOptionCharacter );
 			

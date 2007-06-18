@@ -183,7 +183,7 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		
 		if (myKeyCharacter != null)
 		{
-			textField = new JTextField( myKeyCharacter.getCaption( level ) );
+			textField.setText(myKeyCharacter.getCaption( level ) );
 		}
 		
 		if( keyCharacter != null )
