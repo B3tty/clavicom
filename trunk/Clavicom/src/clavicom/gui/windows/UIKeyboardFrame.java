@@ -27,12 +27,15 @@ package clavicom.gui.windows;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import clavicom.core.profil.CProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
@@ -45,6 +48,7 @@ import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
+import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
@@ -53,23 +57,23 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_OPTIONS_BOTTOM_SPACE = 5;
-	private final int PANEL_OPTIONS_RIGHT_SPACE = 5;
-	private final int PANEL_KEY_MODIFICATION_LEFT_SPACE = 5;
+	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
+	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
+	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//
+	private boolean isEdited; 	// Indique si on est en édition
+	
 	// Panel principal
 	UIMovingPanel mainPanel;
 	
-	// Panels secondaires
-	JPanel panelOptions; 	// Contiendra le panel d'ajout et/ou le panel de 
-							// modification d'une touche.
-	
 	// Sous panels
 	JPanel panelModification;
+	JPanel panelBoutons;	// Contient le bouton fermer mode édition et paramètres
 	
 	// Sous panels
 	UIKeyboard panelKeyboard;			// Panel contenant le clavier
-	UIKeyCreationToolbar creationToolbar;	// Panel contenant les touches d'edition
+	UIKeyCreationToolbar panelToolbar;	// Panel contenant les touches d'edition
 	
 	// Panels de modification de touche
 	UIPanelOptionKeyboardKey panelOptionKeyKeyboard;
@@ -82,114 +86,34 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	
 	// Selections de key
 	List<UIKeyKeyboard> selectedKeys;
+	
+	// Boutons
+	JButton btFermerModeEdition, btOptionsApplication;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{
+		
 		// TODO : passer la couleur
 		super(.98f);
-		panelKeyboard.edit();
+		
+		// Mise en place du style
+		setStyle();
 		
 		// Recopie des attributs
 		this.panelKeyboard = panelKeyboard;
 
-		// Création des panels
-		mainPanel = new UIMovingPanel(this);
-		panelOptions = new JPanel();
-		panelModification = new JPanel();
+		// Création des objets
+		createObjects();
 		
-		creationToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
-													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
-													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
-
-		// Application de la couleur de fond
-		mainPanel.setOpaque(false);
-		
-		// -------------- Layout du panel principal ----------------------------
-		GridBagLayout gbLayoutMain = new GridBagLayout();
-		mainPanel.setLayout(gbLayoutMain);
-		
-		// Contraintes du panel d'option
-		GridBagConstraints gbConstOptions = new GridBagConstraints (	
-				0,							// Numéro de colonne
-	            0,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            100,						// Taille horizontale relative
-	            20,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	          								// Espace autours (haut, gauche, bas, droite)
-	            new Insets(0, 0, PANEL_OPTIONS_BOTTOM_SPACE, PANEL_OPTIONS_RIGHT_SPACE),		
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutMain.setConstraints(panelOptions, gbConstOptions);
-
-		// Contraintes du panel du keyboard
-		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
-				0,							// Numéro de colonne
-	            1,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            100,						// Taille horizontale relative
-	            80,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
-	
-		// -------------- Layout du panel d'options ----------------------------
-		GridBagLayout gbLayoutOptions = new GridBagLayout();
-		panelOptions.setLayout(gbLayoutOptions);
-			
-		// Contraintes du panel avec la liste d'outils
-		GridBagConstraints gbConstToolbar = new GridBagConstraints (	
-				0,							// Numéro de colonne
-	            0,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            60,							// Taille horizontale relative
-	            100,						// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutOptions.setConstraints(creationToolbar, gbConstToolbar);
-		
-		// Contraintes du panel de modification de touche
-		GridBagConstraints gbConstKeyModification = new GridBagConstraints (	
-				1,							// Numéro de colonne
-	            0,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            40,							// Taille horizontale relative
-	            100,						// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            							// Espace autours (haut, gauche, bas, droite)
-	            new Insets(0, PANEL_KEY_MODIFICATION_LEFT_SPACE, 0, 0),
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutOptions.setConstraints(panelModification, gbConstKeyModification);		
+		// Application des layouts
+		setAllLayouts();		
 		
 		// Mise en place des panels
-		panelOptions.add(creationToolbar);
-		panelOptions.add(panelModification);
+		setPanels();
 		
-		mainPanel.add(panelOptions);
-		mainPanel.add(panelKeyboard);
-		
-		add(mainPanel);
-		
-		// Initialisation des options
-		mainPanel.setEditable(true);
+		// Initialisation des objets
+		initFrame();
 		
 		// Ajout du ComponentListener
 		addComponentListener(this);
@@ -200,7 +124,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
 	{
-		// TODO Auto-generated method stub
+		
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -224,10 +148,181 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	{
 		// Rien à ajouter
 	}
-	public void Temp()
-	{
-		panelOptions.setVisible(true);
-	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	/**
+	 * Met en place le style de la fenêtre
+	 */
+	private void setStyle()
+	{
+		try
+		{
+			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Spécifie tous les layouts de l'application
+	 */
+	private void setAllLayouts()
+	{
+		// -------------- Layout du panel principal ----------------------------
+		GridBagLayout gbLayoutMain = new GridBagLayout();
+		mainPanel.setLayout(gbLayoutMain);
+		
+		// Contraintes du panel de modification de touche
+		GridBagConstraints gbConstKeyModification = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            2,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            0,							// Taille horizontale relative : rien car s'adapte
+	            0,							// Taille verticale relative : rien car s'adapte
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            							// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, 0, PANEL_OPTIONS_BOTTOM_SPACE, 0),
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelModification, gbConstKeyModification);
+		
+		// Contraintes du panel avec la liste d'outils
+		GridBagConstraints gbConstToolbar = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            90,							// Taille horizontale relative
+	            5,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelToolbar, gbConstToolbar);
+
+		// Contraintes du panel de boutons
+		GridBagConstraints gbConstBoutons = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            10,							// Taille horizontale relative
+	            5,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            							// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, 0, PANEL_TOOLBAR_BOTTOM_SPACE, 0),		
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelBoutons, gbConstBoutons);
+		
+		// Contraintes du panel du keyboard
+		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            2,							// Numéro de ligne
+	            2,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,						// Taille horizontale relative
+	            90,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
+	}
+	
+	/**
+	 * Créé tous les objets nécessaires à la fenêtre
+	 *
+	 */
+	private void createObjects()
+	{
+		// Création des panels
+		mainPanel = new UIMovingPanel(this);
+		panelModification = new JPanel();
+		panelBoutons = new JPanel();
+		
+		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey();
+		panelOptionKeyCharacter = new UIPanelOptionKeyCharacter();
+		panelOptionKeyClavicom = new UIPanelOptionKeyClavicom();
+		panelOptionKeyLauncher = new UIPanelOptionKeyLauncher();
+		panelOptionKeyLevel = new UIPanelOptionKeyLevel();
+		panelOptionKeyShortcut = new UIPanelOptionKeyShortCut();
+		panelOptionKeyString = new UIPanelOptionKeyString();
+		
+		
+		
+		
+		// TODO : enlever la ligne suivante
+		panelBoutons.setLayout(new GridLayout(2,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
+		
+		// Création des boutons 
+		btFermerModeEdition = new JButton(UIString.getUIString("LB_EDITION_CLOSE_EDITION"));
+		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
+		
+		panelBoutons.add(btFermerModeEdition);
+		panelBoutons.add(btOptionsApplication);
+		
+		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
+													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
+													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
+	}
+	
+	/**
+	 * Mets en place tous les panels
+	 */
+	private void setPanels()
+	{	
+		mainPanel.add(panelModification);
+		mainPanel.add(panelToolbar);
+		mainPanel.add(panelBoutons);
+		mainPanel.add(panelKeyboard);
+		
+		add(mainPanel);
+	}
+	
+	/**
+	 * Initialise les options des objets de la fenêtre
+	 */
+	private void initFrame()
+	{
+		mainPanel.setEditable(true);
+		isEdited = false;
+		edit(true);
+	}
+	
+	/**
+	 * Permet d'éditer ou non
+	 */
+	public void edit(boolean edit)
+	{
+		if (edit == true)
+		{
+			isEdited = true;
+			
+			panelKeyboard.edit();
+			panelToolbar.setVisible(true);
+			panelBoutons.setVisible(true);
+			panelModification.setVisible(true);
+		}
+		else
+		{
+			isEdited = true;
+			
+			panelKeyboard.unEdit();
+			panelToolbar.setVisible(false);
+			panelBoutons.setVisible(false);
+			panelModification.setVisible(false);			
+		}
+	}
 }

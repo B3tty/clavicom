@@ -48,11 +48,9 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyString( CKeyString myKeyString )
+	public UIPanelOptionKeyString( )
 	{
-		super( myKeyString );
-
-		keyString = myKeyString;
+		super( );
 
 		JPanel panel = new JPanel( new BorderLayout() );
 		
@@ -65,12 +63,12 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 		{
 			public void keyPressed(KeyEvent arg0)
 			{
-				
+
 			}
 
 			public void keyReleased(KeyEvent arg0)
 			{
-				keyString.setCaption( textDisplay.getText() );				
+				updateCaption(textDisplay.getText());				
 			}
 
 			public void keyTyped(KeyEvent arg0)
@@ -99,7 +97,7 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 
 			public void keyReleased(KeyEvent arg0)
 			{
-				keyString.setBaseString( textWrite.getText() );				
+				updateBaseString( textWrite.getText() );				
 			}
 
 			public void keyTyped(KeyEvent arg0)
@@ -120,6 +118,23 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValuesKeyString( CKeyString myKeyString )
+	{
+		// Appel au père
+		setValuesKeyOneLevel(myKeyString);
+		
+		keyString = myKeyString;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+	protected void updateCaption(String caption)
+	{
+		if (keyString != null)
+			keyString.setCaption( caption  );
+	}
+	
+	protected void updateBaseString(String baseString)
+	{
+		if (keyString != null)
+			keyString.setBaseString(baseString);
+	}
 }

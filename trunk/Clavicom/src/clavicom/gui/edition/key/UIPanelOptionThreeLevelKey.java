@@ -37,13 +37,19 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionThreeLevelKey( CKeyThreeLevel myKeyThreeLevel )
+	public UIPanelOptionThreeLevelKey(  )
 	{
-		super( myKeyThreeLevel );
+		super();		
+	}
+	//----------------------------------------------------------- METHODES --//	
+	
+	public void setValuesKeyThreeLevel(CKeyThreeLevel myKeyThreeLevel)
+	{
+		// Appel au père
+		setValuesKeyKeyboard(myKeyThreeLevel);
 		
 		keyThreeLevel = myKeyThreeLevel;
 	}
-	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

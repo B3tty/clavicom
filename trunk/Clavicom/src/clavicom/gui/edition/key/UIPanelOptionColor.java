@@ -47,22 +47,24 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 	TColorKeyEnum colorEnum;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIPanelOptionColor( CKey myKey, TColorKeyEnum myColorEnum )
+	public UIPanelOptionColor(  )
 	{
-		key = myKey;
-		colorEnum = myColorEnum;
-		
 		add( new JLabel( colorEnum.toString() ) );
 		
 		colorButton = new JButton();
-		colorButton.setPreferredSize( new Dimension(30,20) );
-		colorButton.setBackground( key.getColor( colorEnum ) );
-		
-		
+		colorButton.setPreferredSize( new Dimension(30,20) );		
 		add( colorButton );
 		
 		colorButton.addActionListener( this );
 	
+	}
+	
+	public void setValues(CKey myKey, TColorKeyEnum myColorEnum)
+	{
+		key = myKey;
+		colorEnum = myColorEnum;		
+		
+		colorButton.setBackground( key.getColor( colorEnum ) );
 	}
 
 	public void actionPerformed(ActionEvent arg0)

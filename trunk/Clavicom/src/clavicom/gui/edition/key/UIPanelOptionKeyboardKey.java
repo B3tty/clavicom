@@ -32,11 +32,9 @@ public class UIPanelOptionKeyboardKey extends UIPanelOptionKey
 
 	CKeyKeyboard keyboardKey;
 	
-	public UIPanelOptionKeyboardKey( CKeyKeyboard myKeyboardKey )
+	public UIPanelOptionKeyboardKey( )
 	{
-		super( myKeyboardKey );
-
-		keyboardKey = myKeyboardKey;
+		super();
 	}
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -45,6 +43,12 @@ public class UIPanelOptionKeyboardKey extends UIPanelOptionKey
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValuesKeyKeyboard(CKeyKeyboard myKeyboardKey)
+	{
+		// Appel au père
+		setValuesKey(myKeyboardKey);
+		
+		keyboardKey = myKeyboardKey;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

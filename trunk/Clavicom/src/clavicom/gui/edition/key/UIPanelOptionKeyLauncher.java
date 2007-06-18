@@ -52,23 +52,19 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyLauncher( CKeyLauncher myKeyLauncher )
+	public UIPanelOptionKeyLauncher( )
 	{
-		super( myKeyLauncher );
-		
-		keyLauncher = myKeyLauncher;
-		
+		super( );
 		
 		
 		JPanel panelGlobal = new JPanel( new BorderLayout() );
-		
 		
 		
 		JPanel panelDisplay = new JPanel();
 		
 		panelDisplay.add( new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") ) );
 		
-		textFieldDisplay = new JTextField( myKeyLauncher.getCaption() );
+		textFieldDisplay = new JTextField( );
 		textFieldDisplay.setPreferredSize( new Dimension( 270, 23 ) );
 		textFieldDisplay.addKeyListener(new KeyListener()
 		{
@@ -100,14 +96,8 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 		JPanel panel = new JPanel();
 		panel.add( new JLabel( UIString.getUIString("LB_KEYLAUNCHER_APPLICATION") ) );
 
-		if( keyLauncher != null )
-		{
-			textFieldPath = new JTextField( keyLauncher.getApplicationPath() );
-		}
-		else
-		{
-			textFieldPath = new JTextField( );
-		}
+
+		textFieldPath = new JTextField( );
 		
 		textFieldPath.setPreferredSize( new Dimension( 330, 23 ) );
 		textFieldPath.setEditable( false );
@@ -135,9 +125,20 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 		panelGlobal.add( panel, BorderLayout.CENTER );
 		
 		add( panelGlobal, BorderLayout.CENTER );
-		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValuesKeyLauncher( CKeyLauncher myKeyLauncher)
+	{
+		// Appel au père
+		setValuesKeyOneLevel(myKeyLauncher);
+		
+		keyLauncher = myKeyLauncher;
+		textFieldDisplay.setText(myKeyLauncher.getCaption());
+		
+		if( keyLauncher != null )
+		{
+			textFieldPath.setText(keyLauncher.getApplicationPath() );
+		}
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

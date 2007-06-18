@@ -38,35 +38,46 @@ public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyCharacter keyCharacter;
-
+	UIPanelSelectCharacter selectCharacterNormal;
+	UIPanelSelectCharacter selectCharacterShift;
+	UIPanelSelectCharacter selectCharacterAltGr;
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet )
+	public UIPanelOptionKeyCharacter( )
 	{
 
-		super( myKeyCharacter );
-		
-		keyCharacter = myKeyCharacter;
+		super();
+
+		CCommandSet commandSet = CCommandSet.GetInstance();
 
 		JPanel characters = new JPanel();
 		
 		JPanel panellevelNormal = new JPanel();
-		panellevelNormal.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.NORMAL, TLevelEnum.getString( TLevelEnum.NORMAL ) ) );
+		panellevelNormal.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.NORMAL ), TLevelEnum.NORMAL ) );
 		characters.add( panellevelNormal );
 		
 		JPanel panellevelShift = new JPanel();
-		panellevelShift.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.SHIFT, TLevelEnum.getString( TLevelEnum.SHIFT ) ) );
+		panellevelShift.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.SHIFT ), TLevelEnum.SHIFT ) );
 		characters.add( panellevelShift  );
 		
 		JPanel panellevelAltGr = new JPanel();
-		panellevelAltGr.add( new UIPanelSelectCharacter( keyCharacter, commandSet, TLevelEnum.ALT_GR, TLevelEnum.getString( TLevelEnum.ALT_GR ) ) );
+		panellevelAltGr.add( new UIPanelSelectCharacter( commandSet,  TLevelEnum.getString( TLevelEnum.ALT_GR), TLevelEnum.ALT_GR ) );
 		characters.add( panellevelAltGr  );
 		
 		add( characters, BorderLayout.CENTER );
-		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValuesKeyCharacter( CKeyCharacter myKeyCharacter, CCommandSet commandSet)
+	{
+		// Appel au père
+		setValuesKeyThreeLevel(myKeyCharacter);
+		
+		keyCharacter = myKeyCharacter;
+		selectCharacterNormal.setValues(myKeyCharacter);
+		selectCharacterShift.setValues(myKeyCharacter);
+		selectCharacterAltGr.setValues(myKeyCharacter);
+		
+	}
 
 
 	//--------------------------------------------------- METHODES PRIVEES --//

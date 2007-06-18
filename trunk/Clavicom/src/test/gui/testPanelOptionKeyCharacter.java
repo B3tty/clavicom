@@ -54,17 +54,24 @@ public class testPanelOptionKeyCharacter
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
 			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
 			
+			
 			// Chemins
-			String input = "Ressources\\Temp\\profil.xml";
+			String input = "Ressources\\Temp\\profil2.xml";
 			
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
+			profil.loadProfileLanguageUIName();
+			profil.loadProfileCommandSetName();
+			profil.loadProfileShortCutName();
+			profil.loadProfile();
+			
 			
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+			
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
@@ -73,7 +80,9 @@ public class testPanelOptionKeyCharacter
 			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
 			
 			
-			UIPanelOptionKeyCharacter panelOptionCharacter = new UIPanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
+			UIPanelOptionKeyCharacter panelOptionCharacter = new UIPanelOptionKeyCharacter( );
+			panelOptionCharacter.setValuesKeyCharacter(keyCharacter, CCommandSet.GetInstance());
+			
 			JScrollPane sp = new JScrollPane( panelOptionCharacter );
 			
 			JFrame frame = new JFrame();

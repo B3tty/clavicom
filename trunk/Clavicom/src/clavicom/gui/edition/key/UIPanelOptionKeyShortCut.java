@@ -26,12 +26,14 @@
 package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
@@ -48,18 +50,30 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyShortCut( CKeyShortcut myKeyShortCut, CShortcutSet shortCutSet )
+	public UIPanelOptionKeyShortCut()
 	{
-		super( myKeyShortCut );
-
-		keyShortCut = myKeyShortCut;
+		super();
 
 		JPanel panel = new JPanel(  );
 		JPanel panel2 = new JPanel( new BorderLayout() );
 		
 		panel2.add( new JLabel( UIString.getUIString("LB_KEYSHORCUT_SHORTCUT")), BorderLayout.NORTH );
+
+		JScrollPane sp = new JScrollPane( list );
 		
-		list = new JList( shortCutSet.getValues().toArray() );
+		panel2.add( sp, BorderLayout.CENTER );
+		panel.add( panel2 );
+		add( panel, BorderLayout.CENTER );
+		
+	}
+	//----------------------------------------------------------- METHODES --//	
+	public void setValuesKeyShortcut(CKeyShortcut myKeyShortCut)
+	{
+		// Appel au père 
+		setValuesKeyOneLevel(myKeyShortCut);
+		
+		keyShortCut = myKeyShortCut;
+		list = new JList( CShortcutSet.GetInstance().getValues().toArray() );
 		
 		if( keyShortCut != null )
 		{
@@ -83,15 +97,6 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 				}
 			}
 		});
-
-		JScrollPane sp = new JScrollPane( list );
-		
-		panel2.add( sp, BorderLayout.CENTER );
-		panel.add( panel2 );
-		add( panel, BorderLayout.CENTER );
-		
 	}
-	//----------------------------------------------------------- METHODES --//	
-
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

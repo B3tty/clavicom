@@ -74,7 +74,9 @@ public class testPanelOptionKeyLauncher
 			CKeyLauncher keyLauncher = (CKeyLauncher)list.getKeyKeyboard( 3 );
 			
 			
-			UIPanelOptionKeyLauncher panelOptionclavicom = new UIPanelOptionKeyLauncher( keyLauncher );
+			UIPanelOptionKeyLauncher panelOptionclavicom = new UIPanelOptionKeyLauncher();
+			panelOptionclavicom.setValuesKeyLauncher(keyLauncher);
+			
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();

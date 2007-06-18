@@ -70,7 +70,9 @@ public class testPanelOptionKeyString
 			CKeyString keyString = (CKeyString)list.getKeyKeyboard( 2 );
 			
 			
-			UIPanelOptionKeyString panelOptionclavicom = new UIPanelOptionKeyString( keyString );
+			UIPanelOptionKeyString panelOptionclavicom = new UIPanelOptionKeyString(  );
+			panelOptionclavicom.setValuesKeyString(keyString);
+			
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();

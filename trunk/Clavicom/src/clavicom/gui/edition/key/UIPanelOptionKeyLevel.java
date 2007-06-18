@@ -47,11 +47,9 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyLevel( CKeyLevel myKeyLevel )
+	public UIPanelOptionKeyLevel()
 	{
-		super( myKeyLevel );
-
-		keyLevel = myKeyLevel;
+		super( );
 
 		JPanel panel = new JPanel();
 		
@@ -61,8 +59,6 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 		
 		combo.addActionListener( this );
 		
-		combo.setSelectedItem( keyLevel.GetLevel() );
-		
 		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
 		panel.add( combo );
 
@@ -70,6 +66,15 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 		
 	}
 	//----------------------------------------------------------- METHODES --//
+	public void setValuesKeyLevel( CKeyLevel myKeyLevel )
+	{
+		// Appel au père
+		setValuesKeyOneLevel(myKeyLevel);
+		
+		keyLevel = myKeyLevel;
+		
+		combo.setSelectedItem( keyLevel.GetLevel() );
+	}
 	
 	public void actionPerformed(ActionEvent arg0)
 	{

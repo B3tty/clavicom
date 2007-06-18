@@ -41,12 +41,13 @@ public class UIPanelOptionKey extends JPanel
 
 	//---------------------------------------------------------- VARIABLES --//
 	CKey key;
+	UIPanelOptionColor panelColorClicked;
+	UIPanelOptionColor panelColorEntered;
+	UIPanelOptionColor panelColorNormal;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIPanelOptionKey( CKey myKey )
+	public UIPanelOptionKey( )
 	{
-		key = myKey;
-		
 		setLayout( new BorderLayout() );
 		
 		JPanel panelGlobal = new JPanel();
@@ -54,9 +55,9 @@ public class UIPanelOptionKey extends JPanel
 		JPanel colors = new JPanel();
 		
 		// création des trois panels des couleurs et ajout
-		UIPanelOptionColor panelColorClicked = new UIPanelOptionColor( key, TColorKeyEnum.PRESSED );
-		UIPanelOptionColor panelColorEntered = new UIPanelOptionColor( key, TColorKeyEnum.ENTERED );
-		UIPanelOptionColor panelColorNormal = new UIPanelOptionColor( key, TColorKeyEnum.NORMAL );
+		panelColorClicked = new UIPanelOptionColor();
+		panelColorEntered = new UIPanelOptionColor();
+		panelColorNormal = new UIPanelOptionColor();
 		
 		colors.add( panelColorNormal );
 		colors.add( panelColorEntered );
@@ -73,7 +74,15 @@ public class UIPanelOptionKey extends JPanel
 	}
 
 	//----------------------------------------------------------- METHODES --//
-	
+	public void setValuesKey( CKey myKey)
+	{
+		// Affectation de la key
+		key = myKey;		
+		
+		panelColorClicked.setValues( key, TColorKeyEnum.PRESSED );
+		panelColorEntered.setValues( key, TColorKeyEnum.ENTERED );
+		panelColorNormal.setValues( key, TColorKeyEnum.NORMAL );
+	}
 	
 
 	//--------------------------------------------------- METHODES PRIVEES --//

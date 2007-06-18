@@ -70,7 +70,9 @@ public class testPanelOptionKeyLevel
 			CKeyLevel keyLevel = (CKeyLevel)list.getKeyKeyboard( 1 );
 			
 			
-			UIPanelOptionKeyLevel panelOptionclavicom = new UIPanelOptionKeyLevel( keyLevel );
+			UIPanelOptionKeyLevel panelOptionclavicom = new UIPanelOptionKeyLevel();
+			panelOptionclavicom.setValuesKeyLevel( keyLevel );
+			
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();
