@@ -44,12 +44,14 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 	//---------------------------------------------------------- VARIABLES --//	
 	CKey key;
 	JButton colorButton;
+	JLabel lColor;
 	TColorKeyEnum colorEnum;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIPanelOptionColor(  )
 	{
-		add( new JLabel( colorEnum.toString() ) );
+		lColor = new JLabel();
+		add(lColor);
 		
 		colorButton = new JButton();
 		colorButton.setPreferredSize( new Dimension(30,20) );		
@@ -62,13 +64,14 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 	public void setValues(CKey myKey, TColorKeyEnum myColorEnum)
 	{
 		key = myKey;
-		colorEnum = myColorEnum;		
+		colorEnum = myColorEnum;	
+		lColor.setText(colorEnum.toString());
 		
 		colorButton.setBackground( key.getColor( colorEnum ) );
 	}
 
 	public void actionPerformed(ActionEvent arg0)
-	{
+	{			
 		Color newColor = JColorChooser.showDialog( this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
 		
 		if( newColor != null )
