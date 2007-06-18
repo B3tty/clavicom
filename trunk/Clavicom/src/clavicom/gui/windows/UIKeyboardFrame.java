@@ -25,14 +25,18 @@
 
 package clavicom.gui.windows;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -47,6 +51,8 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
+
+import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
 import clavicom.gui.edition.key.UIPanelOptionKeyClavicom;
 import clavicom.gui.edition.key.UIPanelOptionKeyLauncher;
@@ -65,13 +71,18 @@ import clavicom.gui.utils.UITranslucentFrame;
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	private final int PANEL_OPTIONS_BOTTOM_SPACE = 5;
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
 	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
 	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//
 	private boolean isEdited; 	// Indique si on est en édition
+	
+	// Frame d'option
+	UIModificationKeyDialog frameOptionKey;
+	
+	// Frame d'options de l'application
+	UIFrameModificationProfil frameOptionApplication;
 	
 	// Panel principal
 	UIMovingPanel mainPanel;
@@ -97,12 +108,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	List<UIKeyKeyboard> selectedKeys;
 	
 	// Boutons
-	JButton btFermerModeEdition, btOptionsApplication;
-
+	JButton btFermerModeEdition, btOptionsApplication, btEditionKey;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
-	{
-		
+	{		
 		// TODO : passer la couleur
 		super(.98f);
 		
@@ -141,7 +150,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		if (selectedKeys.size() == 0)
 		{
-			panelModification.setVisible(false);
+			frameOptionKey.setVisible(false);
 			return;
 		}
 		
@@ -241,27 +250,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		GridBagLayout gbLayoutMain = new GridBagLayout();
 		mainPanel.setLayout(gbLayoutMain);
 		
-		// Contraintes du panel de modification de touche
-		GridBagConstraints gbConstKeyModification = new GridBagConstraints (	
-				0,							// Numéro de colonne
-	            0,							// Numéro de ligne
-	            2,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            0,							// Taille horizontale relative : rien car s'adapte
-	            0,							// Taille verticale relative : rien car s'adapte
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            							// Espace autours (haut, gauche, bas, droite)
-	            new Insets(0, 0, PANEL_OPTIONS_BOTTOM_SPACE, 0),
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutMain.setConstraints(panelModification, gbConstKeyModification);
-		
 		// Contraintes du panel avec la liste d'outils
 		GridBagConstraints gbConstToolbar = new GridBagConstraints (	
 				0,							// Numéro de colonne
-	            1,							// Numéro de ligne
+	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            90,							// Taille horizontale relative
@@ -277,7 +269,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Contraintes du panel de boutons
 		GridBagConstraints gbConstBoutons = new GridBagConstraints (	
 				1,							// Numéro de colonne
-	            1,							// Numéro de ligne
+	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            10,							// Taille horizontale relative
@@ -294,10 +286,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Contraintes du panel du keyboard
 		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
 				0,							// Numéro de colonne
-	            2,							// Numéro de ligne
+	            1,							// Numéro de ligne
 	            2,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            100,						// Taille horizontale relative
+	            95,						// Taille horizontale relative
 	            90,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
@@ -306,6 +298,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	            0							// Espace intérieur en Y
 	    );
 		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
+		
+		// -------------- Layout de la frame d'options -------------------------
+		panelModification.setLayout(new BorderLayout());		
 	}
 	
 	/**
@@ -313,11 +308,15 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	 *
 	 */
 	private void createObjects()
-	{
+	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
 		panelModification = new JPanel();
 		panelBoutons = new JPanel();
+		
+		// Création des frames
+		frameOptionKey = new UIModificationKeyDialog(panelModification);
+		frameOptionApplication = new UIFrameModificationProfil();
 		
 		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey();
 		panelOptionKeyCharacter = new UIPanelOptionKeyCharacter();
@@ -328,17 +327,18 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		panelOptionKeyString = new UIPanelOptionKeyString();
 		
 		
-		
-		
 		// TODO : enlever la ligne suivante
-		panelBoutons.setLayout(new GridLayout(2,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
+		panelBoutons.setLayout(new GridLayout(3,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
 		
 		// Création des boutons 
 		btFermerModeEdition = new JButton(UIString.getUIString("LB_EDITION_CLOSE_EDITION"));
 		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
+		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
+		
 		
 		panelBoutons.add(btFermerModeEdition);
 		panelBoutons.add(btOptionsApplication);
+		panelBoutons.add(btEditionKey);
 		
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
@@ -350,7 +350,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	 */
 	private void setPanels()
 	{	
-		mainPanel.add(panelModification);
+		// Frame principale
 		mainPanel.add(panelToolbar);
 		mainPanel.add(panelBoutons);
 		mainPanel.add(panelKeyboard);
@@ -366,6 +366,22 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		mainPanel.setEditable(true);
 		isEdited = false;
 		edit(true);
+		
+		// Ajout des actions aux boutons
+		btEditionKey.setAction(new BtEditionKeyAction(UIString.getUIString("LB_EDITION_EDIT_KEY")));
+		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
+		btOptionsApplication.setAction(new BtOptionsApplicationAction(UIString.getUIString("LB_EDITION_OPEN_OPTIONS")));
+		
+		// Frame d'option de touche
+		frameOptionKey.setSize(new Dimension (640,480));
+		frameOptionKey.setModal(true);
+		frameOptionKey.setVisible(false);
+		
+		// Frame d'options de l'application
+		frameOptionApplication.setSize(new Dimension (500,600));
+		frameOptionApplication.setResizable(false);
+		frameOptionApplication.setModal(true);
+		frameOptionApplication.setVisible(false);
 	}
 	
 	/**
@@ -390,6 +406,48 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelToolbar.setVisible(false);
 			panelBoutons.setVisible(false);
 			panelModification.setVisible(false);			
+		}
+		
+	}
+	
+	// ------- Actions des boutons
+	protected class BtEditionKeyAction extends AbstractAction
+	{
+		public BtEditionKeyAction(String caption)
+		{
+			super(caption);
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			frameOptionKey.setVisible(true);
+		}
+		
+	}
+	
+	protected class BtOptionsApplicationAction extends AbstractAction
+	{
+		public BtOptionsApplicationAction(String caption)
+		{
+			super(caption);
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			frameOptionApplication.setVisible(true);
+		}
+	}
+	
+	protected class BtFermerModeEditionAction extends AbstractAction
+	{
+		public BtFermerModeEditionAction(String caption)
+		{
+			super(caption);
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// TODO
 		}
 	}
 }
