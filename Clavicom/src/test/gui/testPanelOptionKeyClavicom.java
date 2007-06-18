@@ -70,7 +70,9 @@ public class testPanelOptionKeyClavicom
 			CKeyClavicom keyClavicom = (CKeyClavicom)list.getKeyKeyboard( 7 );
 			
 			
-			UIPanelOptionKeyClavicom panelOptionclavicom = new UIPanelOptionKeyClavicom( keyClavicom );
+			UIPanelOptionKeyClavicom panelOptionclavicom = new UIPanelOptionKeyClavicom( );
+			panelOptionclavicom.setValuesKeyClavicom(keyClavicom);
+			
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();

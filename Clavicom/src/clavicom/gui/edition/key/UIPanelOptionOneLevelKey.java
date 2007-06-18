@@ -38,14 +38,16 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionOneLevelKey(CKeyOneLevel myKeyOneLevel)
+	public UIPanelOptionOneLevelKey()
 	{
-		super( myKeyOneLevel );
-		
-		keyOneLevel = myKeyOneLevel;
+		super( );
 	}
 
 	//----------------------------------------------------------- METHODES --//	
+	public void setValuesKeyOneLevel(CKeyOneLevel myKeyOneLevel)
+	{
+		keyOneLevel = myKeyOneLevel;	
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

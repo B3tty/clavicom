@@ -392,6 +392,8 @@
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
-
+	
+	<message id = "LB_EDITION_CLOSE_EDITION">Fermer</message>
+	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
 	
 </language>

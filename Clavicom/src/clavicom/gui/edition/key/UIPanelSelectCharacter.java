@@ -59,16 +59,13 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 	TLevelEnum level;
 	JComboBox comboSection;
 	JList list;
-
+	CCommandSet commandSet;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIPanelSelectCharacter( 
-			CKeyCharacter myKeyCharacter, 
-			CCommandSet commandSet,
-			TLevelEnum myLevel,
-			String type)
+	public UIPanelSelectCharacter(CCommandSet myCommandSet, String type, TLevelEnum myLevel)
 	{
-		keyCharacter = myKeyCharacter;
 		level = myLevel;
+		commandSet = myCommandSet;
 		
 		setLayout( new BorderLayout() );
 		
@@ -76,14 +73,8 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		JPanel p_caption = new JPanel( );
 		JLabel label = new JLabel( UIString.getUIString("LB_KEYCHARACTER_CAPTION") );
 		
-		if( keyCharacter == null )
-		{
-			textField = new JTextField();
-		}
-		else
-		{
-			textField = new JTextField( myKeyCharacter.getCaption( level ) );
-		}
+		textField = new JTextField();
+		
 		textField.addKeyListener(new KeyListener()
 		{
 			public void keyPressed(KeyEvent arg0)
@@ -93,7 +84,7 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 
 			public void keyReleased(KeyEvent arg0)
 			{
-				keyCharacter.setCaption( textField.getText(), level );				
+				updateCaption(textField.getText());				
 			}
 
 			public void keyTyped(KeyEvent arg0)
@@ -113,21 +104,7 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		// Ajout des box de séléction
 		add ( CreateListViewSections( commandSet ), BorderLayout.CENTER ) ;
 		
-		if( keyCharacter != null )
-		{
-			if( keyCharacter.getCommand( level ) != null )
-			{
-				InitialiseCombo( commandSet, keyCharacter, level );
-			}
-		}
-		
 		setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), type ));
-		
-		// initialisation de la list
-		if( keyCharacter.getCommand( level ) != null )
-		{
-			list.setSelectedValue( keyCharacter.getCommand( level ) , true);
-		}
 	}
 
 	private void InitialiseCombo(CCommandSet commandSet, CKeyCharacter keyCharacter2, TLevelEnum level2)
@@ -200,6 +177,34 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 	}
 
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValues( CKeyCharacter myKeyCharacter)
+	{
+		keyCharacter = myKeyCharacter;
+		
+		if (myKeyCharacter != null)
+		{
+			textField = new JTextField( myKeyCharacter.getCaption( level ) );
+		}
+		
+		if( keyCharacter != null )
+		{
+			if( keyCharacter.getCommand( level ) != null )
+			{
+				InitialiseCombo( commandSet, keyCharacter, level );
+			}
+		}
+		
+		// initialisation de la list
+		if( keyCharacter.getCommand( level ) != null )
+		{
+			list.setSelectedValue( keyCharacter.getCommand( level ) , true);
+		}
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	protected void updateCaption(String caption)
+	{
+		if((keyCharacter != null) && (level != null))
+			keyCharacter.setCaption( caption, level );
+	}
 }

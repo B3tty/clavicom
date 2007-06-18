@@ -49,25 +49,16 @@ public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implement
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionKeyClavicom( CKeyClavicom myKeyClavicom )
+	public UIPanelOptionKeyClavicom( )
 	{
-		super( myKeyClavicom );
-		
-		keyClavicom = myKeyClavicom;
+		super( );
+
 		
 		comboBox = new JComboBox();
 		comboBox.addItem( TKeyClavicomActionType.NONE );
 		comboBox.addItem( TKeyClavicomActionType.OPEN_CONFIGURATION );
 		comboBox.addItem( TKeyClavicomActionType.CLOSE_APPLICATION );
 		comboBox.addItem( TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE );
-		
-		if( (keyClavicom != null) )
-		{
-			if( keyClavicom.getAction() != null )
-			{
-				comboBox.setSelectedItem( TKeyClavicomActionType.getString( keyClavicom.getAction() ) );
-			}
-		}
 		
 		comboBox.addActionListener( this );
 		
@@ -82,7 +73,22 @@ public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implement
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
-
+	public void setValuesKeyClavicom(CKeyClavicom myKeyClavicom )
+	{
+		// Appel au père
+		setValuesKeyOneLevel(myKeyClavicom);
+		
+		keyClavicom = myKeyClavicom;
+		
+		if( (keyClavicom != null) )
+		{
+			if( keyClavicom.getAction() != null )
+			{
+				comboBox.setSelectedItem( TKeyClavicomActionType.getString( keyClavicom.getAction() ) );
+			}
+		}
+	}
+	
 	public void actionPerformed(ActionEvent arg0)
 	{
 		// si une action a été séléctionnée

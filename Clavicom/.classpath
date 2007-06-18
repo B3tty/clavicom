@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="libs/jdic.jar"/>
 	<classpathentry kind="lib" path="libs/jna.jar"/>
 	<classpathentry kind="lib" path="libs/examples.jar"/>
-	<classpathentry kind="lib" path="libs/syntheticaBlackStar.jar"/>
 	<classpathentry kind="lib" path="libs/synthetica.jar"/>
+	<classpathentry kind="lib" path="libs/syntheticaBlueMoon.jar"/>
 	<classpathentry kind="output" path="class"/>
 </classpath>

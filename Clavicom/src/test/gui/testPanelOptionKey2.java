@@ -68,7 +68,8 @@ public class testPanelOptionKey2
 		CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
 		
 		
-		UIPanelOptionKey panelOptionColor = new UIPanelOptionKey( keyCharacter );
+		UIPanelOptionKey panelOptionColor = new UIPanelOptionKey(  );
+		panelOptionColor.setValuesKey(keyCharacter);
 		
 		JFrame frame = new JFrame();
 		frame.setSize(500,500);

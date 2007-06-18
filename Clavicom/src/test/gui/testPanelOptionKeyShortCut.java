@@ -74,7 +74,9 @@ public class testPanelOptionKeyShortCut
 			
 			
 			
-			UIPanelOptionKeyShortCut panelOptionclavicom = new UIPanelOptionKeyShortCut( keyShortCut, CShortcutSet.GetInstance() );
+			UIPanelOptionKeyShortCut panelOptionclavicom = new UIPanelOptionKeyShortCut(  );
+			panelOptionclavicom.setValuesKeyShortcut(keyShortCut);
+			
 			JScrollPane sp = new JScrollPane( panelOptionclavicom );
 			
 			JFrame frame = new JFrame();
