@@ -260,6 +260,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			{
 				imgPressed = recreateNormalImage(getCoreKey().getColor(colorType));
 			}
+			
+			// On reselectionne la bonne image
+			selectGoodImage();
+			
+			// Redessin
+			repaint();
 		}
 
 		public void captionChanged()

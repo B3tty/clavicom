@@ -395,5 +395,15 @@
 	
 	<message id = "LB_EDITION_CLOSE_EDITION">Fermer</message>
 	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
+	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
+	
+	<message id = "LB_EDITION_OPTION_KEY_TITLE">Edition de touche</message>
+	<message id = "LB_EDITION_OPTION_KEY_OK">OK</message>
+	
+	<message id = "LB_EDITION_OPTION_APPLICATION_OK">OK</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_CANCEL">Annuler</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_APPLY">Appliquer</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_TITLE">Options de l'application</message>
+	
 	
 </language>

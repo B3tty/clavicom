@@ -27,6 +27,7 @@ package splashscreen;
 
 import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -64,6 +65,8 @@ public class UISplashScreen extends JWindow implements Runnable
 	private long startTime, stopTime;	// Temps au début, et à la fermeture
 	private long minimumTime;			// Temps d'attente minimum total
 	
+	private Cursor startCursor;			// Curseur qui était au demarrage
+	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	/**
@@ -80,6 +83,10 @@ public class UISplashScreen extends JWindow implements Runnable
 		// Sauvegarde du temps
 		startTime = System.currentTimeMillis(); 
 		
+		// Changement du curseur (sablier)
+		startCursor = getCursor();
+		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+				
 		// Affichage du splashscreen
 		run();
 	}
@@ -163,12 +170,15 @@ public class UISplashScreen extends JWindow implements Runnable
 					System.out.println("Sleep raté...");
 				}
 			}
-			dispose(); 
+			dispose();
 		}
 		else
 		{
 			System.out.println("Splash string détruit mais mal initialisé...");
 		}
+		
+		// Changement du curseur (celui de départ)
+		setCursor(startCursor);
 	}
 
 	/**

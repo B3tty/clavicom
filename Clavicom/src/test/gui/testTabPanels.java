@@ -25,12 +25,11 @@
 
 package test.gui;
 
-import javax.swing.JFrame;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.configuration.GlobalProfilModification;
+import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 
@@ -59,6 +58,7 @@ public class testTabPanels
 			// Chargement du profil
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
+
 			
 			
 			profil.loadProfileLanguageUIName();
@@ -66,16 +66,10 @@ public class testTabPanels
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			
 
-			GlobalProfilModification panelGlobal = new GlobalProfilModification( profil );
+			UIFrameModificationProfil panelGlobal = new UIFrameModificationProfil();
 			
-			JFrame frame = new JFrame();
-			frame.setSize(500,800);
-			frame.add( panelGlobal );
-			
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setVisible(true);
+			panelGlobal.setVisible(true);
 			
 			
 		}

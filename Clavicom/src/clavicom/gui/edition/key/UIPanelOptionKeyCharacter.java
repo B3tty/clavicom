@@ -70,6 +70,7 @@ public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 		add( characters, BorderLayout.CENTER );
 	}
 	//----------------------------------------------------------- METHODES --//	
+	
 	public void setValuesKeyCharacter( CKeyCharacter myKeyCharacter)
 	{
 		// Appel au père
