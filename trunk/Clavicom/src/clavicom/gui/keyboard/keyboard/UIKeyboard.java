@@ -675,6 +675,8 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		
 		// On vide la selection
 		selectedKeys.clear();
+		
+		fireSelectionChanged();
 	}
 	
 	private KeyListener keyListener = new KeyListener()
