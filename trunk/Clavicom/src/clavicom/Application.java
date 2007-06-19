@@ -37,6 +37,7 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
@@ -134,6 +135,10 @@ public class Application
 		// Chargement du moteur de prédiction
 		splash.newStep("Loading prediction engine...");
 		loadPredictionEngine();
+
+		// Chargement du moteur de prédiction
+		splash.newStep("Loading key creation engine...");
+		loadKeyCreationEngine();
 		
 		// Création des fenêtres
 		splash.newStep("Creating windows...");
@@ -143,7 +148,7 @@ public class Application
 		UIKeyboard uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
 		
-		mainFrame.setSize(1000,600);
+		mainFrame.setSize(800,400);
 		
 		splash.newStep("Load complete !");
 		splash.close();
@@ -357,5 +362,10 @@ public class Application
 			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1"),
 										ex.getMessage());
 		}
+	}
+	
+	private static void loadKeyCreationEngine()
+	{
+		UIKeyCreationEngine.createInstance();
 	}
 }

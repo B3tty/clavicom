@@ -38,6 +38,17 @@ public class CKeyLastWord extends CKeyDynamicString
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyLastWord(Color myColorNormal, Color myColorClicked,
+			Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
+	{
+		this(	myColorNormal, 
+				myColorClicked,
+				myColorEntered, 
+				myPointMin, 
+				myPointMax,
+				"");
+	}
+	
+	public CKeyLastWord(Color myColorNormal, Color myColorClicked,
 			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
 			String myCaption)
 	{

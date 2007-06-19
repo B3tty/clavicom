@@ -106,7 +106,6 @@ public class UIMovingPanel extends UITranslucentPanel
 		{
 			// Rien à faire
 			//resizableBorder.setVisible(true);
-			//repaint();
 		}
 		
 		public void mouseMoved(MouseEvent me)

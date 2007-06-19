@@ -27,7 +27,6 @@ package clavicom.core.engine.mouse;
 
 
 import java.awt.AWTException;
-import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

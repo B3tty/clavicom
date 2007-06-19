@@ -124,6 +124,9 @@ public class CLastWordEngine extends CStringsEngine implements
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
+		if(keyCharacter.getCommand(levelEngine.getCurrentLevel()) == null)
+			return;
+		
 		CCommand command = keyCharacter.getCommand( levelEngine.getCurrentLevel() );
 		String character = command.GetSearchString();
 		
@@ -153,7 +156,7 @@ public class CLastWordEngine extends CStringsEngine implements
 	
 
 	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
-	{
+	{		
 		// si la chaine courrante n'est pas vide
 		if( ! currentString.equals("") )
 		{

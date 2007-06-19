@@ -46,7 +46,8 @@ public class CKeyClavicom extends CKeyOneLevel
 	
 	protected EventListenerList listenerList;
 	
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+		
 	public CKeyClavicom(
 			Color myColorNormal, 
 			Color myColorClicked , 

@@ -50,6 +50,22 @@ public class CKeyShortcut extends CKeyOneLevel
 			Color myColorClicked , 
 			Color myColorEntered , 
 			TPoint myPointMin, 
+			TPoint myPointMax)
+	{
+		this(	myColorNormal, 
+				myColorClicked , 
+				myColorEntered , 
+				myPointMin, 
+				myPointMax,
+				"",
+				null);
+	}
+	
+	public CKeyShortcut(
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered , 
+			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption,
 			CCommand myCommand)

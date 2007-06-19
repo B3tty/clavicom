@@ -31,6 +31,7 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
@@ -62,8 +63,6 @@ public class UIPanelOptionKey extends JPanel
 		colors.add( panelColorNormal );
 		colors.add( panelColorEntered );
 		colors.add( panelColorClicked );
-		
-		
 		
 		colors.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
 				UIString.getUIString("LB_COLOR_COLOR_MANAGEMENT")) );

@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CKeyCommand.java
-			Creation date		: 24 mai 07
+			Filename			: UIKeyCreationEngine.java
+			Creation date		: 19 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.core.key.keyboard.key
+			Package				: clavicom.gui.engine
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,47 +23,43 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.keygroup.keyboard.key;
-
-import java.awt.Color;
+package clavicom.gui.engine;
 
 import javax.swing.event.EventListenerList;
-import org.jdom.Element;
+
 import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.tools.TEnumCreationKey;
-import clavicom.tools.TPoint;
 
-public class CKeyCreation extends CKeyOneLevel
-{	
+public class UIKeyCreationEngine implements OnClickKeyCreationListener
+{
 	//--------------------------------------------------------- CONSTANTES --//
+	private static UIKeyCreationEngine instance;
 
 	//---------------------------------------------------------- VARIABLES --//	
-
-	TEnumCreationKey keyType;
-	
 	protected EventListenerList listenerList;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyCreation(	Color myColorNormal, 
-							Color myColorClicked , 
-							Color myColorEntered , 
-							TPoint myPointMin, 
-							TPoint myPointMax,
-							String myCaption,
-							TEnumCreationKey myKeyType)
+	private UIKeyCreationEngine()
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
-		
-		keyType = myKeyType;
-		
 		listenerList = new EventListenerList();
+	};
+
+	//----------------------------------------------------------- METHODES --//	
+	public static UIKeyCreationEngine getInstance ()
+	{
+		return instance;
 	}
 	
-	//----------------------------------------------------------- METHODES --//	
+	public static void createInstance ()
+	{
+		instance = new UIKeyCreationEngine();
+	}
+
+	public void onClickKeyCreation(TEnumCreationKey type)
+	{
+		fireOnClickKeyCreation(type);
+	}
 	
-	
-	
-	// Listener ==============================================
 	public void addOnClickKeyCreationListener(OnClickKeyCreationListener l)
 	{
 		this.listenerList.add(OnClickKeyCreationListener.class, l);
@@ -74,7 +70,9 @@ public class CKeyCreation extends CKeyOneLevel
 		this.listenerList.remove(OnClickKeyCreationListener.class, l);
 	}
 
-	protected void fireOnClickKeyCreation()
+	//--------------------------------------------------- METHODES PRIVEES --//
+
+	protected void fireOnClickKeyCreation(TEnumCreationKey keyType)
 	{
 		OnClickKeyCreationListener[] listeners = (OnClickKeyCreationListener[]) listenerList
 				.getListeners(OnClickKeyCreationListener.class);
@@ -83,49 +81,4 @@ public class CKeyCreation extends CKeyOneLevel
 			listeners[i].onClickKeyCreation(keyType);
 		}
 	}
-	// fin Listener ============================================
-	
-
-	@Override
-	protected Boolean toBeSave()
-	{
-		return false;
-	}
-
-	@Override
-	public void Click()
-	{
-		// On balance un evenement
-		fireOnClickKeyCreation();
-	}
-
-	@Override
-	public void completeNodeSpecific2(Element eltKeyNode) throws Exception
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getElementName()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public TEnumCreationKey getKeyType()
-	{
-		return keyType;
-	}
-
-	public void setKeyType(TEnumCreationKey keyType)
-	{
-		this.keyType = keyType;
-	}
-	
-	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
-	
 }
-

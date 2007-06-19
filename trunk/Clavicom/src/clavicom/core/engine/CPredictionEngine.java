@@ -139,6 +139,9 @@ public class CPredictionEngine extends CStringsEngine implements
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
+		if (keyCharacter.getCommand(levelEngine.getCurrentLevel()) == null)
+			return;
+		
 		CCommand command = keyCharacter.getCommand( levelEngine.getCurrentLevel() );
 		String character = command.GetSearchString();
 		

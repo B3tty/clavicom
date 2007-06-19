@@ -82,6 +82,9 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 
 	public void onClickKeyLauncher(CKeyLauncher keyLauncher)
 	{
+		if(keyLauncher.getApplicationPath() == "")
+			return;
+		
 		// lancement de l'application
 		try
 		{
