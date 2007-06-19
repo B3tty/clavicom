@@ -201,6 +201,7 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 		return panelDefaultMouse;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void stopMouseHook()
 	{
 		threadMouseHook.stop();
