@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UIKeyKeyboardKey.java
-			Creation date		: 6 juin 07
+			Filename			: UIPanelModificationKey.java
+			Creation date		: 19 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.keyboard.key
+			Package				: clavicom.gui.edition.key2
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,40 +23,29 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.keyboard.key;
+package clavicom.gui.edition.key2;
 
-import javax.swing.event.EventListenerList;
-import clavicom.core.keygroup.CKey;
-import clavicom.core.keygroup.keyboard.key.CKeyCreation;
+import clavicom.gui.edition.key.UIPanelOptionColor;
 
-public class UIKeyCreation extends UIKeyOneLevel
+public class UIPanelModificationKey 
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	CKeyCreation coreKey;
-	
-	EventListenerList listenerListCreation;
-	
+	protected UIPanelOptionColor panelColorPressed;
+	protected UIPanelOptionColor panelColorEntered;
+	protected UIPanelOptionColor panelColorNormal;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyCreation(CKeyCreation myCoreKey)
+
+	public UIPanelModificationKey()
 	{
-		// Appel à la mère
-		super();
+		// Création des panels
+		panelColorNormal = new UIPanelOptionColor();
+		panelColorEntered = new UIPanelOptionColor();
+		panelColorPressed = new UIPanelOptionColor();
 		
-		coreKey = myCoreKey;
-		
-		listenerListCreation = new EventListenerList();
-		
-		addListeners();
 	}
-	
 	//----------------------------------------------------------- METHODES --//	
-	@Override
-	public CKey getCoreKey()
-	{
-		return coreKey;
-	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

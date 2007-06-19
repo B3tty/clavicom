@@ -33,6 +33,7 @@ import javax.swing.JPanel;
 
 import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
+import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.keyboard.key.UIKeyCreation;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TEnumCreationKey;
@@ -126,7 +127,7 @@ public class UIKeyCreationToolbar extends JPanel
 								TEnumCreationKey type) 		// Type de la key
 	{
 		// Création de l'objet du noyau
-		CKeyCreation keyLauncher = new CKeyCreation(
+		CKeyCreation keyCreation = new CKeyCreation(
 				COLOR_NORMAL,
 				COLOR_ENTERED,
 				COLOR_PRESSED,
@@ -134,10 +135,13 @@ public class UIKeyCreationToolbar extends JPanel
 				filePath,
 				type);
 		
-		keyLauncher.setCaptionImage( true );
+		keyCreation.setCaptionImage( true );
+		
+		// Abonnement du UIKeyCreationEngine sur cette key
+		keyCreation.addOnClickKeyCreationListener(UIKeyCreationEngine.getInstance());		
 		
 		// Création de l'objet UI
-		uiKeyLauncher = new UIKeyCreation( keyLauncher );
+		uiKeyLauncher = new UIKeyCreation( keyCreation );
 		
 		// On désactive la transparence
 		uiKeyLauncher.setTransparent(false);

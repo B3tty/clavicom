@@ -53,22 +53,42 @@ import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
 import clavicom.core.engine.CLevelEngine;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
+import clavicom.core.keygroup.keyboard.key.CKeyLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
+import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.keyboard.key.UIKey;
+import clavicom.gui.keyboard.key.UIKeyCharacter;
+import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
+import clavicom.gui.keyboard.key.UIKeyLastWord;
+import clavicom.gui.keyboard.key.UIKeyLauncher;
+import clavicom.gui.keyboard.key.UIKeyLevel;
+import clavicom.gui.keyboard.key.UIKeyPrediction;
+import clavicom.gui.keyboard.key.UIKeyShortcut;
+import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UITranslucentPanel;
+import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TImageUtils;
+import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UITranslucentPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener
+public class UIKeyboard extends UITranslucentPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
@@ -83,6 +103,9 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	final int FINE_TRANSLATION_STEP = 1;
 	
 	final float FONT_REDUCTION_FACTOR = .2f;
+	
+	final float NEW_KEY_RELATIVE_WIDTH = .1f;		// Taille relative des boutons ajoutés
+	final float NEW_KEY_RELATIVE_HEIGHT = .1f;		// Taille relative des boutons ajoutés
 
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
@@ -118,6 +141,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		coreKeyboard = myCoreKeyboard;
 		keyGroups = new ArrayList<UIKeyGroup>();
 		allKeys = new ArrayList<UIKeyKeyboard>();
+		unClassedKey = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
 		levelEngine = myLevelEngine;
@@ -128,7 +152,6 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		
 		// On se met focusable
 		setFocusable(true);
-		requestFocus();
 		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
@@ -174,6 +197,9 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		
 		// On s'ajoute en tant que listener de changement de niveau		
 		levelEngine.addChangeLevelListener(this);
+		
+		// On s'ajoute en tant que listener de création de touche
+		UIKeyCreationEngine.getInstance().addOnClickKeyCreationListener(this);
 		
 		// Ajout des touches au panel
 		addUIKeys();
@@ -247,10 +273,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	// Dessin
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
-	{		
-		// Appel au père
-		super.paintComponents(myGraphic);
-		
+	{				
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -299,12 +322,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void resize(Dimension arg0)
-	{
-		// TODO Auto-generated method stub
-	//	super.resize(arg0);
-	}
+
     
 	public void componentResized(ComponentEvent arg0)
 	{
@@ -316,7 +334,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		}
 		
 		// On recalcule la taille de police
-		updateKeyFontSize();
+		//updateKeyFontSize();
 		
 		//On réarme le timer
 		resizeTimer.restart();
@@ -372,26 +390,30 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	{		
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
-			// On caste en CKeyKeyboard
-			CKeyKeyboard currentKeyKeyboard = (CKeyKeyboard)(currentKey.getCoreKey());
-			
-			// On récupère les pourcentages des positions
-			TPoint relMax = currentKeyKeyboard.getPointMax();
-			TPoint relMin = currentKeyKeyboard.getPointMin();
-			
-			// Calcul des positions absolues
-			int absMinX = Math.round(getWidth()*relMin.getX());
-			int absMinY = Math.round(getHeight()*relMin.getY());
-			int absMaxX = Math.round(getWidth()*relMax.getX());
-			int absMaxY = Math.round(getHeight()*relMax.getY());
-			
-			
-			// Affectation de la position
-			currentKey.setLocation(absMinX,absMinY);
-			currentKey.setPreferredSize(new Dimension (	absMaxX - absMinX,
-												 		absMaxY - absMinY));
+			replaceUIKey(currentKey);
 		}
 
+	}
+	
+	private void replaceUIKey(UIKeyKeyboard currentKey)
+	{
+		// On caste en CKeyKeyboard
+		CKeyKeyboard currentKeyKeyboard = (CKeyKeyboard)(currentKey.getCoreKey());
+		
+		// On récupère les pourcentages des positions
+		TPoint relMax = currentKeyKeyboard.getPointMax();
+		TPoint relMin = currentKeyKeyboard.getPointMin();
+		
+		// Calcul des positions absolues
+		int absMinX = Math.round(getWidth()*relMin.getX());
+		int absMinY = Math.round(getHeight()*relMin.getY());
+		int absMaxX = Math.round(getWidth()*relMax.getX());
+		int absMaxY = Math.round(getHeight()*relMax.getY());
+		
+		// Affectation de la position
+		currentKey.setLocation(absMinX,absMinY);
+		currentKey.setPreferredSize(new Dimension (	absMaxX - absMinX,
+											 		absMaxY - absMinY));
 	}
 	
 	private void addUIKeys()
@@ -497,7 +519,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 			{
 				resizeTimer.stop();
 				imgBackground = recreateBackground();
-				//replaceUIKeys();
+				replaceUIKeys();
 				updateKeyFontSize();
 				repaint();
 			}
@@ -721,6 +743,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		public void mouseEntered(MouseEvent arg0)
 		{
 			// TODO Auto-generated method stub
+			requestFocus();
 		}
 
 		public void mouseExited(MouseEvent arg0)
@@ -754,5 +777,198 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	{
 		invalidate();
 		repaint();
+	}
+
+	public void onClickKeyCreation(TEnumCreationKey keyType)
+	{		
+		// Couleurs par défaut
+		Color normalColor = CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor();
+		Color enteredColor = CProfil.getInstance().getDefaultColor().getDefaultKeyEntered().getColor();
+		Color pressedColor = CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor();
+		
+		TPoint newKeyMin = new TPoint(	.5f - (NEW_KEY_RELATIVE_WIDTH/2),
+										.5f - (NEW_KEY_RELATIVE_HEIGHT/2));
+
+		TPoint newKeyMax = new TPoint(	.5f + (NEW_KEY_RELATIVE_WIDTH/2),
+										.5f + (NEW_KEY_RELATIVE_HEIGHT/2));
+		
+		
+//		TPoint newKeyMin = new TPoint(	.2f,.2f);
+//
+//		TPoint newKeyMax = new TPoint(	.5f,.5f);	
+		
+		// Points
+		if (keyType == TEnumCreationKey.T_KEY_CHARACTER)
+		{
+			// Création de l'objet du noyau
+			CKeyCharacter newCoreKey = new CKeyCharacter(	normalColor,
+															pressedColor,
+															enteredColor,
+															newKeyMin,
+															newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyCharacter newUIKey = new UIKeyCharacter(newCoreKey,levelEngine);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION)
+		{
+			// Création de l'objet du noyau
+			CKeyClavicom newCoreKey = new CKeyClavicom(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax,
+														TKeyClavicomActionType.CLOSE_APPLICATION,
+														"");
+			// Création de l'objet de l'UI
+			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION)
+		{
+			// Création de l'objet du noyau
+			CKeyClavicom newCoreKey = new CKeyClavicom(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax,
+														TKeyClavicomActionType.OPEN_CONFIGURATION,
+														"");
+			// Création de l'objet de l'UI
+			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);		
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM)
+		{
+			// Création de l'objet du noyau
+			CKeyClavicom newCoreKey = new CKeyClavicom(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax,
+														TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE,
+														"");
+			// Création de l'objet de l'UI
+			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);		
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_LASTWORD)
+		{
+			// Création de l'objet du noyau
+			CKeyLastWord newCoreKey = new CKeyLastWord(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyLastWord newUIKey = new UIKeyLastWord(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_LAUNCHER)
+		{
+			// Création de l'objet du noyau
+			CKeyLauncher newCoreKey = new CKeyLauncher(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyLauncher newUIKey = new UIKeyLauncher(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_ALTGR)
+		{
+			// Création de l'objet du noyau
+			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
+													pressedColor,
+													enteredColor,
+													newKeyMin,
+													newKeyMax,
+													TLevelEnum.ALT_GR,
+													"");
+			// Création de l'objet de l'UI
+			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_PREDICTION)
+		{
+			// Création de l'objet du noyau
+			CKeyPrediction newCoreKey = new CKeyPrediction(	normalColor,
+															pressedColor,
+															enteredColor,
+															newKeyMin,
+															newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyPrediction newUIKey = new UIKeyPrediction(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_SHORTCUT)
+		{
+			// Création de l'objet du noyau
+			CKeyShortcut newCoreKey = new CKeyShortcut(	normalColor,
+														pressedColor,
+														enteredColor,
+														newKeyMin,
+														newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyShortcut newUIKey = new UIKeyShortcut(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_STRING)
+		{
+			// Création de l'objet du noyau
+			CKeyString newCoreKey = new CKeyString(	normalColor,
+													pressedColor,
+													enteredColor,
+													newKeyMin,
+													newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeyString newUIKey = new UIKeyString(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}
+	}
+	
+	protected void addCreatedKey(UIKeyKeyboard newUIKeyKeyboard)
+	{
+		// On met a jour son état d'edition
+		newUIKeyKeyboard.setEditable(isEdited);
+		
+		// Ajout au listener de selection
+		newUIKeyKeyboard.addSelectionListener(this);
+		
+		// Ajout de l'objet à la liste des keys non classées
+		unClassedKey.add(newUIKeyKeyboard);
+		
+		// Ajout de l'objet à la liste des UIKey
+		allKeys.add(newUIKeyKeyboard);
+		
+		// Ajout de l'objet au panel (au premier plan)
+		add(newUIKeyKeyboard, 0);
+		
+		// On calcule sa position absolue
+		replaceUIKey(newUIKeyKeyboard);
+		
+		// On force le redessin
+		revalidate();
 	}
 }

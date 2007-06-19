@@ -113,6 +113,9 @@ public class CLevelEngine implements OnClickKeyLevelListener
 	
 	public void onClickKeyLevel(CKeyLevel keyLevel)
 	{
+		if (keyLevel.GetLevel() == null)
+			return;
+		
 		// Si le level est le même, on repasse au level normal
 		if( keyLevel.GetLevel() == currentLevel )
 		{

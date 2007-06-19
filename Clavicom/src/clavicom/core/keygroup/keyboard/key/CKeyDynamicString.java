@@ -52,6 +52,21 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 			Color myColorClicked , 
 			Color myColorEntered , 
 			TPoint myPointMin, 
+			TPoint myPointMax)
+	{
+		this(	myColorNormal, 
+				myColorClicked , 
+				myColorEntered , 
+				myPointMin, 
+				myPointMax,
+				"");
+	}
+	
+	public CKeyDynamicString(
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered , 
+			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)
 	{

@@ -160,6 +160,9 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
+		if(keyCharacter.getCommand(levelEngine.getCurrentLevel()) == null)
+			return;
+		
 		List<CCommand> commandList = new ArrayList<CCommand>();
 
 		commandList.add( keyCharacter.getCommand( levelEngine.getCurrentLevel() ) );
@@ -169,6 +172,9 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{
+		if(keyShortcut.getCommand() == null)
+			return;
+		
 		List<CCommand> commandList = new ArrayList<CCommand>();
 		commandList.add( keyShortcut.getCommand() );
 		
@@ -178,6 +184,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 
 	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
 	{
+		
 		List<CCommand> commandList = null;
 		
 		try
@@ -186,7 +193,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 		catch ( Exception e )
 		{
-			CMessageEngine.newError( e.getMessage() );
 			return;
 		}
 		

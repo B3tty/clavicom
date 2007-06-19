@@ -26,9 +26,10 @@
 package clavicom.core.listener;
 
 import java.util.EventListener;
-import clavicom.core.keygroup.keyboard.key.CKeyCreation;
+
+import clavicom.tools.TEnumCreationKey;
 
 public interface OnClickKeyCreationListener extends EventListener
 {
-	public void onClickKeyCreation ( CKeyCreation keycreation );
+	public void onClickKeyCreation ( TEnumCreationKey type );
 }

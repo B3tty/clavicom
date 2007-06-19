@@ -143,64 +143,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
 	{
-		if (isEdited == false)
-		{
-			return;
-		}
-		
-		if (selectedKeys.size() == 0)
-		{
-			frameOptionKey.setVisible(false);
-			return;
-		}
-		
-		panelModification.setVisible(false);
-		CKey currentCoreKey = selectedKeys.get(0).getCoreKey();
-		
-		panelModification.removeAll();
-		
-		if (currentCoreKey instanceof CKeyCharacter)
-		{
-			panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)currentCoreKey);
-			panelModification.add(panelOptionKeyCharacter);
-		}
-		else if (currentCoreKey instanceof CKeyPrediction)
-		{
-			// TODO : faire quelque chose !
-			return;
-		}
-		else if (currentCoreKey instanceof CKeyLastWord)
-		{
-			// TODO : faire quelque chose !
-			return;
-		}
-		else if (currentCoreKey instanceof CKeyLauncher)
-		{
-			panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)currentCoreKey);
-			panelModification.add(panelOptionKeyLauncher);
-		}
-		else if (currentCoreKey instanceof CKeyLevel)
-		{
-			// TODO : faire quelque chose !
-			return;
-		}
-		else if (currentCoreKey instanceof CKeyShortcut)
-		{
-			panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)currentCoreKey);
-			panelModification.add(panelOptionKeyShortcut);
-		}
-		else if (currentCoreKey instanceof CKeyString)
-		{
-			panelOptionKeyString.setValuesKeyString((CKeyString)currentCoreKey);
-			panelModification.add(panelOptionKeyString);
-		}
-		else if (currentCoreKey instanceof CKeyClavicom)
-		{
-			panelOptionKeyClavicom.setValuesKeyClavicom((CKeyClavicom)currentCoreKey);
-			panelModification.add(panelOptionKeyClavicom);
-		}
-		
-		panelModification.setVisible(true);
+		this.selectedKeys = selectedKeys;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -364,7 +307,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	private void initFrame()
 	{
 		mainPanel.setEditable(true);
-		isEdited = false;
 		edit(true);
 		
 		// Ajout des actions aux boutons
@@ -420,7 +362,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
-			frameOptionKey.setVisible(true);
+			onClickBtEditionKey();
 		}
 		
 	}
@@ -449,5 +391,67 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			// TODO
 		}
+	}
+	
+	protected void onClickBtEditionKey()
+	{
+		if (isEdited == false)
+		{
+			return;
+		}
+		
+		if (selectedKeys.size() == 0)
+		{
+			frameOptionKey.setVisible(false);
+			return;
+		}
+		
+		panelModification.setVisible(false);
+		CKey currentCoreKey = selectedKeys.get(0).getCoreKey();
+		
+		panelModification.removeAll();
+		
+		if (currentCoreKey instanceof CKeyCharacter)
+		{
+			panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)currentCoreKey);
+			panelModification.add(panelOptionKeyCharacter);
+		}
+		else if (currentCoreKey instanceof CKeyPrediction)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyLastWord)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyLauncher)
+		{
+			panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)currentCoreKey);
+			panelModification.add(panelOptionKeyLauncher);
+		}
+		else if (currentCoreKey instanceof CKeyLevel)
+		{
+			// TODO : faire quelque chose !
+			return;
+		}
+		else if (currentCoreKey instanceof CKeyShortcut)
+		{
+			panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)currentCoreKey);
+			panelModification.add(panelOptionKeyShortcut);
+		}
+		else if (currentCoreKey instanceof CKeyString)
+		{
+			panelOptionKeyString.setValuesKeyString((CKeyString)currentCoreKey);
+			panelModification.add(panelOptionKeyString);
+		}
+		else if (currentCoreKey instanceof CKeyClavicom)
+		{
+			panelOptionKeyClavicom.setValuesKeyClavicom((CKeyClavicom)currentCoreKey);
+			panelModification.add(panelOptionKeyClavicom);
+		}
+		
+		panelModification.setVisible(true);
 	}
 }

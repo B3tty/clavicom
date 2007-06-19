@@ -52,10 +52,23 @@ public class CKeyCharacter extends CKeyThreeLevel
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 	public CKeyCharacter(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
-			String captionLeve1, String captionLeve2, String captionLeve3,
-			CCommand myCommandNormal, CCommand myCommandShift,
-			CCommand myCommandAltGr)
+						 Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
+	{
+		this(	myColorNormal, 
+				myColorClicked,
+				myColorEntered, 
+				myPointMin, 
+				myPointMax, 
+				"", "", "", 
+				null, null, null);
+	}
+	
+	public CKeyCharacter(	Color myColorNormal, Color myColorClicked,
+							Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+							String captionLeve1, String captionLeve2, String captionLeve3,
+							CCommand myCommandNormal, 
+							CCommand myCommandShift,
+							CCommand myCommandAltGr)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
 				myPointMax, captionLeve1, captionLeve2, captionLeve3);

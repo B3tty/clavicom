@@ -48,6 +48,21 @@ public class CKeyLauncher extends CKeyOneLevel
 			Color myColorClicked , 
 			Color myColorEntered , 
 			TPoint myPointMin, 
+			TPoint myPointMax)
+	{
+		this (	myColorNormal, 
+				myColorClicked , 
+				myColorEntered , 
+				myPointMin, 
+				myPointMax,
+				"");
+	}
+	
+	public CKeyLauncher(
+			Color myColorNormal, 
+			Color myColorClicked , 
+			Color myColorEntered , 
+			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)
 	{
