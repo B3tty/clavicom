@@ -92,8 +92,6 @@ public class PanelModificationProfilKeyboardColor extends
 				{
 					if (newColor != keyboardColor.getBackColor().getColor())
 					{
-						// la couleur à changé
-						keyboardColor.getBackColor().setColor(newColor);
 
 						buttonBackColor.setBackground(newColor);
 					}
@@ -122,8 +120,6 @@ public class PanelModificationProfilKeyboardColor extends
 					if (newColor != keyboardColor.getDefaultKeyNormal()
 							.getColor())
 					{
-						// la couleur à changé
-						keyboardColor.getDefaultKeyNormal().setColor(newColor);
 
 						buttonNormal.setBackground(newColor);
 					}
@@ -149,8 +145,6 @@ public class PanelModificationProfilKeyboardColor extends
 					if (newColor != keyboardColor.getDefaultKeyEntered()
 							.getColor())
 					{
-						// la couleur à changé
-						keyboardColor.getDefaultKeyEntered().setColor(newColor);
 
 						buttonEnteredColor.setBackground(newColor);
 					}
@@ -178,8 +172,6 @@ public class PanelModificationProfilKeyboardColor extends
 					if (newColor != keyboardColor.getDefaultKeyClicked()
 							.getColor())
 					{
-						// la couleur à changé
-						keyboardColor.getDefaultKeyClicked().setColor(newColor);
 
 						buttonClickedColor.setBackground(newColor);
 					}
