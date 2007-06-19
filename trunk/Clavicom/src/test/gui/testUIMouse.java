@@ -78,9 +78,11 @@ public class testUIMouse
 					profil.getDefaultColor().getDefaultKeyClicked().getColor(), 
 					profil.getDefaultColor().getDefaultKeyEntered().getColor());
 			
-			new CMouseEngine( mouse );
+			
 			
 			UIMouse uimouse = new UIMouse( mouse );
+			
+			new CMouseEngine( mouse, uimouse.getDefaultMousePanel() );
 
 
 			

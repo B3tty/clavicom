@@ -39,6 +39,8 @@ public class VirtualPointer extends JFrame
 		setLocation(500,500);
 		getContentPane().setBackground( Color.red );
 		setUndecorated( true );
+		setFocusableWindowState(true);
+		setAlwaysOnTop(true);
 	}
 
 	public void moveVirtualPointer(int x, int y)
