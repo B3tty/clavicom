@@ -114,7 +114,7 @@ public class Application
 		
 		// Chargement du dictionnaire
 		splash.newStep("Loading dictionnary...");
-		//loadDictionnary();
+		loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		splash.newStep("Loading level engine...");

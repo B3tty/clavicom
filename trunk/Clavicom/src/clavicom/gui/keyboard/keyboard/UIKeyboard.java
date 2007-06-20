@@ -235,7 +235,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	{
 		for (UIKeyThreeLevel currentKey : threeLevelKeys)
 		{
-			currentKey.invalidate();
+			currentKey.captionChanged();
 			currentKey.repaint();
 		}
 	}

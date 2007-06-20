@@ -25,6 +25,8 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.image.BufferedImage;
+
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 
 public abstract class UIKeyOneLevel extends UIKeyKeyboard
@@ -32,20 +34,39 @@ public abstract class UIKeyOneLevel extends UIKeyKeyboard
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	private BufferedImage captionImage;
+	
+	boolean reloadImage;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyOneLevel()
 	{
 		// Appel à la mère
 		super();
+		
+		reloadImage = true;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-
+	
+	public BufferedImage getCaptionImage()
+	{		
+		if (getCoreKey().isCaptionImage() == false)
+			return null;
+		
+		if (reloadImage == true)
+		{
+			// Création de la captionImage
+			captionImage = loadCaptionImage(getCaptionText());
+		}
+		
+		return captionImage;
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 
 	@Override
-	protected String getCaption()
+	protected String getCaptionText()
 	{
 		String caption = "";
 		
