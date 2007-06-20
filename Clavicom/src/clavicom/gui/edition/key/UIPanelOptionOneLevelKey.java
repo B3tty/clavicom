@@ -25,14 +25,21 @@
 
 package clavicom.gui.edition.key;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
 
 import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 import clavicom.gui.edition.key.captionchoozer.UIPanelCaptionChooser;
+import clavicom.gui.language.UIString;
 
 public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 {
@@ -51,6 +58,9 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 	{
 		super( );
 		
+		JPanel panelGlobal = new JPanel();
+		panelGlobal.setLayout(new BoxLayout(panelGlobal, BoxLayout.Y_AXIS));
+		
 		// Création des objets
 		captionChoozer = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
 		checkboxIsImage = new JCheckBox(	new AbstractAction()
@@ -60,9 +70,19 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 													onChecked();
 												}
 											});		
+		//checkboxIsImage.setText(UIString.getUIString(ID))
+		// TODO
 		// Ajout au panel
-		add(captionChoozer);
-		add(checkboxIsImage);
+		panelGlobal.add(checkboxIsImage);
+		
+		panelGlobal.add(captionChoozer);
+
+		// Ajout du titre
+		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
+				BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYSONELEVEL_BORDER")) );
+		
+		add(panelGlobal);
 	}
 
 	//----------------------------------------------------------- METHODES --//	

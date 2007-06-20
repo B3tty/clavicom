@@ -25,10 +25,13 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 
 public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
@@ -67,7 +70,12 @@ public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 		panellevelAltGr.add( selectCharacterAltGr );
 		characters.add( panellevelAltGr  );
 		
-		add( characters, BorderLayout.CENTER );
+		// Ajout du titre
+		characters.setBorder( BorderFactory.createTitledBorder( 
+				BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYCHARACTER_BORDER")) );
+		
+		add( characters);
 	}
 	//----------------------------------------------------------- METHODES --//	
 	

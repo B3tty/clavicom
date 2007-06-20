@@ -63,7 +63,7 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 		
 		panel2.add( sp, BorderLayout.CENTER );
 		panel.add( panel2 );
-		add( panel, BorderLayout.CENTER );
+		add( panel);
 		
 	}
 	//----------------------------------------------------------- METHODES --//	

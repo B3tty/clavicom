@@ -25,10 +25,11 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -52,7 +53,6 @@ public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implement
 	public UIPanelOptionKeyClavicom( )
 	{
 		super( );
-
 		
 		comboBox = new JComboBox();
 		comboBox.addItem( TKeyClavicomActionType.NONE );
@@ -67,7 +67,11 @@ public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implement
 		panel.add( new JLabel( UIString.getUIString("LB_KEYCLAVICOM_ACTION") ) );
 		panel.add( comboBox );
 		
-		add( panel, BorderLayout.CENTER );
+		// Ajout du titre
+		panel.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYCLAVICOM_BORDER")) );
+		
+		add( panel);
 		
 		
 		

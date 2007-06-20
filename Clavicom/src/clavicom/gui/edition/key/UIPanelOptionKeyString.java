@@ -26,9 +26,12 @@
 package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -114,7 +117,12 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 		panel.add( panelDisplay, BorderLayout.NORTH ); 
 		panel.add( panelWrite ); 
 		
-		add( panel, BorderLayout.CENTER );
+		// Ajout du titre
+		panel.setBorder( BorderFactory.createTitledBorder( 
+				BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYSTRING_BORDER")) );
+		
+		add( panel);
 		
 	}
 	//----------------------------------------------------------- METHODES --//	
