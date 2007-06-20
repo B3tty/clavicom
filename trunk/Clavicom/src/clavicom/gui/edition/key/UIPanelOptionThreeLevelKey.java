@@ -39,7 +39,12 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey
 	
 	public UIPanelOptionThreeLevelKey(  )
 	{
-		super();		
+		super();	
+		
+//		// Ajout du titre
+//		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
+//				BorderFactory.createLineBorder( Color.BLACK ), 
+//				UIString.getUIString("LB_KEYSONELEVEL_BORDER")) );
 	}
 	//----------------------------------------------------------- METHODES --//	
 	

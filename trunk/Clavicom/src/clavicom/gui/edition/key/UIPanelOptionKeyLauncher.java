@@ -26,11 +26,14 @@
 package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -124,7 +127,12 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 	
 		panelGlobal.add( panel, BorderLayout.CENTER );
 		
-		add( panelGlobal, BorderLayout.CENTER );
+		// Ajout du titre
+		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
+				BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYLAUNCHER_BORDER")) );
+		
+		add( panelGlobal);
 	}
 	//----------------------------------------------------------- METHODES --//	
 	public void setValuesKeyLauncher( CKeyLauncher myKeyLauncher)

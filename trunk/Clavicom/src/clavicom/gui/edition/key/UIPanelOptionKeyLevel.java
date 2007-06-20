@@ -25,7 +25,6 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
@@ -62,7 +61,7 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
 		panel.add( combo );
 
-		add( panel, BorderLayout.CENTER );
+		add( panel);
 		
 	}
 	//----------------------------------------------------------- METHODES --//

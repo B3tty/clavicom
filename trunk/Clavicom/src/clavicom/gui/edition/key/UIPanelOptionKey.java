@@ -26,10 +26,9 @@
 package clavicom.gui.edition.key;
 
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import clavicom.core.keygroup.CKey;
@@ -49,27 +48,23 @@ public class UIPanelOptionKey extends JPanel
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIPanelOptionKey( )
 	{
-		setLayout( new BorderLayout() );
+		setLayout( new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JPanel panelGlobal = new JPanel();
-		
-		JPanel colors = new JPanel();
 		
 		// création des trois panels des couleurs et ajout
 		panelColorClicked = new UIPanelOptionColor();
 		panelColorEntered = new UIPanelOptionColor();
 		panelColorNormal = new UIPanelOptionColor();
 		
-		colors.add( panelColorNormal );
-		colors.add( panelColorEntered );
-		colors.add( panelColorClicked );
+		panelGlobal.add( panelColorNormal );
+		panelGlobal.add( panelColorEntered );
+		panelGlobal.add( panelColorClicked );
 		
-		colors.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
-				UIString.getUIString("LB_COLOR_COLOR_MANAGEMENT")) );
-		
-		panelGlobal.add(colors);
+		panelGlobal.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
+								UIString.getUIString("LB_KEY_BORDER")) );
 
-		add( panelGlobal, BorderLayout.NORTH );
+		add( panelGlobal);
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -82,7 +77,6 @@ public class UIPanelOptionKey extends JPanel
 		panelColorEntered.setValues( key, TColorKeyEnum.ENTERED );
 		panelColorNormal.setValues( key, TColorKeyEnum.NORMAL );
 	}
-	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

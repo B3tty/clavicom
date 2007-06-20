@@ -306,10 +306,14 @@
 	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
 	<message id = "LB_COLOR_COLOR_MANAGEMENT">Gestion de la couleur</message>
 	
-	
+	<!-- optionKey -->
+	<message id = "LB_KEY_BORDER">Couleurs de la touche</message>
+		
 	<!-- optionKeyCharacter -->
 	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
 	<message id = "LB_KEYCHARACTER_CLOSE">Fermer</message>
+	<message id = "LB_KEYCHARACTER_BORDER">Actions des touches</message>
+	
 	
 	<!-- optionKeyClavicom -->
 	<message id = "LB_KEYCLAVICOM_NONE">Rien</message>
@@ -318,19 +322,25 @@
 	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Fermer l'application</message>
 	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
 	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
+	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
 	
 	<!-- optionKeyLauncher -->
 	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
+	<message id = "LB_KEYLAUNCHER_BORDER">Application lancée</message>
 	
 	<!-- optionKeyLevel -->
 	<message id = "LB_KEYLEVEL_LEVEL">Niveau</message>
 	
 	<!-- optionKeyShortCut -->
 	<message id = "LB_KEYSHORCUT_SHORTCUT">Raccourci</message>
-	
+
+	<!-- optionKeyOneLevel -->
+	<message id = "LB_KEYSONELEVEL_BORDER">Options d'affichage</message>
+		
 	<!-- optionKeyString -->
 	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
 	<message id = "LB_KEYSTRING_TEXTWRITE">Texte écrit par l'ordinateur</message>
+	<message id = "LB_KEYSTRING_BORDER">Chaîne générée</message>
 	
 	<!-- Key creation -->
 	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
