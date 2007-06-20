@@ -609,11 +609,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
 			{	
-				// On charge l'image de la caption si ce n'est déja fait
-				if(originalCaptionImage == null)
-				{
-					loadCaptionImage();
-				}
+				originalCaptionImage = getCaptionImage();
 				
 				// Calcul du facteur de réduction
 				float scaleFactor = 1f;
@@ -681,7 +677,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				// Calcul des positions de dessin du texte
 				FontMetrics fontMetrics = bg.getFontMetrics();
-				int captionWidth= fontMetrics.stringWidth(getCaption());
+				int captionWidth= fontMetrics.stringWidth(getCaptionText());
 				int captionHeight= fontMetrics.getHeight();
 				
 				int xPosition = (getWidth()/2) - (captionWidth/2);
@@ -691,14 +687,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				if (profilFont.isShadow())
 				{
 					bg.setColor(profilFont.getFontColor().getColor().brighter().brighter().brighter());
-					bg.drawString(	getCaption(),	
+					bg.drawString(	getCaptionText(),	
 									xPosition + SHADOW_INSET_H,
 									yPosition + SHADOW_INSET_V);
 				}
 				
 				// On écrit le texte
 				bg.setColor(profilFont.getFontColor().getColor());
-				bg.drawString(getCaption(),xPosition,yPosition);
+				bg.drawString(getCaptionText(),xPosition,yPosition);
 			}
 		}
 		
@@ -772,10 +768,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			return new Timer(RESIZE_TIMER_DURATION,action);
 		}
 		
-		protected void loadCaptionImage()
+		protected BufferedImage loadCaptionImage(String filePath)
 		{
+			BufferedImage image;
 			// On teste l'existence de l'image
-			File fileImage = new File(getCaption());
+			File fileImage = new File(filePath);
 			if (fileImage.exists() == false)
 			{
 				// A COMPLETER !!!
@@ -783,11 +780,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 			
 			// Création de l'image icon
-			ImageIcon iconImage = new ImageIcon(getCaption());	
+			ImageIcon iconImage = new ImageIcon(filePath);	
 			
 			// Récupération de l'image
-			originalCaptionImage = TImageUtils.toBufferedImage(iconImage.getImage());
+			image = TImageUtils.toBufferedImage(iconImage.getImage());
+			
+			return image;
 		}
 		
-		protected abstract String getCaption();
+		protected abstract String getCaptionText();
+		protected abstract BufferedImage getCaptionImage();
 }

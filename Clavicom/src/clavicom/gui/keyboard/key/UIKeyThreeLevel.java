@@ -25,8 +25,11 @@
 
 package clavicom.gui.keyboard.key;
 
+import java.awt.image.BufferedImage;
+
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
+import clavicom.tools.TLevelEnum;
 
 public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 {
@@ -35,6 +38,12 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 	//---------------------------------------------------------- VARIABLES --//
 	private CLevelEngine levelEngine;
 	
+	protected BufferedImage captionImageNormal;
+	protected BufferedImage captionImageShift;
+	protected BufferedImage captionImageAltGr;
+	
+	boolean reloadImages;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIKeyThreeLevel(CLevelEngine myLevelEngine)
 	{
@@ -42,14 +51,51 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 		super();
 		
 		levelEngine = myLevelEngine;
+		reloadImages = true;
 	}
 	
 	//----------------------------------------------------------- METHODES --//
-	protected String getCaption()
+	protected String getCaptionText()
 	{
 		// Retoure la chaîne correspondant au niveau en cours
 		
 		return ((CKeyThreeLevel)getCoreKey()).getCaption(levelEngine.getCurrentLevel());
+	}
+	
+	public BufferedImage getCaptionImage()
+	{		
+		if(getCoreKey().isCaptionImage() == false)
+			return null;
+		
+		if (reloadImages == true)
+		{
+			//  Cast de l'objet
+			CKeyThreeLevel coreKey = (CKeyThreeLevel)getCoreKey();
+			
+			// Création des images
+			captionImageNormal = loadCaptionImage(coreKey.getCaption(TLevelEnum.NORMAL));
+			captionImageShift = loadCaptionImage(coreKey.getCaption(TLevelEnum.SHIFT));
+			captionImageAltGr = loadCaptionImage(coreKey.getCaption(TLevelEnum.ALT_GR));
+			
+			reloadImages = false;
+		}		
+		
+		if(levelEngine.getCurrentLevel() == TLevelEnum.NORMAL)
+		{
+			return captionImageNormal;
+		}
+		else if(levelEngine.getCurrentLevel() == TLevelEnum.SHIFT)
+		{
+			return captionImageShift;
+		}
+		else if(levelEngine.getCurrentLevel() == TLevelEnum.ALT_GR)
+		{
+			return captionImageAltGr;
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

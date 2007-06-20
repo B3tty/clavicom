@@ -59,15 +59,15 @@
   <keyboard>
     <keygroup caption="groupe de ouf" order="0" visible="true">
       <keylist order="0">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.15246637</x>
-              <y>0.25956285</y>
+              <x>0.15275995</x>
+              <y>0.25795054</y>
             </point>
             <point position="max">
-              <x>0.25224215</x>
-              <y>0.5191257</y>
+              <x>0.92169446</x>
+              <y>0.51943463</y>
             </point>
           </coordinates>
           <colors>
@@ -87,9 +87,9 @@
               <blue>99</blue>
             </color_entered>
           </colors>
-          <caption_level_1>Sept</caption_level_1>
-          <caption_level_2>Huit</caption_level_2>
-          <caption_level_3>Neuf</caption_level_3>
+          <caption_level_1>Ressources/Application/Pictures/launch.png</caption_level_1>
+          <caption_level_2>Ressources/Application/Pictures/character.png</caption_level_2>
+          <caption_level_3>Ressources/Application/Pictures/configuration.png</caption_level_3>
           <commands>
             <command_normal id="172" />
             <command_shift id="173" />
