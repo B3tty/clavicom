@@ -25,6 +25,8 @@
 
 package clavicom.gui.engine.click;
 
+import javax.swing.event.EventListenerList;
+
 public class ClickEngine
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -46,6 +48,8 @@ public class ClickEngine
 		
 	};
 	
+	protected EventListenerList listenerList;
+	
 	// déclaration des méthodes natives
 	public native void InitMouseHook( int click );
 	public native void FinishMouseHook();
@@ -54,6 +58,8 @@ public class ClickEngine
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public ClickEngine( String dllPath )
 	{
+		listenerList = new EventListenerList();
+		
 		System.loadLibrary( dllPath );	
 	}
 
@@ -71,10 +77,52 @@ public class ClickEngine
 		FinishMouseHook();
 	}
 	
+	public void mouseHookPause()
+	{
+		InhibitMouseHook( true );
+	}
+	
+	public void mouseHookResume()
+	{
+		InhibitMouseHook( false );
+	}
+	
+	
+	
+	
+	
+	// ========================================================|
+	// Listener ===============================================|
+	// ========================================================|
+	public void addClickMouseHookListener(clickMouseHookListener l)
+	{
+		this.listenerList.add(clickMouseHookListener.class, l);
+	}
+
+	public void removeChangeLevelListener(clickMouseHookListener l)
+	{
+		this.listenerList.remove(clickMouseHookListener.class, l);
+	}
+
+	protected void fireClickMouseHook( )
+	{
+		clickMouseHookListener[] listeners = (clickMouseHookListener[]) listenerList
+				.getListeners(clickMouseHookListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].clickMouseHook( );
+		}
+	}
+	// ========================================================|
+	// fin Listeners ==========================================|
+	// ========================================================|
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	
 	
 	void Callback(  )
 	{
-		System.out.println("click !!!!!!!");
+		fireClickMouseHook();
 	}
 }

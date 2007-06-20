@@ -7,11 +7,15 @@ HHOOK hHook = NULL;
 JNIEnv *environement = NULL;
 jobject object = NULL;
 HINSTANCE hExe;
-WPARAM click;
-BOOL inhibit;
+WPARAM click = WM_LBUTTONUP;
+BOOL inhibit = FALSE;
 
 LRESULT CALLBACK HookProc(int nCode,WPARAM wParam,LPARAM lParam)
 {
+	if( inhibit == TRUE )
+	{
+		return CallNextHookEx(hHook, nCode, wParam, lParam);
+	}
 			
 			
 	if( (environement != NULL) && (object != NULL) )

@@ -29,25 +29,24 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
 import clavicom.core.listener.OnClickKeyClavicomListener;
+import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TUIKeyState;
 import clavicom.tools.TUIMouseDefilementEnum;
 
-public class UIMouse extends JPanel implements OnClickKeyClavicomListener
+public class UIMouse extends JPanel implements OnClickKeyClavicomListener, clickMouseHookListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -74,18 +73,20 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 	
 	JPanel panelSwitchKeyboard;
 	JPanel panelUIKey;
-	JPanel panelDefaultMouse;
 
 	int indexSelectedKey;
 	List<UIKey> selectedList;
 	Timer selectionTimer;
 	
-	
+	// engine de click
+	ClickEngine clickEngine;	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIMouse( CMouse myMouse )
+	public UIMouse( CMouse myMouse, ClickEngine myClickEngine )
 	{
 		mouse = myMouse;
+		
+		clickEngine = myClickEngine;
 		
 		setLayout( new BorderLayout() );
 		
@@ -135,60 +136,38 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 		
 		add( panelUIKey, BorderLayout.CENTER );
 		
-		panelDefaultMouse = new JPanel();
-		panelDefaultMouse.setPreferredSize( new Dimension( 50, 50 ) );
-		add( panelDefaultMouse, BorderLayout.SOUTH );
-		
-		// panel pour la simulation du clique
-		panelDefaultMouse.addMouseListener( new MouseListener()
-		{
-
-			public void mouseClicked(MouseEvent arg0)
-			{
-				UIKey uiKey = selectedList.get( indexSelectedKey );
-				if( uiKey != null )
-				{
-					uiKey.simulateClick();
-					
-					// si c'est une keyMove
-					if( uiKey.getCoreKey() instanceof CMouseKeyMove )
-					{
-						if ( selectionTimer.isRunning() )
-						{
-							selectionTimer.stop();
-						}
-						else
-						{
-							selectionTimer.start();
-						}
-					}
-				}
-			}
-
-			public void mouseEntered(MouseEvent arg0){}
-
-			public void mouseExited(MouseEvent arg0){}
-
-			public void mousePressed(MouseEvent arg0){}
-
-			public void mouseReleased(MouseEvent arg0){}
-			
-		});
-		
 		SwitchMoveMode();
 		//SwitchClickMode();
 		
-		
-		
+		// abonnement au hook
+		clickEngine.addClickMouseHookListener( this );
 		
 	}
 	
-	public JPanel getDefaultMousePanel()
-	{
-		return panelDefaultMouse;
-	}
 
 	// ----------------------------------------------------------- METHODES --//
+	
+	public void clickMouseHook()
+	{
+		UIKey uiKey = selectedList.get( indexSelectedKey );
+		if( uiKey != null )
+		{
+			uiKey.simulateClick();
+			
+			// si c'est une keyMove
+			if( uiKey.getCoreKey() instanceof CMouseKeyMove )
+			{
+				if ( selectionTimer.isRunning() )
+				{
+					selectionTimer.stop();
+				}
+				else
+				{
+					selectionTimer.start();
+				}
+			}
+		}
+	}
 	
 	protected void SwitchClickMode(  )
 	{
@@ -455,13 +434,8 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 		this.switchMouseKeyboard = switchMouseKeyboard;
 	}
 
-
 	
 
-
-	
-	
-	
 	
 
 	//--------------------------------------------------- METHODES PRIVEES --//

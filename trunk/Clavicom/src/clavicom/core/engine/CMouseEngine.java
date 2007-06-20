@@ -23,16 +23,17 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.core.engine.mouse;
+package clavicom.core.engine;
 
 
 import java.awt.AWTException;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
-
-import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -42,6 +43,7 @@ import clavicom.core.listener.onClicMouseClickListener;
 import clavicom.core.listener.onClicMouseMoveListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TMouseKeyClickEnum;
 import clavicom.tools.TMouseKeyMoveEnum;
@@ -58,17 +60,14 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 	
 	protected EventListenerList listenerList;
 	
-	VirtualPointer virtualPointer;
-	
-	JPanel defaultPanel; // point sur lequel la souris devra se replacer
+	ClickEngine clickEngine;
 	
 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseEngine( CMouse mouse, JPanel myDefaultPanel )
+	public CMouseEngine( CMouse mouse, ClickEngine myClickEngine )
 	{
-		
-		defaultPanel = myDefaultPanel;
+		clickEngine = myClickEngine;
 
 		// =============================================================
 		// Abonnement aux listener de move
@@ -98,9 +97,6 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		}
 		
 		listenerList = new EventListenerList();
-		
-		virtualPointer = new VirtualPointer( );
-		virtualPointer.setVisible( true );
 		
 		// création du timer
 		moveTimer = createMoveTimer();
@@ -139,54 +135,48 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// on regarde quel movement il veut faire
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )
 		{
-			// déplacement de la souris
-			moveRealMouse();
+			// on met en pause le hook 
+			clickEngine.mouseHookPause();
 			
 			// clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// replacement de la souris
-			replaceRealMouse();
+			// on reprend le hook
+			clickEngine.mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_PRESS )
 		{
-			// déplacement de la souris
-			moveRealMouse();
+			// on met en pause le hook 
+			clickEngine.mouseHookPause();
 			
 			// clic gauche pressé
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			
-			// replacement de la souris
-			replaceRealMouse();
+			// on reprend le hook
+			clickEngine.mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_RELEASE )
 		{
-			// déplacement de la souris
-			moveRealMouse();
+			// on met en pause le hook 
+			clickEngine.mouseHookPause();
 			
 			// clic gauche relaché
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// replacement de la souris
-			replaceRealMouse();
+			// on reprend le hook
+			clickEngine.mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
-			// déplacement de la souris
-			moveRealMouse();
-			
 			// clic droit
 			robot.mousePress( InputEvent.BUTTON3_MASK );
 			robot.mouseRelease( InputEvent.BUTTON3_MASK );
 			
-			// replacement de la souris
-			replaceRealMouse();
-			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{
-			// déplacement de la souris
-			moveRealMouse();
+			// on met en pause le hook 
+			clickEngine.mouseHookPause();
 			
 			// double clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
@@ -194,37 +184,14 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// replacement de la souris
-			replaceRealMouse();
+			// on reprend le hook
+			clickEngine.mouseHookResume();
 			
 		}
 
 	}
 
 	
-	private void moveRealMouse()
-	{
-		robot.mouseMove( (int)virtualPointer.getLocation().getX(), (int)virtualPointer.getLocation().getY() );
-		
-		// on cache le virtual pointer
-		virtualPointer.setVisible( false );
-	}
-	
-	private void replaceRealMouse()
-	{
-		// on réaffiche le virtual pointer
-		virtualPointer.setVisible( true );
-		virtualPointer.setAlwaysOnTop(true);
-		
-		int x = ((int)defaultPanel.getLocation().getX()) + (defaultPanel.getWidth()/2);
-		int y = ((int)defaultPanel.getLocation().getY()) + (defaultPanel.getHeight()/2);
-		
-		robot.mouseMove( x, y );
-		
-		
-
-	}
-
 	
 
 	protected Timer createMoveTimer()
@@ -238,8 +205,10 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			{
 				if( robot != null )
 				{
-					int x = (int)virtualPointer.getLocation().getX();
-					int y = (int)virtualPointer.getLocation().getY();
+					PointerInfo pointer = MouseInfo.getPointerInfo();
+					Point location = pointer.getLocation(); 
+					int x = (int)location.getX();
+					int y = (int)location.getY();
 					
 					// on regarde quel mouvement on doit faire
 					if( currentMove == TMouseKeyMoveEnum.DOWN )
@@ -256,7 +225,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 						y -= 1;
 					}
 					
-					virtualPointer.setLocation( x, y );
+					robot.mouseMove( x, y );
 					
 				}
 			}
