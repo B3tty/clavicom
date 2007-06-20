@@ -46,6 +46,14 @@ public class ClickEngine
 			InitMouseHook( 0 );
 		}
 		
+		@Override
+		protected void finalize() throws Throwable
+		{
+			super.finalize();
+			
+			FinishMouseHook();
+		}
+		
 	};
 	
 	protected EventListenerList listenerList;

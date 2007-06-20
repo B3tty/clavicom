@@ -51,6 +51,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	int currentIndexDefilementKey;
 	
 	DefilementEngine defilementEngine;
+	ClickEngine clicEngine;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public DefilementKeyEngine( 
@@ -68,6 +69,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		currentTypeDefil = 0;
 		
 		defilementEngine = myDefilementEngine;
+		clicEngine = myClicEngine;
 		
 		myClicEngine.addClickMouseHookListener( this );
 		defilementEngine.addDefilListener( this );
@@ -87,12 +89,14 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	
 	public void startKeyDefilement()
 	{
+		clicEngine.startHook();
 		defilementEngine.startDefilement();
 	}
 	
 	public void stopKeyDefilement()
 	{
 		defilementEngine.stopDefilement();
+		clicEngine.stopMouseHook();
 	}
 
 	public void defil()
@@ -128,7 +132,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					currentList.select( false );
 				}
 				
-				if( currentIndexDefilementList >= currentGroup.getKeyLists().size() )
+				if( currentIndexDefilementList >= (currentGroup.getKeyLists().size() - 1) )
 				{
 					currentIndexDefilementList = 0;
 				}
@@ -148,7 +152,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					currentKey.forceState( TUIKeyState.NORMAL );
 				}
 				
-				if( currentIndexDefilementKey >= currentList.getKeys().size() )
+				if( currentIndexDefilementKey >= (currentList.getKeys().size() - 1) )
 				{
 					currentIndexDefilementKey = 0;
 				}
