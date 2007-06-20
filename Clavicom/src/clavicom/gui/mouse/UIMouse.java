@@ -26,27 +26,28 @@
 package clavicom.gui.mouse;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
 import clavicom.core.listener.OnClickKeyClavicomListener;
+import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
+import clavicom.gui.listener.DefilListener;
+import clavicom.gui.utils.UIMovingPanel;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TUIKeyState;
-import clavicom.tools.TUIMouseDefilementEnum;
 
-public class UIMouse extends JPanel implements OnClickKeyClavicomListener, clickMouseHookListener
+public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener, clickMouseHookListener, DefilListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -70,23 +71,29 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 	UIKeyClavicom moveMouseMode;
 	UIKeyClavicom clickMouseMode;
 	UIKeyClavicom switchMouseKeyboard;
-	
-	JPanel panelSwitchKeyboard;
-	JPanel panelUIKey;
 
 	int indexSelectedKey;
 	List<UIKey> selectedList;
-	Timer selectionTimer;
 	
-	// engine de click
-	ClickEngine clickEngine;	
+	// engine de click et de defilement
+	ClickEngine clickEngine;
+	DefilementEngine defilementEngine;
+	
+	JPanel movePanel;
+	JPanel clickPanel;
+	JPanel panelHaut;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIMouse( CMouse myMouse, ClickEngine myClickEngine )
+	public UIMouse( CMouse myMouse, ClickEngine myClickEngine, JFrame parent, DefilementEngine myDefilementEngine )
 	{
+		super( parent );
+		
 		mouse = myMouse;
 		
 		clickEngine = myClickEngine;
+		defilementEngine = myDefilementEngine;
+		defilementEngine.addDefilListener( this );
+		
 		
 		setLayout( new BorderLayout() );
 		
@@ -105,47 +112,327 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 		CKeyClavicom clavMoveMoveMode = mouse.getMoveMouseMode();
 		clavMoveMoveMode.addOnClickKeyClavicomListener( this );
 		moveMouseMode = new UIKeyClavicom( clavMoveMoveMode );
-		moveMouseMode.setPreferredSize(new Dimension(50, 50));
 		
 		CKeyClavicom clavClickMoveMode = mouse.getClickMouseMode();
 		clavClickMoveMode.addOnClickKeyClavicomListener( this );
 		clickMouseMode = new UIKeyClavicom( clavClickMoveMode );
-		clickMouseMode.setPreferredSize(new Dimension(50, 50));
 		
 		CKeyClavicom clavSwitchMouseKeyboard = mouse.getSwitchMouseKeyboard();
 		clavSwitchMouseKeyboard.addOnClickKeyClavicomListener( this );
 		switchMouseKeyboard = new UIKeyClavicom( clavSwitchMouseKeyboard );
-		switchMouseKeyboard.setPreferredSize(new Dimension(50, 50));
-		
-		panelSwitchKeyboard = new JPanel( new BorderLayout() );
-		panelUIKey = new JPanel();
 
 		
-		// =============================================================================
-		// Placement du panelSwitchKeyboard
-		// =============================================================================
-
-		panelSwitchKeyboard.add( switchMouseKeyboard, BorderLayout.CENTER );
-		add( panelSwitchKeyboard, BorderLayout.NORTH );
 		
-
-		// =============================================================================
-		// Placement des UIKey
-		// =============================================================================
-		panelUIKey.setLayout( new BoxLayout( panelUIKey, BoxLayout.PAGE_AXIS ) );
+		GridBagLayout gbLayoutGlobal = new GridBagLayout();
+		setLayout( gbLayoutGlobal );
 		
-		add( panelUIKey, BorderLayout.CENTER );
+		// Ajout des Contraintes de switchMouseKeyboard
+		GridBagConstraints gbConstSwitchMouseKeyboard = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,							// Taille horizontale relative
+	            25,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(switchMouseKeyboard, gbConstSwitchMouseKeyboard);
+		add( switchMouseKeyboard );
+		
+		// Ajout des Contraintes de panelHaut
+		GridBagConstraints gbConstPanelHaut = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,							// Taille horizontale relative
+	            75,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		panelHaut = new JPanel();
+		panelHaut.setLayout( new BorderLayout() );
+		gbLayoutGlobal.setConstraints(panelHaut, gbConstPanelHaut);
+		add( panelHaut );
+		
+		CreateClickPanel();
+		CreateMovePanel();
 		
 		SwitchMoveMode();
-		//SwitchClickMode();
 		
 		// abonnement au hook
 		clickEngine.addClickMouseHookListener( this );
 		
+		defilementEngine.startDefilement();
+		
 	}
 	
 
+	private void CreateClickPanel()
+	{
+		clickPanel = new JPanel();
+		
+		GridBagLayout gbLayoutMain = new GridBagLayout();
+		clickPanel.setLayout(gbLayoutMain);
+		
+		
+		
+		// Ajout des Contraintes de leftClick
+		GridBagConstraints gbConstLeftClick = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(leftClick, gbConstLeftClick);
+		clickPanel.add( leftClick );
+
+		
+		
+		// Ajout des Contraintes de rightClick
+		GridBagConstraints gbConstRightClick = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(rightClick, gbConstRightClick);
+		clickPanel.add( rightClick );
+		
+		
+		
+		// Ajout des Contraintes de leftDubbleClick
+		GridBagConstraints gbConstLeftDubbleClick = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(leftDubbleClick, gbConstLeftDubbleClick);
+		clickPanel.add( leftDubbleClick );
+		
+		
+		
+		// Ajout des Contraintes de leftPress
+		GridBagConstraints gbConstLeftPress = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(leftPress, gbConstLeftPress);
+		clickPanel.add( leftPress );
+		
+		
+		
+		// Ajout des Contraintes de leftRelease
+		GridBagConstraints gbConstLeftRelease = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(leftRelease, gbConstLeftRelease);
+		clickPanel.add( leftRelease );
+		
+		
+		
+		// Ajout des Contraintes de moveMouseMode
+		GridBagConstraints gbConstMoveMouseMode = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(moveMouseMode, gbConstMoveMouseMode);
+		clickPanel.add( moveMouseMode );
+		
+
+	}
+
+
+	private void CreateMovePanel()
+	{
+		movePanel = new JPanel();
+		
+		GridBagLayout gbLayoutMain = new GridBagLayout();
+		movePanel.setLayout(gbLayoutMain);
+		
+		
+		
+		// Ajout des Contraintes de rightClick
+		GridBagConstraints gbConstMoveLeft = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(moveLeft, gbConstMoveLeft);
+		movePanel.add( moveLeft );
+		
+		
+		
+		// Ajout des Contraintes de moveRight
+		GridBagConstraints gbConstMoveRight = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(moveRight, gbConstMoveRight);
+		movePanel.add( moveRight );
+		
+		
+		
+		// Ajout des Contraintes de moveDown
+		GridBagConstraints gbConstMoveDown = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            2,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(moveDown, gbConstMoveDown);
+		movePanel.add( moveDown );
+		
+		
+		
+		// Ajout des Contraintes de moveUp
+		GridBagConstraints gbConstMoveUp = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(moveUp, gbConstMoveUp);
+		movePanel.add( moveUp );
+		
+		
+		
+		
+		// Ajout des Contraintes de clickMouseMode
+		GridBagConstraints gbConstClickMouseMode = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(clickMouseMode, gbConstClickMouseMode);
+		movePanel.add( clickMouseMode );
+
+		
+	}
+
+
 	// ----------------------------------------------------------- METHODES --//
+	
+	public void defil()
+	{
+		UIKey mouseKey =  selectedList.get( indexSelectedKey );
+		if( mouseKey != null )
+		{
+			mouseKey.forceState( TUIKeyState.NORMAL );
+		}
+		
+		if( indexSelectedKey >= (selectedList.size() - 1)  )
+		{
+			indexSelectedKey = 0;
+		}
+		else
+		{
+			indexSelectedKey += 1;
+		}
+		
+		// séléction de la nouvelle touche
+		UIKey mouseKey2 = selectedList.get( indexSelectedKey );
+		if( mouseKey2 != null )
+		{
+			mouseKey2.forceState( TUIKeyState.ENTERED );
+		}
+	}
 	
 	public void clickMouseHook()
 	{
@@ -157,13 +444,13 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 			// si c'est une keyMove
 			if( uiKey.getCoreKey() instanceof CMouseKeyMove )
 			{
-				if ( selectionTimer.isRunning() )
+				if ( defilementEngine.isDefilement() )
 				{
-					selectionTimer.stop();
+					defilementEngine.stopDefilement();
 				}
 				else
 				{
-					selectionTimer.start();
+					defilementEngine.startDefilement();
 				}
 			}
 		}
@@ -171,40 +458,36 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 	
 	protected void SwitchClickMode(  )
 	{
+		// on désélsctione l'ancianne key
+		if( selectedList != null )
+		{
+			if( selectedList.size() > 0 )
+			{
+				UIKey uiKey = selectedList.get(indexSelectedKey);
+				uiKey.forceState( TUIKeyState.NORMAL );
+			}
+		}
+		
+		
 		// création de la liste des touches
 		selectedList = new ArrayList<UIKey>();
 		
-		panelUIKey.removeAll();
+		panelHaut.removeAll();
 		
-		panelUIKey.add( leftClick );
+		panelHaut.add( clickPanel );
+
+		revalidate();
+		
 		selectedList.add(leftClick);
-		
-		panelUIKey.add( rightClick );
 		selectedList.add(rightClick);
-		
-		panelUIKey.add( leftDubbleClick );
 		selectedList.add(leftDubbleClick);
-		
-		panelUIKey.add( leftPress );
 		selectedList.add(leftPress);
-		
-		panelUIKey.add( leftRelease );
 		selectedList.add(leftRelease);
-		
-		panelUIKey.add( moveMouseMode );
 		selectedList.add(moveMouseMode);
-		
-		panelUIKey.invalidate();
-		panelUIKey.repaint();
+		selectedList.add(switchMouseKeyboard);
 		
 		indexSelectedKey = 0;
 		
-		if( selectionTimer != null )
-		{
-			selectionTimer.stop();
-		}
-		selectionTimer = createSelectTimer( TUIMouseDefilementEnum.DEFILEMENT_CLICK );
-		selectionTimer.start();
 	}
 	
 	protected void SwitchMoveMode()
@@ -212,81 +495,26 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 		// création de la liste des touches
 		selectedList = new ArrayList<UIKey>();
 		
-		panelUIKey.removeAll();
+		panelHaut.removeAll();
 		
-		panelUIKey.add( moveLeft );
-		selectedList.add(moveLeft);
+		panelHaut.add( movePanel, BorderLayout.CENTER );
 		
-		panelUIKey.add( moveRight );
-		selectedList.add(moveRight);
+		panelHaut.revalidate();
 		
-		panelUIKey.add( moveDown );
-		selectedList.add(moveDown);
 		
-		panelUIKey.add( moveUp );
 		selectedList.add(moveUp);
-		
-		
-		panelUIKey.add( clickMouseMode );
+		selectedList.add(moveRight);
+		selectedList.add(moveDown);
+		selectedList.add(moveLeft);
 		selectedList.add(clickMouseMode);
-		
-		panelUIKey.invalidate();
-		panelUIKey.repaint();
-		
+		selectedList.add(switchMouseKeyboard);
 
 		indexSelectedKey = 0;
 		
-		if( selectionTimer != null )
-		{
-			selectionTimer.stop();
-		}
-		selectionTimer = createSelectTimer( TUIMouseDefilementEnum.DEFILEMENT_MOVE );
-		selectionTimer.start();
 	}
 	
 	
-	
-	protected Timer createSelectTimer( TUIMouseDefilementEnum type )
-	{
-		
-		// Création d'une instance de listener
-		// associée au timer
-		ActionListener action = new ActionListener()
-		{
-			// Méthode appelée à chaque tic du timer
-			public void actionPerformed(ActionEvent event)
-			{
-				// déselection de l'ancienne key
-				UIKey mouseKey =  selectedList.get( indexSelectedKey );
-				if( mouseKey != null )
-				{
-					mouseKey.forceState( TUIKeyState.NORMAL );
-				}
-				
-				if( indexSelectedKey >= (selectedList.size() - 1)  )
-				{
-					indexSelectedKey = 0;
-				}
-				else
-				{
-					indexSelectedKey += 1;
-				}
-				
-				// séléction de la nouvelle touche
-				UIKey mouseKey2 = selectedList.get( indexSelectedKey );
-				if( mouseKey2 != null )
-				{
-					mouseKey2.forceState( TUIKeyState.ENTERED );
-				}
-				
-				
-			}
-		};
-		
-		
-		// Création d'un timer qui génère un tic
-		return new Timer( 1000 ,action );
-	}
+
 
 	
 	public void onClickKeyClavicom(CKeyClavicom keyClavicom)
@@ -433,6 +661,9 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener, click
 	{
 		this.switchMouseKeyboard = switchMouseKeyboard;
 	}
+
+
+
 
 	
 

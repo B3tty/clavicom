@@ -59,7 +59,17 @@ public class CFilePaths
 	private static String toolKeyClavicomConfigurationPicture = pictures + "configuration.png";
 	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "mouse.png";
 	
+	// mouse picture
+	private static String toolKeyMouseUp = pictures + "mouseUp.png";
+	private static String toolKeyMouseDown = pictures + "mouseDown.png";
+	private static String toolKeyMouseLeft = pictures + "mouseLeft.png";
+	private static String toolKeyMouseRight = pictures + "mouseRight.png";
+	private static String toolKeyMouseClavicom = pictures + "HardwareKeyboard.png";
+	private static String toolKeyMouseGeneralClick = pictures + "mouse.png";
+		
 	private static String defaultPicture = pictures + "default.png";
+
+	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
 
 	// ========================================================================
 	// Getters
@@ -176,6 +186,42 @@ public class CFilePaths
 		return toolKeyLastWordPicture;
 	}
 
+	public static String getToolKeyMouseDown()
+	{
+		return toolKeyMouseDown;
+	}
+
+	public static String getToolKeyMouseLeft()
+	{
+		return toolKeyMouseLeft;
+	}
+
+	public static String getToolKeyMouseRight()
+	{
+		return toolKeyMouseRight;
+	}
+
+	public static String getToolKeyMouseUp()
+	{
+		return toolKeyMouseUp;
+	}
+
+	public static String getToolKeyMouseClavicom()
+	{
+		return toolKeyMouseClavicom;
+	}
+
+	public static String getToolKeyMouseGeneralClick()
+	{
+		return toolKeyMouseGeneralClick;
+	}
+
+	public static String getToolDllMouseHookPath()
+	{
+		return toolDllMouseHookPath;
+	}
+	
+	
 	public static String getUserPicturesFolder()
 	{
 		return userPictures;

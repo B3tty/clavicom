@@ -26,6 +26,8 @@
 package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
+
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
@@ -140,7 +142,8 @@ public class CMouse
 					myColorClicked, myColorEntered, new TPoint(0, 0),
 					new TPoint(0, 0),
 					TKeyClavicomActionType.SWITCH_MOUSEMOVE_MOUSECLICK,
-					"** passage en mode -clic- **");
+					CFilePaths.getToolKeyMouseGeneralClick());
+			clickMouseMode.setCaptionImage( true );
 			mouse.setClickMouseMode(clickMouseMode);
 		}
 		catch (Exception ex)
@@ -153,26 +156,30 @@ public class CMouse
 
 		// Touche aller à gauche
 		CMouseKeyMove moveLeft = new CMouseKeyMove(TMouseKeyMoveEnum.LEFT,
-				"** aller à gauche **", myColorNormal, myColorClicked,
+				CFilePaths.getToolKeyMouseLeft(), myColorNormal, myColorClicked,
 				myColorEntered);
+		moveLeft.setCaptionImage( true );
 		mouse.setMoveLeft(moveLeft);
 
 		// Touche aller à droite
 		CMouseKeyMove moveRight = new CMouseKeyMove(TMouseKeyMoveEnum.RIGHT,
-				"** aller à droite **", myColorNormal, myColorClicked,
+				CFilePaths.getToolKeyMouseRight(), myColorNormal, myColorClicked,
 				myColorEntered);
+		moveRight.setCaptionImage( true );
 		mouse.setMoveRight(moveRight);
 
 		// Touche aller en haut
 		CMouseKeyMove moveUp = new CMouseKeyMove(TMouseKeyMoveEnum.UP,
-				"** aller en haut **", myColorNormal, myColorClicked,
+				CFilePaths.getToolKeyMouseUp(), myColorNormal, myColorClicked,
 				myColorEntered);
+		moveUp.setCaptionImage( true );
 		mouse.setMoveUp(moveUp);
 
 		// Touche aller en bas
 		CMouseKeyMove moveDown = new CMouseKeyMove(TMouseKeyMoveEnum.DOWN,
-				"** aller en bas **", myColorNormal, myColorClicked,
+				CFilePaths.getToolKeyMouseDown(), myColorNormal, myColorClicked,
 				myColorEntered);
+		moveDown.setCaptionImage( true );
 		mouse.setMoveDown(moveDown);
 
 		// Touche aller en mode clavier
@@ -182,7 +189,8 @@ public class CMouse
 					myColorClicked, myColorEntered, new TPoint(0, 0),
 					new TPoint(0, 0),
 					TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD,
-					"** passage en mode -clavier- **");
+					CFilePaths.getToolKeyMouseClavicom());
+			switchMouseKeyboard.setCaptionImage( true );
 			mouse.setSwitchMouseKeyboard(switchMouseKeyboard);
 		}
 		catch (Exception ex)

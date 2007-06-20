@@ -169,9 +169,15 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
+			// on met en pause le hook 
+			clickEngine.mouseHookPause();
+			
 			// clic droit
 			robot.mousePress( InputEvent.BUTTON3_MASK );
-			robot.mouseRelease( InputEvent.BUTTON3_MASK );
+			robot.mouseRelease( InputEvent.BUTTON3_MASK );	
+			
+			// on reprend le hook
+			clickEngine.mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{

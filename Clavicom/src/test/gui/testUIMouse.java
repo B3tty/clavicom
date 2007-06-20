@@ -25,6 +25,9 @@
 
 package test.gui;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
 import clavicom.core.engine.CMouseEngine;
@@ -33,27 +36,33 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 import clavicom.gui.mouse.UIMouse;
+import clavicom.gui.utils.UITranslucentFrame;
 
 public class testUIMouse
 {
-	static JFrame frame;
+	static UITranslucentFrame frame;
 
+	static ClickEngine clickEngine = null;
 
 	public static void main(String[] args)
 	{
+		
+		
 		try
 		{
+			System.setProperty("sun.java2d.noddraw", "true");
 			
 			CMessageEngine.createInstance();
 			new UIMessageEngine();
 			
-			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
+			// UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
-			//		 Chargement des UIString et shortcutset
+			// Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
 			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
 			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
@@ -73,45 +82,91 @@ public class testUIMouse
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			ClickEngine clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
+			clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
 			
 			clickEngine.startHook();
 			clickEngine.mouseHookPause();
 			clickEngine.mouseHookResume();
 			
-			
+			DefilementEngine defilementEngine = new DefilementEngine(clickEngine);
 			
 			CMouse mouse = CMouse.CreateMouse(
 					profil.getDefaultColor().getDefaultKeyNormal().getColor(), 
 					profil.getDefaultColor().getDefaultKeyClicked().getColor(), 
 					profil.getDefaultColor().getDefaultKeyEntered().getColor());
 			
+
 			
+			frame = new UITranslucentFrame( profil.getTransparency().getKeyboardTransparencyPourcent() );
 			
-			UIMouse uimouse = new UIMouse( mouse, clickEngine );
+			UIMouse uimouse = new UIMouse( mouse, clickEngine, frame, defilementEngine );
 			
 			new CMouseEngine( mouse, clickEngine );
-
-
 			
-			frame = new JFrame();
-			
+		
 			
 			frame.setFocusableWindowState(true);
 			frame.setAlwaysOnTop(true);
-			frame.setSize(200,400);
+			frame.setSize(400,400);
 			
 			frame.add( uimouse );
+			frame.addWindowListener(new WindowListener(){
+
+				public void windowActivated(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void windowClosed(WindowEvent e)
+				{
+					clickEngine.stopMouseHook();
+				}
+
+				public void windowClosing(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void windowDeactivated(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void windowDeiconified(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void windowIconified(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void windowOpened(WindowEvent e)
+				{
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 	
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
-			
-			
 			
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			
+			if( clickEngine != null )
+			{
+				clickEngine.stopMouseHook();				
+			}
 		}
 	}
 }

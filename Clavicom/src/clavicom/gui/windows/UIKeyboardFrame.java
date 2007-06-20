@@ -316,7 +316,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	private void initFrame()
 	{
 		mainPanel.setEditable(true);
-		edit(true);
+		edit( false );
 		
 		// Ajout des actions aux boutons
 		btEditionKey.setAction(new BtEditionKeyAction(UIString.getUIString("LB_EDITION_EDIT_KEY")));
@@ -354,7 +354,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		}
 		else
 		{
-			isEdited = true;
+			isEdited = false;
 			
 			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
