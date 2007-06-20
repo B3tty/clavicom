@@ -80,18 +80,7 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 	List<UIKey> selectedList;
 	Timer selectionTimer;
 	
-	Thread threadMouseHook = new Thread()
-	{
-		public void run() 
-		{
-			super.run();
-			
-			InitMouseHook();
-		}
-		
-	};
-	public native void InitMouseHook();
-	public native void FinishMouseHook();
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIMouse( CMouse myMouse )
@@ -189,9 +178,7 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 		SwitchMoveMode();
 		//SwitchClickMode();
 		
-		// Lancement du Hook
-		System.loadLibrary("clavicom_gui_mouse_UIMouse");		
-		threadMouseHook.start();
+		
 		
 		
 	}
@@ -200,20 +187,7 @@ public class UIMouse extends JPanel implements OnClickKeyClavicomListener
 	{
 		return panelDefaultMouse;
 	}
-	
-	@SuppressWarnings("deprecation")
-	public void stopMouseHook()
-	{
-		threadMouseHook.stop();
-		FinishMouseHook();
-	}
-	
-	void Callback(  )
-	{
-		System.out.println("click !!!!!!!");
-	}
-	
-	
+
 	// ----------------------------------------------------------- METHODES --//
 	
 	protected void SwitchClickMode(  )

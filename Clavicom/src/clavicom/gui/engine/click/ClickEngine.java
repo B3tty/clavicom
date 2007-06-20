@@ -29,11 +29,52 @@ public class ClickEngine
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	Thread threadMouseHook = new Thread()
+	{
+		public void run() 
+		{
+			super.run();
+			
+			// Initialisation du hook en passant le type de touche en parametre
+			// 		0 : WM_LBUTTONUP
+			// 		1 : WM_LBUTTONDOWN
+			// 		2 : WM_RBUTTONDOWN
+			// 		3 : WM_RBUTTONUP
+			InitMouseHook( 0 );
+		}
+		
+	};
+	
+	// déclaration des méthodes natives
+	public native void InitMouseHook( int click );
+	public native void FinishMouseHook();
+	public native void InhibitMouseHook( boolean inibit );
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+	public ClickEngine( String dllPath )
+	{
+		System.loadLibrary( dllPath );	
+	}
 
-	//----------------------------------------------------------- METHODES --//	
-
+	//----------------------------------------------------------- METHODES --//
+	public void startHook()
+	{
+		// Lancement du Hook
+		threadMouseHook.start();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void stopMouseHook()
+	{
+		threadMouseHook.stop();
+		FinishMouseHook();
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	void Callback(  )
+	{
+		System.out.println("click !!!!!!!");
+	}
 }

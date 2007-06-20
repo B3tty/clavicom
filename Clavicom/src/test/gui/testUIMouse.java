@@ -32,6 +32,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
 import clavicom.gui.mouse.UIMouse;
@@ -70,6 +71,9 @@ public class testUIMouse
 			profil.loadProfileCommandSetName();
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
+			
+			ClickEngine clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
+			clickEngine.startHook();
 			
 			
 			
