@@ -442,7 +442,7 @@ public class Application
 	{
 		try
 		{
-			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, toolClickEngine, toolDefilEngine, true );
+			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, toolClickEngine, toolDefilEngine, false );
 		}
 		catch (Exception ex)
 		{
