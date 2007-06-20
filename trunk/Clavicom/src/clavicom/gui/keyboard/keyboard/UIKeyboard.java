@@ -150,9 +150,6 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
 		
-		// On se met focusable
-		setFocusable(true);
-		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
 		
@@ -745,7 +742,10 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		public void mouseEntered(MouseEvent arg0)
 		{
 			// TODO Auto-generated method stub
-			requestFocus();
+			if(isEdited == true)
+			{
+				requestFocus();
+			}
 		}
 
 		public void mouseExited(MouseEvent arg0)
@@ -948,6 +948,15 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);			
 		}
+	}
+	
+	public int getGroupeListSize()
+	{
+		return keyGroups.size();
+	}
+	public UIKeyGroup getUIKeyGroup( int index )
+	{
+		return keyGroups.get( index );
 	}
 	
 	protected void addCreatedKey(UIKeyKeyboard newUIKeyKeyboard)

@@ -27,7 +27,6 @@ package clavicom.gui.keyboard.keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
@@ -65,7 +64,19 @@ public class UIKeyGroup
 		}
 	}
 	
-	//----------------------------------------------------------- METHODES --//	
+	
+	//----------------------------------------------------------- METHODES --//
+	
+	public void select( boolean selection )
+	{
+		// séléction de toutes les listes
+		for( UIKeyList keyList : keyLists )
+		{
+			keyList.select( selection );
+		}
+	}
+	
+	
 	/**
 	 * Retourne la liste des UIKeyThreeLevel contenues par le groupe
 	 */

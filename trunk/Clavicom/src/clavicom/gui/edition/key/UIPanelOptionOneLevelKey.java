@@ -25,17 +25,13 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-
 import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 import clavicom.gui.edition.key.captionchoozer.UIPanelCaptionChooser;

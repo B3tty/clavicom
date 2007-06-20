@@ -36,7 +36,10 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.DefilementEngine;
+import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
+import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
@@ -81,7 +84,19 @@ public class Application
 	private static CPredictionEngine	toolPredictionEngine;	// Moteur de prediction de mots
 	
 	@SuppressWarnings("unused")
-	private static CStringsEngine		toolStringEngine;		// Moteur de chaines
+	private static ClickEngine	toolClickEngine;				// Moteur des clicks
+	
+	@SuppressWarnings("unused")
+	private static CStringsEngine	toolStringEngine;			// Moteur de chaines
+	
+	@SuppressWarnings("unused")
+	private static DefilementEngine toolDefilEngine;			// Moteur de Defilement
+	
+	@SuppressWarnings("unused")
+	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
+	
+	@SuppressWarnings("unused")
+	private static DefilementKeyEngine toolKeyboardDefilEngine;	// defilement du keyboard
 	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -140,6 +155,18 @@ public class Application
 		splash.newStep("Loading key creation engine...");
 		loadKeyCreationEngine();
 		
+		// Chargement du moteur de click
+		splash.newStep("Loading click engine...");
+		loadClickEngine();
+		
+		// Chargement du moteur de defilement
+		splash.newStep("Loading defilement engine...");
+		loadDefilementEngine();
+		
+		// Chargement du moteur de defilement du keyboard
+		splash.newStep("Loading keyboard defilement engine...");
+		loadKeyboardDefilementEngine();
+		
 		// Création des fenêtres
 		splash.newStep("Creating windows...");
 		
@@ -147,6 +174,8 @@ public class Application
 		// TODO --> Création des fenetres,...
 		UIKeyboard uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
+		mainFrame.setAlwaysOnTop( true );
+		mainFrame.setFocusableWindowState( true );
 		
 		mainFrame.setSize(800,400);
 		
@@ -158,11 +187,16 @@ public class Application
 		// </TEMPORAIRE>
 	}
 	
+	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 	//-----------------------------------------------------------------------
 	// Chargement
 	//-----------------------------------------------------------------------
 	
+	
+	
+
 	/**
 	 * Initialise les propriétés graphiques
 	 */
@@ -368,4 +402,53 @@ public class Application
 	{
 		UIKeyCreationEngine.createInstance();
 	}
+	
+	/**
+	 * Chargement du moteur de click
+	 */
+	private static void loadClickEngine()
+	{
+		try
+		{
+			toolClickEngine = new ClickEngine( CFilePaths.getToolDllMouseHookPath() );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de defilement
+	 */
+	private static void loadDefilementEngine()
+	{
+		try
+		{
+			toolDefilEngine = new DefilementEngine( toolClickEngine );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de defilement du keyboard
+	 */
+	private static void loadKeyboardDefilementEngine()
+	{
+		try
+		{
+			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, toolClickEngine, toolDefilEngine, true );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+
 }

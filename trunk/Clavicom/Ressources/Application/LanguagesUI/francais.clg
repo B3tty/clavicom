@@ -274,6 +274,9 @@
 	<message id = "MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1">Impossible de charger le moteur de derniers mots.</message>
 	<message id = "MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1">Impossible de charger le moteur de lancement d'application.</message>
 	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Impossible de charger le moteur de prediction.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Impossible de charger le moteur de click</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
+	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
 		
 	<!-- Message engine -->
 	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>

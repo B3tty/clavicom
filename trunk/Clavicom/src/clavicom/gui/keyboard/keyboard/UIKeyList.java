@@ -50,6 +50,7 @@ import clavicom.gui.keyboard.key.UIKeyPrediction;
 import clavicom.gui.keyboard.key.UIKeyShortcut;
 import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
+import clavicom.tools.TUIKeyState;
 
 public class UIKeyList
 {
@@ -151,6 +152,22 @@ public class UIKeyList
 		}
 	}
 	//----------------------------------------------------------- METHODES --//	
+	
+	public void select( boolean selection )
+	{
+		// séléction de toutes les touches
+		for( UIKeyKeyboard keyboardKey : keys )
+		{
+			if( selection )
+			{
+				keyboardKey.forceState( TUIKeyState.ENTERED );
+			}
+			else
+			{
+				keyboardKey.forceState( TUIKeyState.NORMAL );
+			}
+		}
+	}
 
 	public List<UIKeyKeyboard> getKeys()
 	{
