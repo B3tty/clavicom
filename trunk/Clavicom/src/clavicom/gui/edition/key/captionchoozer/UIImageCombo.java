@@ -23,7 +23,7 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.edition.key;
+package clavicom.gui.edition.key.captionchoozer;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -31,13 +31,14 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
+
+import clavicom.tools.TImageUtils;
 
 public class UIImageCombo extends JPanel
 {
@@ -59,7 +60,9 @@ public class UIImageCombo extends JPanel
 	
 	public UIImageCombo(String directory, List<String> filenames)
 	{
-		super(new BorderLayout());
+		super();
+		
+		setLayout(new BorderLayout());
 
 		// Initialisation des attributs
 		this.filenames = filenames;
@@ -71,7 +74,7 @@ public class UIImageCombo extends JPanel
 		for (int i = 0; i < filenames.size(); i++)
 		{
 			intArray[i] = new Integer(i);
-			images[i] = new ImageIcon(directory + filenames.get(i));
+			images[i] = TImageUtils.getImage(directory + filenames.get(i));
 			images[i].setImage(resizeImage(images[i].getImage()));
 			
 			if (images[i] != null)
@@ -88,8 +91,7 @@ public class UIImageCombo extends JPanel
 		comboList.setMaximumRowCount(3);
 
 		//Lay out the demo.
-		add(comboList, BorderLayout.PAGE_START);
-		setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		add(comboList);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

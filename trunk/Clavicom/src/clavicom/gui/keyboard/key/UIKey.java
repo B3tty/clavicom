@@ -45,9 +45,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
@@ -771,19 +768,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		protected BufferedImage loadCaptionImage(String filePath)
 		{
 			BufferedImage image;
-			// On teste l'existence de l'image
-			File fileImage = new File(filePath);
-			if (fileImage.exists() == false)
-			{
-				// A COMPLETER !!!
-				System.out.println("fichier non existant...");
-			}
-			
-			// Création de l'image icon
-			ImageIcon iconImage = new ImageIcon(filePath);	
 			
 			// Récupération de l'image
-			image = TImageUtils.toBufferedImage(iconImage.getImage());
+			image = TImageUtils.toBufferedImage(TImageUtils.getImage(filePath).getImage());
 			
 			return image;
 		}

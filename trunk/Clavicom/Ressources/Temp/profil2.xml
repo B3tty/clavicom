@@ -87,9 +87,9 @@
               <blue>99</blue>
             </color_entered>
           </colors>
-          <caption_level_1>Ressources/Application/Pictures/launch.png</caption_level_1>
-          <caption_level_2>Ressources/Application/Pictures/character.png</caption_level_2>
-          <caption_level_3>Ressources/Application/Pictures/configuration.png</caption_level_3>
+          <caption_level_1>1.png</caption_level_1>
+          <caption_level_2>2.png</caption_level_2>
+          <caption_level_3>3.png</caption_level_3>
           <commands>
             <command_normal id="172" />
             <command_shift id="173" />
@@ -157,7 +157,7 @@
               <blue>255</blue>
             </color_entered>
           </colors>
-          <caption>Ressources/Application/Pictures/firefox.png</caption>
+          <caption>2.png</caption>
           <base_string>coucou write</base_string>
           <order_dynamic>12</order_dynamic>
         </keystring>

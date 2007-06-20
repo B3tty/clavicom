@@ -25,7 +25,14 @@
 
 package clavicom.gui.edition.key;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.JCheckBox;
+
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
+import clavicom.gui.edition.key.captionchoozer.UIPanelCaptionChooser;
 
 public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 {
@@ -34,13 +41,28 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	CKeyOneLevel keyOneLevel;
+	protected CKeyOneLevel keyOneLevel;
+	protected UIPanelCaptionChooser captionChoozer;
+	protected JCheckBox checkboxIsImage;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
 	public UIPanelOptionOneLevelKey()
 	{
 		super( );
+		
+		// Création des objets
+		captionChoozer = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
+		checkboxIsImage = new JCheckBox(	new AbstractAction()
+											{
+												public void actionPerformed(ActionEvent e)
+												{
+													onChecked();
+												}
+											});		
+		// Ajout au panel
+		add(captionChoozer);
+		add(checkboxIsImage);
 	}
 
 	//----------------------------------------------------------- METHODES --//	
@@ -49,8 +71,24 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 		// Appel au père
 		setValuesKey(myKeyOneLevel);
 		
-		keyOneLevel = myKeyOneLevel;	
+		keyOneLevel = myKeyOneLevel;
+		
+		// Mise à jour de la caption
+		captionChoozer.setIsImage(keyOneLevel.isCaptionImage());
+		
+		if(keyOneLevel.isCaptionImage() == true)
+		{
+			captionChoozer.getComboImages().selectGoodImage(keyOneLevel.getCaption());
+		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	/**
+	 * Appelé lorsque la checkbox est cochée
+	 */
+	protected void onChecked()
+	{
+		// On grise les composants
+		captionChoozer.setIsImage(checkboxIsImage.isSelected());
+	}
 }

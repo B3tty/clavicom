@@ -291,6 +291,10 @@
 	<message id = "MSG_FONT_MISSING_FONT_REPLACE_1">La police "</message>
 	<message id = "MSG_FONT_MISSING_FONT_REPLACE_2">" sera chargée par défaut."</message>	
 	
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_1">L'image "</message>
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_2">" est manquante.</message>
+	
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_3">Le fichier par défaut va être chargé.</message>
 	
 	<!-- ==========================================================================
 		Labels 
@@ -404,6 +408,9 @@
 	<message id = "LB_EDITION_OPTION_APPLICATION_CANCEL">Annuler</message>
 	<message id = "LB_EDITION_OPTION_APPLICATION_APPLY">Appliquer</message>
 	<message id = "LB_EDITION_OPTION_APPLICATION_TITLE">Options de l'application</message>
+	
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Texte</message>
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Image</message>
 	
 	
 </language>
