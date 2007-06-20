@@ -1,3 +1,0 @@
-EXPORTS
-Java_clavicom_gui_mouse_UIMouse_InitMouseHook
-Java_clavicom_gui_mouse_UIMouse_FinishMouseHook
