@@ -26,7 +26,8 @@
 package test.gui;
 
 import javax.swing.JFrame;
-import clavicom.core.engine.mouse.CMouseEngine;
+
+import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -73,7 +74,10 @@ public class testUIMouse
 			profil.loadProfile();
 			
 			ClickEngine clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
+			
 			clickEngine.startHook();
+			clickEngine.mouseHookPause();
+			clickEngine.mouseHookResume();
 			
 			
 			
@@ -84,9 +88,9 @@ public class testUIMouse
 			
 			
 			
-			UIMouse uimouse = new UIMouse( mouse );
+			UIMouse uimouse = new UIMouse( mouse, clickEngine );
 			
-			new CMouseEngine( mouse, uimouse.getDefaultMousePanel() );
+			new CMouseEngine( mouse, clickEngine );
 
 
 			
