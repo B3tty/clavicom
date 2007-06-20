@@ -25,6 +25,9 @@
 
 package clavicom;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -106,7 +109,22 @@ public class Application
 	 * Point d'entrée de l'application
 	 */
 	public static void main(String[] args)
-	{		
+	{
+		try
+		{	
+			LaunchApplication();
+		}
+		catch (Exception e)
+		{
+			if(toolClickEngine != null)
+			{
+				toolClickEngine.FinishMouseHook();
+			}
+		}
+	}
+		
+	public static void LaunchApplication()
+	{
 		// Initialisation des propriétés graphiques
 		initGraphicProperties();
 		
@@ -163,23 +181,75 @@ public class Application
 		splash.newStep("Loading defilement engine...");
 		loadDefilementEngine();
 		
+		
+		
+		
+		
+		// <TEMPORAIRE>
+		// TODO --> Création des fenetres,...
+		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		
 		// Chargement du moteur de defilement du keyboard
+		// Il a besoin que uiKeyboard soit construit
 		splash.newStep("Loading keyboard defilement engine...");
 		loadKeyboardDefilementEngine();
 		
 		// Création des fenêtres
 		splash.newStep("Creating windows...");
 		
-		// <TEMPORAIRE>
-		// TODO --> Création des fenetres,...
-		UIKeyboard uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
 		mainFrame.setAlwaysOnTop( true );
 		mainFrame.setFocusableWindowState( true );
 		
 		mainFrame.setSize(800,400);
-		mainFrame.edit(true);
+		mainFrame.edit(false);
 		
+		mainFrame.addWindowListener(new WindowListener(){
+
+			public void windowActivated(WindowEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowClosed(WindowEvent e)
+			{
+				
+			}
+
+			public void windowClosing(WindowEvent e)
+			{
+				if(toolClickEngine != null)
+				{
+					toolClickEngine.FinishMouseHook();
+				}
+			}
+
+			public void windowDeactivated(WindowEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowDeiconified(WindowEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowIconified(WindowEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowOpened(WindowEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});	
 		splash.newStep("Load complete !");
 		splash.close();
 		
