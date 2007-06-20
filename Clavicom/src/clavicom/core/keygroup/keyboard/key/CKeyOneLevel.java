@@ -29,6 +29,7 @@ import java.awt.Color;
 
 import org.jdom.Element;
 
+import clavicom.CFilePaths;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -72,7 +73,9 @@ public abstract class CKeyOneLevel extends CKeyKeyboard
 					+ UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE")
 					+ TXMLNames.KY_ELEMENT_CAPTION);
 		}
-
+		
+		// On ajoute la chaine de répertoire
+		caption = CFilePaths.getUserPicturesFolder() + caption;
 	}
 
 	// ----------------------------------------------------------- METHODES --//

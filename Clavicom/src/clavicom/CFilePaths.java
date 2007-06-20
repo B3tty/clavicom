@@ -42,6 +42,8 @@ public class CFilePaths
 	private static String pictures = application + "Pictures\\";
 	private static String profils = ressources + "Profiles\\";
 	
+	private static String userPictures = profils + "Pictures\\";
+	
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
@@ -56,6 +58,8 @@ public class CFilePaths
 	private static String toolKeyClavicomClosePicture = pictures + "close.png";
 	private static String toolKeyClavicomConfigurationPicture = pictures + "configuration.png";
 	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "mouse.png";
+	
+	private static String defaultPicture = pictures + "default.png";
 
 	// ========================================================================
 	// Getters
@@ -171,9 +175,16 @@ public class CFilePaths
 	{
 		return toolKeyLastWordPicture;
 	}
-	
-	
 
+	public static String getUserPicturesFolder()
+	{
+		return userPictures;
+	}
+
+	public static String getDefaultPicturePath()
+	{
+		return defaultPicture;
+	}
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	
