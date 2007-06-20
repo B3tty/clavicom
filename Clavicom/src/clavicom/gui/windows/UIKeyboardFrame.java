@@ -51,7 +51,6 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
-
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
 import clavicom.gui.edition.key.UIPanelOptionKeyClavicom;
@@ -113,14 +112,14 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{		
 		// TODO : passer la couleur
-		super(.98f);
+		super(.90f);
 		
 		// Mise en place du style
 		setStyle();
 		
 		// Recopie des attributs
 		this.panelKeyboard = panelKeyboard;
-
+		
 		// Création des objets
 		createObjects();
 		
@@ -140,7 +139,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 //		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey(new CKeyPrediction(Color.RED, Color.GREEN, Color.BLUE, new TPoint(15,20), new TPoint(40,60),""));
 //		panelModification.add(panelOptionKeyKeyboard);
 	}
-
+	
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
 	{
 		this.selectedKeys = selectedKeys;
@@ -315,8 +314,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	 */
 	private void initFrame()
 	{
+		// Par défaut on n'est pas en edition
+		edit(false);
+		
+		// On autorise le resize de la fenêtre
 		mainPanel.setEditable(true);
-		edit( false );
 		
 		// Ajout des actions aux boutons
 		btEditionKey.setAction(new BtEditionKeyAction(UIString.getUIString("LB_EDITION_EDIT_KEY")));
@@ -344,8 +346,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public void edit(boolean edit)
 	{
 		if (edit == true)
+		// En edition
 		{
 			isEdited = true;
+			
+			setFocusableWindowState(true);
+			setAlwaysOnTop(false);
 			
 			panelKeyboard.edit();
 			panelToolbar.setVisible(true);
@@ -353,8 +359,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelModification.setVisible(true);
 		}
 		else
+		// En utilisation
 		{
 			isEdited = false;
+			
+			setFocusableWindowState(false);
+			setAlwaysOnTop(true);
 			
 			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
@@ -362,6 +372,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelModification.setVisible(false);			
 		}
 		
+		invalidate();		
 	}
 	
 	// ------- Actions des boutons

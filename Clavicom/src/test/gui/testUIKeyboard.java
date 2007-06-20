@@ -25,9 +25,8 @@
 
 package test.gui;
 
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.Dimension;
+
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLevelEngine;
@@ -38,8 +37,11 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.UIKeyCreationEngine;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.windows.UIKeyboardFrame;
 
 public class testUIKeyboard
 {
@@ -47,6 +49,8 @@ public class testUIKeyboard
 	{
 		try
 		{
+			System.setProperty("sun.java2d.noddraw", "true");
+			
 			CMessageEngine.createInstance();
 			/*UIMessageEngine test = */new UIMessageEngine();
 			
@@ -64,6 +68,11 @@ public class testUIKeyboard
 			CProfil.createInstance(input);
 			CProfil profil = CProfil.getInstance();
 			
+			profil.loadProfileLanguageUIName();
+			profil.loadProfileCommandSetName();
+			profil.loadProfileShortCutName();
+			profil.loadProfile();
+			
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
@@ -72,54 +81,52 @@ public class testUIKeyboard
 			CDictionary dictionary = null;
 			try
 			{
-				//dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
+				dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
 			}
 			catch (Exception ex)
 			{
 				System.out.println("argh1 !!!");
-				Thread.sleep( 3000 );
-				
-				System.out.println("argh2 !!!");
-				ex.printStackTrace();
 			}
-			
-			
 			
 			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
 			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+
+			UIKeyCreationEngine.createInstance();
 			
-			// on simule l'appuis sur une touche
-//			CKeyGroup group = keyboard.getKeyGroup( 0 );
-//			CKeyList list = group.getkeyList( 0 );
-//			CKeyCharacter keyCharacter = (CKeyCharacter)list.getKeyKeyboard( 0 );
-//			
-//			
-//			PanelOptionKeyCharacter panelOptionCharacter = new PanelOptionKeyCharacter( keyCharacter, CCommandSet.GetInstance()  );
-//			JScrollPane sp = new JScrollPane( panelOptionCharacter );
+			
+			UIKeyboard uiKeyboard = new UIKeyboard(keyboard,levelEngine );
+			uiKeyboard.setPreferredSize(new Dimension(100,100));
+
 			
 			
 			
-			JPanel panel = new JPanel();
-			panel.setLayout(new BorderLayout());
-			
-//			UIKeyboard uiKeyboard = new UIKeyboard(keyboard, );
-//			uiKeyboard.setPreferredSize(new Dimension(100,100));
-//			
-//			uiKeyboard.edit();
-//			
-//			panel.add(uiKeyboard, BorderLayout.CENTER);
-			
-			JFrame frame = new JFrame ();
-			frame.setSize(900,400);
-			frame.add( panel );
-			
-			frame.setAlwaysOnTop(true);
-			//frame.setFocusableWindowState(false);
-			frame.setFocusable(false);
-			
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			UIKeyboardFrame frame = new UIKeyboardFrame(uiKeyboard);
 			frame.setVisible(true);
+			frame.setSize(900,400);
+			frame.edit(true);
+			
+			
+			
+//			System.out.println("ici");
+//			
+//			UITranslucentFrame frame = new UITranslucentFrame (.5f);
+//			UIMovingPanel panel = new UIMovingPanel(frame);
+//			panel.setEditable(true);
+//			
+//			panel.setLayout(new BorderLayout());
+//			panel.add(uiKeyboard, BorderLayout.CENTER);
+//			
+//			frame.setSize(900,400);
+//			frame.add( panel );
+//			
+//			frame.setAlwaysOnTop(true);
+//
+//			frame.setFocusableWindowState(false);
+//			//frame.setFocusable(false);
+//			
+//			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//			frame.setVisible(true);
 			
 		}
 		catch(Exception e)

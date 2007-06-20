@@ -178,6 +178,7 @@ public class Application
 		mainFrame.setFocusableWindowState( true );
 		
 		mainFrame.setSize(800,400);
+		mainFrame.edit(true);
 		
 		splash.newStep("Load complete !");
 		splash.close();
