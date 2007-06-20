@@ -25,7 +25,6 @@
 
 package clavicom;
 
-import splashscreen.UISplashScreen;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -41,6 +40,7 @@ import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
 
 public class Application
