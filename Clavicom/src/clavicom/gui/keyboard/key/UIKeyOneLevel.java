@@ -36,15 +36,11 @@ public abstract class UIKeyOneLevel extends UIKeyKeyboard
 	//---------------------------------------------------------- VARIABLES --//	
 	private BufferedImage captionImage;
 	
-	boolean reloadImage;
-	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyOneLevel()
 	{
 		// Appel à la mère
 		super();
-		
-		reloadImage = true;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -54,12 +50,12 @@ public abstract class UIKeyOneLevel extends UIKeyKeyboard
 		if (getCoreKey().isCaptionImage() == false)
 			return null;
 		
-		if (reloadImage == true)
+		if (reloadImage() == true)
 		{
 			// Création de la captionImage
 			captionImage = loadCaptionImage(getCaptionText() );
 			
-			reloadImage = false;
+			setReloadImage(false);
 		}
 		
 		return captionImage;

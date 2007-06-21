@@ -59,6 +59,7 @@ import clavicom.gui.edition.key.UIPanelOptionKeyLevel;
 import clavicom.gui.edition.key.UIPanelOptionKeyShortCut;
 import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
+import clavicom.gui.edition.key.UIPanelOptionOneLevelKey;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
@@ -66,6 +67,8 @@ import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
+import clavicom.tools.TKeyClavicomActionType;
+import clavicom.tools.TLevelEnum;
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
@@ -95,6 +98,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	UIKeyCreationToolbar panelToolbar;	// Panel contenant les touches d'edition
 	
 	// Panels de modification de touche
+	UIPanelOptionOneLevelKey panelOptionKeyOneLevel;
 	UIPanelOptionKeyboardKey panelOptionKeyKeyboard;
 	UIPanelOptionKeyCharacter panelOptionKeyCharacter;
 	UIPanelOptionKeyClavicom panelOptionKeyClavicom;
@@ -269,6 +273,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKey = new UIModificationKeyDialog(panelModification);
 		frameOptionApplication = new UIFrameModificationProfil();
 		
+		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
 		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey();
 		panelOptionKeyCharacter = new UIPanelOptionKeyCharacter();
 		panelOptionKeyClavicom = new UIPanelOptionKeyClavicom();
@@ -434,45 +439,56 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			
 			// On vide le panel de la fenêtre
 			panelModification.removeAll();
-			
 			// On sélectionne le bon panel
 			if (selectedKey instanceof CKeyCharacter)
 			{
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYCHARACTER"));
 				panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)selectedKey);
 				panelModification.add(panelOptionKeyCharacter);
 			}
 			else if (selectedKey instanceof CKeyPrediction)
 			{
-				// TODO : faire quelque chose !
-				return;
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYPREDICTION"));
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyPrediction)selectedKey);
+				panelModification.add(panelOptionKeyKeyboard);
 			}
 			else if (selectedKey instanceof CKeyLastWord)
 			{
-				// TODO : faire quelque chose !
-				return;
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLASTWORD"));
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyLastWord)selectedKey);
+				panelModification.add(panelOptionKeyKeyboard);
 			}
 			else if (selectedKey instanceof CKeyLauncher)
 			{
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
 				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
 				panelModification.add(panelOptionKeyLauncher);
 			}
 			else if (selectedKey instanceof CKeyLevel)
 			{
-				// TODO : faire quelque chose !
-				return;
+				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
+										TLevelEnum.getString(selectedKeyLevel.GetLevel()));
+				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
+				panelModification.add(panelOptionKeyOneLevel);
 			}
 			else if (selectedKey instanceof CKeyShortcut)
 			{
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYSHORTCUT"));
 				panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)selectedKey);
 				panelModification.add(panelOptionKeyShortcut);
 			}
 			else if (selectedKey instanceof CKeyString)
 			{
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYSTRING"));
 				panelOptionKeyString.setValuesKeyString((CKeyString)selectedKey);
 				panelModification.add(panelOptionKeyString);
 			}
 			else if (selectedKey instanceof CKeyClavicom)
 			{
+				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
+				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
+										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
 				panelOptionKeyClavicom.setValuesKeyClavicom((CKeyClavicom)selectedKey);
 				panelModification.add(panelOptionKeyClavicom);
 			}

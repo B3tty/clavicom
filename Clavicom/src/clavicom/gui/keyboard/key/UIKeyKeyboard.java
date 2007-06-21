@@ -39,11 +39,15 @@ public abstract class UIKeyKeyboard extends UIKey
 
 	//---------------------------------------------------------- VARIABLES --//	
 	
+	boolean reloadImage;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyKeyboard()
 	{
 		// Appel de la mère
 		super();
+		
+		setReloadImage(true);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -112,5 +116,19 @@ public abstract class UIKeyKeyboard extends UIKey
 		setPreferredSize(new Dimension (	absMaxX - absMinX,
 											absMaxY - absMinY));
 	}
-
+    
+    public boolean reloadImage()
+    {
+    	return reloadImage;
+    }
+    
+    public void setReloadImage(boolean reload)
+    {
+    	reloadImage = reload;
+    }
+    
+    protected void alertCaptionChanged()
+    {
+    	setReloadImage(true);    	
+    }
 }

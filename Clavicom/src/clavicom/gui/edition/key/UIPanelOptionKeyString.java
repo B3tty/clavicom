@@ -46,7 +46,6 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyString keyString;
-	JTextField textDisplay;
 	JTextField textWrite;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -57,35 +56,6 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 
 		JPanel panel = new JPanel( new BorderLayout() );
 		
-		JPanel panelDisplay = new JPanel();
-		
-		JLabel ltextDisplay = new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") );
-		textDisplay = new JTextField();
-		textDisplay.setPreferredSize( new Dimension( 200,23 ) );
-		textDisplay.addKeyListener(new KeyListener()
-		{
-			public void keyPressed(KeyEvent arg0)
-			{
-
-			}
-
-			public void keyReleased(KeyEvent arg0)
-			{
-				updateCaption(textDisplay.getText());				
-			}
-
-			public void keyTyped(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		panelDisplay.add( ltextDisplay );
-		panelDisplay.add( textDisplay );
-		
-		
-		
 		JPanel panelWrite = new JPanel();
 		
 		JLabel ltextWrite = new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTWRITE") );
@@ -95,7 +65,7 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 		{
 			public void keyPressed(KeyEvent arg0)
 			{
-				
+				// Rien à faire
 			}
 
 			public void keyReleased(KeyEvent arg0)
@@ -105,16 +75,12 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 
 			public void keyTyped(KeyEvent arg0)
 			{
-				// TODO Auto-generated method stub
-				
+				// Rien à faire
 			}
 		});
 		
 		panelWrite.add( ltextWrite );
 		panelWrite.add( textWrite );
-		
-		
-		panel.add( panelDisplay, BorderLayout.NORTH ); 
 		panel.add( panelWrite ); 
 		
 		// Ajout du titre

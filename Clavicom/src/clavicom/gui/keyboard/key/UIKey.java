@@ -267,6 +267,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		public void captionChanged()
 		{
+			// On alerte les touches que la caption à changé
+			alertCaptionChanged();
+			
 			// On recréé les images, car la caption a changé
 			recreateNormalImages();
 			
@@ -774,6 +777,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			return image;
 		}
+		
+		protected abstract void alertCaptionChanged();
 		
 		protected abstract String getCaptionText();
 		protected abstract BufferedImage getCaptionImage();

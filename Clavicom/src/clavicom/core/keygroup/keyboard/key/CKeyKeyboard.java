@@ -289,5 +289,5 @@ public abstract class CKeyKeyboard extends CKey
 		{
 			listener.captionChanged();
 		}
-    }	
+    }	    
 }

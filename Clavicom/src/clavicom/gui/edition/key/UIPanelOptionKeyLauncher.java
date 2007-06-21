@@ -30,8 +30,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -50,7 +48,6 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyLauncher keyLauncher;
-	JTextField textFieldDisplay ;
 	JTextField textFieldPath ;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -66,29 +63,6 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 		JPanel panelDisplay = new JPanel();
 		
 		panelDisplay.add( new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") ) );
-		
-		textFieldDisplay = new JTextField( );
-		textFieldDisplay.setPreferredSize( new Dimension( 270, 23 ) );
-		textFieldDisplay.addKeyListener(new KeyListener()
-		{
-			public void keyPressed(KeyEvent arg0)
-			{
-				
-			}
-
-			public void keyReleased(KeyEvent arg0)
-			{
-				keyLauncher.setCaption( textFieldDisplay.getText() );				
-			}
-
-			public void keyTyped(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		panelDisplay.add( textFieldDisplay );
 
 		
 		panelGlobal.add( panelDisplay, BorderLayout.NORTH );
@@ -141,7 +115,6 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 		setValuesKeyOneLevel(myKeyLauncher);
 		
 		keyLauncher = myKeyLauncher;
-		textFieldDisplay.setText(myKeyLauncher.getCaption());
 		
 		if( keyLauncher != null )
 		{

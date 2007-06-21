@@ -28,16 +28,23 @@ package clavicom.gui.edition.key.captionchoozer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.EventListenerList;
 
 import clavicom.gui.language.UIString;
+import clavicom.gui.listener.UICaptionChooserListener;
+import clavicom.tools.TImageUtils;
 
 public class UIPanelCaptionChooser extends JPanel
 {
@@ -52,6 +59,8 @@ public class UIPanelCaptionChooser extends JPanel
 	
 	protected boolean isImage;				// Indique si l'état de selection
 	
+	protected EventListenerList listenerList;	// Listeners sur le changement de composant
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIPanelCaptionChooser(String directory)
 	{
@@ -62,6 +71,37 @@ public class UIPanelCaptionChooser extends JPanel
 		captionText = new JTextField("");
 		comboImages = new UIImageCombo(directory,getFilenames(directory));
 
+		listenerList = new EventListenerList();
+		
+		// Ajout des actions
+		captionText.addKeyListener(new KeyListener()
+										{
+											public void keyPressed(KeyEvent arg0)
+											{
+												
+											}
+
+											public void keyReleased(KeyEvent arg0)
+											{
+												// TODO Auto-generated method stub
+												fireCaptionChanged(captionText.getText(), false);
+											}
+
+											public void keyTyped(KeyEvent arg0)
+											{
+												
+											}
+										});
+		
+		comboImages.addActionListener(new AbstractAction()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				fireCaptionChanged(comboImages.getSelectedFilename(), true);											
+			}
+			
+		});
+		
 		isImage = false;
 		
 		// Ajout des composants au panel
@@ -174,6 +214,11 @@ public class UIPanelCaptionChooser extends JPanel
 		}
 	}
 	
+	public void setCaptionText(String text)
+	{
+		captionText.setText(text);
+	}
+	
 	/**
 	 * Indique si on est en selection d'image ou non
 	 */
@@ -216,18 +261,46 @@ public class UIPanelCaptionChooser extends JPanel
 			{
 				 for ( File currentFile : list)
 				 {
-					 // On n'ajoute que si on peut créer une image
-					 if (new ImageIcon(directory + currentFile) != null)
-						 fileNames.add(currentFile.getName());
+					 if (TImageUtils.hasImageExtension(currentFile) == true)
+					 {
+						 // On n'ajoute que si on peut créer une image
+						 if (new ImageIcon(directory + currentFile) != null)
+						 {
+							 fileNames.add(currentFile.getName());
+							 System.out.println(currentFile.getName());
+						 }
+					 }
 				 }
 			}
 		}
 		
 		return fileNames;
 	}
-
+	
+	
 	public UIImageCombo getComboImages()
 	{
 		return comboImages;
+	}
+
+	//	 Listener ==============================================
+	public void addCaptionChooserListener(UICaptionChooserListener l)
+	{
+		this.listenerList.add(UICaptionChooserListener.class, l);
+	}
+
+	public void removeCaptionChooserListener(UICaptionChooserListener l)
+	{
+		this.listenerList.remove(UICaptionChooserListener.class, l);
+	}
+
+	protected void fireCaptionChanged(String myCaption, boolean myIsImage)
+	{
+		UICaptionChooserListener[] listeners = (UICaptionChooserListener[]) listenerList
+				.getListeners(UICaptionChooserListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].captionChanged(this,myCaption, myIsImage);
+		}
 	}
 }

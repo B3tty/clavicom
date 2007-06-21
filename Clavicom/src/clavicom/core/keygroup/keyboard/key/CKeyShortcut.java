@@ -28,6 +28,8 @@ package clavicom.core.keygroup.keyboard.key;
 import java.awt.Color;
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.listener.OnClickKeyShortcutListener;
@@ -210,6 +212,15 @@ public class CKeyShortcut extends CKeyOneLevel
 		fireOnClickKeyShortcut();
 	}
 
+	@Override
+	public String getCaption()
+	{
+		if(isCaptionImage())
+			return CFilePaths.getUserPicturesFolder() + caption;
+		else
+			return caption;
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 }

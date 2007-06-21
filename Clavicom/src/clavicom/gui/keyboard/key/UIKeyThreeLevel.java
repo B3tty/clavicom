@@ -42,8 +42,6 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 	protected BufferedImage captionImageShift;
 	protected BufferedImage captionImageAltGr;
 	
-	boolean reloadImages;
-	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIKeyThreeLevel(CLevelEngine myLevelEngine)
 	{
@@ -51,7 +49,6 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 		super();
 		
 		levelEngine = myLevelEngine;
-		reloadImages = true;
 	}
 	
 	//----------------------------------------------------------- METHODES --//
@@ -67,7 +64,7 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 		if(getCoreKey().isCaptionImage() == false)
 			return null;
 		
-		if (reloadImages == true)
+		if (reloadImage() == true)
 		{
 			//  Cast de l'objet
 			CKeyThreeLevel coreKey = (CKeyThreeLevel)getCoreKey();
@@ -77,7 +74,7 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 			captionImageShift = loadCaptionImage(coreKey.getCaption(TLevelEnum.SHIFT));
 			captionImageAltGr = loadCaptionImage(coreKey.getCaption(TLevelEnum.ALT_GR));
 			
-			reloadImages = false;
+			setReloadImage(true);
 		}		
 		
 		if(levelEngine.getCurrentLevel() == TLevelEnum.NORMAL)

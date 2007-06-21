@@ -36,8 +36,9 @@ import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 import clavicom.gui.edition.key.captionchoozer.UIPanelCaptionChooser;
 import clavicom.gui.language.UIString;
+import clavicom.gui.listener.UICaptionChooserListener;
 
-public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
+public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey implements UICaptionChooserListener
 {
 
 
@@ -45,7 +46,7 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 
 	//---------------------------------------------------------- VARIABLES --//
 	protected CKeyOneLevel keyOneLevel;
-	protected UIPanelCaptionChooser captionChoozer;
+	protected UIPanelCaptionChooser captionChooser;
 	protected JCheckBox checkboxIsImage;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -58,7 +59,7 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 		panelGlobal.setLayout(new BoxLayout(panelGlobal, BoxLayout.Y_AXIS));
 		
 		// Création des objets
-		captionChoozer = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
+		captionChooser = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
 		checkboxIsImage = new JCheckBox(	new AbstractAction()
 											{
 												public void actionPerformed(ActionEvent e)
@@ -66,17 +67,21 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 													onChecked();
 												}
 											});		
-		//checkboxIsImage.setText(UIString.getUIString(ID))
-		// TODO
+		// Ajout du titre
+		checkboxIsImage.setText(UIString.getUIString("LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL"));
+		
 		// Ajout au panel
 		panelGlobal.add(checkboxIsImage);
 		
-		panelGlobal.add(captionChoozer);
+		panelGlobal.add(captionChooser);
 
 		// Ajout du titre
 		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
 				BorderFactory.createLineBorder( Color.BLACK ), 
 				UIString.getUIString("LB_KEYSONELEVEL_BORDER")) );
+		
+		// Ajout en tant que listener du chooser
+		captionChooser.addCaptionChooserListener(this);
 		
 		add(panelGlobal);
 	}
@@ -90,11 +95,15 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 		keyOneLevel = myKeyOneLevel;
 		
 		// Mise à jour de la caption
-		captionChoozer.setIsImage(keyOneLevel.isCaptionImage());
+		captionChooser.setIsImage(keyOneLevel.isCaptionImage());
 		
+		// On met à jour la checkbox
+		checkboxIsImage.setSelected(keyOneLevel.isCaptionImage());
+		
+		// On met à jour la combo
 		if(keyOneLevel.isCaptionImage() == true)
 		{
-			captionChoozer.getComboImages().selectGoodImage(keyOneLevel.getCaption());
+			captionChooser.getComboImages().selectGoodImage(keyOneLevel.getCaption());
 		}
 	}
 
@@ -104,7 +113,22 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey
 	 */
 	protected void onChecked()
 	{
+		// On met à jour l'objet du noyau
+		keyOneLevel.setCaptionImage(checkboxIsImage.isSelected());
+
 		// On grise les composants
-		captionChoozer.setIsImage(checkboxIsImage.isSelected());
+		captionChooser.setIsImage(checkboxIsImage.isSelected());
+		
+		// On met à jour le noyau
+		keyOneLevel.setCaption(captionChooser.getCaption());
+	}
+
+	public void captionChanged(UIPanelCaptionChooser captionChooser, String newCaption, boolean isImage)
+	{
+		if (captionChooser == this.captionChooser)
+		{
+			// On met à jour le noyau
+			keyOneLevel.setCaption(newCaption);
+		}
 	}
 }

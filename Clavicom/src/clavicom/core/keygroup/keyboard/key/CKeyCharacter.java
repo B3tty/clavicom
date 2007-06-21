@@ -29,6 +29,8 @@ import java.awt.Color;
 
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.listener.OnClickKeyCharacterListener;
@@ -366,6 +368,28 @@ public class CKeyCharacter extends CKeyThreeLevel
 	public void Click()
 	{
 		fireOnClickKeyCharacter();
+	}
+	
+	public String getCaption( TLevelEnum level )
+	{
+		String myCaption = "";
+		if( level == TLevelEnum.NORMAL )
+		{
+			myCaption = captionNormal;
+		}
+		else if( level == TLevelEnum.SHIFT )
+		{
+			myCaption = captionShift;
+		}
+		else if( level == TLevelEnum.ALT_GR )
+		{
+			myCaption = captionAltGr;
+		}
+		
+		if(isCaptionImage())
+			myCaption = CFilePaths.getUserPicturesFolder() + myCaption;
+		
+		return myCaption;
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//

@@ -29,6 +29,8 @@ import java.awt.Color;
 
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.core.listener.OnClickKeyLevelListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
@@ -145,6 +147,14 @@ public class CKeyLevel extends CKeyOneLevel
 		this.level = level;
 	}
 
+	@Override
+	public String getCaption()
+	{
+		if(isCaptionImage())	
+			return CFilePaths.getUserPicturesFolder() + caption;
+		else
+			return caption;
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	

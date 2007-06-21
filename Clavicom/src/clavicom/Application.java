@@ -198,11 +198,9 @@ public class Application
 		splash.newStep("Creating windows...");
 		
 		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
-		mainFrame.setAlwaysOnTop( true );
-		mainFrame.setFocusableWindowState( true );
 		
 		mainFrame.setSize(800,400);
-		mainFrame.edit(false);
+		mainFrame.edit(true);
 		
 		mainFrame.addWindowListener(new WindowListener(){
 

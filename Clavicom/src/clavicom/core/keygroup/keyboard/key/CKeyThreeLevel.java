@@ -29,7 +29,6 @@ import java.awt.Color;
 
 import org.jdom.Element;
 
-import clavicom.CFilePaths;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
@@ -102,34 +101,11 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 					+ UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE")
 					+ TXMLNames.KY_ELEMENT_CAPTION_LEVEL_3);
 		}
-		
-		// On ajoute la chaine de répertoire
-		captionNormal = CFilePaths.getUserPicturesFolder() + captionNormal;
-		captionShift = CFilePaths.getUserPicturesFolder() + captionShift;
-		captionAltGr = CFilePaths.getUserPicturesFolder() + captionAltGr;
-
 	}
 
 	
 
 	//----------------------------------------------------------- METHODES --//
-
-	public String getCaption( TLevelEnum level )
-	{
-		if( level == TLevelEnum.NORMAL )
-		{
-			return captionNormal;
-		}else if( level == TLevelEnum.SHIFT )
-		{
-			return captionShift;
-		}else if( level == TLevelEnum.ALT_GR )
-		{
-			return captionAltGr;
-		}else
-		{
-			return "";
-		}
-	}
 	
 	public void setCaption( String caption, TLevelEnum level )
 	{
@@ -173,6 +149,6 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 	}
 	
 	public abstract void completeNodeSpecific2(Element eltKeyNode) throws Exception;
-
+	public abstract String getCaption( TLevelEnum level );
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

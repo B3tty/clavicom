@@ -79,4 +79,11 @@ public class UIKeyMouse extends UIKey
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	protected void alertCaptionChanged()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

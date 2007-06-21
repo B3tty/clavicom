@@ -28,6 +28,8 @@ package clavicom.core.keygroup.keyboard.key;
 
 import java.awt.Color;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -88,7 +90,14 @@ public class CKeyPrediction extends CKeyDynamicString
 		return caption;
 	}
 
-
+	@Override
+	public String getCaption()
+	{
+		if(isCaptionImage())
+			return CFilePaths.getUserPicturesFolder() + caption;
+		else
+			return caption;
+	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
