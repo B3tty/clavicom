@@ -37,6 +37,9 @@ import clavicom.tools.TUIKeyState;
 public class DefilementKeyEngine implements DefilListener, clickMouseHookListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
+	
+	final int NB_TURN_LEVEL = 3; // nombre de tour que l'on peut faire sur le niveau
+								 // list et key
 
 	//---------------------------------------------------------- VARIABLES --//
 	UIKeyboard uiKeyboard;
@@ -49,6 +52,9 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	int currentIndexDefilementGroup;
 	int currentIndexDefilementList;
 	int currentIndexDefilementKey;
+	
+	int nbCurrentDefilement; // defilement courant
+							//utilisé pour ne rester que trois fois de suite sur un niveau
 	
 	DefilementEngine defilementEngine;
 	ClickEngine clicEngine;
@@ -77,6 +83,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		currentIndexDefilementGroup = 0;
 		currentIndexDefilementList = 0;
 		currentIndexDefilementKey = 0;
+		
+		nbCurrentDefilement = 0;
 		
 		currentGroup = null;
 		currentList = null;
@@ -114,6 +122,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				if( currentIndexDefilementGroup >= (uiKeyboard.getGroupeListSize()-1) )
 				{
 					currentIndexDefilementGroup = 0;
+					nbCurrentDefilement++;
 				}
 				else
 				{
@@ -135,6 +144,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				if( currentIndexDefilementList >= (currentGroup.getKeyLists().size() - 1) )
 				{
 					currentIndexDefilementList = 0;
+					nbCurrentDefilement++;
 				}
 				else
 				{
@@ -143,6 +153,15 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				
 				currentList = currentGroup.getKeyLists().get( currentIndexDefilementList );
 				currentList.select( true );
+				
+				// si le nombre de tour sur le niveau est supérieur à trois
+				if( nbCurrentDefilement > NB_TURN_LEVEL )
+				{
+					nbCurrentDefilement = 0;
+					
+					// on repasse en mode de defilement group
+					currentTypeDefil = 0;
+				}
 				break;
 			case 2: // key
 				
@@ -155,6 +174,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				if( currentIndexDefilementKey >= (currentList.getKeys().size() - 1) )
 				{
 					currentIndexDefilementKey = 0;
+					nbCurrentDefilement++;
 				}
 				else
 				{
@@ -163,6 +183,15 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				
 				currentKey = currentList.getKeys().get( currentIndexDefilementKey );
 				currentKey.forceState( TUIKeyState.ENTERED );
+				
+				// si le nombre de tour sur le niveau est supérieur à trois
+				if( nbCurrentDefilement > NB_TURN_LEVEL )
+				{
+					nbCurrentDefilement = 0;
+					
+					// on repasse en mode de defilement list
+					currentTypeDefil = 1;
+				}
 				break;
 			default:
 				break;
@@ -178,10 +207,12 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 			case 0: // groupes
 				currentTypeDefil = 1;
 				currentIndexDefilementList = 0;
+				nbCurrentDefilement = 0;
 				break;
 			case 1: // listes
 				currentTypeDefil = 2;
 				currentIndexDefilementKey = 0;
+				nbCurrentDefilement = 0;
 				break;
 			case 2: // key
 				// click sur la key
@@ -191,10 +222,12 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				}
 				currentTypeDefil = 0;
 				currentIndexDefilementGroup = 0;
+				nbCurrentDefilement = 0;
 				break;
 			default:
 				currentTypeDefil = 0;
 				currentIndexDefilementGroup = 0;
+				nbCurrentDefilement = 0;
 				break;
 		}
 	}

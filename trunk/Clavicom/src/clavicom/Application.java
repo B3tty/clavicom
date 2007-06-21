@@ -202,6 +202,7 @@ public class Application
 		mainFrame.setSize(800,400);
 		mainFrame.edit(true);
 		
+		// listener pour supprimer le hook a la fermeture de l'application
 		mainFrame.addWindowListener(new WindowListener(){
 
 			public void windowActivated(WindowEvent e)
@@ -248,6 +249,7 @@ public class Application
 			}
 			
 		});	
+		
 		splash.newStep("Load complete !");
 		splash.close();
 		

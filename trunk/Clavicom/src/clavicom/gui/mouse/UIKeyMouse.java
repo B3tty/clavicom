@@ -26,7 +26,6 @@
 package clavicom.gui.mouse;
 
 import java.awt.image.BufferedImage;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.mouse.CMouseKey;
 import clavicom.gui.keyboard.key.UIKey;
@@ -40,11 +39,15 @@ public class UIKeyMouse extends UIKey
 	//---------------------------------------------------------- VARIABLES --//
 	CMouseKey mouseKey;
 
+	BufferedImage captionImage;
+	boolean reload;
+
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
 	public UIKeyMouse( CMouseKey myMouseKey )
 	{
 		mouseKey = myMouseKey;
+		reload = true;
 	}
 
 	//----------------------------------------------------------- METHODES --//	
@@ -76,8 +79,23 @@ public class UIKeyMouse extends UIKey
 	@Override
 	protected BufferedImage getCaptionImage()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		 
+		
+		if (getCoreKey().isCaptionImage() == false)
+			return null;
+
+		
+		if (reload == true)
+		{		
+			reload = false;
+
+			// Création de la captionImage
+			captionImage = loadCaptionImage(getCaptionText() );
+
+			
+		}
+		
+		return captionImage;
 	}
 
 	@Override

@@ -52,10 +52,10 @@ public abstract class UIKeyOneLevel extends UIKeyKeyboard
 		
 		if (reloadImage() == true)
 		{
-			// Création de la captionImage
-			captionImage = loadCaptionImage(getCaptionText() );
-			
 			setReloadImage(false);
+			// Création de la captionImage
+			
+			captionImage = loadCaptionImage(getCaptionText() );
 		}
 		
 		return captionImage;

@@ -84,9 +84,7 @@ public class testUIMouse
 			
 			clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
 			
-			clickEngine.startHook();
-			clickEngine.mouseHookPause();
-			clickEngine.mouseHookResume();
+			
 			
 			DefilementEngine defilementEngine = new DefilementEngine(clickEngine);
 			
@@ -157,6 +155,8 @@ public class testUIMouse
 	
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
+			
+//			clickEngine.startHook();
 			
 		}
 		catch(Exception e)

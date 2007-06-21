@@ -66,6 +66,8 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 		
 		if (reloadImage() == true)
 		{
+			setReloadImage(true);
+			
 			//  Cast de l'objet
 			CKeyThreeLevel coreKey = (CKeyThreeLevel)getCoreKey();
 			
@@ -73,8 +75,6 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 			captionImageNormal = loadCaptionImage(coreKey.getCaption(TLevelEnum.NORMAL));
 			captionImageShift = loadCaptionImage(coreKey.getCaption(TLevelEnum.SHIFT));
 			captionImageAltGr = loadCaptionImage(coreKey.getCaption(TLevelEnum.ALT_GR));
-			
-			setReloadImage(true);
 		}		
 		
 		if(levelEngine.getCurrentLevel() == TLevelEnum.NORMAL)

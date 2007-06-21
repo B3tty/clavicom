@@ -603,13 +603,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
 		{			
 			// On agrandit le clip (pour dessiner sur tout le bouton)
-			bg.setClip(0,0,getWidth(), getHeight());
+			bg.setClip( 0,0,getWidth(), getHeight() );
 			
 			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
 			{	
 				originalCaptionImage = getCaptionImage();
+				if( originalCaptionImage == null )
+				{
+					return;
+				}
 				
 				// Calcul du facteur de réduction
 				float scaleFactor = 1f;

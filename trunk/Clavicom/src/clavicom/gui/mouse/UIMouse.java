@@ -82,6 +82,8 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 	JPanel movePanel;
 	JPanel clickPanel;
 	JPanel panelHaut;
+	
+	boolean dragAndDropMode; // indique si on est en mode drag and drop
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIMouse( CMouse myMouse, ClickEngine myClickEngine, JFrame parent, DefilementEngine myDefilementEngine )
@@ -94,6 +96,7 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		defilementEngine = myDefilementEngine;
 		defilementEngine.addDefilListener( this );
 		
+		dragAndDropMode = false;		
 		
 		setLayout( new BorderLayout() );
 		
@@ -258,24 +261,7 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		gbLayoutMain.setConstraints(leftPress, gbConstLeftPress);
 		clickPanel.add( leftPress );
 		
-		
-		
-		// Ajout des Contraintes de leftRelease
-		GridBagConstraints gbConstLeftRelease = new GridBagConstraints (	
-				1,							// Numéro de colonne
-	            1,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            33,							// Taille horizontale relative
-	            50,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gbLayoutMain.setConstraints(leftRelease, gbConstLeftRelease);
-		clickPanel.add( leftRelease );
+
 		
 		
 		
@@ -383,8 +369,27 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		gbLayoutMain.setConstraints(moveUp, gbConstMoveUp);
 		movePanel.add( moveUp );
 		
+
+		// ====> On ajoute le leftRelease et le clickMouseMode au même
+		// ====> endroit, mais il n'y en a qu'un qui est visible à la fois
 		
-		
+		// Ajout des Contraintes de leftRelease
+		GridBagConstraints gbConstLeftRelease = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            33,							// Taille horizontale relative
+	            33,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(leftRelease, gbConstLeftRelease);
+		movePanel.add( leftRelease );
+		leftRelease.setVisible(false);
 		
 		// Ajout des Contraintes de clickMouseMode
 		GridBagConstraints gbConstClickMouseMode = new GridBagConstraints (	
@@ -402,6 +407,9 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 	    );
 		gbLayoutMain.setConstraints(clickMouseMode, gbConstClickMouseMode);
 		movePanel.add( clickMouseMode );
+		
+			
+		
 
 		
 	}
@@ -453,6 +461,19 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 					defilementEngine.startDefilement();
 				}
 			}
+			
+			// si c'est la key de drag and drop
+			if( uiKey == leftPress )
+			{
+				dragAndDropMode = true;
+				SwitchMoveMode();
+			}
+			// si c'est la key de drag and drop
+			if( uiKey == leftRelease )
+			{
+				dragAndDropMode = false;
+				SwitchClickMode();
+			}
 		}
 	}
 	
@@ -482,11 +503,12 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		selectedList.add(rightClick);
 		selectedList.add(leftDubbleClick);
 		selectedList.add(leftPress);
-		selectedList.add(leftRelease);
 		selectedList.add(moveMouseMode);
 		selectedList.add(switchMouseKeyboard);
 		
 		indexSelectedKey = 0;
+		
+		
 		
 	}
 	
@@ -499,17 +521,34 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		
 		panelHaut.add( movePanel, BorderLayout.CENTER );
 		
-		panelHaut.revalidate();
-		
-		
 		selectedList.add(moveUp);
 		selectedList.add(moveRight);
 		selectedList.add(moveDown);
 		selectedList.add(moveLeft);
-		selectedList.add(clickMouseMode);
+		if(dragAndDropMode)
+		{
+			selectedList.add(leftRelease);
+		}
+		else
+		{
+			selectedList.add(clickMouseMode);
+		}
 		selectedList.add(switchMouseKeyboard);
 
 		indexSelectedKey = 0;
+		
+		if( dragAndDropMode )
+		{
+			clickMouseMode.setVisible( false );
+			leftRelease.setVisible( true );
+		}
+		else
+		{
+			clickMouseMode.setVisible( true );
+			leftRelease.setVisible( false );
+		}
+		
+		panelHaut.revalidate();
 		
 	}
 	
@@ -522,7 +561,8 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		// switch sur le type de la keyClavicom
 		if( keyClavicom.getAction() == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD )
 		{
-		
+			//TMP TODO
+			System.exit(0);
 		} else if( keyClavicom.getAction() == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE )
 		{
 			SwitchMoveMode();
