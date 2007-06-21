@@ -105,6 +105,11 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey implement
 		{
 			captionChooser.getComboImages().selectGoodImage(keyOneLevel.getCaption());
 		}
+		else
+		// On met à jour le texte
+		{
+			captionChooser.setCaptionText(keyOneLevel.getCaption());
+		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -27,7 +27,7 @@ package clavicom.gui.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -48,28 +48,74 @@ public class UIModificationKeyDialog extends JDialog
 	public UIModificationKeyDialog(JPanel insidePanel)
 	{
 		super();
-		
-		setLayout(new BorderLayout());
-		
-		add(insidePanel,BorderLayout.CENTER);
 		JButton btClose = new JButton(UIString.getUIString("LB_EDITION_OPTION_KEY_OK"));
+		JPanel btPanel = new JPanel();
 		
-		btClose.setAction(new BtCloseAction(UIString.getUIString("LB_EDITION_OPTION_KEY_OK")));
+		btPanel.add(btClose);
 		
-		JPanel panelBouton = new JPanel();
-		panelBouton.add(btClose);
-		btClose.setPreferredSize(new Dimension(100,50));
-		add(panelBouton,BorderLayout.SOUTH);
+		btClose.setAction(new BtCloseAction(UIString.getUIString("LB_EDITION_OPTION_KEY_OK")));		
+		
+		setLayout(new GridLayout());
+		
+		JPanel inPanel = new JPanel();
+		inPanel.setLayout(new BorderLayout());
+		
+		inPanel.add(insidePanel, BorderLayout.CENTER);
+		
+		inPanel.add(btPanel, BorderLayout.SOUTH);
+		
+		add(inPanel);
+		
+//		//JPanel global = new JPanel();
+//		//setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));		
+//		JPanel insidePanelBigger = new JPanel();
+//		
+//		setLayout(new BorderLayout());
+//		
+//		insidePanelBigger.add(insidePanel, BorderLayout.CENTER);
+//		
+//		add(insidePanelBigger);
+//		
+//		JButton btClose = new JButton(UIString.getUIString("LB_EDITION_OPTION_KEY_OK"));
+//		
+//		btClose.setAction(new BtCloseAction(UIString.getUIString("LB_EDITION_OPTION_KEY_OK")));
+//		
+//		//JPanel panelBouton = new JPanel();
+//		//panelBouton.add(btClose);
+//		//add(btClose);
+//		//global.add(panelBouton);
+//		
+//		//add(global);
+//		
+//		// Layouts
+////		GridBagLayout gbLayoutMain = new GridBagLayout();
+////		setLayout(gbLayoutMain);
+////		
+////		global.setBackground(Color.red);
+////		
+////		// Contraintes du panel avec la liste d'outils
+////		GridBagConstraints gbConstMain = new GridBagConstraints (	
+////				0,							// Numéro de colonne
+////	            0,							// Numéro de ligne
+////	            1,							// Nombre de colonnes occupées
+////	            1,							// Nombre de lignes occupées
+////	            0,							// Taille horizontale relative
+////	            0,							// Taille verticale relative
+////	            GridBagConstraints.BOTH,	// Ou placer le composant en cas de redimension
+////	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+////	            new Insets(5, 5, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+////	            0,							// Espace intérieur en X
+////	            0							// Espace intérieur en Y
+////	    );
+////		gbLayoutMain.setConstraints(this, gbConstMain);
+		
+		// Options par défaut
+		setModal(true);
+		
+		setSize(new Dimension(300,500));
 	}
 	//----------------------------------------------------------- METHODES --//		
 
-	@Override
-	public void paintComponents(Graphics arg0)
-	{
-		System.out.println("stop");
-		// TODO Auto-generated method stub
-		super.paintComponents(arg0);
-	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	class BtCloseAction extends AbstractAction
 	{

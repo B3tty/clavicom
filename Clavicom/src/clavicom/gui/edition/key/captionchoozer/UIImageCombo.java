@@ -47,8 +47,10 @@ public class UIImageCombo extends JPanel
 	
 
 	//--------------------------------------------------------- CONSTANTES --//
-	protected final int RENDERED_HEIGHT = 90;
-	protected final int SPACE_BETWEEN_IMAGES = 10;
+	protected final int RENDERED_HEIGHT = 50;
+	protected final int RENDERED_WIDTH = 50;
+	
+	protected final int SPACE_BETWEEN_IMAGES = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	protected ImageIcon[] images;
@@ -87,12 +89,12 @@ public class UIImageCombo extends JPanel
 		// Création de la combobox
 		comboList = new JComboBox(intArray);
 		ComboBoxRenderer renderer = new ComboBoxRenderer();
-		renderer.setPreferredSize(new Dimension(1, RENDERED_HEIGHT));
+		renderer.setPreferredSize(new Dimension(RENDERED_WIDTH, RENDERED_HEIGHT));
 		comboList.setRenderer(renderer);
 		comboList.setMaximumRowCount(3);
 
 		//Lay out the demo.
-		add(comboList);
+		add(comboList, BorderLayout.WEST);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -136,10 +138,16 @@ public class UIImageCombo extends JPanel
 		comboList.addActionListener(a);
 	}
 	
+	@Override
+	public void setEnabled(boolean enable)
+	{
+		// TODO Auto-generated method stub
+		super.setEnabled(enable);
+		comboList.setEnabled(enable);
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	protected class ComboBoxRenderer extends JLabel implements ListCellRenderer
 	{
-		
 		public ComboBoxRenderer()
 		{
 			setOpaque(true);
@@ -156,11 +164,12 @@ public class UIImageCombo extends JPanel
 														int index, 
 														boolean isSelected, 
 														boolean cellHasFocus)
-		{
+		{			
 			// Get the selected index. (The index param isn't
 			// always valid, so just use the value.)
 			int selectedIndex = ((Integer) value).intValue();
 
+			
 			if (isSelected)
 			{
 				setBackground(list.getSelectionBackground());
@@ -168,13 +177,20 @@ public class UIImageCombo extends JPanel
 			}
 			else
 			{
-				setBackground(list.getBackground());
-				setForeground(list.getForeground());
+				setBackground(list.getBackground().brighter());
+				setForeground(list.getForeground().brighter());
 			}
 
 			// Set the icon and text. If icon was null, say so.
-			ImageIcon icon = images[selectedIndex];
-			setIcon(icon);
+			if(comboList.isEnabled() == true)
+			{
+				ImageIcon icon = images[selectedIndex];
+				setIcon(icon);
+			}
+			else
+			{
+				setIcon(new ImageIcon());
+			}
 
 			return this;
 		}

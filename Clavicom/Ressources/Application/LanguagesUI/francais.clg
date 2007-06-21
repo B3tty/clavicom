@@ -340,6 +340,13 @@
 	<!-- optionKeyOneLevel -->
 	<message id = "LB_KEYSONELEVEL_BORDER">Options d'affichage</message>
 	<message id = "LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL">Choisir une image</message>
+
+	<!-- optionKeyThreeLevel -->
+	<message id = "LB_KEYSTHREELEVEL_BORDER">Options d'affichage</message>
+	
+	<message id = "LB_KEYSTHREELEVEL_BORDER_NORMAL">Normal</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Majuscules</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_ALTGR">Alt-Gr</message>
 		
 	<!-- optionKeyString -->
 	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
