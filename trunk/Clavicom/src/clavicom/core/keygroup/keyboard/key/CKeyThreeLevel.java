@@ -122,6 +122,8 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 			captionAltGr = caption;
 		}
 		
+		System.out.println("Nouvelles caption : " + captionNormal + "|" + captionShift + "|" + captionAltGr);
+		
 		// Alerte de changement de la caption
 		fireCaptionChanged();
 	}

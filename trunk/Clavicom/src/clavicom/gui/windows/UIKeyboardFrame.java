@@ -25,7 +25,6 @@
 
 package clavicom.gui.windows;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -53,9 +52,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
-import clavicom.gui.edition.key.UIPanelOptionKeyClavicom;
 import clavicom.gui.edition.key.UIPanelOptionKeyLauncher;
-import clavicom.gui.edition.key.UIPanelOptionKeyLevel;
 import clavicom.gui.edition.key.UIPanelOptionKeyShortCut;
 import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
@@ -80,8 +77,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	//---------------------------------------------------------- VARIABLES --//
 	private boolean isEdited; 	// Indique si on est en édition
 	
-	// Frame d'option
-	UIModificationKeyDialog frameOptionKey;
+	// Frame de modification de touche
+	UIModificationKeyDialog frameOptionKeyOneLevel;
+	UIModificationKeyDialog frameOptionKeyKeyboard;
+	UIModificationKeyDialog frameOptionKeyCharacter;
+	UIModificationKeyDialog frameOptionKeyLauncher;
+	UIModificationKeyDialog frameOptionKeyShortcut;
+	UIModificationKeyDialog frameOptionKeyString;
 	
 	// Frame d'options de l'application
 	UIFrameModificationProfil frameOptionApplication;
@@ -90,7 +92,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	UIMovingPanel mainPanel;
 	
 	// Sous panels
-	JPanel panelModification;
 	JPanel panelBoutons;	// Contient le bouton fermer mode édition et paramètres
 	
 	// Sous panels
@@ -101,9 +102,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	UIPanelOptionOneLevelKey panelOptionKeyOneLevel;
 	UIPanelOptionKeyboardKey panelOptionKeyKeyboard;
 	UIPanelOptionKeyCharacter panelOptionKeyCharacter;
-	UIPanelOptionKeyClavicom panelOptionKeyClavicom;
 	UIPanelOptionKeyLauncher panelOptionKeyLauncher;
-	UIPanelOptionKeyLevel panelOptionKeyLevel;
 	UIPanelOptionKeyShortCut panelOptionKeyShortcut;
 	UIPanelOptionKeyString panelOptionKeyString;
 	
@@ -255,7 +254,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
 		
 		// -------------- Layout de la frame d'options -------------------------
-		panelModification.setLayout(new BorderLayout());		
+//		panelModification.setLayout(new BorderLayout());		
 	}
 	
 	/**
@@ -266,21 +265,25 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		panelModification = new JPanel();
 		panelBoutons = new JPanel();
 		
-		// Création des frames
-		frameOptionKey = new UIModificationKeyDialog(panelModification);
-		frameOptionApplication = new UIFrameModificationProfil();
-		
+		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
 		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey();
 		panelOptionKeyCharacter = new UIPanelOptionKeyCharacter();
-		panelOptionKeyClavicom = new UIPanelOptionKeyClavicom();
 		panelOptionKeyLauncher = new UIPanelOptionKeyLauncher();
-		panelOptionKeyLevel = new UIPanelOptionKeyLevel();
 		panelOptionKeyShortcut = new UIPanelOptionKeyShortCut();
 		panelOptionKeyString = new UIPanelOptionKeyString();
+		
+		// Création des frames
+		frameOptionKeyOneLevel = new UIModificationKeyDialog(panelOptionKeyOneLevel);
+		frameOptionKeyKeyboard = new UIModificationKeyDialog(panelOptionKeyKeyboard);
+		frameOptionKeyCharacter = new UIModificationKeyDialog(panelOptionKeyCharacter);
+		frameOptionKeyLauncher = new UIModificationKeyDialog(panelOptionKeyLauncher);
+		frameOptionKeyShortcut = new UIModificationKeyDialog(panelOptionKeyShortcut);
+		frameOptionKeyString = new UIModificationKeyDialog(panelOptionKeyString);
+		
+		frameOptionApplication = new UIFrameModificationProfil();
 		
 		
 		// TODO : enlever la ligne suivante
@@ -330,11 +333,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
 		btOptionsApplication.setAction(new BtOptionsApplicationAction(UIString.getUIString("LB_EDITION_OPEN_OPTIONS")));
 		
-		// Frame d'option de touche
-		frameOptionKey.setSize(new Dimension (640,480));
-		frameOptionKey.setModal(true);
-		frameOptionKey.setVisible(false);
-		
 		// Frame d'options de l'application
 		frameOptionApplication.setSize(new Dimension (500,600));
 		frameOptionApplication.setResizable(false);
@@ -361,7 +359,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelKeyboard.edit();
 			panelToolbar.setVisible(true);
 			panelBoutons.setVisible(true);
-			panelModification.setVisible(true);
 		}
 		else
 		// En utilisation
@@ -373,8 +370,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			
 			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
-			panelBoutons.setVisible(false);
-			panelModification.setVisible(false);			
+			panelBoutons.setVisible(false);			
 		}
 		
 		invalidate();		
@@ -436,65 +432,61 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			// Récupération de la touche
 			CKey selectedKey = selectedKeys.get(0).getCoreKey();
-			
-			// On vide le panel de la fenêtre
-			panelModification.removeAll();
+			System.out.println("click !");
 			// On sélectionne le bon panel
 			if (selectedKey instanceof CKeyCharacter)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYCHARACTER"));
+				frameOptionKeyCharacter.setTitle(UIString.getUIString("FR_OPTIONS_KEYCHARACTER"));
 				panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)selectedKey);
-				panelModification.add(panelOptionKeyCharacter);
+				frameOptionKeyCharacter.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyPrediction)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYPREDICTION"));
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYPREDICTION"));
 				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyPrediction)selectedKey);
-				panelModification.add(panelOptionKeyKeyboard);
+				frameOptionKeyKeyboard.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyLastWord)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLASTWORD"));
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYLASTWORD"));
 				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyLastWord)selectedKey);
-				panelModification.add(panelOptionKeyKeyboard);
+				frameOptionKeyKeyboard.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyLauncher)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
+				frameOptionKeyLauncher.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
 				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
-				panelModification.add(panelOptionKeyLauncher);
+				frameOptionKeyLauncher.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyLevel)
 			{
 				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
+				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
 										TLevelEnum.getString(selectedKeyLevel.GetLevel()));
 				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
-				panelModification.add(panelOptionKeyOneLevel);
+				frameOptionKeyOneLevel.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyShortcut)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYSHORTCUT"));
+				frameOptionKeyShortcut.setTitle(UIString.getUIString("FR_OPTIONS_KEYSHORTCUT"));
 				panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)selectedKey);
-				panelModification.add(panelOptionKeyShortcut);
+				frameOptionKeyShortcut.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyString)
 			{
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYSTRING"));
+				frameOptionKeyString.setTitle(UIString.getUIString("FR_OPTIONS_KEYSTRING"));
 				panelOptionKeyString.setValuesKeyString((CKeyString)selectedKey);
-				panelModification.add(panelOptionKeyString);
+				frameOptionKeyString.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyClavicom)
 			{
 				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
-				frameOptionKey.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
+				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
 										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
-				panelOptionKeyClavicom.setValuesKeyClavicom((CKeyClavicom)selectedKey);
-				panelModification.add(panelOptionKeyClavicom);
+				panelOptionKeyOneLevel.setValuesKeyOneLevel((CKeyClavicom)selectedKey);
+				
+				frameOptionKeyOneLevel.setVisible(true);
 			}
-			
-			// Affichage de la fenêtre d'options
-			frameOptionKey.setVisible(true);
 		}
 		
 	}

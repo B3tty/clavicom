@@ -121,10 +121,10 @@ public class UIPanelCaptionChooser extends JPanel
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            30,							// Taille horizontale relative
-	            30,							// Taille verticale relative
+	            50,							// Taille verticale relative
 	            GridBagConstraints.NORTHWEST,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.HORIZONTAL,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, 10, 0, 0),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -137,7 +137,7 @@ public class UIPanelCaptionChooser extends JPanel
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            70,							// Taille horizontale relative
-	            30,							// Taille verticale relative
+	            50,							// Taille verticale relative
 	            GridBagConstraints.NORTHWEST,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.HORIZONTAL,	// Manière de rétrécir le composant
 	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
@@ -153,10 +153,10 @@ public class UIPanelCaptionChooser extends JPanel
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            30,							// Taille horizontale relative
-	            70,							// Taille verticale relative
+	            50,							// Taille verticale relative
 	            GridBagConstraints.NORTHWEST,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.HORIZONTAL,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(0, 10, 0, 0),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -169,7 +169,7 @@ public class UIPanelCaptionChooser extends JPanel
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            70,							// Taille horizontale relative
-	            70,							// Taille verticale relative
+	            50,							// Taille verticale relative
 	            GridBagConstraints.NORTHWEST,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.HORIZONTAL,	// Manière de rétrécir le composant
 	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
@@ -267,7 +267,6 @@ public class UIPanelCaptionChooser extends JPanel
 						 if (new ImageIcon(directory + currentFile) != null)
 						 {
 							 fileNames.add(currentFile.getName());
-							 System.out.println(currentFile.getName());
 						 }
 					 }
 				 }

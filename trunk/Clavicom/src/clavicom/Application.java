@@ -120,6 +120,7 @@ public class Application
 			{
 				toolClickEngine.FinishMouseHook();
 			}
+			e.printStackTrace();
 		}
 	}
 		

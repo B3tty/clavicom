@@ -27,26 +27,20 @@ package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
-import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 
 public class UIPanelSelectCharacter extends JPanel implements ActionListener
@@ -55,7 +49,6 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 
 	//---------------------------------------------------------- VARIABLES --//
 	CKeyCharacter keyCharacter;
-	JTextField textField;
 	TLevelEnum level;
 	JComboBox comboSection;
 	JList list;
@@ -67,37 +60,10 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		level = myLevel;
 		commandSet = myCommandSet;
 		
-		setLayout( new BorderLayout() );
+		setLayout(new BorderLayout());
 		
 		// Ajout du libéllé
 		JPanel p_caption = new JPanel( );
-		JLabel label = new JLabel( UIString.getUIString("LB_KEYCHARACTER_CAPTION") );
-		
-		textField = new JTextField();
-		
-		textField.addKeyListener(new KeyListener()
-		{
-			public void keyPressed(KeyEvent arg0)
-			{
-				
-			}
-
-			public void keyReleased(KeyEvent arg0)
-			{
-				updateCaption(textField.getText());				
-			}
-
-			public void keyTyped(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		textField.setPreferredSize( new Dimension( 80, 23 ) );
-		
-		p_caption.add( label );
-		p_caption.add( textField );
 		
 		add ( p_caption, BorderLayout.NORTH ) ;
 		
@@ -180,11 +146,6 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 	public void setValues( CKeyCharacter myKeyCharacter)
 	{
 		keyCharacter = myKeyCharacter;
-		
-		if (myKeyCharacter != null)
-		{
-			textField.setText(myKeyCharacter.getCaption( level ) );
-		}
 		
 		if( keyCharacter != null )
 		{

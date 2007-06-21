@@ -25,36 +25,177 @@
 
 package clavicom.gui.edition.key;
 
-import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
 
-public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey
+import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+
+import clavicom.CFilePaths;
+import clavicom.core.keygroup.keyboard.key.CKeyThreeLevel;
+import clavicom.gui.edition.key.captionchoozer.UIPanelCaptionChooser;
+import clavicom.gui.language.UIString;
+import clavicom.gui.listener.UICaptionChooserListener;
+import clavicom.tools.TLevelEnum;
+
+public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey implements UICaptionChooserListener
 {
+
+
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
-
-	CKeyThreeLevel keyThreeLevel;
+	//---------------------------------------------------------- VARIABLES --//
+	protected CKeyThreeLevel keyThreeLevel;
+	
+	protected JCheckBox checkboxIsImage;
+	
+	protected UIPanelCaptionChooser captionChooserNormal;
+	protected UIPanelCaptionChooser captionChooserShift;
+	protected UIPanelCaptionChooser captionChooserAltGr;
+	
+	protected JPanel panelChoosers;
+	
+	protected JPanel panelNormal;
+	protected JPanel panelShift;
+	protected JPanel panelAltGr;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
-	public UIPanelOptionThreeLevelKey(  )
+	public UIPanelOptionThreeLevelKey()
 	{
-		super();	
+		super( );
 		
-//		// Ajout du titre
-//		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
-//				BorderFactory.createLineBorder( Color.BLACK ), 
-//				UIString.getUIString("LB_KEYSONELEVEL_BORDER")) );
+		JPanel panelGlobal = new JPanel();
+		panelGlobal.setLayout(new BoxLayout(panelGlobal, BoxLayout.Y_AXIS));
+		
+		// Création des objets
+		captionChooserNormal = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
+		captionChooserShift = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
+		captionChooserAltGr = new UIPanelCaptionChooser(CFilePaths.getUserPicturesFolder());
+		
+		checkboxIsImage = new JCheckBox(	new AbstractAction()
+											{
+												public void actionPerformed(ActionEvent e)
+												{
+													onChecked();
+												}
+											});		
+		panelChoosers = new JPanel();
+		panelNormal = new JPanel();
+		panelShift = new JPanel();
+		panelAltGr = new JPanel();
+		
+		// Ajout du titre
+		checkboxIsImage.setText(UIString.getUIString("LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL"));
+
+		// Ajout des panels de premier niveau
+		panelGlobal.add(checkboxIsImage);
+		panelGlobal.add(panelChoosers);
+		
+		panelChoosers.setLayout(new BoxLayout(panelChoosers, BoxLayout.X_AXIS));
+		panelChoosers.add(panelNormal);
+		panelChoosers.add(panelShift);
+		panelChoosers.add(panelAltGr);
+		
+		panelNormal.add(captionChooserNormal);
+		panelShift.add(captionChooserShift);
+		panelAltGr.add(captionChooserAltGr);
+
+		// Ajout des titres
+		panelGlobal.setBorder( BorderFactory.createTitledBorder( 
+							   BorderFactory.createLineBorder( Color.BLACK ), 
+							   UIString.getUIString("LB_KEYSTHREELEVEL_BORDER")) );
+
+		panelNormal.setBorder( BorderFactory.createTitledBorder( 
+							   BorderFactory.createLineBorder( Color.BLACK ), 
+							   UIString.getUIString("LB_KEYSTHREELEVEL_BORDER_NORMAL")) );
+		
+		panelShift.setBorder(  BorderFactory.createTitledBorder( 
+							   BorderFactory.createLineBorder( Color.BLACK ), 
+							   UIString.getUIString("LB_KEYSTHREELEVEL_BORDER_SHIFT")) );
+		
+		panelAltGr.setBorder(  BorderFactory.createTitledBorder( 
+							   BorderFactory.createLineBorder( Color.BLACK ), 
+							   UIString.getUIString("LB_KEYSTHREELEVEL_BORDER_ALTGR")) );
+		
+		// Ajout en tant que listener du chooser
+		captionChooserNormal.addCaptionChooserListener(this);
+		captionChooserShift.addCaptionChooserListener(this);
+		captionChooserAltGr.addCaptionChooserListener(this);
+		
+		add(panelGlobal);
 	}
+
 	//----------------------------------------------------------- METHODES --//	
-	
 	public void setValuesKeyThreeLevel(CKeyThreeLevel myKeyThreeLevel)
 	{
 		// Appel au père
-		setValuesKeyKeyboard(myKeyThreeLevel);
+		setValuesKey(myKeyThreeLevel);
 		
+		// Affectation des attributs
 		keyThreeLevel = myKeyThreeLevel;
+		
+		// Mise à jour de la caption
+		captionChooserNormal.setIsImage(keyThreeLevel.isCaptionImage());
+		captionChooserShift.setIsImage(keyThreeLevel.isCaptionImage());
+		captionChooserAltGr.setIsImage(keyThreeLevel.isCaptionImage());
+		
+		// On met à jour la checkbox
+		checkboxIsImage.setSelected(keyThreeLevel.isCaptionImage());
+		
+		// On met à jour la combo
+		if(keyThreeLevel.isCaptionImage() == true)
+		{
+			captionChooserNormal.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.NORMAL));
+			captionChooserShift.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.SHIFT));
+			captionChooserAltGr.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.ALT_GR));
+		}
+		else
+		// On met à jour le texte
+		{
+			captionChooserNormal.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.NORMAL));
+			captionChooserShift.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.SHIFT));
+			captionChooserAltGr.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.ALT_GR));
+		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	/**
+	 * Appelé lorsque la checkbox est cochée
+	 */
+	protected void onChecked()
+	{
+		// On met à jour le noyau (image/non image)
+		keyThreeLevel.setCaptionImage(checkboxIsImage.isSelected());
+		
+		// On grise les composants
+		captionChooserNormal.setIsImage(checkboxIsImage.isSelected());
+		captionChooserShift.setIsImage(checkboxIsImage.isSelected());
+		captionChooserAltGr.setIsImage(checkboxIsImage.isSelected());
+		
+		// On met à jour le noyau
+		keyThreeLevel.setCaption(captionChooserNormal.getCaption(),TLevelEnum.NORMAL);
+		keyThreeLevel.setCaption(captionChooserShift.getCaption(),TLevelEnum.SHIFT);
+		keyThreeLevel.setCaption(captionChooserAltGr.getCaption(),TLevelEnum.ALT_GR);			
+	}
+
+	public void captionChanged(UIPanelCaptionChooser captionChooser, String newCaption, boolean isImage)
+	{
+		// Mise à jour du noyau
+		if (captionChooser == this.captionChooserNormal)
+		{
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.NORMAL);
+		}
+		else if (captionChooser == this.captionChooserShift)
+		{
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.SHIFT);
+		}
+		else if (captionChooser == this.captionChooserAltGr)
+		{
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.ALT_GR);
+		}
+	}
 }

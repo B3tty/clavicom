@@ -27,6 +27,7 @@ package clavicom.gui.edition.key;
 
 
 import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -77,6 +78,5 @@ public class UIPanelOptionKey extends JPanel
 		panelColorEntered.setValues( key, TColorKeyEnum.ENTERED );
 		panelColorNormal.setValues( key, TColorKeyEnum.NORMAL );
 	}
-
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

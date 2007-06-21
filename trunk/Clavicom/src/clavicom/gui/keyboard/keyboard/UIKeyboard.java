@@ -599,9 +599,6 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 						
 						// Noyau
 						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
-						
-						// Suppression de la UIKey dans la liste des selectionnées
-						selectedKeys.remove(currentKey);
 					}
 				}
 				
@@ -641,9 +638,13 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 			currentGroup.removeLists(uiListsToDelete);
 		}
 		
+		// On vide la liste des selectionnées
+		selectedKeys.clear();
+		
 		// Les groupes
 		keyGroups.removeAll(uiGroupsToDelete);		
 		
+		// On redessine
 		repaint();
 	}
 	
@@ -701,6 +702,9 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 				// SUPPRESSION
 				case (KeyEvent.VK_DELETE) :
 					deleteSelectedKeys();
+				
+					// On indique que la selection a changée
+					fireSelectionChanged();
 					break;
 					
 				case (KeyEvent.VK_SPACE): 
