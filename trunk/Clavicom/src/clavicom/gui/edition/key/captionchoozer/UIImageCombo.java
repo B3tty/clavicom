@@ -29,6 +29,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -46,7 +47,7 @@ public class UIImageCombo extends JPanel
 	
 
 	//--------------------------------------------------------- CONSTANTES --//
-	protected final int RENDERED_HEIGHT = 100;
+	protected final int RENDERED_HEIGHT = 90;
 	protected final int SPACE_BETWEEN_IMAGES = 10;
 	
 	//---------------------------------------------------------- VARIABLES --//	
@@ -79,7 +80,7 @@ public class UIImageCombo extends JPanel
 			
 			if (images[i] != null)
 			{
-				images[i].setDescription(filenames.get(i));
+				images[i].setDescription(directory + filenames.get(i));
 			}
 		}
 
@@ -104,7 +105,7 @@ public class UIImageCombo extends JPanel
 	{
 		for(int i = 0 ; i < filenames.size() ; ++i)
 		{
-			if (filenames.get(i).equals(filename))
+			if (images[i].getDescription().equals(filename))
 			{
 				comboList.setSelectedIndex(i);
 				return true;
@@ -126,8 +127,13 @@ public class UIImageCombo extends JPanel
 		}
 		else
 		{
-			return images[comboList.getSelectedIndex()].getDescription();
+			return filenames.get(comboList.getSelectedIndex());
 		}
+	}
+	
+	public void addActionListener(ActionListener a)
+	{
+		comboList.addActionListener(a);
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

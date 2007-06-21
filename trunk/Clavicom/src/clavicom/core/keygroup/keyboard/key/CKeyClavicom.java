@@ -29,6 +29,8 @@ import java.awt.Color;
 
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.core.listener.OnClickKeyClavicomListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyClavicomActionType;
@@ -168,6 +170,15 @@ public class CKeyClavicom extends CKeyOneLevel
 	public void Click()
 	{
 		fireOnClickKeyClavicom();
+	}
+	
+	@Override
+	public String getCaption()
+	{
+		if (isCaptionImage())
+			return CFilePaths.getUserPicturesFolder() + caption;
+		else
+			return caption;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -39,7 +39,12 @@ import clavicom.gui.language.UIString;
 public class TImageUtils
 {
 	//--------------------------------------------------------- CONSTANTES --//
-
+    public final static String JPEG = "jpeg";
+    public final static String JPG = "jpg";
+    public final static String GIF = "gif";
+    public final static String TIFF = "tiff";
+    public final static String TIF = "tif";
+    public final static String PNG = "png";
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -100,6 +105,29 @@ public class TImageUtils
 		ImageIcon iconImage = new ImageIcon(filepath);
 		
 		return iconImage;
+	}
+
+	public static boolean hasImageExtension(File f) 
+	{
+	    String ext = "";
+	    String s = f.getName();
+	    int i = s.lastIndexOf('.');
+	
+	    
+	    if (i > 0 &&  i < s.length() - 1) 
+	    {
+	        ext = s.substring(i+1).toLowerCase();
+	    }
+	    
+	    if (	ext.equals(JPEG) || ext.equals(JPG) || ext.equals(GIF) ||
+	    		ext.equals(TIFF) || ext.equals(TIF) || ext.equals(PNG))
+	    {
+	    	return true;
+	    }
+	    else
+	    {
+	    	return false;
+	    }
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

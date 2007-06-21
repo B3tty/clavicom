@@ -29,6 +29,7 @@ import java.awt.Color;
 
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
 import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TPoint;
@@ -123,7 +124,11 @@ public class CKeyCreation extends CKeyOneLevel
 		this.keyType = keyType;
 	}
 	
-	
+	@Override
+	public String getCaption()
+	{
+		return caption;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	

@@ -28,6 +28,8 @@ package clavicom.core.keygroup.keyboard.key;
 import java.awt.Color;
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
+
+import clavicom.CFilePaths;
 import clavicom.core.listener.OnClickKeyLauncherListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
@@ -156,5 +158,14 @@ public class CKeyLauncher extends CKeyOneLevel
 	public void Click()
 	{
 		fireOnClickKeyLauncher();
+	}
+	
+	@Override
+	public String getCaption()
+	{
+		if(isCaptionImage())
+			return CFilePaths.getUserPicturesFolder() + caption;
+		else
+			return caption;
 	}
 }
