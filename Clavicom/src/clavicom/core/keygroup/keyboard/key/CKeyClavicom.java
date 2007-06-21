@@ -175,10 +175,7 @@ public class CKeyClavicom extends CKeyOneLevel
 	@Override
 	public String getCaption()
 	{
-		if (isCaptionImage())
-			return CFilePaths.getUserPicturesFolder() + caption;
-		else
-			return caption;
+		return caption;
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

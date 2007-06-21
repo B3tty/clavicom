@@ -706,7 +706,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 				case (KeyEvent.VK_SPACE): 
 					try
 					{
-						CProfil.getInstance().SaveProfil("Ressources\\Temp\\profil2.xml");
+						CProfil.getInstance().SaveProfil("Ressources\\Temp\\profil3.xml");
 					}
 					catch (Exception ex)
 					{
