@@ -472,7 +472,7 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 			if( uiKey == leftRelease )
 			{
 				dragAndDropMode = false;
-				SwitchClickMode();
+				SwitchMoveMode();				
 			}
 		}
 	}
