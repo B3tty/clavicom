@@ -1,0 +1,20 @@
+<shortcuts>
+		<command id= "0" caption = "Copier" search_string = "Copier">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_C"/>
+			<code order="2" action="released" value="VK_C"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "1" caption = "Couper" search_string = "Couper">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_X"/>
+			<code order="2" action="released" value="VK_X"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "2" caption = "Coller" search_string = "Coller">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_V"/>
+			<code order="2" action="released" value="VK_V"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+</shortcuts>

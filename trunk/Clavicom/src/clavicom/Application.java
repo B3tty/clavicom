@@ -84,13 +84,7 @@ public class Application
 	private static CPredictionEngine	toolPredictionEngine;	// Moteur de prediction de mots
 	
 	@SuppressWarnings("unused")
-	private static ClickEngine	toolClickEngine;				// Moteur des clicks
-	
-	@SuppressWarnings("unused")
 	private static CStringsEngine	toolStringEngine;			// Moteur de chaines
-	
-	@SuppressWarnings("unused")
-	private static DefilementEngine toolDefilEngine;			// Moteur de Defilement
 	
 	@SuppressWarnings("unused")
 	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
@@ -113,9 +107,9 @@ public class Application
 		}
 		catch (Exception e)
 		{
-			if(toolClickEngine != null)
+			if(ClickEngine.getInstance() != null)
 			{
-				toolClickEngine.FinishMouseHook();
+				ClickEngine.getInstance().FinishMouseHook();
 			}
 			e.printStackTrace();
 		}
@@ -216,9 +210,9 @@ public class Application
 
 			public void windowClosing(WindowEvent e)
 			{
-				if(toolClickEngine != null)
+				if(ClickEngine.getInstance() != null)
 				{
-					toolClickEngine.FinishMouseHook();
+					ClickEngine.getInstance().FinishMouseHook();
 				}
 			}
 
@@ -478,7 +472,7 @@ public class Application
 	{
 		try
 		{
-			toolClickEngine = new ClickEngine( CFilePaths.getToolDllMouseHookPath() );
+			ClickEngine.createInstance( CFilePaths.getToolDllMouseHookPath() );
 		}
 		catch (Exception ex)
 		{
@@ -494,7 +488,7 @@ public class Application
 	{
 		try
 		{
-			toolDefilEngine = new DefilementEngine( toolClickEngine );
+			DefilementEngine.createInstance( );
 		}
 		catch (Exception ex)
 		{
@@ -510,7 +504,7 @@ public class Application
 	{
 		try
 		{
-			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, toolClickEngine, toolDefilEngine, false );
+			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, false );
 		}
 		catch (Exception ex)
 		{

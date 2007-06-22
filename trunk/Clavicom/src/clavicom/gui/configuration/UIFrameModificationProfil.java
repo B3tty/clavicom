@@ -44,7 +44,11 @@ import javax.swing.JTabbedPane;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.DefilementEngine;
+import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TNavigationType;
 
 public class UIFrameModificationProfil extends JDialog
 {
@@ -80,10 +84,16 @@ public class UIFrameModificationProfil extends JDialog
 	PanelModificationProfilTransparency panelTransparency;
 	PanelModificationProfilLangueUIName panelLangueUI;
 	
+	// reference sur l'iukeyboard pour faire un clear
+	UIKeyboard uiKeyboard;
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIFrameModificationProfil()
+	public UIFrameModificationProfil( UIKeyboard myUIKeyboard )
 	{
+
+		uiKeyboard = myUIKeyboard;
+		
 		// Initialisation de la fenêtre
 		initFrame();
 		
@@ -95,6 +105,7 @@ public class UIFrameModificationProfil extends JDialog
 
 		// Création des layouts
 		setLayouts();
+		
 	}
 
 	//----------------------------------------------------------- METHODES --//	
@@ -191,36 +202,63 @@ public class UIFrameModificationProfil extends JDialog
 		if ( panelKeyboardColor.isChanged() )
 		{
 			// la couleur du clavier à changé
+			panelKeyboardColor.validateDataEntry();
 		}
 		
 		// panelPreferedWords
 		if ( panelPreferedWords.isChanged() )
 		{
 			// les mots préférés ont changés
+			panelPreferedWords.validateDataEntry();
 		}
 		
 		// panelSound l
 		if ( panelSound.isChanged() )
 		{
 			// les option de son ont changés
+			panelSound.validateDataEntry();
 		}
 		
 		// panelTransparency l
 		if ( panelTransparency.isChanged() )
 		{
 			// la transparence à changé
+			panelTransparency.validateDataEntry();
 		}
 		
 		// panelLangueUI
 		if ( panelLangueUI.isChanged() )
 		{
 			// la langueUI à changé
+			panelLangueUI.validateDataEntry();
+			
+			// on prévient l'utilisateur qu'il faudra redémarer 
+			JOptionPane.showMessageDialog(
+					this, 
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART"),
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART_TITLE"),
+				    JOptionPane.WARNING_MESSAGE);
 		}
 		
 		// panelNavigation
 		if ( panelNavigation.isChanged() )
 		{
 			// le type de navigation à changé
+			panelNavigation.validateDataEntry();
+			
+			TNavigationType typeNavgation = profil.getNavigation().getTypeNavigation();
+			if( typeNavgation == TNavigationType.STANDARD )
+			{
+				DefilementEngine.getInstance().stopDefilement();
+				ClickEngine.getInstance().stopMouseHook();
+			} else if( typeNavgation == TNavigationType.CLICK_TEMPORISE )
+			{
+				// TODO
+			} else if( typeNavgation == TNavigationType.DEFILEMENT )
+			{
+				DefilementEngine.getInstance().startDefilement();
+				ClickEngine.getInstance().startHook();
+			}
 		}
 		
 		
@@ -230,7 +268,8 @@ public class UIFrameModificationProfil extends JDialog
 	
 	private void ClearKeyboard()
 	{
-		// vide la keyboard
+		// vide le keyboard
+		uiKeyboard.clear();
 	}
 
 	/**

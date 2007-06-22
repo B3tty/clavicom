@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+	<keyboard name ="ejej">
+		<keygroups>
+			<keygroup order="0">
+				<keylist order="0">
+					<keystring order="0">
+					</keystring>
+					<keylaunch order="1">
+					</keylaunch>
+				</keylist>
+				<keylist order="1">
+					<keyshortcut order="0">
+					</keyshortcut>
+					<keylaunch order="1">
+					</keylaunch>
+				</keylist>
+			</keygroup>
+			<keygroup order="1">
+				<keylist order="0">
+					<keystring order="0">
+					</keystring>
+					<keylaunch order="1">
+					</keylaunch>
+				</keylist>
+				<keylist order="1">
+					<keyshortcut order="0">
+					</keyshortcut>
+					<keylaunch order="1">
+					</keylaunch>
+				</keylist>
+			</keygroup>
+		</keygroups>
+	</keyboard>
+	<language>
+	</language>
+	<options>
+	</options>
+</profile>
