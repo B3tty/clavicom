@@ -207,6 +207,91 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public void clear()
+	{
+		// Destruction de tous les groupes UI
+		keyGroups.clear();
+		allKeys.clear();
+		threeLevelKeys.clear();
+		selectedKeys.clear();
+		unClassedKey.clear();
+		
+		// Destruction des objets du noyau
+		coreKeyboard.clearKeyboard();		
+	}
+	
+	public void declassGroup(UIKeyGroup group)
+	{
+		for (UIKeyGroup currentGroup : keyGroups)
+		{
+			if(group == currentGroup)
+			{			
+				// On stocke toutes les keys comme non référencées
+				unClassedKey.addAll(currentGroup.getKeys());
+				
+				// On supprime les keys de l'UI
+				keyGroups.remove(currentGroup);
+				
+				// On supprime les keys du noyau
+				coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
+				
+				// On s'arrête
+				return;				
+			}
+		}
+	}
+	
+	public void declassList(UIKeyList list)
+	{
+		for (UIKeyGroup currentGroup : keyGroups)
+		{
+			for (UIKeyList currentList : currentGroup.getKeyLists())
+			{
+				if (currentList == list)
+				{
+					//  On stocke toutes les keys comme non référencées
+					unClassedKey.addAll(currentList.getKeys());
+					
+					// On supprime les keys de l'UI
+					currentGroup.removeUIList(currentList);
+					
+					// On supprime les keys du noyau
+					currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
+					
+					// On s'arrête
+					return;
+				}
+			}
+		}
+	}
+	
+	public void declassKey(UIKeyKeyboard key)
+	{
+		for (UIKeyGroup currentGroup : keyGroups)
+		{
+			for (UIKeyList currentList : currentGroup.getKeyLists())
+			{
+				for(UIKeyKeyboard currentKey : currentList.getKeys())
+				{
+					if (currentKey == key)
+					{
+						// On stocke toutes les keys comme non référencées
+						unClassedKey.add(currentKey);
+						
+						// On supprime les keys de l'UI
+						currentList.removeKey(currentKey);
+						
+						// On supprime les keys du noyau
+						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
+						
+						// On s'arrête
+						return;
+					}
+				}
+			}
+		}
+	}
+	
 	//-----------------------------------------------------------------------
 	// Listeners (en générateur)
 	//-----------------------------------------------------------------------

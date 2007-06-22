@@ -152,6 +152,10 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey impleme
 			captionChooserNormal.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.NORMAL));
 			captionChooserShift.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.SHIFT));
 			captionChooserAltGr.getComboImages().selectGoodImage(keyThreeLevel.getCaption(TLevelEnum.ALT_GR));
+			
+			captionChooserNormal.setCaptionText("");
+			captionChooserShift.setCaptionText("");
+			captionChooserAltGr.setCaptionText("");
 		}
 		else
 		// On met à jour le texte
@@ -159,6 +163,10 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey impleme
 			captionChooserNormal.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.NORMAL));
 			captionChooserShift.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.SHIFT));
 			captionChooserAltGr.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.ALT_GR));
+			
+			captionChooserNormal.getComboImages().selectDefault();
+			captionChooserShift.getComboImages().selectDefault();
+			captionChooserAltGr.getComboImages().selectDefault();
 		}
 	}
 
@@ -177,9 +185,9 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey impleme
 		captionChooserAltGr.setIsImage(checkboxIsImage.isSelected());
 		
 		// On met à jour le noyau
-		keyThreeLevel.setCaption(captionChooserNormal.getCaption(),TLevelEnum.NORMAL);
-		keyThreeLevel.setCaption(captionChooserShift.getCaption(),TLevelEnum.SHIFT);
-		keyThreeLevel.setCaption(captionChooserAltGr.getCaption(),TLevelEnum.ALT_GR);			
+		keyThreeLevel.setCaption(captionChooserNormal.getCaption(),TLevelEnum.NORMAL, false);
+		keyThreeLevel.setCaption(captionChooserShift.getCaption(),TLevelEnum.SHIFT, false);
+		keyThreeLevel.setCaption(captionChooserAltGr.getCaption(),TLevelEnum.ALT_GR, true);			
 	}
 
 	public void captionChanged(UIPanelCaptionChooser captionChooser, String newCaption, boolean isImage)
@@ -187,15 +195,15 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey impleme
 		// Mise à jour du noyau
 		if (captionChooser == this.captionChooserNormal)
 		{
-			keyThreeLevel.setCaption(newCaption,TLevelEnum.NORMAL);
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.NORMAL, true);
 		}
 		else if (captionChooser == this.captionChooserShift)
 		{
-			keyThreeLevel.setCaption(newCaption,TLevelEnum.SHIFT);
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.SHIFT, true);
 		}
 		else if (captionChooser == this.captionChooserAltGr)
 		{
-			keyThreeLevel.setCaption(newCaption,TLevelEnum.ALT_GR);
+			keyThreeLevel.setCaption(newCaption,TLevelEnum.ALT_GR, true);
 		}
 	}
 }

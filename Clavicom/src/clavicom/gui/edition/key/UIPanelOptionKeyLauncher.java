@@ -62,9 +62,6 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 		
 		JPanel panelDisplay = new JPanel();
 		
-		panelDisplay.add( new JLabel( UIString.getUIString("LB_KEYSTRING_TEXTDISPLAY") ) );
-
-		
 		panelGlobal.add( panelDisplay, BorderLayout.NORTH );
 		
 		

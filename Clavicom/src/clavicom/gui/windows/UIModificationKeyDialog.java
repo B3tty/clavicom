@@ -26,9 +26,10 @@
 package clavicom.gui.windows;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -37,7 +38,7 @@ import javax.swing.JPanel;
 
 import clavicom.gui.language.UIString;
 
-public class UIModificationKeyDialog extends JDialog
+public class UIModificationKeyDialog extends JDialog implements ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -66,53 +67,12 @@ public class UIModificationKeyDialog extends JDialog
 		
 		add(inPanel);
 		
-//		//JPanel global = new JPanel();
-//		//setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));		
-//		JPanel insidePanelBigger = new JPanel();
-//		
-//		setLayout(new BorderLayout());
-//		
-//		insidePanelBigger.add(insidePanel, BorderLayout.CENTER);
-//		
-//		add(insidePanelBigger);
-//		
-//		JButton btClose = new JButton(UIString.getUIString("LB_EDITION_OPTION_KEY_OK"));
-//		
-//		btClose.setAction(new BtCloseAction(UIString.getUIString("LB_EDITION_OPTION_KEY_OK")));
-//		
-//		//JPanel panelBouton = new JPanel();
-//		//panelBouton.add(btClose);
-//		//add(btClose);
-//		//global.add(panelBouton);
-//		
-//		//add(global);
-//		
-//		// Layouts
-////		GridBagLayout gbLayoutMain = new GridBagLayout();
-////		setLayout(gbLayoutMain);
-////		
-////		global.setBackground(Color.red);
-////		
-////		// Contraintes du panel avec la liste d'outils
-////		GridBagConstraints gbConstMain = new GridBagConstraints (	
-////				0,							// Numéro de colonne
-////	            0,							// Numéro de ligne
-////	            1,							// Nombre de colonnes occupées
-////	            1,							// Nombre de lignes occupées
-////	            0,							// Taille horizontale relative
-////	            0,							// Taille verticale relative
-////	            GridBagConstraints.BOTH,	// Ou placer le composant en cas de redimension
-////	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-////	            new Insets(5, 5, 5, 5),		// Espace autours (haut, gauche, bas, droite)
-////	            0,							// Espace intérieur en X
-////	            0							// Espace intérieur en Y
-////	    );
-////		gbLayoutMain.setConstraints(this, gbConstMain);
-		
 		// Options par défaut
 		setModal(true);
 		
-		setSize(new Dimension(300,500));
+		setResizable(false);
+		
+		addComponentListener(this);
 	}
 	//----------------------------------------------------------- METHODES --//		
 
@@ -127,6 +87,29 @@ public class UIModificationKeyDialog extends JDialog
 		{
 			UIModificationKeyDialog.this.setVisible(false);
 		}
+		
+	}
+
+	public void componentHidden(ComponentEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void componentMoved(ComponentEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void componentResized(ComponentEvent arg0)
+	{
+		System.out.println(getSize());
+	}
+
+	public void componentShown(ComponentEvent arg0)
+	{
+		// TODO Auto-generated method stub
 		
 	}
 }
