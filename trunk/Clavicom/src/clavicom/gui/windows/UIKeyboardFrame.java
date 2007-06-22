@@ -340,7 +340,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKeyKeyboard.setSize(410,125);
 		frameOptionKeyCharacter.setSize(540,540);
 		frameOptionKeyLauncher.setSize(410,310);
-		frameOptionKeyShortcut.setSize(200,200);		// TODO
+		frameOptionKeyShortcut.setSize(410,350);
 		frameOptionKeyString.setSize(410,310);
 		
 		// Frame d'options de l'application
@@ -491,11 +491,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			else if (selectedKey instanceof CKeyClavicom)
 			{
 				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
-				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
 										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
-				panelOptionKeyOneLevel.setValuesKeyOneLevel((CKeyClavicom)selectedKey);
+				panelOptionKeyOneLevel.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
 				
-				frameOptionKeyOneLevel.setVisible(true);
+				frameOptionKeyKeyboard.setVisible(true);
 			}
 		}
 		

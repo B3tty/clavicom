@@ -28,8 +28,6 @@ package clavicom.gui.windows;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -38,7 +36,7 @@ import javax.swing.JPanel;
 
 import clavicom.gui.language.UIString;
 
-public class UIModificationKeyDialog extends JDialog implements ComponentListener
+public class UIModificationKeyDialog extends JDialog
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -71,8 +69,6 @@ public class UIModificationKeyDialog extends JDialog implements ComponentListene
 		setModal(true);
 		
 		setResizable(false);
-		
-		addComponentListener(this);
 	}
 	//----------------------------------------------------------- METHODES --//		
 
@@ -87,29 +83,6 @@ public class UIModificationKeyDialog extends JDialog implements ComponentListene
 		{
 			UIModificationKeyDialog.this.setVisible(false);
 		}
-		
-	}
-
-	public void componentHidden(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void componentMoved(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void componentResized(ComponentEvent arg0)
-	{
-		System.out.println(getSize());
-	}
-
-	public void componentShown(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
 		
 	}
 }
