@@ -87,12 +87,16 @@ public class UIFrameModificationProfil extends JDialog
 	// reference sur l'iukeyboard pour faire un clear
 	UIKeyboard uiKeyboard;
 	
+	UIFrameModificationProfil thisObject; // reference sur lui-même (utilisé dans le thread)
+	boolean closeWindows;
+	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIFrameModificationProfil( UIKeyboard myUIKeyboard )
 	{
 
 		uiKeyboard = myUIKeyboard;
+		thisObject = this;
 		
 		// Initialisation de la fenêtre
 		initFrame();
@@ -118,153 +122,190 @@ public class UIFrameModificationProfil extends JDialog
 	 * 		true - Ok
 	 * 		false - Probleme
 	 */
-	protected boolean SaveDataToProfil()
+	protected void SaveDataToProfil()
 	{
 		// sauvegarde des panels un par un
 		
-		CProfil profil = CProfil.getInstance();
-		boolean retour = true;
-		
-		// panelCommandSetName
-		if ( panelCommandSetName.isChanged() )
+		Thread apply = new Thread()
 		{
-			// le CommandSet à changé
-			if( JOptionPane.showConfirmDialog(
-					this, 
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET") + "\n" +
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE"), 
-					JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
-			{
-				ClearKeyboard();
-				panelCommandSetName.validateDataEntry();
-			}
-			else
-			{
-				retour = false;
-			}
-		}
 		
-		// panelShortcutSetName
-		if ( panelShortcutSetName.isChanged() )
-		{
-			// le ShortcutSet à changé
-			if( JOptionPane.showConfirmDialog(
-					this, 
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET") + "\n" +
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE"), 
-					JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
+			@Override
+			public void run()
 			{
-				ClearKeyboard();
-				panelShortcutSetName.validateDataEntry();
-			}
-			else
-			{
-				retour = false;
-			}
-		}
-		
-		// panelDictionaryName
-		if ( panelDictionaryName.isChanged() )
-		{
-			// le dictionnaire à changé
-			// chargement du nouveau dictionnaire
+				// TODO Auto-generated method stub
+				super.run();
 			
-			// on met les données dans le noyau
-			panelDictionaryName.validateDataEntry();
-			
-			// on vide le dictionnaire
-			CDictionary.dispose();
-			
-			// on créé le nouveau
-			try
-			{
-				CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
+				CProfil profil = CProfil.getInstance();
+				boolean retour = true;
+
+				int pourcentToAddToProgressBar = 10;
+				
+				// panelCommandSetName
+				if ( panelCommandSetName.isChanged() )
+				{
+					// le CommandSet à changé
+					if( JOptionPane.showConfirmDialog(
+							thisObject, 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET") + "\n" +
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE"), 
+							JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
+					{
+						ClearKeyboard();
+						panelCommandSetName.validateDataEntry();
+					}
+					else
+					{
+						retour = false;
+					}
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelShortcutSetName
+				if ( panelShortcutSetName.isChanged() )
+				{
+					// le ShortcutSet à changé
+					if( JOptionPane.showConfirmDialog(
+							thisObject, 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET") + "\n" +
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE"), 
+							JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
+					{
+						ClearKeyboard();
+						panelShortcutSetName.validateDataEntry();
+					}
+					else
+					{
+						retour = false;
+					}
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelDictionaryName
+				if ( panelDictionaryName.isChanged() )
+				{
+					// le dictionnaire à changé
+					// chargement du nouveau dictionnaire
+					
+					// on met les données dans le noyau
+					panelDictionaryName.validateDataEntry();
+					
+					// on vide le dictionnaire
+					CDictionary.dispose();
+					
+					// on créé le nouveau
+					try
+					{
+						CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
+					}
+					catch (Exception ex)
+					{
+						CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
+														CProfil.getInstance().getDictionnaryName().getDictionaryName() +
+														UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
+														ex.getMessage());
+					}
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelFont l
+				if ( panelFont.isChanged() )
+				{
+					// la police à changé
+					panelFont.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelKeyboardColor l
+				if ( panelKeyboardColor.isChanged() )
+				{
+					// la couleur du clavier à changé
+					panelKeyboardColor.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelPreferedWords
+				if ( panelPreferedWords.isChanged() )
+				{
+					// les mots préférés ont changés
+					panelPreferedWords.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelSound l
+				if ( panelSound.isChanged() )
+				{
+					// les option de son ont changés
+					panelSound.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelTransparency l
+				if ( panelTransparency.isChanged() )
+				{
+					// la transparence à changé
+					panelTransparency.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelLangueUI
+				if ( panelLangueUI.isChanged() )
+				{
+					// la langueUI à changé
+					panelLangueUI.validateDataEntry();
+					
+					// on prévient l'utilisateur qu'il faudra redémarer 
+					JOptionPane.showMessageDialog(
+							thisObject, 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART"),
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART_TITLE"),
+						    JOptionPane.WARNING_MESSAGE);
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelNavigation
+				if ( panelNavigation.isChanged() )
+				{
+					// le type de navigation à changé
+					panelNavigation.validateDataEntry();
+					
+					TNavigationType typeNavgation = profil.getNavigation().getTypeNavigation();
+					if( typeNavgation == TNavigationType.STANDARD )
+					{
+						DefilementEngine.getInstance().stopDefilement();
+						ClickEngine.getInstance().stopMouseHook();
+					} else if( typeNavgation == TNavigationType.CLICK_TEMPORISE )
+					{
+						// TODO
+					} else if( typeNavgation == TNavigationType.DEFILEMENT )
+					{
+						DefilementEngine.getInstance().startDefilement();
+						ClickEngine.getInstance().startHook();
+					}
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				EndThread( retour );
 			}
-			catch (Exception ex)
-			{
-				CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
-												CProfil.getInstance().getDictionnaryName().getDictionaryName() +
-												UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
-												ex.getMessage());
-			}
-		}
+		};
 		
-		// panelFont l
-		if ( panelFont.isChanged() )
-		{
-			// la police à changé
-			panelFont.validateDataEntry();
-		}
-		
-		// panelKeyboardColor l
-		if ( panelKeyboardColor.isChanged() )
-		{
-			// la couleur du clavier à changé
-			panelKeyboardColor.validateDataEntry();
-		}
-		
-		// panelPreferedWords
-		if ( panelPreferedWords.isChanged() )
-		{
-			// les mots préférés ont changés
-			panelPreferedWords.validateDataEntry();
-		}
-		
-		// panelSound l
-		if ( panelSound.isChanged() )
-		{
-			// les option de son ont changés
-			panelSound.validateDataEntry();
-		}
-		
-		// panelTransparency l
-		if ( panelTransparency.isChanged() )
-		{
-			// la transparence à changé
-			panelTransparency.validateDataEntry();
-		}
-		
-		// panelLangueUI
-		if ( panelLangueUI.isChanged() )
-		{
-			// la langueUI à changé
-			panelLangueUI.validateDataEntry();
-			
-			// on prévient l'utilisateur qu'il faudra redémarer 
-			JOptionPane.showMessageDialog(
-					this, 
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART"),
-					UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART_TITLE"),
-				    JOptionPane.WARNING_MESSAGE);
-		}
-		
-		// panelNavigation
-		if ( panelNavigation.isChanged() )
-		{
-			// le type de navigation à changé
-			panelNavigation.validateDataEntry();
-			
-			TNavigationType typeNavgation = profil.getNavigation().getTypeNavigation();
-			if( typeNavgation == TNavigationType.STANDARD )
-			{
-				DefilementEngine.getInstance().stopDefilement();
-				ClickEngine.getInstance().stopMouseHook();
-			} else if( typeNavgation == TNavigationType.CLICK_TEMPORISE )
-			{
-				// TODO
-			} else if( typeNavgation == TNavigationType.DEFILEMENT )
-			{
-				DefilementEngine.getInstance().startDefilement();
-				ClickEngine.getInstance().startHook();
-			}
-		}
-		
-		
-		
-		return retour;
+
+		apply.start();
+
 	}
+	
+	
 	
 	private void ClearKeyboard()
 	{
@@ -386,6 +427,7 @@ public class UIFrameModificationProfil extends JDialog
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				closeWindows = false;
 				SaveDataToProfil();
 			}
 		});
@@ -393,19 +435,19 @@ public class UIFrameModificationProfil extends JDialog
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				if( SaveDataToProfil() )
-				{
-					setVisible( false );
-				}
+				closeWindows = true;
+				SaveDataToProfil();	
 			}
 		});
 		btCancel.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setVisible( false );
+				setVisible( true );
 			}
 		});
+		
+		
 		
 		buttonPanel.add(btOk);
 		buttonPanel.add(btCancel);
@@ -414,6 +456,16 @@ public class UIFrameModificationProfil extends JDialog
 		bottomPanel.add(buttonPanel);
 		
 		add(bottomPanel);
+	}
+	
+	void EndThread(boolean retour)
+	{
+		if (retour)
+		{
+			if(closeWindows)
+				setVisible( true );
+		}
+		
 	}
 	
 	/**
