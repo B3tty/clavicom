@@ -50,7 +50,9 @@ public abstract class PanelModificationProfil extends JPanel
 	 * 		* 0 si rien n'a été changé
 	 * 		* 1 si quelque chose a changé
 	 */
-	public abstract int validateDataEntry();
+	public abstract boolean validateDataEntry();
+	
+	public abstract boolean isChanged();
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

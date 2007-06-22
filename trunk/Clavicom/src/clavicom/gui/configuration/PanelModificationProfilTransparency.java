@@ -99,21 +99,41 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	
 
 	//----------------------------------------------------------- METHODES --//	
+
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change(true);
+	}
+	
+	@Override
+	public boolean isChanged()
+	{
+		return change(false);
+	}
+	
+	protected boolean change( boolean saveData )
 	{
 		// Si la gestion de la transparence a changé, on la change dans le profil
-		int retour = 0;
+		boolean retour = false;
 		if( keyboardTransparency.getValue() != transparency.getKeyboardTransparencyPourcent() )
 		{
-			transparency.setKeyboardTrancparencyPourcent( keyboardTransparency.getValue() );
-			retour = 1;
+			if( saveData )
+			{
+				transparency.setKeyboardTrancparencyPourcent( keyboardTransparency.getValue() );
+			}
+			
+			retour = true;
 		}
 		if( keysTransparency.getValue() != transparency.getKeyTransparencyPourcent() );
 		{
-			transparency.setKeyTransparencyPourcent( keysTransparency.getValue() );
-			retour = 1;
+			if( saveData )
+			{
+				transparency.setKeyTransparencyPourcent( keysTransparency.getValue() );
+			}
+			
+			retour = true;
 		}
 		
 		return retour;

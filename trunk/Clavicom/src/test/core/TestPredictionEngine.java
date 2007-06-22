@@ -37,11 +37,11 @@ public class TestPredictionEngine
 			
 			CKeyboard keyboard = profil.getKeyboard();
 			
-			CDictionary dictionary = new CDictionary( profil.getDictionnaryName(), profil.getPreferedWords() );
+			CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
 			
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			/*CPredictionEngine predictionEngine = */new CPredictionEngine( keyboard, levelEngine, dictionary, profil.getPreferedWords() );
+			new CPredictionEngine( keyboard, levelEngine, profil.getPreferedWords() );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

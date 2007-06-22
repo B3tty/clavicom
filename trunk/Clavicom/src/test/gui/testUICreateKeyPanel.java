@@ -33,7 +33,6 @@ import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.engine.CPredictionEngine;
-import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.profil.CKeyboard;
@@ -75,7 +74,6 @@ public class testUICreateKeyPanel
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
 			
-			CDictionary dictionary = null;
 			try
 			{
 				//dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
@@ -92,7 +90,7 @@ public class testUICreateKeyPanel
 			
 			
 			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
+			new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche

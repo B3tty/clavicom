@@ -289,9 +289,20 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	//----------------------------------------------------------- METHODES --//
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
 	{
-		int retour = 0;
+		return change( true );
+	}
+
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
+	}
+	
+	protected boolean change( boolean saveData )
+	{
+		boolean retour = false;
 		
 		// si la police a changé, on la met dans le font
 		Object object = list.getSelectedValue();
@@ -303,9 +314,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 				// si c'est pas les même
 				if( font.getFontName() != selectedFont.getFontName() )
 				{
-					font.setFontName( selectedFont.getFontName() );
+					if(saveData)
+						font.setFontName( selectedFont.getFontName() );
 					
-					retour = 1;
+					retour = true;
 				}
 			}
 		}
@@ -314,8 +326,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		// si la check box autosize a changé
 		if( font.isAutoSize() != autoSize.isSelected() )
 		{
-			font.setAutoSize( autoSize.isSelected() );
-			retour = 1;
+			if(saveData)
+				font.setAutoSize( autoSize.isSelected() );
+			
+			retour = true;
 		}
 		
 		
@@ -331,8 +345,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 					float heightFactor = (float)(size/100);
 					if( font.getHeightFactor() != heightFactor )
 					{
-						font.setHeightFactor( heightFactor );
-						retour = 1;
+						if(saveData)
+							font.setHeightFactor( heightFactor );
+						
+						retour = true;
 					}
 				}
 			}
@@ -341,8 +357,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		// si la check box autocolor a changé
 		if( font.isAutoColor() != autoColor.isSelected() )
 		{
-			font.setAutoColor( autoColor.isSelected() );
-			retour = 1;
+			if(saveData)
+				font.setAutoColor( autoColor.isSelected() );
+			
+			retour = true;
 		}
 		
 		
@@ -350,15 +368,19 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		Color color = buttonColor.getBackground();
 		if( color != font.getFontColor().getColor() )
 		{
-			font.getFontColor().setColor( color );
-			retour = 1;
+			if(saveData)
+				font.getFontColor().setColor( color );
+			
+			retour = true;
 		}
 		
 		// si la check box shadows a changé
 		if( font.isShadow() != shadow.isSelected() )
 		{
-			font.setShadow( shadow.isSelected() );
-			retour = 1;
+			if(saveData)
+				font.setShadow( shadow.isSelected() );
+			
+			retour = true;
 		}
 		
 		

@@ -99,8 +99,20 @@ public class PanelModificationProfilShortcutSetName extends
 
 	// ----------------------------------------------------------- METHODES --//
 
+	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change(true);
+	}
+	
+	@Override
+	public boolean isChanged()
+	{
+		return change(false);
+	}
+	
+	protected boolean change( boolean saveData )
 	{
 		// si le commandSet a été changé, on change son nom
 		
@@ -113,17 +125,21 @@ public class PanelModificationProfilShortcutSetName extends
 				if( shortcutSetFile != null )
 				{
 					// s'il à changé
-					if( shortcutSetFile.toString().equals( 
+					if( ! shortcutSetFile.toString().equals( 
 							shortcutSetName.getShortCutName() ) )
 					{
-						shortcutSetName.setShortCutName( shortcutSetFile.getName() );
-						return 1;
+						if( saveData )
+						{
+							shortcutSetName.setShortCutName( shortcutSetFile.getName() );
+						}
+						
+						return true;
 					}
 				}
 			}
 		}
 
-		return 0;
+		return false;
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//

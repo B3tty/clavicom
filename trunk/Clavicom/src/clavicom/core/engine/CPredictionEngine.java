@@ -51,7 +51,6 @@ public class CPredictionEngine extends CStringsEngine implements
 
 	// ---------------------------------------------------------- VARIABLES --//
 	
-	CDictionary dictionnary; // dictionnaire
 	CPreferedWords preferedWord; // mot de l'utilisateur
 
 	
@@ -60,13 +59,11 @@ public class CPredictionEngine extends CStringsEngine implements
 	
 	public CPredictionEngine( 
 			CKeyboard keyboard, 
-			CLevelEngine myLevelEngine, 
-			CDictionary myDictionary,
+			CLevelEngine myLevelEngine,
 			CPreferedWords myPreferedWord)
 	{
 		super( keyboard, myLevelEngine );
 		
-		dictionnary = myDictionary;
 		preferedWord = myPreferedWord;
 		
 		List<CKeyPrediction> keyPredictionListTemp = new ArrayList<CKeyPrediction>();
@@ -156,7 +153,7 @@ public class CPredictionEngine extends CStringsEngine implements
 			currentString += character;
 			
 			// on récupère la liste des mots de prédiction
-			stringList = dictionnary.getWords( currentString , keyList.size() );
+			stringList = CDictionary.getWords( currentString , keyList.size() );
 			
 			// réaffiche les bouttons
 			updateKeys();
@@ -179,13 +176,13 @@ public class CPredictionEngine extends CStringsEngine implements
 		if( ! currentString.equals( "" ) )
 		{
 			// on sauvegarde le mot courrent dans le dictionnaire et dans les prefered Words
-			CDictionaryWord dictionaryWord = dictionnary.getWord( currentString );
+			CDictionaryWord dictionaryWord = CDictionary.getWord( currentString );
 			if( dictionaryWord == null )
 			{
 				dictionaryWord = new CDictionaryWord( currentString, 0 );
 				
 				// Ajout au dictionnaire
-				dictionnary.addWord( dictionnary.getUserDictionnaryLevel(),dictionaryWord );
+				CDictionary.addWord( CDictionary.getUserDictionnaryLevel(),dictionaryWord );
 			}
 			
 			dictionaryWord.increaseFrequency();

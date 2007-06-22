@@ -78,26 +78,47 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 	
 
 	//----------------------------------------------------------- METHODES --//	
+
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change(true);
+	}
+	
+	@Override
+	public boolean isChanged()
+	{
+		return change(false);
+	}
+	
+	protected boolean change( boolean saveData )
 	{
 		// Si la gestion du son a changé, on la change dans le profil
-		int retour = 0;		
+		boolean retour = false;		
 		if( checkDefil.isSelected() != sound.isSoundOnDefil() )
 		{
-			sound.setSoundOnDefil( checkDefil.isSelected() );
-			retour = 1;
+			if( saveData )
+			{
+				sound.setSoundOnDefil( checkDefil.isSelected() );
+			}
+			retour = true;
 		}
 		if( checkEntered.isSelected() != sound.isSoundOnSurvol() )
 		{
-			sound.setSoundOnSurvol( checkEntered.isSelected() );
-			retour = 1;
+			if( saveData )
+			{
+				sound.setSoundOnSurvol( checkEntered.isSelected() );
+			}
+			retour = true;
 		}
 		if( checkPressed.isSelected() != sound.isSoundOnClic() )
 		{
-			sound.setSoundOnClic( checkPressed.isSelected() );
-			retour = 1;
+			if( saveData )
+			{
+				sound.setSoundOnClic( checkPressed.isSelected() );
+			}
+			retour = true;
 		}
 		
 		return retour;

@@ -100,10 +100,19 @@ public class PanelModificationProfilCommandSetName extends
 	// ----------------------------------------------------------- METHODES --//
 
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
 	{
-		// si le commandSet a été changé, on change son nom
-		
+		return change( true );
+	}
+
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
+	}
+	
+	protected boolean change( boolean saveData )
+	{
 		if( combo.getSelectedItem() != null )
 		{
 			Object object = combo.getSelectedItem();
@@ -113,17 +122,19 @@ public class PanelModificationProfilCommandSetName extends
 				if( commandSetFile != null )
 				{
 					// s'il à changé
-					if( commandSetFile.toString().equals( 
+					if( ! commandSetFile.toString().equals( 
 							commandSetName.getcommandSetName() ) )
 					{
-						commandSetName.setcommandSetName( commandSetFile.getName() );
-						return 1;
+						if ( saveData )
+							commandSetName.setcommandSetName( commandSetFile.getName() );
+						
+						return true;
 					}
 				}
 			}
 		}
 
-		return 0;
+		return false;
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//

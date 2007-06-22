@@ -202,41 +202,15 @@ public class PanelModificationProfilKeyboardColor extends
 	// ----------------------------------------------------------- METHODES --//
 
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
 	{
-		// Si la keyboardColor a changé, on la met dans le profil
-		int retour = 0;
-
-		if (buttonBackColor.getBackground() != keyboardColor.getBackColor()
-				.getColor())
-		{
-			keyboardColor.getBackColor().setColor(
-					buttonBackColor.getBackground());
-			retour = 1;
-		}
-		if (buttonClickedColor.getBackground() != keyboardColor
-				.getDefaultKeyClicked().getColor())
-		{
-			keyboardColor.getDefaultKeyClicked().setColor(
-					buttonClickedColor.getBackground());
-			retour = 1;
-		}
-		if (buttonEnteredColor.getBackground() != keyboardColor
-				.getDefaultKeyEntered().getColor())
-		{
-			keyboardColor.getDefaultKeyEntered().setColor(
-					buttonEnteredColor.getBackground());
-			retour = 1;
-		}
-		if (buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal()
-				.getColor())
-		{
-			keyboardColor.getDefaultKeyNormal().setColor(
-					buttonNormal.getBackground());
-			retour = 1;
-		}
-
-		return retour;
+		return change( true );
+	}
+	
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
@@ -337,4 +311,59 @@ public class PanelModificationProfilKeyboardColor extends
         Component c = parent.getComponent(row * cols + col);
         return layout.getConstraints(c);
     }
+
+	
+	
+	protected boolean change( boolean saveData )
+	{
+		// Si la keyboardColor a changé, on la met dans le profil
+		boolean retour = false;
+
+		if (buttonBackColor.getBackground() != keyboardColor.getBackColor()
+				.getColor())
+		{
+			if ( saveData )
+			{
+				keyboardColor.getBackColor().setColor(
+					buttonBackColor.getBackground());
+			}
+			
+			retour = true;
+		}
+		if (buttonClickedColor.getBackground() != keyboardColor
+				.getDefaultKeyClicked().getColor())
+		{
+			if ( saveData )
+			{
+				keyboardColor.getDefaultKeyClicked().setColor(
+						buttonClickedColor.getBackground());
+			}
+			
+			retour = true;
+		}
+		if (buttonEnteredColor.getBackground() != keyboardColor
+				.getDefaultKeyEntered().getColor())
+		{
+			if ( saveData )
+			{
+				keyboardColor.getDefaultKeyEntered().setColor(
+						buttonEnteredColor.getBackground());
+			}
+			
+			retour = true;
+		}
+		if (buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal()
+				.getColor())
+		{
+			if ( saveData )
+			{
+				keyboardColor.getDefaultKeyNormal().setColor(
+						buttonNormal.getBackground());
+			}
+			
+			retour = true;
+		}
+
+		return retour;
+	}
 }

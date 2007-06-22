@@ -135,33 +135,47 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	
 
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change(true);
+	}
+	
+	@Override
+	public boolean isChanged()
+	{
+		return change(false);
+	}
+
+	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	protected boolean change( boolean saveData )
 	{
 		// Si les mots préférés ont changé, on les change dans le profil
 		
 		// si la taille de la liste à changé, c'est différant
 		if( preferedWord.getSize() != wordTableModel.getRowCount() )
 		{
-			// on vide les prefered word
-			preferedWord.clearPreferedWord();
-			
-			// et on les re-remplit
-			for( int i = 0 ; i < wordTableModel.getRowCount() ; ++i )
+			if( saveData )
 			{
-				CDictionaryWord dictionaryWord = (CDictionaryWord)wordTableModel.getValueAt(i, 0);
-				if( dictionaryWord != null )
+				// on vide les prefered word
+				preferedWord.clearPreferedWord();
+				
+				// et on les re-remplit
+				for( int i = 0 ; i < wordTableModel.getRowCount() ; ++i )
 				{
-					preferedWord.addPreferedWord( dictionaryWord );
+					CDictionaryWord dictionaryWord = (CDictionaryWord)wordTableModel.getValueAt(i, 0);
+					if( dictionaryWord != null )
+					{
+						preferedWord.addPreferedWord( dictionaryWord );
+					}
 				}
 			}
 			
-			return 1;
+			return true;
 		}
 		
-		return 0;
+		return false;
 	}
-
-	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	
 	protected class WordsTableModel extends AbstractTableModel implements TableModel
@@ -265,4 +279,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		}
 		
 	}
+
+
+	
 }
