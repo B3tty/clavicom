@@ -156,7 +156,7 @@ public class testUIMouse
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
 			
-//			clickEngine.startHook();
+			clickEngine.startHook();
 			
 		}
 		catch(Exception e)
