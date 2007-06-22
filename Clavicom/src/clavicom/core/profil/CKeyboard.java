@@ -145,5 +145,9 @@ public class CKeyboard
 		return keyboard;
 	}
 
+	public void clearKeyboard()
+	{
+		keyGroupList.clear();
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
