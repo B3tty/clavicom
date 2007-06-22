@@ -26,7 +26,9 @@
 package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -36,6 +38,7 @@ import javax.swing.event.ListSelectionListener;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.gui.language.UIString;
 
 public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 {
@@ -45,20 +48,25 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 
 	CKeyShortcut keyShortCut;
 	JList list;
-
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
 	public UIPanelOptionKeyShortCut()
 	{
 		super();
-
-		JPanel panel = new JPanel(  );
-		JPanel panel2 = new JPanel( new BorderLayout() );
+		JPanel panel= new JPanel( new BorderLayout() );
 		
-		JScrollPane sp = new JScrollPane( list );
+		list = new JList( CShortcutSet.GetInstance().getValues().toArray() );
 		
-		panel2.add( sp, BorderLayout.CENTER );
-		panel.add( panel2 );
+		JScrollPane sp = new JScrollPane( list);
+		
+		panel.add( sp, BorderLayout.CENTER );
+		
+		// Ajout du titre
+		panel.setBorder( 	BorderFactory.createTitledBorder( 
+							BorderFactory.createLineBorder( Color.BLACK ), 
+							UIString.getUIString("LB_KEYSHORTCUT_BORDER")) );
+		
 		add( panel);
 		
 	}
@@ -69,13 +77,16 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 		setValuesKeyOneLevel(myKeyShortCut);
 		
 		keyShortCut = myKeyShortCut;
-		list = new JList( CShortcutSet.GetInstance().getValues().toArray() );
 		
 		if( keyShortCut != null )
 		{
 			if( keyShortCut.getCommand() != null )
 			{
 				list.setSelectedValue( keyShortCut.getCommand(), true);
+			}
+			else
+			{
+				list.clearSelection();
 			}
 		}
 		

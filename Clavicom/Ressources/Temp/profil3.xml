@@ -236,12 +236,12 @@
         <keylevel order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.44801027</x>
-              <y>0.32394367</y>
+              <x>0.45057768</x>
+              <y>0.8133803</y>
             </point>
             <point position="max">
-              <x>0.5481386</x>
-              <y>0.52112675</y>
+              <x>0.550706</x>
+              <y>1.0105634</y>
             </point>
           </coordinates>
           <colors>

@@ -337,7 +337,8 @@
 	<message id = "LB_KEYLEVEL_LEVEL">Niveau</message>
 	
 	<!-- optionKeyShortCut -->
-	<message id = "LB_KEYSHORCUT_SHORTCUT">Raccourci</message>
+	<message id = "LB_KEYSHORTCUT_BORDER">Raccourci</message>
+	
 
 	<!-- optionKeyOneLevel -->
 	<message id = "LB_KEYSONELEVEL_BORDER">Options d'affichage</message>

@@ -52,6 +52,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
+import clavicom.CFilePaths;
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -912,7 +913,10 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 														newKeyMin,
 														newKeyMax,
 														TKeyClavicomActionType.CLOSE_APPLICATION,
-														"");
+														CFilePaths.getToolKeyClavicomClosePicture());
+			// On dit que c'est une image
+			newCoreKey.setCaptionImage(true);
+			
 			// Création de l'objet de l'UI
 			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
 			
@@ -928,7 +932,10 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 														newKeyMin,
 														newKeyMax,
 														TKeyClavicomActionType.OPEN_CONFIGURATION,
-														"");
+														CFilePaths.getToolKeyClavicomConfigurationPicture());
+			// On dit que c'est une image
+			newCoreKey.setCaptionImage(true);
+			
 			// Création de l'objet de l'UI
 			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
 			
@@ -944,7 +951,10 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 														newKeyMin,
 														newKeyMax,
 														TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE,
-														"");
+														CFilePaths.getToolKeyClavicomSwitchSouricomPicture());
+			// On dit que c'est une image
+			newCoreKey.setCaptionImage(true);
+			
 			// Création de l'objet de l'UI
 			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
 			
@@ -978,7 +988,22 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 			
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);			
-		}
+		}else if (keyType == TEnumCreationKey.T_KEY_LEVEL_SHIFT)
+		{
+			// Création de l'objet du noyau
+			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
+													pressedColor,
+													enteredColor,
+													newKeyMin,
+													newKeyMax,
+													TLevelEnum.SHIFT,
+													"");
+			// Création de l'objet de l'UI
+			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);			
+		}		
 		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_ALTGR)
 		{
 			// Création de l'objet du noyau
