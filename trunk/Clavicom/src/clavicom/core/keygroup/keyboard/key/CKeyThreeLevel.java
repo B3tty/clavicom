@@ -107,7 +107,7 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public void setCaption( String caption, TLevelEnum level )
+	public void setCaption( String caption, TLevelEnum level, boolean alert)
 	{
 		if( level == TLevelEnum.NORMAL )
 		{
@@ -122,10 +122,11 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 			captionAltGr = caption;
 		}
 		
-		System.out.println("Nouvelles caption : " + captionNormal + "|" + captionShift + "|" + captionAltGr);
-		
 		// Alerte de changement de la caption
-		fireCaptionChanged();
+		if(alert == true)
+		{
+			fireCaptionChanged();
+		}
 	}
 	
 	@Override

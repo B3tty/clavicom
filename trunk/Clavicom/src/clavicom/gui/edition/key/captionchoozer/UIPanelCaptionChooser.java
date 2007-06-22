@@ -218,7 +218,6 @@ public class UIPanelCaptionChooser extends JPanel
 	{
 		captionText.setText(text);
 	}
-	
 	/**
 	 * Indique si on est en selection d'image ou non
 	 */

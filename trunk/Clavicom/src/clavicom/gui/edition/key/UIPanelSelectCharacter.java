@@ -30,17 +30,23 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.commandSet.CSection;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TLevelEnum;
 
 public class UIPanelSelectCharacter extends JPanel implements ActionListener
@@ -54,21 +60,35 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 	JList list;
 	CCommandSet commandSet;
 	
+	JCheckBox chkNoAction;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIPanelSelectCharacter(CCommandSet myCommandSet, String type, TLevelEnum myLevel)
 	{
 		level = myLevel;
 		commandSet = myCommandSet;
 		
-		setLayout(new BorderLayout());
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		// Création de la combo
+		chkNoAction = new JCheckBox();
+		chkNoAction.setText(UIString.getUIString("LB_KEYCHARACTER_CHECKBOX_NOACTION"));
+		chkNoAction.addActionListener(new AbstractAction() {
+											public void actionPerformed(ActionEvent arg0)
+											{
+												chkNoActionChanged();
+											}
+			});
+		
+		add(chkNoAction);
 		
 		// Ajout du libéllé
 		JPanel p_caption = new JPanel( );
 		
-		add ( p_caption, BorderLayout.NORTH ) ;
+		add ( p_caption) ;
 		
 		// Ajout des box de séléction
-		add ( CreateListViewSections( commandSet ), BorderLayout.CENTER ) ;
+		add ( CreateListViewSections( commandSet )) ;
 		
 		setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), type ));
 	}
@@ -159,6 +179,22 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		if( keyCharacter.getCommand( level ) != null )
 		{
 			list.setSelectedValue( keyCharacter.getCommand( level ) , true);
+			
+			// On décoche la checkbox
+			chkNoAction.setSelected(false);
+			
+			// On dégrise la selection d'action
+			list.setEnabled(true);
+			comboSection.setEnabled(true);	
+		}
+		else
+		{
+			// On coche la checkbox
+			chkNoAction.setSelected(true);
+			
+			// On grise la selection d'action
+			list.setEnabled(false);
+			comboSection.setEnabled(false);
 		}
 	}
 	
@@ -166,6 +202,25 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 	protected void updateCaption(String caption)
 	{
 		if((keyCharacter != null) && (level != null))
-			keyCharacter.setCaption( caption, level );
+			keyCharacter.setCaption( caption, level, true );
+	}
+	
+	protected void chkNoActionChanged()
+	{
+		if(chkNoAction.isSelected() == true)
+		{
+			// On grise la selection d'action
+			list.setEnabled(false);
+			comboSection.setEnabled(false);
+			
+			// On met une commande nulle dans le noyau
+			keyCharacter.setCommand(null, level);
+		}
+		else
+		{
+			// On dégrise la selection d'action
+			list.setEnabled(true);
+			comboSection.setEnabled(true);	
+		}
 	}
 }

@@ -333,6 +333,15 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
 		btOptionsApplication.setAction(new BtOptionsApplicationAction(UIString.getUIString("LB_EDITION_OPEN_OPTIONS")));
 		
+		// Initialisation des tailles des fenêtres
+		
+		frameOptionKeyOneLevel.setSize(410,250);
+		frameOptionKeyKeyboard.setSize(410,125);
+		frameOptionKeyCharacter.setSize(540,540);
+		frameOptionKeyLauncher.setSize(410,310);
+		frameOptionKeyShortcut.setSize(200,200);		// TODO
+		frameOptionKeyString.setSize(410,310);
+		
 		// Frame d'options de l'application
 		frameOptionApplication.setSize(new Dimension (500,600));
 		frameOptionApplication.setResizable(false);
@@ -432,7 +441,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			// Récupération de la touche
 			CKey selectedKey = selectedKeys.get(0).getCoreKey();
-			System.out.println("click !");
+			
 			// On sélectionne le bon panel
 			if (selectedKey instanceof CKeyCharacter)
 			{

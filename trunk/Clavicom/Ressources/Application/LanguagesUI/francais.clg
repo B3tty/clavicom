@@ -316,6 +316,7 @@
 	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
 	<message id = "LB_KEYCHARACTER_CLOSE">Fermer</message>
 	<message id = "LB_KEYCHARACTER_BORDER">Actions des touches</message>
+	<message id = "LB_KEYCHARACTER_CHECKBOX_NOACTION">Aucune action</message>
 	
 	
 	<!-- optionKeyClavicom -->
