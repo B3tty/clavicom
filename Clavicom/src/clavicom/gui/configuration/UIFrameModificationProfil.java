@@ -463,7 +463,7 @@ public class UIFrameModificationProfil extends JDialog
 		if (retour)
 		{
 			if(closeWindows)
-				setVisible( true );
+				setVisible( false );
 		}
 		
 	}
@@ -612,6 +612,16 @@ public class UIFrameModificationProfil extends JDialog
 		{
 			btCancelPressed();
 		}
+	}
+	
+	@Override
+	public void setVisible(boolean b)
+	{
+		if(b)
+			progressBarApply.setValue(0);
+		
+		// TODO Auto-generated method stub
+		super.setVisible(b);
 	}
 	
 }
