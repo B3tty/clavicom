@@ -269,60 +269,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	//----------------------------------------------------------- METHODES --//
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
 	{
-		// Si la navigation a changé, on la change dans le profil
-		int retour = 0;
-		
-		if( radioButtonStandard.isSelected() )
-		{
-			// si ca a changé
-			if( navigation.getTypeNavigation() != TNavigationType.STANDARD )
-			{
-				navigation.setTypeNavigation( TNavigationType.STANDARD );
-				
-				retour = 1;
-			}
-		}else if( radioButtonDefilement.isSelected() )
-		{
-			// si ca a changé
-			if( navigation.getTypeNavigation() != TNavigationType.DEFILEMENT )
-			{
-				navigation.setTypeNavigation( TNavigationType.DEFILEMENT );
-
-				navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
-				
-				navigation.setBlockSelectionActive( rollOver.isSelected() );
-				
-				retour = 1;
-			}
-		}else if( radioButtonClickTempo.isSelected() )
-		{
-			// si ca a changé
-			if( navigation.getTypeNavigation() != TNavigationType.CLICK_TEMPORISE )
-			{
-				navigation.setTypeNavigation( TNavigationType.CLICK_TEMPORISE );
-				navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
-				
-				retour = 1;
-			}
-		}
-		
-		// sliderMouseSpeed
-		if( sliderMouseSpeed.getValue() != navigation.getMouseSpeed() )
-		{
-			navigation.setMouseSpeed( sliderMouseSpeed.getValue() );
-			retour = 1;
-		}
-		
-		// rollOver
-		if( rollOver.isSelected() != navigation.isRolloverActive() )
-		{
-			navigation.setRolloverActive( rollOver.isSelected() );
-			retour = 1;
-		}
-		
-		return retour;
+		return change( true );
 	}
 
 
@@ -377,6 +326,80 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( false );
+	}
+
+
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
+	}
+	
+	protected boolean change( boolean saveData )
+	{
+		// Si la navigation a changé, on la change dans le profil
+		boolean retour = false;
+		
+		if( radioButtonStandard.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.STANDARD )
+			{
+				if ( saveData )
+					navigation.setTypeNavigation( TNavigationType.STANDARD );
+				
+				retour = true;
+			}
+		}else if( radioButtonDefilement.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.DEFILEMENT )
+			{
+				if ( saveData )
+				{
+					navigation.setTypeNavigation( TNavigationType.DEFILEMENT );
+	
+					navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
+					
+					navigation.setBlockSelectionActive( rollOver.isSelected() );
+				}
+				
+				retour = true;
+			}
+		}else if( radioButtonClickTempo.isSelected() )
+		{
+			// si ca a changé
+			if( navigation.getTypeNavigation() != TNavigationType.CLICK_TEMPORISE )
+			{
+				if ( saveData )
+				{
+					navigation.setTypeNavigation( TNavigationType.CLICK_TEMPORISE );
+					navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
+				}
+				
+				retour = true;
+			}
+		}
+		
+		// sliderMouseSpeed
+		if( sliderMouseSpeed.getValue() != navigation.getMouseSpeed() )
+		{
+			if ( saveData )
+				navigation.setMouseSpeed( sliderMouseSpeed.getValue() );
+			
+			retour = true;
+		}
+		
+		// rollOver
+		if( rollOver.isSelected() != navigation.isRolloverActive() )
+		{
+			if ( saveData )
+				navigation.setRolloverActive( rollOver.isSelected() );
+			
+			retour = true;
+		}
+		
+		return retour;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -78,10 +78,9 @@ public class testUIKeyboard
 			// Chargement du commandEngine
 			CLevelEngine levelEngine = new CLevelEngine( keyboard );
 			
-			CDictionary dictionary = null;
 			try
 			{
-				dictionary = new CDictionary(profil.getDictionnaryName(),profil.getPreferedWords());
+				CDictionary.createInstance( profil.getDictionnaryName(),profil.getPreferedWords());
 			}
 			catch (Exception ex)
 			{
@@ -89,7 +88,7 @@ public class testUIKeyboard
 			}
 			
 			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,dictionary,profil.getPreferedWords());
+			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
 			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 
 			UIKeyCreationEngine.createInstance();

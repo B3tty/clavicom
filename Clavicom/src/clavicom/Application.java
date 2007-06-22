@@ -69,9 +69,6 @@ public class Application
 	private static UIMessageEngine 		toolMessageEngine;		// Moteur de messages
 	
 	@SuppressWarnings("unused")
-	private static CDictionary			toolDictionnary;		// Dictionnaire
-	
-	@SuppressWarnings("unused")
 	private static CLevelEngine			toolLevelEngine;		// Moteur de niveau
 	
 	@SuppressWarnings("unused")
@@ -373,8 +370,8 @@ public class Application
 	{
 		try
 		{
-			toolDictionnary = new CDictionary(	CProfil.getInstance().getDictionnaryName(),
-												CProfil.getInstance().getPreferedWords());
+			CDictionary.createInstance( CProfil.getInstance().getDictionnaryName(),
+														CProfil.getInstance().getPreferedWords());
 		}
 		catch (Exception ex)
 		{
@@ -460,7 +457,6 @@ public class Application
 		{
 			toolPredictionEngine = new CPredictionEngine(	CProfil.getInstance().getKeyboard(),
 															toolLevelEngine,
-															toolDictionnary,
 															CProfil.getInstance().getPreferedWords());
 		}
 		catch (Exception ex)

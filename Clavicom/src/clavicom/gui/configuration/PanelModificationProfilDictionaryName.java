@@ -102,7 +102,18 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 	//----------------------------------------------------------- METHODES --//
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change( true );
+	}
+
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
+	}
+	
+	protected boolean change( boolean saveData )
 	{
 		// Si le dictionnaire a été changé, on change son nom
 		if( combo.getSelectedItem() != null )
@@ -114,17 +125,19 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 				if( dictionaryFile != null )
 				{
 					// s'il à changé
-					if( dictionaryFile.toString().equals( 
+					if( ! dictionaryFile.toString().equals( 
 							dictionaryName.getDictionaryName() ) )
 					{
-						dictionaryName.setDictionaryName( dictionaryFile.getName() );
-						return 1;
+						if( saveData )
+							dictionaryName.setDictionaryName( dictionaryFile.toString() );
+						
+						return true;
 					}
 				}
 			}
 		}
 		
-		return 0;
+		return false;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

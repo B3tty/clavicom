@@ -426,6 +426,12 @@
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
 	
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
+	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Le fichier des raccourcis a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE">Changement des raccourcis</message>
+	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
+	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
 	
 	<message id = "LB_EDITION_CLOSE_EDITION">Fermer</message>

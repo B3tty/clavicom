@@ -56,7 +56,7 @@ public class testDictionary
 			CProfil profil = CProfil.getInstance();
 			
 			
-			CDictionary dictionary = new CDictionary( profil.getDictionnaryName(), profil.getPreferedWords() );
+			CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
 			
 //			CDictionaryLevel dictionaryLevel = dictionary.getDictionaryLevel_0();
 //			
@@ -67,14 +67,14 @@ public class testDictionary
 			
 			System.out.println("coucou");
 			
-			dictionary.increaseWord("tarabiscoterait");
-			dictionary.increaseWord("tarabiscoterait");
-			dictionary.increaseWord("tarabiscoterait");
-			dictionary.increaseWord("tarabiscoterait");
-			dictionary.increaseWord("tarabiscoterait");
-			dictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
+			CDictionary.increaseWord("tarabiscoterait");
 			
-			List<String> stringList = dictionary.getWords( "tara", 14 );
+			List<String> stringList = CDictionary.getWords( "tara", 14 );
 			
 			for( String word : stringList )
 			{

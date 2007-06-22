@@ -103,7 +103,18 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 	//----------------------------------------------------------- METHODES --//
 	
 	@Override
-	public int validateDataEntry()
+	public boolean validateDataEntry()
+	{
+		return change( true );
+	}
+
+	@Override
+	public boolean isChanged()
+	{
+		return change( false );
+	}
+	
+	protected boolean change( boolean saveData )
 	{
 		// Si la langue de l'UI à changé, on la change le nom du fichier UI
 		if( combo.getSelectedItem() != null )
@@ -115,17 +126,21 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 				if( langueUIFile != null )
 				{
 					// s'il à changé
-					if( langueUIFile.toString().equals( 
+					if( ! langueUIFile.toString().equals( 
 							langueUIName.getLanguageFileName() ) )
 					{
-						langueUIName.setLanguageFileName( langueUIFile.getName() );
-						return 1;
+						if( saveData )
+						{
+							langueUIName.setLanguageFileName( langueUIFile.getName() );
+						}
+						
+						return true;
 					}
 				}
 			}
 		}
 		
-		return 0;
+		return false;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

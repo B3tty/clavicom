@@ -39,11 +39,13 @@ public class CDictionary
 	static int nbDictionaryLevel = 4;
 
 	//---------------------------------------------------------- VARIABLES --//
-	CDictionaryLevel dictionaryGlobal;
-	CDictionaryLevel dictionaryUser;
+	static CDictionaryLevel dictionaryGlobal;
+	static CDictionaryLevel dictionaryUser;
+	
+	static CDictionary instance;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CDictionary( 
+	protected CDictionary( 
 			CDictionaryName dictionaryName,
 			CPreferedWords preferedWords
 			) throws Exception
@@ -58,9 +60,18 @@ public class CDictionary
 		LoadPreferedWords( preferedWords );
 	}
 	
+	static public void createInstance(
+			CDictionaryName dictionaryName,
+			CPreferedWords preferedWords)throws Exception
+	{
+		instance = new CDictionary(dictionaryName,preferedWords);
+	}
+	
+	
+	
 	//----------------------------------------------------------- METHODES --//
 	
-	private void LoadPreferedWords(CPreferedWords preferedWords)
+	static private void LoadPreferedWords(CPreferedWords preferedWords)
 	{
 		CDictionaryWord preferedWord;
 		for( int i = 0 ; i < preferedWords.getSize() ; ++i )
@@ -74,7 +85,7 @@ public class CDictionary
 		
 	}
 	
-	private void LoadDictionary(CDictionaryName dictionaryName) throws Exception
+	static private void LoadDictionary(CDictionaryName dictionaryName) throws Exception
 	{
 		String dictionaryPath = CFilePaths.getDictionariesFolder() + dictionaryName.getDictionaryName();
 
@@ -108,7 +119,7 @@ public class CDictionary
 
 	}
 
-	public void addWord( CDictionaryLevel dictionaryGlobal, CDictionaryWord newDictionaryWord )
+	static public void addWord( CDictionaryLevel dictionaryGlobal, CDictionaryWord newDictionaryWord )
 	{
 		Character currentCharacter;
 		CDictionaryLevel currentDictionaryLevel = dictionaryGlobal;
@@ -158,7 +169,7 @@ public class CDictionary
 	 * @param nbOfWord
 	 * @return
 	 */
-	public List<String> getWords( String beginString, int nbOfWord )
+	static public List<String> getWords( String beginString, int nbOfWord )
 	{
 		
 		
@@ -278,7 +289,7 @@ public class CDictionary
 		return finalList;
 	}
 
-	public CDictionaryWord getWord( String word )
+	static public CDictionaryWord getWord( String word )
 	{
 		CDictionaryLevel currentLevel = dictionaryGlobal;
 		CDictionaryLevel currentLevelTemp;
@@ -320,7 +331,7 @@ public class CDictionary
 		return currentLevel.getDictionaryWord( word );
 	}
 	
-	public void increaseWord( String word )
+	static public void increaseWord( String word )
 	{
 		CDictionaryLevel currentLevel = dictionaryUser;
 		CDictionaryLevel currentLevelTemp;
@@ -433,9 +444,17 @@ public class CDictionary
 	//--------------------------------------------------- METHODES PRIVEES --//
 
 
-	public CDictionaryLevel getUserDictionnaryLevel()
+	static public CDictionaryLevel getUserDictionnaryLevel()
 	{
 		return dictionaryUser;
+	}
+	
+	// vide le dictionnaire
+	static public void dispose()
+	{
+		dictionaryGlobal = null;
+		dictionaryUser = null;
+		instance = null;
 	}
 
 	

@@ -31,14 +31,18 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
 
+import clavicom.core.engine.dictionary.CDictionary;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
@@ -96,6 +100,139 @@ public class UIFrameModificationProfil extends JDialog
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	/**
+	 * Sauvegarde les données dans le profil en mémoire
+	 * retour :
+	 * 		true - Ok
+	 * 		false - Probleme
+	 */
+	protected boolean SaveDataToProfil()
+	{
+		// sauvegarde des panels un par un
+		
+		CProfil profil = CProfil.getInstance();
+		boolean retour = true;
+		
+		// panelCommandSetName
+		if ( panelCommandSetName.isChanged() )
+		{
+			// le CommandSet à changé
+			if( JOptionPane.showConfirmDialog(
+					this, 
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET") + "\n" +
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE"), 
+					JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
+			{
+				ClearKeyboard();
+				panelCommandSetName.validateDataEntry();
+			}
+			else
+			{
+				retour = false;
+			}
+		}
+		
+		// panelShortcutSetName
+		if ( panelShortcutSetName.isChanged() )
+		{
+			// le ShortcutSet à changé
+			if( JOptionPane.showConfirmDialog(
+					this, 
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET") + "\n" +
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_CONTINUE"), 
+					UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE"), 
+					JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
+			{
+				ClearKeyboard();
+				panelShortcutSetName.validateDataEntry();
+			}
+			else
+			{
+				retour = false;
+			}
+		}
+		
+		// panelDictionaryName
+		if ( panelDictionaryName.isChanged() )
+		{
+			// le dictionnaire à changé
+			// chargement du nouveau dictionnaire
+			
+			// on met les données dans le noyau
+			panelDictionaryName.validateDataEntry();
+			
+			// on vide le dictionnaire
+			CDictionary.dispose();
+			
+			// on créé le nouveau
+			try
+			{
+				CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
+			}
+			catch (Exception ex)
+			{
+				CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
+												CProfil.getInstance().getDictionnaryName().getDictionaryName() +
+												UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
+												ex.getMessage());
+			}
+		}
+		
+		// panelFont l
+		if ( panelFont.isChanged() )
+		{
+			// la police à changé
+			panelFont.validateDataEntry();
+		}
+		
+		// panelKeyboardColor l
+		if ( panelKeyboardColor.isChanged() )
+		{
+			// la couleur du clavier à changé
+		}
+		
+		// panelPreferedWords
+		if ( panelPreferedWords.isChanged() )
+		{
+			// les mots préférés ont changés
+		}
+		
+		// panelSound l
+		if ( panelSound.isChanged() )
+		{
+			// les option de son ont changés
+		}
+		
+		// panelTransparency l
+		if ( panelTransparency.isChanged() )
+		{
+			// la transparence à changé
+		}
+		
+		// panelLangueUI
+		if ( panelLangueUI.isChanged() )
+		{
+			// la langueUI à changé
+		}
+		
+		// panelNavigation
+		if ( panelNavigation.isChanged() )
+		{
+			// le type de navigation à changé
+		}
+		
+		
+		
+		return retour;
+	}
+	
+	private void ClearKeyboard()
+	{
+		// vide la keyboard
+	}
+
 	/**
 	 * Initialise la fenêtre
 	 */
@@ -204,6 +341,32 @@ public class UIFrameModificationProfil extends JDialog
 		btOk.setAction(new BtOkAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_OK")));
 		btCancel.setAction(new BtCancelAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_CANCEL")));
 		btApply.setAction(new BtApplyAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_APPLY")));
+		
+		// ACTIONS SUR LES TOUCHES
+		btApply.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				SaveDataToProfil();
+			}
+		});
+		btOk.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				if( SaveDataToProfil() )
+				{
+					setVisible( false );
+				}
+			}
+		});
+		btCancel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				setVisible( false );
+			}
+		});
 		
 		buttonPanel.add(btOk);
 		buttonPanel.add(btCancel);
