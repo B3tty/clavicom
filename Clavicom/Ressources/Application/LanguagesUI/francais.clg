@@ -261,7 +261,8 @@
 	<message id = "EX_MOUSE_KEYSWITCH_MOVEMODE">Erreur lors de la construction de la touche de passage en mode mouvement de la souricom</message>
 	<message id = "EX_MOUSE_KEYSWITCH_KEYBOARDMODE">Erreur lors de la construction de la touche de passage en mode clavicom de la souricom</message>
 	
-	<!-- MOUSE MOVE ENGINE -->
+	<message id = "EX_CLICK_ENGINE_NON_CREE">Le moteur de clic n'est pas créé</message>
+	
 	
 	<!-- ==========================================================================
 		Messages 
@@ -431,6 +432,9 @@
 	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
 	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Le fichier des raccourcis a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
 	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE">Changement des raccourcis</message>
+	
+	<message id = "LB_CONFPROFIL_CHANGE_RESTART">Veuillez redemarrer l'application pour que les changements soient pris en compte</message>
+	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">Changement de la langue de l'interface</message>
 	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>

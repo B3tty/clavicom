@@ -56,6 +56,8 @@ public class ClickEngine
 		
 	};
 	
+	static ClickEngine instance;
+	
 	protected EventListenerList listenerList;
 	
 	// déclaration des méthodes natives
@@ -64,11 +66,21 @@ public class ClickEngine
 	public native void InhibitMouseHook( boolean inibit );
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public ClickEngine( String dllPath )
+	protected ClickEngine( String dllPath )
 	{
 		listenerList = new EventListenerList();
 		
 		System.loadLibrary( dllPath );	
+	}
+	
+	static public void createInstance( String dllPath )
+	{
+		instance = new ClickEngine( dllPath );
+	}
+	
+	static public ClickEngine getInstance(  )
+	{
+		return instance;
 	}
 
 	//----------------------------------------------------------- METHODES --//

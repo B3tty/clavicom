@@ -67,7 +67,7 @@ public class testTabPanels
 			profil.loadProfile();
 			
 
-			UIFrameModificationProfil panelGlobal = new UIFrameModificationProfil();
+			UIFrameModificationProfil panelGlobal = new UIFrameModificationProfil(null);
 			
 			panelGlobal.setVisible(true);
 			

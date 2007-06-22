@@ -29,7 +29,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
+import clavicom.core.message.CMessageEngine;
 import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.language.UIString;
 import clavicom.gui.listener.DefilListener;
 
 public class DefilementEngine
@@ -40,15 +43,33 @@ public class DefilementEngine
 	Timer defilTimer;
 	
 	protected EventListenerList listenerList;
+	
+	static DefilementEngine instance;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public DefilementEngine( ClickEngine myClicEngine )
+	protected DefilementEngine( ClickEngine myClicEngine )
 	{
 		listenerList = new EventListenerList();
 		defilTimer = createSelectTimer( );
 	}
 
 
+	static public void createInstance(  )
+	{
+		if( ClickEngine.getInstance() != null )
+		{
+			instance = new DefilementEngine( ClickEngine.getInstance() );
+		}
+		else
+		{
+			CMessageEngine.newError( UIString.getUIString("EX_CLICK_ENGINE_NON_CREE") );
+		}
+	}
+	
+	static public DefilementEngine getInstance(  )
+	{
+		return instance;
+	}
 	//----------------------------------------------------------- METHODES --//
 	
 	

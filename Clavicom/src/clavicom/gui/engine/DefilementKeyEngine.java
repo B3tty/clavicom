@@ -62,8 +62,6 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public DefilementKeyEngine( 
 			UIKeyboard myUIKeyboard, 
-			ClickEngine myClicEngine, 
-			DefilementEngine myDefilementEngine,
 			boolean started )
 	{
 		uiKeyboard = myUIKeyboard;
@@ -74,10 +72,10 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		//		2 : key
 		currentTypeDefil = 0;
 		
-		defilementEngine = myDefilementEngine;
-		clicEngine = myClicEngine;
+		defilementEngine = DefilementEngine.getInstance();
+		clicEngine = ClickEngine.getInstance();
 		
-		myClicEngine.addClickMouseHookListener( this );
+		clicEngine.addClickMouseHookListener( this );
 		defilementEngine.addDefilListener( this );
 		
 		currentIndexDefilementGroup = 0;

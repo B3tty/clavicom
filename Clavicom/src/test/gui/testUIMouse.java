@@ -82,11 +82,12 @@ public class testUIMouse
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			clickEngine = new ClickEngine("clavicom_gui_engine_click_ClickEngine");
+			ClickEngine.createInstance("clavicom_gui_engine_click_ClickEngine");
+			clickEngine = ClickEngine.getInstance();
 			
 			
-			
-			DefilementEngine defilementEngine = new DefilementEngine(clickEngine);
+			DefilementEngine.createInstance();
+			DefilementEngine defilementEngine = DefilementEngine.getInstance();
 			
 			CMouse mouse = CMouse.CreateMouse(
 					profil.getDefaultColor().getDefaultKeyNormal().getColor(), 

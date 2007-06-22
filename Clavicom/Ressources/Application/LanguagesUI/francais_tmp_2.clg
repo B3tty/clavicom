@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="Français">
+	<!-- ==========================================================================
+		Générales à l'application 
+	==========================================================================  -->
+	
+	<message id = "MSG_APPLICATION_NAME">Clavicom</message>
+	<message id = "MSG_APPLICATION_VERSION">5.0</message>
+	<message id = "MSG_APPLICATION_DESCRIPTION">Clavier virtuel universel</message>
+	
+	
+	
+	<!-- ========================================================================== 
+		Exceptions 
+	==========================================================================  -->
+	<!-- COMMANDESET -->
+	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
+	<message id = "EX_COMMANDSET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_COMMANDSET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
+	
+	<!-- SECTION -->
+	<message id = "EX_SECTION_BUILD_SECTION">Construction d'une section de clavier </message>
+	<message id = "EX_SECTION_ERR_ADD_COMMAND">Impossible d'ajouter la commande à la liste des commandes</message>
+	
+	<!-- CODE -->
+	<message id = "EX_CODE_BUILD_CODE">Construction d'un code de clavier </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Impossible de trouver le code caractere correspondant à </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Impossible de trouver la bonne action correspondante à </message>
+	
+	<!-- COMMAND -->
+	<message id = "EX_COMMAND_BUILD_COMMANDE">Construction d'une commande de clavier </message>
+	<message id = "EX_COMMAND_CAN_NOT_ADD_CODE">Impossible d'ajouter le code </message>
+	<message id = "EX_COMMAND_IN_THE_COMMANDE"> dans la commande </message>
+	
+	<!-- KEYGROUP -->
+	<message id = "EX_KEYGROUP_BUILD_GROUP">Construction d'un groupe </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_NODE">Impossible de trouver le noeud XML </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
+	<message id = "EX_KEYGROUP_CAN_NOT_CONVERT">Impossible de convertir </message>
+	<message id = "EX_KEYGROUP_TO_BOOLEAN"> en booléen </message>
+	<message id = "EX_KEYGROUP_TO_INTEGER"> en entier </message>
+	
+	<!-- KEYLIST -->
+	<message id = "EX_KEYLIST_KEY_TYPE">Type de touche </message>
+	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
+	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
+	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
+	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
+	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
+	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Chaine de caractere dynamique</message>
+	<message id = "EX_KEYLIST_TYPE_LAST_WORD">Dernier mot</message>
+	<message id = "EX_KEYLIST_TYPE_PREDICTION">Prediction</message>
+	<message id = "EX_KEYLIST_TYPE_LEVEL">Gestion des niveaux</message>
+	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Type de touche inconnu</message>
+	<message id = "EX_KEYLIST_BUILD_LIST">Construction d'une liste</message>
+	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
+	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Impossible d'ajouter la touche à la liste </message>
+	
+	<!-- KEYBOARDKEY -->
+	<message id = "EX_KEYBOARDKEY_EMPTY_NODE">[Chargement d'une touche] : Noeud vide</message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_2"> attendu manquant</message>
+	
+	<message id = "EX_KEYBOARDKEY_BAD_NUMBER_OF_POINT">[Chargement d'une touche] : Mauvais nombre de </message>
+	
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_2"> n'est pas un noeud valide</message>
+	
+	<message id = "EX_KEYBOARDKEY_BAD_MAX_POINT">[Chargement d'une touche] : point max </message>
+	
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_2"> d'attribut </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_3"> trouvé deux fois</message>
+	
+	<message id = "EX_KEYBOARDKEY_BAD_MIN_POINT">[Chargement d'une touche] : point min </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2"> d'attribut </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3"> trouvé deux fois</message>
+	
+	<!-- KEYCLAVICOM -->
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_2"> attendu manquant</message>
+
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_2"> invalide</message>
+	
+	<message id = "EX_KEYCLAVICOM_UNKNOWN_ACTION">[Création d'un noeud touche clavicom] : action inconnue</message>
+
+	<!-- KEYLAUNCHER -->
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Chargement d'une touche lancement] : Element </message>
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
+	
+	<!-- KEYSHORTCUT -->
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
+
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_1">[Chargement d'une touche raccourci] : Attribut </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_2"> attendu manquant</message>
+
+	<message id = "EX_KEYSHORTCUT_BAD_ID_1">[Chargement d'une touche raccourci] : Id "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_2">" non trouvé</message>
+	
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+		
+	<!-- KEYCHARACTER -->
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Construction de touche caractère] Element \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED">[Construction de touche caractère] Jeu de commande non chargé</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Construction de touche caractère] Element \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_2">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_1">[Construction de touche caractère] Attribut \"</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_2">\" attendu non trouvé</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_1">[Construction de touche caractère] Attribut \"</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_2">\" invalide</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+	
+	<!-- KEYDYNAMICSTRING -->
+	<message id = "EX_KEYDYNAMICSTRING_COMMANDSET_NOT_LOADED">[Construction de touche chaîne dynamique] Le jeu de commmande n'est pas chargé."</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_1">[Construction de touche chaîne dynamique] La chaîne "</message>
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_2">" ne correpond à aucune commande du jeu de commande.</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique]</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique] Attribut "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">" attendu manquant</message>
+	
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_1">[Construction de touche chaîne dynamique] Attribut "</message>
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_2">" attendu manquant</message>
+
+	<message id = "EX_KEYDYNAMICSTRING_BAS_ORDER_1">[Construction de touche chaîne dynamique] Attribut ordre "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BAD_ORDER_2">" ne peut pas être converti en entier</message>
+		
+	<!-- KEYSTRING -->
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_1">[Construction de touche chaîne] Element "</message>
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_2">" manquant</message>
+		
+	<!-- SHORTCUTSET -->
+	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de racourcis] : Erreur lors de l'ouverture du fichier \</message>
+	<message id = "EX_SHORTCUTSET_BAD_PATH_2">\"</message>
+	
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_1">[Construction du jeu de racourcis] : Balise \"</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_2">\" attendue, \"</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">\" trouvée</message>
+	
+	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de racourcis] : Erreur lors de l'ajout de la commande</message>
+	
+	<!-- KEY -->
+	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
+	<message id = "EX_KEY_SAVE">Sauvegarde d'une touche </message>
+	
+	<!-- COLOR -->
+	<message id = "EX_COLOR_BILD">Chargement de la couleur </message>
+	<message id = "EX_KEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_R_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_G_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_MISSING_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_B_2"> attendu manquant</message>
+
+	<message id = "EX_KEY_BAD_COLOR_R_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_R_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEY_BAD_COLOR_G_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_G_2"> n'est pas un entier</message>
+
+	<message id = "EX_KEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_B_2"> n'est pas un entier</message>
+	 
+	<message id = "EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED">[Chargement d'une touche raccourci] : Le jeu de raccourcis n'a pas été chargé, il est impossible de récupérer la commande.</message>
+	
+	<!-- Settings -->
+	<message id = "EX_SETTINGS_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_SETTINGS">Gestion de la configuration de l'application</message>
+	
+	<!-- keylevel -->
+	<message id = "EX_KEYLEVEL_BUILD">Chargement d'une touche keylevel </message>
+	
+	<!-- Profil -->
+	<message id = "EX_LANGUAGE_UI_BUILD">Chargement du language de l'interface</message>
+	<message id = "EX_LANGUAGE_UI_STRING_NOT_FOUND">Le fichier de language utilisateur n'est pas précisé</message>
+	
+	<message id = "EX_KEYBOARD_COLOR_BUILD">Chargement de la couleur du clavier</message>
+	
+	<message id = "EX_KEYBOARD_BUILD">Chargement du clavier</message>
+	
+	<message id = "EX_SOUND_MISSING_ELEMENT_1">[Chargement des sons] Element "</message>
+	<message id = "EX_SOUND_MISSING_ELEMENT_2">" attendu non trouvé.</message>
+
+	<message id = "EX_SOUND_MISSING_ATTRIBUTE_1">[Chargement des sons] Attribut "</message>
+	<message id = "EX_SOUND_MISSING_ATTRIBUTE_2">" attendu non trouvé.</message>	
+	
+	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">[Chargement des sons] La chaîne "</message>
+	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">" ne peut être convertie en booléen.</message>		
+
+	<message id = "EX_PROFIL_BUILD_TRANSPARENCY">Chargement de la transparence</message>
+	
+	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
+	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Impossible de trouver le nom du dictionnaire utilisé</message>
+	
+	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">Chargement des mots préférés de l'utilisateur</message>
+	
+	<message id = "EX_PROFIL_BUILD_PROFIL">Chargement du profil</message>
+	
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_1">[Chargement de la navigation] Element "</message>
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_2">" attendu manquant.</message>
+	
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Chargement de la navigation] Attribut "</message>
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
+
+	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_TYPE_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_TYPE_3">" valide.</message>		
+
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_3">" valide.</message>
+	
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>	
+	
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_3">" valide.</message>
+	
+	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Chargement du nom du commandSet</message>
+	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Impossible de trouver le nom du commandSet utilisé</message>
+	
+	<message id = "EX_PROFIL_FONT_BAD_CAST_1">[Chargement de la police] La chaîne "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_2">" n'est pas un "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_3">" valide.</message>
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_1">[Chargement de la police] Element "</message>
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_2">" attendu manquant.</message>
+	<message id = "EX_PROFIL_FONT_BAD_COLOR">[Chargement de la police] Impossible de créer la couleur</message>
+	
+	<!-- KEY_ONE_LEVEL -->
+	<message id = "EX_KEY_ONE_LEVEL_BUILD">Chargement d'une touche à un niveau</message>
+	
+	<!-- KEY_THREE_LEVEL -->
+	<message id = "EX_KEY_THREE_LEVEL_BUILD">Chargement d'une touche à trois niveau</message>
+	
+	<!-- UI_KEY -->
+	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
+	
+	<!-- DICTIONARY -->
+	<message id = "EX_DICTIONARY_BUILD">Chargement du dictionaire</message>
+	<message id = "EX_DICTIONARY_OPEN">Impossible de lire le fichier </message>
+	<message id = "EX_DICTIONARY_READ">Erreur lors de la lecture du dictionnaire </message>
+	
+	<!-- MOUSE -->
+	<message id = "EX_MOUSE_BUILD">Construction de la souricom</message>
+	<message id = "EX_MOUSE_KEYSWITCH_CLICKMODE">Erreur lors de la construction de la touche de passage en mode clic de la souricom</message>
+	<message id = "EX_MOUSE_KEYSWITCH_MOVEMODE">Erreur lors de la construction de la touche de passage en mode mouvement de la souricom</message>
+	<message id = "EX_MOUSE_KEYSWITCH_KEYBOARDMODE">Erreur lors de la construction de la touche de passage en mode clavicom de la souricom</message>
+	
+	<!-- MOUSE MOVE ENGINE -->
+	
+	<!-- ==========================================================================
+		Messages 
+	==========================================================================  -->
+	<!-- Application (main seulement)-->
+	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_1">Impossible de charger le dictionnaire "</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_2">".</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LEVEL_ENGINE_1">Impossible de charger le moteur de niveau.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_COMMAND_ENGINE_1">Impossible de charger le moteur de commande.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1">Impossible de charger le moteur de derniers mots.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1">Impossible de charger le moteur de lancement d'application.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Impossible de charger le moteur de prediction.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Impossible de charger le moteur de click</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
+	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
+		
+	<!-- Message engine -->
+	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>
+	<message id = "MSG_ENGINE_TITLE_WARNING">Avertissement</message>
+	<message id = "MSG_ENGINE_TITLE_INFO">Information</message>
+	
+	<!-- Command engine -->
+	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Impossible de creer le robot envoyant les caractères</message>
+	<message id = "MSG_COMMAND_ENGINE_CODE_INCORECT">Code de la touche incorrect</message>
+	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">Une ou pluseurs lettres ne sont pas connues</message>
+	
+	<message id = "MSG_FONT_MISSING_FONT_1">Impossible de charger la police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_2">".</message>
+	
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_1">La police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_2">" sera chargée par défaut."</message>	
+	
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_1">L'image "</message>
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_2">" est manquante.</message>
+	
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_3">Le fichier par défaut va être chargé.</message>
+	
+	<!-- ==========================================================================
+		Labels 
+	==========================================================================  -->
+	
+	<!-- Color -->
+	<message id = "LB_COLOR_CLICKED">Couleur de click</message>
+	<message id = "LB_COLOR_ENTERED">Couleur de survol</message>
+	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
+	<message id = "LB_COLOR_COLOR_MANAGEMENT">Gestion de la couleur</message>
+	
+	<!-- optionKey -->
+	<message id = "LB_KEY_BORDER">Couleurs de la touche</message>
+		
+	<!-- optionKeyCharacter -->
+	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
+	<message id = "LB_KEYCHARACTER_CLOSE">Fermer</message>
+	<message id = "LB_KEYCHARACTER_BORDER">Actions des touches</message>
+	
+	
+	<!-- optionKeyClavicom -->
+	<message id = "LB_KEYCLAVICOM_NONE">Rien</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD">Passage du souricom au clavicom</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_KEYBOARD_MOUSE">Passage du clavicom au souricom</message>
+	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Fermer l'application</message>
+	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
+	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
+	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
+	
+	<!-- optionKeyLauncher -->
+	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
+	<message id = "LB_KEYLAUNCHER_BORDER">Application lancée</message>
+	
+	<!-- optionKeyLevel -->
+	<message id = "LB_KEYLEVEL_LEVEL">Niveau</message>
+	
+	<!-- optionKeyShortCut -->
+	<message id = "LB_KEYSHORCUT_SHORTCUT">Raccourci</message>
+
+	<!-- optionKeyOneLevel -->
+	<message id = "LB_KEYSONELEVEL_BORDER">Options d'affichage</message>
+	<message id = "LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL">Choisir une image</message>
+
+	<!-- optionKeyThreeLevel -->
+	<message id = "LB_KEYSTHREELEVEL_BORDER">Options d'affichage</message>
+	
+	<message id = "LB_KEYSTHREELEVEL_BORDER_NORMAL">Normal</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Majuscules</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_ALTGR">Alt-Gr</message>
+		
+	<!-- optionKeyString -->
+	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
+	<message id = "LB_KEYSTRING_TEXTWRITE">Texte écrit par l'ordinateur</message>
+	<message id = "LB_KEYSTRING_BORDER">Chaîne générée</message>
+	
+	<!-- Titres des frames de modification -->
+	<message id = "FR_OPTIONS_KEYCHARACTER">Touche caractère</message>
+	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction</message>
+	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot</message>
+	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
+	<message id = "FR_OPTIONS_KEYLEVEL">Edition de touche </message>
+	<message id = "FR_OPTIONS_KEYSHORTCUT">Edition de touche raccourcit</message>
+	<message id = "FR_OPTIONS_KEYSTRING">Edition de touche chaîne</message>
+	<message id = "FR_OPTIONS_KEYCLAVICOM">Edition de touche</message>
+	
+	<!-- Key creation -->
+	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
+	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>
+	<message id = "LB_KEYCREATION_KEYSTRING_EXEMPLE">Abdelmalek BOUREGHDA</message>
+	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
+	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
+	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
+	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
+	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configuration de l'application</message>
+	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
+	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
+	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
+	
+	<!-- CONF profil -->
+	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_SHORTCUTSET">Type de raccourcis disponibles</message>
+	<message id = "LB_CONFPROFIL_PANNEL_DICTIONARY">Dictionnaire</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_FONT">Police</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOSIZE">Taille automatique</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_SIZE">Taille</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOCOLOR">Couleur automatique</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_COLOR">Couleur du texte</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_SHADOW">Ombres</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_EXEMPLE">Portez au juge cinq bols de vos fameux whisky</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_LB_EXEMPLE">Phrase d'exemple</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR">Couleur du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR">Couleur de fond du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR">Couleur par defaut d'une touche</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR">Couleur par defaut d'une touche pour le survol</message>
+	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR">Couleur par defaut d'une touche au clic</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE">Langue</message>
+	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE">Choisissez le language</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION">Navigation</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD">Standard</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT">Defilement</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER">Changement de couleur de la touche au passage de la souris</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND">Son</message>
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL">Au défilement</message>
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISENTERED">Au survol</message>
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED">Au clic</message>
+	
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
+	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
+	
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable et être totalement supprimé.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
+	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
+	
+	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
+	
+	<message id = "LB_EDITION_CLOSE_EDITION">Fermer</message>
+	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
+	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
+	
+	<message id = "LB_EDITION_OPTION_KEY_TITLE">Edition de touche</message>
+	<message id = "LB_EDITION_OPTION_KEY_OK">OK</message>
+	
+	<message id = "LB_EDITION_OPTION_APPLICATION_OK">OK</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_CANCEL">Annuler</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_APPLY">Appliquer</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_TITLE">Options de l'application</message>
+	
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Texte</message>
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Image</message>
+	
+	
+</language>

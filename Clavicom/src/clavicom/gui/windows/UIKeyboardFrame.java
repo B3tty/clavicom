@@ -124,7 +124,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		this.panelKeyboard = panelKeyboard;
 		
 		// Création des objets
-		createObjects();
+		createObjects( panelKeyboard );
 		
 		// Application des layouts
 		setAllLayouts();		
@@ -259,9 +259,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	
 	/**
 	 * Créé tous les objets nécessaires à la fenêtre
+	 * @param uiKeyboard 
 	 *
 	 */
-	private void createObjects()
+	private void createObjects(UIKeyboard uiKeyboard)
 	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
@@ -283,7 +284,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKeyShortcut = new UIModificationKeyDialog(panelOptionKeyShortcut);
 		frameOptionKeyString = new UIModificationKeyDialog(panelOptionKeyString);
 		
-		frameOptionApplication = new UIFrameModificationProfil();
+		frameOptionApplication = new UIFrameModificationProfil( uiKeyboard );
 		
 		
 		// TODO : enlever la ligne suivante
