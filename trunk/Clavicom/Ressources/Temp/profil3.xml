@@ -30,6 +30,32 @@
     <keyboard_transparency>20</keyboard_transparency>
     <key_transparency>45</key_transparency>
   </transparency>
+  <advanced_options>
+	<click_souricom>LEFT_RELEASE</click_souricom>
+	<add_space_after_string>true</add_space_after_string>
+	<clavicom_frame_position>
+		<left_up position="min">
+              <x>0</x>
+              <y>0.5</y>
+        </left_up>
+		<right_down position="max">
+              <x>1</x>
+              <y>1</y>
+        </right_down>
+	</clavicom_frame_position>
+	<souricom_frame_position>
+		<left_up position="min">
+              <x>0</x>
+              <y>0.8</y>
+        </left_up>
+		<right_down position="max">
+              <x>1</x>
+              <y>1</y>
+        </right_down>
+	</souricom_frame_position>
+	<start_with_os>false</start_with_os>
+	<nb_defil_turn>3</nb_defil_turn>
+  </advanced_options>
   <sound>
     <on_defil active="false" />
     <on_click active="true" />

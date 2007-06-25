@@ -263,6 +263,12 @@
 	
 	<message id = "EX_CLICK_ENGINE_NON_CREE">Le moteur de clic n'est pas créé</message>
 	
+	<!-- CFRAMEPOSITION -->
+	<message id = "EX_FRAME_POSITION_BUILD">Construction de la position de la fenêtre</message>
+	
+	<!-- CAdvanced_option -->
+	<message id = "EX_ADVANCED_OPTION_BUILD">Construction des options avancés</message>
+	
 	
 	<!-- ==========================================================================
 		Messages 
@@ -440,6 +446,12 @@
 	<message id = "LB_CONFPROFIL_CHANGE_RESTART">Veuillez redemarrer l'application pour que les changements soient pris en compte</message>
 	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">Changement de la langue de l'interface</message>
 	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
+	
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Options avancées</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Ajouter un espace après les chaines de caractères</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Démarrer l'application automatiquement au démarrage du système d'exploitation</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Clic utilisé pour utliser la souricom</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Nombre de défilement avant de remonter d'un niveau</message>
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
 	
