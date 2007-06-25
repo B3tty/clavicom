@@ -493,7 +493,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
 				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
 										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
-				panelOptionKeyOneLevel.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
 				
 				frameOptionKeyKeyboard.setVisible(true);
 			}
