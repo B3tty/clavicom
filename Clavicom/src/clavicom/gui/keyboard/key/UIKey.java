@@ -233,7 +233,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// Création du Timer resize
 			resizeTimer = createResizeTimer();
 			
-			setLayout(new FlowLayout()); // XXX
+			setLayout(new FlowLayout());
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
@@ -626,7 +626,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				int widthPlace  = getWidth() - imageWidth;
 				int heightPlace = getHeight() - imageHeight;
 				
-				if (widthPlace > heightPlace)
+				if (widthPlace >= heightPlace)
 				// On redimensionne selon la HAUTEUR
 				{
 					scaleFactor = (float) getHeight() / (float)imageHeight;

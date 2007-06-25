@@ -49,8 +49,6 @@ import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
-import clavicom.core.listener.OnClickKeyClavicomListener;
-import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
@@ -69,7 +67,7 @@ import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, OnClickKeyClavicomListener
+public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
@@ -140,7 +138,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Ajout aux listeners
 		addComponentListener(this);
 		panelKeyboard.addSelectionChangeListener(this);
-		panelKeyboard.addKeyClavicomListener(this);
 	}
 	
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
@@ -254,7 +251,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		gbLayoutMain.setConstraints(panelKeyboard, gbConstKeyboard);
 		
 		// -------------- Layout de la frame d'options -------------------------
-//		panelModification.setLayout(new BorderLayout());		
+		// panelModification.setLayout(new BorderLayout());		
 	}
 	
 	/**
@@ -495,37 +492,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			}
 		}
 		
-	}
-
-	public void onClickKeyClavicom(TKeyClavicomActionType actionType)
-	{
-		if (actionType == TKeyClavicomActionType.CLOSE_APPLICATION)
-		{
-			// Enregistrement des paramètres
-			try
-			{
-				CProfil.getInstance().saveProfil();
-			}
-			catch (Exception ex)
-			{
-				CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
-												CProfil.getInstance().getProfilFilePath() + 
-												UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"));
-			}
-			
-			// On quitte l'application
-			System.exit(0);
-		}
-		else if (actionType == TKeyClavicomActionType.OPEN_CONFIGURATION)
-		{
-			// Passage en mode configuration
-			edit(true);
-		}
-		else if (actionType == TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE)
-		{
-			// Switch en mode souriscom
-			// TODO
-		}
 	}
 	
 	public void setMouseFrame()

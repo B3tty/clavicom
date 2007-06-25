@@ -32,7 +32,10 @@ import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyClavicomListener;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
+import clavicom.core.profil.CProfil;
+import clavicom.gui.language.UIString;
 import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TKeyClavicomActionType;
 
@@ -83,11 +86,41 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 
 	//----------------------------------------------------------- METHODES --//
 
-	
+	/**
+	 * Appelé sur le click d'une key clavicom
+	 */
 	public void onClickKeyClavicom(TKeyClavicomActionType actionType)
 	{
 		// TODO
 		System.out.println( "CLAVICOM clicked !");
+		
+		if (actionType == TKeyClavicomActionType.CLOSE_APPLICATION)
+		{
+			// Enregistrement des paramètres
+			try
+			{
+				CProfil.getInstance().saveProfil();
+			}
+			catch (Exception ex)
+			{
+				CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
+												CProfil.getInstance().getProfilFilePath() + 
+												UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"));
+			}
+			
+			// On quitte l'application
+			System.exit(0);
+		}
+		else if (actionType == TKeyClavicomActionType.OPEN_CONFIGURATION)
+		{
+			// Passage en mode configuration
+			frameKeyboard.edit(true);
+		}
+		else if (actionType == TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE)
+		{
+			// Switch en mode souriscom
+			// TODO : à compléter...
+		}
 	}
 
 	public UIKeyboardFrame getFrameKeyboard()

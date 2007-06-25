@@ -217,7 +217,7 @@ public class Application
 		
 		// TODO : enlever ces deux lignes
 		keyboardFrame.setSize(800,400);
-		keyboardFrame.edit(false);;
+		keyboardFrame.edit(true);
 		// ----
 		
 		// listener pour supprimer le hook a la fermeture de l'application
