@@ -97,6 +97,10 @@ public final class TKeyClavicomActionType
     	{
     		return SWITCH_MOUSE_KEYBOARD;
     	}
+    	else if (myString.equals("OPEN_CONFIGURATION"))
+    	{
+    		return OPEN_CONFIGURATION;
+    	}
     	else
     	{
     		return null;
