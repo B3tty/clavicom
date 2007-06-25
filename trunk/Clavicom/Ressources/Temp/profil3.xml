@@ -262,12 +262,12 @@
         <keyclavicom order="1" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.9088575</x>
-              <y>0.5739437</y>
+              <x>0.87548137</x>
+              <y>0.017605634</y>
             </point>
             <point position="max">
-              <x>0.9653402</x>
-              <y>0.69014084</y>
+              <x>0.99358153</x>
+              <y>0.13380282</y>
             </point>
           </coordinates>
           <colors>
@@ -324,12 +324,12 @@
         <keyclavicom order="3" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.9371795</x>
+              <x>0.93709886</x>
               <y>0.28521127</y>
             </point>
             <point position="max">
-              <x>0.99230766</x>
-              <y>0.4084507</y>
+              <x>0.9922978</x>
+              <y>0.42957747</y>
             </point>
           </coordinates>
           <colors>

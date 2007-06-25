@@ -66,7 +66,13 @@ public class CFilePaths
 	private static String toolKeyMouseRight = pictures + "mouseRight.png";
 	private static String toolKeyMouseClavicom = pictures + "HardwareKeyboard.png";
 	private static String toolKeyMouseGeneralClick = pictures + "mouse.png";
-		
+	
+	private static String levelEditorAdd = pictures + "add.png";
+	private static String levelEditorRemove = pictures + "remove.png";
+	
+	private static String levelEditorUp = pictures + "up.png";
+	private static String levelEditorDown = pictures + "down.png";	
+	
 	private static String defaultPicture = pictures + "default.png";
 
 	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
@@ -231,6 +237,27 @@ public class CFilePaths
 	{
 		return defaultPicture;
 	}
+
+	public static String getLevelEditorAdd()
+	{
+		return levelEditorAdd;
+	}
+
+	public static String getLevelEditorRemove()
+	{
+		return levelEditorRemove;
+	}
+
+	public static String getLevelEditorDown()
+	{
+		return levelEditorDown;
+	}
+
+	public static String getLevelEditorUp()
+	{
+		return levelEditorUp;
+	}
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	

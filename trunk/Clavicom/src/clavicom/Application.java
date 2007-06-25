@@ -217,8 +217,10 @@ public class Application
 		
 		// TODO : enlever ces deux lignes
 		keyboardFrame.setSize(800,400);
-		keyboardFrame.edit(true);
-		// ----
+		
+		// Initialisation de la fenêtre
+		keyboardFrame.setTitle(UIString.getUIString("MSG_APPLICATION_NAME"));
+		keyboardFrame.edit(false);
 		
 		// listener pour supprimer le hook a la fermeture de l'application
 		keyboardFrame.addWindowListener(new WindowListener(){
