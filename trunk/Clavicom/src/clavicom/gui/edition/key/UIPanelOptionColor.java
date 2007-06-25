@@ -58,7 +58,6 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 		add( colorButton );
 		
 		colorButton.addActionListener( this );
-	
 	}
 	
 	public void setValues(CKey myKey, TColorKeyEnum myColorEnum)
@@ -72,9 +71,9 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent arg0)
 	{			
-		Color newColor = JColorChooser.showDialog( this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
-		
-		if( newColor != null )
+		Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
+
+		if( newColor !=  null )
 		{
 			if( newColor != key.getColor( colorEnum ) )
 			{
