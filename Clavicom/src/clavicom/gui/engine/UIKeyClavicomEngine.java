@@ -90,10 +90,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 	 * Appelé sur le click d'une key clavicom
 	 */
 	public void onClickKeyClavicom(TKeyClavicomActionType actionType)
-	{
-		// TODO
-		System.out.println( "CLAVICOM clicked !");
-		
+	{		
 		if (actionType == TKeyClavicomActionType.CLOSE_APPLICATION)
 		{
 			// Enregistrement des paramètres

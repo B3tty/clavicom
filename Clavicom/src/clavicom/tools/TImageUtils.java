@@ -79,6 +79,19 @@ public class TImageUtils
 		}
 	}
 	
+	/**
+	 * Retourne une image redimensionnée
+	 * @param image
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static ImageIcon scaleImage(ImageIcon image, int width, int height)
+	{
+		return new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+	}
+	
+	
 	public static ImageIcon getImage(String filepath)
 	{
 		File fileImage;

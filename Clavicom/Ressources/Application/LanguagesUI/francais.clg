@@ -4,8 +4,7 @@
 		Générales à l'application 
 	==========================================================================  -->
 	
-	<message id = "MSG_APPLICATION_NAME">Clavicom</message>
-	<message id = "MSG_APPLICATION_VERSION">5.0</message>
+	<message id = "MSG_APPLICATION_NAME">Clavicom NG</message>
 	<message id = "MSG_APPLICATION_DESCRIPTION">Clavier virtuel universel</message>
 	
 	

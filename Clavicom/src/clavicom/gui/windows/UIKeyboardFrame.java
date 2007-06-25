@@ -75,6 +75,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//
+	@SuppressWarnings("unused")
 	private boolean isEdited; 	// Indique si on est en édition
 	
 	// Frame de modification de touche
