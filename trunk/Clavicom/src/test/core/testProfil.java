@@ -30,7 +30,7 @@ public class testProfil
 			CProfil.createInstance(input);
 			
 			// Sauvegarde
-			CProfil.getInstance().SaveProfil(output);
+			CProfil.getInstance().saveProfilAs(output);
 		}
 		catch (Exception e)
 		{

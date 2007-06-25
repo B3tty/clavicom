@@ -222,7 +222,12 @@ public class CProfil
 		this.shortcutSetName = shortcutSetName;
 	}
 
-	public void SaveProfil( String profilFilePath ) throws Exception
+	public void saveProfil() throws Exception
+	{
+		saveProfilAs(profilFilePath);
+	}
+	
+	public void saveProfilAs( String profilFilePath ) throws Exception
 	{
 		// ===============================================================
 		// Création de la structure SAX
@@ -450,4 +455,9 @@ public class CProfil
 		
 	}
 
+	public String getProfilFilePath()
+	{
+		return profilFilePath;
+	}
+	
 }

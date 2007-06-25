@@ -64,6 +64,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
+import clavicom.core.listener.OnClickKeyClavicomListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
@@ -114,7 +115,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
 	private List<UIKeyKeyboard> selectedKeys;		// Liste des key selectionnées
 	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
-	
+
 	private float opacity;
 	
 	private BufferedImage imgBackground;			// Buffer de l'image cliquée
@@ -309,6 +310,15 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
     public UIKeyboardSelectionChanged[] getSelectionChangeListeners() 
     {
         return listeners.getListeners(UIKeyboardSelectionChanged.class);
+    }
+    
+    /**
+     * Ajoute toutes les keys clavicom en tant que listener
+     * @param listener
+     */
+	public void addKeyClavicomListener(OnClickKeyClavicomListener listener) 
+	{
+		
     }
     
 	//-----------------------------------------------------------------------
@@ -796,7 +806,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 				case (KeyEvent.VK_SPACE): 
 					try
 					{
-						CProfil.getInstance().SaveProfil("Ressources\\Temp\\profil3.xml");
+						CProfil.getInstance().saveProfilAs("Ressources\\Temp\\profil3.xml");
 					}
 					catch (Exception ex)
 					{
