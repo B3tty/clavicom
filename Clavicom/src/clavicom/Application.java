@@ -41,6 +41,7 @@ import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
+import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
@@ -55,8 +56,10 @@ public class Application
 	//--------------------------------------------------------- CONSTANTES --//
 	private static final int SPLASH_WAIT = 100;	// Temps d'attente entre deux messages (en ms)
 	private static final int SPLASH_WAIT_TOTAL_MIN = 2000;	// Temps d'attente minimum total
+	
 	//---------------------------------------------------------- VARIABLES --//
-
+	private static UIKeyboardFrame keyboardFrame;
+	
 	//----------------------------------------------------------------
 	// Outils
 	//----------------------------------------------------------------
@@ -87,11 +90,13 @@ public class Application
 	private static CStringsEngine	toolStringEngine;			// Moteur de chaines
 	
 	@SuppressWarnings("unused")
+	private static UIKeyClavicomEngine keyClavicomEngine;		// Moteur de Key clavicom
+	
+	@SuppressWarnings("unused")
 	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
 	
 	@SuppressWarnings("unused")
-	private static DefilementKeyEngine toolKeyboardDefilEngine;	// defilement du keyboard
-	
+	private static DefilementKeyEngine toolKeyboardDefilEngine;	// defilement du keyboard	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -171,41 +176,62 @@ public class Application
 		
 		// Chargement du moteur de defilement
 		splash.newStep("Loading defilement engine...");
-		loadDefilementEngine();
-		
-		
-		
-		
-		
-		// <TEMPORAIRE>
-		// TODO --> Création des fenetres,...
-		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		loadDefilementEngine();		
 		
 		// Chargement du moteur de defilement du keyboard
 		// Il a besoin que uiKeyboard soit construit
-		splash.newStep("Loading keyboard defilement engine...");
+		splash.newStep("Loading keyboard scroll engine...");
 		loadKeyboardDefilementEngine();
 		
 		// Création des fenêtres
-		splash.newStep("Creating windows...");
+		splash.newStep("Creating windows...");		createWindows();	
 		
-		UIKeyboardFrame mainFrame = new UIKeyboardFrame(uiKeyboard);
+		// Chargement du moteur de key clavicom
+		splash.newStep("Loading clavicom keys engine...");
+		loadKeyClavicomEngine();
 		
-		mainFrame.setSize(800,400);
-		mainFrame.edit(true);
+		// Fin du chargement
+		splash.newStep("Load complete !");
+		splash.close();
+		
+		// On affiche la fenêtre principale
+		keyboardFrame.setVisible(true);
+		
+		// </TEMPORAIRE>
+	}
+	
+	
+
+	//--------------------------------------------------- METHODES PRIVEES --//
+	//-----------------------------------------------------------------------
+	// Chargement
+	//-----------------------------------------------------------------------
+	
+	/**
+	 * Créé les fenêtres
+	 */
+	private static void createWindows()
+	{
+		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
+		
+		// TODO : enlever ces deux lignes
+		keyboardFrame.setSize(800,400);
+		keyboardFrame.edit(false);;
+		// ----
 		
 		// listener pour supprimer le hook a la fermeture de l'application
-		mainFrame.addWindowListener(new WindowListener(){
+		keyboardFrame.addWindowListener(new WindowListener(){
 
 			public void windowActivated(WindowEvent e)
 			{
-				// TODO Auto-generated method stub
+				// Rien à faire
 				
 			}
 
 			public void windowClosed(WindowEvent e)
 			{
-				
+				// Rien à faire
 			}
 
 			public void windowClosing(WindowEvent e)
@@ -218,46 +244,26 @@ public class Application
 
 			public void windowDeactivated(WindowEvent e)
 			{
-				// TODO Auto-generated method stub
-				
+				// Rien à faire
 			}
 
 			public void windowDeiconified(WindowEvent e)
 			{
-				// TODO Auto-generated method stub
-				
+				// Rien à faire
 			}
 
 			public void windowIconified(WindowEvent e)
 			{
-				// TODO Auto-generated method stub
-				
+				// Rien à faire
 			}
 
 			public void windowOpened(WindowEvent e)
 			{
-				// TODO Auto-generated method stub
-				
+				// Rien à faire
 			}
 			
-		});	
-		
-		splash.newStep("Load complete !");
-		splash.close();
-		
-		mainFrame.setVisible(true);
-		
-		// </TEMPORAIRE>
+		});
 	}
-	
-	
-
-	//--------------------------------------------------- METHODES PRIVEES --//
-	//-----------------------------------------------------------------------
-	// Chargement
-	//-----------------------------------------------------------------------
-	
-	
 	
 
 	/**
@@ -511,6 +517,21 @@ public class Application
 			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1"),
 										ex.getMessage());
 		}
+	}
+	
+	/**
+	 * Chargement du moteur de key clavicom
+	 */
+	private static void loadKeyClavicomEngine()
+	{
+		// Création de l'engine
+		keyClavicomEngine = new UIKeyClavicomEngine(CProfil.getInstance().getKeyboard());
+		
+		// Ajout de la frame keyboard
+		keyClavicomEngine.setFrameKeyboard(keyboardFrame);
+		
+		// Ajout de la frame souricom
+		// TODO
 	}
 
 }

@@ -114,7 +114,7 @@ public class CKeyClavicom extends CKeyOneLevel
 				.getListeners(OnClickKeyClavicomListener.class);
 		for ( int i = listeners.length - 1; i >= 0; i-- )
 		{
-			listeners[i].onClickKeyClavicom(this);
+			listeners[i].onClickKeyClavicom(action);
 		}
 	}
 	// fin Listener ============================================

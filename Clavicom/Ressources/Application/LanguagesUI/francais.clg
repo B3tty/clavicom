@@ -300,6 +300,9 @@
 	
 	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_3">Le fichier par défaut va être chargé.</message>
 	
+	
+	<message id = "MSG_PROFIL_SAVE_FAILED_1">Impossible d'enregistrer le fichier profil à l'emplacement "</message>
+	<message id = "MSG_PROFIL_SAVE_FAILED_2">"</message>
 	<!-- ==========================================================================
 		Labels 
 	==========================================================================  -->

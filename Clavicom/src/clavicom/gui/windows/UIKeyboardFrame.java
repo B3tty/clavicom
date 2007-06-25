@@ -49,6 +49,8 @@ import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.listener.OnClickKeyClavicomListener;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
@@ -67,7 +69,7 @@ import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
+public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, OnClickKeyClavicomListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
@@ -138,9 +140,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Ajout aux listeners
 		addComponentListener(this);
 		panelKeyboard.addSelectionChangeListener(this);
-		
-//		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey(new CKeyPrediction(Color.RED, Color.GREEN, Color.BLUE, new TPoint(15,20), new TPoint(40,60),""));
-//		panelModification.add(panelOptionKeyKeyboard);
+		panelKeyboard.addKeyClavicomListener(this);
 	}
 	
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
@@ -286,8 +286,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		frameOptionApplication = new UIFrameModificationProfil( uiKeyboard );
 		
-		
-		// TODO : enlever la ligne suivante
 		panelBoutons.setLayout(new GridLayout(3,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
 		
 		// Création des boutons 
@@ -423,15 +421,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// TODO
+			// On repasse en mode clavicom normal
+			edit(false);
 		}
 	}
 	
 	protected void onClickBtEditionKey()
 	{
-		// TODO : ligne suivante temporaire !!!
-		
-		
 		if(selectedKeys.size() > 1)
 		// Modification multiple
 		{
@@ -499,5 +495,41 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			}
 		}
 		
+	}
+
+	public void onClickKeyClavicom(TKeyClavicomActionType actionType)
+	{
+		if (actionType == TKeyClavicomActionType.CLOSE_APPLICATION)
+		{
+			// Enregistrement des paramètres
+			try
+			{
+				CProfil.getInstance().saveProfil();
+			}
+			catch (Exception ex)
+			{
+				CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
+												CProfil.getInstance().getProfilFilePath() + 
+												UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"));
+			}
+			
+			// On quitte l'application
+			System.exit(0);
+		}
+		else if (actionType == TKeyClavicomActionType.OPEN_CONFIGURATION)
+		{
+			// Passage en mode configuration
+			edit(true);
+		}
+		else if (actionType == TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE)
+		{
+			// Switch en mode souriscom
+			// TODO
+		}
+	}
+	
+	public void setMouseFrame()
+	{
+		// TODO : COMPLETER CA !
 	}
 }
