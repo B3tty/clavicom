@@ -36,7 +36,6 @@ import javax.swing.JPanel;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
-import clavicom.core.listener.OnClickKeyClavicomListener;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
@@ -47,7 +46,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TUIKeyState;
 
-public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener, clickMouseHookListener, DefilListener
+public class UIMouse extends UIMovingPanel implements clickMouseHookListener, DefilListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -113,15 +112,12 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 		leftRelease = new UIKeyMouse( mouse.getLeftRelease() );
 		
 		CKeyClavicom clavMoveMoveMode = mouse.getMoveMouseMode();
-		clavMoveMoveMode.addOnClickKeyClavicomListener( this );
 		moveMouseMode = new UIKeyClavicom( clavMoveMoveMode );
 		
 		CKeyClavicom clavClickMoveMode = mouse.getClickMouseMode();
-		clavClickMoveMode.addOnClickKeyClavicomListener( this );
 		clickMouseMode = new UIKeyClavicom( clavClickMoveMode );
 		
 		CKeyClavicom clavSwitchMouseKeyboard = mouse.getSwitchMouseKeyboard();
-		clavSwitchMouseKeyboard.addOnClickKeyClavicomListener( this );
 		switchMouseKeyboard = new UIKeyClavicom( clavSwitchMouseKeyboard );
 
 		
@@ -701,6 +697,7 @@ public class UIMouse extends UIMovingPanel implements OnClickKeyClavicomListener
 	{
 		this.switchMouseKeyboard = switchMouseKeyboard;
 	}
+
 
 
 

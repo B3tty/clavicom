@@ -54,6 +54,7 @@ public class CProfil
 	CKeyboard keyboard;				// Structure du clavicom
 	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	CFont keyboardFont;				// Police de caractère utilisée pour le clavier
+	CAdvancedOptions advancedOption;// option avancés du profil
 	
 	String profilFilePath;
 
@@ -452,12 +453,33 @@ public class CProfil
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
 		
+		// ======================================================================
+		// chargement des options avancés
+		// ======================================================================
+		Element advancedOption_elem = racine.getChild( TXMLNames.PR_ELEMENT_ADVANCED_OPTION );
+		if( advancedOption_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_ADVANCED_OPTION );
+		}
+		try
+		{
+			advancedOption = new CAdvancedOptions( advancedOption_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+		
 		
 	}
 
+	public CAdvancedOptions getAdvancedOption()
+	{
+		return advancedOption;
+	}
 	public String getProfilFilePath()
 	{
 		return profilFilePath;
 	}
-	
+
 }

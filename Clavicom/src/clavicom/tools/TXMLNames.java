@@ -25,6 +25,8 @@
 
 package clavicom.tools;
 
+import clavicom.core.profil.CFramePosition;
+
 public class TXMLNames
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -125,6 +127,25 @@ public class TXMLNames
 	public static String CO_ELEMENT_COLOR_G 			= "green";
 	public static String CO_ELEMENT_COLOR_B 			= "blue";
 	
+	// frame position
+	public static String FP_LEFT_UP 					= "left_up";
+	public static String FP_RIGHT_DOWN					= "right_down";
+	
+	// advanced options
+	public static String FP_CLICK_SOURICOM				= "click_souricom";
+	public static String FP_ADD_SPACE_AFTER_STRING		= "add_space_after_string";
+	public static String FP_CLAVICOM_FRAME_POSITION		= "clavicom_frame_position";
+	public static String FP_SOURICOM_FRAME_POSITION		= "souricom_frame_position";
+	public static String FP_START_WITH_OS				= "start_with_os";
+	public static String FP_NB_DEFIL_TURN				= "nb_defil_turn";
+	
+	TClickSouricomEnum clickSouricom;
+	boolean addSpaceBevorString;
+	CFramePosition clavicomFramePosition;
+	CFramePosition souricomFramePosition;
+	boolean startWithOS;
+	int numberOfDefilTurn;
+	
 	// Settings
 	public static String SE_ELEMENT_LAST_PROFILE		= "last_profile_path";
 	public static String SE_ELEMENT_DEFAULT_PROFILE		= "default_profile_name";
@@ -191,6 +212,8 @@ public class TXMLNames
 	public static String PR_ELEMENT_FONT_AUTO_COLOR= "auto_color";
 	public static String PR_ELEMENT_FONT_COLOR= "color";
 	public static String PR_ELEMENT_FONT_SHADOW= "shadow";
+	
+	public static String PR_ELEMENT_ADVANCED_OPTION= "advanced_options";
 	
 }
 

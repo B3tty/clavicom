@@ -75,6 +75,7 @@ public class UIFrameModificationProfil extends JDialog
 	
 	PanelModificationProfilCommandSetName panelCommandSetName;
 	PanelModificationProfilShortcutSetName panelShortcutSetName;
+	PanelModificationProfilAdvancedOption panelAdvancedOption;
 	PanelModificationProfilDictionaryName panelDictionaryName;
 	PanelModificationProfilFont panelFont;
 	PanelModificationProfilKeyboardColor panelKeyboardColor;
@@ -141,6 +142,7 @@ public class UIFrameModificationProfil extends JDialog
 				int pourcentToAddToProgressBar = 10;
 				
 				// panelCommandSetName
+				panelCommandSetName = panelAdvancedOption.getPanelCommandSet();
 				if ( panelCommandSetName.isChanged() )
 				{
 					// le CommandSet à changé
@@ -163,6 +165,7 @@ public class UIFrameModificationProfil extends JDialog
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
 				
 				// panelShortcutSetName
+				panelShortcutSetName = panelAdvancedOption.getPanelShortcutSet();
 				if ( panelShortcutSetName.isChanged() )
 				{
 					// le ShortcutSet à changé
@@ -183,6 +186,15 @@ public class UIFrameModificationProfil extends JDialog
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+				
+				// panelAdvancedOption
+				if ( panelAdvancedOption.isChanged() )
+				{
+					panelAdvancedOption.validateDataEntry();
+				}
+				
+				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
+
 				
 				// panelDictionaryName
 				if ( panelDictionaryName.isChanged() )
@@ -330,17 +342,27 @@ public class UIFrameModificationProfil extends JDialog
 		tabbedPane = new JTabbedPane();
 		CProfil profil = CProfil.getInstance();
 		
-		// panel des command Set
-		JPanel panel = new JPanel(); 
-		panelCommandSetName = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
-		panel.add( panelCommandSetName );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_COMMANDSET"), panel);
+//		// panel des command Set
+//		JPanel panel = new JPanel(); 
+//		panelCommandSetName = new PanelModificationProfilCommandSetName( profil.getCommandSetName() );
+//		panel.add( panelCommandSetName );
+//		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_COMMANDSET"), panel);
+//		
+//		// panel des shortcut Set
+//		panel = new JPanel(); 
+//		panelShortcutSetName = new PanelModificationProfilShortcutSetName( profil.getShortcutSetName() );
+//		panel.add( panelShortcutSetName );
+//		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET"), panel);
 		
-		// panel des shortcut Set
-		panel = new JPanel(); 
-		panelShortcutSetName = new PanelModificationProfilShortcutSetName( profil.getShortcutSetName() );
-		panel.add( panelShortcutSetName );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET"), panel);
+		// panel advancedOptions
+		JPanel panel = new JPanel(); 
+		panelAdvancedOption = new PanelModificationProfilAdvancedOption( 
+				profil.getAdvancedOption(), 
+				profil.getCommandSetName(),
+				profil.getShortcutSetName());
+		panel.add( panelAdvancedOption );
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION"), panel);
+		
 		
 		// panel des dictionary name
 		panel = new JPanel(); 
@@ -443,7 +465,7 @@ public class UIFrameModificationProfil extends JDialog
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setVisible( true );
+				setVisible( false );
 			}
 		});
 		
