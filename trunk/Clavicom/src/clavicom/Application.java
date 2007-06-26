@@ -52,6 +52,7 @@ import clavicom.gui.message.UIMessageEngine;
 import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
+import clavicom.tools.TNavigationType;
 
 public class Application
 {
@@ -205,6 +206,9 @@ public class Application
 		// On affiche la fenêtre principale
 		keyboardFrame.setVisible(true);
 		
+		// on lance le mode de navigation
+		LaunchNavigationMode();
+		
 		// </TEMPORAIRE>
 	}
 	
@@ -217,6 +221,18 @@ public class Application
 	//-----------------------------------------------------------------------
 	
 
+
+	private static void LaunchNavigationMode()
+	{
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		{
+			ClickEngine.getInstance().mouseHookResume();
+			
+			DefilementEngine.getInstance().startDefilement();
+			
+			DefilementKeyEngine.getInstance().startKeyDefilEngine();
+		}
+	}
 
 	/**
 	 * Créé les fenêtres
