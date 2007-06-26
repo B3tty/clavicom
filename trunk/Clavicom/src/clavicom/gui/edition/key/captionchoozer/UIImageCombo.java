@@ -146,13 +146,6 @@ public class UIImageCombo extends JPanel
 		comboList.setEnabled(enable);
 	}
 	
-	public void selectDefault()
-	{
-		if(comboList.getItemCount() >= 1)
-		{
-			comboList.setSelectedIndex(0);
-		}
-	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	protected class ComboBoxRenderer extends JLabel implements ListCellRenderer
 	{
