@@ -38,7 +38,6 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
@@ -121,9 +120,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// TODO : passer la couleurZ
 		super();
 		
-		// Mise en place du style
-		setStyle();
-		
 		// Recopie des attributs
 		this.panelKeyboard = panelKeyboard;
 		
@@ -181,20 +177,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
-	/**
-	 * Met en place le style de la fenêtre
-	 */
-	private void setStyle()
-	{
-		try
-		{
-			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
 	
 	/**
 	 * Spécifie tous les layouts de l'application

@@ -27,6 +27,8 @@ package clavicom;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.UIManager;
+
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -121,7 +123,10 @@ public class Application
 	public static void LaunchApplication()
 	{
 		// Initialisation des propriétés graphiques
-		initGraphicProperties();
+		initDrawProperties();
+		
+		// Initialisation du style
+		initStyle();
 		
 		// Chargement du moteur de messages
 		// -> pas de splash screen car on en a besoin en cas d'erreur
@@ -273,9 +278,24 @@ public class Application
 	/**
 	 * Initialise les propriétés graphiques
 	 */
-	private static void initGraphicProperties()
+	private static void initDrawProperties()
 	{
 		System.setProperty("sun.java2d.noddraw", "true");
+	}
+	
+	/**
+	 * Initialise le style
+	 */
+	private static void initStyle()
+	{
+		try
+		{
+			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
 	}
 	
 	/**

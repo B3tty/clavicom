@@ -256,12 +256,12 @@
         <keyclavicom order="3" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.40587768</x>
-              <y>0.41997263</y>
+              <x>0.40677965</x>
+              <y>0.19512194</y>
             </point>
             <point position="max">
-              <x>0.46068308</x>
-              <y>0.5389877</y>
+              <x>0.46161515</x>
+              <y>0.5691057</y>
             </point>
           </coordinates>
           <colors>
