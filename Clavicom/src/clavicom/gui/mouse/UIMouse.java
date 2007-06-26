@@ -73,10 +73,6 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	int indexSelectedKey;
 	List<UIKey> selectedList;
 	
-	// engine de click et de defilement
-	ClickEngine clickEngine;
-	DefilementEngine defilementEngine;
-	
 	JPanel movePanel;
 	JPanel clickPanel;
 	JPanel panelHaut;
@@ -89,11 +85,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		super( parent );
 		
 		mouse = myMouse;
-		
-		clickEngine = ClickEngine.getInstance();
-		defilementEngine = DefilementEngine.getInstance();
-		defilementEngine.addDefilListener( this );
-		
+
 		dragAndDropMode = false;		
 		
 		setLayout( new BorderLayout() );
@@ -165,10 +157,19 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		
 		SwitchMoveMode();
 		
-		// abonnement au hook
-		clickEngine.addClickMouseHookListener( this );
-		
-		
+
+	}
+	
+	public void startDefilMouse()
+	{
+		DefilementEngine.getInstance().addDefilListener( this );
+		ClickEngine.getInstance().addClickMouseHookListener( this );
+	}
+	
+	public void stopDefilMouse()
+	{
+		DefilementEngine.getInstance().removeDefilListener( this );
+		ClickEngine.getInstance().removeChangeLevelListener( this );
 	}
 	
 
@@ -446,13 +447,13 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 			// si c'est une keyMove
 			if( uiKey.getCoreKey() instanceof CMouseKeyMove )
 			{
-				if ( defilementEngine.isDefilement() )
+				if ( DefilementEngine.getInstance().isDefilement() )
 				{
-					defilementEngine.stopDefilement();
+					DefilementEngine.getInstance().stopDefilement();
 				}
 				else
 				{
-					defilementEngine.startDefilement();
+					DefilementEngine.getInstance().startDefilement();
 				}
 			}
 			

@@ -284,6 +284,7 @@
 	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Impossible de charger le moteur de click</message>
 	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
 	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
+	<message id = "MSG_MAIN_CANT_LOAD_KEY_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement des touches</message>
 		
 	<!-- Message engine -->
 	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>

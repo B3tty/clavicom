@@ -100,7 +100,7 @@ public class testUIMouse
 			
 			UIMouse uimouse = new UIMouse( mouse, frame );
 			
-			new CMouseEngine( mouse, clickEngine );
+			CMouseEngine.createInstance( mouse );
 			
 		
 			

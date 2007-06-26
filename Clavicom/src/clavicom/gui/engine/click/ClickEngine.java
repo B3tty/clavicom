@@ -51,15 +51,19 @@ public class ClickEngine
 			if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_RELEASE )
 			{
 				InitMouseHook( 0 );
+				System.out.println("0b");
 			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_PRESS )
 			{
 				InitMouseHook( 1 );
+				System.out.println("1b");
 			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_PRESS )
 			{
 				InitMouseHook( 2 );
+				System.out.println("2b");
 			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_RELEASE )
 			{
 				InitMouseHook( 3 );
+				System.out.println("3b");
 			}
 		}
 		
@@ -88,6 +92,9 @@ public class ClickEngine
 		listenerList = new EventListenerList();
 		
 		System.loadLibrary( dllPath );	
+		
+		startHook();
+		mouseHookPause();
 	}
 	
 	static public void createInstance( String dllPath )

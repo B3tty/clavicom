@@ -43,11 +43,8 @@ import javax.swing.JTabbedPane;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.engine.DefilementEngine;
-import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TNavigationType;
 
 public class UIFrameModificationProfil extends JDialog
 {
@@ -296,20 +293,6 @@ public class UIFrameModificationProfil extends JDialog
 				{
 					// le type de navigation à changé
 					panelNavigation.validateDataEntry();
-					
-					TNavigationType typeNavgation = profil.getNavigation().getTypeNavigation();
-					if( typeNavgation == TNavigationType.STANDARD )
-					{
-						DefilementEngine.getInstance().stopDefilement();
-						ClickEngine.getInstance().stopMouseHook();
-					} else if( typeNavgation == TNavigationType.CLICK_TEMPORISE )
-					{
-						// TODO
-					} else if( typeNavgation == TNavigationType.DEFILEMENT )
-					{
-						DefilementEngine.getInstance().startDefilement();
-						ClickEngine.getInstance().startHook();
-					}
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
@@ -338,6 +321,8 @@ public class UIFrameModificationProfil extends JDialog
 	{
 		// Titre de la fenêtre
 		setTitle(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_TITLE"));
+		
+		
 	}
 	
 	/**
@@ -624,7 +609,9 @@ public class UIFrameModificationProfil extends JDialog
 	public void setVisible(boolean b)
 	{
 		if(b)
+		{
 			progressBarApply.setValue(0);
+		}
 		
 		// TODO Auto-generated method stub
 		super.setVisible(b);
