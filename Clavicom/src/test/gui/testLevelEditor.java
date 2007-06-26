@@ -26,61 +26,58 @@
 package test.gui;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
+//import java.awt.GridLayout;
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
+//import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 
-import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+//import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+//import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
-import clavicom.core.profil.CProfil;
+//import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
-import clavicom.gui.levelmanager.UILevelList;
+//import clavicom.gui.levelmanager.UILevelList;
+import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.message.UIMessageEngine;
 
-public class testLevelList
+public class testLevelEditor
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-
-			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
+			System.setProperty("sun.java2d.noddraw", "true");
+			
+			UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
 			
 			CMessageEngine.createInstance();
 			new UIMessageEngine();
-			
-			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
-			
-			//		 Chargement des UIString et shortcutset
+//			
+//			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
+//			
+//			//		 Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
-			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+//			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+//			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+//			
+//			
+//			
+//			// Chemins
+//			String input = "Ressources\\Temp\\profil3.xml";
+//			
+//			// Chargement du profil
+//			CProfil.createInstance(input);
+//			CProfil profil = CProfil.getInstance();
+//			
+//			
+//			profil.loadProfileLanguageUIName();
+//			profil.loadProfileCommandSetName();
+//			profil.loadProfileShortCutName();
+//			profil.loadProfile();
 			
-			
-			
-			// Chemins
-			String input = "Ressources\\Temp\\profil3.xml";
-			
-			// Chargement du profil
-			CProfil.createInstance(input);
-			CProfil profil = CProfil.getInstance();
 
-			
-			
-			profil.loadProfileLanguageUIName();
-			profil.loadProfileCommandSetName();
-			profil.loadProfileShortCutName();
-			profil.loadProfile();
-			
-
-			JFrame temp = new JFrame();
-			
-			temp.setLayout(new GridLayout());
-			UILevelList ll = new UILevelList();
-			
-			temp.add(ll);
+			UILevelManagerFrame temp = new UILevelManagerFrame();
 			
 			temp.setSize(new Dimension(240,320));
 			

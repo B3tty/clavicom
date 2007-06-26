@@ -115,7 +115,7 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey implement
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	/**
-	 * Appelé lorcoucou writeque la checkbox est cochée
+	 * Appelé lorsque la checkbox est cochée
 	 */
 	protected void onChecked()
 	{

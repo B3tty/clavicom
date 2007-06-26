@@ -47,6 +47,9 @@ public class CFilePaths
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
+	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
+	
+	// ------- IMAGES DE TOUCHES (CKeyXXX) -------------------
 	private static String toolKeyCharacterPicture = "character.png";
 	private static String toolKeyLauncherPicture = "launch.png";
 	private static String toolKeyLastWordPicture = "last_word.png";
@@ -67,15 +70,16 @@ public class CFilePaths
 	private static String toolKeyMouseClavicom = "HardwareKeyboard.png";
 	private static String toolKeyMouseGeneralClick = "mouse.png";
 	
-	private static String levelEditorAdd = "add.png";
-	private static String levelEditorRemove = "remove.png";
+	// ------- IMAGES DE COMPOSANTS AUTRES (JButton,...) ---------
+	private static String levelEditorAdd = pictures + "add.png";
+	private static String levelEditorRemove = pictures + "remove.png";
 	
-	private static String levelEditorUp = "up.png";
-	private static String levelEditorDown = "down.png";	
+	private static String levelEditorUp = pictures + "up.png";
+	private static String levelEditorDown = pictures + "down.png";	
 	
-	private static String defaultPicture = "default.png";
+	private static String defaultPicture = pictures + "default.png";
 
-	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
+	
 
 	// ========================================================================
 	// Getters
