@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: UITranslucentFrame.java
-			Creation date		: 14 juin 07
+			Filename			: TSize.java
+			Creation date		: 25 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.windows
+			Package				: clavicom.tools
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,55 +23,41 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.utils;
+package clavicom.tools;
 
-import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 
-import com.sun.jna.examples.WindowUtils;
 
-public class UITranslucentFrame extends JFrame
+public class TSize
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-	float transparency;			// Transparence de la fenêtre
-	
-	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UITranslucentFrame()
-	{
-		this(1f);
-	}
-	
-	public UITranslucentFrame(float myTransparency)
-	{
-		// Appel au père
-		super();
-	
-		// On enleve la barre de fenêtre
-        setUndecorated(true);
 
-        // On pack
-        pack();
-        
-        // On applique la transparence
-        setTransparency(myTransparency);
-	}
-	
+	//------------------------------------------------------ CONSTRUCTEURS --//	
+
 	//----------------------------------------------------------- METHODES --//	
-	public void setTransparency(float newTransparency)
+	static public Rectangle getRectangleBound( TPoint leftUp, TPoint rightDown )
 	{
-		transparency = newTransparency;
+		Rectangle rectangle = new Rectangle();
 		
-		if(newTransparency > 0)
-		{
-			WindowUtils.setWindowAlpha(this, transparency);
-		}
+		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		int x,y,width,height;
+		width = (int)((double)screenDimension.getWidth() * ( rightDown.getX() - leftUp.getX() ) );
+		height = (int)((double)screenDimension.getHeight() * ( rightDown.getY() - leftUp.getY() ) );
+		
+		x = (int)( (double)screenDimension.getWidth() * leftUp.getX() );
+		y = (int)( (double)screenDimension.getHeight() * leftUp.getY() );
+		
+		
+		rectangle.setLocation(x, y);
+		rectangle.setSize(width, height);
+		
+		return rectangle;
 	}
-	
-	public float getTransparency()
-	{
-		return transparency;
-	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

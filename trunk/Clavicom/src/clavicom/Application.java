@@ -216,7 +216,6 @@ public class Application
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
 		
 		// TODO : enlever ces deux lignes
-		keyboardFrame.setSize(800,400);
 		
 		// Initialisation de la fenêtre
 		keyboardFrame.setTitle(UIString.getUIString("MSG_APPLICATION_NAME"));

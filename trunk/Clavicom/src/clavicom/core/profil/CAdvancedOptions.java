@@ -140,6 +140,39 @@ public class CAdvancedOptions
 		
 	}
 
+	
+	public Element buildNode()
+	{
+		Element elt_advancedOption = new Element( TXMLNames.PR_ELEMENT_ADVANCED_OPTION );
+		
+		Element elt_clickSouricom = new Element( TXMLNames.FP_CLICK_SOURICOM );
+		elt_clickSouricom.setText( TClickSouricomEnum.getString( clickSouricom ) );
+		elt_advancedOption.addContent( elt_clickSouricom );
+		
+		Element elt_spaceAfterString = new Element( TXMLNames.FP_ADD_SPACE_AFTER_STRING );
+		elt_spaceAfterString.setText( String.valueOf( addSpaceAfterString ) );
+		elt_advancedOption.addContent( elt_spaceAfterString );
+		
+		Element elt_clavicomFramePosition = new Element( TXMLNames.FP_CLAVICOM_FRAME_POSITION );
+		clavicomFramePosition.buildNode( elt_clavicomFramePosition );
+		elt_advancedOption.addContent( elt_clavicomFramePosition );
+		
+		Element elt_souricomFramePosition = new Element( TXMLNames.FP_SOURICOM_FRAME_POSITION );
+		souricomFramePosition.buildNode( elt_souricomFramePosition );
+		elt_advancedOption.addContent( elt_souricomFramePosition );
+		
+		Element elt_startWithOS = new Element( TXMLNames.FP_START_WITH_OS );
+		elt_startWithOS.setText( String.valueOf( startWithOS ) );
+		elt_advancedOption.addContent( elt_startWithOS );
+		
+		Element elt_nbDefilTurn = new Element( TXMLNames.FP_NB_DEFIL_TURN );
+		elt_nbDefilTurn.setText( String.valueOf( numberOfDefilTurn ) );
+		elt_advancedOption.addContent( elt_nbDefilTurn );
+
+		
+		return elt_advancedOption;
+	}
+	
 	public boolean isAddSpaceAfterString()
 	{
 		return addSpaceAfterString;

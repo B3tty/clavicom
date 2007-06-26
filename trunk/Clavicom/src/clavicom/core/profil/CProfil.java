@@ -27,6 +27,9 @@ package clavicom.core.profil;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import javax.swing.JFrame;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -223,12 +226,18 @@ public class CProfil
 		this.shortcutSetName = shortcutSetName;
 	}
 
-	public void saveProfil() throws Exception
+	public void saveProfil(
+			JFrame clavicomFrame,
+			JFrame souricomFrame
+			) throws Exception
 	{
-		saveProfilAs(profilFilePath);
+		saveProfilAs(profilFilePath, clavicomFrame, souricomFrame);
 	}
 	
-	public void saveProfilAs( String profilFilePath ) throws Exception
+	public void saveProfilAs( 
+			String profilFilePath,
+			JFrame clavicomFrame,
+			JFrame souricomFrame) throws Exception
 	{
 		// ===============================================================
 		// Création de la structure SAX
@@ -282,6 +291,11 @@ public class CProfil
 		// Attachement de la police
 		// ===============================================================
 		racine.addContent( keyboardFont.buildNode() );
+		
+		// ===============================================================
+		// Attachement des option avancés
+		// ===============================================================
+		racine.addContent( advancedOption.buildNode() );
 		
 		// ===============================================================
 		// Attachement du clavier

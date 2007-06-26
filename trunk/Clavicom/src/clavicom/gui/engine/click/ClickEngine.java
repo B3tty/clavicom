@@ -27,6 +27,9 @@ package clavicom.gui.engine.click;
 
 import javax.swing.event.EventListenerList;
 
+import clavicom.core.profil.CProfil;
+import clavicom.tools.TClickSouricomEnum;
+
 public class ClickEngine
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -37,13 +40,27 @@ public class ClickEngine
 		public void run() 
 		{
 			super.run();
+
+			CProfil profil = CProfil.getInstance();
 			
 			// Initialisation du hook en passant le type de touche en parametre
 			// 		0 : WM_LBUTTONUP
 			// 		1 : WM_LBUTTONDOWN
 			// 		2 : WM_RBUTTONDOWN
 			// 		3 : WM_RBUTTONUP
-			InitMouseHook( 0 );
+			if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_RELEASE )
+			{
+				InitMouseHook( 0 );
+			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_PRESS )
+			{
+				InitMouseHook( 1 );
+			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_PRESS )
+			{
+				InitMouseHook( 2 );
+			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_RELEASE )
+			{
+				InitMouseHook( 3 );
+			}
 		}
 		
 		@Override

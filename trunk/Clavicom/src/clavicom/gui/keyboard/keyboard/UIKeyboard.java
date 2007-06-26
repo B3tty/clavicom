@@ -219,6 +219,8 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		
 		// Destruction des objets du noyau
 		coreKeyboard.clearKeyboard();		
+		
+		removeAll();
 	}
 	
 	public void declassGroup(UIKeyGroup group)
@@ -794,16 +796,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 					break;
 					
 				case (KeyEvent.VK_SPACE): 
-					try
-					{
-						CProfil.getInstance().saveProfilAs("Ressources\\Temp\\profil3.xml");
-					}
-					catch (Exception ex)
-					{
-						ex.printStackTrace();
-					}
-				
-					System.out.println("Profil saved !");
+					
 					break;
 			}
 		}
