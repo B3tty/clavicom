@@ -83,7 +83,7 @@ public class UIInvisibleBorder implements UIResizableBorder
 	public void paintBorder(Component component, Graphics g, int x, int y,
 			int w, int h)
 	{
-		// Rien à faire
+		// Rien
 	}
 	
 	public int getResizeCursor(MouseEvent me)

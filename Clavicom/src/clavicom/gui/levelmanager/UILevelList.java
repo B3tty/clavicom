@@ -41,7 +41,6 @@ import javax.swing.JTextField;
 
 import clavicom.CFilePaths;
 import clavicom.tools.TImageUtils;
-import de.javasoft.plaf.synthetica.SyntheticaLookAndFeel;
 
 public class UILevelList extends JPanel
 {

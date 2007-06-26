@@ -62,7 +62,7 @@ public class UIMovingPanel extends UITranslucentPanel
 	public UIMovingPanel(JFrame myParentFrame)
 	{
 		parentFrame = myParentFrame;
-		resizableBorder = new UIInvisibleBorder(10);
+		resizableBorder = new UIInvisibleBorder(5);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
