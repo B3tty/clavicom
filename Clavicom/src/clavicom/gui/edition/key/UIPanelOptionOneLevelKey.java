@@ -93,7 +93,7 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey implement
 		setValuesKey(myKeyOneLevel);
 		
 		keyOneLevel = myKeyOneLevel;
-		
+
 		// Mise à jour de la caption
 		captionChooser.setIsImage(keyOneLevel.isCaptionImage());
 		
@@ -104,17 +104,18 @@ public class UIPanelOptionOneLevelKey extends UIPanelOptionKeyboardKey implement
 		if(keyOneLevel.isCaptionImage() == true)
 		{
 			captionChooser.getComboImages().selectGoodImage(keyOneLevel.getCaption());
+			captionChooser.setCaptionText("");
 		}
 		else
 		// On met à jour le texte
-		{
+		{			
 			captionChooser.setCaptionText(keyOneLevel.getCaption());
 		}
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	/**
-	 * Appelé lorsque la checkbox est cochée
+	 * Appelé lorcoucou writeque la checkbox est cochée
 	 */
 	protected void onChecked()
 	{

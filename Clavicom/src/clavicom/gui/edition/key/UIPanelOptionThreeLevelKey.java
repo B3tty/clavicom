@@ -163,10 +163,6 @@ public class UIPanelOptionThreeLevelKey extends UIPanelOptionKeyboardKey impleme
 			captionChooserNormal.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.NORMAL));
 			captionChooserShift.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.SHIFT));
 			captionChooserAltGr.setCaptionText(keyThreeLevel.getCaption(TLevelEnum.ALT_GR));
-			
-			captionChooserNormal.getComboImages().selectDefault();
-			captionChooserShift.getComboImages().selectDefault();
-			captionChooserAltGr.getComboImages().selectDefault();
 		}
 	}
 
