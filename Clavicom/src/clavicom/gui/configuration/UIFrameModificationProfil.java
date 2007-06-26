@@ -191,6 +191,13 @@ public class UIFrameModificationProfil extends JDialog
 				if ( panelAdvancedOption.isChanged() )
 				{
 					panelAdvancedOption.validateDataEntry();
+					
+					// on prévient l'utilisateur qu'il faudra redémarer 
+					JOptionPane.showMessageDialog(
+							thisObject, 
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART"),
+							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART_TITLE"),
+						    JOptionPane.WARNING_MESSAGE);
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
@@ -354,18 +361,11 @@ public class UIFrameModificationProfil extends JDialog
 //		panel.add( panelShortcutSetName );
 //		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET"), panel);
 		
-		// panel advancedOptions
-		JPanel panel = new JPanel(); 
-		panelAdvancedOption = new PanelModificationProfilAdvancedOption( 
-				profil.getAdvancedOption(), 
-				profil.getCommandSetName(),
-				profil.getShortcutSetName());
-		panel.add( panelAdvancedOption );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION"), panel);
+
 		
 		
 		// panel des dictionary name
-		panel = new JPanel(); 
+		JPanel panel = new JPanel(); 
 		panelDictionaryName = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
 		panel.add( panelDictionaryName );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY"), panel);
@@ -412,6 +412,15 @@ public class UIFrameModificationProfil extends JDialog
 		panel.add( panelTransparency );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY"), panel);
 		
+		// panel advancedOptions
+		panel = new JPanel(); 
+		panelAdvancedOption = new PanelModificationProfilAdvancedOption( 
+				profil.getAdvancedOption(), 
+				profil.getCommandSetName(),
+				profil.getShortcutSetName());
+		panel.add( panelAdvancedOption );
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION"), panel);
+		
 		// Ajout au panel
 		add(tabbedPane);
 	}
@@ -443,33 +452,7 @@ public class UIFrameModificationProfil extends JDialog
 		btOk.setAction(new BtOkAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_OK")));
 		btCancel.setAction(new BtCancelAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_CANCEL")));
 		btApply.setAction(new BtApplyAction(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_APPLY")));
-		
-		// ACTIONS SUR LES TOUCHES
-		btApply.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				closeWindows = false;
-				SaveDataToProfil();
-			}
-		});
-		btOk.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				closeWindows = true;
-				SaveDataToProfil();	
-			}
-		});
-		btCancel.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				setVisible( false );
-			}
-		});
-		
-		
+
 		
 		buttonPanel.add(btOk);
 		buttonPanel.add(btCancel);
@@ -577,7 +560,8 @@ public class UIFrameModificationProfil extends JDialog
 	 */
 	protected void btOkPressed()
 	{
-		
+		closeWindows = true;
+		SaveDataToProfil();	
 	}
 	
 	/**
@@ -585,7 +569,7 @@ public class UIFrameModificationProfil extends JDialog
 	 */
 	protected void btCancelPressed()
 	{
-		
+		setVisible( false );
 	}
 
 	
@@ -594,7 +578,8 @@ public class UIFrameModificationProfil extends JDialog
 	 */
 	protected void btApplyPressed()
 	{
-		
+		closeWindows = false;
+		SaveDataToProfil();
 	}
 	//---------------------------------------------------- CLASSES PRIVEES --//
 	protected class BtApplyAction extends AbstractAction

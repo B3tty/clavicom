@@ -85,7 +85,10 @@ public class CFramePosition
 	public void buildNode( Element node )
 	{
 		Element eltLeftUp = leftUp.buildNode();
+		eltLeftUp.setName( TXMLNames.FP_LEFT_UP );
+		
 		Element eltRightDown = rightDown.buildNode();
+		eltRightDown.setName( TXMLNames.FP_RIGHT_DOWN );
 		
 		node.addContent( eltLeftUp );
 		node.addContent( eltRightDown );

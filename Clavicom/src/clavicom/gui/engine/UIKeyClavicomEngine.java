@@ -36,6 +36,7 @@ import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
+import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TKeyClavicomActionType;
 
@@ -43,6 +44,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	UIKeyboardFrame frameKeyboard;
+	UIMouseFrame frameMouse;
 	
 	//---------------------------------------------------------- VARIABLES --//
 
@@ -96,7 +98,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			// Enregistrement des paramètres
 			try
 			{
-				CProfil.getInstance().saveProfil();
+				CProfil.getInstance().saveProfil( frameKeyboard, frameMouse );
 			}
 			catch (Exception ex)
 			{
@@ -128,6 +130,16 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 	public void setFrameKeyboard(UIKeyboardFrame frameKeyboard)
 	{
 		this.frameKeyboard = frameKeyboard;
+	}
+
+	public UIMouseFrame getFrameMouse()
+	{
+		return frameMouse;
+	}
+
+	public void setFrameMouse(UIMouseFrame frameMouse)
+	{
+		this.frameMouse = frameMouse;
 	}
 	
 	

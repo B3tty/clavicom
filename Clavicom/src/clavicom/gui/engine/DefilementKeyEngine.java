@@ -25,6 +25,7 @@
 
 package clavicom.gui.engine;
 
+import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
@@ -38,8 +39,6 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
-	final int NB_TURN_LEVEL = 3; // nombre de tour que l'on peut faire sur le niveau
-								 // list et key
 
 	//---------------------------------------------------------- VARIABLES --//
 	UIKeyboard uiKeyboard;
@@ -55,6 +54,9 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	
 	int nbCurrentDefilement; // defilement courant
 							//utilisé pour ne rester que trois fois de suite sur un niveau
+	
+	int nbTurnLevelMax; // nombre de tour que l'on peut faire sur le niveau
+						// list et key
 	
 	DefilementEngine defilementEngine;
 	ClickEngine clicEngine;
@@ -84,6 +86,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		
 		nbCurrentDefilement = 0;
 		
+		nbTurnLevelMax = CProfil.getInstance().getAdvancedOption().getNumberOfDefilTurn();
+		
 		currentGroup = null;
 		currentList = null;
 		currentKey = null;
@@ -107,6 +111,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 
 	public void defil()
 	{
+		
+		
 		switch(currentTypeDefil)
 		{
 			case 0: // groupes
@@ -153,7 +159,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				currentList.select( true );
 				
 				// si le nombre de tour sur le niveau est supérieur à trois
-				if( nbCurrentDefilement > NB_TURN_LEVEL )
+				
+				if( nbCurrentDefilement > nbTurnLevelMax )
 				{
 					nbCurrentDefilement = 0;
 					
@@ -183,7 +190,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				currentKey.forceState( TUIKeyState.ENTERED );
 				
 				// si le nombre de tour sur le niveau est supérieur à trois
-				if( nbCurrentDefilement > NB_TURN_LEVEL )
+				if( nbCurrentDefilement > nbTurnLevelMax )
 				{
 					nbCurrentDefilement = 0;
 					

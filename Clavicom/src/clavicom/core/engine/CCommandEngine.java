@@ -34,6 +34,7 @@ import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCode;
 import clavicom.core.keygroup.keyboard.command.CCommand;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
@@ -43,6 +44,7 @@ import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyAction;
 
@@ -194,6 +196,16 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		catch ( Exception e )
 		{
 			return;
+		}
+		
+		// s'il l'option "ajout d'un espace aprés la chaine" est coché
+		if( CProfil.getInstance().getAdvancedOption().isAddSpaceAfterString() )
+		{
+			CCommand commandEspace = CCommandSet.GetInstance().GetCommand(" ");
+			if( commandEspace != null )
+			{
+				commandList.add( commandEspace );
+			}
 		}
 		
 		if(commandList != null)

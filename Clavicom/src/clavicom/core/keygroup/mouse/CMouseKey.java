@@ -56,7 +56,7 @@ public abstract class CMouseKey extends CKey
 
 	public void setCaption(String caption)
 	{
-		this.caption = caption;
+		this.caption = CFilePaths.getPictures() + caption;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

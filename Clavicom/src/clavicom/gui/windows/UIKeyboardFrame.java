@@ -49,6 +49,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.profil.CFramePosition;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
@@ -66,6 +67,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
+import clavicom.tools.TSize;
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
 {
@@ -115,8 +117,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{		
-		// TODO : passer la couleur
-		super(.90f);
+		// TODO : passer la couleurZ
+		super();
 		
 		// Mise en place du style
 		setStyle();
@@ -322,6 +324,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Par défaut on n'est pas en edition
 		edit(false);
 		
+		CFramePosition clavicomPosition = CProfil.getInstance().getAdvancedOption().getClavicomFramePosition();
+		
+	
+		setBounds( TSize.getRectangleBound( clavicomPosition.getLeftUp(), clavicomPosition.getRightDown() ) );
+		
 		// On autorise le resize de la fenêtre
 		mainPanel.setEditable(true);
 		
@@ -359,6 +366,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			isEdited = true;
 			
+			setTransparency(1f);
+			
 			setFocusableWindowState(true);
 			setAlwaysOnTop(false);
 			
@@ -370,6 +379,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// En utilisation
 		{
 			isEdited = false;
+			
+			setTransparency((float)(CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent())/100f);
 			
 			setFocusableWindowState(false);
 			setAlwaysOnTop(true);
