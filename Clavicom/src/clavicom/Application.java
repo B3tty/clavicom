@@ -27,7 +27,6 @@ package clavicom;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -40,13 +39,13 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
-import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
 
@@ -59,6 +58,7 @@ public class Application
 	
 	//---------------------------------------------------------- VARIABLES --//
 	private static UIKeyboardFrame keyboardFrame;
+	private static UIMouseFrame mouseFrame;
 	
 	//----------------------------------------------------------------
 	// Outils
@@ -94,9 +94,7 @@ public class Application
 	
 	@SuppressWarnings("unused")
 	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
-	
-	@SuppressWarnings("unused")
-	private static DefilementKeyEngine toolKeyboardDefilEngine;	// defilement du keyboard	
+		
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -177,14 +175,9 @@ public class Application
 		// Chargement du moteur de defilement
 		splash.newStep("Loading defilement engine...");
 		loadDefilementEngine();		
-		
-		// Chargement du moteur de defilement du keyboard
-		// Il a besoin que uiKeyboard soit construit
-		splash.newStep("Loading keyboard scroll engine...");
-		loadKeyboardDefilementEngine();
-		
+	
 		// Création des fenêtres
-		splash.newStep("Creating windows...");		createWindows();	
+		splash.newStep("Creating windows...");		createWindows();
 		
 		// Chargement du moteur de key clavicom
 		splash.newStep("Loading clavicom keys engine...");
@@ -214,6 +207,16 @@ public class Application
 	{
 		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
+		
+		
+		try
+		{
+			mouseFrame = new UIMouseFrame( CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() );
+		}
+		catch (Exception e1)
+		{
+			CMessageEngine.newError( UIString.getUIString("EX_MOUSE_CAN_NOT_LOAD"), e1.getMessage() );
+		}
 		
 		// TODO : enlever ces deux lignes
 		
@@ -505,34 +508,20 @@ public class Application
 	}
 	
 	/**
-	 * Chargement du moteur de defilement du keyboard
-	 */
-	private static void loadKeyboardDefilementEngine()
-	{
-		try
-		{
-			toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, false );
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1"),
-										ex.getMessage());
-		}
-	}
-	
-	/**
 	 * Chargement du moteur de key clavicom
 	 */
 	private static void loadKeyClavicomEngine()
 	{
 		// Création de l'engine
-		keyClavicomEngine = new UIKeyClavicomEngine(CProfil.getInstance().getKeyboard());
+		keyClavicomEngine = new UIKeyClavicomEngine(
+				CProfil.getInstance().getKeyboard(),
+				mouseFrame.getCMouse() );
 		
 		// Ajout de la frame keyboard
 		keyClavicomEngine.setFrameKeyboard(keyboardFrame);
 		
 		// Ajout de la frame souricom
-		// TODO
+		keyClavicomEngine.setFrameMouse( mouseFrame );
 	}
 
 }

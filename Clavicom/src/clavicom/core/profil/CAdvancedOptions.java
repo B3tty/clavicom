@@ -25,10 +25,13 @@
 
 package clavicom.core.profil;
 
+import javax.swing.JFrame;
+
 import org.jdom.Element;
 
 import clavicom.gui.language.UIString;
 import clavicom.tools.TClickSouricomEnum;
+import clavicom.tools.TSize;
 import clavicom.tools.TXMLNames;
 
 public class CAdvancedOptions
@@ -173,6 +176,12 @@ public class CAdvancedOptions
 		return elt_advancedOption;
 	}
 	
+	public void recalculateFramesPosition(JFrame clavicomFrame, JFrame souricomFrame)
+	{
+		clavicomFramePosition = TSize.getFramePosition( clavicomFrame );
+		souricomFramePosition = TSize.getFramePosition( souricomFrame );
+	}
+	
 	public boolean isAddSpaceAfterString()
 	{
 		return addSpaceAfterString;
@@ -232,6 +241,9 @@ public class CAdvancedOptions
 	{
 		this.startWithOS = startWithOS;
 	}
+
+
+	
 
 	//----------------------------------------------------------- METHODES --//	
 
