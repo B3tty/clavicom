@@ -43,7 +43,6 @@ import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.utils.UIMovingPanel;
-import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TUIKeyState;
 
 public class UIMouse extends UIMovingPanel implements clickMouseHookListener, DefilListener
@@ -85,14 +84,14 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	boolean dragAndDropMode; // indique si on est en mode drag and drop
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIMouse( CMouse myMouse, ClickEngine myClickEngine, JFrame parent, DefilementEngine myDefilementEngine )
+	public UIMouse( CMouse myMouse, JFrame parent )
 	{
 		super( parent );
 		
 		mouse = myMouse;
 		
-		clickEngine = myClickEngine;
-		defilementEngine = myDefilementEngine;
+		clickEngine = ClickEngine.getInstance();
+		defilementEngine = DefilementEngine.getInstance();
 		defilementEngine.addDefilListener( this );
 		
 		dragAndDropMode = false;		
@@ -169,7 +168,6 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		// abonnement au hook
 		clickEngine.addClickMouseHookListener( this );
 		
-		defilementEngine.startDefilement();
 		
 	}
 	
@@ -473,7 +471,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		}
 	}
 	
-	protected void SwitchClickMode(  )
+	public void SwitchClickMode(  )
 	{
 		// on désélsctione l'ancianne key
 		if( selectedList != null )
@@ -508,7 +506,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		
 	}
 	
-	protected void SwitchMoveMode()
+	public void SwitchMoveMode()
 	{
 		// création de la liste des touches
 		selectedList = new ArrayList<UIKey>();
@@ -549,24 +547,6 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	}
 	
 	
-
-
-	
-	public void onClickKeyClavicom(CKeyClavicom keyClavicom)
-	{
-		// switch sur le type de la keyClavicom
-		if( keyClavicom.getAction() == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD )
-		{
-			//TMP TODO
-			System.exit(0);
-		} else if( keyClavicom.getAction() == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE )
-		{
-			SwitchMoveMode();
-		} else if( keyClavicom.getAction() == TKeyClavicomActionType.SWITCH_MOUSEMOVE_MOUSECLICK )
-		{
-			SwitchClickMode();
-		}
-	}
 
 	public UIKeyClavicom getClickMouseMode()
 	{

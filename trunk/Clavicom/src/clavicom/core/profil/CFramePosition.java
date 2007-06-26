@@ -40,6 +40,10 @@ public class CFramePosition
 	TPoint rightDown;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
+	public CFramePosition()
+	{
+	
+	}
 	public CFramePosition(Element node ) throws Exception
 	{
 		if( node == null )

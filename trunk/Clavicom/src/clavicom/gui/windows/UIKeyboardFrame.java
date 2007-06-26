@@ -67,6 +67,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
@@ -432,6 +433,36 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			// On repasse en mode clavicom normal
 			edit(false);
+			
+			// on regarde si on doit lancer le défilement
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				stopDefilMode();
+				startDefilMode();
+			} else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
+			{
+				stopDefilMode();
+			}
+			
+		}
+
+		private void stopDefilMode()
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void startDefilMode()
+		{
+//			try
+//			{
+//				toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, false );
+//			}
+//			catch (Exception ex)
+//			{
+//				CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1"),
+//											ex.getMessage());
+//			}
 		}
 	}
 	

@@ -87,7 +87,7 @@ public class testUIMouse
 			
 			
 			DefilementEngine.createInstance();
-			DefilementEngine defilementEngine = DefilementEngine.getInstance();
+			//DefilementEngine defilementEngine = DefilementEngine.getInstance();
 			
 			CMouse mouse = CMouse.CreateMouse(
 					profil.getDefaultColor().getDefaultKeyNormal().getColor(), 
@@ -98,7 +98,7 @@ public class testUIMouse
 			
 			frame = new UITranslucentFrame( profil.getTransparency().getKeyboardTransparencyPourcent() );
 			
-			UIMouse uimouse = new UIMouse( mouse, clickEngine, frame, defilementEngine );
+			UIMouse uimouse = new UIMouse( mouse, frame );
 			
 			new CMouseEngine( mouse, clickEngine );
 			

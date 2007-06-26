@@ -29,6 +29,10 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
+import javax.swing.JFrame;
+
+import clavicom.core.profil.CFramePosition;
+
 
 public class TSize
 {
@@ -58,6 +62,33 @@ public class TSize
 		
 		return rectangle;
 	}
+	
+	static public CFramePosition getFramePosition ( JFrame frame )
+	{
+		CFramePosition framePosition = new CFramePosition();
+		
+		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		double frame_lu_x = frame.getX();
+		double frame_lu_y = frame.getY();
+		double frame_rd_x = frame.getX() + frame.getSize().getWidth();
+		double frame_rd_y = frame.getY() + frame.getSize().getHeight();
+		
+		float lu_x = (float)( frame_lu_x / screenDimension.getWidth() );
+		float lu_y = (float)( frame_lu_y / screenDimension.getHeight() );
+		float rd_x = (float)( frame_rd_x / screenDimension.getWidth() );
+		float rd_y = (float)( frame_rd_y / screenDimension.getHeight() );
+		
+		TPoint leftUp = new TPoint( lu_x, lu_y );
+		TPoint rightDown = new TPoint( rd_x, rd_y );
+		
+		framePosition.setLeftUp( leftUp );
+		framePosition.setRightDown( rightDown );
+		
+		
+		return framePosition;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
+

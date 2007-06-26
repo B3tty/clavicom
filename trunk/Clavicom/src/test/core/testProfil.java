@@ -24,7 +24,7 @@ public class testProfil
 			
 			// Chemins
 			String input = "Ressources\\Temp\\profil.xml";
-			String output = "Ressources\\Temp\\profil_out.xml";
+			//String output = "Ressources\\Temp\\profil_out.xml";
 			
 			// Chargement
 			CProfil.createInstance(input);

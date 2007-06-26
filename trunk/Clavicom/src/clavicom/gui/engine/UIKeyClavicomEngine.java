@@ -31,6 +31,7 @@ import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.listener.OnClickKeyClavicomListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
@@ -51,7 +52,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 	protected EventListenerList listeners;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIKeyClavicomEngine( CKeyboard keyboard )
+	public UIKeyClavicomEngine( CKeyboard keyboard, CMouse mouse )
 	{
 		listeners = new EventListenerList();
 		
@@ -84,6 +85,11 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 				}
 			}
 		}
+		
+		// Abonnement au keyClavicom de la mouse
+		mouse.getClickMouseMode().addOnClickKeyClavicomListener( this );
+		mouse.getMoveMouseMode().addOnClickKeyClavicomListener( this );
+		mouse.getSwitchMouseKeyboard().addOnClickKeyClavicomListener( this );
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -104,7 +110,8 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			{
 				CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
 												CProfil.getInstance().getProfilFilePath() + 
-												UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"));
+												UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"),
+												ex.getMessage());
 			}
 			
 			// On quitte l'application
@@ -118,7 +125,24 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 		else if (actionType == TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE)
 		{
 			// Switch en mode souriscom
-			// TODO : à compléter...
+			frameKeyboard.setVisible( false );
+			frameMouse.setVisible( true );
+		}
+		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD)
+		{
+			// Switch en mode clavicom
+			frameMouse.setVisible( false );
+			frameKeyboard.setVisible( true );
+		}
+		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE)
+		{
+			// Switch en mode clavicom
+			frameMouse.SwitchMoveMode();
+		}
+		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSEMOVE_MOUSECLICK)
+		{
+			// Switch en mode clavicom
+			frameMouse.SwitchClickMode();
 		}
 	}
 

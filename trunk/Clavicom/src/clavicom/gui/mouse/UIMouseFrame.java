@@ -26,6 +26,8 @@
 package clavicom.gui.mouse;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+
+import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.click.ClickEngine;
@@ -40,14 +42,20 @@ public class UIMouseFrame extends UITranslucentFrame
 	//---------------------------------------------------------- VARIABLES --//
 	
 	UIMouse uiMouse;
+	CMouse cMouse;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public UIMouseFrame(float myTransparency, UIMouse myUIMouse)
+	public UIMouseFrame(float myTransparency) throws Exception 
 	{
 		super(myTransparency);
 		
-		uiMouse = myUIMouse;
+		cMouse = CMouse.CreateMouse(
+				CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(), 
+				CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
+				CProfil.getInstance().getDefaultColor().getDefaultKeyEntered().getColor() );
+		
+		uiMouse = new UIMouse( cMouse, this );
 		
 		setFocusableWindowState(true);
 		setAlwaysOnTop(true);
@@ -107,5 +115,23 @@ public class UIMouseFrame extends UITranslucentFrame
 	
 	//----------------------------------------------------------- METHODES --//	
 
+	public void SwitchClickMode(  )
+	{
+		uiMouse.SwitchClickMode();
+	}
+	public void SwitchMoveMode(  )
+	{
+		uiMouse.SwitchMoveMode();
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+	public CMouse getCMouse()
+	{
+		return cMouse;
+	}
+
+	public UIMouse getUiMouse()
+	{
+		return uiMouse;
+	}
 }

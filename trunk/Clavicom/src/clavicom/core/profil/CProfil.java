@@ -295,6 +295,7 @@ public class CProfil
 		// ===============================================================
 		// Attachement des option avancés
 		// ===============================================================
+		advancedOption.recalculateFramesPosition( clavicomFrame, souricomFrame );
 		racine.addContent( advancedOption.buildNode() );
 		
 		// ===============================================================
