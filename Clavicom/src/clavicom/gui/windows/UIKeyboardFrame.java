@@ -441,35 +441,20 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	
 	private void stopDefilMode()
 	{
-		if( ClickEngine.getInstance() != null )
-		{
-			ClickEngine.getInstance().mouseHookPause();
-		}
-		if( DefilementEngine.getInstance() != null )
-		{
-			DefilementEngine.getInstance().stopDefilement();
-		}
-		if( DefilementKeyEngine.getInstance() != null )
-		{
-			DefilementKeyEngine.getInstance().stopKeyDefilEngine();
-		}
-
+		ClickEngine.getInstance().mouseHookPause();
+		
+		DefilementEngine.getInstance().stopDefilement();
+		
+		DefilementKeyEngine.getInstance().stopKeyDefilEngine();
 	}
 
 	private void startDefilMode()
 	{
-		if( ClickEngine.getInstance() != null )
-		{
-			ClickEngine.getInstance().mouseHookResume();
-		}
-		if( DefilementEngine.getInstance() != null )
-		{
-			DefilementEngine.getInstance().startDefilement();
-		}
-		if( DefilementKeyEngine.getInstance() != null )
-		{
-			DefilementKeyEngine.getInstance().startKeyDefilEngine();
-		}		
+		ClickEngine.getInstance().mouseHookResume();
+		
+		DefilementEngine.getInstance().startDefilement();
+		
+		DefilementKeyEngine.getInstance().startKeyDefilEngine();	
 	}
 	
 	protected void onClickBtEditionKey()
