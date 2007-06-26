@@ -127,12 +127,18 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			// Switch en mode souriscom
 			frameKeyboard.setVisible( false );
 			frameMouse.setVisible( true );
+			
+			DefilementKeyEngine.getInstance().stopKeyDefilEngine();
+			frameMouse.startDefilMouse();
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD)
 		{
 			// Switch en mode clavicom
 			frameMouse.setVisible( false );
 			frameKeyboard.setVisible( true );
+			
+			DefilementKeyEngine.getInstance().startKeyDefilEngine();
+			frameMouse.stopDefilMouse();
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE)
 		{

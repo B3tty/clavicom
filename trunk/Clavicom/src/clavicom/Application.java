@@ -33,6 +33,7 @@ import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
 import clavicom.core.engine.CLevelEngine;
+import clavicom.core.engine.CMouseEngine;
 import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.engine.CStringsEngine;
 import clavicom.core.engine.dictionary.CDictionary;
@@ -41,6 +42,7 @@ import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
+import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
@@ -179,14 +181,22 @@ public class Application
 		
 		// Chargement du moteur de defilement
 		splash.newStep("Loading defilement engine...");
-		loadDefilementEngine();		
-	
+		loadDefilementEngine();	
+
 		// Création des fenêtres
 		splash.newStep("Creating windows...");		createWindows();
+		
+		// Chargement du moteur de defilement des key
+		splash.newStep("Loading key defilement engine...");
+		loadKeyDefilementEngine();
 		
 		// Chargement du moteur de key clavicom
 		splash.newStep("Loading clavicom keys engine...");
 		loadKeyClavicomEngine();
+		
+		// Chargement du moteur des touches de le souricom
+		splash.newStep("Loading souricom keys engine...");
+		loadKeySouricomEngine();
 		
 		// Fin du chargement
 		splash.newStep("Load complete !");
@@ -200,11 +210,14 @@ public class Application
 	
 	
 
+
 	//--------------------------------------------------- METHODES PRIVEES --//
 	//-----------------------------------------------------------------------
 	// Chargement
 	//-----------------------------------------------------------------------
 	
+
+
 	/**
 	 * Créé les fenêtres
 	 */
@@ -527,6 +540,19 @@ public class Application
 		}
 	}
 	
+	private static void loadKeyDefilementEngine()
+	{
+		try
+		{
+			DefilementKeyEngine.createInstance( uiKeyboard );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEY_DEFIL_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
 	/**
 	 * Chargement du moteur de key clavicom
 	 */
@@ -542,6 +568,12 @@ public class Application
 		
 		// Ajout de la frame souricom
 		keyClavicomEngine.setFrameMouse( mouseFrame );
+	}
+	
+
+	private static void loadKeySouricomEngine()
+	{
+		CMouseEngine.createInstance( mouseFrame.getCMouse() );
 	}
 
 }

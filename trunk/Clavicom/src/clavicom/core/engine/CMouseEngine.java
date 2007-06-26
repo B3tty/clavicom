@@ -60,14 +60,12 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 	
 	protected EventListenerList listenerList;
 	
-	ClickEngine clickEngine;
-	
+	static CMouseEngine instance;
 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseEngine( CMouse mouse, ClickEngine myClickEngine )
+	protected CMouseEngine( CMouse mouse )
 	{
-		clickEngine = myClickEngine;
 
 		// =============================================================
 		// Abonnement aux listener de move
@@ -103,6 +101,14 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		
 	}
 
+	public static void createInstance(  CMouse mouse )
+	{
+		instance = new CMouseEngine( mouse );
+	}
+	public static CMouseEngine getInstance()
+	{
+		return instance;
+	}
 	//----------------------------------------------------------- METHODES --//
 	
 	
@@ -136,53 +142,53 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )
 		{
 			// on met en pause le hook 
-			clickEngine.mouseHookPause();
+			ClickEngine.getInstance().mouseHookPause();
 			
 			// clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
 			// on reprend le hook
-			clickEngine.mouseHookResume();
+			ClickEngine.getInstance().mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_PRESS )
 		{
 			// on met en pause le hook 
-			clickEngine.mouseHookPause();
+			ClickEngine.getInstance().mouseHookPause();
 			
 			// clic gauche pressé
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			
 			// on reprend le hook
-			clickEngine.mouseHookResume();
+			ClickEngine.getInstance().mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_RELEASE )
 		{
 			// on met en pause le hook 
-			clickEngine.mouseHookPause();
+			ClickEngine.getInstance().mouseHookPause();
 			
 			// clic gauche relaché
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
 			// on reprend le hook
-			clickEngine.mouseHookResume();
+			ClickEngine.getInstance().mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
 			// on met en pause le hook 
-			clickEngine.mouseHookPause();
+			ClickEngine.getInstance().mouseHookPause();
 			
 			// clic droit
 			robot.mousePress( InputEvent.BUTTON3_MASK );
 			robot.mouseRelease( InputEvent.BUTTON3_MASK );	
 			
 			// on reprend le hook
-			clickEngine.mouseHookResume();
+			ClickEngine.getInstance().mouseHookResume();
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{
 			// on met en pause le hook 
-			clickEngine.mouseHookPause();
+			ClickEngine.getInstance().mouseHookPause();
 			
 			// double clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
@@ -191,7 +197,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
 			// on reprend le hook
-			clickEngine.mouseHookResume();
+			ClickEngine.getInstance().mouseHookResume();
 			
 		}
 

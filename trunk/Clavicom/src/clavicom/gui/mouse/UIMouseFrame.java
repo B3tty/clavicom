@@ -123,6 +123,14 @@ public class UIMouseFrame extends UITranslucentFrame
 	{
 		uiMouse.SwitchMoveMode();
 	}
+	public void startDefilMouse()
+	{
+		uiMouse.startDefilMouse();
+	}
+	public void stopDefilMouse()
+	{
+		uiMouse.stopDefilMouse();
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 
 	public CMouse getCMouse()

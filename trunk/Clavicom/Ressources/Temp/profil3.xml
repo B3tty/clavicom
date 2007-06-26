@@ -36,11 +36,11 @@
     <on_survol active="true" />
   </sound>
   <navigation>
-    <type value="CLICK_TEMPORISE" />
+    <type value="DEFILEMENT" />
     <rollover active="true" />
-    <mouse_speed value="20" />
-    <mouse_temporisation value="20" />
-    <temporisation value="20" />
+    <mouse_speed value="10" />
+    <mouse_temporisation value="10" />
+    <temporisation value="10" />
   </navigation>
   <font>
     <name>Arial</name>
@@ -57,16 +57,16 @@
     <shadow>true</shadow>
   </font>
   <advanced_options>
-    <click_souricom>LEFT_RELEASE</click_souricom>
+    <click_souricom>RIGHT_RELEASE</click_souricom>
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.3125</x>
-        <y>0.10058594</y>
+        <x>0.30234376</x>
+        <y>0.20410156</y>
       </left_up>
       <right_down>
-        <x>0.98046875</x>
-        <y>0.375</y>
+        <x>0.9703125</x>
+        <y>0.47851562</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -75,7 +75,7 @@
         <y>0.69628906</y>
       </left_up>
       <right_down>
-        <x>0.26015624</x>
+        <x>0.259375</x>
         <y>0.8955078</y>
       </right_down>
     </souricom_frame_position>

@@ -43,13 +43,13 @@ public final class TClickSouricomEnum
     	if( clickSouricom == "LEFT_PRESS" )
     	{
     		return LEFT_PRESS;
-    	} else if( clickSouricom == "RIGHT_RELEASE" )
+    	} else if( clickSouricom.equals( "RIGHT_RELEASE" ) )
     	{
     		return RIGHT_RELEASE;
-    	} else if( clickSouricom == "RIGHT_PRESS" )
+    	} else if( clickSouricom.equals( "RIGHT_PRESS" ) )
     	{
     		return RIGHT_PRESS;
-    	} else if( clickSouricom == "LEFT_RELEASE" )
+    	} else if( clickSouricom.equals( "LEFT_RELEASE" ) )
     	{
     		return LEFT_RELEASE;
     	}

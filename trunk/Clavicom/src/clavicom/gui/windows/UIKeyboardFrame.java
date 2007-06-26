@@ -34,11 +34,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
-
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -58,6 +56,9 @@ import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.key.UIPanelOptionOneLevelKey;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
+import clavicom.gui.engine.DefilementEngine;
+import clavicom.gui.engine.DefilementKeyEngine;
+import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
@@ -108,6 +109,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	UIPanelOptionKeyLauncher panelOptionKeyLauncher;
 	UIPanelOptionKeyShortCut panelOptionKeyShortcut;
 	UIPanelOptionKeyString panelOptionKeyString;
+	
+	// Engine
+	DefilementKeyEngine defilEngine;
 	
 	// Selections de key
 	List<UIKeyKeyboard> selectedKeys;
@@ -337,6 +341,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Initialisation des composants
 		btEditionKey.setEnabled(false);
+		
+		
 	}
 	
 	/**
@@ -357,6 +363,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelKeyboard.edit();
 			panelToolbar.setVisible(true);
 			panelBoutons.setVisible(true);
+			
+			stopDefilMode();
 		}
 		else
 		// En utilisation
@@ -419,7 +427,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			// on regarde si on doit lancer le défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
-				stopDefilMode();
+				//8stopDefilMode();
 				startDefilMode();
 			} else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
 			{
@@ -428,24 +436,40 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			
 		}
 
-		private void stopDefilMode()
+		
+	}
+	
+	private void stopDefilMode()
+	{
+		if( ClickEngine.getInstance() != null )
 		{
-			// TODO Auto-generated method stub
-			
+			ClickEngine.getInstance().mouseHookPause();
+		}
+		if( DefilementEngine.getInstance() != null )
+		{
+			DefilementEngine.getInstance().stopDefilement();
+		}
+		if( DefilementKeyEngine.getInstance() != null )
+		{
+			DefilementKeyEngine.getInstance().stopKeyDefilEngine();
 		}
 
-		private void startDefilMode()
+	}
+
+	private void startDefilMode()
+	{
+		if( ClickEngine.getInstance() != null )
 		{
-//			try
-//			{
-//				toolKeyboardDefilEngine = new DefilementKeyEngine( uiKeyboard, false );
-//			}
-//			catch (Exception ex)
-//			{
-//				CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1"),
-//											ex.getMessage());
-//			}
+			ClickEngine.getInstance().mouseHookResume();
 		}
+		if( DefilementEngine.getInstance() != null )
+		{
+			DefilementEngine.getInstance().startDefilement();
+		}
+		if( DefilementKeyEngine.getInstance() != null )
+		{
+			DefilementKeyEngine.getInstance().startKeyDefilEngine();
+		}		
 	}
 	
 	protected void onClickBtEditionKey()
