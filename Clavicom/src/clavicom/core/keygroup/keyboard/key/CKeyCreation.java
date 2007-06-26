@@ -32,6 +32,7 @@ import org.jdom.Element;
 
 import clavicom.CFilePaths;
 import clavicom.core.listener.OnClickKeyCreationListener;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TPoint;
 
@@ -129,6 +130,13 @@ public class CKeyCreation extends CKeyOneLevel
 	public String getCaption()
 	{
 		return CFilePaths.getPictures() + caption;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_CREATION") +
+					" [" + caption + "]");
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

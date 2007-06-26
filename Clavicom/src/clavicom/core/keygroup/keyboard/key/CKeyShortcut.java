@@ -221,6 +221,13 @@ public class CKeyShortcut extends CKeyOneLevel
 			return caption;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_SHORTCUT") +
+					" [" + caption + "]");
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 }

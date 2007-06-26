@@ -1089,4 +1089,11 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		// On force le redessin
 		revalidate();
 	}
+
+	public List<UIKeyGroup> getKeyGroups()
+	{
+		return keyGroups;
+	}
+	
+	
 }

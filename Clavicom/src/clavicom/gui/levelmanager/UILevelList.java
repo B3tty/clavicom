@@ -35,6 +35,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import clavicom.CFilePaths;
@@ -59,6 +60,8 @@ public class UILevelList extends JPanel
 	
 	// Composants
 	private JList listData;					// Liste contenant les données
+	private JScrollPane listScrollData;		// Liste contenant les données (avec ascenseurs)
+	
 	private JTextField textElement;			// Textbox pour l'element
 	
 	private JButton btAddElement;			// Ajout d'un élement
@@ -109,8 +112,8 @@ public class UILevelList extends JPanel
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            5,							// Taille horizontale relative
-	            90,							// Taille verticale relative
+	            20,							// Taille horizontale relative
+	            95,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(SPACE, SPACE, 0, SPACE), // Espace autours (haut, gauche, bas, droite)
@@ -125,8 +128,8 @@ public class UILevelList extends JPanel
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            95,							// Taille horizontale relative
-	            90,							// Taille verticale relative
+	            80,							// Taille horizontale relative
+	            95,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(SPACE, 0, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
@@ -141,8 +144,8 @@ public class UILevelList extends JPanel
 	            1,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            95,							// Taille horizontale relative
-	            10,							// Taille verticale relative
+	            80,							// Taille horizontale relative
+	            5,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, 0, SPACE, SPACE), 	// Espace autours (haut, gauche, bas, droite)
@@ -278,7 +281,7 @@ public class UILevelList extends JPanel
 	private void createListPanel()
 	{
 		panelList.setLayout(new BorderLayout());
-		panelList.add(listData);
+		panelList.add(listScrollData);
 	}
 	
 	private void createObjects()
@@ -294,6 +297,7 @@ public class UILevelList extends JPanel
 		textElement = new JTextField();
 		
 		listData = new JList();
+		listScrollData = new JScrollPane(listData);
 		//listData.setBorder(textElement.getBorder());
 		
 		btAddElement = new JButton();
@@ -370,5 +374,10 @@ public class UILevelList extends JPanel
 	public JTextField getTextElement()
 	{
 		return textElement;
+	}
+
+	public JScrollPane getListScrollData()
+	{
+		return listScrollData;
 	}
 }

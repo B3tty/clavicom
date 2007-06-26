@@ -29,6 +29,7 @@ import java.awt.Color;
 import org.jdom.Element;
 
 import clavicom.CFilePaths;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -100,6 +101,10 @@ public class CKeyLastWord extends CKeyDynamicString
 		else
 			return caption;
 	}
-
-
+	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_LASTWORD"));
+	}
 }

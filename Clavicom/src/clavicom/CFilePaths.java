@@ -76,6 +76,9 @@ public class CFilePaths
 	
 	private static String levelEditorUp = pictures + "up.png";
 	private static String levelEditorDown = pictures + "down.png";	
+
+	private static String levelEditorClass = pictures + "class.png";
+	private static String levelEditorClassAutomatic = pictures + "class_automatic.png";
 	
 	private static String defaultPicture = pictures + "default.png";
 
@@ -84,7 +87,6 @@ public class CFilePaths
 	// ========================================================================
 	// Getters
 	// ========================================================================
-
 	
 	public static String getCommandSetsFolder()
 	{
@@ -260,6 +262,16 @@ public class CFilePaths
 	public static String getLevelEditorUp()
 	{
 		return levelEditorUp;
+	}
+
+	public static String getLevelEditorClass()
+	{
+		return levelEditorClass;
+	}
+
+	public static String getLevelEditorClassAutomatic()
+	{
+		return levelEditorClassAutomatic;
 	}
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	

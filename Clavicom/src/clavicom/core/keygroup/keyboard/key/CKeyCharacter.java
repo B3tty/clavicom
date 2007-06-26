@@ -391,6 +391,13 @@ public class CKeyCharacter extends CKeyThreeLevel
 		
 		return myCaption;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_CHARACTER") +
+					" [" + captionNormal + "]");
+	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 

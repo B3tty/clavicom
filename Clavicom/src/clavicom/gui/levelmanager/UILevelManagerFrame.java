@@ -27,6 +27,7 @@ package clavicom.gui.levelmanager;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -37,8 +38,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import clavicom.CFilePaths;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TImageUtils;
@@ -63,15 +66,21 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	
 	// Composants
 	JButton btClassKey;
+	JButton btClassKeyAutomatic;
 	JList listUnclassedKeys;
-	JButton btClose;
+	JScrollPane listScrollUnclassedKeys;
 	
-	// TODO : ajouter --> JButton btClassAutomaticKey;
+	JButton btClose;	
 	
+	// UIKeyboard lié
+	UIKeyboard uiKeyboard;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UILevelManagerFrame()
 	{
+		// Initialisation des propriétés de la frame
+		initFrame();
+		
 		// Création des objets
 		createObjects();
 		
@@ -85,14 +94,53 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		createPanelClose();
 		
 		// Création du panel global
-		createGLobalPanel();
-	
-		add(panelGlobal);
-		
-		panelGlobal.setBackground(Color.GREEN);
+		createGlobalPanel();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
+	public void setUIKeyboard(UIKeyboard uiKeyboard)
+	{
+		// Recopie des attributs
+		this.uiKeyboard = uiKeyboard;
+		
+		initializeFrame();
+	}
+	
+	//--------------------------------------------------- METHODES PRIVEES --//
+	//-----------------------------------------------------------------------
+	// TRAITEMENTS
+	//-----------------------------------------------------------------------
+	/**
+	 * S'occupe d'initialiser tous les composants, selon les valeurs du
+	 * uiKeyboard. Typiquement, cette méthode est appelée à l'ouverture
+	 * de la fenêtre
+	 */
+	protected void initializeFrame()
+	{		
+		// On remplit la liste de groupes
+		// TODO
+		
+	}
+	
+	
+	//-----------------------------------------------------------------------
+	// ATTRIBUTS GRAPHIQUES
+	//-----------------------------------------------------------------------	
+	protected void initFrame()
+	{
+		// Invisible
+		setVisible(false);
+		
+		// Taille
+		setSize(new Dimension(560,440));
+		
+		// Redimensionnement
+		setResizable(false);
+		
+		// Titre
+		setTitle(UIString.getUIString("FR_LEVEL_EDITOR_TITLE"));
+	}
+	
 	protected void createObjects()
 	{
 		// Panels principaux
@@ -108,18 +156,78 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		
 		// Composants
 		btClassKey = new JButton();
+		btClassKeyAutomatic = new JButton();
+		
 		listUnclassedKeys = new JList();
+		listScrollUnclassedKeys = new JScrollPane(listUnclassedKeys);
 		btClose = new JButton();
+		
+		// Autres variables
+		uiKeyboard = null;
 	}
 	
 	protected void createPanelUnclassedKeys()
 	{
-		// Image du bouton
-		btClassKey.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorAdd()),BT_IMAGE_SIZE,-1));
+		// Initialisation des composants
+		btClassKey.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorClass()),BT_IMAGE_SIZE,-1));
+		btClassKeyAutomatic.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorClassAutomatic()),BT_IMAGE_SIZE,-1));
+		
+		// Layout
+		GridBagLayout gbLayoutPanelUnclassedKey = new GridBagLayout();
+		panelUnclassedKeys.setLayout(gbLayoutPanelUnclassedKey);
+		
+		// Contraintes de la liste
+		GridBagConstraints gbConstPanelList = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            2,							// Nombre de lignes occupées
+	            90,							// Taille horizontale relative
+	            100,						// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(SPACE, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutPanelUnclassedKey.setConstraints(listScrollUnclassedKeys, gbConstPanelList);
+		
+		// Contraintes du bouton de classement
+		GridBagConstraints gbConstPanelBtClassKey = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            10,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(SPACE, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutPanelUnclassedKey.setConstraints(btClassKey, gbConstPanelBtClassKey);		
+		
+		// Contraintes du bouton de classement automatique
+		GridBagConstraints gbConstPanelBtClassAutomaticKey = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            10,							// Taille horizontale relative
+	            50,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutPanelUnclassedKey.setConstraints(btClassKeyAutomatic, gbConstPanelBtClassAutomaticKey);	
 		
 		// Ajout des composants au panel
-		panelUnclassedKeys.add(listUnclassedKeys);
+		panelUnclassedKeys.add(listScrollUnclassedKeys);
 		panelUnclassedKeys.add(btClassKey);
+		panelUnclassedKeys.add(btClassKeyAutomatic);
 		
 		// Ajout de la bordure
 		panelUnclassedKeys.setBorder( 	BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
@@ -202,15 +310,10 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	}
 	
 	protected void createPanelClose()
-	{
+	{		
 		// Affectation de l'action du bouton
-		btClose.setAction(new AbstractAction()
-							{
-								public void actionPerformed(ActionEvent arg0)
-								{
-									onBtClosePressed();
-								}
-							});
+		btClose.setAction(new AbstractActionBtClose());
+		
 		// Mise en place des layouts
 		panelClose.setLayout(new BorderLayout());
 		
@@ -218,18 +321,16 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		panelClose.add(btClose, BorderLayout.EAST);		
 	}
 	
-	protected void createGLobalPanel()
+	protected void createGlobalPanel()
 	{
 		// Ajout des composants
 		panelGlobal.add(panelUnclassedKeys);
 		panelGlobal.add(panelClassedKeys);
 		panelGlobal.add(panelClose);
 		
-		add(panelGlobal, BorderLayout.CENTER);
+		add(panelGlobal);
 		
-		// Mise en place des layouts
-		setLayout(new BorderLayout());
-		
+		// Mise en place des layouts		
 		GridBagLayout gbLayoutPanelGlobal = new GridBagLayout();
 		panelGlobal.setLayout(gbLayoutPanelGlobal);
 		
@@ -240,7 +341,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,						// Taille horizontale relative
-	            30,							// Taille verticale relative
+	            20,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(SPACE, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
@@ -256,7 +357,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,						// Taille horizontale relative
-	            60,							// Taille verticale relative
+	            75,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
@@ -272,7 +373,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,						// Taille horizontale relative
-	            10,							// Taille verticale relative
+	            5,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, SPACE, SPACE, SPACE), // Espace autours (haut, gauche, bas, droite)
@@ -284,7 +385,19 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	
 	protected void onBtClosePressed()
 	{
-		// TODO : vérifier que tout est classé, etc...
+		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
+		System.exit(0);
 	}
-	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	protected class AbstractActionBtClose extends AbstractAction
+	{
+		public AbstractActionBtClose()
+		{
+			super(UIString.getUIString("FR_LEVEL_EDITOR_BT_OK"));
+		}
+		public void actionPerformed(ActionEvent arg0)
+		{
+			onBtClosePressed();
+		}
+	}
 }

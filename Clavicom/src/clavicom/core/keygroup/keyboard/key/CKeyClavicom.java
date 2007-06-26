@@ -177,5 +177,12 @@ public class CKeyClavicom extends CKeyOneLevel
 		return CFilePaths.getPictures() + caption;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_CLAVICOM") +
+					" [" + TKeyClavicomActionType.getString(action) + "]");
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

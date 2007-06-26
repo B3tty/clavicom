@@ -168,4 +168,11 @@ public class CKeyLauncher extends CKeyOneLevel
 		else
 			return caption;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_LAUNCHER") +
+					" [" + caption + "]");
+	}
 }
