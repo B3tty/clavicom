@@ -64,6 +64,12 @@ public class CKeyGroup
 	}
 	
 	public int listCount(){return keyListList.size();}
+	
+	@Override
+	public String toString()
+	{
+		return caption;
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	

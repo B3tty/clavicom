@@ -32,6 +32,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -41,6 +42,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import clavicom.CFilePaths;
+import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.utils.UITranslucentFrame;
@@ -49,7 +51,7 @@ import clavicom.tools.TImageUtils;
 public class UILevelManagerFrame extends UITranslucentFrame
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	private final int BT_IMAGE_SIZE = 25;	// Taille des images des boutons
+	private final int BT_IMAGE_SIZE = 30;	// Taille des images des boutons
 	private final int SPACE = 5;			// Espace entre les composants
 	
 	//---------------------------------------------------------- VARIABLES --//	
@@ -117,8 +119,30 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	 */
 	protected void initializeFrame()
 	{		
+		// On flush le contenu des listes
+		panelGroups.getListScrollData().removeAll();
+		panelLists.getListScrollData().removeAll();
+		panelKeys.getListScrollData().removeAll();
+		
 		// On remplit la liste de groupes
-		// TODO
+		Object[] keyGroups = uiKeyboard.getKeyGroups().toArray();
+		//Arrays.sort(keyGroups,);
+		
+		for (int i = 0 ; i < keyGroups.length ; ++i)
+		{
+			System.out.println(((UIKeyGroup)keyGroups[i]).toString());
+		}
+		
+//		panelGroups.getList().getModel()
+		Vector<String> T = new Vector<String>();
+		T.add("sdflksjfl");
+		T.add("sfdsdf");
+		
+		panelGroups.getList().setListData(T);
+		
+		//add(panelGroups.getListScrollData());
+		
+		System.out.println(panelGroups.getList().getModel().getSize());
 		
 	}
 	
@@ -182,7 +206,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            2,							// Nombre de lignes occupées
-	            90,							// Taille horizontale relative
+	            95,							// Taille horizontale relative
 	            100,						// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
@@ -198,7 +222,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            10,							// Taille horizontale relative
+	            5,							// Taille horizontale relative
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
@@ -214,7 +238,7 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            1,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            10,							// Taille horizontale relative
+	            5,							// Taille horizontale relative
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
@@ -305,8 +329,6 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            0							// Espace intérieur en Y
 	    );
 		gbLayoutPanelClassedKey.setConstraints(panelKeys, gbConstPanelKeys);
-
-
 	}
 	
 	protected void createPanelClose()
