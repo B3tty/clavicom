@@ -26,6 +26,7 @@
 package clavicom.gui.utils;
 
 import javax.swing.JFrame;
+import javax.swing.JRootPane;
 
 import com.sun.jna.examples.WindowUtils;
 
@@ -48,7 +49,7 @@ public class UITranslucentFrame extends JFrame
 		super();
 	
 		// On enleve la barre de fenêtre
-        setUndecorated(true);
+		getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 
         // On pack
         pack();

@@ -319,7 +319,9 @@ public class Application
 	{
 		try
 		{
+			
 			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
+
 		}
 		catch (Exception ex)
 		{
