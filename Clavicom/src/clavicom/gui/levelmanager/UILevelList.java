@@ -31,6 +31,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -40,6 +41,7 @@ import javax.swing.JTextField;
 
 import clavicom.CFilePaths;
 import clavicom.tools.TImageUtils;
+import de.javasoft.plaf.synthetica.SyntheticaLookAndFeel;
 
 public class UILevelList extends JPanel
 {
@@ -59,8 +61,8 @@ public class UILevelList extends JPanel
 	private JPanel panelScrollNorth;		// Sous panel de scroll
 	
 	// Composants
-	private JList listData;					// Liste contenant les données
-	private JScrollPane listScrollData;		// Liste contenant les données (avec ascenseurs)
+	private JList list;					// Liste contenant les données
+	private JScrollPane listScroll;		// Liste contenant les données (avec ascenseurs)
 	
 	private JTextField textElement;			// Textbox pour l'element
 	
@@ -281,7 +283,7 @@ public class UILevelList extends JPanel
 	private void createListPanel()
 	{
 		panelList.setLayout(new BorderLayout());
-		panelList.add(listScrollData);
+		panelList.add(listScroll);
 	}
 	
 	private void createObjects()
@@ -296,9 +298,10 @@ public class UILevelList extends JPanel
 		
 		textElement = new JTextField();
 		
-		listData = new JList();
-		listScrollData = new JScrollPane(listData);
-		//listData.setBorder(textElement.getBorder());
+		list = new JList();
+		listScroll = new JScrollPane(list);
+		listScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		btAddElement = new JButton();
 		btRemoveElement = new JButton();
@@ -336,9 +339,14 @@ public class UILevelList extends JPanel
 		return btUp;
 	}
 
-	public JList getListData()
+	public JList getList()
 	{
-		return listData;
+		return list;
+	}
+	
+	public void setListData(Vector<String> test)
+	{
+		list.setListData(test);
 	}
 
 	public JPanel getPanelEdit()
@@ -378,6 +386,6 @@ public class UILevelList extends JPanel
 
 	public JScrollPane getListScrollData()
 	{
-		return listScrollData;
+		return listScroll;
 	}
 }

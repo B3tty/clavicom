@@ -135,5 +135,10 @@ public class UIKeyGroup
 		keyLists.removeAll(listsToDelete);		
 	}
 	
+	@Override
+	public String toString()
+	{
+		return coreKeyGroup.toString();
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

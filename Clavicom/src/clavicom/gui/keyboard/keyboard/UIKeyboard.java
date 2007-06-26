@@ -1095,5 +1095,12 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		return keyGroups;
 	}
 	
+	@Override
+	public String toString()
+	{
+		System.out.println(coreKeyboard.toString());
+		return coreKeyboard.toString();
+	}
+	
 	
 }

@@ -32,12 +32,14 @@ package test.gui;
 //import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 
-//import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-//import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.engine.CLevelEngine;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
-//import clavicom.core.profil.CProfil;
+import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.UIKeyCreationEngine;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
-//import clavicom.gui.levelmanager.UILevelList;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.message.UIMessageEngine;
 
@@ -53,31 +55,34 @@ public class testLevelEditor
 			
 			CMessageEngine.createInstance();
 			new UIMessageEngine();
-//			
-//			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
-//			
-//			//		 Chargement des UIString et shortcutset
+			
+			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
+			
+			//		 Chargement des UIString et shortcutset
 			UIString.LoadUIStringFile("Ressources\\Application\\LanguagesUI\\francais.clg");
-//			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
-//			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
-//			
-//			
-//			
-//			// Chemins
-//			String input = "Ressources\\Temp\\profil3.xml";
-//			
-//			// Chargement du profil
-//			CProfil.createInstance(input);
-//			CProfil profil = CProfil.getInstance();
-//			
-//			
-//			profil.loadProfileLanguageUIName();
-//			profil.loadProfileCommandSetName();
-//			profil.loadProfileShortCutName();
-//			profil.loadProfile();
+			CCommandSet.CreateInstance("Ressources\\Application\\CommandSets\\francais.ccs");
+			CShortcutSet.CreateInstance("Ressources\\Application\\ShortcutSets\\default.css");
+
+			UIKeyCreationEngine.createInstance();
+			
+			// Chemins
+			String input = "Ressources\\Temp\\profil3.xml";
+			
+			// Chargement du profil
+			CProfil.createInstance(input);
+			CProfil profil = CProfil.getInstance();
+			
+			
+			profil.loadProfileLanguageUIName();
+			profil.loadProfileCommandSetName();
+			profil.loadProfileShortCutName();
+			profil.loadProfile();
+			
+			UIKeyboard uiKeyboard = new UIKeyboard(profil.getKeyboard(),new CLevelEngine(profil.getKeyboard()));
 			
 
 			UILevelManagerFrame temp = new UILevelManagerFrame();
+			temp.setUIKeyboard(uiKeyboard);
 			
 			temp.setVisible(true);
 			
