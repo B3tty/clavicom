@@ -127,6 +127,13 @@ public class CKeyString extends CKeyDynamicString
 		else
 			return caption;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_STRING") +
+					" [" + baseString + "]");
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

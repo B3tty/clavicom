@@ -202,4 +202,16 @@ public class CKeyGroup
 	{
 		keyListList.removeAll( coreKeyListList );
 	}
+
+	public String getCaption()
+	{
+		return caption;
+	}
+
+	public void setCaption(String caption)
+	{
+		this.caption = caption;
+	}
+	
+	
 }

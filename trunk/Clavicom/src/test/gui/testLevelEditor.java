@@ -25,7 +25,7 @@
 
 package test.gui;
 
-import java.awt.Dimension;
+//import java.awt.Dimension;
 //import java.awt.GridLayout;
 
 //import javax.swing.JFrame;
@@ -78,8 +78,6 @@ public class testLevelEditor
 			
 
 			UILevelManagerFrame temp = new UILevelManagerFrame();
-			
-			temp.setSize(new Dimension(240,320));
 			
 			temp.setVisible(true);
 			

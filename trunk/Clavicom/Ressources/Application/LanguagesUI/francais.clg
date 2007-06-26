@@ -376,12 +376,16 @@
 	<message id = "FR_OPTIONS_KEYCLAVICOM">Edition de touche</message>
 	
 	<!-- Level editor --> 
+	<message id = "FR_LEVEL_EDITOR_TITLE">Configuration des niveaux de défilement</message>
+	
 	<message id = "FR_LEVEL_EDITOR_UNCLASSED_BORDER">Touches non classées</message>
 	<message id = "FR_LEVEL_EDITOR_CLASSED_BORDER">Touches classées</message>
 	
-	<message id = "FR_LEVEL_EDITOR_CLASSED_GROUPS_BORDER">Touches classées</message>
-	<message id = "FR_LEVEL_EDITOR_CLASSED_LISTS_BORDER">Touches classées</message>
-	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Touches classées</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_GROUPS_BORDER">Groupes</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_LISTS_BORDER">Listes</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Touches</message>
+	
+	<message id = "FR_LEVEL_EDITOR_BT_OK">OK</message>
 	
 	<!-- Key creation -->
 	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
@@ -478,5 +482,17 @@
 	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Texte</message>
 	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Image</message>
 	
+	<!-- ========================================================================== 
+		To String des Keys
+	==========================================================================  -->
+	<message id = "ST_KEY_TOSTRING_CHARACTER">Caractère</message>
+	<message id = "ST_KEY_TOSTRING_CLAVICOM">Clavicom</message>
+	<message id = "ST_KEY_TOSTRING_CREATION">Création</message>
+	<message id = "ST_KEY_TOSTRING_LASTWORD">Dernier mot</message>
+	<message id = "ST_KEY_TOSTRING_LAUNCHER">Lancement d'application</message>
+	<message id = "ST_KEY_TOSTRING_LEVEL">Niveau</message>
+	<message id = "ST_KEY_TOSTRING_PREDICTION">Prédiction</message>
+	<message id = "ST_KEY_TOSTRING_SHORTCUT">Raccourci</message>
+	<message id = "ST_KEY_TOSTRING_STRING">Chaîne</message>	
 	
 </language>

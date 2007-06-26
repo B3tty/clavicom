@@ -30,6 +30,7 @@ import java.awt.Color;
 import org.jdom.Element;
 
 import clavicom.CFilePaths;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
 
@@ -99,5 +100,10 @@ public class CKeyPrediction extends CKeyDynamicString
 			return caption;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return ( 	UIString.getUIString("ST_KEY_TOSTRING_PREDICTION"));
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
