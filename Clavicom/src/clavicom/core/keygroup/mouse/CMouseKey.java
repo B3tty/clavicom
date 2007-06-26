@@ -27,6 +27,7 @@ package clavicom.core.keygroup.mouse;
 
 import java.awt.Color;
 
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.CKey;
 
 public abstract class CMouseKey extends CKey
@@ -50,7 +51,7 @@ public abstract class CMouseKey extends CKey
 	
 	public String getCaption()
 	{
-		return caption;
+		return CFilePaths.getPictures() + caption;
 	}
 
 	public void setCaption(String caption)

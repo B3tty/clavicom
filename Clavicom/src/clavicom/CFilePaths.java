@@ -47,33 +47,33 @@ public class CFilePaths
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
-	private static String toolKeyCharacterPicture = pictures + "character.png";
-	private static String toolKeyLauncherPicture = pictures + "launch.png";
-	private static String toolKeyLastWordPicture = pictures + "last_word.png";
-	private static String toolKeyPredictionPicture = pictures + "prediction.png";
-	private static String toolKeyShortCutPicture = pictures + "shortcut.png";
-	private static String toolKeyStringPicture = pictures + "string.png";
-	private static String toolKeyLevelSHIFTPicture = pictures + "shift.png";
-	private static String toolKeyLevelALTGRPicture = pictures + "altgr.png";
-	private static String toolKeyClavicomClosePicture = pictures + "close.png";
-	private static String toolKeyClavicomConfigurationPicture = pictures + "configuration.png";
-	private static String toolKeyClavicomSwitchSouricomPicture = pictures + "mouse.png";
+	private static String toolKeyCharacterPicture = "character.png";
+	private static String toolKeyLauncherPicture = "launch.png";
+	private static String toolKeyLastWordPicture = "last_word.png";
+	private static String toolKeyPredictionPicture = "prediction.png";
+	private static String toolKeyShortCutPicture = "shortcut.png";
+	private static String toolKeyStringPicture = "string.png";
+	private static String toolKeyLevelSHIFTPicture = "shift.png";
+	private static String toolKeyLevelALTGRPicture = "altgr.png";
+	private static String toolKeyClavicomClosePicture = "close.png";
+	private static String toolKeyClavicomConfigurationPicture = "configuration.png";
+	private static String toolKeyClavicomSwitchSouricomPicture = "mouse.png";
 	
 	// mouse picture
-	private static String toolKeyMouseUp = pictures + "mouseUp.png";
-	private static String toolKeyMouseDown = pictures + "mouseDown.png";
-	private static String toolKeyMouseLeft = pictures + "mouseLeft.png";
-	private static String toolKeyMouseRight = pictures + "mouseRight.png";
-	private static String toolKeyMouseClavicom = pictures + "HardwareKeyboard.png";
-	private static String toolKeyMouseGeneralClick = pictures + "mouse.png";
+	private static String toolKeyMouseUp = "mouseUp.png";
+	private static String toolKeyMouseDown = "mouseDown.png";
+	private static String toolKeyMouseLeft = "mouseLeft.png";
+	private static String toolKeyMouseRight = "mouseRight.png";
+	private static String toolKeyMouseClavicom = "HardwareKeyboard.png";
+	private static String toolKeyMouseGeneralClick = "mouse.png";
 	
-	private static String levelEditorAdd = pictures + "add.png";
-	private static String levelEditorRemove = pictures + "remove.png";
+	private static String levelEditorAdd = "add.png";
+	private static String levelEditorRemove = "remove.png";
 	
-	private static String levelEditorUp = pictures + "up.png";
-	private static String levelEditorDown = pictures + "down.png";	
+	private static String levelEditorUp = "up.png";
+	private static String levelEditorDown = "down.png";	
 	
-	private static String defaultPicture = pictures + "default.png";
+	private static String defaultPicture = "default.png";
 
 	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
 

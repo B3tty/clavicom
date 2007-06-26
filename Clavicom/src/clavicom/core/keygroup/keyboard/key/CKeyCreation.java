@@ -30,6 +30,7 @@ import java.awt.Color;
 import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 
+import clavicom.CFilePaths;
 import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TPoint;
@@ -127,7 +128,7 @@ public class CKeyCreation extends CKeyOneLevel
 	@Override
 	public String getCaption()
 	{
-		return caption;
+		return CFilePaths.getPictures() + caption;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
