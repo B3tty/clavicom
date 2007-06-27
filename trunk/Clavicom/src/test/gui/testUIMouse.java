@@ -30,6 +30,7 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
+import clavicom.CFilePaths;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
@@ -70,7 +71,7 @@ public class testUIMouse
 			
 			
 			// Chemins
-			String input = "Ressources\\Temp\\profil.xml";
+			String input = "Ressources\\Temp\\profil3.xml";
 			
 			// Chargement du profil
 			CProfil.createInstance(input);
@@ -98,11 +99,13 @@ public class testUIMouse
 			
 			frame = new UITranslucentFrame( profil.getTransparency().getKeyboardTransparencyPourcent() );
 			
-			UIMouse uimouse = new UIMouse( mouse, frame );
+			UIMouse uimouse = new UIMouse( mouse );
 			
+			
+			
+			ClickEngine.createInstance( CFilePaths.getToolDllMouseHookPath() );
+			DefilementEngine.createInstance();
 			CMouseEngine.createInstance( mouse );
-			
-		
 			
 			frame.setFocusableWindowState(true);
 			frame.setAlwaysOnTop(true);
@@ -157,7 +160,6 @@ public class testUIMouse
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
 			
-			clickEngine.startHook();
 			
 		}
 		catch(Exception e)
