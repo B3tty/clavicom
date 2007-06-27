@@ -27,9 +27,6 @@ package clavicom.core.profil;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
-import javax.swing.JFrame;
-
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -226,18 +223,13 @@ public class CProfil
 		this.shortcutSetName = shortcutSetName;
 	}
 
-	public void saveProfil(
-			JFrame clavicomFrame,
-			JFrame souricomFrame
-			) throws Exception
+	public void saveProfil() throws Exception
 	{
-		saveProfilAs(profilFilePath, clavicomFrame, souricomFrame);
+		saveProfilAs(profilFilePath);
 	}
 	
 	public void saveProfilAs( 
-			String profilFilePath,
-			JFrame clavicomFrame,
-			JFrame souricomFrame) throws Exception
+			String profilFilePath) throws Exception
 	{
 		// ===============================================================
 		// Création de la structure SAX
@@ -295,7 +287,6 @@ public class CProfil
 		// ===============================================================
 		// Attachement des option avancés
 		// ===============================================================
-		advancedOption.recalculateFramesPosition( clavicomFrame, souricomFrame );
 		racine.addContent( advancedOption.buildNode() );
 		
 		// ===============================================================
