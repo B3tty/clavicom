@@ -28,7 +28,6 @@ package clavicom.gui.keyboard.key;
 import java.awt.Dimension;
 import java.awt.Point;
 
-
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.tools.TPoint;
 

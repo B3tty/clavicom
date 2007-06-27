@@ -49,6 +49,7 @@ import javax.swing.event.ListSelectionListener;
 
 import clavicom.CFilePaths;
 import clavicom.core.message.CMessageEngine;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
@@ -475,13 +476,45 @@ public class UILevelManagerFrame extends JFrame
 	
 	protected void onListUnclassedKeySelection(ListSelectionEvent arg0)
 	{
-		// TODO (à compléter)
 		updateEnableState();
 	}
 
 	protected void onBtClassKeyPressed()
 	{
-		// TODO Auto-generated method stub
+		// On vérifie qu'on a bien une liste selectionnée
+		UIKeyList selectedList;
+		if(panelLists.getList().getSelectedValue() instanceof UIKeyList)
+		{
+			selectedList = (UIKeyList) panelLists.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
+		
+		// Récupération des indices des keys selectionnée
+		int[] selectedIndices = listUnclassedKeys.getSelectedIndices();
+		
+		
+		// Ajout de toutes les touches selectionnées
+		for (int i = 0 ; i < selectedIndices.length ; ++i )
+		{
+			if(uiKeyboard.classKeyToUIList((UIKeyKeyboard)listUnclassedKeys.getModel().getElementAt(i), selectedList) == false)
+			{
+				CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_1") + 
+										listUnclassedKeys.getModel().getElementAt(i).toString() +
+										UIString.getUIString("MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_2"));
+			}
+		}
+		
+		// On met a jour la liste des keys non classées
+		updateListUnclassedKeysContaint();
+		
+		// On met a jour la liste des keys
+		updateListKeysContaint();
+		
+		// On met a jour la selection
+		updateEnableState();
 	}
 
 	protected void onBtClassKeyAutomaticPressed()
@@ -492,6 +525,15 @@ public class UILevelManagerFrame extends JFrame
 	protected void onBtClosePressed()
 	{
 		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
+		try
+		{
+			CProfil.getInstance().saveProfil();
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
 		System.exit(0);
 	}	
 	
