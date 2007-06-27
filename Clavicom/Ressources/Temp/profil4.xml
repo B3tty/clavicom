@@ -6,8 +6,8 @@
   <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
-      <red>204</red>
-      <green>204</green>
+      <red>200</red>
+      <green>200</green>
       <blue>255</blue>
     </back_color>
     <default_normal>
@@ -17,21 +17,21 @@
     </default_normal>
     <default_clicked>
       <red>238</red>
-      <green>236</green>
+      <green>50</green>
       <blue>228</blue>
     </default_clicked>
     <default_entered>
       <red>238</red>
       <green>236</green>
-      <blue>228</blue>
+      <blue>50</blue>
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>94</keyboard_transparency>
+    <keyboard_transparency>76</keyboard_transparency>
     <key_transparency>25</key_transparency>
   </transparency>
   <sound>
-    <on_defil active="false" />
+    <on_defil active="true" />
     <on_click active="true" />
     <on_survol active="true" />
   </sound>
@@ -43,9 +43,9 @@
     <temporisation value="10" />
   </navigation>
   <font>
-    <name>Arial</name>
+    <name>BatangChe</name>
     <auto_size>false</auto_size>
-    <size>0.0</size>
+    <size>0.25</size>
     <auto_color>false</auto_color>
     <color>
       <red>102</red>
@@ -57,43 +57,43 @@
     <shadow>true</shadow>
   </font>
   <advanced_options>
-    <click_souricom>LEFT_RELEASE</click_souricom>
+    <click_souricom>RIGHT_RELEASE</click_souricom>
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.17773438</x>
-        <y>0.17838542</y>
+        <x>0.09375</x>
+        <y>0.013020833</y>
       </left_up>
       <right_down>
-        <x>0.7470703</x>
-        <y>0.50390625</y>
+        <x>0.8574219</x>
+        <y>0.46484375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.0</x>
-        <y>0.0</y>
+        <x>0.6542969</x>
+        <y>0.50390625</y>
       </left_up>
       <right_down>
-        <x>0.625</x>
-        <y>0.5729167</y>
+        <x>0.9902344</x>
+        <y>0.9296875</y>
       </right_down>
     </souricom_frame_position>
     <start_with_os>false</start_with_os>
     <nb_defil_turn>3</nb_defil_turn>
   </advanced_options>
   <keyboard>
-    <keygroup caption="groupe de ouf" order="0" visible="true">
-      <keylist order="0" caption="liste gauche">
-        <keylevel order="0" caption_image="false">
+    <keygroup caption="Clavicom" order="0" visible="true">
+      <keylist order="0" caption="Clavicom 1">
+        <keyclavicom order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.55227554</x>
-              <y>0.71370965</y>
+              <x>0.5706874</x>
+              <y>0.11904762</y>
             </point>
             <point position="max">
-              <x>0.6285363</x>
-              <y>0.875</y>
+              <x>0.7081712</x>
+              <y>0.32539684</y>
             </point>
           </coordinates>
           <colors>
@@ -113,84 +113,9 @@
               <blue>99</blue>
             </color_entered>
           </colors>
-          <caption>Keylevel 1</caption>
-          <level>ALT_GR</level>
-        </keylevel>
-      </keylist>
-      <keylist order="1" caption="liste magique">
-        <keystring order="0" caption_image="true">
-          <coordinates>
-            <point position="min">
-              <x>0.7137255</x>
-              <y>0.26548672</y>
-            </point>
-            <point position="max">
-              <x>0.8379085</x>
-              <y>0.7654867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>189</red>
-              <green>189</green>
-              <blue>189</blue>
-            </color_normal>
-            <color_clicked>
-              <red>204</red>
-              <green>0</green>
-              <blue>204</blue>
-            </color_clicked>
-            <color_entered>
-              <red>255</red>
-              <green>153</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption>1.png</caption>
-          <base_string>ta pute</base_string>
-          <order_dynamic>12</order_dynamic>
-        </keystring>
-      </keylist>
-    </keygroup>
-    <keygroup caption="groupe de ouf 2" order="1" visible="true">
-      <keylist order="0" caption="liste super">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.5183246</x>
-              <y>0.35185185</y>
-            </point>
-            <point position="max">
-              <x>0.61675394</x>
-              <y>0.6111111</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>215</red>
-              <green>100</green>
-              <blue>98</blue>
-            </color_normal>
-            <color_clicked>
-              <red>50</red>
-              <green>100</green>
-              <blue>80</blue>
-            </color_clicked>
-            <color_entered>
-              <red>29</red>
-              <green>19</green>
-              <blue>99</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>s</caption_level_1>
-          <caption_level_2>d</caption_level_2>
-          <caption_level_3>f</caption_level_3>
-          <commands>
-            <command_normal id="173" />
-            <command_shift id="173" />
-            <command_altgr id="172" />
-          </commands>
-        </keycharacter>
+          <caption>close.png</caption>
+          <action>CLOSE_APPLICATION</action>
+        </keyclavicom>
         <keyclavicom order="1" caption_image="true">
           <coordinates>
             <point position="min">
@@ -222,15 +147,17 @@
           <caption>mouse.png</caption>
           <action>SWITCH_KEYBOARD_MOUSE</action>
         </keyclavicom>
-        <keyclavicom order="2" caption_image="true">
+      </keylist>
+      <keylist order="1" caption="Clavicom 2">
+        <keyclavicom order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.40677965</x>
-              <y>0.19512194</y>
+              <x>0.80150217</x>
+              <y>0.10429448</y>
             </point>
             <point position="max">
-              <x>0.46161515</x>
-              <y>0.5691057</y>
+              <x>0.85622317</x>
+              <y>0.47239265</y>
             </point>
           </coordinates>
           <colors>
@@ -254,23 +181,25 @@
           <action>OPEN_CONFIGURATION</action>
         </keyclavicom>
       </keylist>
-      <keylist order="1" caption="liste test">
-        <keystring order="0" caption_image="true">
+    </keygroup>
+    <keygroup caption="Chaînes" order="1" visible="true">
+      <keylist order="0" caption="Chaîne 2">
+        <keystring order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.21237694</x>
-              <y>0.34418604</y>
+              <x>0.33333334</x>
+              <y>0.01984127</y>
             </point>
             <point position="max">
-              <x>0.33614627</x>
-              <y>0.48372093</y>
+              <x>0.52010375</x>
+              <y>0.22619048</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>189</red>
-              <green>189</green>
-              <blue>189</blue>
+              <red>255</red>
+              <green>153</green>
+              <blue>0</blue>
             </color_normal>
             <color_clicked>
               <red>204</red>
@@ -278,8 +207,74 @@
               <blue>204</blue>
             </color_clicked>
             <color_entered>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption>Phrase à la con</caption>
+          <base_string>Mais euh !!! Caca prout prout!</base_string>
+          <order_dynamic>12</order_dynamic>
+        </keystring>
+      </keylist>
+      <keylist order="1" caption="Chaîne 1">
+        <keystring order="0" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.7982833</x>
+              <y>0.70552146</y>
+            </point>
+            <point position="max">
+              <x>0.8669528</x>
+              <y>0.9202454</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
               <red>255</red>
               <green>153</green>
+              <blue>153</blue>
+            </color_normal>
+            <color_clicked>
+              <red>204</red>
+              <green>0</green>
+              <blue>204</blue>
+            </color_clicked>
+            <color_entered>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption>1.png</caption>
+          <base_string>coucou write</base_string>
+          <order_dynamic>12</order_dynamic>
+        </keystring>
+        <keystring order="1" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.10944206</x>
+              <y>0.11042945</y>
+            </point>
+            <point position="max">
+              <x>0.17489271</x>
+              <y>0.6380368</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>255</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_normal>
+            <color_clicked>
+              <red>204</red>
+              <green>0</green>
+              <blue>204</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
               <blue>255</blue>
             </color_entered>
           </colors>
@@ -289,17 +284,79 @@
         </keystring>
       </keylist>
     </keygroup>
-    <keygroup caption="groupe de ouf 3" order="2" visible="true">
-      <keylist order="0" caption="hello !">
-        <keylevel order="0" caption_image="false">
+    <keygroup caption="Niveau" order="2" visible="true">
+      <keylist order="0" caption="Niveau 1">
+        <keylevel order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.16362192</x>
-              <y>0.04494382</y>
+              <x>0.012875536</x>
+              <y>0.3121019</y>
             </point>
             <point position="max">
-              <x>0.26449564</x>
-              <y>0.24494383</y>
+              <x>0.080472104</x>
+              <y>0.53503186</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>1.png</caption>
+          <level>ALT_GR</level>
+        </keylevel>
+        <keylevel order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.012875536</x>
+              <y>0.050955415</y>
+            </point>
+            <point position="max">
+              <x>0.08154506</x>
+              <y>0.27388534</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>215</red>
+              <green>100</green>
+              <blue>98</blue>
+            </color_normal>
+            <color_clicked>
+              <red>50</red>
+              <green>100</green>
+              <blue>80</blue>
+            </color_clicked>
+            <color_entered>
+              <red>29</red>
+              <green>19</green>
+              <blue>99</blue>
+            </color_entered>
+          </colors>
+          <caption>SHIFT</caption>
+          <level>SHIFT</level>
+        </keylevel>
+        <keylevel order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.34120172</x>
+              <y>0.65030676</y>
+            </point>
+            <point position="max">
+              <x>0.41738197</x>
+              <y>0.81595093</y>
             </point>
           </coordinates>
           <colors>
@@ -323,83 +380,18 @@
           <level>ALT_GR</level>
         </keylevel>
       </keylist>
-      <keylist order="1" caption="liste nulle">
-        <keystring order="0" caption_image="true">
-          <coordinates>
-            <point position="min">
-              <x>0.021300448</x>
-              <y>0.035519127</y>
-            </point>
-            <point position="max">
-              <x>0.14573991</x>
-              <y>0.9699454</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>189</red>
-              <green>189</green>
-              <blue>189</blue>
-            </color_normal>
-            <color_clicked>
-              <red>204</red>
-              <green>0</green>
-              <blue>204</blue>
-            </color_clicked>
-            <color_entered>
-              <red>255</red>
-              <green>153</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption>1.png</caption>
-          <base_string>coucou write</base_string>
-          <order_dynamic>12</order_dynamic>
-        </keystring>
-        <keylevel order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.105882354</x>
-              <y>0.37168142</y>
-            </point>
-            <point position="max">
-              <x>0.20130719</x>
-              <y>0.7876106</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>215</red>
-              <green>100</green>
-              <blue>98</blue>
-            </color_normal>
-            <color_clicked>
-              <red>50</red>
-              <green>100</green>
-              <blue>80</blue>
-            </color_clicked>
-            <color_entered>
-              <red>29</red>
-              <green>19</green>
-              <blue>99</blue>
-            </color_entered>
-          </colors>
-          <caption>SHIFT</caption>
-          <level>SHIFT</level>
-        </keylevel>
-      </keylist>
     </keygroup>
-    <keygroup caption="Rien" order="3" visible="true">
-      <keylist order="0" caption="Rien liste">
-        <keyclavicom order="0" caption_image="true">
+    <keygroup caption="Caractères" order="3" visible="true">
+      <keylist order="0" caption="Caractères 1">
+        <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.9193717</x>
-              <y>0.5740741</y>
+              <x>0.667382</x>
+              <y>0.34355828</y>
             </point>
             <point position="max">
-              <x>0.98743457</x>
-              <y>0.8564815</y>
+              <x>0.76609445</x>
+              <y>0.607362</y>
             </point>
           </coordinates>
           <colors>
@@ -419,9 +411,15 @@
               <blue>99</blue>
             </color_entered>
           </colors>
-          <caption>close.png</caption>
-          <action>CLOSE_APPLICATION</action>
-        </keyclavicom>
+          <caption_level_1>kjjj</caption_level_1>
+          <caption_level_2>d</caption_level_2>
+          <caption_level_3>f</caption_level_3>
+          <commands>
+            <command_normal id="58" />
+            <command_shift id="173" />
+            <command_altgr id="172" />
+          </commands>
+        </keycharacter>
       </keylist>
     </keygroup>
   </keyboard>
