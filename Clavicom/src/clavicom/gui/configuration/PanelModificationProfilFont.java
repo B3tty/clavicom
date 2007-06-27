@@ -315,7 +315,9 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 				if( font.getFontName() != selectedFont.getFontName() )
 				{
 					if(saveData)
+					{
 						font.setFontName( selectedFont.getFontName() );
+					}
 					
 					retour = true;
 				}
@@ -342,7 +344,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 				if( object2 instanceof Integer )
 				{
 					int size = (Integer)object2;
-					float heightFactor = (float)(size/100);
+					float heightFactor = ((float)size)/100;
 					if( font.getHeightFactor() != heightFactor )
 					{
 						if(saveData)

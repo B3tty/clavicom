@@ -104,7 +104,8 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			// Enregistrement des paramètres
 			try
 			{
-				CProfil.getInstance().saveProfil( frameKeyboard, frameMouse );
+				CProfil.getInstance().getAdvancedOption().recalculateFramesPosition( frameKeyboard, frameMouse);
+				CProfil.getInstance().saveProfil( );
 			}
 			catch (Exception ex)
 			{

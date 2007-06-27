@@ -26,14 +26,11 @@
 package clavicom.gui.keyboard.keyboard;
 
 import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -47,11 +44,9 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
 import clavicom.CFilePaths;
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
@@ -84,20 +79,16 @@ import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
-import clavicom.gui.utils.UITranslucentPanel;
+import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UITranslucentPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
+public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
-	
-	final int TAILLE_CONTOUR = 3;				// Taille du contour
-	final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 	
 	final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
@@ -131,6 +122,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	private CLevelEngine levelEngine;			// Gestionnaire de niveau
 	
 	private EventListenerList listeners;		// Listeners sur le keyboard
+	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
@@ -589,50 +581,7 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 	//-----------------------------------------------------------------------
 	// Dessin
 	//-----------------------------------------------------------------------	
-	protected BufferedImage recreateBackground()
-	{			
-		// Variables
-		Color bgdColor = CProfil.getInstance().getDefaultColor().getBackColor().getColor();
-		Graphics2D buffer;
-		BufferedImage image;
-		
-		// Création de l'image
-		image = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
-		buffer = (Graphics2D) image.getGraphics();
-		
-		// Construction du buffer
-		buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		// Création du Paint du premier calque
-		Color vGradientStartColor, vGradientEndColor;
-		vGradientStartColor =  bgdColor.brighter().brighter();
-		vGradientEndColor = bgdColor;				
-
-		Paint vPaint = new GradientPaint(	0, 
-											0, 
-											vGradientStartColor, 
-											0, 
-											getHeight(), 
-											vGradientEndColor, 
-											true);
-		buffer.setPaint(vPaint);
-
-		// Dessin du premier Paint
-		buffer.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
-		
-		// Dessin du contour
-		buffer.setColor(bgdColor.darker());
-		buffer.setStroke(new BasicStroke(TAILLE_CONTOUR));
-		
-		buffer.drawRoundRect(	TAILLE_CONTOUR/2, 
-								TAILLE_CONTOUR/2, 
-								getWidth()-TAILLE_CONTOUR, 
-								getHeight()-TAILLE_CONTOUR,
-								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
-		
-		// Retour
-		return image;
-	}
+	
 	
 	/**
 	 * Créé un Timer de redimension

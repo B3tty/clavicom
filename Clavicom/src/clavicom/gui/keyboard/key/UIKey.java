@@ -47,13 +47,15 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-
+import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
 import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
+import clavicom.gui.listener.KeyEnteredListener;
+import clavicom.gui.listener.KeyPressedListener;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TImageUtils;
 import clavicom.tools.TUIKeyState;
@@ -217,6 +219,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			mouseAdapterEdit = new MouseAdapterEdit();
 			mouseAdapterUse = new MouseAdapterUse();
 			
+			// listener
+			keyEnteredListenerList = new EventListenerList();
+			keyPressedListenerList = new EventListenerList();
+			
 			// On définit la transparence
 			setOpaque(false);
 			isTransparent = true;
@@ -227,7 +233,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			addComponentListener(this);
 
 			// Initialisation des états
-			state = TUIKeyState.NORMAL;
+			setState( TUIKeyState.NORMAL );
 			setEditable(false);
 			
 			// Création du Timer resize
@@ -449,7 +455,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredUse()
 		{
-			state = TUIKeyState.ENTERED;
+			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -458,7 +464,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		protected void buttonExitedUse()
 		{
-			state = TUIKeyState.NORMAL;
+			setState( TUIKeyState.NORMAL );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -467,7 +473,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		protected void buttonPressedUse()
 		{
-			state = TUIKeyState.PRESSED;
+			setState( TUIKeyState.PRESSED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -479,7 +485,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On avertit le noyau du clic
 			getCoreKey().Click();
 			
-			state = TUIKeyState.ENTERED;
+			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -491,7 +497,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredEdit()
 		{
-			state = TUIKeyState.ENTERED;
+			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -500,7 +506,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		protected void buttonExitedEdit()
 		{
-			state = TUIKeyState.NORMAL;
+			setState( TUIKeyState.NORMAL );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -510,7 +516,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		protected void buttonPressedEdit()
 		{					
 			// On selectione la bonne image
-			state = TUIKeyState.PRESSED;
+			setState( TUIKeyState.PRESSED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -519,7 +525,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		protected void buttonReleasedEdit()
 		{					
-			state = TUIKeyState.ENTERED;
+			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
@@ -699,6 +705,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// On écrit le texte
 				bg.setColor(profilFont.getFontColor().getColor());
 				bg.drawString(getCaptionText(),xPosition,yPosition);
+				//bg.drawRect(0, 0, 10, 10)
 			}
 		}
 		
@@ -713,15 +720,15 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				recreateNormalImages();
 			}
 			
-			if (state == TUIKeyState.ENTERED)
+			if ( getState() == TUIKeyState.ENTERED)
 			{
 				currentImage = imgEntered;
 			}
-			else if (state == TUIKeyState.NORMAL)
+			else if ( getState() == TUIKeyState.NORMAL)
 			{
 				currentImage = imgNormal;
 			}
-			else if (state == TUIKeyState.PRESSED)
+			else if ( getState() == TUIKeyState.PRESSED)
 			{
 				currentImage = imgPressed;
 			}
@@ -733,7 +740,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void forceState(TUIKeyState myState)
 		{
-			state = myState;
+			setState( myState );
 			selectGoodImage();
 			repaint();
 		}
@@ -747,6 +754,27 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			getCoreKey().Click();
 		}
 		
+		
+		public TUIKeyState getState()
+		{
+			return state;
+		}
+
+		public void setState(TUIKeyState state)
+		{
+			this.state = state;
+			
+			if( state == TUIKeyState.ENTERED )
+			{
+				fireKeyEnteredCharacter();
+			}
+			if( state == TUIKeyState.PRESSED )
+			{
+				fireKeyPressedCharacter();
+			}
+		}
+		
+
 		/**
 		 * Créé un Timer de redimension
 		 * @return
@@ -786,4 +814,54 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		protected abstract String getCaptionText();
 		protected abstract BufferedImage getCaptionImage();
+		
+		
+		
+		
+		
+		// Listener key Entered et Pressed ==============================================
+		
+		protected EventListenerList keyEnteredListenerList;
+		protected EventListenerList keyPressedListenerList;
+		
+		public void addKeyEnteredListener(KeyEnteredListener l)
+		{
+			this.keyEnteredListenerList.add(KeyEnteredListener.class, l);
+		}
+		public void addKeyPressedListener(KeyPressedListener l)
+		{
+			this.keyPressedListenerList.add(KeyPressedListener.class, l);
+		}
+
+		public void removeKeyEnteredListener(KeyEnteredListener l)
+		{
+			this.keyEnteredListenerList.remove(KeyEnteredListener.class, l);
+		}
+		
+		public void removeKeyPressedListener(KeyPressedListener l)
+		{
+			this.keyPressedListenerList.remove(KeyPressedListener.class, l);
+		}
+
+		protected void fireKeyEnteredCharacter()
+		{
+			KeyEnteredListener[] listeners = (KeyEnteredListener[]) keyEnteredListenerList
+					.getListeners(KeyEnteredListener.class);
+			for ( int i = listeners.length - 1; i >= 0; i-- )
+			{
+				listeners[i].keyEntered();
+			}
+		}
+		
+		protected void fireKeyPressedCharacter()
+		{
+			KeyPressedListener[] listeners = (KeyPressedListener[]) keyPressedListenerList
+					.getListeners(KeyPressedListener.class);
+			for ( int i = listeners.length - 1; i >= 0; i-- )
+			{
+				listeners[i].keyPressed();
+			}
+		}
+
+		// fin Listener ============================================
 }

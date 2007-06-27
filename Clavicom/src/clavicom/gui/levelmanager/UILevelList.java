@@ -61,8 +61,8 @@ public class UILevelList extends JPanel
 	private JPanel panelScrollNorth;		// Sous panel de scroll
 	
 	// Composants
-	private JList list;					// Liste contenant les données
-	private JScrollPane listScroll;		// Liste contenant les données (avec ascenseurs)
+	private JList list;						// Liste contenant les données
+	private JScrollPane listScroll;			// Liste contenant les données (avec ascenseurs)
 	
 	private JTextField textElement;			// Textbox pour l'element
 	

@@ -41,6 +41,7 @@ public class CFilePaths
 	private static String shortcutSets = application + "ShortcutSets\\";
 	private static String pictures = application + "Pictures\\";
 	private static String profils = ressources + "Profiles\\";
+	private static String sounds = application + "Sounds\\";
 	
 	private static String userPictures = profils + "Pictures\\";
 	
@@ -82,6 +83,11 @@ public class CFilePaths
 	
 	private static String defaultPicture = pictures + "default.png";
 
+	
+	// Sound
+	private static String scrollSoundFilePath = sounds + "Scroll.wav";
+	private static String enteredSoundFilePath = sounds + "Scroll.wav";
+	private static String clickSoundFilePath = sounds + "Scroll.wav";
 	
 
 	// ========================================================================
@@ -272,6 +278,21 @@ public class CFilePaths
 	public static String getLevelEditorClassAutomatic()
 	{
 		return levelEditorClassAutomatic;
+	}
+
+	public static String getClickSoundFilePath()
+	{
+		return clickSoundFilePath;
+	}
+
+	public static String getEnteredSoundFilePath()
+	{
+		return enteredSoundFilePath;
+	}
+
+	public static String getScrollSoundFilePath()
+	{
+		return scrollSoundFilePath;
 	}
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	

@@ -24,6 +24,7 @@
 +-----------------------------------------------------------------------------*/
 
 package clavicom.gui.mouse;
+import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -31,6 +32,7 @@ import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TSize;
 
@@ -55,7 +57,7 @@ public class UIMouseFrame extends UITranslucentFrame
 				CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 				CProfil.getInstance().getDefaultColor().getDefaultKeyEntered().getColor() );
 		
-		uiMouse = new UIMouse( cMouse, this );
+		uiMouse = new UIMouse( cMouse );
 		
 		setFocusableWindowState(true);
 		setAlwaysOnTop(true);
@@ -64,7 +66,12 @@ public class UIMouseFrame extends UITranslucentFrame
 
 		setBounds( TSize.getRectangleBound( souricomPosition.getLeftUp(), souricomPosition.getRightDown() ) );
 		
-		add( uiMouse );
+		UIMovingPanel movingPanel = new UIMovingPanel( this );
+		movingPanel.setLayout( new BorderLayout() );
+		movingPanel.setEditable( true );
+		movingPanel.add( uiMouse, BorderLayout.CENTER );
+
+		add( movingPanel );
 		
 		addWindowListener(new WindowListener(){
 

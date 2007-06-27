@@ -270,6 +270,9 @@
 	<!-- CAdvanced_option -->
 	<message id = "EX_ADVANCED_OPTION_BUILD">Construction des options avancés</message>
 	
+	<!-- sound -->
+	<message id = "EX_SOUND_ENGINE_BUILD">Erreur lors du chargement du fichier son </message>
+	
 	
 	<!-- ==========================================================================
 		Messages 

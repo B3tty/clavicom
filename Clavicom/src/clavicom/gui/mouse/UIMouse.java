@@ -25,29 +25,47 @@
 
 package clavicom.gui.mouse;
 
+import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
-import clavicom.gui.utils.UIMovingPanel;
+import clavicom.gui.utils.UIBackgroundPanel;
+import clavicom.tools.TImageUtils;
 import clavicom.tools.TUIKeyState;
 
-public class UIMouse extends UIMovingPanel implements clickMouseHookListener, DefilListener
+public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener, DefilListener, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
+	
+	final int BORDER_SPACE = 5; 
+	final int KEY_SPACE = 2;
+	final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
+												// images est lancé, pendant un resize
 
 	//---------------------------------------------------------- VARIABLES --//
 	CMouse mouse;
@@ -77,18 +95,27 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	JPanel clickPanel;
 	JPanel panelHaut;
 	
+	float opacity;
+	
 	boolean dragAndDropMode; // indique si on est en mode drag and drop
+	
+	private BufferedImage imgBackground;	// Buffer de l'image background
+	
+	private Timer resizeTimer;					// Timer qui une fois expiré demande
+												// le calcul des images
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIMouse( CMouse myMouse, JFrame parent )
+	public UIMouse( CMouse myMouse )
 	{
-		super( parent );
 		
 		mouse = myMouse;
 
 		dragAndDropMode = false;		
 		
 		setLayout( new BorderLayout() );
+		
+		// Récupération de l'opacité
+		opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() / 100;
 		
 		// Construction des UIKeyMouse
 		moveLeft = new UIKeyMouse( mouse.getMoveLeft() );
@@ -111,10 +138,13 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		CKeyClavicom clavSwitchMouseKeyboard = mouse.getSwitchMouseKeyboard();
 		switchMouseKeyboard = new UIKeyClavicom( clavSwitchMouseKeyboard );
 
-		
+		addComponentListener( this );
 		
 		GridBagLayout gbLayoutGlobal = new GridBagLayout();
 		setLayout( gbLayoutGlobal );
+		
+		// création du timer de resize
+		resizeTimer = createResizeTimer();
 		
 		// Ajout des Contraintes de switchMouseKeyboard
 		GridBagConstraints gbConstSwitchMouseKeyboard = new GridBagConstraints (	
@@ -126,7 +156,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            25,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(BORDER_SPACE, BORDER_SPACE, BORDER_SPACE, BORDER_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -143,11 +173,12 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            75,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(BORDER_SPACE, BORDER_SPACE, 0, BORDER_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
 		panelHaut = new JPanel();
+		panelHaut.setOpaque(false);
 		panelHaut.setLayout( new BorderLayout() );
 		gbLayoutGlobal.setConstraints(panelHaut, gbConstPanelHaut);
 		add( panelHaut );
@@ -159,6 +190,8 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		
 
 	}
+	
+	
 	
 	public void startDefilMouse()
 	{
@@ -172,11 +205,59 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		ClickEngine.getInstance().removeChangeLevelListener( this );
 	}
 	
+	/**
+	 * Créé un Timer de redimension
+	 * @return
+	 */
+	protected Timer createResizeTimer()
+	{
+		// Création d'une instance de listener
+		// associée au timer
+		ActionListener action = new ActionListener()
+		{
+			// Méthode appelée à chaque tic du timer
+			public void actionPerformed(ActionEvent event)
+			{
+				resizeTimer.stop();
+				imgBackground = recreateBackground();
+				repaint();
+			}
+		};
+
+		// Création d'un timer qui génère un tic
+		// chaque 500 millième de seconde
+		return new Timer(RESIZE_TIMER_DURATION,action);
+	}
+	
+	
+	public void paintComponent(Graphics myGraphic)
+	{				
+		// On vide le panel
+		myGraphic.clearRect(0, 0, getWidth(), getHeight());
+		
+		// Récupération du Graphics2D
+		Graphics2D g2 = (Graphics2D) myGraphic;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		
+		// Application de la transparence
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+		
+		// On redessine le fond
+		if (imgBackground == null)
+		{
+			imgBackground = recreateBackground();
+		}
+		
+		
+		
+		g2.drawImage(imgBackground, 0, 0, null);
+	}
+	
 
 	private void CreateClickPanel()
 	{
 		clickPanel = new JPanel();
-		
+		clickPanel.setOpaque(false);
 		GridBagLayout gbLayoutMain = new GridBagLayout();
 		clickPanel.setLayout(gbLayoutMain);
 		
@@ -192,7 +273,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -211,7 +292,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -230,7 +311,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -249,7 +330,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -270,7 +351,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            50,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -284,7 +365,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	private void CreateMovePanel()
 	{
 		movePanel = new JPanel();
-		
+		movePanel.setOpaque(false);
 		GridBagLayout gbLayoutMain = new GridBagLayout();
 		movePanel.setLayout(gbLayoutMain);
 		
@@ -300,7 +381,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -319,7 +400,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -338,7 +419,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -357,7 +438,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -378,7 +459,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -396,7 +477,7 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	            33,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(KEY_SPACE, KEY_SPACE, KEY_SPACE, KEY_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -407,6 +488,19 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 		
 
 		
+	}
+	
+	public void componentResized(ComponentEvent arg0)
+	{
+//		 On recalcule le fond
+		// On ettend l'image
+		if (imgBackground != null)
+		{
+			imgBackground = TImageUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+		}
+	
+		//On réarme le timer
+		resizeTimer.restart();
 	}
 
 
@@ -677,6 +771,30 @@ public class UIMouse extends UIMovingPanel implements clickMouseHookListener, De
 	public void setSwitchMouseKeyboard(UIKeyClavicom switchMouseKeyboard)
 	{
 		this.switchMouseKeyboard = switchMouseKeyboard;
+	}
+
+
+
+	public void componentHidden(ComponentEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public void componentMoved(ComponentEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public void componentShown(ComponentEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 
