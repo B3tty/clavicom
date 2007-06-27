@@ -83,7 +83,7 @@
   </advanced_options>
   <keyboard>
     <keygroup caption="groupe de ouf" order="0" visible="true">
-      <keylist order="0" caption = "liste gauche">
+      <keylist order="0" caption="liste gauche">
         <keylevel order="0" caption_image="false">
           <coordinates>
             <point position="min">
@@ -116,7 +116,7 @@
           <level>ALT_GR</level>
         </keylevel>
       </keylist>
-      <keylist order="1" caption = "liste magique">
+      <keylist order="1" caption="liste magique">
         <keystring order="0" caption_image="true">
           <coordinates>
             <point position="min">
@@ -152,7 +152,7 @@
       </keylist>
     </keygroup>
     <keygroup caption="groupe de ouf 2" order="1" visible="true">
-      <keylist order="0" caption = "liste super">
+      <keylist order="0" caption="liste super">
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
@@ -284,7 +284,7 @@
           <action>OPEN_CONFIGURATION</action>
         </keyclavicom>
       </keylist>
-      <keylist order="1" caption = "liste test">
+      <keylist order="1" caption="liste test">
         <keystring order="0" caption_image="true">
           <coordinates>
             <point position="min">
@@ -320,7 +320,7 @@
       </keylist>
     </keygroup>
     <keygroup caption="groupe de ouf 3" order="2" visible="true">
-      <keylist order="0" caption = "hello !">
+      <keylist order="0" caption="hello !">
         <keylevel order="0" caption_image="true">
           <coordinates>
             <point position="min">
@@ -353,7 +353,7 @@
           <level>ALT_GR</level>
         </keylevel>
       </keylist>
-      <keylist order="1" caption = "liste nulle">
+      <keylist order="1" caption="liste nulle">
         <keystring order="0" caption_image="true">
           <coordinates>
             <point position="min">
