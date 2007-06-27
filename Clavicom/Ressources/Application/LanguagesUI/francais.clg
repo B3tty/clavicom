@@ -52,6 +52,7 @@
 	<message id = "EX_KEYLIST_TYPE_LEVEL">Gestion des niveaux</message>
 	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Type de touche inconnu</message>
 	<message id = "EX_KEYLIST_BUILD_LIST">Construction d'une liste</message>
+	<message id = "EX_KEYLIST_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
 	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
 	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Impossible d'ajouter la touche à la liste </message>
 	

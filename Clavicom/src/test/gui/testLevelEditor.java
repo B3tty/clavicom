@@ -82,6 +82,7 @@ public class testLevelEditor
 			
 
 			UILevelManagerFrame temp = new UILevelManagerFrame();
+			
 			temp.setUIKeyboard(uiKeyboard);
 			
 			temp.setVisible(true);

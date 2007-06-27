@@ -38,6 +38,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import clavicom.CFilePaths;
 import clavicom.tools.TImageUtils;
@@ -70,9 +71,14 @@ public class UILevelList extends JPanel
 	private JButton btUp;					// Remonter un element
 	private JButton btDown;					// Redescendre un element
 	
+	private boolean addButton;				// Indique s'il faut ajouter un bouton d'ajout
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UILevelList()
+	public UILevelList(boolean addButton)
 	{
+		// Initialisation des attributs
+		this.addButton = addButton;
+		
 		// Création des elements
 		createObjects();
 		
@@ -163,6 +169,11 @@ public class UILevelList extends JPanel
 		btRemoveElement.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorRemove()),BT_IMAGE_SIZE,-1));
 		
 		textElement.setText("");
+		if (addButton == false)
+		{
+			btAddElement.setVisible(false);
+//			textElement.setVisible(false);
+		}
 
 		// Ajout au panel
 		panelEdit.add(textElement);
@@ -299,8 +310,8 @@ public class UILevelList extends JPanel
 		
 		list = new JList();
 		listScroll = new JScrollPane(list);
-		listScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		listScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		btAddElement = new JButton();
 		btRemoveElement = new JButton();
@@ -316,6 +327,9 @@ public class UILevelList extends JPanel
 		btRemoveElement.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
 		btUp.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
 		btDown.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
+		
+		// Initialisation des composants: 
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
 	public JButton getBtAddElement()
@@ -386,5 +400,50 @@ public class UILevelList extends JPanel
 	public JScrollPane getListScrollData()
 	{
 		return listScroll;
+	}
+	
+	@Override
+	public void enable(boolean enabled)
+	{
+		if (enabled == true)
+		{
+			// On dégrise tout
+			list.setEnabled(true);
+			listScroll.setEnabled(true);
+			textElement.setEnabled(true);
+			btAddElement.setEnabled(true);
+			
+			// On ne dégrise les boutons d'action sur 
+			// l'element selectionné que s'il est selectionné...
+			if (list.getSelectedIndex() != -1)
+			// Un element selectionné
+			{
+				btRemoveElement.setEnabled(true);
+				btUp.setEnabled(true);
+				btDown.setEnabled(true);
+			}
+			else
+			// Rien de selectionné
+			{
+				btRemoveElement.setEnabled(false);
+				btUp.setEnabled(false);
+				btDown.setEnabled(false);				
+			}
+		}
+		else
+		{
+			// On grise tout
+			list.setEnabled(false);
+			listScroll.setEnabled(false);
+			textElement.setEnabled(false);
+			btAddElement.setEnabled(false);
+			btRemoveElement.setEnabled(false);
+			btUp.setEnabled(false);
+			btDown.setEnabled(false);
+			
+			// On vide le contenu de la liste
+			list.clearSelection();
+			list.setListData(new Vector<String>());
+		}
 	}
 }

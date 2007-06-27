@@ -27,6 +27,7 @@ package test.gui;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -78,7 +79,14 @@ public class testLevelList
 			JFrame temp = new JFrame();
 			
 			temp.setLayout(new GridLayout());
-			UILevelList ll = new UILevelList();
+			UILevelList ll = new UILevelList(true);
+			
+			Vector<String> T = new Vector<String>();
+			T.add("111");
+			T.add("222");
+			T.add("333");
+			
+			ll.getList().setListData(T);
 			
 			temp.add(ll);
 			

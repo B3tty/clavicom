@@ -181,7 +181,7 @@ public class CKeyClavicom extends CKeyOneLevel
 	public String toString()
 	{
 		return ( 	UIString.getUIString("ST_KEY_TOSTRING_CLAVICOM") +
-					" [" + TKeyClavicomActionType.getString(action) + "]");
+					" [" + action.toString() + "]");
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

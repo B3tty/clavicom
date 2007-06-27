@@ -1095,6 +1095,11 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		return keyGroups;
 	}
 	
+	public List<UIKeyKeyboard> getUnClassedKey()
+	{
+		return unClassedKey;
+	}
+
 	@Override
 	public String toString()
 	{
