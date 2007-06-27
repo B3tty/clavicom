@@ -23,16 +23,25 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.engine;
+package clavicom.gui.engine.sound;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.io.File;
+import java.net.URL;
 
+import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+
+import sun.audio.AudioDevice;
+
 import clavicom.CFilePaths;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
@@ -49,11 +58,9 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 
 	//---------------------------------------------------------- VARIABLES --//
 	
-	Clip scrollClip;
-	Clip enteredClip;
-	Clip clickedClip;
-	
 	static SoundEngine instance;
+	
+	ThreadSound soundThread;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected SoundEngine( UIKeyboard uiKeyboard ) throws Exception
@@ -73,61 +80,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		
 		DefilementEngine.getInstance().addDefilListener( this );
 		
-
-		// Chargement des sons
-		
-		try
-		{
-			// file
-			File scrollSoundFile = new File( CFilePaths.getScrollSoundFilePath() );
-			
-			// AudioInputStream
-			AudioInputStream ais_scroll = AudioSystem.getAudioInputStream( scrollSoundFile );
-	              
-			DataLine.Info info = new DataLine.Info(Clip.class, ais_scroll.getFormat());      
-			scrollClip = (Clip) AudioSystem.getLine(info);
-			scrollClip.open();
-	        
-		}
-		catch (Exception ex)
-		{
-			throw new Exception(UIString.getUIString("EX_SOUND_ENGINE_BUILD") + "\n" +ex.getMessage() );
-		}
-		
-		try
-		{
-			// file
-			File enteredSoundFile = new File( CFilePaths.getEnteredSoundFilePath() );
-			
-			// AudioInputStream;
-			AudioInputStream ais_entered = AudioSystem.getAudioInputStream( enteredSoundFile );
-			     
-			DataLine.Info info = new DataLine.Info(Clip.class, ais_entered.getFormat());      
-			enteredClip = (Clip) AudioSystem.getLine(info);
-			enteredClip.open();
-		}
-		catch (Exception ex)
-		{
-			throw new Exception(UIString.getUIString("EX_SOUND_ENGINE_BUILD") + "\n" +ex.getMessage() );
-		}
-		
-		try
-		{
-			// file
-			File clickedSoundFile = new File( CFilePaths.getClickSoundFilePath() );
-			
-			// AudioInputStream
-			AudioInputStream ais_clicked = AudioSystem.getAudioInputStream( clickedSoundFile );
-			      
-			DataLine.Info info = new DataLine.Info(Clip.class, ais_clicked.getFormat());      
-			clickedClip = (Clip) AudioSystem.getLine(info);
-			clickedClip.open();
-		}
-		catch (Exception ex)
-		{
-			throw new Exception(UIString.getUIString("EX_SOUND_ENGINE_BUILD") + "\n" +ex.getMessage() );
-		}
-        
+		soundThread = new ThreadSound( CFilePaths.getClickSoundFilePath() );
 	}
 
 
@@ -147,11 +100,8 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		// si on est en mode défilement
 		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
-			if( scrollClip.isRunning() )
-			{
-				scrollClip.stop();
-			}
-			scrollClip.start();
+			soundThread = new ThreadSound( CFilePaths.getClickSoundFilePath() );
+			soundThread.start();
 		}
 	}
 
@@ -167,4 +117,23 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+}
+
+class ThreadSound extends Thread
+{
+	String soundPath;
+	
+	public ThreadSound( String mySoundPath )
+	{
+		soundPath = mySoundPath;
+	}
+	
+	@Override
+	public void run()
+	{
+		super.run();
+		
+		Sound.readAudioFile( soundPath );
+	}
 }

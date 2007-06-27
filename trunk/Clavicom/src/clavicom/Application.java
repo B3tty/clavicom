@@ -43,10 +43,10 @@ import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
-import clavicom.gui.engine.SoundEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
@@ -202,7 +202,7 @@ public class Application
 		
 		// Chargement du moteur de son
 		splash.newStep("Loading sound engine...");
-		//loadSoundEngine();
+		loadSoundEngine();
 		
 		// Fin du chargement
 		splash.newStep("Load complete !");
