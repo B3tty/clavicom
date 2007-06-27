@@ -25,19 +25,6 @@
 
 package clavicom.gui.engine.sound;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.io.File;
-import java.net.URL;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
-import sun.audio.AudioDevice;
 
 import clavicom.CFilePaths;
 import clavicom.core.profil.CProfil;
@@ -46,7 +33,6 @@ import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
-import clavicom.gui.language.UIString;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.listener.KeyEnteredListener;
 import clavicom.gui.listener.KeyPressedListener;
