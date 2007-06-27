@@ -410,8 +410,17 @@ public class UILevelList extends JPanel
 			// On dégrise tout
 			list.setEnabled(true);
 			listScroll.setEnabled(true);
+			
 			textElement.setEnabled(true);
-			btAddElement.setEnabled(true);
+			
+			if (textElement.getText().length() != 0)
+			{
+				btAddElement.setEnabled(true);
+			}
+			else
+			{
+				btAddElement.setEnabled(false);
+			}
 			
 			// On ne dégrise les boutons d'action sur 
 			// l'element selectionné que s'il est selectionné...

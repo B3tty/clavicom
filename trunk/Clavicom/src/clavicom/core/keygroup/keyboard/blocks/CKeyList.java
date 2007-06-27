@@ -287,6 +287,17 @@ public class CKeyList
 		keyList.removeAll( coreKeyList );
 	}
 	
+	
+	public String getCaption()
+	{
+		return caption;
+	}
+
+	public void setCaption(String caption)
+	{
+		this.caption = caption;
+	}
+
 	@Override
 	public String toString()
 	{

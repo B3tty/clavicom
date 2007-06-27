@@ -101,6 +101,19 @@ public class CKeyboard
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public boolean keyGroupExists(String caption)
+	{
+		for (CKeyGroup currentGroup : keyGroupList)
+		{
+			if(currentGroup.getCaption().equals(caption))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public void addKeyGroup( CKeyGroup keyGroup )
 	{
 		keyGroupList.add( keyGroup );

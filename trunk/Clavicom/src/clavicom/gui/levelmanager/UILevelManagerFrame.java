@@ -33,6 +33,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
@@ -46,6 +48,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import clavicom.CFilePaths;
+import clavicom.core.message.CMessageEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
@@ -102,6 +105,9 @@ public class UILevelManagerFrame extends JFrame
 		
 		// Création du panel global
 		createGlobalPanel();
+		
+		// On met a jour les selections
+		updateEnableState();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -137,8 +143,8 @@ public class UILevelManagerFrame extends JFrame
 		// On vide la liste
 		listUnclassedKeys.setListData(new Vector<String>());
 		
-		// On remplit la liste de keys non classées
-		Object[] unClassedKeys = uiKeyboard.getUnClassedKey().toArray();		
+		// On récupère la liste de keys non classées
+		Object[] unClassedKeys = uiKeyboard.getUnClassedKey().toArray();
 		listUnclassedKeys.setListData(unClassedKeys);
 	}
 	
@@ -238,27 +244,30 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onKeySelected(ListSelectionEvent event)
 	{
-		// TODO
-		
 		// On met a jour la selection
 		updateEnableState();
 	}
 	
 	protected void onListTextTyped()
 	{
-		// TODO Auto-generated method stub
-		
+		// On cache le bouton d'ajout s'il n'y a pas de texte
+		if(panelLists.getTextElement().getText().length() == 0)
+		{
+			panelLists.getBtAddElement().setEnabled(false);
+		}
+		else
+		{
+			panelLists.getBtAddElement().setEnabled(true);
+		}
 	}
 
 	protected void onListBtUpClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onListBtRemoveClicked()
 	{
-		// TODO Auto-generated method stub
 		if(panelLists.getList().getSelectedIndex() == -1)
 		{
 			return;
@@ -295,30 +304,53 @@ public class UILevelManagerFrame extends JFrame
 	protected void onListBtDownClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onListBtAddClicked()
 	{
-		// TODO Auto-generated method stub
+		// Création et ajout d'une nouvelle liste
+		// portant le nom du texte tapé
 		
-	}
-
-	protected void onKeyTextTyped()
-	{
-		// TODO Auto-generated method stub
+		// Récupération du groupe selectionné
+		UIKeyGroup selectedGroup;
+		if( panelGroups.getList().getSelectedValue() instanceof UIKeyGroup)
+		{
+			selectedGroup = (UIKeyGroup) panelGroups.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
 		
+		if(uiKeyboard.addUIKeyListToGroup(panelLists.getTextElement().getText(),selectedGroup) == false)
+		{
+			CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_LIST_1") + 
+									panelLists.getTextElement().getText() +
+									UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_LIST_2"),
+									UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_LIST_3"));
+			return;
+		}
+		
+		// On revide le texte
+		panelLists.getTextElement().setText("");
+		
+		// On met a jour la liste des listes
+		updateListListsContaint();
+		
+		// On selectionne le groupe qu'on vient d'ajouter
+		panelLists.getList().setSelectedIndex(panelLists.getList().getModel().getSize() - 1);
+		
+		// On met a jour la selection
+		updateEnableState();
 	}
 
 	protected void onKeyBtUpClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onKeyBtRemoveClicked()
 	{
-		// TODO Auto-generated method stub
 		if(panelKeys.getList().getSelectedIndex() == -1)
 		{
 			return;
@@ -352,24 +384,28 @@ public class UILevelManagerFrame extends JFrame
 	protected void onKeyBtDownClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onGroupTextTyped()
 	{
-		// TODO Auto-generated method stub
-		
+		// On cache le bouton d'ajout s'il n'y a pas de texte
+		if(panelGroups.getTextElement().getText().length() == 0)
+		{
+			panelGroups.getBtAddElement().setEnabled(false);
+		}
+		else
+		{
+			panelGroups.getBtAddElement().setEnabled(true);
+		}
 	}
 
 	protected void onGroupBtUpClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onGroupBtRemoveClicked()
 	{
-		// TODO Auto-generated method stub
 		if(panelGroups.getList().getSelectedIndex() == -1)
 		{
 			return;
@@ -409,13 +445,32 @@ public class UILevelManagerFrame extends JFrame
 	protected void onGroupBtDownClicked()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onGroupBtAddClicked()
 	{
-		// TODO Auto-generated method stub
+		// Création et ajout d'un nouveau groupe
+		// portant le nom du texte tapé
+		if(uiKeyboard.addUIKeyGroup(panelGroups.getTextElement().getText()) == false)
+		{
+			CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_GROUP_1") + 
+									panelGroups.getTextElement().getText() +
+									UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_GROUP_2"),
+									UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_GROUP_3"));
+			return;
+		}
 		
+		// On revide le texte
+		panelGroups.getTextElement().setText("");
+		
+		// On met a jour la liste des groupes
+		updateListGroupsContaint();
+		
+		// On selectionne le groupe qu'on vient d'ajouter
+		panelGroups.getList().setSelectedIndex(panelGroups.getList().getModel().getSize() - 1);
+		
+		// On met a jour la selection
+		updateEnableState();
 	}
 	
 	protected void onListUnclassedKeySelection(ListSelectionEvent arg0)
@@ -427,21 +482,18 @@ public class UILevelManagerFrame extends JFrame
 	protected void onBtClassKeyPressed()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	protected void onBtClassKeyAutomaticPressed()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 	
 	protected void onBtClosePressed()
 	{
 		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
 		System.exit(0);
-	}
-	
+	}	
 	
 	//-----------------------------------------------------------------------
 	// ATTRIBUTS GRAPHIQUES
@@ -650,6 +702,11 @@ public class UILevelManagerFrame extends JFrame
 		panelClassedKeys.add(panelLists);
 		panelClassedKeys.add(panelKeys);
 		
+		// Par défaut tout est deselectionné, sauf le panel de groupes
+		panelGroups.setEnabled(true);
+		panelLists.setEnabled(false);
+		panelClassedKeys.setEnabled(false);
+		
 		// Ajout des bordures
 		panelGroups.setBorder( 	BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
 								UIString.getUIString("FR_LEVEL_EDITOR_CLASSED_GROUPS_BORDER")) );
@@ -777,20 +834,19 @@ public class UILevelManagerFrame extends JFrame
 														 {onKeyBtRemoveClicked();}});
 		
 		// Mise en place des listeners d'entrée de texte
-		panelGroups.getTextElement().addActionListener( new ActionListener()
-														 {public void actionPerformed(ActionEvent arg0)
-														 {onGroupTextTyped();}});
+		panelGroups.getTextElement().addKeyListener( new KeyListener()
+													{public void keyPressed(KeyEvent arg0){}
+													 public void keyTyped(KeyEvent arg0){}
+													 public void keyReleased(KeyEvent arg0)
+													 {onGroupTextTyped();}});
 		
-		panelLists.getTextElement().addActionListener( new ActionListener()
-														 {public void actionPerformed(ActionEvent arg0)
-														 {onListTextTyped();}});
-		
-		panelKeys.getTextElement().addActionListener( new ActionListener()
-														 {public void actionPerformed(ActionEvent arg0)
-														 {onKeyTextTyped();}});	
+		panelLists.getTextElement().addKeyListener( new KeyListener()
+													{public void keyPressed(KeyEvent arg0){}
+													 public void keyTyped(KeyEvent arg0){}
+													 public void keyReleased(KeyEvent arg0)
+													 {onListTextTyped();}});
 	}
 	
-
 	protected void createPanelClose()
 	{		
 		// Affectation de l'action du bouton
