@@ -499,10 +499,10 @@ public class UILevelManagerFrame extends JFrame
 		// Ajout de toutes les touches selectionnées
 		for (int i = 0 ; i < selectedIndices.length ; ++i )
 		{
-			if(uiKeyboard.classKeyToUIList((UIKeyKeyboard)listUnclassedKeys.getModel().getElementAt(i), selectedList) == false)
+			if(uiKeyboard.classKeyToUIList((UIKeyKeyboard)listUnclassedKeys.getModel().getElementAt(selectedIndices[i]), selectedList) == false)
 			{
 				CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_1") + 
-										listUnclassedKeys.getModel().getElementAt(i).toString() +
+										listUnclassedKeys.getModel().getElementAt(selectedIndices[i]).toString() +
 										UIString.getUIString("MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_2"));
 			}
 		}
