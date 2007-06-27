@@ -51,11 +51,13 @@ public class CKeyList
 	//---------------------------------------------------------- VARIABLES --//
 	
 	List<CKeyKeyboard> keyList;
+	String caption; // nom a afficher à l'utilisateur pour afficher ou non ce bloc
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public CKeyList()
+	public CKeyList(String caption)
 	{
 		keyList = new ArrayList<CKeyKeyboard>();
+		this.caption = caption;
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -172,10 +174,19 @@ public class CKeyList
 	{
 		if( node == null  )
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) );
+			throw new Exception("[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : "+ UIString.getUIString( "EX_KEYLIST_NOT_FIND_NODE" ) );
 		}
 		
-		CKeyList keylist = new CKeyList();
+		// =================================================================
+		// Récupération de l'attribut Caption
+		// =================================================================
+		String caption = node.getAttributeValue( TXMLNames.BL_ATTRIBUTE_CAPTION );
+		if( caption == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_KEYLIST_BUILD_LIST" ) + "] : " + UIString.getUIString( "EX_KEYLIST_NOT_FIND_ATTRIBUTE") + " " + TXMLNames.BL_ATTRIBUTE_CAPTION);
+		}
+		
+		CKeyList keylist = new CKeyList(caption);
 		
 		// =================================================================
 		// Récupération des keyboardKey
@@ -239,8 +250,13 @@ public class CKeyList
 	{
 		Element list = new Element( TXMLNames.BL_ELEMENT_KEY_LIST );
 		
+		// Order
 		Attribute order_att = new Attribute( TXMLNames.BL_ATTRIBUTE_ORDER, String.valueOf( order ) );
 		list.setAttribute( order_att );
+		
+		// caption
+		Attribute caption_att = new Attribute( TXMLNames.BL_ATTRIBUTE_CAPTION, caption );
+		list.setAttribute( caption_att );
 		
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
@@ -269,5 +285,12 @@ public class CKeyList
 	public void removeAllList(Collection<?> coreKeyList)
 	{
 		keyList.removeAll( coreKeyList );
+	}
+	
+	@Override
+	public String toString()
+	{
+		// TODO Auto-generated method stub
+		return caption;
 	}
 }

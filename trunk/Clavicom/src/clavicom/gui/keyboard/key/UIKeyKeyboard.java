@@ -131,4 +131,11 @@ public abstract class UIKeyKeyboard extends UIKey
     {
     	setReloadImage(true);    	
     }
+    
+    @Override
+    public String toString()
+    {
+    	// TODO Auto-generated method stub
+    	return getCoreKey().toString();
+    }
 }

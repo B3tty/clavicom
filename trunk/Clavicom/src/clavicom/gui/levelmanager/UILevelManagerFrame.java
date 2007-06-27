@@ -32,23 +32,28 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import clavicom.CFilePaths;
+import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
+import clavicom.gui.keyboard.keyboard.UIKeyList;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
-import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TImageUtils;
 
-public class UILevelManagerFrame extends UITranslucentFrame
+public class UILevelManagerFrame extends JFrame
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int BT_IMAGE_SIZE = 30;	// Taille des images des boutons
@@ -118,45 +123,411 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	 * de la fenêtre
 	 */
 	protected void initializeFrame()
-	{		
-		// On flush le contenu des listes
-		panelGroups.getListScrollData().removeAll();
-		panelLists.getListScrollData().removeAll();
-		panelKeys.getListScrollData().removeAll();
+	{				
+		// On met à jour les listes
+		updateListGroupsContaint();
+		updateListKeysContaint();
 		
-		// On remplit la liste de groupes
-		Object[] keyGroups = uiKeyboard.getKeyGroups().toArray();
-		//Arrays.sort(keyGroups,);
+		// On met à jour le grisage s'il n'y a rien
+		updateEnableState();
+	}
+	
+	protected void updateListUnclassedKeysContaint()
+	{
+		// On vide la liste
+		listUnclassedKeys.setListData(new Vector<String>());
 		
-		for (int i = 0 ; i < keyGroups.length ; ++i)
+		// On remplit la liste de keys non classées
+		Object[] unClassedKeys = uiKeyboard.getUnClassedKey().toArray();		
+		listUnclassedKeys.setListData(unClassedKeys);
+	}
+	
+	protected void updateListKeysContaint()
+	{
+		// Récupération du groupe selectionné
+		UIKeyList selectedList;
+				
+		if(panelLists.getList().getSelectedValue() instanceof UIKeyList)
 		{
-			System.out.println(((UIKeyGroup)keyGroups[i]).toString());
+			selectedList = (UIKeyList) panelLists.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
 		}
 		
-//		panelGroups.getList().getModel()
-		Vector<String> T = new Vector<String>();
-		T.add("sdflksjfl");
-		T.add("sfdsdf");
+		// On met à jour la liste de keys, correspondant aux keys de la liste
+		// On vide la liste
+		panelKeys.getList().setListData(new Vector<String>());
 		
-		panelGroups.getList().setListData(T);
+		// On récupère les keys de la liste
+		Object[] keys = selectedList.getKeys().toArray();		
+		panelKeys.getList().setListData(keys);
+	}
+	
+	protected void updateListListsContaint()
+	{
+		// Récupération du groupe selectionné
+		UIKeyGroup selectedGroup;
+				
+		if(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup)
+		{
+			selectedGroup = (UIKeyGroup) panelGroups.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
 		
-		//add(panelGroups.getListScrollData());
+		// On met à jour la liste listes, correspondant aux listes du groupe
+		// On vide la liste
+		panelLists.getList().setListData(new Vector<String>());
 		
-		System.out.println(panelGroups.getList().getModel().getSize());
+		// On récupère les listes du groupe
+		Object[] keyLists = selectedGroup.getKeyLists().toArray();		
+		panelLists.getList().setListData(keyLists);
+	}
+	
+	protected void updateListGroupsContaint()
+	{
+		// On vide la liste
+		panelGroups.getList().setListData(new Vector<String>());
 		
+		// On remplit la liste de groupes
+		Object[] keyGroups = uiKeyboard.getKeyGroups().toArray();		
+		panelGroups.getList().setListData(keyGroups);
+	}
+	
+	/**
+	 * Appelé lorsqu'on selectionne un groupe dans la liste.
+	 * Met a jour la liste des listes
+	 * @param event
+	 */
+	protected void onGroupSelected(ListSelectionEvent event)
+	{
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
+		
+		updateListListsContaint();
+		
+		// On met a jour la selection
+		updateEnableState();
+	}
+	
+	/**
+	 * Appelé lorsqu'on selectionne une liste dans la liste.
+	 * Met a jour la liste des keys
+	 * @param event
+	 */	
+	protected void onListSelected(ListSelectionEvent event)
+	{
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
+		
+		updateListKeysContaint();
+		
+		// On met a jour la selection
+		updateEnableState();
+	}
+
+	protected void onKeySelected(ListSelectionEvent event)
+	{
+		// TODO
+		
+		// On met a jour la selection
+		updateEnableState();
+	}
+	
+	protected void onListTextTyped()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onListBtUpClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onListBtRemoveClicked()
+	{
+		// TODO Auto-generated method stub
+		if(panelLists.getList().getSelectedIndex() == -1)
+		{
+			return;
+		}
+		
+		// Récupération de la UIList selectionnée
+		UIKeyList selectedList;
+		
+		if(panelLists.getList().getSelectedValue() instanceof UIKeyList)
+		{
+			selectedList = (UIKeyList) panelLists.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
+		
+		// Déclassement de la keyList
+		uiKeyboard.declassList(selectedList);
+		
+		// On met a jour la liste des listes
+		updateListListsContaint();
+		
+		// On met a jour la liste des keys
+		updateListKeysContaint();
+		
+		// On met a jour la liste des keys non classées
+		updateListUnclassedKeysContaint();
+		
+		// On met a jour l'affichage
+		updateEnableState();		
+	}
+
+	protected void onListBtDownClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onListBtAddClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onKeyTextTyped()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onKeyBtUpClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onKeyBtRemoveClicked()
+	{
+		// TODO Auto-generated method stub
+		if(panelKeys.getList().getSelectedIndex() == -1)
+		{
+			return;
+		}
+		
+		// Récupération de la UIKey selectionnée
+		UIKeyKeyboard selectedKey;
+		
+		if(panelKeys.getList().getSelectedValue() instanceof UIKeyKeyboard)
+		{
+			selectedKey = (UIKeyKeyboard) panelKeys.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
+		
+		// Déclassement de la key
+		uiKeyboard.declassKey(selectedKey);
+		
+		// On met a jour la liste des keys
+		updateListKeysContaint();
+		
+		// On met a jour la liste des keys non classées
+		updateListUnclassedKeysContaint();
+		
+		// On met a jour l'affichage
+		updateEnableState();
+	}
+
+	protected void onKeyBtDownClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onGroupTextTyped()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onGroupBtUpClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onGroupBtRemoveClicked()
+	{
+		// TODO Auto-generated method stub
+		if(panelGroups.getList().getSelectedIndex() == -1)
+		{
+			return;
+		}
+		
+		// Récupération du UIKeyGroup selectionné
+		UIKeyGroup selectedGroup;
+		
+		if(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup)
+		{
+			selectedGroup = (UIKeyGroup) panelGroups.getList().getSelectedValue();
+		}
+		else
+		{
+			return;
+		}
+		
+		// Déclassement du UIKeyGroup
+		uiKeyboard.declassGroup(selectedGroup);
+		
+		// On met a jour la liste des groupes
+		updateListGroupsContaint();
+		
+		// On met a jour la liste des listes
+		updateListListsContaint();
+		
+		// On met a jour la liste des keys
+		updateListKeysContaint();
+		
+		// On met a jour la liste des keys non classées
+		updateListUnclassedKeysContaint();
+		
+		// On met a jour l'affichage
+		updateEnableState();			
+	}
+
+	protected void onGroupBtDownClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onGroupBtAddClicked()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	protected void onListUnclassedKeySelection(ListSelectionEvent arg0)
+	{
+		// TODO (à compléter)
+		updateEnableState();
+	}
+
+	protected void onBtClassKeyPressed()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void onBtClassKeyAutomaticPressed()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	protected void onBtClosePressed()
+	{
+		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
+		System.exit(0);
 	}
 	
 	
 	//-----------------------------------------------------------------------
 	// ATTRIBUTS GRAPHIQUES
 	//-----------------------------------------------------------------------	
+	protected void updateEnableState()
+	{
+		// Liste de touches non classées
+		// (on disable s'il n'y a pas de keys non classées)
+		if(listUnclassedKeys.getModel().getSize() == 0)
+		// Pas de touches
+		{
+			listUnclassedKeys.setEnabled(false);
+			btClassKey.setEnabled(false);
+			btClassKeyAutomatic.setEnabled(false);
+			panelUnclassedKeys.setEnabled(false);			
+			listUnclassedKeys.setSelectedIndex(-1);
+		}
+		else
+		// Il y a des touches
+		{
+			// Il y a au moins une key non classée selectionnée
+			if(listUnclassedKeys.getSelectedIndices().length != 0)
+			{
+				btClassKeyAutomatic.setEnabled(true);
+			}
+			else
+			{
+				btClassKeyAutomatic.setEnabled(false);
+			}
+			
+			listUnclassedKeys.setEnabled(true);
+			panelUnclassedKeys.setEnabled(true);
+			
+			if(panelLists.getList().getSelectedIndex() != -1)
+			// Une liste selectionnée
+			{
+				// Il y a au moins une key non classée selectionnée
+				if(listUnclassedKeys.getSelectedIndices().length != 0)
+				{
+					btClassKey.setEnabled(true);
+				}
+				else
+				{
+					btClassKey.setEnabled(false);
+				}
+			}
+			else
+			{
+				btClassKey.setEnabled(false);
+			}
+
+		}
+		
+		// Liste de listes (on la grise si pas de groupe selectionnés)
+		if(panelGroups.getList().getSelectedIndex() == -1)
+		{
+			panelLists.setEnabled(false);
+			
+			panelGroups.getBtDown().setEnabled(false);
+			panelGroups.getBtUp().setEnabled(false);
+			panelGroups.getBtRemoveElement().setEnabled(false);
+		}
+		else
+		{
+			panelLists.setEnabled(true);
+			panelGroups.setEnabled(true);
+		}
+		
+		// Liste de keys (on la grise si pas de liste selectionnés)
+		if(panelLists.getList().getSelectedIndex() == -1)
+		{
+			panelKeys.setEnabled(false);
+		}
+		else
+		{
+			panelKeys.setEnabled(true);
+		}
+	}
+	
 	protected void initFrame()
 	{
 		// Invisible
 		setVisible(false);
 		
 		// Taille
-		setSize(new Dimension(560,440));
+		setSize(new Dimension(640,440));
 		
 		// Redimensionnement
 		setResizable(false);
@@ -174,9 +545,9 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		panelClose = new JPanel();
 		
 		// Panels secondaires
-		panelGroups = new UILevelList();
-		panelLists = new UILevelList();
-		panelKeys = new UILevelList();
+		panelGroups = new UILevelList(true);
+		panelLists = new UILevelList(true);
+		panelKeys = new UILevelList(false);
 		
 		// Composants
 		btClassKey = new JButton();
@@ -256,6 +627,20 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		// Ajout de la bordure
 		panelUnclassedKeys.setBorder( 	BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
 										UIString.getUIString("FR_LEVEL_EDITOR_UNCLASSED_BORDER")) );
+		
+		
+		// Ajout des listeners d'action sur les elements
+		listUnclassedKeys.addListSelectionListener( new ListSelectionListener()
+		 											{public void valueChanged(ListSelectionEvent arg0)
+													{onListUnclassedKeySelection(arg0);}});
+		
+		btClassKey.addActionListener(new ActionListener(){
+										public void actionPerformed(ActionEvent arg0)
+										{onBtClassKeyPressed();}});
+		
+		btClassKeyAutomatic.addActionListener(new ActionListener(){
+												public void actionPerformed(ActionEvent arg0)
+												{onBtClassKeyAutomaticPressed();}});
 	}
 	
 	protected void createPanelClassedKeys()
@@ -329,8 +714,83 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            0							// Espace intérieur en Y
 	    );
 		gbLayoutPanelClassedKey.setConstraints(panelKeys, gbConstPanelKeys);
+		
+		// Mise en place des listeners de clic sur un élement
+		panelGroups.getList().addListSelectionListener( new ListSelectionListener()
+														{ public void valueChanged(ListSelectionEvent arg0)
+														  {onGroupSelected(arg0);}});
+		
+		panelLists.getList().addListSelectionListener( new ListSelectionListener()
+													   { public void valueChanged(ListSelectionEvent arg0)
+													     {onListSelected(arg0);}});
+		
+		panelKeys.getList().addListSelectionListener( new ListSelectionListener()
+													  {	public void valueChanged(ListSelectionEvent arg0)
+													  	{onKeySelected(arg0);}});
+		
+		// Mise en place des listeners de clic sur un bouton up
+		panelGroups.getBtUp().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onGroupBtUpClicked();}});
+		
+		panelLists.getBtUp().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onListBtUpClicked();}});
+		
+		panelKeys.getBtUp().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onKeyBtUpClicked();}});
+		
+		// Mise en place des listeners de clic sur un bouton down
+		panelGroups.getBtDown().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onGroupBtDownClicked();}});
+		
+		panelLists.getBtDown().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onListBtDownClicked();}});
+		
+		panelKeys.getBtDown().addActionListener( new ActionListener()
+												 {public void actionPerformed(ActionEvent arg0)
+												 {onKeyBtDownClicked();}});
+		
+		// Mise en place des listeners de clic sur un bouton add
+		panelGroups.getBtAddElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onGroupBtAddClicked();}});
+		
+		panelLists.getBtAddElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onListBtAddClicked();}});
+		
+		// Mise en place des listeners de clic sur un bouton remove
+		panelGroups.getBtRemoveElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onGroupBtRemoveClicked();}});
+		
+		panelLists.getBtRemoveElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onListBtRemoveClicked();}});
+		
+		panelKeys.getBtRemoveElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onKeyBtRemoveClicked();}});
+		
+		// Mise en place des listeners d'entrée de texte
+		panelGroups.getTextElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onGroupTextTyped();}});
+		
+		panelLists.getTextElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onListTextTyped();}});
+		
+		panelKeys.getTextElement().addActionListener( new ActionListener()
+														 {public void actionPerformed(ActionEvent arg0)
+														 {onKeyTextTyped();}});	
 	}
 	
+
 	protected void createPanelClose()
 	{		
 		// Affectation de l'action du bouton
@@ -340,9 +800,9 @@ public class UILevelManagerFrame extends UITranslucentFrame
 		panelClose.setLayout(new BorderLayout());
 		
 		// Ajout des composants au panel
-		panelClose.add(btClose, BorderLayout.EAST);		
+		panelClose.add(btClose, BorderLayout.EAST);	
 	}
-	
+
 	protected void createGlobalPanel()
 	{
 		// Ajout des composants
@@ -403,12 +863,6 @@ public class UILevelManagerFrame extends UITranslucentFrame
 	            0							// Espace intérieur en Y
 	    );
 		gbLayoutPanelGlobal.setConstraints(panelClose, gbConstPanelClose);
-	}
-	
-	protected void onBtClosePressed()
-	{
-		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
-		System.exit(0);
 	}
 	
 	protected class AbstractActionBtClose extends AbstractAction

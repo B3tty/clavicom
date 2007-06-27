@@ -195,5 +195,12 @@ public class UIKeyList
 		threeLevelKeys.retainAll(keysToDelete);
 	}
 	
+	@Override
+	public String toString()
+	{
+		// TODO Auto-generated method stub
+		return coreKeyList.toString();
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
