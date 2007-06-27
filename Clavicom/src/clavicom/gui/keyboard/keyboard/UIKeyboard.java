@@ -54,6 +54,8 @@ import javax.swing.event.EventListenerList;
 
 import clavicom.CFilePaths;
 import clavicom.core.engine.CLevelEngine;
+import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
+import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
@@ -295,6 +297,49 @@ public class UIKeyboard extends UITranslucentPanel implements ComponentListener,
 		}
 	}
 	
+	/**
+	 * Ajoute un groupe à la liste des groupes
+	 * @param caption
+	 * 
+	 */
+	public boolean addUIKeyGroup(String caption)
+	{				
+		// On regarde si un groupe du même nom n'existe pas
+		if (coreKeyboard.keyGroupExists(caption) == true)
+		{
+			return false;
+		}
+		
+		// Création de l'objet du noyau
+		CKeyGroup keyGroup = new CKeyGroup(caption, true);
+		coreKeyboard.addKeyGroup(keyGroup);
+		
+		// Création de l'objet de l'UI
+		UIKeyGroup uiKeyGroup = new UIKeyGroup(keyGroup,levelEngine);
+		keyGroups.add(uiKeyGroup);
+		
+		return true;
+	}
+	
+	public boolean addUIKeyListToGroup(String caption, UIKeyGroup keyGroup)
+	{
+		// On regarde si une liste du même nom n'existe pas dans les listes
+		// du groupe
+		if(keyGroup.getCoreKeyGroup().keyListExists(caption) == true)
+		{
+			return false;
+		}
+		
+		// Création de l'objet du noyau
+		CKeyList keyList = new CKeyList(caption);
+		keyGroup.getCoreKeyGroup().addKeyList(keyList);
+		
+		// Création de l'objet de l'UI
+		UIKeyList uiKeyList = new UIKeyList(keyList, levelEngine);
+		keyGroup.getKeyLists().add(uiKeyList);		
+		
+		return true;
+	}
 	//-----------------------------------------------------------------------
 	// Listeners (en générateur)
 	//-----------------------------------------------------------------------

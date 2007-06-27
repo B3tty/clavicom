@@ -58,6 +58,11 @@ public class CKeyGroup
 		keyListList.add( order, blocLevel2 );
 	}
 	
+	public void addKeyList( CKeyList blocLevel2 )
+	{
+		keyListList.add(blocLevel2 );
+	}
+	
 	public CKeyList getkeyList( int order )
 	{
 		return keyListList.get( order );
@@ -69,6 +74,19 @@ public class CKeyGroup
 	public String toString()
 	{
 		return caption;
+	}
+	
+	public boolean keyListExists(String caption)
+	{
+		for (CKeyList currentList : keyListList)
+		{
+			if(currentList.getCaption().equals(caption))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

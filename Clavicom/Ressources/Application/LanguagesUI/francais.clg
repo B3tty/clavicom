@@ -389,6 +389,14 @@
 	
 	<message id = "FR_LEVEL_EDITOR_BT_OK">OK</message>
 	
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_1">Le groupe "</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_2">" est déja utilisé.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_3">Choisissez un autre nom.</message>
+
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_1">La liste "</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_2">" est déja utilisée.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_3">Choisissez un autre nom.</message>
+		
 	<!-- Key creation -->
 	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
 	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>
