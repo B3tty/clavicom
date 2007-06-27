@@ -43,6 +43,7 @@ import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
+import clavicom.gui.engine.SoundEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
@@ -199,6 +200,10 @@ public class Application
 		splash.newStep("Loading souricom keys engine...");
 		loadKeySouricomEngine();
 		
+		// Chargement du moteur de son
+		splash.newStep("Loading sound engine...");
+		//loadSoundEngine();
+		
 		// Fin du chargement
 		splash.newStep("Load complete !");
 		splash.close();
@@ -221,6 +226,8 @@ public class Application
 	//-----------------------------------------------------------------------
 	
 
+
+	
 
 	private static void LaunchNavigationMode()
 	{
@@ -592,6 +599,18 @@ public class Application
 	private static void loadKeySouricomEngine()
 	{
 		CMouseEngine.createInstance( mouseFrame.getCMouse() );
+	}
+	
+	private static void loadSoundEngine()
+	{
+		try
+		{
+			SoundEngine.createInstance( uiKeyboard );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError( ex.getMessage() );
+		}
 	}
 
 }
