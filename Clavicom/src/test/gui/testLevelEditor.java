@@ -66,7 +66,7 @@ public class testLevelEditor
 			UIKeyCreationEngine.createInstance();
 			
 			// Chemins
-			String input = "Ressources\\Temp\\profil3.xml";
+			String input = "Ressources\\Temp\\profil4.xml";
 			
 			// Chargement du profil
 			CProfil.createInstance(input);

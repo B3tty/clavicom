@@ -182,22 +182,22 @@ public class Application
 		loadClickEngine();
 		
 		// Chargement du moteur de defilement
-		splash.newStep("Loading defilement engine...");
+		splash.newStep("Loading scrolling engine...");
 		loadDefilementEngine();	
 
 		// Création des fenêtres
 		splash.newStep("Creating windows...");		createWindows();
 		
 		// Chargement du moteur de defilement des key
-		splash.newStep("Loading key defilement engine...");
+		splash.newStep("Loading key scrolling engine...");
 		loadKeyDefilementEngine();
 		
 		// Chargement du moteur de key clavicom
-		splash.newStep("Loading clavicom keys engine...");
+		splash.newStep("Loading keyboard keys engine...");
 		loadKeyClavicomEngine();
 		
 		// Chargement du moteur des touches de le souricom
-		splash.newStep("Loading souricom keys engine...");
+		splash.newStep("Loading mouse keys engine...");
 		loadKeySouricomEngine();
 		
 		// Chargement du moteur de son

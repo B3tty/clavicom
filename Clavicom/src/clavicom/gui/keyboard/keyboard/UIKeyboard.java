@@ -332,6 +332,25 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		return true;
 	}
+	
+	public boolean classKeyToUIList(UIKeyKeyboard uiKeyKeyboard, UIKeyList selectedList)
+	{
+		// Ajout de la key au noyau
+		if(!(uiKeyKeyboard.getCoreKey() instanceof CKeyKeyboard))
+		{
+			return false;
+		}
+		selectedList.getCoreKeyList().addKeyboardKey((CKeyKeyboard)uiKeyKeyboard.getCoreKey());
+		
+		// Ajout de la key au noyau
+		selectedList.getKeys().add(uiKeyKeyboard);	
+		
+		// Suppression des keys à classer
+		unClassedKey.remove(uiKeyKeyboard);
+		
+		return true;
+	}
+	
 	//-----------------------------------------------------------------------
 	// Listeners (en générateur)
 	//-----------------------------------------------------------------------
@@ -1100,6 +1119,5 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		System.out.println(coreKeyboard.toString());
 		return coreKeyboard.toString();
 	}
-	
 	
 }

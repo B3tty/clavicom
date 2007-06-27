@@ -65,6 +65,11 @@ public class CKeyList
 	{
 		keyList.add( order, keybordKey );
 	}
+	
+	public void addKeyboardKey(CKeyKeyboard keybordKey )
+	{
+		keyList.add(keybordKey );
+	}
 
 	public CKeyKeyboard getKeyKeyboard( int order )
 	{
