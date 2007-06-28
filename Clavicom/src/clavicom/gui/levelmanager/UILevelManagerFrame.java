@@ -49,7 +49,6 @@ import javax.swing.event.ListSelectionListener;
 
 import clavicom.CFilePaths;
 import clavicom.core.message.CMessageEngine;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
@@ -62,6 +61,8 @@ public class UILevelManagerFrame extends JFrame
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int BT_IMAGE_SIZE = 30;	// Taille des images des boutons
 	private final int SPACE = 5;			// Espace entre les composants
+	private final String DEFAULT_GROUP_NAME = "AUTO";	// Nom du groupe par défaut
+	private final String DEFAULT_LIST_NAME = "AUTO";	// Nom du groupe par défaut
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	// Panels principaux
@@ -264,7 +265,34 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onListBtUpClicked()
 	{
-		// TODO Auto-generated method stub
+		// On regarde si on peux descendre le groupe
+		if(panelLists.getList().getSelectedIndex() <= 0)
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelLists.getList().getSelectedIndex();
+		int newIndex = oldIndex - 1;
+		
+		// Récupération du groupe contenant la liste à déplacer
+		if(!(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup))
+		{
+			return;
+		}
+		UIKeyGroup selectedGroup = (UIKeyGroup)panelGroups.getList().getSelectedValue();
+		
+		// Déplacement de la liste
+		selectedGroup.moveListToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListListsContaint();
+		
+		// On reselectionne l'item
+		panelLists.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onListBtRemoveClicked()
@@ -304,7 +332,34 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onListBtDownClicked()
 	{
-		// TODO Auto-generated method stub
+		// On regarde si on peux descendre le groupe
+		if(panelLists.getList().getSelectedIndex() >= (panelLists.getList().getModel().getSize()-1))
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelLists.getList().getSelectedIndex();
+		int newIndex = oldIndex + 1;
+		
+		// Récupération du groupe contenant la liste à déplacer
+		if(!(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup))
+		{
+			return;
+		}
+		UIKeyGroup selectedGroup = (UIKeyGroup)panelGroups.getList().getSelectedValue();
+		
+		// Déplacement de la liste
+		selectedGroup.moveListToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListListsContaint();
+		
+		// On reselectionne l'item
+		panelLists.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onListBtAddClicked()
@@ -323,7 +378,7 @@ public class UILevelManagerFrame extends JFrame
 			return;
 		}
 		
-		if(uiKeyboard.addUIKeyListToGroup(panelLists.getTextElement().getText(),selectedGroup) == false)
+		if(uiKeyboard.addUIKeyListToGroup(panelLists.getTextElement().getText(),selectedGroup) == null)
 		{
 			CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_LIST_1") + 
 									panelLists.getTextElement().getText() +
@@ -347,7 +402,34 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onKeyBtUpClicked()
 	{
-		// TODO Auto-generated method stub
+		// On regarde si on peux descendre la key
+		if(panelKeys.getList().getSelectedIndex() <= 0)
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelKeys.getList().getSelectedIndex();
+		int newIndex = oldIndex - 1;
+		
+		// Récupération du groupe contenant la liste à déplacer
+		if(!(panelLists.getList().getSelectedValue() instanceof UIKeyList))
+		{
+			return;
+		}
+		UIKeyList selectedList = (UIKeyList)panelLists.getList().getSelectedValue();
+		
+		// Déplacement de la liste
+		selectedList.moveKeyToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListKeysContaint();
+		
+		// On reselectionne l'item
+		panelKeys.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onKeyBtRemoveClicked()
@@ -384,7 +466,34 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onKeyBtDownClicked()
 	{
-		// TODO Auto-generated method stub
+		// On regarde si on peux descendre la key
+		if(panelKeys.getList().getSelectedIndex() >= (panelKeys.getList().getModel().getSize()-1))
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelKeys.getList().getSelectedIndex();
+		int newIndex = oldIndex + 1;
+		
+		// Récupération du groupe contenant la liste à déplacer
+		if(!(panelLists.getList().getSelectedValue() instanceof UIKeyList))
+		{
+			return;
+		}
+		UIKeyList selectedList = (UIKeyList)panelLists.getList().getSelectedValue();
+		
+		// Déplacement de la liste
+		selectedList.moveKeyToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListKeysContaint();
+		
+		// On reselectionne l'item
+		panelKeys.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onGroupTextTyped()
@@ -401,8 +510,28 @@ public class UILevelManagerFrame extends JFrame
 	}
 
 	protected void onGroupBtUpClicked()
-	{
-		// TODO Auto-generated method stub
+	{		
+		// On regarde si on peux remonter le groupe
+		if(panelGroups.getList().getSelectedIndex() <= 0)
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelGroups.getList().getSelectedIndex();
+		int newIndex = oldIndex - 1;
+		
+		// Déplacement du groupe
+		uiKeyboard.moveGroupToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListGroupsContaint();
+		
+		// On reselectionne l'item
+		panelGroups.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onGroupBtRemoveClicked()
@@ -445,14 +574,34 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onGroupBtDownClicked()
 	{
-		// TODO Auto-generated method stub
+		// On regarde si on peux descendre le groupe
+		if(panelGroups.getList().getSelectedIndex() >= (panelGroups.getList().getModel().getSize()-1))
+		{
+			return;
+		}
+		
+		// Index
+		int oldIndex = panelGroups.getList().getSelectedIndex();
+		int newIndex = oldIndex + 1;
+		
+		// Déplacement du groupe
+		uiKeyboard.moveGroupToIndex( oldIndex, newIndex );
+		
+		// Mise a jour de la liste de groupes
+		updateListGroupsContaint();
+		
+		// On reselectionne l'item
+		panelGroups.getList().setSelectedIndex(newIndex);
+		
+		// Mise a jour des enabled
+		updateEnableState();
 	}
 
 	protected void onGroupBtAddClicked()
 	{
 		// Création et ajout d'un nouveau groupe
 		// portant le nom du texte tapé
-		if(uiKeyboard.addUIKeyGroup(panelGroups.getTextElement().getText()) == false)
+		if(uiKeyboard.addUIKeyGroup(panelGroups.getTextElement().getText()) == null)
 		{
 			CMessageEngine.newInfo(	UIString.getUIString("MSG_LEVEL_EDITOR_EXISTING_GROUP_1") + 
 									panelGroups.getTextElement().getText() +
@@ -495,7 +644,6 @@ public class UILevelManagerFrame extends JFrame
 		// Récupération des indices des keys selectionnée
 		int[] selectedIndices = listUnclassedKeys.getSelectedIndices();
 		
-		
 		// Ajout de toutes les touches selectionnées
 		for (int i = 0 ; i < selectedIndices.length ; ++i )
 		{
@@ -519,22 +667,54 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onBtClassKeyAutomaticPressed()
 	{
-		// TODO Auto-generated method stub
+		// On essaye de récupérer le groupe par défault
+		UIKeyGroup defaultGroup = uiKeyboard.getGroupByCaption(DEFAULT_GROUP_NAME);
+
+		if(defaultGroup == null)
+		{
+			defaultGroup = uiKeyboard.addUIKeyGroup(DEFAULT_GROUP_NAME);
+		}
+		
+		// On essaye de récupérer la liste par défault
+		UIKeyList defaultList = defaultGroup.getListByCaption(DEFAULT_LIST_NAME);
+
+		if(defaultList == null)
+		{
+			defaultList = uiKeyboard.addUIKeyListToGroup(DEFAULT_LIST_NAME, defaultGroup);
+		}
+		
+		// On ajoute toutes les touches non classées à la liste par défaut
+		while(uiKeyboard.getUnClassedKey().size() != 0)
+		{
+			uiKeyboard.classKeyToUIList(uiKeyboard.getUnClassedKey().get(0), defaultList);
+		}
+		
+		// On met a jour la liste des groupes
+		updateListGroupsContaint();
+		
+		// On met a jour la liste des listes
+		updateListListsContaint();
+		
+		// On met a jour la liste des keys
+		updateListKeysContaint();
+		
+		// On met a jour la liste des non classées
+		updateListUnclassedKeysContaint();
+		
+		// On selectionne le groupe
+		panelGroups.getList().setSelectedValue(defaultGroup, true);
+		
+		// On selectionne la liste
+		panelLists.getList().setSelectedValue(defaultList, true);
+		
+		// On met a jour la selection
+		updateEnableState();
 	}
 	
 	protected void onBtClosePressed()
 	{
-		// TODO : TEMPORAIRE --> vérifier que tout est classé, etc...
-		try
-		{
-			CProfil.getInstance().saveProfil();
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		
-		System.exit(0);
+		// On ferme la fenêtre
+		setVisible(false);
 	}	
 	
 	//-----------------------------------------------------------------------
@@ -556,16 +736,7 @@ public class UILevelManagerFrame extends JFrame
 		else
 		// Il y a des touches
 		{
-			// Il y a au moins une key non classée selectionnée
-			if(listUnclassedKeys.getSelectedIndices().length != 0)
-			{
-				btClassKeyAutomatic.setEnabled(true);
-			}
-			else
-			{
-				btClassKeyAutomatic.setEnabled(false);
-			}
-			
+			btClassKeyAutomatic.setEnabled(true);			
 			listUnclassedKeys.setEnabled(true);
 			panelUnclassedKeys.setEnabled(true);
 			

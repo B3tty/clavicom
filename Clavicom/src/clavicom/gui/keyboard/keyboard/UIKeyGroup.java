@@ -27,8 +27,10 @@ package clavicom.gui.keyboard.keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
+import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 
@@ -74,6 +76,34 @@ public class UIKeyGroup
 		{
 			keyList.select( selection );
 		}
+	}
+	
+	public UIKeyList getListByCaption(String caption)
+	{
+		for(UIKeyList currentList : keyLists )
+		{
+			if(currentList.toString().equals(caption))
+			{
+				return currentList;
+			}
+		}
+		
+		return null;
+	}
+	
+	public void moveListToIndex(int currentIndex, int requiredIndex)
+	{
+		// Sauvegarde des objets
+		UIKeyList uiKeyList = keyLists.get(currentIndex);
+		CKeyList cKeyList = uiKeyList.getCoreKeyList();
+		
+		// Déplacement de l'objet du noyau
+		coreKeyGroup.removeList(cKeyList);
+		coreKeyGroup.AddKeyList(requiredIndex, cKeyList);
+		
+		// Déplacement de l'objet de l'UI
+		keyLists.remove(uiKeyList);
+		keyLists.add(requiredIndex, uiKeyList);	
 	}
 	
 	

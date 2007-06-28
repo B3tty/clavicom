@@ -294,12 +294,12 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	 * @param caption
 	 * 
 	 */
-	public boolean addUIKeyGroup(String caption)
+	public UIKeyGroup addUIKeyGroup(String caption)
 	{				
 		// On regarde si un groupe du même nom n'existe pas
 		if (coreKeyboard.keyGroupExists(caption) == true)
 		{
-			return false;
+			return null;
 		}
 		
 		// Création de l'objet du noyau
@@ -310,16 +310,16 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		UIKeyGroup uiKeyGroup = new UIKeyGroup(keyGroup,levelEngine);
 		keyGroups.add(uiKeyGroup);
 		
-		return true;
+		return uiKeyGroup;
 	}
 	
-	public boolean addUIKeyListToGroup(String caption, UIKeyGroup keyGroup)
+	public UIKeyList addUIKeyListToGroup(String caption, UIKeyGroup keyGroup)
 	{
 		// On regarde si une liste du même nom n'existe pas dans les listes
 		// du groupe
 		if(keyGroup.getCoreKeyGroup().keyListExists(caption) == true)
 		{
-			return false;
+			return null;
 		}
 		
 		// Création de l'objet du noyau
@@ -330,7 +330,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		UIKeyList uiKeyList = new UIKeyList(keyList, levelEngine);
 		keyGroup.getKeyLists().add(uiKeyList);		
 		
-		return true;
+		return uiKeyList;
 	}
 	
 	public boolean classKeyToUIList(UIKeyKeyboard uiKeyKeyboard, UIKeyList selectedList)
@@ -349,6 +349,34 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		unClassedKey.remove(uiKeyKeyboard);
 		
 		return true;
+	}
+	
+	public void moveGroupToIndex(int currentIndex, int requiredIndex)
+	{
+		// Sauvegarde des objets
+		UIKeyGroup uiKeyGroup = keyGroups.get(currentIndex);
+		CKeyGroup cKeyGroup = uiKeyGroup.getCoreKeyGroup();
+		
+		// Déplacement de l'objet du noyau
+		coreKeyboard.removeKeyGroup(cKeyGroup);
+		coreKeyboard.addKeyGroup(requiredIndex, cKeyGroup);
+		
+		// Déplacement de l'objet de l'UI
+		keyGroups.remove(uiKeyGroup);
+		keyGroups.add(requiredIndex, uiKeyGroup);		
+	}
+	
+	public UIKeyGroup getGroupByCaption(String caption)
+	{
+		for(UIKeyGroup currentGroup : keyGroups )
+		{
+			if(currentGroup.toString().equals(caption))
+			{
+				return currentGroup;
+			}
+		}
+		
+		return null;
 	}
 	
 	//-----------------------------------------------------------------------
