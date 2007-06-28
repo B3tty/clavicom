@@ -27,8 +27,8 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>0.9</keyboard_transparency>
-    <key_transparency>0.25</key_transparency>
+    <keyboard_transparency>0.74</keyboard_transparency>
+    <key_transparency>0.78</key_transparency>
   </transparency>
   <sound>
     <on_defil active="false" />
@@ -51,7 +51,7 @@
       <green>0</green>
       <blue>102</blue>
     </color>
-    <bold>true</bold>
+    <bold>false</bold>
     <italic>false</italic>
     <shadow>true</shadow>
   </font>
@@ -60,12 +60,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.16953126</x>
-        <y>0.1796875</y>
+        <x>0.27890626</x>
+        <y>0.16308594</y>
       </left_up>
       <right_down>
-        <x>0.49609375</x>
-        <y>0.3623047</y>
+        <x>0.9515625</x>
+        <y>0.4609375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -406,12 +406,12 @@
         <keycharacter order="10" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.45</x>
-              <y>0.45</y>
+              <x>0.34096387</x>
+              <y>0.08494209</y>
             </point>
             <point position="max">
-              <x>0.55</x>
-              <y>0.55</y>
+              <x>0.44096386</x>
+              <y>0.18146718</y>
             </point>
           </coordinates>
           <colors>

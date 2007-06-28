@@ -29,7 +29,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -66,9 +68,8 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	JTextArea exempleText;
 	JLabel labelSize;
 	JLabel labelColor;
-	
-	JPanel buttonEstColor;
-	JPanel comboEst;
+	JCheckBox bold;
+	JCheckBox italic;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -88,22 +89,22 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		if( ! font.isAutoColor() )
 		{
 			buttonColor.setEnabled( true );
-			buttonEstColor.setEnabled(true);
+			labelColor.setEnabled(true);
 		}
 		else
 		{
 			buttonColor.setEnabled( false );
-			buttonEstColor.setEnabled(false);
+			labelColor.setEnabled(false);
 		}
 		if( ! font.isAutoSize() )
 		{
 			comboSize.setEnabled( true );
-			comboEst.setEnabled(true);
+			labelSize.setEnabled(true);
 		}
 		else
 		{
 			comboSize.setEnabled( false );
-			comboEst.setEnabled(false);
+			labelSize.setEnabled(false);
 		}
 		int pourcent = Math.round( font.getHeightFactor() * 100f );
 		int modulo = pourcent % 5;
@@ -185,15 +186,12 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    // =======================================================
 	    // panel des option  (autoSize, color ...)
 	    // =======================================================
-		
-	    GridLayout gridL = new GridLayout(3,2);
-	    gridL.setHgap(5);
-	    gridL.setVgap(5);
-	    JPanel panelOption = new JPanel( gridL );
-	    
-	    JPanel panelHaut = new JPanel( new BorderLayout() );
+	    JPanel panelOption = new JPanel();
+	    GridBagLayout gbLayoutGlobal = new GridBagLayout();
+	    panelOption.setLayout( gbLayoutGlobal );
 	    
 	    autoSize = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_AUTOSIZE"), font.isAutoSize() );
+	    
 	    autoSize.addChangeListener(new ChangeListener()
 	    {
 	    	public void stateChanged(ChangeEvent arg0)
@@ -210,17 +208,61 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    		}
 	    	}
 	    });
-	    panelHaut.add( autoSize, BorderLayout.CENTER );
-	    
-	    comboEst = new JPanel( new BorderLayout() );
-	    labelSize = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SIZE") + " : ");
-	    comboEst.add( labelSize, BorderLayout.CENTER );
-	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100});
-	    comboEst.add(comboSize, BorderLayout.EAST);
-	    panelHaut.add( comboEst, BorderLayout.EAST );
+		// Ajout des Contraintes de AutoSize
+		GridBagConstraints gbConstAutoSize = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            50,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(autoSize, gbConstAutoSize);
+		panelOption.add( autoSize );
 
 	    
-	    JPanel panelCentre = new JPanel( new BorderLayout() );
+	    labelSize = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SIZE") + " : ");
+	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100});
+
+		// Ajout des Contraintes de LabelSize
+		GridBagConstraints gbConstLabelSize = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            25,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(labelSize, gbConstLabelSize);
+		panelOption.add( labelSize );
+		
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstComboSize = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            25,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(comboSize, gbConstComboSize);
+		panelOption.add( comboSize );
+
 	    
 	    autoColor = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_AUTOCOLOR"), font.isAutoColor() );
 	    autoColor.addChangeListener(new ChangeListener()
@@ -239,11 +281,24 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    		}
 	    	}
 	    });
-	    panelCentre.add( autoColor, BorderLayout.CENTER );
+		// Ajout des Contraintes de AutoColor
+		GridBagConstraints gbConstAutoColor = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            50,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(autoColor, gbConstAutoColor);
+		panelOption.add( autoColor );
 	    
-	    buttonEstColor = new JPanel( new BorderLayout() );
 	    labelColor = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_COLOR")+ " : ");
-	    buttonEstColor.add( labelColor, BorderLayout.CENTER );
 	    buttonColor = new JButton();
 	    buttonColor.setBackground( font.getFontColor().getColor() );
 	    buttonColor.addActionListener( new ActionListener()
@@ -261,19 +316,97 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 				}
 			}
 		});
-	    buttonEstColor.add(buttonColor, BorderLayout.EAST);
+	    
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstLabelColor = new GridBagConstraints (	
+				1,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            25,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(labelColor, gbConstLabelColor);
+		panelOption.add( labelColor );
+		
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstButtonColor = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            25,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(buttonColor, gbConstButtonColor);
+		panelOption.add( buttonColor );
 
 
 
 	    shadow = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SHADOW"), font.isShadow() );
-
-
-	    
-	    panelOption.add(autoSize);
-	    panelOption.add(comboEst);
-	    panelOption.add(autoColor);
-	    panelOption.add(buttonEstColor);
-	    panelOption.add(shadow);  
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstShadow = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            2,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            50,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(shadow, gbConstShadow);
+		panelOption.add( shadow );
+		
+	    bold = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_BOLD"), font.isBold() );
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstBold = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            3,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            50,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(bold, gbConstBold);
+		panelOption.add( bold );
+		
+	    italic = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_ITALIC"), font.isItalic() );
+		// Ajout des Contraintes de ComboSize
+		GridBagConstraints gbConstItalic = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            4,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            50,							// Taille horizontale relative
+	            20,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutGlobal.setConstraints(italic, gbConstItalic);
+		panelOption.add( italic );
+  
 	    
 	    add( panelOption, BorderLayout.SOUTH  );
 	    
@@ -381,6 +514,24 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		{
 			if(saveData)
 				font.setShadow( shadow.isSelected() );
+			
+			retour = true;
+		}
+		
+		// si la check box bold a changé
+		if( font.isBold() != bold.isSelected() )
+		{
+			if(saveData)
+				font.setBold( bold.isSelected() );
+			
+			retour = true;
+		}
+		
+		// si la check box italic a changé
+		if( font.isItalic() != italic.isSelected() )
+		{
+			if(saveData)
+				font.setItalic( italic.isSelected() );
 			
 			retour = true;
 		}
