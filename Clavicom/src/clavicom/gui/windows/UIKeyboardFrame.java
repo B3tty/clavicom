@@ -34,9 +34,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -77,6 +80,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
 	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
 	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
+	
+	private final  String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
+														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
+														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
+
 	
 	//---------------------------------------------------------- VARIABLES --//
 	@SuppressWarnings("unused")
@@ -124,8 +132,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	JButton btFermerModeEdition, btOptionsApplication, btEditionKey, btOpenLevelManager;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
-	{		
-		// TODO : passer la couleurZ
+	{
 		super();
 		
 		// Recopie des attributs
@@ -431,18 +438,61 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
+			// On vérifie qu'il ne reste pas de touches 
+			if(panelKeyboard.getUnClassedKey().size() != 0)
+			{
+				// On selectionne les touches non classées
+				for(UIKeyKeyboard currentKey : panelKeyboard.getUnClassedKey())
+				{
+					currentKey.setSelected(true);
+				}
+				
+				// Affichage d'un dialog pour demander à l'utilisateur ce qu'il veut faire
+				int reponse = JOptionPane.showOptionDialog(UIKeyboardFrame.this, 
+							UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_1") + "\n" +
+						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_2") + "\n\n" +
+						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_3"), 
+						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_TITLE"), 
+						    JOptionPane.YES_NO_CANCEL_OPTION,
+						    JOptionPane.QUESTION_MESSAGE,
+						    null,
+						    UNCLASSED_KEY_CHOICES, UNCLASSED_KEY_CHOICES[2]);
+				  
+				if (reponse == JOptionPane.YES_OPTION)
+				// Trier
+				{
+					frameLevelManager.setVisible(true);
+					return;
+				}
+				else if (reponse == JOptionPane.CANCEL_OPTION)	
+				// Annuler
+				{
+					// On arrête
+					return;
+				}
+				else 
+				// Ignorer
+				{
+					 // Rien à faire
+				}
+				
+				// On déselectionne tout
+				panelKeyboard.select(false);
+			}
+			
 			// On repasse en mode clavicom normal
 			edit(false);
 			
 			// on regarde si on doit lancer le défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
-				//8stopDefilMode();
 				startDefilMode();
-			} else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
+			} 
+			else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
 			{
 				stopDefilMode();
-			}	
+			}
+			
 			panelKeyboard.componentResized(null);
 		}
 	}
@@ -547,10 +597,5 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			}
 		}
 		
-	}
-	
-	public void setMouseFrame()
-	{
-		// TODO : COMPLETER CA !
 	}
 }

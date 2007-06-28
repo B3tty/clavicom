@@ -489,6 +489,15 @@
 	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER">Niveaux</message>
 	
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_2">Si elles ne sont pas triées, elles seront perdues au prochain démarrage. </message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_3">Que voulez-vous faire ?</message>
+	
+	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Classer</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignorer</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Annuler</message>
+	
 	<message id = "LB_EDITION_OPTION_KEY_TITLE">Edition de touche</message>
 	<message id = "LB_EDITION_OPTION_KEY_OK">OK</message>
 	
