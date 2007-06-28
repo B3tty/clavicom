@@ -168,7 +168,7 @@ public class UIKeyList
 		keys.add(requiredIndex, uiKey);	
 	}
 	
-	public void select( boolean selection )
+	public void simulateEnter( boolean selection )
 	{
 		// séléction de toutes les touches
 		for( UIKeyKeyboard keyboardKey : keys )
@@ -181,6 +181,15 @@ public class UIKeyList
 			{
 				keyboardKey.forceState( TUIKeyState.NORMAL );
 			}
+		}
+	}
+	
+	public void select (boolean selection )
+	{
+		// séléction de toutes les touches
+		for( UIKeyKeyboard keyboardKey : keys )
+		{
+			keyboardKey.setSelected(selection);
 		}
 	}
 

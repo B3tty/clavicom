@@ -125,6 +125,7 @@ public class UILevelManagerFrame extends JDialog
 	public void setVisible(boolean arg0)
 	{
 		// Initialisation des composants
+		initializeFrame();
 		
 		super.setVisible(arg0);
 	}
@@ -140,8 +141,12 @@ public class UILevelManagerFrame extends JDialog
 	 */
 	protected void initializeFrame()
 	{				
+		// On deselectionne toutes les keys
+		uiKeyboard.select(false);
+		
 		// On met à jour les listes
 		updateListGroupsContaint();
+		updateListUnclassedKeysContaint();
 		
 		// On deselectionne tout dans les listes
 		panelGroups.getList().setSelectedIndex(-1);
@@ -230,7 +235,22 @@ public class UILevelManagerFrame extends JDialog
 			return;
 		}
 		
+		// On récupère le groupe selectionné
+		UIKeyGroup selectedGroup;
+		if(!(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup))
+		{
+			return;
+		}
+		selectedGroup = (UIKeyGroup)panelGroups.getList().getSelectedValue();
+		
+		// On met a jour les listes
 		updateListListsContaint();
+		
+		// On déselectionne tout
+		uiKeyboard.select(false);
+		
+		// On selectionne le groupe
+		selectedGroup.select(true);
 		
 		// On met a jour la selection
 		updateEnableState();
@@ -249,7 +269,23 @@ public class UILevelManagerFrame extends JDialog
 			return;
 		}
 		
+		// On récupère la liste selectionnée
+		UIKeyList selectedList;
+		if(!(panelLists.getList().getSelectedValue() instanceof UIKeyList))
+		{
+			return;
+		}
+		selectedList = (UIKeyList)panelLists.getList().getSelectedValue();
+		
+		
+		// On met a jour les keys		
 		updateListKeysContaint();
+		
+		// On déselectionne tout
+		uiKeyboard.select(false);
+		
+		// On selectionne la liste
+		selectedList.select(true);
 		
 		// On met a jour la selection
 		updateEnableState();
@@ -257,20 +293,25 @@ public class UILevelManagerFrame extends JDialog
 
 	protected void onKeySelected(ListSelectionEvent event)
 	{
-		// On selectionne la touche
-		UIKeyKeyboard selectedKey;
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
 		
+		// On récupère la touche selectionnée
+		UIKeyKeyboard selectedKey;
 		if(!(panelKeys.getList().getSelectedValue() instanceof UIKeyKeyboard))
 		{
 			return;
 		}
 		selectedKey = (UIKeyKeyboard)panelKeys.getList().getSelectedValue();
 		
+		// On déselectionne tout
+		uiKeyboard.select(false);
 		
-		// TODO : déselectionner tout
 		// On selectionne la key
 		selectedKey.setSelected(true);
-		selectedKey.repaint();
 		
 		// On met a jour la selection
 		updateEnableState();
@@ -649,8 +690,29 @@ public class UILevelManagerFrame extends JDialog
 		updateEnableState();
 	}
 	
-	protected void onListUnclassedKeySelection(ListSelectionEvent arg0)
+	protected void onListUnclassedKeySelection(ListSelectionEvent event)
 	{
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
+		
+		// On deselectionne tout
+		uiKeyboard.select(false);
+		
+		// On selectionne toutes les touches selectionnées dans la liste
+		UIKeyKeyboard currentKey;
+		for (int i = 0 ; i < listUnclassedKeys.getSelectedIndices().length ; ++i)
+		{
+			if(listUnclassedKeys.getModel().getElementAt(listUnclassedKeys.getSelectedIndices()[i]) instanceof UIKeyKeyboard)
+			{
+				currentKey = (UIKeyKeyboard) listUnclassedKeys.getModel().getElementAt(listUnclassedKeys.getSelectedIndices()[i]);
+				currentKey.setSelected(true);
+			}
+		}
+		
+		// Mise à jour de la selection
 		updateEnableState();
 	}
 
@@ -739,6 +801,9 @@ public class UILevelManagerFrame extends JDialog
 	
 	protected void onBtClosePressed()
 	{
+		// On deselectionne toutes les keys
+		uiKeyboard.select(false);
+		
 		// On ferme la fenêtre
 		dispose();
 	}	
@@ -813,10 +878,7 @@ public class UILevelManagerFrame extends JDialog
 	}
 	
 	protected void initFrame()
-	{
-		// Invisible
-		setVisible(false);
-		
+	{		
 		// Modale
 		setModal(true);
 		

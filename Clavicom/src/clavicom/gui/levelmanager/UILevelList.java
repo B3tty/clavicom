@@ -172,7 +172,6 @@ public class UILevelList extends JPanel
 		if (addButton == false)
 		{
 			btAddElement.setVisible(false);
-//			textElement.setVisible(false);
 		}
 
 		// Ajout au panel

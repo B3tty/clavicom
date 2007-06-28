@@ -433,6 +433,26 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		updateEdit(false);
 	}
 	
+	public void select(boolean select)
+	{
+		if (select == true)
+		// On selectionne tout
+		{
+			for(UIKeyKeyboard currentKey : allKeys)
+			{
+				currentKey.setSelected(true);
+			}
+		}
+		else
+		// On deselectionne les selectionnées
+		{
+			while(selectedKeys.size() != 0)
+			{
+				selectedKeys.get(0).setSelected(false);
+			}
+		}
+	}
+	
 	//-----------------------------------------------------------------------
 	// Dessin
 	//-----------------------------------------------------------------------	

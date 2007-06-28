@@ -353,8 +353,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Initialisation des composants
 		btEditionKey.setEnabled(false);
-		
-		
 	}
 	
 	/**
