@@ -66,6 +66,18 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 		listen( keyboard );
 	}
 	
+	public void listen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir si le type est bien keyLauncher
+			if( keyboardKey instanceof CKeyLauncher )
+			{
+				((CKeyLauncher)keyboardKey).addOnClickKeyLauncherListener( this );
+			}
+		}
+	}
+	
 	public void listen( CKeyboard keyboard )
 	{
 		// abonnement au listener des keyLauncher

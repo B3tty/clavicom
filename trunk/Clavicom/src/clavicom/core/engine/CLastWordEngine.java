@@ -67,6 +67,32 @@ public class CLastWordEngine extends CStringsEngine implements
 		listen( keyboard );
 	}
 	
+	public void listen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir si le type est bien
+			// keyLauncher
+			if( keyboardKey instanceof CKeyLastWord )
+			{
+				CKeyLastWord keyLastWord = (CKeyLastWord)keyboardKey;
+				if( keyLastWord != null )
+				{
+					// Ajout à la liste des keyLastWord
+					keyList.add(keyLastWord);
+				}
+			}else if( keyboardKey instanceof CKeyCharacter )
+			{
+				((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
+			}else if( keyboardKey instanceof CKeyDynamicString )
+			{
+				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+			}else if( keyboardKey instanceof CKeyShortcut )
+			{
+				((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
+			}
+		}
+	}
 	public void listen( CKeyboard keyboard )
 	{
 		// ========================================================

@@ -76,6 +76,18 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 		mouse.getSwitchMouseKeyboard().addOnClickKeyClavicomListener( this );
 	}
 	
+	public void listen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir de quel type est la key
+			if( keyboardKey instanceof CKeyClavicom )
+			{
+				((CKeyClavicom)keyboardKey).addOnClickKeyClavicomListener(this);
+			}
+		}
+	}
+	
 	public void listen( CKeyboard keyboard ) 
 	{
 		// =============================================================

@@ -68,6 +68,18 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		listen( keyboard );
 	}
 	
+	public void listen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir de quel type est la key
+			if( keyboardKey instanceof CKeyLevel )
+			{
+				((CKeyLevel)keyboardKey).addOnClickKeyLevelListener( this );
+			}
+		}
+	}
+	
 	public void listen( CKeyboard keyboard )
 	{
 		// =============================================================

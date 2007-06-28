@@ -1210,29 +1210,34 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	public void listenAllKeyKeyboard()
 	{
 		
-		if( CCommandEngine.getInstance() != null )
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
 		{
-			CCommandEngine.getInstance().listen( getCoreKeyboard() );
-		}
-		if( CLastWordEngine.getInstance() != null )
-		{
-			CLastWordEngine.getInstance().listen( getCoreKeyboard() );
-		}
-		if( CLauncherEngine.getInstance() != null )
-		{
-			CLauncherEngine.getInstance().listen( getCoreKeyboard() );
-		}
-		if( CLevelEngine.getInstance() != null )
-		{
-			CLevelEngine.getInstance().listen( getCoreKeyboard() );
-		}
-		if( CPredictionEngine.getInstance() != null )
-		{
-			CPredictionEngine.getInstance().listen( getCoreKeyboard() );
-		}
-		if( UIKeyClavicomEngine.getInstance() != null )
-		{
-			UIKeyClavicomEngine.getInstance().listen( getCoreKeyboard() );
+			CKeyKeyboard keyboardKey = (CKeyKeyboard)uiKeyKeyboard.getCoreKey();
+			
+			if( CCommandEngine.getInstance() != null )
+			{
+				CCommandEngine.getInstance().listen( keyboardKey );
+			}
+			if( CLastWordEngine.getInstance() != null )
+			{
+				CLastWordEngine.getInstance().listen( keyboardKey );
+			}
+			if( CLauncherEngine.getInstance() != null )
+			{
+				CLauncherEngine.getInstance().listen( keyboardKey );
+			}
+			if( CLevelEngine.getInstance() != null )
+			{
+				CLevelEngine.getInstance().listen( keyboardKey );
+			}
+			if( CPredictionEngine.getInstance() != null )
+			{
+				CPredictionEngine.getInstance().listen( keyboardKey );
+			}
+			if( UIKeyClavicomEngine.getInstance() != null )
+			{
+				UIKeyClavicomEngine.getInstance().listen( keyboardKey );
+			}
 		}
 		
 	}
