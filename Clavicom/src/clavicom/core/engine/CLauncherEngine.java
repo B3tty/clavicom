@@ -45,11 +45,29 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 	//---------------------------------------------------------- VARIABLES --//	
 	protected EventListenerList listenerNewMessageList;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CLauncherEngine( CKeyboard keyboard )
+	static CLauncherEngine instance;
+	
+	// ------------------------------------------------------ CONSTRUCTEURS --//
+	public static void createInstance( CKeyboard keyboard )
+	{
+		instance = new CLauncherEngine( keyboard );
+	}
+	
+	public static CLauncherEngine getInstance()
+	{
+		return instance;
+	}
+	
+	protected CLauncherEngine( CKeyboard keyboard )
 	{
 		listenerNewMessageList = new EventListenerList();
 		
+		// Abonnement aux listeners
+		listen( keyboard );
+	}
+	
+	public void listen( CKeyboard keyboard )
+	{
 		// abonnement au listener des keyLauncher
 		
 		for( int i = 0 ; i < keyboard.groupCount() ; ++i )
@@ -79,6 +97,19 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 			}
 		}
 	}
+	
+	public void unListen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir si le type est bien keyLauncher
+			if( keyboardKey instanceof CKeyLauncher )
+			{
+				((CKeyLauncher)keyboardKey).removeOnClickKeyLauncherListener( this );
+			}
+		}
+	}
+	
 
 	public void onClickKeyLauncher(CKeyLauncher keyLauncher)
 	{

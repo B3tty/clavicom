@@ -111,7 +111,14 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 	}
 	//----------------------------------------------------------- METHODES --//
 	
-	
+	public void listen()
+	{
+		
+	}
+	public void unListen()
+	{
+		
+	}
 	
 	
 

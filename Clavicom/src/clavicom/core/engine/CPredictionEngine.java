@@ -54,18 +54,36 @@ public class CPredictionEngine extends CStringsEngine implements
 	CPreferedWords preferedWord; // mot de l'utilisateur
 
 	
-	// ------------------------------------------------------ CONSTRUCTEURS --//
-
+	static CPredictionEngine instance;
 	
-	public CPredictionEngine( 
+	// ------------------------------------------------------ CONSTRUCTEURS --//
+	public static void createInstance( 
 			CKeyboard keyboard, 
-			CLevelEngine myLevelEngine,
+			CPreferedWords myPreferedWord )
+	{
+		instance = new CPredictionEngine( keyboard, myPreferedWord );
+	}
+	
+	public static CPredictionEngine getInstance()
+	{
+		return instance;
+	}
+	
+	protected CPredictionEngine( 
+			CKeyboard keyboard, 
 			CPreferedWords myPreferedWord)
 	{
-		super( keyboard, myLevelEngine );
+		super( keyboard );
 		
 		preferedWord = myPreferedWord;
 		
+		// Abonnement aux listeners
+		listen( keyboard );
+		
+	}
+
+	public void listen( CKeyboard keyboard )
+	{
 		List<CKeyPrediction> keyPredictionListTemp = new ArrayList<CKeyPrediction>();
 
 		
@@ -117,6 +135,7 @@ public class CPredictionEngine extends CStringsEngine implements
 		// ========================================================
 		// tri de la liste des keyLastWord
 		// ========================================================
+		keyList.clear();
 		for( int i = 0 ; i < keyPredictionListTemp.size() ; ++i )
 		{
 			for( CKeyPrediction predictionWord : keyPredictionListTemp )
@@ -127,19 +146,40 @@ public class CPredictionEngine extends CStringsEngine implements
 				}
 			}
 		}
-		
 	}
-
 	
+	public void unListen( CKeyKeyboard keyboardKey )
+	{
+		// on cast pour savoir si le type est bien
+		// keyLauncher
+		if( keyboardKey instanceof CKeyPrediction )
+		{
+			CKeyPrediction keyPrediction = (CKeyPrediction)keyboardKey;
+			if( keyPrediction != null )
+			{
+				// Ajout à la liste des keyLastWord
+				keyList.remove(keyPrediction);
+			}
+		}else if( keyboardKey instanceof CKeyCharacter )
+		{
+			((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
+		}else if( keyboardKey instanceof CKeyDynamicString )
+		{
+			((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListener( this );
+		}else if( keyboardKey instanceof CKeyShortcut )
+		{
+			((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
+		}
+	}
 
 	// ----------------------------------------------------------- METHODES --//
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
-		if (keyCharacter.getCommand(levelEngine.getCurrentLevel()) == null)
+		if (keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel()) == null)
 			return;
 		
-		CCommand command = keyCharacter.getCommand( levelEngine.getCurrentLevel() );
+		CCommand command = keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel() );
 		String character = command.GetSearchString();
 		
 		// Si ce caractere est un caractere de fin de mot

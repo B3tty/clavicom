@@ -27,9 +27,6 @@ package test.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
@@ -61,8 +58,8 @@ public class testPanelOptionKeyString
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

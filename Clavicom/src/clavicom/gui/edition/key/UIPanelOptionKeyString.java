@@ -98,6 +98,8 @@ public class UIPanelOptionKeyString extends UIPanelOptionOneLevelKey
 		setValuesKeyOneLevel(myKeyString);
 		
 		keyString = myKeyString;
+		
+		textWrite.setText( keyString.getBaseString() );
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	protected void updateCaption(String caption)

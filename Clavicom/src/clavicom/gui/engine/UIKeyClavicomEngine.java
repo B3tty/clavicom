@@ -51,11 +51,33 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 
 	protected EventListenerList listeners;
 
+	static UIKeyClavicomEngine instance;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIKeyClavicomEngine( CKeyboard keyboard, CMouse mouse )
+	public static void createInstance( CKeyboard keyboard, CMouse mouse )
+	{
+		instance = new UIKeyClavicomEngine( keyboard, mouse );
+	}
+	public static UIKeyClavicomEngine getInstance()
+	{
+		return instance;
+	}
+	
+	protected UIKeyClavicomEngine( CKeyboard keyboard, CMouse mouse )
 	{
 		listeners = new EventListenerList();
 		
+		// Abonnement aux listeners
+		listen( keyboard );
+		
+		// Abonnement au keyClavicom de la mouse
+		mouse.getClickMouseMode().addOnClickKeyClavicomListener( this );
+		mouse.getMoveMouseMode().addOnClickKeyClavicomListener( this );
+		mouse.getSwitchMouseKeyboard().addOnClickKeyClavicomListener( this );
+	}
+	
+	public void listen( CKeyboard keyboard ) 
+	{
 		// =============================================================
 		// Abonnement aux listener
 		// =============================================================
@@ -85,11 +107,15 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 				}
 			}
 		}
-		
-		// Abonnement au keyClavicom de la mouse
-		mouse.getClickMouseMode().addOnClickKeyClavicomListener( this );
-		mouse.getMoveMouseMode().addOnClickKeyClavicomListener( this );
-		mouse.getSwitchMouseKeyboard().addOnClickKeyClavicomListener( this );
+	}
+	
+	public void unListen( CKeyKeyboard keyboardKey )
+	{
+		// on cast pour savoir de quel type est la key
+		if( keyboardKey instanceof CKeyClavicom )
+		{
+			((CKeyClavicom)keyboardKey).removeOnClickKeyClavicomListener( this );
+		}
 	}
 
 	//----------------------------------------------------------- METHODES --//

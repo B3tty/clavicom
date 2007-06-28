@@ -27,8 +27,6 @@ package clavicom.gui.keyboard.keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
@@ -43,7 +41,7 @@ public class UIKeyGroup
 	CKeyGroup		coreKeyGroup;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIKeyGroup (CKeyGroup myCoreKeyGroup, CLevelEngine levelEngine)
+	public UIKeyGroup (CKeyGroup myCoreKeyGroup)
 	{
 		// Initialisation des attributs
 		coreKeyGroup = myCoreKeyGroup;
@@ -59,7 +57,7 @@ public class UIKeyGroup
 		for (int i = 0 ; i < keyListCount ; ++i)
 		{
 			// Création du UIKeyGroup
-			currentKeyList = new UIKeyList (coreKeyGroup.getkeyList(i),levelEngine);
+			currentKeyList = new UIKeyList (coreKeyGroup.getkeyList(i));
 			
 			// Ajout de la KeyList au conteneur
 			keyLists.add(currentKeyList);

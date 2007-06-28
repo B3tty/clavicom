@@ -25,23 +25,13 @@
 
 package test.gui;
 
-import java.awt.Dimension;
-
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLastWordEngine;
-import clavicom.core.engine.CLevelEngine;
-import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
-import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.engine.UIKeyCreationEngine;
-import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
-import clavicom.gui.windows.UIKeyboardFrame;
 
 public class testUIKeyboard
 {
@@ -73,10 +63,9 @@ public class testUIKeyboard
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
 			
 			try
 			{
@@ -87,23 +76,23 @@ public class testUIKeyboard
 				System.out.println("argh1 !!!");
 			}
 			
-			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
-			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+//			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
+//			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
+//			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+//
+//			UIKeyCreationEngine.createInstance();
+//			
+//			
+//			UIKeyboard uiKeyboard = new UIKeyboard(keyboard,levelEngine );
+//			uiKeyboard.setPreferredSize(new Dimension(100,100));
 
-			UIKeyCreationEngine.createInstance();
-			
-			
-			UIKeyboard uiKeyboard = new UIKeyboard(keyboard,levelEngine );
-			uiKeyboard.setPreferredSize(new Dimension(100,100));
-
 			
 			
 			
-			UIKeyboardFrame frame = new UIKeyboardFrame(uiKeyboard);
-			frame.setVisible(true);
-			frame.setSize(900,400);
-			frame.edit(true);
+//			UIKeyboardFrame frame = new UIKeyboardFrame(uiKeyboard);
+//			frame.setVisible(true);
+//			frame.setSize(900,400);
+//			frame.edit(true);
 			
 			
 			

@@ -1,9 +1,6 @@
 package test.core;
 
 import org.jdom.Element;
-
-import clavicom.core.engine.CLastWordEngine;
-import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
@@ -37,8 +34,8 @@ public class TestLastWordEngine
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			new CLastWordEngine( keyboard, levelEngine );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			new CLastWordEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

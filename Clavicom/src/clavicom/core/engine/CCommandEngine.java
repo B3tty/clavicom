@@ -56,16 +56,50 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	protected EventListenerList listenerNewMessageList;
 	
-	protected CLevelEngine levelEngine;
+	
+	static CCommandEngine instance;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CCommandEngine( CKeyboard keyboard, CLevelEngine myLevelEngine )
+	protected CCommandEngine( CKeyboard keyboard )
 	{
 
-		levelEngine = myLevelEngine;
 		
 		listenerNewMessageList = new EventListenerList();
 		
+		// Abonnement aux listeners
+		listen( keyboard );
+	}
+
+	public static void createInstance( CKeyboard keyboard )
+	{
+		instance = new CCommandEngine( keyboard );
+	}
+	
+	public static CCommandEngine getInstance()
+	{
+		return instance;
+	}
+	//----------------------------------------------------------- METHODES --//
+	
+	public void listen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir de quel type est la key
+			if( keyboardKey instanceof CKeyCharacter )
+			{
+				((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
+			}else if( keyboardKey instanceof CKeyDynamicString )
+			{
+				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+			}else if( keyboardKey instanceof CKeyShortcut )
+			{
+				((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
+			}
+		}
+	}
+	public void listen( CKeyboard keyboard )
+	{
 		// =============================================================
 		// Abonnement aux listener
 		// =============================================================
@@ -102,8 +136,25 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			}
 		}
 	}
-
-	//----------------------------------------------------------- METHODES --//
+	
+	public void unListen( CKeyKeyboard keyboardKey )
+	{
+		if( keyboardKey != null )
+		{
+			// on cast pour savoir de quel type est la key
+			if( keyboardKey instanceof CKeyCharacter )
+			{
+				((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
+			}else if( keyboardKey instanceof CKeyDynamicString )
+			{
+				((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListener( this );
+			}else if( keyboardKey instanceof CKeyShortcut )
+			{
+				((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
+			}
+		}
+	}
+	
 	
 	
 	protected void executeCommande( List<CCommand> commandList )
@@ -162,12 +213,12 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
-		if(keyCharacter.getCommand(levelEngine.getCurrentLevel()) == null)
+		if(keyCharacter.getCommand(CLevelEngine.getInstance().getCurrentLevel()) == null)
 			return;
 		
 		List<CCommand> commandList = new ArrayList<CCommand>();
 
-		commandList.add( keyCharacter.getCommand( levelEngine.getCurrentLevel() ) );
+		commandList.add( keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel() ) );
 		
 		executeCommande( commandList );
 	}

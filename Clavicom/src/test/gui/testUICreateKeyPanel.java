@@ -29,13 +29,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLastWordEngine;
-import clavicom.core.engine.CLevelEngine;
-import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.language.UIString;
@@ -69,10 +64,9 @@ public class testUICreateKeyPanel
 			
 			
 			
-			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
 			
 			try
 			{
@@ -89,9 +83,9 @@ public class testUICreateKeyPanel
 			
 			
 			
-			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-			new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
-			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+//			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
+//			new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
+//			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			
 			// on simule l'appuis sur une touche
 //			CKeyGroup group = keyboard.getKeyGroup( 0 );
