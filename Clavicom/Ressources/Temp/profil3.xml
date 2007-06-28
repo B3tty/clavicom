@@ -38,8 +38,8 @@
   <navigation>
     <type value="STANDARD" />
     <rollover active="true" />
-    <mouse_speed value="10" />
-    <mouse_temporisation value="10" />
+    <mouse_speed value="100" />
+    <mouse_temporisation value="100" />
   </navigation>
   <font>
     <name>BatangChe</name>
@@ -56,16 +56,16 @@
     <shadow>true</shadow>
   </font>
   <advanced_options>
-    <click_souricom>LEFT_RELEASE</click_souricom>
+    <click_souricom>RIGHT_RELEASE</click_souricom>
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.27890626</x>
-        <y>0.16308594</y>
+        <x>0.1765625</x>
+        <y>0.1953125</y>
       </left_up>
       <right_down>
-        <x>0.9515625</x>
-        <y>0.4609375</y>
+        <x>0.91328126</x>
+        <y>0.5595703</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -82,8 +82,8 @@
     <nb_defil_turn>3</nb_defil_turn>
   </advanced_options>
   <keyboard>
-    <keygroup caption="AUTO" order="0" visible="true">
-      <keylist order="0" caption="AUTO">
+    <keygroup caption="1" order="0" visible="true">
+      <keylist order="0" caption="1">
         <keylevel order="0" caption_image="false">
           <coordinates>
             <point position="min">
@@ -178,7 +178,9 @@
           <caption>1.png</caption>
           <level>ALT_GR</level>
         </keylevel>
-        <keystring order="3" caption_image="true">
+      </keylist>
+      <keylist order="1" caption="2">
+        <keystring order="0" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.10944206</x>
@@ -210,7 +212,7 @@
           <base_string>coucou write</base_string>
           <order_dynamic>12</order_dynamic>
         </keystring>
-        <keylevel order="4" caption_image="false">
+        <keylevel order="1" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.012875536</x>
@@ -241,7 +243,11 @@
           <caption>SHIFT</caption>
           <level>SHIFT</level>
         </keylevel>
-        <keycharacter order="5" caption_image="false">
+      </keylist>
+    </keygroup>
+    <keygroup caption="2" order="1" visible="true">
+      <keylist order="0" caption="1">
+        <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.667382</x>
@@ -278,7 +284,7 @@
             <command_altgr id="172" />
           </commands>
         </keycharacter>
-        <keyclavicom order="6" caption_image="true">
+        <keyclavicom order="1" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.47137403</x>
@@ -309,7 +315,7 @@
           <caption>close.png</caption>
           <action>CLOSE_APPLICATION</action>
         </keyclavicom>
-        <keyclavicom order="7" caption_image="true">
+        <keyclavicom order="2" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.8921466</x>
@@ -340,7 +346,9 @@
           <caption>mouse.png</caption>
           <action>SWITCH_KEYBOARD_MOUSE</action>
         </keyclavicom>
-        <keyclavicom order="8" caption_image="true">
+      </keylist>
+      <keylist order="1" caption="2">
+        <keyclavicom order="0" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.80150217</x>
@@ -371,7 +379,7 @@
           <caption>configuration.png</caption>
           <action>OPEN_CONFIGURATION</action>
         </keyclavicom>
-        <keystring order="9" caption_image="true">
+        <keystring order="1" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.7982833</x>
@@ -403,7 +411,7 @@
           <base_string>coucou write</base_string>
           <order_dynamic>12</order_dynamic>
         </keystring>
-        <keycharacter order="10" caption_image="false">
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.34096387</x>

@@ -57,6 +57,7 @@ import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.key.UIPanelOptionOneLevelKey;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
+import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
@@ -494,7 +495,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				startDefilMode();
-			} 
+			}
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+			{
+				startClickTempoMode();
+			}
 			else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
 			{
 				stopDefilMode();
@@ -524,6 +529,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		DefilementEngine.getInstance().stopDefilement();
 		
 		DefilementKeyEngine.getInstance().stopKeyDefilEngine();
+		
+		ClickTemporiseEngine.getInstance().stopClickTempoEngine();
 	}
 
 	private void startDefilMode()
@@ -532,7 +539,16 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		DefilementEngine.getInstance().startDefilement();
 		
-		DefilementKeyEngine.getInstance().startKeyDefilEngine();	
+		DefilementKeyEngine.getInstance().startKeyDefilEngine();
+	}
+	
+	private void startClickTempoMode()
+	{
+		ClickEngine.getInstance().mouseHookResume();
+		
+		DefilementEngine.getInstance().startDefilement();
+		
+		ClickTemporiseEngine.getInstance().startClickTempoEngine();	
 	}
 	
 	protected void onClickBtEditionKey()

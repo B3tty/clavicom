@@ -34,10 +34,10 @@ import clavicom.tools.TXMLNames;
 public class CNavigation
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	private static int DEFAULT_TEMPORISATION_CLIC = 10;
-	private static int DEFAULT_TEMPORISATION_DEFILEMENT = 10;
-	private static int DEFAULT_MOUSE_TEMPORISATION = 10;
-	private static int DEFAULT_MOUSE_SPEED = 1;
+	private static int DEFAULT_TEMPORISATION_CLIC = 1000;
+	private static int DEFAULT_TEMPORISATION_DEFILEMENT = 1000;
+	private static int DEFAULT_MOUSE_TEMPORISATION = 1000;
+	private static int DEFAULT_MOUSE_SPEED = 100;
 	
 	private static boolean DEFAULT_BLOCK_SELECTION_ACTIVE = false;
 	private static boolean DEFAULT_ROLLOVER_ACTIVE = false;
@@ -199,11 +199,11 @@ public class CNavigation
 		else if (typeNavigation == TNavigationType.CLICK_TEMPORISE)
 		{
 			// Récupération de la temporisation
-			Element eltTempo = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_TEMPORISE_TEMPO);
+			Element eltTempo = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
 			if (eltTempo == null)
 			{
 				throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
-										TXMLNames.PR_ELEMENT_NAVIGATION_TEMPORISE_TEMPO +
+										TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO +
 										UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));				
 			}
 			
@@ -300,7 +300,7 @@ public class CNavigation
 		}		
 		else if (typeNavigation == TNavigationType.CLICK_TEMPORISE)
 		{
-			Element eltTemporisation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_TEMPORISE_TEMPO);
+			Element eltTemporisation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
 			eltTemporisation.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE, Integer.toString(temporisationClic));
 			eltNavigation.addContent(eltTemporisation);
 		}
