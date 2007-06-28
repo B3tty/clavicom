@@ -114,6 +114,11 @@ public class CKeyboard
 		return false;
 	}
 	
+	public void addKeyGroup(int order, CKeyGroup keyGroup )
+	{
+		keyGroupList.add(order, keyGroup );
+	}
+	
 	public void addKeyGroup( CKeyGroup keyGroup )
 	{
 		keyGroupList.add( keyGroup );

@@ -153,6 +153,21 @@ public class UIKeyList
 	}
 	//----------------------------------------------------------- METHODES --//	
 	
+	public void moveKeyToIndex(int currentIndex, int requiredIndex)
+	{
+		// Sauvegarde des objets
+		UIKeyKeyboard uiKey = keys.get(currentIndex);
+		CKeyKeyboard cKey = (CKeyKeyboard)uiKey.getCoreKey();
+		
+		// Déplacement de l'objet du noyau
+		coreKeyList.removeKey(cKey);
+		coreKeyList.addKeyboardKey(cKey);
+		
+		// Déplacement de l'objet de l'UI
+		keys.remove(uiKey);
+		keys.add(requiredIndex, uiKey);	
+	}
+	
 	public void select( boolean selection )
 	{
 		// séléction de toutes les touches

@@ -428,8 +428,26 @@ public class UILevelList extends JPanel
 			// Un element selectionné
 			{
 				btRemoveElement.setEnabled(true);
-				btUp.setEnabled(true);
-				btDown.setEnabled(true);
+				
+				// On grise les boutons de déplacement pour les 
+				// premiers et derniers
+				if(list.getSelectedIndex() != 0)
+				{
+					btUp.setEnabled(true);
+				}
+				else
+				{
+					btUp.setEnabled(false);
+				}
+				
+				if(list.getSelectedIndex() != (list.getModel().getSize()-1))
+				{
+					btDown.setEnabled(true);
+				}
+				else
+				{
+					btDown.setEnabled(false);
+				}
 			}
 			else
 			// Rien de selectionné
