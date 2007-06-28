@@ -298,7 +298,7 @@ public class CProfil
 		}
 		catch(Exception ex)
 		{
-			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "]" + ex.getMessage() );
+			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_SAVE_PROFIL" ) + "]" + ex.getMessage() );
 		}
 		
 		// ===============================================================

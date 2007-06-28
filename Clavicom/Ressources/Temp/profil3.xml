@@ -27,8 +27,8 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>90</keyboard_transparency>
-    <key_transparency>25</key_transparency>
+    <keyboard_transparency>0.9</keyboard_transparency>
+    <key_transparency>0.25</key_transparency>
   </transparency>
   <sound>
     <on_defil active="false" />
@@ -60,21 +60,21 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.16992188</x>
+        <x>0.16953126</x>
         <y>0.1796875</y>
       </left_up>
       <right_down>
-        <x>0.9707031</x>
-        <y>0.7447917</y>
+        <x>0.49609375</x>
+        <y>0.3623047</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.6542969</x>
+        <x>0.65234375</x>
         <y>0.50390625</y>
       </left_up>
       <right_down>
-        <x>0.9902344</x>
+        <x>0.98828125</x>
         <y>0.9296875</y>
       </right_down>
     </souricom_frame_position>
@@ -403,6 +403,43 @@
           <base_string>coucou write</base_string>
           <order_dynamic>12</order_dynamic>
         </keystring>
+        <keycharacter order="10" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.45</x>
+              <y>0.45</y>
+            </point>
+            <point position="max">
+              <x>0.55</x>
+              <y>0.55</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>238</red>
+              <green>236</green>
+              <blue>228</blue>
+            </color_normal>
+            <color_clicked>
+              <red>238</red>
+              <green>50</green>
+              <blue>228</blue>
+            </color_clicked>
+            <color_entered>
+              <red>238</red>
+              <green>236</green>
+              <blue>50</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>g</caption_level_1>
+          <caption_level_2>f</caption_level_2>
+          <caption_level_3>d</caption_level_3>
+          <commands>
+            <command_normal id="39" />
+            <command_shift id="58" />
+            <command_altgr id="28" />
+          </commands>
+        </keycharacter>
       </keylist>
     </keygroup>
   </keyboard>

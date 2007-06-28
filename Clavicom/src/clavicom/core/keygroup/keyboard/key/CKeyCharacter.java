@@ -133,7 +133,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 		// Récupération de l'attribut id
 		String strIdNormal = eltCommandNormal
 				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( (strIdNormal == null) || (strIdNormal.equals("")) )
+		if ( strIdNormal == null )
 		{
 			throw new Exception(UIString
 					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
@@ -142,27 +142,34 @@ public class CKeyCharacter extends CKeyThreeLevel
 		}
 
 		// Transformation de la chaine en int
-		int idNormal;
-		try
+		if( strIdNormal.equals("") )
 		{
-			idNormal = Integer.parseInt(strIdNormal);
+			commandNormal = null;
 		}
-		catch ( Exception e )
+		else
 		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-					+ strIdNormal
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-		}
-
-		commandNormal = CCommandSet.GetInstance().GetCommand(idNormal);
-
-		if ( commandNormal == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			int idNormal;
+			try
+			{
+				idNormal = Integer.parseInt(strIdNormal);
+			}
+			catch ( Exception e )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
+						+ strIdNormal
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
+			}
+	
+			commandNormal = CCommandSet.GetInstance().GetCommand(idNormal);
+	
+			if ( commandNormal == null )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
+						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			}
 		}
 
 		// ------ Chargement de la commande SHIFT
@@ -182,7 +189,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 		// Récupération de l'attribut id
 		String strIdShift = eltCommandShift
 				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( (strIdShift == null) || (strIdShift.equals("")) )
+		if ( strIdShift == null )
 		{
 			throw new Exception(UIString
 					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
@@ -190,28 +197,35 @@ public class CKeyCharacter extends CKeyThreeLevel
 					+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
 		}
 
-		// Transformation de la chaine en int
-		int idShift;
-		try
+		if ( strIdShift.equals("") )
 		{
-			idShift = Integer.parseInt(strIdShift);
+			commandShift = null;
 		}
-		catch ( Exception e )
+		else
 		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-					+ strIdShift
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-		}
-
-		commandShift = CCommandSet.GetInstance().GetCommand(idShift);
-
-		if ( commandShift == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			// Transformation de la chaine en int
+			int idShift;
+			try
+			{
+				idShift = Integer.parseInt(strIdShift);
+			}
+			catch ( Exception e )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
+						+ strIdShift
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
+			}
+	
+			commandShift = CCommandSet.GetInstance().GetCommand(idShift);
+	
+			if ( commandShift == null )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
+						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			}
 		}
 
 		// ------ Chargement de la commande ALTGR
@@ -231,7 +245,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 		// Récupération de l'attribut id
 		String strIdAltGr = eltCommandAltGr
 				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( (strIdAltGr == null) || (strIdAltGr.equals("")) )
+		if ( strIdAltGr == null )
 		{
 			throw new Exception(UIString
 					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
@@ -239,28 +253,35 @@ public class CKeyCharacter extends CKeyThreeLevel
 					+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
 		}
 
-		// Transformation de la chaine en int
-		int idAltGr;
-		try
+		if ( strIdAltGr.equals("") )
 		{
-			idAltGr = Integer.parseInt(strIdAltGr);
+			commandAltGr = null;
 		}
-		catch ( Exception e )
+		else
 		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-					+ strIdAltGr
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-		}
-
-		commandAltGr = CCommandSet.GetInstance().GetCommand(idAltGr);
-
-		if ( commandAltGr == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			// Transformation de la chaine en int
+			int idAltGr;
+			try
+			{
+				idAltGr = Integer.parseInt(strIdAltGr);
+			}
+			catch ( Exception e )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
+						+ strIdAltGr
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
+			}
+	
+			commandAltGr = CCommandSet.GetInstance().GetCommand(idAltGr);
+	
+			if ( commandAltGr == null )
+			{
+				throw new Exception(UIString
+						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
+						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
+						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
+			}
 		}
 
 		this.listenerList = new EventListenerList();
@@ -339,25 +360,37 @@ public class CKeyCharacter extends CKeyThreeLevel
 		// Ajout du noeud commande Normal
 		Element eltCommandNormal = new Element(
 				TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL);
+		String cmdNormalID = "";
+		if( commandNormal != null )
+		{
+			cmdNormalID = String.valueOf(commandNormal.GetID());
+		}
 		eltCommandNormal.setAttribute(
-				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String
-						.valueOf(commandNormal.GetID()));
+				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, cmdNormalID);
 		eltCommands.addContent(eltCommandNormal);
 
 		// Ajout du noeud commande Shift
 		Element eltCommandShift = new Element(
 				TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT);
+		String cmdShiftID = "";
+		if( commandShift != null )
+		{
+			cmdShiftID = String.valueOf(commandShift.GetID());
+		}
 		eltCommandShift.setAttribute(
-				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String
-						.valueOf(commandShift.GetID()));
+				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, cmdShiftID);
 		eltCommands.addContent(eltCommandShift);
 
 		// Ajout du noeud commande AltGr
 		Element eltCommandAltGr = new Element(
 				TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR);
+		String cmdAltGrID = "";
+		if( commandAltGr != null )
+		{
+			cmdAltGrID = String.valueOf(commandAltGr.GetID());
+		}
 		eltCommandAltGr.setAttribute(
-				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, String
-						.valueOf(commandAltGr.GetID()));
+				TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID, cmdAltGrID);
 		eltCommands.addContent(eltCommandAltGr);
 
 		// Ajout au noeud père
