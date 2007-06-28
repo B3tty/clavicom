@@ -69,12 +69,21 @@ public class UIKeyGroup
 	
 	//----------------------------------------------------------- METHODES --//
 	
-	public void select( boolean selection )
+	public void simulateEnter( boolean selection )
 	{
 		// séléction de toutes les listes
 		for( UIKeyList keyList : keyLists )
 		{
-			keyList.select( selection );
+			keyList.simulateEnter( selection );
+		}
+	}
+	
+	public void select(boolean select)
+	{
+		// séléction de toutes les listes
+		for( UIKeyList keyList : keyLists )
+		{
+			keyList.select( select );
 		}
 	}
 	

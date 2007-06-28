@@ -125,6 +125,9 @@ public abstract class UIJResizer extends JComponent
 		
 		resizableBorder.setVisible(myIsSelected);
 		resizableBorder.setSelected(myIsSelected);
+		
+		// On redessine la key
+		repaint();
 	}
 	
 	public void eraseBorder()

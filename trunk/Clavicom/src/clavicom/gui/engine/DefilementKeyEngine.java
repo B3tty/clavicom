@@ -133,7 +133,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					// on remet en normal l'ancien groupe, et on séléction le nouveau
 					if( currentGroup != null )
 					{
-						currentGroup.select( false );
+						currentGroup.simulateEnter( false );
 					}
 					
 					if( currentIndexDefilementGroup >= (uiKeyboard.getGroupeListSize()-1) )
@@ -147,7 +147,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					}
 					
 					currentGroup = uiKeyboard.getUIKeyGroup( currentIndexDefilementGroup );
-					currentGroup.select( true );
+					currentGroup.simulateEnter( true );
 					
 				}
 
@@ -161,7 +161,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					// on remet en normal l'ancienne liste, et on séléction la nouvelle
 					if( currentList != null )
 					{
-						currentList.select( false );
+						currentList.simulateEnter( false );
 					}
 					
 					if( currentIndexDefilementList >= (currentGroup.getKeyLists().size() - 1) )
@@ -175,7 +175,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					}
 					
 					currentList = currentGroup.getKeyLists().get( currentIndexDefilementList );
-					currentList.select( true );
+					currentList.simulateEnter( true );
 					
 					// si le nombre de tour sur le niveau est supérieur à trois
 					
@@ -240,7 +240,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				nbCurrentDefilement = 0;
 				if( currentGroup != null )
 				{
-					currentGroup.select( false );
+					currentGroup.simulateEnter( false );
 				}
 				break;
 			case 1: // listes
@@ -249,7 +249,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				nbCurrentDefilement = 0;
 				if( currentList != null )
 				{
-					currentList.select( false );
+					currentList.simulateEnter( false );
 				}
 				break;
 			case 2: // key
