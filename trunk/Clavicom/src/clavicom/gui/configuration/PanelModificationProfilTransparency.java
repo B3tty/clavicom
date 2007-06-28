@@ -72,7 +72,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keyboardTransparency.setMinorTickSpacing(10);
 		keyboardTransparency.setPaintTicks(true);
 		keyboardTransparency.setPaintLabels(true);
-		keyboardTransparency.setValue( (int)(transparency.getKeyboardTransparency()*100) );
+		keyboardTransparency.setValue( (int)(( 1 - transparency.getKeyboardTransparency())*100) );
 		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keyboardT, BorderLayout.NORTH);
 		
@@ -89,7 +89,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keysTransparency.setMinorTickSpacing(10);
 		keysTransparency.setPaintTicks(true);
 		keysTransparency.setPaintLabels(true);
-		keysTransparency.setValue( (int)(transparency.getKeyTransparency()*100) );
+		keysTransparency.setValue( (int)(( 1 - transparency.getKeyTransparency())*100) );
 		keysT.add(keysTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keysT, BorderLayout.SOUTH);
 		
@@ -117,20 +117,20 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	{
 		// Si la gestion de la transparence a changé, on la change dans le profil
 		boolean retour = false;
-		if( ((float)keyboardTransparency.getValue()/100) != transparency.getKeyboardTransparency() )
+		if( (1-((float)keyboardTransparency.getValue()/100)) != transparency.getKeyboardTransparency() )
 		{
 			if( saveData )
 			{
-				transparency.setKeyboardTrancparency( ((float)keyboardTransparency.getValue()/100) );
+				transparency.setKeyboardTrancparency( 1-((float)keyboardTransparency.getValue()/100) );
 			}
 			
 			retour = true;
 		}
-		if( ((float)keysTransparency.getValue()/100) != transparency.getKeyTransparency() );
+		if( (1-((float)keysTransparency.getValue()/100)) != transparency.getKeyTransparency() );
 		{
 			if( saveData )
 			{
-				transparency.setKeyTransparency( ((float)keysTransparency.getValue()/100) );
+				transparency.setKeyTransparency( 1-((float)keysTransparency.getValue()/100) );
 			}
 			
 			retour = true;

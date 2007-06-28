@@ -1,8 +1,6 @@
 package test.core;
 
 import org.jdom.Element;
-
-import clavicom.core.engine.CLauncherEngine;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
@@ -35,7 +33,7 @@ public class TestLauncherEngine
 			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			new CLauncherEngine( keyboard );
+//			new CLauncherEngine( keyboard );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );

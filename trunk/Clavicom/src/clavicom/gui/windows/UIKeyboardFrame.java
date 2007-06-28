@@ -34,12 +34,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
-
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -360,6 +358,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Initialisation des composants
 		btEditionKey.setEnabled(false);
+		
+		
 	}
 	
 	/**
@@ -389,6 +389,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			isEdited = false;
 			
 			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());
+			panelKeyboard.setKeysTransparency( CProfil.getInstance().getTransparency().getKeyTransparency() );
 			
 			setFocusableWindowState(false);
 			setAlwaysOnTop(true);
@@ -396,6 +397,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
 			panelBoutons.setVisible(false);
+			
+			// désabonnement a tous les moteurs
+			panelKeyboard.unListenAllKeyKeyboard();
+			
+			// réabonnement a tous les moteurs
+			panelKeyboard.listenAllKeyKeyboard();
 		}
 		
 		invalidate();		

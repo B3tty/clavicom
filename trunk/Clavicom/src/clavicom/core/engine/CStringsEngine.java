@@ -27,8 +27,6 @@ package clavicom.core.engine;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
 import clavicom.core.profil.CKeyboard;
@@ -42,15 +40,11 @@ public abstract class CStringsEngine
 	List<String> stringList; // liste de chaine de caractere
 	String currentString; // Chaine de caractere courrente
 	
-	CLevelEngine levelEngine; // moteur de level
 	
-	
-	// ------------------------------------------------------ CONSTRUCTEURS --//
 
 	
-	public CStringsEngine( CKeyboard keyboard, CLevelEngine myLevelEngine )
+	public CStringsEngine( CKeyboard keyboard )
 	{
-		levelEngine = myLevelEngine;
 		
 		keyList = new ArrayList<CKeyOneLevel>();
 		

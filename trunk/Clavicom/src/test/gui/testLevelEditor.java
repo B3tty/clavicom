@@ -31,14 +31,11 @@ package test.gui;
 //import javax.swing.JFrame;
 //import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
-
-import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.UIKeyCreationEngine;
-import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.message.UIMessageEngine;
@@ -78,12 +75,12 @@ public class testLevelEditor
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			UIKeyboard uiKeyboard = new UIKeyboard(profil.getKeyboard(),new CLevelEngine(profil.getKeyboard()));
+//			UIKeyboard uiKeyboard = new UIKeyboard(profil.getKeyboard(),new CLevelEngine(profil.getKeyboard()));
 			
 
 			UILevelManagerFrame temp = new UILevelManagerFrame();
 			
-			temp.setUIKeyboard(uiKeyboard);
+//			temp.setUIKeyboard(uiKeyboard);
 			
 			temp.setVisible(true);
 			

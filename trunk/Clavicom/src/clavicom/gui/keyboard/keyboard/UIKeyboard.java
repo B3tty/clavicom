@@ -47,7 +47,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import clavicom.CFilePaths;
+import clavicom.core.engine.CCommandEngine;
+import clavicom.core.engine.CLastWordEngine;
+import clavicom.core.engine.CLauncherEngine;
 import clavicom.core.engine.CLevelEngine;
+import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
@@ -63,6 +67,7 @@ import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
@@ -117,7 +122,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private boolean isEdited;					// Indique si le clavier est en edition
 	private CKeyboard coreKeyboard;				// Element du noyau
 	
-	private CLevelEngine levelEngine;			// Gestionnaire de niveau
 	
 	private EventListenerList listeners;		// Listeners sur le keyboard
 	
@@ -126,7 +130,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
 	 */
-	public UIKeyboard(CKeyboard myCoreKeyboard, CLevelEngine myLevelEngine)
+	public UIKeyboard(CKeyboard myCoreKeyboard)
 	{
 		super();
 		
@@ -137,7 +141,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		unClassedKey = new ArrayList<UIKeyKeyboard>();
 		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
-		levelEngine = myLevelEngine;
+
 		listeners = new EventListenerList();
 		
 		// Récupération du nombre de groupes 
@@ -155,7 +159,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		for (int i = 0 ; i < groupCount ; ++i)
 		{
 			// Création du UIKeyGroup
-			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i),levelEngine);
+			currentKeyGroup = new UIKeyGroup (coreKeyboard.getKeyGroup(i));
 			
 			// Ajout au KeyGroups
 			keyGroups.add(currentKeyGroup);
@@ -183,7 +187,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		resizeTimer = createResizeTimer();
 		
 		// On s'ajoute en tant que listener de changement de niveau		
-		levelEngine.addChangeLevelListener(this);
+		CLevelEngine.getInstance().addChangeLevelListener(this);
 		
 		// On s'ajoute en tant que listener de création de touche
 		UIKeyCreationEngine.getInstance().addOnClickKeyCreationListener(this);
@@ -302,7 +306,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		coreKeyboard.addKeyGroup(keyGroup);
 		
 		// Création de l'objet de l'UI
-		UIKeyGroup uiKeyGroup = new UIKeyGroup(keyGroup,levelEngine);
+		UIKeyGroup uiKeyGroup = new UIKeyGroup(keyGroup);
 		keyGroups.add(uiKeyGroup);
 		
 		return uiKeyGroup;
@@ -322,7 +326,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		keyGroup.getCoreKeyGroup().addKeyList(keyList);
 		
 		// Création de l'objet de l'UI
-		UIKeyList uiKeyList = new UIKeyList(keyList, levelEngine);
+		UIKeyList uiKeyList = new UIKeyList(keyList);
 		keyGroup.getKeyLists().add(uiKeyList);		
 		
 		return uiKeyList;
@@ -947,7 +951,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 															newKeyMin,
 															newKeyMax);
 			// Création de l'objet de l'UI
-			UIKeyCharacter newUIKey = new UIKeyCharacter(newCoreKey,levelEngine);
+			UIKeyCharacter newUIKey = new UIKeyCharacter(newCoreKey);
 			
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);
@@ -1144,6 +1148,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// On force le redessin
 		revalidate();
 	}
+	
+	public void setKeysTransparency(float keyboardTransparency)
+	{
+		for( UIKey uiKey : allKeys )
+		{
+			uiKey.setOpacity( keyboardTransparency );
+		}
+	}
 
 	public List<UIKeyGroup> getKeyGroups()
 	{
@@ -1160,5 +1172,77 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		return coreKeyboard.toString();
 	}
+	
+	public void unListenAllKeyKeyboard()
+	{
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
+		{
+			CKeyKeyboard keyboardKey = (CKeyKeyboard)uiKeyKeyboard.getCoreKey();
+			
+			if( CCommandEngine.getInstance() != null )
+			{
+				CCommandEngine.getInstance().unListen( keyboardKey );
+			}
+			if( CLastWordEngine.getInstance() != null )
+			{
+				CLastWordEngine.getInstance().unListen( keyboardKey );
+			}
+			if( CLauncherEngine.getInstance() != null )
+			{
+				CLauncherEngine.getInstance().unListen( keyboardKey );
+			}
+			if( CLevelEngine.getInstance() != null )
+			{
+				CLevelEngine.getInstance().unListen( keyboardKey );
+			}
+			if( CPredictionEngine.getInstance() != null )
+			{
+				CPredictionEngine.getInstance().unListen( keyboardKey );
+			}
+			if( UIKeyClavicomEngine.getInstance() != null )
+			{
+				UIKeyClavicomEngine.getInstance().unListen( keyboardKey );
+			}
+		}
+		
+	}
+	
+	public void listenAllKeyKeyboard()
+	{
+		
+		if( CCommandEngine.getInstance() != null )
+		{
+			CCommandEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		if( CLastWordEngine.getInstance() != null )
+		{
+			CLastWordEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		if( CLauncherEngine.getInstance() != null )
+		{
+			CLauncherEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		if( CLevelEngine.getInstance() != null )
+		{
+			CLevelEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		if( CPredictionEngine.getInstance() != null )
+		{
+			CPredictionEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		if( UIKeyClavicomEngine.getInstance() != null )
+		{
+			UIKeyClavicomEngine.getInstance().listen( getCoreKeyboard() );
+		}
+		
+	}
+	
+
+	public CKeyboard getCoreKeyboard()
+	{
+		return coreKeyboard;
+	}
+
+	
 	
 }

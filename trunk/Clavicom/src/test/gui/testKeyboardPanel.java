@@ -25,12 +25,8 @@ package test.gui;
 +-----------------------------------------------------------------------------*/
 
 import javax.swing.JFrame;
-
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLevelEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
-import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
@@ -65,12 +61,10 @@ public final class testKeyboardPanel extends JFrame {
 			e.printStackTrace();
 		}
 		
-		CProfil profil = CProfil.getInstance();
 		
-		CKeyboard keyboard = profil.getKeyboard();
 		
 		// Chargement du commandEngine
-		/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, new CLevelEngine(keyboard));
+//		/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, new CLevelEngine(keyboard));
 		
     	testKeyboardPanel application =  new testKeyboardPanel();
     	application.setVisible(true);

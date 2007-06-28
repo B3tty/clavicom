@@ -77,25 +77,7 @@ public class Application
 	private static UIMessageEngine 		toolMessageEngine;		// Moteur de messages
 	
 	@SuppressWarnings("unused")
-	private static CLevelEngine			toolLevelEngine;		// Moteur de niveau
-	
-	@SuppressWarnings("unused")
-	private static CCommandEngine		toolCommandEngine;		// Moteur de commandes
-	
-	@SuppressWarnings("unused")
-	private static CLastWordEngine		toolLastWordEngine;		// Moteur de derniers mots
-	
-	@SuppressWarnings("unused")
-	private static CLauncherEngine		toolLauncherEngine;		// Moteur de lancement d'applications
-	
-	@SuppressWarnings("unused")
-	private static CPredictionEngine	toolPredictionEngine;	// Moteur de prediction de mots
-	
-	@SuppressWarnings("unused")
 	private static CStringsEngine	toolStringEngine;			// Moteur de chaines
-	
-	@SuppressWarnings("unused")
-	private static UIKeyClavicomEngine keyClavicomEngine;		// Moteur de Key clavicom
 	
 	@SuppressWarnings("unused")
 	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
@@ -245,7 +227,7 @@ public class Application
 	 */
 	private static void createWindows()
 	{
-		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard(), toolLevelEngine);
+		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard());
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
 		
 		
@@ -263,7 +245,6 @@ public class Application
 		
 		// Initialisation de la fenêtre
 		keyboardFrame.setTitle(UIString.getUIString("MSG_APPLICATION_NAME"));
-		keyboardFrame.edit(false);
 		
 		// listener pour supprimer le hook a la fermeture de l'application
 		keyboardFrame.addWindowListener(new WindowListener(){
@@ -451,7 +432,7 @@ public class Application
 	{
 		try
 		{
-			toolLevelEngine  = new CLevelEngine(CProfil.getInstance().getKeyboard());
+			CLevelEngine.createInstance( CProfil.getInstance().getKeyboard() );
 		}
 		catch (Exception ex)
 		{
@@ -467,8 +448,7 @@ public class Application
 	{
 		try
 		{
-			toolCommandEngine  = new CCommandEngine(	CProfil.getInstance().getKeyboard(),
-														toolLevelEngine);
+			CCommandEngine.createInstance( CProfil.getInstance().getKeyboard() );
 		}
 		catch (Exception ex)
 		{
@@ -484,8 +464,7 @@ public class Application
 	{
 		try
 		{
-			toolLastWordEngine = new CLastWordEngine(	CProfil.getInstance().getKeyboard(),
-														toolLevelEngine);
+			CLastWordEngine.createInstance( CProfil.getInstance().getKeyboard() );
 		}
 		catch (Exception ex)
 		{
@@ -501,7 +480,7 @@ public class Application
 	{
 		try
 		{
-			toolLauncherEngine = new CLauncherEngine(CProfil.getInstance().getKeyboard());
+			CLauncherEngine.createInstance( CProfil.getInstance().getKeyboard() );
 		}
 		catch (Exception ex)
 		{
@@ -517,9 +496,7 @@ public class Application
 	{
 		try
 		{
-			toolPredictionEngine = new CPredictionEngine(	CProfil.getInstance().getKeyboard(),
-															toolLevelEngine,
-															CProfil.getInstance().getPreferedWords());
+			CPredictionEngine.createInstance( CProfil.getInstance().getKeyboard(), CProfil.getInstance().getPreferedWords() );
 		}
 		catch (Exception ex)
 		{
@@ -584,15 +561,13 @@ public class Application
 	private static void loadKeyClavicomEngine()
 	{
 		// Création de l'engine
-		keyClavicomEngine = new UIKeyClavicomEngine(
-				CProfil.getInstance().getKeyboard(),
-				mouseFrame.getCMouse() );
+		UIKeyClavicomEngine.createInstance(	CProfil.getInstance().getKeyboard(), mouseFrame.getCMouse() );
 		
 		// Ajout de la frame keyboard
-		keyClavicomEngine.setFrameKeyboard(keyboardFrame);
+		UIKeyClavicomEngine.getInstance().setFrameKeyboard(keyboardFrame);
 		
 		// Ajout de la frame souricom
-		keyClavicomEngine.setFrameMouse( mouseFrame );
+		UIKeyClavicomEngine.getInstance().setFrameMouse( mouseFrame );
 	}
 	
 

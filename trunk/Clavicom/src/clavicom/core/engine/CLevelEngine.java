@@ -45,13 +45,31 @@ public class CLevelEngine implements OnClickKeyLevelListener
 
 	protected EventListenerList listenerChangeLevelList;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CLevelEngine( CKeyboard keyboard )
+	static CLevelEngine instance;
+	
+	// ------------------------------------------------------ CONSTRUCTEURS --//
+	public static void createInstance( CKeyboard keyboard )
+	{
+		instance = new CLevelEngine( keyboard );
+	}
+	
+	public static CLevelEngine getInstance()
+	{
+		return instance;
+	}
+	
+	protected CLevelEngine( CKeyboard keyboard )
 	{
 		listenerChangeLevelList = new EventListenerList();
 		
 		currentLevel = TLevelEnum.NORMAL;
 		
+		// Abonnement aux listeners
+		listen( keyboard );
+	}
+	
+	public void listen( CKeyboard keyboard )
+	{
 		// =============================================================
 		// Abonnement aux listener
 		// =============================================================
@@ -82,7 +100,16 @@ public class CLevelEngine implements OnClickKeyLevelListener
 			}
 		}
 	}
+	
 
+	public void unListen( CKeyKeyboard keyboardKey )
+	{
+		// on cast pour savoir de quel type est la key
+		if( keyboardKey instanceof CKeyLevel )
+		{
+			((CKeyLevel)keyboardKey).removeOnClickKeyLevelListener( this );
+		}
+	}
 	//----------------------------------------------------------- METHODES --//
 	
 	// ========================================================|

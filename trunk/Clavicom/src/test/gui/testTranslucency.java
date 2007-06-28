@@ -28,15 +28,9 @@ package test.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-
-import clavicom.core.engine.CCommandEngine;
-import clavicom.core.engine.CLastWordEngine;
-import clavicom.core.engine.CLevelEngine;
-import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
-import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
@@ -70,10 +64,9 @@ public class testTranslucency
 			profil.loadProfileShortCutName();
 			profil.loadProfile();
 			
-			CKeyboard keyboard = profil.getKeyboard();
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
 			
 			try
 			{
@@ -92,9 +85,9 @@ public class testTranslucency
 			
 			
 			
-			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
-			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
-			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
+//			/*CLastWordEngine lasWordEngine = */new CLastWordEngine(keyboard,levelEngine);
+//			/*CPredictionEngine predictionEngine = */new CPredictionEngine(keyboard,levelEngine,profil.getPreferedWords());
+//			/*CCommandEngine commandEngine = */new CCommandEngine( keyboard, levelEngine );
 			// on simule l'appuis sur une touche
 //			CKeyGroup group = keyboard.getKeyGroup( 0 );
 //			CKeyList list = group.getkeyList( 0 );

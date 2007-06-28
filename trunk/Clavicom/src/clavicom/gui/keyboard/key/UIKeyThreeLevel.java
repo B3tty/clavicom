@@ -36,19 +36,18 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	private CLevelEngine levelEngine;
+
 	
 	protected BufferedImage captionImageNormal;
 	protected BufferedImage captionImageShift;
 	protected BufferedImage captionImageAltGr;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIKeyThreeLevel(CLevelEngine myLevelEngine)
+	public UIKeyThreeLevel()
 	{
 		// Appel à la mère
 		super();
-		
-		levelEngine = myLevelEngine;
+
 	}
 	
 	//----------------------------------------------------------- METHODES --//
@@ -56,7 +55,7 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 	{
 		// Retoure la chaîne correspondant au niveau en cours
 		
-		return ((CKeyThreeLevel)getCoreKey()).getCaption(levelEngine.getCurrentLevel());
+		return ((CKeyThreeLevel)getCoreKey()).getCaption(CLevelEngine.getInstance().getCurrentLevel());
 	}
 	
 	public BufferedImage getCaptionImage()
@@ -77,15 +76,15 @@ public abstract class UIKeyThreeLevel extends UIKeyKeyboard
 			captionImageAltGr = loadCaptionImage(coreKey.getCaption(TLevelEnum.ALT_GR));
 		}		
 		
-		if(levelEngine.getCurrentLevel() == TLevelEnum.NORMAL)
+		if(CLevelEngine.getInstance().getCurrentLevel() == TLevelEnum.NORMAL)
 		{
 			return captionImageNormal;
 		}
-		else if(levelEngine.getCurrentLevel() == TLevelEnum.SHIFT)
+		else if(CLevelEngine.getInstance().getCurrentLevel() == TLevelEnum.SHIFT)
 		{
 			return captionImageShift;
 		}
-		else if(levelEngine.getCurrentLevel() == TLevelEnum.ALT_GR)
+		else if(CLevelEngine.getInstance().getCurrentLevel() == TLevelEnum.ALT_GR)
 		{
 			return captionImageAltGr;
 		}

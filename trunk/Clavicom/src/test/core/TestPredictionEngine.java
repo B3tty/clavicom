@@ -1,9 +1,6 @@
 package test.core;
 
 import org.jdom.Element;
-
-import clavicom.core.engine.CLevelEngine;
-import clavicom.core.engine.CPredictionEngine;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
@@ -40,8 +37,8 @@ public class TestPredictionEngine
 			CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
 			
 			// Chargement du commandEngine
-			CLevelEngine levelEngine = new CLevelEngine( keyboard );
-			new CPredictionEngine( keyboard, levelEngine, profil.getPreferedWords() );
+//			CLevelEngine levelEngine = new CLevelEngine( keyboard );
+//			new CPredictionEngine( keyboard, levelEngine, profil.getPreferedWords() );
 			
 			// on simule l'appuis sur une touche
 			CKeyGroup group = keyboard.getKeyGroup( 0 );
