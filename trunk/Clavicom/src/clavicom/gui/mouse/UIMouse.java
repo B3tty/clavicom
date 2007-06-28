@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
@@ -189,6 +191,8 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	{
 		DefilementEngine.getInstance().addDefilListener( this );
 		ClickEngine.getInstance().addClickMouseHookListener( this );
+		DefilementEngine.getInstance().startDefilement();
+		CMouseEngine.getInstance().startTimer();
 	}
 	
 	public void stopDefilMouse()

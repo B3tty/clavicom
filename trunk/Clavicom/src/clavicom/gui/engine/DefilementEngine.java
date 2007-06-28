@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
+import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.listener.DefilListener;
 
@@ -92,6 +94,11 @@ public class DefilementEngine
 	
 	public void startDefilement( )
 	{
+		if( defilTimer != null )
+		{
+			defilTimer.stop();
+		}
+		defilTimer = createSelectTimer( );
 		defilTimer.start();
 	}
 	
@@ -121,7 +128,8 @@ public class DefilementEngine
 		};
 		
 		// Création d'un timer qui génère un tic - TODO mettre celui du profil
-		return new Timer( 1000 ,action );
+		int defilement = CProfil.getInstance().getNavigation().getTemporisationDefilement();
+		return new Timer( defilement ,action );
 	}
 }
 

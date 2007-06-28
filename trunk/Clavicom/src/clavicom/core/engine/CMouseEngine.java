@@ -96,9 +96,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		
 		listenerList = new EventListenerList();
 		
-		// création du timer
 		moveTimer = createMoveTimer();
-		
 	}
 
 	public static void createInstance(  CMouse mouse )
@@ -110,16 +108,23 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		return instance;
 	}
 	//----------------------------------------------------------- METHODES --//
-	
-	public void listen()
+
+	public void startTimer()
 	{
-		
-	}
-	public void unListen()
-	{
-		
+		if( moveTimer != null )
+		{
+			moveTimer.stop();
+		}
+		moveTimer = createMoveTimer();
 	}
 	
+	public void stopTimer()
+	{
+		if( moveTimer != null )
+		{
+			moveTimer.stop();
+		}
+	}
 	
 
 	public void onClicMouseMove( CMouseKeyMove keyMove )

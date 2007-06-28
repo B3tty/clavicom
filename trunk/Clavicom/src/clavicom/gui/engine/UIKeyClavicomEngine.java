@@ -40,6 +40,7 @@ import clavicom.gui.language.UIString;
 import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TKeyClavicomActionType;
+import clavicom.tools.TNavigationType;
 
 public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 {
@@ -167,7 +168,11 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			frameKeyboard.setVisible( false );
 			frameMouse.setVisible( true );
 			
-			DefilementKeyEngine.getInstance().stopKeyDefilEngine();
+			// si on est en défilement
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				DefilementKeyEngine.getInstance().stopKeyDefilEngine();
+			}
 			frameMouse.startDefilMouse();
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD)
@@ -176,7 +181,12 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			frameMouse.setVisible( false );
 			frameKeyboard.setVisible( true );
 			
-			DefilementKeyEngine.getInstance().startKeyDefilEngine();
+			// si on est en défilement
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				DefilementKeyEngine.getInstance().startKeyDefilEngine();
+			}
+			
 			frameMouse.stopDefilMouse();
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE)

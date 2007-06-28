@@ -146,10 +146,10 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 		
 		sliderTempoClic = new JSlider();
-		sliderTempoClic.setMaximum( 100 );
-		sliderTempoClic.setMinimum( 0 );
-		sliderTempoClic.setMajorTickSpacing(10);
-		sliderTempoClic.setMinorTickSpacing(10);
+		sliderTempoClic.setMaximum( 3000 );
+		sliderTempoClic.setMinimum( 500 );
+		sliderTempoClic.setMajorTickSpacing(500);
+		sliderTempoClic.setMinorTickSpacing(500);
 		sliderTempoClic.setPaintTicks(true);
 		sliderTempoClic.setPaintLabels(true);
 		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
@@ -176,10 +176,10 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		
 		sliderTempoDefil = new JSlider();
-		sliderTempoDefil.setMaximum( 100 );
-		sliderTempoDefil.setMinimum( 0 );
-		sliderTempoDefil.setMajorTickSpacing(10);
-		sliderTempoDefil.setMinorTickSpacing(10);
+		sliderTempoDefil.setMaximum( 3000 );
+		sliderTempoDefil.setMinimum( 500 );
+		sliderTempoDefil.setMajorTickSpacing(500);
+		sliderTempoDefil.setMinorTickSpacing(500);
 		sliderTempoDefil.setPaintTicks(true);
 		sliderTempoDefil.setPaintLabels(true);
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );

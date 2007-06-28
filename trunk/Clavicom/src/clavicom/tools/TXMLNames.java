@@ -189,8 +189,8 @@ public class TXMLNames
 	public static String PR_ELEMENT_NAVIGATION			= "navigation";
 	public static String PR_ELEMENT_NAVIGATION_TYPE		= "type";
 	public static String PR_ATTRIBUTE_NAVIGATION_TYPE_VALUE	= "value";
-	public static String PR_ELEMENT_NAVIGATION_TEMPORISE_TEMPO	= "temporisation";
-	public static String PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO	= "temporisation";
+	public static String PR_ELEMENT_NAVIGATION_CLICK_TEMPO	= "click_tempo";
+	public static String PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO	= "defil_tempo";
 	public static String PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE	= "value";
 	public static String PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE	= "value";
 	

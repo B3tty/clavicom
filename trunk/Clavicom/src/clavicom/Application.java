@@ -40,6 +40,7 @@ import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
@@ -181,6 +182,10 @@ public class Application
 		splash.newStep("Loading mouse keys engine...");
 		loadKeySouricomEngine();
 		
+		// Chargement du moteur de click temporise
+		splash.newStep("Loading temporisation click engine...");
+		loadTemporisationClickEngine();
+		
 		// Chargement du moteur de son
 		splash.newStep("Loading sound engine...");
 		loadSoundEngine();
@@ -210,6 +215,8 @@ public class Application
 
 	
 
+	
+
 	private static void LaunchNavigationMode()
 	{
 		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
@@ -219,6 +226,10 @@ public class Application
 			DefilementEngine.getInstance().startDefilement();
 			
 			DefilementKeyEngine.getInstance().startKeyDefilEngine();
+		}else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+		{
+			DefilementEngine.getInstance().startDefilement();
+			ClickTemporiseEngine.getInstance().startClickTempoEngine();
 		}
 	}
 
@@ -596,6 +607,11 @@ public class Application
 			// on abonne
 			SoundEngine.getInstance().listen( uiKeyboard );
 		}
+	}
+	
+	private static void loadTemporisationClickEngine()
+	{
+		ClickTemporiseEngine.createInstance();
 	}
 
 }
