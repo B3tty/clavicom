@@ -64,12 +64,20 @@ public class CFilePaths
 	private static String toolKeyClavicomSwitchSouricomPicture = "mouse.png";
 	
 	// mouse picture
-	private static String toolKeyMouseUp = "mouseUp.png";
-	private static String toolKeyMouseDown = "mouseDown.png";
-	private static String toolKeyMouseLeft = "mouseLeft.png";
-	private static String toolKeyMouseRight = "mouseRight.png";
-	private static String toolKeyMouseClavicom = "HardwareKeyboard.png";
-	private static String toolKeyMouseGeneralClick = "mouse.png";
+	private static String toolKeyMouseArrowUp = "mouse_arrow_up.png";
+	private static String toolKeyMouseArrowDown = "mouse_arrow_down.png";
+	private static String toolKeyMouseArrowLeft = "mouse_arrow_left.png";
+	private static String toolKeyMouseArrowRight = "mouse_arrow_right.png";
+	private static String toolKeyMouseToClavicom = "mouse_to_clavicom.png";
+	
+	private static String toolKeyMouseLeft = "mouse_left.png";
+	private static String toolKeyMouseDoubleLeft = "mouse_double_left.png";
+	private static String toolKeyMouseRight = "mouse_right.png";
+	private static String toolKeyMouseDrag = "mouse_drag.png";
+	private static String toolKeyMouseDrop = "mouse_drop.png";
+	private static String toolKeyMouseClick = "mouse_click.png";
+	private static String toolKeyMouseMove = "mouse_move.png";
+	
 	
 	// ------- IMAGES DE COMPOSANTS AUTRES (JButton,...) ---------
 	private static String levelEditorAdd = pictures + "add.png";
@@ -204,10 +212,6 @@ public class CFilePaths
 		return toolKeyLastWordPicture;
 	}
 
-	public static String getToolKeyMouseDown()
-	{
-		return toolKeyMouseDown;
-	}
 
 	public static String getToolKeyMouseLeft()
 	{
@@ -217,21 +221,6 @@ public class CFilePaths
 	public static String getToolKeyMouseRight()
 	{
 		return toolKeyMouseRight;
-	}
-
-	public static String getToolKeyMouseUp()
-	{
-		return toolKeyMouseUp;
-	}
-
-	public static String getToolKeyMouseClavicom()
-	{
-		return toolKeyMouseClavicom;
-	}
-
-	public static String getToolKeyMouseGeneralClick()
-	{
-		return toolKeyMouseGeneralClick;
 	}
 
 	public static String getToolDllMouseHookPath()
@@ -294,6 +283,58 @@ public class CFilePaths
 	{
 		return scrollSoundFilePath;
 	}
+
+	public static String getToolKeyMouseArrowDown()
+	{
+		return toolKeyMouseArrowDown;
+	}
+
+	public static String getToolKeyMouseArrowLeft()
+	{
+		return toolKeyMouseArrowLeft;
+	}
+
+	public static String getToolKeyMouseArrowRight()
+	{
+		return toolKeyMouseArrowRight;
+	}
+
+	public static String getToolKeyMouseArrowUp()
+	{
+		return toolKeyMouseArrowUp;
+	}
+
+	public static String getToolKeyMouseClick()
+	{
+		return toolKeyMouseClick;
+	}
+
+	public static String getToolKeyMouseDoubleLeft()
+	{
+		return toolKeyMouseDoubleLeft;
+	}
+
+	public static String getToolKeyMouseDrag()
+	{
+		return toolKeyMouseDrag;
+	}
+
+	public static String getToolKeyMouseDrop()
+	{
+		return toolKeyMouseDrop;
+	}
+
+	public static String getToolKeyMouseMove()
+	{
+		return toolKeyMouseMove;
+	}
+
+	public static String getToolKeyMouseToClavicom()
+	{
+		return toolKeyMouseToClavicom;
+	}
+	
+	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 

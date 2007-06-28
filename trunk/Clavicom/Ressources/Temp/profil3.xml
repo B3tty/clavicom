@@ -27,8 +27,8 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>0.74</keyboard_transparency>
-    <key_transparency>0.78</key_transparency>
+    <keyboard_transparency>1.0</keyboard_transparency>
+    <key_transparency>1.0</key_transparency>
   </transparency>
   <sound>
     <on_defil active="false" />
@@ -70,12 +70,12 @@
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.65234375</x>
-        <y>0.50390625</y>
+        <x>0.36640626</x>
+        <y>0.35546875</y>
       </left_up>
       <right_down>
-        <x>0.98828125</x>
-        <y>0.9296875</y>
+        <x>0.70234376</x>
+        <y>0.78125</y>
       </right_down>
     </souricom_frame_position>
     <start_with_os>false</start_with_os>
