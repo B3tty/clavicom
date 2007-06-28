@@ -73,7 +73,7 @@ public class UIPanelOptionKeyLauncher extends UIPanelOptionOneLevelKey
 
 		textFieldPath = new JTextField( );
 		
-		textFieldPath.setPreferredSize( new Dimension( 330, 23 ) );
+		textFieldPath.setPreferredSize( new Dimension( 250, 23 ) );
 		textFieldPath.setEditable( false );
 		
 		panel.add( textFieldPath );
