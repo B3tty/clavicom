@@ -62,6 +62,7 @@ import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
+import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
@@ -92,6 +93,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	// Frame d'options de l'application
 	UIFrameModificationProfil frameOptionApplication;
 	
+	// Frame d'edition des niveaux
+	UILevelManagerFrame frameLevelManager;
+	
 	// Panel principal
 	UIMovingPanel mainPanel;
 	
@@ -117,7 +121,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	List<UIKeyKeyboard> selectedKeys;
 	
 	// Boutons
-	JButton btFermerModeEdition, btOptionsApplication, btEditionKey;
+	JButton btFermerModeEdition, btOptionsApplication, btEditionKey, btOpenLevelManager;
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIKeyboardFrame(UIKeyboard panelKeyboard)
 	{		
@@ -187,6 +191,9 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	 */
 	private void setAllLayouts()
 	{
+		// ------------- Layout du panel de bouton ----------------------------
+		panelBoutons.setLayout(new GridLayout(2,2));
+		
 		// -------------- Layout du panel principal ----------------------------
 		GridBagLayout gbLayoutMain = new GridBagLayout();
 		mainPanel.setLayout(gbLayoutMain);
@@ -273,17 +280,21 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		frameOptionApplication = new UIFrameModificationProfil( uiKeyboard );
 		
+		frameLevelManager = new UILevelManagerFrame();
+		frameLevelManager.setUIKeyboard(uiKeyboard);
+		
 		panelBoutons.setLayout(new GridLayout(3,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
 		
 		// Création des boutons 
 		btFermerModeEdition = new JButton(UIString.getUIString("LB_EDITION_CLOSE_EDITION"));
 		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
 		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
+		btOpenLevelManager = new JButton(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER"));
 		
-		
+		panelBoutons.add(btOpenLevelManager);
 		panelBoutons.add(btFermerModeEdition);
-		panelBoutons.add(btOptionsApplication);
 		panelBoutons.add(btEditionKey);
+		panelBoutons.add(btOptionsApplication);
 		
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
@@ -323,6 +334,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		btEditionKey.setAction(new BtEditionKeyAction(UIString.getUIString("LB_EDITION_EDIT_KEY")));
 		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
 		btOptionsApplication.setAction(new BtOptionsApplicationAction(UIString.getUIString("LB_EDITION_OPEN_OPTIONS")));
+		btOpenLevelManager.setAction(new BtOpenLevelManagerAction(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER")));
 		
 		// Initialisation des tailles des fenêtres
 		
@@ -432,12 +444,22 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			} else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
 			{
 				stopDefilMode();
-			}
-			
+			}	
 			panelKeyboard.componentResized(null);
 		}
-
+	}
+	
+	protected class BtOpenLevelManagerAction extends AbstractAction
+	{
+		public BtOpenLevelManagerAction(String caption)
+		{
+			super(caption);
+		}
 		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			frameLevelManager.setVisible(true);
+		}
 	}
 	
 	private void stopDefilMode()
