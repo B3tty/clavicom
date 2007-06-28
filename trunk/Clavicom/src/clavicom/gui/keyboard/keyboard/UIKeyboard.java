@@ -25,7 +25,6 @@
 
 package clavicom.gui.keyboard.keyboard;
 
-import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -108,7 +107,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private List<UIKeyKeyboard> selectedKeys;		// Liste des key selectionnées
 	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
 
-	private float opacity;
 	
 	private BufferedImage imgBackground;			// Buffer de l'image cliquée
 	
@@ -147,10 +145,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
-		
-		// Récupération de l'opacité
-		opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() / 100;
-		
+
 		// Variables temporaires
 		UIKeyGroup currentKeyGroup;
 		List<UIKeyThreeLevel> currentThreeLevelKeys = new ArrayList<UIKeyThreeLevel>();
@@ -442,16 +437,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	// Dessin
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
-	{				
+	{			
+		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		// Application de la transparence
-		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
 		
 		// On redessine le fond
 		if (imgBackground == null)
@@ -511,6 +504,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// On redessine
 		//repaint();
 	}
+
 	
 	@Override
 	public void paint(Graphics arg0)

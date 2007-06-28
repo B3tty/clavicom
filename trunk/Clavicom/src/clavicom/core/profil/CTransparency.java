@@ -35,24 +35,24 @@ public class CTransparency
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	private int KeyboardTransparencyPourcent;
-	private int KeyTransparencyPourcent;
+	private float KeyboardTransparency;
+	private float KeyTransparency;
 	
-	public int getKeyboardTransparencyPourcent()
+	public float getKeyboardTransparency()
 	{
-		return KeyboardTransparencyPourcent;
+		return KeyboardTransparency;
 	}
-	public void setKeyboardTrancparencyPourcent(int keyboardTransparencyPourcent)
+	public void setKeyboardTrancparency(float keyboardTransparency)
 	{
-		KeyboardTransparencyPourcent = keyboardTransparencyPourcent;
+		KeyboardTransparency = keyboardTransparency;
 	}
-	public int getKeyTransparencyPourcent()
+	public float getKeyTransparency()
 	{
-		return KeyTransparencyPourcent;
+		return KeyTransparency;
 	}
-	public void setKeyTransparencyPourcent(int keyTransparencyPourcent)
+	public void setKeyTransparency(float keyTransparency)
 	{
-		KeyTransparencyPourcent = keyTransparencyPourcent;
+		KeyTransparency = keyTransparency;
 	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -74,11 +74,11 @@ public class CTransparency
 		
 		try
 		{
-			KeyboardTransparencyPourcent = Integer.parseInt( s_keyboardTransparency );
+			KeyboardTransparency = Float.parseFloat( s_keyboardTransparency );
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_FLOAT" ));
 		}
 		
 		// ==================================================================
@@ -92,11 +92,11 @@ public class CTransparency
 		
 		try
 		{
-			KeyTransparencyPourcent = Integer.parseInt( s_keyTransparency );
+			KeyTransparency = Float.parseFloat( s_keyTransparency );
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_FLOAT" ));
 		}
 	}
 
@@ -108,12 +108,12 @@ public class CTransparency
 		
 		// ajout de la transparence du clavier
 		Element keyboardTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
-		keyboardTransparency_elem.setText( String.valueOf( KeyboardTransparencyPourcent ) );
+		keyboardTransparency_elem.setText( String.valueOf( KeyboardTransparency ) );
 		transparencyElement.addContent( keyboardTransparency_elem );
 		
 		// ajout de la transparence des touches
 		Element keyTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
-		keyTransparency_elem.setText( String.valueOf( KeyTransparencyPourcent ) );
+		keyTransparency_elem.setText( String.valueOf( KeyTransparency ) );
 		transparencyElement.addContent( keyTransparency_elem );
 		
 		return transparencyElement;

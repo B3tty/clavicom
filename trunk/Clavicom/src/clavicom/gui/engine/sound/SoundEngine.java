@@ -26,6 +26,13 @@
 package clavicom.gui.engine.sound;
 
 
+import java.io.File;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import clavicom.CFilePaths;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
@@ -46,10 +53,25 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	
 	static SoundEngine instance;
 	
-	ThreadSound soundThread;
+	ThreadSound clickThread;
+	ThreadSound enteredThread;
+	ThreadSound scrollThread;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	protected SoundEngine( UIKeyboard uiKeyboard ) throws Exception
+	protected SoundEngine( )
+	{
+		clickThread = new ThreadSound( CFilePaths.getClickSoundFilePath() );
+		clickThread.start();
+
+		enteredThread = new ThreadSound( CFilePaths.getEnteredSoundFilePath() );
+		enteredThread.start();
+
+		scrollThread = new ThreadSound( CFilePaths.getScrollSoundFilePath() );
+		scrollThread.start();
+		
+	}
+	
+	public void listen( UIKeyboard uiKeyboard )
 	{
 		// abonnement
 		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
@@ -65,17 +87,33 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		}
 		
 		DefilementEngine.getInstance().addDefilListener( this );
-		
-		soundThread = new ThreadSound( CFilePaths.getClickSoundFilePath() );
-	}
-
-
-	public static void createInstance( UIKeyboard uiKeyboard ) throws Exception
-	{
-		instance = new SoundEngine( uiKeyboard );
 	}
 	
-	public SoundEngine getInstance()
+	public void unListen( UIKeyboard uiKeyboard )
+	{
+		// abonnement
+		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
+		{
+			for( UIKeyList uiKeyList : uiKeyGroup.getKeyLists() )
+			{
+				for( UIKey uiKey : uiKeyList.getKeys() )
+				{
+					uiKey.removeKeyEnteredListener( this );
+					uiKey.removeKeyPressedListener( this );
+				}
+			}
+		}
+		
+		DefilementEngine.getInstance().removeDefilListener( this );
+	}
+
+
+	public static void createInstance( )
+	{
+		instance = new SoundEngine( );
+	}
+	
+	public static SoundEngine getInstance()
 	{
 		return instance;
 	}
@@ -86,20 +124,21 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		// si on est en mode défilement
 		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
-			soundThread = new ThreadSound( CFilePaths.getClickSoundFilePath() );
-			soundThread.start();
+			scrollThread.play();
 		}
 	}
 
 	public void keyEntered()
 	{
-		
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
+		{
+			enteredThread.play();
+		}
 	}
 
 	public void keyPressed()
 	{
-		// TODO Auto-generated method stub
-		
+		clickThread.play();
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -108,18 +147,35 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 
 class ThreadSound extends Thread
 {
-	String soundPath;
+	private String url; 
+	private Clip clip;
 	
-	public ThreadSound( String mySoundPath )
+	public ThreadSound( String mySound )
 	{
-		soundPath = mySoundPath;
+		url = mySound;
+		
+		try  
+		{  
+
+			AudioInputStream stream = AudioSystem.getAudioInputStream(new File(url)); 
+			AudioFormat format = stream.getFormat(); 
+			DataLine.Info info = new DataLine.Info(
+			  Clip.class, stream.getFormat(), ((int)stream.getFrameLength()*format.getFrameSize()));
+			clip = (Clip) AudioSystem.getLine(info); 
+			clip.open(stream); 
+		} 
+		catch (Exception e) {}
 	}
 	
 	@Override
 	public void run()
 	{
-		super.run();
 		
-		Sound.readAudioFile( soundPath );
+	}
+	
+	public void play()
+	{ 
+		clip.setFramePosition( 0 );
+		clip.start();
 	}
 }

@@ -86,8 +86,8 @@ public class CFilePaths
 	
 	// Sound
 	private static String scrollSoundFilePath = sounds + "Scroll.wav";
-	private static String enteredSoundFilePath = sounds + "Scroll.wav";
-	private static String clickSoundFilePath = sounds + "Scroll.wav";
+	private static String enteredSoundFilePath = sounds + "Entered.wav";
+	private static String clickSoundFilePath = sounds + "Click.wav";
 	
 
 	// ========================================================================

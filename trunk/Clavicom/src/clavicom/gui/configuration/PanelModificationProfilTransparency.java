@@ -48,7 +48,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	public PanelModificationProfilTransparency(CTransparency myTransparency)
 	{
 		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY") );
-		
+
 		transparency = myTransparency;
 		
 		LoadComponents();
@@ -72,7 +72,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keyboardTransparency.setMinorTickSpacing(10);
 		keyboardTransparency.setPaintTicks(true);
 		keyboardTransparency.setPaintLabels(true);
-		keyboardTransparency.setValue( transparency.getKeyboardTransparencyPourcent() );
+		keyboardTransparency.setValue( (int)(transparency.getKeyboardTransparency()*100) );
 		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keyboardT, BorderLayout.NORTH);
 		
@@ -89,7 +89,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keysTransparency.setMinorTickSpacing(10);
 		keysTransparency.setPaintTicks(true);
 		keysTransparency.setPaintLabels(true);
-		keysTransparency.setValue( transparency.getKeyTransparencyPourcent() );
+		keysTransparency.setValue( (int)(transparency.getKeyTransparency()*100) );
 		keysT.add(keysTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keysT, BorderLayout.SOUTH);
 		
@@ -117,20 +117,20 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	{
 		// Si la gestion de la transparence a changé, on la change dans le profil
 		boolean retour = false;
-		if( keyboardTransparency.getValue() != transparency.getKeyboardTransparencyPourcent() )
+		if( ((float)keyboardTransparency.getValue()/100) != transparency.getKeyboardTransparency() )
 		{
 			if( saveData )
 			{
-				transparency.setKeyboardTrancparencyPourcent( keyboardTransparency.getValue() );
+				transparency.setKeyboardTrancparency( ((float)keyboardTransparency.getValue()/100) );
 			}
 			
 			retour = true;
 		}
-		if( keysTransparency.getValue() != transparency.getKeyTransparencyPourcent() );
+		if( ((float)keysTransparency.getValue()/100) != transparency.getKeyTransparency() );
 		{
 			if( saveData )
 			{
-				transparency.setKeyTransparencyPourcent( keysTransparency.getValue() );
+				transparency.setKeyTransparency( ((float)keysTransparency.getValue()/100) );
 			}
 			
 			retour = true;

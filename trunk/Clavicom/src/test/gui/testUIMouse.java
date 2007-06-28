@@ -97,7 +97,7 @@ public class testUIMouse
 			
 
 			
-			frame = new UITranslucentFrame( profil.getTransparency().getKeyboardTransparencyPourcent() );
+			frame = new UITranslucentFrame( /*profil.getTransparency().getKeyboardTransparency()*/0 );
 			
 			UIMouse uimouse = new UIMouse( mouse );
 			
