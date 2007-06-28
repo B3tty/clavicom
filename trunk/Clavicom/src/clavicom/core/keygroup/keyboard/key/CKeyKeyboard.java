@@ -188,15 +188,16 @@ public abstract class CKeyKeyboard extends CKey
 
 	public Element buildNode(int order) throws Exception
 	{
+		System.out.println("1");
 		// Création de l'élement
 		Element eltKeyNode = new Element(getElementName());
-
+		System.out.println("2");
 		// Ajout des informations génériques
 		completeNodeGlobal(eltKeyNode, order);
-
+		System.out.println("3");
 		// Ajout des informations spécifiques
 		completeNodeSpecific(eltKeyNode);
-
+		System.out.println("4");
 		return eltKeyNode;
 	}
 
