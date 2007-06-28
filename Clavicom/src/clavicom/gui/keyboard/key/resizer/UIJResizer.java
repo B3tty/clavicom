@@ -123,6 +123,7 @@ public abstract class UIJResizer extends JComponent
 			fireKeyUnselected();
 		}
 		
+		resizableBorder.setVisible(myIsSelected);
 		resizableBorder.setSelected(myIsSelected);
 	}
 	
@@ -198,9 +199,6 @@ public abstract class UIJResizer extends JComponent
 			{				
 				int dx = me.getX() - startPos.x;
 				int dy = me.getY() - startPos.y;
-				
-				//System.out.println(" X:" +String.valueOf(dx) + " Y :" + String.valueOf(dy));
-				//System.out.println(" GetX:" +String.valueOf(me.getX()) + " GetY :" + String.valueOf(me.getY()));
 				
 				Rectangle newBounds = new Rectangle(); 
 				

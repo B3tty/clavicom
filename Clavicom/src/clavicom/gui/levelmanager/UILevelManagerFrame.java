@@ -40,7 +40,7 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -56,7 +56,7 @@ import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TImageUtils;
 
-public class UILevelManagerFrame extends JFrame
+public class UILevelManagerFrame extends JDialog
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int BT_IMAGE_SIZE = 30;	// Taille des images des boutons
@@ -121,6 +121,14 @@ public class UILevelManagerFrame extends JFrame
 		initializeFrame();
 	}
 	
+	@Override
+	public void setVisible(boolean arg0)
+	{
+		// Initialisation des composants
+		
+		super.setVisible(arg0);
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	//-----------------------------------------------------------------------
 	// TRAITEMENTS
@@ -134,7 +142,10 @@ public class UILevelManagerFrame extends JFrame
 	{				
 		// On met à jour les listes
 		updateListGroupsContaint();
-		updateListKeysContaint();
+		
+		// On deselectionne tout dans les listes
+		panelGroups.getList().setSelectedIndex(-1);
+		listUnclassedKeys.setSelectedIndex(-1);
 		
 		// On met à jour le grisage s'il n'y a rien
 		updateEnableState();
@@ -246,6 +257,21 @@ public class UILevelManagerFrame extends JFrame
 
 	protected void onKeySelected(ListSelectionEvent event)
 	{
+		// On selectionne la touche
+		UIKeyKeyboard selectedKey;
+		
+		if(!(panelKeys.getList().getSelectedValue() instanceof UIKeyKeyboard))
+		{
+			return;
+		}
+		selectedKey = (UIKeyKeyboard)panelKeys.getList().getSelectedValue();
+		
+		
+		// TODO : déselectionner tout
+		// On selectionne la key
+		selectedKey.setSelected(true);
+		selectedKey.repaint();
+		
 		// On met a jour la selection
 		updateEnableState();
 	}
@@ -714,7 +740,7 @@ public class UILevelManagerFrame extends JFrame
 	protected void onBtClosePressed()
 	{
 		// On ferme la fenêtre
-		setVisible(false);
+		dispose();
 	}	
 	
 	//-----------------------------------------------------------------------
@@ -790,6 +816,9 @@ public class UILevelManagerFrame extends JFrame
 	{
 		// Invisible
 		setVisible(false);
+		
+		// Modale
+		setModal(true);
 		
 		// Taille
 		setSize(new Dimension(640,440));

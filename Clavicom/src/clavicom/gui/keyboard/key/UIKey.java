@@ -300,7 +300,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// Changement du listener sur la souris
 			if(myIsEditable == true)
-			{
+			{				
 				// Maj des listeners
 				removeMouseListener(mouseAdapterEdit);
 				removeMouseListener(mouseAdapterUse);
@@ -308,7 +308,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				addMouseListener(mouseAdapterEdit);
 			}
 			else
-			{
+			{				
 				// Maj des listeners
 				removeMouseListener(mouseAdapterEdit);
 				removeMouseListener(mouseAdapterUse);

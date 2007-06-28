@@ -1138,7 +1138,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	@Override
 	public String toString()
 	{
-		System.out.println(coreKeyboard.toString());
 		return coreKeyboard.toString();
 	}
 	

@@ -88,9 +88,6 @@ public abstract class UIKeyKeyboard extends UIKey
 		// Affectation des nouveaux points à l'objet du noyau
 		keyKeyboard.setPointMin(tptMin);
 		keyKeyboard.setPointMax(tptMax);	
-		
-//		System.out.println(	"Après resize... Min : [" + keyKeyboard.getPointMin().getX() + "|" + keyKeyboard.getPointMin().getY() +
-//							"] Max : [" + keyKeyboard.getPointMax().getX() + "|" + keyKeyboard.getPointMax().getY() + "]");
 	}
 	
 	public void replaceKey()
