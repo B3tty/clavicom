@@ -34,6 +34,15 @@ import java.io.File;
 
 public class Sound
 {
+	SourceDataLine source;
+	AudioInputStream ais;
+	
+	public Sound( String fileName )
+	{
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	public static void readAudioFile(String fileName)
 	{
 		try

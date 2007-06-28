@@ -70,7 +70,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		final int SHADOW_INSET_H = 1;				// Décallage horizontal de l'ombre du texte
 		final int SHADOW_INSET_V = 1;				// Décallage vertical de l'ombre du texte
 		
-		final int RESIZE_TIMER_DURATION = 100;		// Durée au delà de laquelle le calcul des
+		final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 													// images est lancé, pendant un resize	
 		
 		final int CAPTION_IMAGE_BORDER_RELATIVE = 0;	// Taille de la bordure de l'image
@@ -226,7 +226,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On définit la transparence
 			setOpaque(false);
 			isTransparent = true;
-			opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyTransparencyPourcent() / 100;
+			opacity = CProfil.getInstance().getTransparency().getKeyTransparency();
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -329,24 +329,24 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			{
 				return null;
 			}
-			
+
 			// Variables
 			Graphics2D buffer;
 			BufferedImage image;
-			
+
 			// Création de l'image
 			image = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
 			buffer = (Graphics2D) image.getGraphics();
-			
+
 			// Construction du buffer
-			buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			
+			//buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+
 			// Ajout du fond de la touche			
 			addPaintBackground(buffer,bgdColor);
-			
+
 			// Ajout de la caption
 			addPaintCaption(buffer,bgdColor);
-			
+
 			return image;
 		}
 		
@@ -396,6 +396,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void paintComponent(Graphics myGraphic)
 		{
+			
 			// Appel du père
 			super.paintComponent(myGraphic);
 
@@ -539,7 +540,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Dessine l'image de fond de la touche
 		 */
 		protected void addPaintBackground(Graphics2D bg, Color bgdColor)
-		{						
+		{			
+			//System.out.println("addPaintBackground");
+			
 			// Création du Paint du premier calque
 			Color vGradientStartColor, vGradientEndColor;
 			vGradientStartColor =  bgdColor.brighter();
@@ -608,19 +611,22 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
 		{			
+			//System.out.println("addPaintCaption");
+			
 			// On agrandit le clip (pour dessiner sur tout le bouton)
 			bg.setClip( 0,0,getWidth(), getHeight() );
-			
+
 			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
 			{	
+
 				originalCaptionImage = getCaptionImage();
 				if( originalCaptionImage == null )
 				{
 					return;
 				}
-				
+
 				// Calcul du facteur de réduction
 				float scaleFactor = 1f;
 				
@@ -631,39 +637,41 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// Calcul de la "place" qu'il reste en largeur et en hauteur
 				int widthPlace  = getWidth() - imageWidth;
 				int heightPlace = getHeight() - imageHeight;
-				
+
 				if (widthPlace >= heightPlace)
 				// On redimensionne selon la HAUTEUR
 				{
 					scaleFactor = (float) getHeight() / (float)imageHeight;
+
 				}
 				else if (widthPlace < heightPlace)
 				// On redimensionne selon la LARGEUR					
 				{
 					scaleFactor = (float)getWidth() / (float)imageWidth;
+
 				}
-				
+
 				// Calcul des nouvelles dimensions
 		        int newW = Math.round(imageWidth*scaleFactor) - 2*CAPTION_IMAGE_BORDER_SIZE;
 		        int newH = Math.round(imageHeight*scaleFactor) - 2*CAPTION_IMAGE_BORDER_SIZE;
-		        
+
 		        // Calcul de la position de dessin
 		        int xPosition = Math.round(((float)getWidth()/2) - ((float)newW/2));
 		        int yPosition = Math.round(((float)getHeight()/2) - ((float)newH/2));
-		        
+
 		        // Dessin de l'image
 		        bg.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
 		                            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		        
+
 		        bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
+
 			}
 			else
 			// Dessin du texte
 			{
-				
 				// Récupération du CFont du profil
 				CFont profilFont = CProfil.getInstance().getKeyboardFont();
-			
+
 				// Création du style de police
 				int fontStyle = Font.PLAIN;
 				
@@ -671,7 +679,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				{
 					fontStyle += Font.BOLD;
 				}
-				
+
 				if(profilFont.isItalic())
 				{
 					fontStyle += Font.ITALIC;
@@ -681,7 +689,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				Font captionFont = new Font(	profilFont.getFontName(), 
 												fontStyle,
 												fontSize);
-				
+
 				// Application de la font
 				bg.setFont(captionFont);
 				
@@ -705,7 +713,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// On écrit le texte
 				bg.setColor(profilFont.getFontColor().getColor());
 				bg.drawString(getCaptionText(),xPosition,yPosition);
-				//bg.drawRect(0, 0, 10, 10)
 			}
 		}
 		

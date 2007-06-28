@@ -38,6 +38,7 @@
 	<message id = "EX_KEYGROUP_CAN_NOT_CONVERT">Impossible de convertir </message>
 	<message id = "EX_KEYGROUP_TO_BOOLEAN"> en booléen </message>
 	<message id = "EX_KEYGROUP_TO_INTEGER"> en entier </message>
+	<message id = "EX_KEYGROUP_TO_FLOAT"> en float </message>
 	
 	<!-- KEYLIST -->
 	<message id = "EX_KEYLIST_KEY_TYPE">Type de touche </message>

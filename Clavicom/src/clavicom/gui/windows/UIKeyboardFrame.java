@@ -371,14 +371,14 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			isEdited = false;
 			
-			setTransparency((float)(CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent())/100f);
+			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());
 			
 			setFocusableWindowState(false);
 			setAlwaysOnTop(true);
 			
 			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
-			panelBoutons.setVisible(false);			
+			panelBoutons.setVisible(false);
 		}
 		
 		invalidate();		
@@ -434,6 +434,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 				stopDefilMode();
 			}
 			
+			panelKeyboard.componentResized(null);
 		}
 
 		

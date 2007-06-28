@@ -27,7 +27,6 @@ package clavicom.gui.mouse;
 import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
 import clavicom.core.profil.CProfil;
@@ -48,9 +47,9 @@ public class UIMouseFrame extends UITranslucentFrame
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
-	public UIMouseFrame(float myTransparency) throws Exception 
+	public UIMouseFrame() throws Exception 
 	{
-		super(myTransparency);
+		super( );
 		
 		cMouse = CMouse.CreateMouse(
 				CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(), 
@@ -118,6 +117,22 @@ public class UIMouseFrame extends UITranslucentFrame
 			
 		});
 		
+	}
+	
+	@Override
+	public void setVisible(boolean b)
+	{
+		// TODO Auto-generated method stub
+		super.setVisible(b);
+		
+		if( b )
+		{
+			setTransparency( CProfil.getInstance().getTransparency().getKeyboardTransparency() );
+		}
+		else
+		{
+			setTransparency( 1 );
+		}
 	}
 	
 	//----------------------------------------------------------- METHODES --//	

@@ -28,7 +28,6 @@ package clavicom;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.UIManager;
-
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
 import clavicom.core.engine.CLauncherEngine;
@@ -252,7 +251,8 @@ public class Application
 		
 		try
 		{
-			mouseFrame = new UIMouseFrame( CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() );
+			mouseFrame = new UIMouseFrame(  );
+			
 		}
 		catch (Exception e1)
 		{
@@ -603,13 +603,23 @@ public class Application
 	
 	private static void loadSoundEngine()
 	{
-		try
+		// si l'utilisateur a besoin du son
+		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+			CProfil.getInstance().getSound().isSoundOnClic()  ||
+			CProfil.getInstance().getSound().isSoundOnSurvol()  )
 		{
-			SoundEngine.createInstance( uiKeyboard );
-		}
-		catch (Exception ex)
-		{
-			CMessageEngine.newError( ex.getMessage() );
+			try
+			{
+				SoundEngine.createInstance( );
+			}
+			catch (Exception ex)
+			{
+				CMessageEngine.newError( ex.getMessage() );
+			}
+			
+			// on abonne
+			SoundEngine.getInstance().listen( uiKeyboard );
 		}
 	}
 

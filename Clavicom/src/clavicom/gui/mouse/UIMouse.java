@@ -25,7 +25,6 @@
 
 package clavicom.gui.mouse;
 
-import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,11 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
@@ -95,8 +92,6 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	JPanel clickPanel;
 	JPanel panelHaut;
 	
-	float opacity;
-	
 	boolean dragAndDropMode; // indique si on est en mode drag and drop
 	
 	private BufferedImage imgBackground;	// Buffer de l'image background
@@ -113,10 +108,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		dragAndDropMode = false;		
 		
 		setLayout( new BorderLayout() );
-		
-		// Récupération de l'opacité
-		opacity = 1-(float)CProfil.getInstance().getTransparency().getKeyboardTransparencyPourcent() / 100;
-		
+
 		// Construction des UIKeyMouse
 		moveLeft = new UIKeyMouse( mouse.getMoveLeft() );
 		moveRight = new UIKeyMouse( mouse.getMoveRight() );
@@ -238,17 +230,12 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		// Application de la transparence
-		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-		
+
 		// On redessine le fond
 		if (imgBackground == null)
 		{
 			imgBackground = recreateBackground();
 		}
-		
-		
 		
 		g2.drawImage(imgBackground, 0, 0, null);
 	}
