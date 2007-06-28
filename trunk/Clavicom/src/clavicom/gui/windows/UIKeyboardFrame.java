@@ -346,7 +346,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKeyOneLevel.setSize(410,250);
 		frameOptionKeyKeyboard.setSize(410,125);
 		frameOptionKeyCharacter.setSize(540,540);
-		frameOptionKeyLauncher.setSize(410,310);
+		frameOptionKeyLauncher.setSize(410,350);
 		frameOptionKeyShortcut.setSize(410,350);
 		frameOptionKeyString.setSize(410,310);
 		
@@ -500,7 +500,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 				stopDefilMode();
 			}
 			
-			panelKeyboard.componentResized(null);
+			panelKeyboard.updateAndRepaint();
 		}
 	}
 	

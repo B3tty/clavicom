@@ -39,6 +39,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -116,6 +117,8 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		
 		// Ajout de la listView
 		list = new JList( );
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		list.addListSelectionListener(new ListSelectionListener()
 		{
 			public void valueChanged(ListSelectionEvent arg0)
@@ -185,16 +188,21 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 			
 			// On dégrise la selection d'action
 			list.setEnabled(true);
-			comboSection.setEnabled(true);	
+			comboSection.setEnabled(true);
 		}
 		else
 		{
 			// On coche la checkbox
 			chkNoAction.setSelected(true);
 			
+			// On ne selectionne rien dans la liste
+			list.clearSelection();
+			
 			// On grise la selection d'action
 			list.setEnabled(false);
 			comboSection.setEnabled(false);
+			
+
 		}
 	}
 	

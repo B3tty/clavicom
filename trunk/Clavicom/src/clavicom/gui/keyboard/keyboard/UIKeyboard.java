@@ -508,7 +508,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void updateAndRepaint()
+	{
+		imgBackground = recreateBackground();
+		replaceUIKeys();
+		updateKeyFontSize();
+		repaint();
+	}
     
 	public void componentResized(ComponentEvent arg0)
 	{
