@@ -716,6 +716,19 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 		}
 		
+		// s'abonne au mouse listeneur
+		public void listenMouseListener( boolean b )
+		{
+			removeMouseListener( mouseAdapterEdit );
+			removeMouseListener( mouseAdapterUse );
+			
+			if( b )
+			{
+				addMouseListener( mouseAdapterEdit );
+				addMouseListener( mouseAdapterUse );
+			}
+		}
+		
 		/**
 		 * Selectionne la bonne image courante
 		 *

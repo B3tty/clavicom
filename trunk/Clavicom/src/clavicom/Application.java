@@ -169,7 +169,7 @@ public class Application
 
 		// Création des fenêtres
 		splash.newStep("Creating windows...");		createWindows();
-		
+
 		// Chargement du moteur de defilement des key
 		splash.newStep("Loading key scrolling engine...");
 		loadKeyDefilementEngine();
@@ -300,6 +300,10 @@ public class Application
 			}
 			
 		});
+	
+		// donne la réference au moteur de défilement
+		DefilementEngine.getInstance().setUiKeyboard( uiKeyboard );
+		DefilementEngine.getInstance().setUiMouse( mouseFrame.getUiMouse() );
 	}
 	
 

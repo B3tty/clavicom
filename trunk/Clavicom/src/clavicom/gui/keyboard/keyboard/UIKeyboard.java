@@ -1304,6 +1304,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		return coreKeyboard;
 	}
 
+	public void setEnableKeys(boolean b)
+	{
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
+		{
+			uiKeyKeyboard.listenMouseListener( b );
+		}
+	}
+
 	
 	
 }
