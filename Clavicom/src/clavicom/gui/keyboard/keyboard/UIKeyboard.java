@@ -203,6 +203,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	
 	public void clear()
 	{
 		// Destruction de tous les groupes UI

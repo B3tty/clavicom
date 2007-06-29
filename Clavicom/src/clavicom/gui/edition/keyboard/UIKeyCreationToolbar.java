@@ -66,57 +66,68 @@ public class UIKeyCreationToolbar extends JPanel
 		// ===================================================================
 		CreateKey(CFilePaths.getToolKeyCharacterPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER"),
-				TEnumCreationKey.T_KEY_CHARACTER
+				TEnumCreationKey.T_KEY_CHARACTER,
+				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyLauncherPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
-				TEnumCreationKey.T_KEY_LAUNCHER
+				TEnumCreationKey.T_KEY_LAUNCHER,
+				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER_TOOLTIP")
 				);
 	
 		CreateKey(CFilePaths.getToolKeyLastWordPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD"),
-				TEnumCreationKey.T_KEY_LASTWORD
+				TEnumCreationKey.T_KEY_LASTWORD,
+				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyPredictionPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION"),
-				TEnumCreationKey.T_KEY_PREDICTION
+				TEnumCreationKey.T_KEY_PREDICTION,
+				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyShortCutPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
-				TEnumCreationKey.T_KEY_SHORTCUT
+				TEnumCreationKey.T_KEY_SHORTCUT,
+				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyStringPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
-				TEnumCreationKey.T_KEY_STRING
+				TEnumCreationKey.T_KEY_STRING,
+				UIString.getUIString("LB_KEYCREATION_KEYSTRING_TOOLTIP")
 				);
 
 		CreateKey(CFilePaths.getToolKeyLevelSHIFTPicture(),
 				UIString.getUIString("LB_KEYCREATION_SHIFT"),
-				TEnumCreationKey.T_KEY_LEVEL_SHIFT
+				TEnumCreationKey.T_KEY_LEVEL_SHIFT,
+				UIString.getUIString("LB_KEYCREATION_SHIFT_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyLevelALTGRPicture(),
 				UIString.getUIString("LB_KEYCREATION_ALTGR"),
-				TEnumCreationKey.T_KEY_LEVEL_ALTGR
+				TEnumCreationKey.T_KEY_LEVEL_ALTGR,
+				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomClosePicture(),
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION
+				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
+				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomConfigurationPicture(),
 				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION
+				TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION,
+				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
 				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
-				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM
+				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM,
+				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP")
 				);
 	}
 
@@ -126,7 +137,8 @@ public class UIKeyCreationToolbar extends JPanel
 	
 	protected void CreateKey(	String filePath,
 								String caption, 			// texte affiché en tip
-								TEnumCreationKey type) 		// Type de la key
+								TEnumCreationKey type,		// Type de la key
+								String tooltip) 			// Tooltip
 	{
 		// Création de l'objet du noyau
 		CKeyCreation keyCreation = new CKeyCreation(
@@ -135,7 +147,8 @@ public class UIKeyCreationToolbar extends JPanel
 				COLOR_PRESSED,
 				new TPoint(0,0),new TPoint(0,0),
 				filePath,
-				type);
+				type,
+				tooltip);
 		
 		keyCreation.setCaptionImage( true );
 		

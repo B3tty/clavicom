@@ -43,6 +43,7 @@ public class CKeyCreation extends CKeyOneLevel
 	//---------------------------------------------------------- VARIABLES --//	
 
 	TEnumCreationKey keyType;
+	String tooltip;				// Texte affiché en tooltip
 	
 	protected EventListenerList listenerList;
 	
@@ -53,17 +54,23 @@ public class CKeyCreation extends CKeyOneLevel
 							TPoint myPointMin, 
 							TPoint myPointMax,
 							String myCaption,
-							TEnumCreationKey myKeyType)
+							TEnumCreationKey myKeyType,
+							String tooltip)
 	{
 		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
 		
 		keyType = myKeyType;
+		this.tooltip = tooltip;
 		
 		listenerList = new EventListenerList();
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
 	
+	public String getToolTip()
+	{
+		return tooltip;
+	}
 	
 	
 	// Listener ==============================================

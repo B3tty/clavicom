@@ -375,14 +375,14 @@
 	<!-- Titres des frames de modification -->
 	<message id = "FR_OPTIONS_MULTIPLE">Modification de plusieurs touches</message>
 	
-	<message id = "FR_OPTIONS_KEYCHARACTER">Touche caractère</message>
-	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction</message>
-	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot</message>
+	<message id = "FR_OPTIONS_KEYCHARACTER">Touche caractère </message>
+	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction </message>
+	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot </message>
 	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
-	<message id = "FR_OPTIONS_KEYLEVEL">Edition de touche </message>
-	<message id = "FR_OPTIONS_KEYSHORTCUT">Edition de touche raccourcit</message>
-	<message id = "FR_OPTIONS_KEYSTRING">Edition de touche chaîne</message>
-	<message id = "FR_OPTIONS_KEYCLAVICOM">Edition de touche</message>
+	<message id = "FR_OPTIONS_KEYLEVEL">Touche </message>
+	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourcit </message>
+	<message id = "FR_OPTIONS_KEYSTRING">Touche chaîne </message>
+	<message id = "FR_OPTIONS_KEYCLAVICOM">Touche </message>
 	
 	<!-- Level editor --> 
 	<message id = "FR_LEVEL_EDITOR_TITLE">Configuration des niveaux de défilement</message>
@@ -395,6 +395,16 @@
 	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Touches</message>
 	
 	<message id = "FR_LEVEL_EDITOR_BT_OK">OK</message>
+	
+	<message id = "FR_LEVEL_EDITOR_BT_CLASS_TOOLTIP">Classer les touches selectionnée</message>
+	<message id = "FR_LEVEL_EDITOR_BT_CLASS_AUTOMATIC_TOOLTIP">Classer toutes les touches dans le niveau par défaut</message>
+	
+	<message id = "FR_LEVEL_EDITOR_BT_ADD_TOOLTIP">Ajouter l'élément</message>
+	<message id = "FR_LEVEL_EDITOR_BT_REMOVE_TOOLTIP">Retirer l'élément</message>
+	<message id = "FR_LEVEL_EDITOR_BT_UP_TOOLTIP">Monter l'élément</message>
+	<message id = "FR_LEVEL_EDITOR_BT_DOWN_TOOLTIP">Descendre l'élément</message>
+	
+	<message id = "FR_LEVEL_EDITOR_BT_OK_TOOLTIP">Fermer l'éditeur de niveau</message>
 	
 	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_1">Le groupe "</message>
 	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_2">" est déja utilisé.</message>
@@ -421,6 +431,18 @@
 	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
 	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
 	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
+	
+	<message id = "LB_KEYCREATION_KEYCHARACTER_TOOLTIP">Création d'une touche caractère</message>
+	<message id = "LB_KEYCREATION_KEYSTRING_TOOLTIP">Création d'une touche chaîne de caractères</message>
+	<message id = "LB_KEYCREATION_KEYLASTWORD_TOOLTIP">Création d'une touche de dernier mot</message>
+	<message id = "LB_KEYCREATION_KEYPREDICTION_TOOLTIP">Création d'une touche de prédiction</message>
+	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
+	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
+	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP">Création d'une touche de configuration de l'application</message>
+	<message id = "LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP">Création d'une touche de passage en mode souris</message>
+	<message id = "LB_KEYCREATION_ALTGR_TOOLTIP">Création d'une touche "Alt-Gr"</message>
+	<message id = "LB_KEYCREATION_SHIFT_TOOLTIP">Création d'une touche "Shift"</message>
 	
 	<!-- CONF profil -->
 	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
@@ -493,6 +515,11 @@
 	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
 	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER">Niveaux</message>
+	
+	<message id = "LB_EDITION_CLOSE_EDITION_TOOLTIP">Repasser en mode utilisation</message>
+	<message id = "LB_EDITION_OPEN_OPTIONS_TOOLTIP">Ouvrir les options de l'application</message>
+	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Editer les touches selectionnées</message>
+	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Editer les niveaux de défilement</message>
 	
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>

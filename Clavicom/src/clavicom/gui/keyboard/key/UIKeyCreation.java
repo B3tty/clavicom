@@ -45,8 +45,11 @@ public class UIKeyCreation extends UIKeyOneLevel
 		super();
 		
 		coreKey = myCoreKey;
-		
+
 		listenerListCreation = new EventListenerList();
+		
+		// Ajout du tooltip
+		setToolTipText(coreKey.getToolTip());
 		
 		addListeners();
 	}

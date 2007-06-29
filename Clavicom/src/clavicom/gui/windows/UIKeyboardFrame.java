@@ -77,6 +77,10 @@ import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
 
+import com.sun.jna.examples.WindowUtils;
+
+//import com.sun.jna.examples.WindowUtils;
+
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -87,7 +91,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	private final  String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
-
 	
 	//---------------------------------------------------------- VARIABLES --//
 	@SuppressWarnings("unused")
@@ -187,12 +190,14 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void componentResized(ComponentEvent arg0)
 	{
-		//  Rien à ajouter
+		if(panelKeyboard.getWindowShape() != null)
+			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
 	}
 
 	public void componentShown(ComponentEvent arg0)
 	{
-		// Rien à ajouter
+		if(panelKeyboard.getWindowShape() != null)
+			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());  
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -301,6 +306,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
 		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
 		btOpenLevelManager = new JButton(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER"));
+		
+		// Ajout des tooltips
+		btFermerModeEdition.setToolTipText(UIString.getUIString("LB_EDITION_CLOSE_EDITION_TOOLTIP"));
+		btOptionsApplication.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_OPTIONS_TOOLTIP"));
+		btEditionKey.setToolTipText(UIString.getUIString("LB_EDITION_EDIT_KEY_TOOLTIP"));
+		btOpenLevelManager.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP"));
 		
 		panelBoutons.add(btOpenLevelManager);
 		panelBoutons.add(btFermerModeEdition);
@@ -485,7 +496,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 						    JOptionPane.YES_NO_CANCEL_OPTION,
 						    JOptionPane.QUESTION_MESSAGE,
 						    null,
-						    UNCLASSED_KEY_CHOICES, UNCLASSED_KEY_CHOICES[2]);
+						    UNCLASSED_KEY_CHOICES, UNCLASSED_KEY_CHOICES[0]);
 				  
 				if (reponse == JOptionPane.YES_OPTION)
 				// Trier
