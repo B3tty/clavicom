@@ -75,6 +75,8 @@ public class PanelModificationProfilAdvancedOption extends
 		shortcutSetName = myShortcutSetName;
 
 		LoadComponents();
+		
+		initValues();
 	}
 
 	private void LoadComponents()
@@ -91,7 +93,7 @@ public class PanelModificationProfilAdvancedOption extends
 				TClickSouricomEnum.RIGHT_RELEASE
 			};
 		comboClickSouricom = new JComboBox( clickSouricomArray );
-		comboClickSouricom.setSelectedItem( advancedOption.getClickSouricom() );
+		
 		
 		addSpaceAfterString = new JCheckBox( 
 				UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING"), 
@@ -106,7 +108,6 @@ public class PanelModificationProfilAdvancedOption extends
 			interval[i] = String.valueOf( i );
 		SpinnerModel model = new SpinnerListModel(interval);
 		nbDefilTurn = new JSpinner( model );
-		nbDefilTurn.setValue( String.valueOf( advancedOption.getNumberOfDefilTurn() ) );
 		nbDefilTurn.setPreferredSize( new Dimension( 40, 30 ) );
 		
 		panelCommandSet = new PanelModificationProfilCommandSetName( commandSetName );
@@ -232,6 +233,17 @@ public class PanelModificationProfilAdvancedOption extends
 		add( panelShortcutSet );
 
 		
+	}
+	
+	public void initValues()
+	{
+		comboClickSouricom.setSelectedItem( advancedOption.getClickSouricom() );
+		addSpaceAfterString.setSelected( advancedOption.isAddSpaceAfterString() );
+		startWithOS.setSelected( advancedOption.isStartWithOS() );
+		nbDefilTurn.setValue( String.valueOf( advancedOption.getNumberOfDefilTurn() ) );
+		
+		panelCommandSet.initValues();
+		panelShortcutSet.initValues();
 	}
 
 	// ----------------------------------------------------------- METHODES --//

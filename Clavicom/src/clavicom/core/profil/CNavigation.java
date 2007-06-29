@@ -36,7 +36,6 @@ public class CNavigation
 	//--------------------------------------------------------- CONSTANTES --//
 	private static int DEFAULT_TEMPORISATION_CLIC = 1000;
 	private static int DEFAULT_TEMPORISATION_DEFILEMENT = 1000;
-	private static int DEFAULT_MOUSE_TEMPORISATION = 1000;
 	private static int DEFAULT_MOUSE_SPEED = 100;
 	
 	private static boolean DEFAULT_BLOCK_SELECTION_ACTIVE = false;
@@ -48,7 +47,6 @@ public class CNavigation
 	int temporisationClic;
 	int temporisationDefilement;
 	int mouseSpeed;
-	int mouseTemporisation;
 	
 	boolean blockSelectionActive;
 	boolean rolloverActive;
@@ -62,7 +60,6 @@ public class CNavigation
 		blockSelectionActive = DEFAULT_BLOCK_SELECTION_ACTIVE;
 		rolloverActive = DEFAULT_ROLLOVER_ACTIVE;
 		mouseSpeed = DEFAULT_MOUSE_SPEED;
-		mouseTemporisation = DEFAULT_MOUSE_TEMPORISATION;
 		
 		// Récupération du type de noeud
 		Element eltTypeNavigation = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_TYPE);
@@ -159,111 +156,73 @@ public class CNavigation
 									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_3"));			
 		}
 		
-		// Récupération du mouseTemporisation
-		Element eltMouseTemporisation = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_TEMPORISATION);
 		
-		if (eltMouseTemporisation == null)
+		
+		
+		// Récupération de la temporisation du click
+		Element eltTempo = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
+		if (eltTempo == null)
 		{
 			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
-									TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_TEMPORISATION +
-									UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));			
+									TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));				
 		}
 		
-		String strMouseTemporisation = eltMouseSpeed.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_TEMPORISATION);
-		if(strMouseTemporisation == null)
+		String strTempoNavigation = eltTempo.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_CLICK_TEMPO_VALUE);
+		
+		if (strTempoNavigation == null || strTempoNavigation.equals(""))
 		{
 			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
-									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_TEMPORISATION +
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_CLICK_TEMPO_VALUE +
 									UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
-	
+			
 		}
 		
 		try
 		{
-			mouseTemporisation = Integer.parseInt(strMouseTemporisation);
+			temporisationClic = Integer.parseInt(strTempoNavigation);
 		}
 		catch (Exception ex)
 		{
-			throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_1")+
-					strMouseTemporisation +
-									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_2")+
-									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_TEMPORISATION +							
-									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_SPEED_3"));			
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_1")+
+									strTempoNavigation +
+									UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_2")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_CLICK_TEMPO_VALUE +							
+									UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_3"));
+		}
+	
+		// Récupération de la temporisation du defilement
+		Element eltTempoDefil = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO);
+		if (eltTempoDefil == null)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
+									TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));				
 		}
 		
-		// Récupération des paramètres spécifiques à chaque type
-		if (typeNavigation == TNavigationType.STANDARD)
+		String strTempoDefil = eltTempoDefil.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE);
+		
+		if (strTempoDefil == null || strTempoDefil.equals(""))
 		{
-			// Rien à faire en plus
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
+			
+		}
+		
+		try
+		{
+			temporisationDefilement = Integer.parseInt(strTempoDefil);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_1")+
+									strTempoDefil +
+									UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_2")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE +							
+									UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_3"));
 		}		
-		else if (typeNavigation == TNavigationType.CLICK_TEMPORISE)
-		{
-			// Récupération de la temporisation
-			Element eltTempo = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
-			if (eltTempo == null)
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
-										TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO +
-										UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));				
-			}
-			
-			String strTempoNavigation = eltTempo.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE);
-			
-			if (strTempoNavigation == null || strTempoNavigation.equals(""))
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
-										TXMLNames.PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE +
-										UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
-				
-			}
-			
-			try
-			{
-				temporisationClic = Integer.parseInt(strTempoNavigation);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_1")+
-										strTempoNavigation +
-										UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_2")+
-										TXMLNames.PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE +							
-										UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_3"));
-			}
-		}
-		else if (typeNavigation == TNavigationType.DEFILEMENT)
-		{
-			// Récupération de la temporisation
-			Element eltTempo = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO);
-			if (eltTempo == null)
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
-										TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO +
-										UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));				
-			}
-			
-			String strTempoNavigation = eltTempo.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE);
-			
-			if (strTempoNavigation == null || strTempoNavigation.equals(""))
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
-										TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE +
-										UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
-				
-			}
-			
-			try
-			{
-				temporisationDefilement = Integer.parseInt(strTempoNavigation);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_1")+
-										strTempoNavigation +
-										UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_2")+
-										TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE +							
-										UIString.getUIString("EX_NAVIGATION_BAD_TEMPORISATION_3"));
-			}		
-		}
+		
 	}
 	
 	
@@ -288,28 +247,15 @@ public class CNavigation
 		eltMouseSpeed.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED, Integer.toString(mouseSpeed));
 		eltNavigation.addContent(eltMouseSpeed);
 		
-		// Ajout du mouse temporisation
-		Element eltMouseTemporisation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_TEMPORISATION);
-		eltMouseTemporisation.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_TEMPORISATION, Integer.toString(mouseTemporisation));
-		eltNavigation.addContent(eltMouseTemporisation);
+		// Ajout de clic temporisation
+		Element eltClickTempo = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
+		eltClickTempo.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_CLICK_TEMPO_VALUE, Integer.toString( temporisationClic ));
+		eltNavigation.addContent(eltClickTempo);
 		
-		// Ajout des informations spécifiques au type
-		if (typeNavigation == TNavigationType.STANDARD)
-		{
-			// Rien à faire en plus
-		}		
-		else if (typeNavigation == TNavigationType.CLICK_TEMPORISE)
-		{
-			Element eltTemporisation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_CLICK_TEMPO);
-			eltTemporisation.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_TEMPORISE_TEMPO_VALUE, Integer.toString(temporisationClic));
-			eltNavigation.addContent(eltTemporisation);
-		}
-		else if (typeNavigation == TNavigationType.DEFILEMENT)
-		{
-			Element eltTemporisation = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO);
-			eltTemporisation.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE, Integer.toString(temporisationDefilement));
-			eltNavigation.addContent(eltTemporisation);
-		}
+		// Ajout de defil temoporisation
+		Element eltDefilTempo = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_DEFILEMENT_TEMPO);
+		eltDefilTempo.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE, Integer.toString( temporisationDefilement ));
+		eltNavigation.addContent(eltDefilTempo);
 		
 		return eltNavigation;
 	}
@@ -386,17 +332,6 @@ public class CNavigation
 	}
 
 
-	public int getMouseTemporisation()
-	{
-		return mouseTemporisation;
-	}
-
-
-	public void setMouseTemporisation(int mouseTemporisation)
-	{
-		this.mouseTemporisation = mouseTemporisation;
-	}
-	
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

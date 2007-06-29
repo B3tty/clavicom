@@ -54,6 +54,8 @@ public class PanelModificationProfilCommandSetName extends
 		commandSetName = myCommandSetName;
 
 		LoadComponents();
+		
+		initValues();
 	}
 
 	private void LoadComponents()
@@ -82,6 +84,31 @@ public class PanelModificationProfilCommandSetName extends
 					{
 						CFile commandSetFile = new CFile( list[i].getAbsolutePath() );
 						combo.addItem( commandSetFile );
+					}
+				}
+			}
+		}
+		
+		add( combo, BorderLayout.CENTER );
+	}
+
+	// ----------------------------------------------------------- METHODES --//
+	
+	public void initValues()
+	{
+		File commandSetDirectory = new File( CFilePaths.getCommandSetsFolder() );
+
+		if (commandSetDirectory.isDirectory())
+		{
+			File[] list = commandSetDirectory.listFiles();
+			if (list != null)
+			{
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile commandSetFile = new CFile( list[i].getAbsolutePath() );
 						
 						// si le nom du commandSet est le même que celui en train d'être chargé, on le séléctione
 						if( commandSetFile.toString().equals( 
@@ -93,11 +120,7 @@ public class PanelModificationProfilCommandSetName extends
 				}
 			}
 		}
-		
-		add( combo, BorderLayout.CENTER );
 	}
-
-	// ----------------------------------------------------------- METHODES --//
 
 	@Override
 	public boolean validateDataEntry()

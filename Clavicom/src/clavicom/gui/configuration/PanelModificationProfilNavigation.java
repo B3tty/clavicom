@@ -67,11 +67,11 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		LoadComponents();
 		
-		InitValues();
+		initValues();
 	}
 
 	
-	private void InitValues()
+	public void initValues()
 	{
 		if( navigation.getTypeNavigation() == TNavigationType.STANDARD )
 		{
@@ -80,7 +80,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonDefilement.setSelected(false);
 			radioButtonClickTempo.setSelected(false);
 			
-			
 		} else if( navigation.getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
 			SwitchDefilementMode();
@@ -88,19 +87,18 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonDefilement.setSelected(true);
 			radioButtonClickTempo.setSelected(false);
 			
-			sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
 		} else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			SwitchClicMode();
 			radioButtonStandard.setSelected(false);
 			radioButtonDefilement.setSelected(false);
 			radioButtonClickTempo.setSelected(true);
-			
-			sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
-			blocSelection.setSelected( navigation.isBlockSelectionActive() );
 		}
 		
+		blocSelection.setSelected( navigation.isBlockSelectionActive() );
 		sliderMouseSpeed.setValue( navigation.getTemporisationClic() );
+		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
+		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
 		rollOver.setSelected( navigation.isRolloverActive() ); 
 	}
 
@@ -151,8 +149,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setMajorTickSpacing(500);
 		sliderTempoClic.setMinorTickSpacing(500);
 		sliderTempoClic.setPaintTicks(true);
-		sliderTempoClic.setPaintLabels(true);
-		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
+		//sliderTempoClic.setPaintLabels(true);
+		
 		
 		panelGlobal.add( sliderTempoClic );
 		
@@ -181,8 +179,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoDefil.setMajorTickSpacing(500);
 		sliderTempoDefil.setMinorTickSpacing(500);
 		sliderTempoDefil.setPaintTicks(true);
-		sliderTempoDefil.setPaintLabels(true);
-		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
+		//sliderTempoDefil.setPaintLabels(true);
+		
 		
 		panelGlobal.add( sliderTempoDefil );
 		
@@ -211,7 +209,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderMouseSpeed.setMajorTickSpacing(10);
 		sliderMouseSpeed.setMinorTickSpacing(10);
 		sliderMouseSpeed.setPaintTicks(true);
-		sliderMouseSpeed.setPaintLabels(true);
+		//sliderMouseSpeed.setPaintLabels(true);
+		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
 		
 		panelGlobal.add( sliderMouseSpeed );
 		
@@ -267,6 +266,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 
 	//----------------------------------------------------------- METHODES --//
+
 	
 	@Override
 	public boolean validateDataEntry()

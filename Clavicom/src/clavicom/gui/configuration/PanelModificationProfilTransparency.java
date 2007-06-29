@@ -52,6 +52,8 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		transparency = myTransparency;
 		
 		LoadComponents();
+		
+		initValues();
 	}
 	
 	private void LoadComponents()
@@ -72,7 +74,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keyboardTransparency.setMinorTickSpacing(10);
 		keyboardTransparency.setPaintTicks(true);
 		keyboardTransparency.setPaintLabels(true);
-		keyboardTransparency.setValue( (int)(( 1 - transparency.getKeyboardTransparency())*100) );
+		
 		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keyboardT, BorderLayout.NORTH);
 		
@@ -89,7 +91,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keysTransparency.setMinorTickSpacing(10);
 		keysTransparency.setPaintTicks(true);
 		keysTransparency.setPaintLabels(true);
-		keysTransparency.setValue( (int)(( 1 - transparency.getKeyTransparency())*100) );
+		
 		keysT.add(keysTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keysT, BorderLayout.SOUTH);
 		
@@ -100,6 +102,11 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 
 	//----------------------------------------------------------- METHODES --//	
 
+	public void initValues()
+	{
+		keyboardTransparency.setValue( (int)(( 1 - transparency.getKeyboardTransparency())*100) );
+		keysTransparency.setValue( (int)(( 1 - transparency.getKeyTransparency())*100) );
+	}
 	
 	@Override
 	public boolean validateDataEntry()

@@ -54,6 +54,8 @@ public class PanelModificationProfilShortcutSetName extends
 		shortcutSetName = myShotrcutSetName;
 
 		LoadComponents();
+		
+		initValues();
 	}
 
 	private void LoadComponents()
@@ -82,6 +84,31 @@ public class PanelModificationProfilShortcutSetName extends
 					{
 						CFile shortcutSetFile = new CFile( list[i].getAbsolutePath() );
 						combo.addItem( shortcutSetFile );
+					}
+				}
+			}
+		}
+		
+		add( combo, BorderLayout.CENTER );
+	}
+
+	// ----------------------------------------------------------- METHODES --//
+
+	public void initValues()
+	{
+		File commandSetDirectory = new File( CFilePaths.getShortcutSetsFolder() );
+
+		if (commandSetDirectory.isDirectory())
+		{
+			File[] list = commandSetDirectory.listFiles();
+			if (list != null)
+			{
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile shortcutSetFile = new CFile( list[i].getAbsolutePath() );
 						
 						// si le nom du commandSet est le même que celui en train d'être chargé, on le séléctione
 						if( shortcutSetFile.toString().equals( 
@@ -93,12 +120,7 @@ public class PanelModificationProfilShortcutSetName extends
 				}
 			}
 		}
-		
-		add( combo, BorderLayout.CENTER );
 	}
-
-	// ----------------------------------------------------------- METHODES --//
-
 	
 	@Override
 	public boolean validateDataEntry()

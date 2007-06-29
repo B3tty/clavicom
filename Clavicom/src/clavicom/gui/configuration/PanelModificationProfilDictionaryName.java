@@ -53,6 +53,8 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 		dictionaryName = myDictionaryName;
 		
 		LoadComponents();
+		
+		initValues();
 	}
 	
 	private void LoadComponents()
@@ -81,13 +83,6 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 					{
 						CFile dictionnaryFile = new CFile( list[i].getAbsolutePath() );
 						combo.addItem( dictionnaryFile );
-						
-						// si le nom du dictionaire est le même que celui en train d'être chargé, on le séléctione
-						if( dictionnaryFile.toString().equals( 
-								dictionaryName.getDictionaryName() ) )
-						{
-							combo.setSelectedItem( dictionnaryFile );
-						}
 					}
 				}
 			}
@@ -100,6 +95,34 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 	
 
 	//----------------------------------------------------------- METHODES --//
+	
+	public void initValues()
+	{
+		File commandSetDirectory = new File( CFilePaths.getDictionariesFolder() );
+
+		if (commandSetDirectory.isDirectory())
+		{
+			File[] list = commandSetDirectory.listFiles();
+			if (list != null)
+			{
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile dictionnaryFile = new CFile( list[i].getAbsolutePath() );
+						
+						// si le nom du dictionaire est le même que celui en train d'être chargé, on le séléctione
+						if( dictionnaryFile.toString().equals( 
+								dictionaryName.getDictionaryName() ) )
+						{
+							combo.setSelectedItem( dictionnaryFile );
+						}
+					}
+				}
+			}
+		}
+	}
 	
 	@Override
 	public boolean validateDataEntry()
