@@ -52,6 +52,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	CPreferedWords preferedWord;
 	JTable table;
 	WordsTableModel wordTableModel;
+	JPanel panelGlobal;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -62,34 +63,15 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		preferedWord = myPreferedWord;
 		
 		LoadComponents();
+		
+		initValues();
 	}
 	
 	private void LoadComponents()
 	{
 		setLayout( new BorderLayout() );
-		JPanel panelGlobal = new JPanel( new BorderLayout() );
-		
-		// table
-		List<CDictionaryWord> preferedWordTab = new ArrayList<CDictionaryWord>();
-		for( int i = 0 ; i < preferedWord.getSize() ; ++i)
-		{
-			CDictionaryWord dicWord = preferedWord.getPreferedWord( i );
-			if( dicWord != null )
-			{
-				preferedWordTab.add( dicWord );
-			}
-			
-		}
-		
-		
-		wordTableModel = new WordsTableModel( preferedWordTab );
-		table = new JTable( wordTableModel );
-		
+		panelGlobal = new JPanel( new BorderLayout() );
 
-		JScrollPane panelTable = new JScrollPane( table );
-		panelGlobal.add( panelTable, BorderLayout.CENTER );
-	
-		
 		// boutton
 		JPanel buttons = new JPanel();
 		
@@ -132,7 +114,28 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 
 	//----------------------------------------------------------- METHODES --//
 	
-	
+	public void initValues()
+	{
+		// table
+		List<CDictionaryWord> preferedWordTab = new ArrayList<CDictionaryWord>();
+		for( int i = 0 ; i < preferedWord.getSize() ; ++i)
+		{
+			CDictionaryWord dicWord = preferedWord.getPreferedWord( i );
+			if( dicWord != null )
+			{
+				preferedWordTab.add( dicWord );
+			}
+			
+		}
+		
+		wordTableModel = new WordsTableModel( preferedWordTab );
+		table = new JTable( wordTableModel );
+		
+		JScrollPane panelTable = new JScrollPane( table );
+		
+		panelGlobal.remove( panelTable );
+		panelGlobal.add( panelTable, BorderLayout.CENTER );
+	}
 
 	@Override
 	public boolean validateDataEntry()

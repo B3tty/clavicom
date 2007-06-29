@@ -54,6 +54,8 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 		langueUIName = myLangueUIName;
 		
 		LoadComponents();
+		
+		initValues();
 	}
 	
 	private void LoadComponents()
@@ -81,6 +83,30 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 					{
 						CFile languageUIFile = new CFile( list[i].getAbsolutePath() );
 						combo.addItem( languageUIFile );
+					}
+				}
+			}
+		}
+		
+		add( combo, BorderLayout.CENTER );
+		
+	}
+	
+	public void initValues()
+	{
+		File langueUIDirectory = new File( CFilePaths.getLanguagesUIFolder() );
+
+		if (langueUIDirectory.isDirectory())
+		{
+			File[] list = langueUIDirectory.listFiles();
+			if (list != null)
+			{
+				for (int i = 0; i < list.length; i++)
+				{
+					// on ne met pas le .svn
+					if( ! list[i].getName().equals( ".svn" ) )
+					{
+						CFile languageUIFile = new CFile( list[i].getAbsolutePath() );
 						
 						// si le nom du languageUI est le même que celui en train d'être chargé, on le séléctione
 						if( languageUIFile.toString().equals( 
@@ -93,9 +119,6 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 				}
 			}
 		}
-		
-		add( combo, BorderLayout.CENTER );
-		
 	}
 
 	

@@ -29,18 +29,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Spring;
 import javax.swing.SpringLayout;
-
 import clavicom.core.profil.CKeyboardColor;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TColorPanel;
 
 public class PanelModificationProfilKeyboardColor extends
 		PanelModificationProfil
@@ -51,13 +49,13 @@ public class PanelModificationProfilKeyboardColor extends
 	// ---------------------------------------------------------- VARIABLES --//
 	CKeyboardColor keyboardColor;
 
-	JButton buttonBackColor;
+	TColorPanel panelBackColor;
 
-	JButton buttonNormal;
+	TColorPanel panelNormal;
 
-	JButton buttonEnteredColor;
+	TColorPanel panelEnteredColor;
 
-	JButton buttonClickedColor;
+	TColorPanel panelClickedColor;
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 
@@ -68,6 +66,8 @@ public class PanelModificationProfilKeyboardColor extends
 		keyboardColor = myKeyboardColor;
 
 		LoadComponents();
+		
+		initValues();
 	}
 
 	private void LoadComponents()
@@ -78,11 +78,13 @@ public class PanelModificationProfilKeyboardColor extends
 		JPanel panel = new JPanel( springLayout );
 		
 		
+		
 
-		buttonBackColor = new JButton();
-		buttonBackColor.addActionListener(new ActionListener()
+		panelBackColor = new TColorPanel();
+		panelBackColor.addMouseListener( new MouseListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+
+			public void mouseClicked(MouseEvent e)
 			{
 				Color newColor = JColorChooser.showDialog(null, UIString
 						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
@@ -93,23 +95,48 @@ public class PanelModificationProfilKeyboardColor extends
 					if (newColor != keyboardColor.getBackColor().getColor())
 					{
 
-						buttonBackColor.setBackground(newColor);
+						panelBackColor.setBackground(newColor);
 					}
 				}
 			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 
 		DisplayColor(
-				buttonBackColor,
-				keyboardColor.getBackColor().getColor(),
+				panelBackColor,
 				UIString
 						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR"),
 				panel);
 
-		buttonNormal = new JButton();
-		buttonNormal.addActionListener(new ActionListener()
+		panelNormal = new TColorPanel();
+		panelNormal.addMouseListener( new MouseListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+
+			public void mouseClicked(MouseEvent e)
 			{
 				Color newColor = JColorChooser.showDialog(null, UIString
 						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
@@ -121,20 +148,46 @@ public class PanelModificationProfilKeyboardColor extends
 							.getColor())
 					{
 
-						buttonNormal.setBackground(newColor);
+						panelNormal.setBackground(newColor);
 					}
 				}
 			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
-		DisplayColor(buttonNormal, keyboardColor.getDefaultKeyNormal()
-				.getColor(), UIString
+		
+		DisplayColor(panelNormal, UIString
 				.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR"),
 				panel);
 
-		buttonEnteredColor = new JButton();
-		buttonEnteredColor.addActionListener(new ActionListener()
+		panelEnteredColor = new TColorPanel();
+		panelEnteredColor.addMouseListener( new MouseListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+
+			public void mouseClicked(MouseEvent e)
 			{
 				Color newColor = JColorChooser.showDialog(null, UIString
 						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
@@ -146,22 +199,47 @@ public class PanelModificationProfilKeyboardColor extends
 							.getColor())
 					{
 
-						buttonEnteredColor.setBackground(newColor);
+						panelEnteredColor.setBackground(newColor);
 					}
 				}
 			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 		DisplayColor(
-				buttonEnteredColor,
-				keyboardColor.getDefaultKeyEntered().getColor(),
+				panelEnteredColor,
 				UIString
 						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR"),
 				panel);
 
-		buttonClickedColor = new JButton();
-		buttonClickedColor.addActionListener(new ActionListener()
+		panelClickedColor = new TColorPanel();
+		panelClickedColor.addMouseListener(new MouseListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+
+			public void mouseClicked(MouseEvent e)
 			{
 				Color newColor = JColorChooser.showDialog(null, UIString
 						.getUIString("LB_CHOOSE_COLOR"), keyboardColor
@@ -173,14 +251,38 @@ public class PanelModificationProfilKeyboardColor extends
 							.getColor())
 					{
 
-						buttonClickedColor.setBackground(newColor);
+						panelClickedColor.setBackground(newColor);
 					}
 				}
 			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 		DisplayColor(
-				buttonClickedColor,
-				keyboardColor.getDefaultKeyClicked().getColor(),
+				panelClickedColor,
 				UIString
 						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR"),
 				panel);
@@ -200,6 +302,15 @@ public class PanelModificationProfilKeyboardColor extends
 	}
 
 	// ----------------------------------------------------------- METHODES --//
+	
+	public void initValues()
+	{
+		
+		panelBackColor.setBackground( 		keyboardColor.getBackColor().getColor() );
+		panelNormal.setBackground( 			keyboardColor.getDefaultKeyNormal().getColor() );
+		panelEnteredColor.setBackground( 	keyboardColor.getDefaultKeyEntered().getColor() );
+		panelClickedColor.setBackground( 	keyboardColor.getDefaultKeyClicked().getColor() );
+	}
 
 	@Override
 	public boolean validateDataEntry()
@@ -215,7 +326,7 @@ public class PanelModificationProfilKeyboardColor extends
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 
-	protected void DisplayColor(JButton buttonColor, Color defautColor,
+	protected void DisplayColor(JPanel panelColor,
 			String typeColor, 
 			JPanel panel3)
 	{
@@ -223,10 +334,8 @@ public class PanelModificationProfilKeyboardColor extends
 		panel1.add(new JLabel(typeColor));
 		panel3.add(panel1);
 
-		buttonColor.setBackground(defautColor);
-		buttonColor.setPreferredSize(new Dimension(30, 20));
 		JPanel panel2 = new JPanel();
-		panel2.add(buttonColor);
+		panel2.add(panelColor);
 
 		panel3.add(panel2);
 	}
@@ -319,46 +428,46 @@ public class PanelModificationProfilKeyboardColor extends
 		// Si la keyboardColor a changé, on la met dans le profil
 		boolean retour = false;
 
-		if (buttonBackColor.getBackground() != keyboardColor.getBackColor()
+		if (panelBackColor.getBackground() != keyboardColor.getBackColor()
 				.getColor())
 		{
 			if ( saveData )
 			{
 				keyboardColor.getBackColor().setColor(
-					buttonBackColor.getBackground());
+						panelBackColor.getBackground());
 			}
 			
 			retour = true;
 		}
-		if (buttonClickedColor.getBackground() != keyboardColor
+		if (panelClickedColor.getBackground() != keyboardColor
 				.getDefaultKeyClicked().getColor())
 		{
 			if ( saveData )
 			{
 				keyboardColor.getDefaultKeyClicked().setColor(
-						buttonClickedColor.getBackground());
+						panelClickedColor.getBackground());
 			}
 			
 			retour = true;
 		}
-		if (buttonEnteredColor.getBackground() != keyboardColor
+		if (panelEnteredColor.getBackground() != keyboardColor
 				.getDefaultKeyEntered().getColor())
 		{
 			if ( saveData )
 			{
 				keyboardColor.getDefaultKeyEntered().setColor(
-						buttonEnteredColor.getBackground());
+						panelEnteredColor.getBackground());
 			}
 			
 			retour = true;
 		}
-		if (buttonNormal.getBackground() != keyboardColor.getDefaultKeyNormal()
+		if (panelNormal.getBackground() != keyboardColor.getDefaultKeyNormal()
 				.getColor())
 		{
 			if ( saveData )
 			{
 				keyboardColor.getDefaultKeyNormal().setColor(
-						buttonNormal.getBackground());
+						panelNormal.getBackground());
 			}
 			
 			retour = true;

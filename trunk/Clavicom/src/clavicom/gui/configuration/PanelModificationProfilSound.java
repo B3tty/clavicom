@@ -54,6 +54,8 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		sound = mySound;
 		
 		LoadComponents();
+		
+		initValues();
 	}
 	
 	private void LoadComponents()
@@ -79,6 +81,12 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 
 	//----------------------------------------------------------- METHODES --//	
 
+	public void initValues()
+	{
+		checkDefil.setSelected( sound.isSoundOnDefil() );
+		checkEntered.setSelected( sound.isSoundOnSurvol() );
+		checkPressed.setSelected( sound.isSoundOnClic() );
+	}
 	
 	@Override
 	public boolean validateDataEntry()

@@ -47,6 +47,7 @@ import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
@@ -55,6 +56,7 @@ import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TSwingUtils;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TUIKeyState;
 
 public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener, DefilListener, ComponentListener
@@ -189,10 +191,13 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	
 	public void startDefilMouse()
 	{
-		DefilementEngine.getInstance().addDefilListener( this );
-		ClickEngine.getInstance().addClickMouseHookListener( this );
-		DefilementEngine.getInstance().startDefilement();
-		CMouseEngine.getInstance().startTimer();
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		{
+			DefilementEngine.getInstance().addDefilListener( this );
+			ClickEngine.getInstance().addClickMouseHookListener( this );
+			DefilementEngine.getInstance().startDefilement();
+			CMouseEngine.getInstance().startTimer();
+		}
 	}
 	
 	public void stopDefilMouse()

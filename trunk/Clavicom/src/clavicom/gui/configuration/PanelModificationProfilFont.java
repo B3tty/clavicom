@@ -32,10 +32,9 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -50,6 +49,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import clavicom.core.profil.CFont;
 import clavicom.gui.language.UIString;
+import clavicom.tools.TColorPanel;
 
 public class PanelModificationProfilFont extends PanelModificationProfil
 {
@@ -63,7 +63,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	JCheckBox autoSize;
 	JComboBox comboSize;
 	JCheckBox autoColor;
-	JButton buttonColor;
+	TColorPanel panelColor;
 	JCheckBox shadow;
 	JTextArea exempleText;
 	JLabel labelSize;
@@ -82,18 +82,20 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		LoadComponents();
 		
 		InitComponents();
+		
+		initValues();
 	}
 	
 	private void InitComponents()
 	{
 		if( ! font.isAutoColor() )
 		{
-			buttonColor.setEnabled( true );
+			panelColor.setEnabled( true );
 			labelColor.setEnabled(true);
 		}
 		else
 		{
-			buttonColor.setEnabled( false );
+			panelColor.setEnabled( false );
 			labelColor.setEnabled(false);
 		}
 		if( ! font.isAutoSize() )
@@ -106,10 +108,37 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 			comboSize.setEnabled( false );
 			labelSize.setEnabled(false);
 		}
+		
+	}
+	
+	public void initValues()
+	{
+		autoSize.setSelected( font.isAutoSize() );
+		autoColor.setSelected( font.isAutoColor() );
+		panelColor.setBackground( font.getFontColor().getColor() );
+		shadow.setSelected( font.isShadow() );
+		bold.setSelected( font.isBold() );
+		italic.setSelected( font.isItalic() );
+		
 		int pourcent = Math.round( font.getHeightFactor() * 100f );
 		int modulo = pourcent % 5;
 		comboSize.setSelectedItem( pourcent - modulo );
 		
+		
+	    CFont cFont;
+	    CFont selectedCFont = null;
+		for ( int i = 0 ; i < list.getModel().getSize() ; i++ )
+	    {
+	    	cFont = (CFont)list.getModel().getElementAt( i );
+	    	
+	    	// on recherche la cFont séléctionné
+	    	if( cFont.getFontName().equals( font.getFontName() ) )
+	    	{
+	    		selectedCFont = cFont;
+	    	}
+	    }
+		list.setSelectedValue(selectedCFont, true);
+	    
 	}
 
 	private void LoadComponents()
@@ -118,28 +147,18 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		borderL.setHgap(5);
 		borderL.setVgap(5);
 		setLayout(borderL);		
-		
+	    
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	    String [] polices = ge.getAvailableFontFamilyNames();
+		String [] polices = ge.getAvailableFontFamilyNames();
 	    CFont[] cfonts = new CFont[ polices.length ];
 	    CFont cFont;
-	    Font fontTmp;
-	    CFont selectedCFont = null;
-
-	    for ( int i = 0 ; i < polices.length ; i++ )
+		for ( int i = 0 ; i < polices.length ; i++ )
 	    {
-	    	fontTmp = new Font( polices[i], Font.PLAIN, 12 );
-	    	cFont = new CFont( fontTmp.getName() );
+	    	cFont = new CFont( polices[i] );
 	    	
 	    	cfonts[ i ] = cFont;
-	    	
-	    	// on recherche la cFont séléctionné
-	    	if( cFont.toString().equals( font.getFontName() ) )
-	    	{
-	    		selectedCFont = cFont;
-	    	}
 	    }
-	    
+		
 	    list = new JList( cfonts );
 	    list.addListSelectionListener(new ListSelectionListener()
 	    {
@@ -271,12 +290,12 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    	{
 	    		if( autoColor.isSelected() )
 	    		{
-	    			buttonColor.setEnabled(false);
+	    			panelColor.setEnabled(false);
 	    			labelColor.setEnabled(false);
 	    		}
 	    		else
 	    		{
-	    			buttonColor.setEnabled(true);
+	    			panelColor.setEnabled(true);
 	    			labelColor.setEnabled(true);
 	    		}
 	    	}
@@ -299,22 +318,47 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		panelOption.add( autoColor );
 	    
 	    labelColor = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_COLOR")+ " : ");
-	    buttonColor = new JButton();
-	    buttonColor.setBackground( font.getFontColor().getColor() );
-	    buttonColor.addActionListener( new ActionListener()
+	    panelColor = new TColorPanel();
+	    panelColor.addMouseListener( new MouseListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+
+			public void mouseClicked(MouseEvent e)
 			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), buttonColor.getBackground() );
+				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), panelColor.getBackground() );
 				
 				if( newColor != null )
 				{
-					if( newColor != buttonColor.getBackground() )
+					if( newColor != panelColor.getBackground() )
 					{
-						buttonColor.setBackground( newColor );
+						panelColor.setBackground( newColor );
 					}
 				}
 			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 	    
 		// Ajout des Contraintes de ComboSize
@@ -348,8 +392,8 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
-		gbLayoutGlobal.setConstraints(buttonColor, gbConstButtonColor);
-		panelOption.add( buttonColor );
+		gbLayoutGlobal.setConstraints(panelColor, gbConstButtonColor);
+		panelOption.add( panelColor );
 
 
 
@@ -409,12 +453,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
   
 	    
 	    add( panelOption, BorderLayout.SOUTH  );
-	    
-	    // séléction de la police du profil
-	    if( selectedCFont != null )
-	    {
-	    	list.setSelectedValue(selectedCFont, true);
-	    }
+
 	}
 
 	
@@ -500,7 +539,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		
 		
 		// si la color à changé
-		Color color = buttonColor.getBackground();
+		Color color = panelColor.getBackground();
 		if( color != font.getFontColor().getColor() )
 		{
 			if(saveData)
