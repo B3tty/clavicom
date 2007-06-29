@@ -49,7 +49,7 @@ public class TPicturePanel extends JPanel
 	@Override
 	public void paintComponent(Graphics g)
 	{
-		g.drawImage( image.getImage(), 0, 0, getWidth(), getHeight(), null);
+		g.drawImage( TSwingUtils.scaleImage(image, getWidth(), -1).getImage(), 0, 0, this);
 	}
 
 

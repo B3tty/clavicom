@@ -669,42 +669,36 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void windowActivated(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire		
 	}
 
 	public void windowClosed(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire	
 	}
 
 	public void windowClosing(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire		
 	}
 
 	public void windowDeactivated(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire
 	}
 
 	public void windowDeiconified(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire
 	}
 
 	public void windowIconified(WindowEvent e)
 	{
-		
+		// Rien à faire
 	}
 
 	public void windowOpened(WindowEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire
 	}
 }

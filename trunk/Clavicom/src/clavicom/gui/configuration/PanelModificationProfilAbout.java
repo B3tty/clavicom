@@ -55,7 +55,7 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 		
 		
 		
-		TPicturePanel ClavicomNG = new TPicturePanel( CFilePaths.getClavicomNG() );
+		TPicturePanel ClavicomNG = new TPicturePanel( CFilePaths.getAboutPicture() );
 		// labels
 		JLabel ClavicomVersion = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_VERSION") );
 		JLabel ConceptionAndDevBy = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_CONCEPTION") );
@@ -79,7 +79,7 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 		JPanel panelGlobal = new JPanel( gbLayoutGlobal );
 
 		// placement du clavicom
-		ClavicomNG.setPreferredSize( new Dimension (200, 150) );
+		ClavicomNG.setPreferredSize( new Dimension (200, 200) );
 		add( ClavicomNG, BorderLayout.NORTH );
 		
 		// Ajout des Contraintes de ClavicomVersion
@@ -88,7 +88,7 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	            6,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            50,						// Taille horizontale relative
+	            50,							// Taille horizontale relative
 	            10,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
