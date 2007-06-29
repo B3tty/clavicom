@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: PanelOptionKeyboardKey.java
-			Creation date		: 5 juin 07
+			Filename			: KeySelectionListener.java
+			Creation date		: 11 juin 07
 		
 			Project				: Clavicom
-			Package				: clavicom.gui.keyboard.key.option
+			Package				: listener
 
 			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
 			Copyright (C)		: (2007) Centre ICOM'
@@ -23,22 +23,14 @@
 
 +-----------------------------------------------------------------------------*/
 
-package clavicom.gui.edition.key;
+package clavicom.gui.listener;
 
-import java.util.List;
+import java.util.EventListener;
 
-import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
-import clavicom.gui.keyboard.key.UIKeyKeyboard;
+import clavicom.gui.keyboard.key.UIKey;
 
-public class UIPanelOptionKeyboardKey extends UIPanelOptionKey
+public interface UIKeyboardNewKeyCreated extends EventListener
 {
-
-	CKeyKeyboard keyboardKey;
-	
-	public UIPanelOptionKeyboardKey( )
-	{
-		super();
-	}
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
@@ -46,20 +38,7 @@ public class UIPanelOptionKeyboardKey extends UIPanelOptionKey
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 
 	//----------------------------------------------------------- METHODES --//	
-	public void setValuesKeyKeyboard(CKeyKeyboard myKeyboardKey)
-	{
-		// Appel au père
-		setValuesKey(myKeyboardKey);
-		
-		keyboardKey = myKeyboardKey;
-	}
+	public void keyCreated(UIKey createdKey);
 	
-	public void setValuesKeyKeyboard(List<UIKeyKeyboard> selectedKeys)
-	{
-		// Appel au père
-		setValuesKey(selectedKeys);
-	}
 	//--------------------------------------------------- METHODES PRIVEES --//
-
-
 }

@@ -27,12 +27,15 @@ package clavicom.gui.edition.key;
 
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import clavicom.core.keygroup.CKey;
+import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 
@@ -45,6 +48,8 @@ public class UIPanelOptionKey extends JPanel
 	UIPanelOptionColor panelColorClicked;
 	UIPanelOptionColor panelColorEntered;
 	UIPanelOptionColor panelColorNormal;
+	
+	List<UIKeyKeyboard> selectedKeys;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIPanelOptionKey( )
@@ -69,6 +74,24 @@ public class UIPanelOptionKey extends JPanel
 	}
 
 	//----------------------------------------------------------- METHODES --//
+	public void setValuesKey( List<UIKeyKeyboard> selectedKeys )
+	{
+		// Affectation de la key
+		this.selectedKeys = selectedKeys;	
+		
+		// Création de la liste de CKey
+		List<CKey> selectedCKeys = new ArrayList<CKey>();
+		for(UIKeyKeyboard currentKey : selectedKeys)
+		{
+			selectedCKeys.add(currentKey.getCoreKey());
+		}
+		
+		
+		panelColorClicked.setValues( selectedCKeys, TColorKeyEnum.PRESSED );
+		panelColorEntered.setValues( selectedCKeys, TColorKeyEnum.ENTERED );
+		panelColorNormal.setValues( selectedCKeys, TColorKeyEnum.NORMAL );
+	}
+	
 	public void setValuesKey( CKey myKey)
 	{
 		// Affectation de la key

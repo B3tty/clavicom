@@ -39,7 +39,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 
 public class UIImageCombo extends JPanel
 {
@@ -77,7 +77,7 @@ public class UIImageCombo extends JPanel
 		for (int i = 0; i < filenames.size(); i++)
 		{
 			intArray[i] = new Integer(i);
-			images[i] = TImageUtils.getImage(directory + filenames.get(i));
+			images[i] = TSwingUtils.getImage(directory + filenames.get(i));
 			images[i].setImage(resizeImage(images[i].getImage()));
 			
 			if (images[i] != null)

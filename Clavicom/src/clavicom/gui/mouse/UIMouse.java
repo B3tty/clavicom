@@ -54,7 +54,7 @@ import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.utils.UIBackgroundPanel;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
 public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener, DefilListener, ComponentListener
@@ -487,7 +487,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		// On ettend l'image
 		if (imgBackground != null)
 		{
-			imgBackground = TImageUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+			imgBackground = TSwingUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 		}
 	
 		//On réarme le timer

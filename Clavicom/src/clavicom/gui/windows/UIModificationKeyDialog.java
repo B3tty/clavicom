@@ -35,6 +35,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import clavicom.gui.language.UIString;
+import clavicom.tools.TSwingUtils;
 
 public class UIModificationKeyDialog extends JDialog
 {
@@ -68,10 +69,21 @@ public class UIModificationKeyDialog extends JDialog
 		// Options par défaut
 		setModal(true);
 		
+		// On dit qu'on veut qu'elle soit centrée
+		setLocationRelativeTo( null );
+		
 		setResizable(false);
 	}
 	//----------------------------------------------------------- METHODES --//		
-
+	@Override
+	public void setVisible(boolean arg0)
+	{
+		// On centre à l'écran
+		TSwingUtils.centerComponentToScreen(this);
+		
+		// TODO Auto-generated method stub
+		super.setVisible(arg0);
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	class BtCloseAction extends AbstractAction
 	{

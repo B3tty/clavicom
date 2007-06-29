@@ -30,6 +30,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.event.EventListenerList;
 
 import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
@@ -50,6 +51,7 @@ public class UIKeyCreationToolbar extends JPanel
 	
 	//---------------------------------------------------------- VARIABLES --//
 	private UIKeyCreation uiKeyLauncher;
+	protected final EventListenerList listeners = new EventListenerList();	// Listeners de création de touche
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIKeyCreationToolbar(

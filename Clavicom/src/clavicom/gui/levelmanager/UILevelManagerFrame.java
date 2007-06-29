@@ -54,7 +54,7 @@ import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 
 public class UILevelManagerFrame extends JDialog
 {
@@ -126,6 +126,9 @@ public class UILevelManagerFrame extends JDialog
 	{
 		// Initialisation des composants
 		initializeFrame();
+		
+		// On centre à l'écran
+		TSwingUtils.centerComponentToScreen(this);
 		
 		super.setVisible(arg0);
 	}
@@ -920,8 +923,8 @@ public class UILevelManagerFrame extends JDialog
 	protected void createPanelUnclassedKeys()
 	{
 		// Initialisation des composants
-		btClassKey.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorClass()),BT_IMAGE_SIZE,-1));
-		btClassKeyAutomatic.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorClassAutomatic()),BT_IMAGE_SIZE,-1));
+		btClassKey.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorClass()),BT_IMAGE_SIZE,-1));
+		btClassKeyAutomatic.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorClassAutomatic()),BT_IMAGE_SIZE,-1));
 		
 		// Layout
 		GridBagLayout gbLayoutPanelUnclassedKey = new GridBagLayout();
