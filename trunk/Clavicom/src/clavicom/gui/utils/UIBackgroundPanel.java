@@ -108,7 +108,6 @@ public class UIBackgroundPanel extends UITranslucentPanel
 		{
 			return null;
 		}
-	
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
