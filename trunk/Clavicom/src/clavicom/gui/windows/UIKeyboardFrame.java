@@ -34,10 +34,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -61,10 +63,12 @@ import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
+import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
@@ -73,7 +77,7 @@ import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener
+public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
@@ -152,6 +156,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		// Ajout aux listeners
 		addComponentListener(this);
 		panelKeyboard.addSelectionChangeListener(this);
+		panelKeyboard.addKeyCreatedListener(this);
 	}
 	
 	public void selectionChanged(List<UIKeyKeyboard> selectedKeys)
@@ -305,6 +310,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
+		
 	}
 	
 	/**
@@ -409,6 +415,22 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		invalidate();		
 	}
 	
+	/**
+	 * Appelé lorsqu'un nouvelle touche vient d'être ajoutée
+	 * au keyboard
+	 */
+	public void keyCreated(UIKey createdKey)
+	{
+		// On desectionne toutes les keys
+		panelKeyboard.select(false);
+		
+		// On selectionne la key qu'on vient d'ajouter
+		createdKey.setSelected(true);
+		
+		// Ouverture de la fenêtre d'edition
+		onClickBtEditionKey();
+	}
+	
 	// ------- Actions des boutons
 	protected class BtEditionKeyAction extends AbstractAction
 	{
@@ -421,7 +443,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		{
 			onClickBtEditionKey();
 		}
-		
 	}
 	
 	protected class BtOptionsApplicationAction extends AbstractAction
@@ -556,7 +577,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		if(selectedKeys.size() > 1)
 		// Modification multiple
 		{
-			// TODO : Selection multiple
+			frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_MULTIPLE"));
+			
+			panelOptionKeyKeyboard.setValuesKeyKeyboard(panelKeyboard.getSelectedKeys());
+			
+			frameOptionKeyKeyboard.setVisible(true);
 		}
 		else
 		// Modification unique

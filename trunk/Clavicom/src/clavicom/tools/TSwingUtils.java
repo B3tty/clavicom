@@ -25,8 +25,14 @@
 
 package clavicom.tools;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -36,7 +42,7 @@ import clavicom.CFilePaths;
 import clavicom.core.message.CMessageEngine;
 import clavicom.gui.language.UIString;
 
-public class TImageUtils
+public class TSwingUtils
 {
 	//--------------------------------------------------------- CONSTANTES --//
     public final static String JPEG = "jpeg";
@@ -143,5 +149,64 @@ public class TImageUtils
 	    	return false;
 	    }
 	}
-	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	/**
+	 * Centre un composant à l'ecran
+	 * @param component
+	 */
+	public static void centerComponentToScreen(Component component)
+	{
+		Rectangle bounds = new Rectangle(0, 0, component.getWidth(), component.getHeight());
+		
+	    Dimension screensz = Toolkit.getDefaultToolkit().getScreenSize();
+	    
+	    bounds.x = Math.max(0, (screensz.width - component.getWidth()) / 2);
+	    bounds.y = Math.max(0, (screensz.height - component.getHeight()) / 2);
+	    
+		bounds.width = Math.min(bounds.width, screensz.width);
+		bounds.height = Math.min(bounds.height, screensz.height);
+		
+		component.setBounds(bounds);
+	}
+	
+	/**
+	 * Centre un composant au parent
+	 * @param component
+	 */
+	public static void centerComponentToParent(Component component)
+	{
+		Container myParent = component.getParent();
+		
+		centerComponentTo(component, myParent);
+	}
+	
+	/**
+	 * Centre un composant relativement à un autre 
+	 * @param component
+	 * @param parent
+	 */
+	public static void centerComponentTo(Component component, Component parent)
+	{
+		int x;
+		int y;
+
+		// Find out our parent
+		Point topLeft = parent.getLocationOnScreen();
+		Dimension parentSize = parent.getSize();
+
+		Dimension mySize = component.getSize();
+
+		if (parentSize.width > mySize.width)
+			x = ((parentSize.width - mySize.width) / 2) + topLeft.x;
+		else
+			x = topLeft.x;
+
+		if (parentSize.height > mySize.height)
+			y = ((parentSize.height - mySize.height) / 2) + topLeft.y;
+		else
+			y = topLeft.y;
+
+		component.setLocation(x, y);
+	}
+	// --------------------------------------------------- METHODES PRIVEES --//
 }

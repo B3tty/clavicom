@@ -44,7 +44,7 @@ import javax.swing.event.EventListenerList;
 
 import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UICaptionChooserListener;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 
 public class UIPanelCaptionChooser extends JPanel
 {
@@ -260,7 +260,7 @@ public class UIPanelCaptionChooser extends JPanel
 			{
 				 for ( File currentFile : list)
 				 {
-					 if (TImageUtils.hasImageExtension(currentFile) == true)
+					 if (TSwingUtils.hasImageExtension(currentFile) == true)
 					 {
 						 // On n'ajoute que si on peut créer une image
 						 if (new ImageIcon(directory + currentFile) != null)

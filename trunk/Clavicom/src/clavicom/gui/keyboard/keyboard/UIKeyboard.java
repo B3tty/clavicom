@@ -46,6 +46,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
 import clavicom.CFilePaths;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
@@ -82,10 +83,11 @@ import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.UIKeySelectionListener;
+import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
@@ -396,6 +398,21 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
         return listeners.getListeners(UIKeyboardSelectionChanged.class);
     }
     
+	public void addKeyCreatedListener(UIKeyboardNewKeyCreated listener) 
+	{
+        listeners.add(UIKeyboardNewKeyCreated.class, listener);
+    }
+    
+    public void removeKeyCreatedListener(UIKeyboardNewKeyCreated listener) 
+    {
+        listeners.remove(UIKeyboardNewKeyCreated.class, listener);
+    }
+    
+    public UIKeyboardNewKeyCreated[] getKeyCreatedListeners() 
+    {
+        return listeners.getListeners(UIKeyboardNewKeyCreated.class);
+    }
+    
 	//-----------------------------------------------------------------------
 	// Changement de niveau
 	//-----------------------------------------------------------------------
@@ -523,7 +540,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// On ettend l'image
 		if (imgBackground != null)
 		{
-			imgBackground = TImageUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+			imgBackground = TSwingUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 		}
 		
 		// On recalcule la taille de police
@@ -562,6 +579,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	    for ( UIKeyboardSelectionChanged listener : getSelectionChangeListeners() )
 		{
 			listener.selectionChanged(this.selectedKeys);
+		}
+    }
+    
+    protected void fireKeyCreated(UIKey keyCreated) 
+    {
+	    for ( UIKeyboardNewKeyCreated listener : getKeyCreatedListeners() )
+		{
+			listener.keyCreated(keyCreated);
 		}
     }
     
@@ -719,18 +744,12 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
 		
 		// Suppression des listes
+		allKeys.removeAll(selectedKeys);
+		threeLevelKeys.removeAll(selectedKeys);
+		unClassedKey.removeAll(selectedKeys);
+		
 		for (UIKeyKeyboard currentKey : selectedKeys)
 		{						
-			if(allKeys.contains(currentKey))
-			{
-				allKeys.remove(currentKey);
-			}
-			
-			if(threeLevelKeys.contains(currentKey))
-			{
-				threeLevelKeys.remove(currentKey);
-			}
-			
 			// Suppression du panel
 			remove(currentKey);
 		}
@@ -947,6 +966,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 //		TPoint newKeyMin = new TPoint(	.2f,.2f);
 //
 //		TPoint newKeyMax = new TPoint(	.5f,.5f);	
+		UIKey newUIKeyGlobal;
 		
 		// Points
 		if (keyType == TEnumCreationKey.T_KEY_CHARACTER)
@@ -962,6 +982,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);
+			
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION)
 		{
@@ -980,7 +1002,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION)
 		{
@@ -999,7 +1022,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);		
+			addCreatedKey(newUIKey);	
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM)
 		{
@@ -1019,6 +1043,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_LASTWORD)
 		{
@@ -1032,7 +1057,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyLastWord newUIKey = new UIKeyLastWord(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);	
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_LAUNCHER)
 		{
@@ -1046,8 +1072,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyLauncher newUIKey = new UIKeyLauncher(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
-		}else if (keyType == TEnumCreationKey.T_KEY_LEVEL_SHIFT)
+			addCreatedKey(newUIKey);	
+			newUIKeyGlobal = newUIKey;
+			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_SHIFT)
 		{
 			// Création de l'objet du noyau
 			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
@@ -1061,7 +1090,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);
+			newUIKeyGlobal = newUIKey;
 		}		
 		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_ALTGR)
 		{
@@ -1077,7 +1107,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_PREDICTION)
 		{
@@ -1091,7 +1122,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyPrediction newUIKey = new UIKeyPrediction(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_SHORTCUT)
 		{
@@ -1105,7 +1137,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyShortcut newUIKey = new UIKeyShortcut(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);
+			newUIKeyGlobal = newUIKey;
 		}
 		else if (keyType == TEnumCreationKey.T_KEY_STRING)
 		{
@@ -1119,8 +1152,16 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			UIKeyString newUIKey = new UIKeyString(newCoreKey);
 			
 			// Affectation à l'objet global
-			addCreatedKey(newUIKey);			
+			addCreatedKey(newUIKey);
+			newUIKeyGlobal = newUIKey;
 		}
+		else
+		{
+			return;
+		}
+		
+		// On alerte qu'une nouvelle key a été créée
+		fireKeyCreated(newUIKeyGlobal);
 	}
 	
 	public int getGroupeListSize()
@@ -1173,6 +1214,13 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		return unClassedKey;
 	}
+	
+	public List<UIKeyKeyboard> getSelectedKeys()
+	{
+		return selectedKeys;
+	}
+	
+	
 
 	@Override
 	public String toString()

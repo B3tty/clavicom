@@ -41,7 +41,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import clavicom.CFilePaths;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 
 public class UILevelList extends JPanel
 {
@@ -165,8 +165,8 @@ public class UILevelList extends JPanel
 	private void createEditPanel()
 	{
 		// Initialisation des valeurs
-		btAddElement.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorAdd()),BT_IMAGE_SIZE,-1));	
-		btRemoveElement.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorRemove()),BT_IMAGE_SIZE,-1));
+		btAddElement.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorAdd()),BT_IMAGE_SIZE,-1));	
+		btRemoveElement.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorRemove()),BT_IMAGE_SIZE,-1));
 		
 		textElement.setText("");
 		if (addButton == false)
@@ -236,8 +236,8 @@ public class UILevelList extends JPanel
 	private void createScrollPanel()
 	{
 		// Initialisation des valeurs
-		btUp.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorUp()),BT_IMAGE_SIZE,-1));	
-		btDown.setIcon(TImageUtils.scaleImage(TImageUtils.getImage(CFilePaths.getLevelEditorDown()),BT_IMAGE_SIZE,-1));
+		btUp.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorUp()),BT_IMAGE_SIZE,-1));	
+		btDown.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLevelEditorDown()),BT_IMAGE_SIZE,-1));
 
 		// Mise en place des layouts
 		panelScroll.setLayout(new BorderLayout());

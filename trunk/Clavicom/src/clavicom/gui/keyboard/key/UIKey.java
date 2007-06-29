@@ -57,7 +57,7 @@ import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.KeyEnteredListener;
 import clavicom.gui.listener.KeyPressedListener;
 import clavicom.tools.TColorKeyEnum;
-import clavicom.tools.TImageUtils;
+import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
 public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
@@ -358,7 +358,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On ettend l'image
 			if (currentImage != null)
 			{
-				currentImage = TImageUtils.toBufferedImage(((Image)currentImage).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+				currentImage = TSwingUtils.toBufferedImage(((Image)currentImage).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 			}
 			
 			// On réarme le timer
@@ -812,7 +812,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			BufferedImage image;
 			
 			// Récupération de l'image
-			image = TImageUtils.toBufferedImage(TImageUtils.getImage(filePath).getImage());
+			image = TSwingUtils.toBufferedImage(TSwingUtils.getImage(filePath).getImage());
 			
 			return image;
 		}

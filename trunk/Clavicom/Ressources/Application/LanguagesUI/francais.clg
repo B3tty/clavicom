@@ -373,6 +373,8 @@
 	<message id = "LB_KEYSTRING_BORDER">Chaîne générée</message>
 	
 	<!-- Titres des frames de modification -->
+	<message id = "FR_OPTIONS_MULTIPLE">Modification de plusieurs touches</message>
+	
 	<message id = "FR_OPTIONS_KEYCHARACTER">Touche caractère</message>
 	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction</message>
 	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot</message>

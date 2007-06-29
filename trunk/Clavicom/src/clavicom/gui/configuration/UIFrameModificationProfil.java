@@ -47,6 +47,7 @@ import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TNavigationType;
+import clavicom.tools.TSwingUtils;
 
 public class UIFrameModificationProfil extends JDialog
 {
@@ -633,6 +634,9 @@ public class UIFrameModificationProfil extends JDialog
 		{
 			progressBarApply.setValue(0);
 		}
+		
+		// On centre à l'écran
+		TSwingUtils.centerComponentToScreen(this);
 		
 		// TODO Auto-generated method stub
 		super.setVisible(b);

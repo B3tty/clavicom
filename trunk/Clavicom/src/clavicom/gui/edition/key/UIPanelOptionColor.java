@@ -29,6 +29,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
@@ -46,6 +48,8 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 	JButton colorButton;
 	JLabel lColor;
 	TColorKeyEnum colorEnum;
+	
+	List<CKey> selectedKeys;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIPanelOptionColor(  )
@@ -60,8 +64,17 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 		colorButton.addActionListener( this );
 	}
 	
+	public void setValues(List<CKey> selectedKeys, TColorKeyEnum myColorEnum)
+	{
+		key = null;
+		this.selectedKeys = selectedKeys;
+		colorEnum = myColorEnum;	
+		lColor.setText(colorEnum.toString());
+	}
+	
 	public void setValues(CKey myKey, TColorKeyEnum myColorEnum)
 	{
+		selectedKeys = null;
 		key = myKey;
 		colorEnum = myColorEnum;	
 		lColor.setText(colorEnum.toString());
@@ -70,18 +83,40 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 	}
 
 	public void actionPerformed(ActionEvent arg0)
-	{			
-		Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
-
-		if( newColor !=  null )
+	{		
+		if((selectedKeys == null) && (key != null))
+		// Selection unique
 		{
-			if( newColor != key.getColor( colorEnum ) )
-			{
-				// la couleur à changé
-				key.setColor( newColor, colorEnum );
+			Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
 
-				colorButton.setBackground( newColor );
+			if( newColor !=  null )
+			{
+				if( newColor != key.getColor( colorEnum ) )
+				{
+					// la couleur à changé
+					key.setColor( newColor, colorEnum );
+
+					colorButton.setBackground( newColor );
+				}
 			}
+		}
+		else if ((selectedKeys != null) && (key == null))
+		// Selection multiple
+		{
+			Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), Color.WHITE );
+
+			if( newColor !=  null )
+			{
+				for (CKey currentKey : selectedKeys)
+				{
+					if( newColor != currentKey.getColor( colorEnum ) )
+					{
+						// la couleur à changé
+						currentKey.setColor( newColor, colorEnum );
+					}
+				}
+			}
+			colorButton.setBackground( newColor );
 		}
 	}
 
