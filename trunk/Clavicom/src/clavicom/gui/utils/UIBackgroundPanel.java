@@ -98,17 +98,17 @@ public class UIBackgroundPanel extends UITranslucentPanel
 	{		
 		if(getWidth() > 0 && getHeight() > 0)
 		{
-			return new RoundRectangle2D.Float(	TAILLE_CONTOUR+1, 
-												TAILLE_CONTOUR+1, 
+			return new RoundRectangle2D.Float(	TAILLE_CONTOUR+2, 
+												TAILLE_CONTOUR+2, 
 												getWidth(), 
 												getHeight(),
-												TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
+												TAILLE_ARC,TAILLE_ARC);
 		}
 		else
 		{
 			return null;
 		}
-		
+	
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

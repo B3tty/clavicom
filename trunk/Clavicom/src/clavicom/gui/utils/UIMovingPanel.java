@@ -51,6 +51,7 @@ public class UIMovingPanel extends UITranslucentPanel
 	final int MINIMUM_HEIGHT = 10;
 	final int MINIMUM_WIDTH = 10;
 	final int INSET_SIZE = 5;
+	final int BORDER_INSET = 5;
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	protected UIInvisibleBorder resizableBorder;	// Bordure lors du resize
@@ -62,7 +63,7 @@ public class UIMovingPanel extends UITranslucentPanel
 	public UIMovingPanel(JFrame myParentFrame)
 	{
 		parentFrame = myParentFrame;
-		resizableBorder = new UIInvisibleBorder(5);
+		resizableBorder = new UIInvisibleBorder(BORDER_INSET);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
