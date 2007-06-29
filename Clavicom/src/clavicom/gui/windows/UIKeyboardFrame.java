@@ -42,8 +42,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import sun.awt.RepaintArea;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -81,7 +79,7 @@ import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
 
-import com.sun.jna.examples.WindowUtils;
+//import com.sun.jna.examples.WindowUtils;
 
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated, WindowListener
@@ -200,7 +198,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 //		if(panelKeyboard.getWindowShape() != null)
 //		{
 //			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
-//			
 //		}
 	}
 
