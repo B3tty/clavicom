@@ -71,11 +71,15 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	JCheckBox bold;
 	JCheckBox italic;
 	
+	MouseListenerBackGroundColor lisBackGround;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
 	public PanelModificationProfilFont(CFont myFont)
 	{
 		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT") );
+		
+		lisBackGround = new MouseListenerBackGroundColor();
 		
 		font = myFont;
 		
@@ -90,12 +94,13 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	{
 		if( ! font.isAutoColor() )
 		{
-			panelColor.setEnabled( true );
+			panelColor.removeMouseListener( lisBackGround );
+			panelColor.addMouseListener( lisBackGround );
 			labelColor.setEnabled(true);
 		}
 		else
 		{
-			panelColor.setEnabled( false );
+			panelColor.removeMouseListener( lisBackGround );
 			labelColor.setEnabled(false);
 		}
 		if( ! font.isAutoSize() )
@@ -290,12 +295,13 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    	{
 	    		if( autoColor.isSelected() )
 	    		{
-	    			panelColor.setEnabled(false);
+	    			panelColor.removeMouseListener( lisBackGround );
 	    			labelColor.setEnabled(false);
 	    		}
 	    		else
 	    		{
-	    			panelColor.setEnabled(true);
+	    			panelColor.removeMouseListener( lisBackGround );
+	    			panelColor.addMouseListener( lisBackGround );
 	    			labelColor.setEnabled(true);
 	    		}
 	    	}
@@ -319,47 +325,8 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    
 	    labelColor = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_COLOR")+ " : ");
 	    panelColor = new TColorPanel();
-	    panelColor.addMouseListener( new MouseListener()
-		{
-
-			public void mouseClicked(MouseEvent e)
-			{
-				Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), panelColor.getBackground() );
-				
-				if( newColor != null )
-				{
-					if( newColor != panelColor.getBackground() )
-					{
-						panelColor.setBackground( newColor );
-					}
-				}
-			}
-
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseExited(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-		});
+	    panelColor.removeMouseListener( lisBackGround );
+	    panelColor.addMouseListener( lisBackGround );
 	    
 		// Ajout des Contraintes de ComboSize
 		GridBagConstraints gbConstLabelColor = new GridBagConstraints (	
@@ -580,6 +547,52 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		return retour;
 	}
 
-	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	
+	
+	
+	
+	
+	class MouseListenerBackGroundColor implements MouseListener
+	{
+
+		public void mouseClicked(MouseEvent e)
+		{
+			Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), panelColor.getBackground() );
+			
+			if( newColor != null )
+			{
+				if( newColor != panelColor.getBackground() )
+				{
+					panelColor.setBackground( newColor );
+				}
+			}
+		}
+
+		public void mouseEntered(MouseEvent e)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseExited(MouseEvent e)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mousePressed(MouseEvent e)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseReleased(MouseEvent e)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+
+	}
 }
 

@@ -82,6 +82,7 @@ public class UIFrameModificationProfil extends JDialog
 	PanelModificationProfilSound panelSound;
 	PanelModificationProfilTransparency panelTransparency;
 	PanelModificationProfilLangueUIName panelLangueUI;
+	PanelModificationProfilAbout panelabout;
 	
 	// reference sur l'iukeyboard pour faire un clear
 	UIKeyboard uiKeyboard;
@@ -412,6 +413,12 @@ public class UIFrameModificationProfil extends JDialog
 				profil.getShortcutSetName());
 		panel.add( panelAdvancedOption );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION"), panel);
+		
+		// panel About
+		panel = new JPanel(); 
+		panelabout = new PanelModificationProfilAbout(  );
+		panel.add( panelabout );
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT"), panel);
 		
 		// Ajout au panel
 		add(tabbedPane);

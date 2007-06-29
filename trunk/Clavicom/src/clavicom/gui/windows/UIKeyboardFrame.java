@@ -33,6 +33,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -76,13 +78,13 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
-
 import com.sun.jna.examples.WindowUtils;
 
-//import com.sun.jna.examples.WindowUtils;
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated
+public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated, WindowListener
 {
+
+
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
 	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
@@ -369,13 +371,16 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKeyString.setSize(410,310);
 		
 		// Frame d'options de l'application
-		frameOptionApplication.setSize(new Dimension (500,600));
+		frameOptionApplication.setSize(new Dimension (550,600));
 		frameOptionApplication.setResizable(false);
 		frameOptionApplication.setModal(true);
 		frameOptionApplication.setVisible(false);
 		
 		// Initialisation des composants
 		btEditionKey.setEnabled(false);
+		
+		// disable la réduction de la fenêtre
+		addWindowListener( this );
 		
 		
 	}
@@ -655,6 +660,47 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 				frameOptionKeyKeyboard.setVisible(true);
 			}
 		}
+		
+	}
+
+	public void windowActivated(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void windowClosed(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void windowClosing(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void windowDeactivated(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void windowDeiconified(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void windowIconified(WindowEvent e)
+	{
+		
+	}
+
+	public void windowOpened(WindowEvent e)
+	{
+		// TODO Auto-generated method stub
 		
 	}
 }

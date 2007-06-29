@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.16015625</x>
-        <y>0.25195312</y>
+        <x>0.0703125</x>
+        <y>0.23925781</y>
       </left_up>
       <right_down>
-        <x>0.92890626</x>
-        <y>0.6455078</y>
+        <x>0.8390625</x>
+        <y>0.6328125</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
