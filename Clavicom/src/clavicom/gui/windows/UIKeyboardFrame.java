@@ -78,7 +78,7 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
-import com.sun.jna.examples.WindowUtils;
+//import com.sun.jna.examples.WindowUtils;
 
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated, WindowListener
@@ -192,14 +192,20 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void componentResized(ComponentEvent arg0)
 	{
-		if(panelKeyboard.getWindowShape() != null)
-			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
+//		if(panelKeyboard.getWindowShape() != null)
+//		{
+//			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
+//			repaint();
+//		}
 	}
 
 	public void componentShown(ComponentEvent arg0)
 	{
-		if(panelKeyboard.getWindowShape() != null)
-			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());  
+//		if(panelKeyboard.getWindowShape() != null)
+//		{
+//			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
+//			repaint();
+//		}
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

@@ -72,7 +72,8 @@ public class UIInvisibleBorder implements UIResizableBorder
 	//----------------------------------------------------------- METHODES --//	
 	public Insets getBorderInsets(Component component)
 	{
-		return new Insets(dist, dist, dist, dist);
+		//return new Insets(dist, dist, dist, dist);
+		return new Insets(0, 0, 0, 0);
 	}
 
 	public boolean isBorderOpaque()
@@ -117,24 +118,54 @@ public class UIInvisibleBorder implements UIResizableBorder
 	{
 		switch ( location )
 		{
-			case SwingConstants.NORTH :
-				return new Rectangle(x + w / 2 - dist / 2, y, dist, dist);
-			case SwingConstants.SOUTH :
-				return new Rectangle(x + w / 2 - dist / 2, y + h - dist, dist,
-						dist);
-			case SwingConstants.WEST :
-				return new Rectangle(x, y + h / 2 - dist / 2, dist, dist);
-			case SwingConstants.EAST :
-				return new Rectangle(x + w - dist, y + h / 2 - dist / 2, dist,
-						dist);
-			case SwingConstants.NORTH_WEST :
-				return new Rectangle(x, y, dist, dist);
-			case SwingConstants.NORTH_EAST :
-				return new Rectangle(x + w - dist, y, dist, dist);
-			case SwingConstants.SOUTH_WEST :
-				return new Rectangle(x, y + h - dist, dist, dist);
-			case SwingConstants.SOUTH_EAST :
-				return new Rectangle(x + w - dist, y + h - dist, dist, dist);
+//			case SwingConstants.NORTH :
+//				return new Rectangle(x + w / 2 - dist / 2, y, dist, dist);
+//			case SwingConstants.SOUTH :
+//				return new Rectangle(x + w / 2 - dist / 2, y + h - dist, dist,
+//						dist);
+//			case SwingConstants.WEST :
+//				return new Rectangle(x, y + h / 2 - dist / 2, dist, dist);
+//			case SwingConstants.EAST :
+//				return new Rectangle(x + w - dist, y + h / 2 - dist / 2, dist,
+//						dist);
+//			case SwingConstants.NORTH_WEST :
+//				return new Rectangle(x, y, dist, dist);
+//			case SwingConstants.NORTH_EAST :
+//				return new Rectangle(x + w - dist, y, dist, dist);
+//			case SwingConstants.SOUTH_WEST :
+//				return new Rectangle(x, y + h - dist, dist, dist);
+//			case SwingConstants.SOUTH_EAST :
+//				return new Rectangle(x + w - dist, y + h - dist, dist, dist);
+			
+		case SwingConstants.NORTH :
+			return new Rectangle( 	w/3, 	// x
+									0, 		// y
+									w/3, 	// W
+									dist);	// H
+		case SwingConstants.SOUTH :
+			return new Rectangle( 	w/3, 
+									h - dist, 
+									w/3,
+									dist);
+		case SwingConstants.WEST :
+			return new Rectangle(	0, 
+									h/3, 
+									dist, 
+									h/3);
+		case SwingConstants.EAST :
+			return new Rectangle(	w - dist, 
+									h/3,
+									dist,
+									h/3);
+			
+		case SwingConstants.NORTH_WEST :
+			return new Rectangle(0, 0, dist*2, dist*2);
+		case SwingConstants.NORTH_EAST :
+			return new Rectangle(w - dist*2, 0, dist*2, dist*2);
+		case SwingConstants.SOUTH_WEST :
+			return new Rectangle(0, h - dist*2, dist*2, dist*2);
+		case SwingConstants.SOUTH_EAST :
+			return new Rectangle( w - dist*2,  h - dist*2, dist*2, dist*2);				
 		}
 		return null;
 	}
