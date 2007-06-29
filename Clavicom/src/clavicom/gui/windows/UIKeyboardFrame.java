@@ -42,6 +42,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import sun.awt.RepaintArea;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -78,7 +80,8 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSize;
-//import com.sun.jna.examples.WindowUtils;
+
+import com.sun.jna.examples.WindowUtils;
 
 
 public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated, WindowListener
@@ -87,8 +90,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
+	private final int PANEL_TOOLBAR_LEFT_SPACE = 5;
 	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
 	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
+	private final int PANEL_TOOLBAR_UP_SPACE = 5;
 	
 	private final  String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
@@ -187,7 +192,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 
 	public void componentMoved(ComponentEvent arg0)
 	{
-		// Rien à ajouter
+
 	}
 
 	public void componentResized(ComponentEvent arg0)
@@ -195,17 +200,13 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 //		if(panelKeyboard.getWindowShape() != null)
 //		{
 //			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
-//			repaint();
+//			
 //		}
 	}
 
 	public void componentShown(ComponentEvent arg0)
 	{
-//		if(panelKeyboard.getWindowShape() != null)
-//		{
-//			WindowUtils.setWindowMask(this, panelKeyboard.getWindowShape());
-//			repaint();
-//		}
+
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -232,7 +233,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	            5,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(PANEL_TOOLBAR_UP_SPACE, PANEL_TOOLBAR_LEFT_SPACE, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
@@ -249,7 +250,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            							// Espace autours (haut, gauche, bas, droite)
-	            new Insets(0, 0, PANEL_TOOLBAR_BOTTOM_SPACE, 0),		
+	            new Insets(PANEL_TOOLBAR_UP_SPACE, 0, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );

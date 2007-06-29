@@ -106,7 +106,6 @@ public class UIMovingPanel extends UITranslucentPanel
 		public void mouseEntered(MouseEvent me)
 		{
 			// Rien à faire
-			//resizableBorder.setVisible(true);
 		}
 		
 		public void mouseMoved(MouseEvent me)
@@ -118,9 +117,6 @@ public class UIMovingPanel extends UITranslucentPanel
 		public void mouseExited(MouseEvent mouseEvent)
 		{
 			setCursor(Cursor.getDefaultCursor());
-			//resizableBorder.setVisible(false);
-			
-			//repaint();
 		}
 
 		private int cursor;
