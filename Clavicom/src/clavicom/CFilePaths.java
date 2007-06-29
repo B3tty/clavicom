@@ -92,7 +92,7 @@ public class CFilePaths
 	private static String defaultPicture = pictures + "default.png";
 	
 	// ABOUT
-	private static String ClavicomNG = pictures + "ClavicomNG.png";
+	private static String aboutPicture = pictures + "about.png";
 
 	
 	// Sound
@@ -337,9 +337,9 @@ public class CFilePaths
 		return toolKeyMouseToClavicom;
 	}
 
-	public static String getClavicomNG()
+	public static String getAboutPicture()
 	{
-		return ClavicomNG;
+		return aboutPicture;
 	}
 	
 	

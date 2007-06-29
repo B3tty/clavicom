@@ -16,14 +16,14 @@
       <blue>228</blue>
     </default_normal>
     <default_clicked>
-      <red>238</red>
-      <green>50</green>
-      <blue>228</blue>
+      <red>255</red>
+      <green>204</green>
+      <blue>51</blue>
     </default_clicked>
     <default_entered>
-      <red>238</red>
-      <green>236</green>
-      <blue>50</blue>
+      <red>255</red>
+      <green>255</green>
+      <blue>153</blue>
     </default_entered>
   </keyboard_color>
   <transparency>
@@ -38,7 +38,7 @@
   <navigation>
     <type value="STANDARD" />
     <rollover active="true" />
-    <mouse_speed value="51" />
+    <mouse_speed value="100" />
     <click_tempo value="900" />
     <defil_tempo value="846" />
   </navigation>
@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.06875</x>
-        <y>0.2265625</y>
+        <x>-0.0015625</x>
+        <y>0.39160156</y>
       </left_up>
       <right_down>
-        <x>0.87109375</x>
-        <y>0.6044922</y>
+        <x>0.75625</x>
+        <y>0.640625</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -129,19 +129,19 @@
           </coordinates>
           <colors>
             <color_normal>
-              <red>255</red>
-              <green>153</green>
-              <blue>0</blue>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
             </color_normal>
             <color_clicked>
-              <red>204</red>
-              <green>0</green>
-              <blue>204</blue>
+              <red>255</red>
+              <green>102</green>
+              <blue>0</blue>
             </color_clicked>
             <color_entered>
-              <red>153</red>
+              <red>255</red>
               <green>153</green>
-              <blue>255</blue>
+              <blue>102</blue>
             </color_entered>
           </colors>
           <caption>3.png</caption>
@@ -449,6 +449,42 @@
             <command_altgr id="28" />
           </commands>
         </keycharacter>
+      </keylist>
+    </keygroup>
+    <keygroup caption="AUTO" order="2" visible="true">
+      <keylist order="0" caption="AUTO">
+        <keystring order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.44969198</x>
+              <y>0.4526316</y>
+            </point>
+            <point position="max">
+              <x>0.5677618</x>
+              <y>0.9736842</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>238</red>
+              <green>236</green>
+              <blue>228</blue>
+            </color_normal>
+            <color_clicked>
+              <red>255</red>
+              <green>204</green>
+              <blue>0</blue>
+            </color_clicked>
+            <color_entered>
+              <red>255</red>
+              <green>255</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption />
+          <base_string />
+          <order_dynamic>0</order_dynamic>
+        </keystring>
       </keylist>
     </keygroup>
   </keyboard>
