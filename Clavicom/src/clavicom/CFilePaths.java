@@ -90,6 +90,9 @@ public class CFilePaths
 	private static String levelEditorClassAutomatic = pictures + "class_automatic.png";
 	
 	private static String defaultPicture = pictures + "default.png";
+	
+	// ABOUT
+	private static String ClavicomNG = pictures + "ClavicomNG.png";
 
 	
 	// Sound
@@ -332,6 +335,11 @@ public class CFilePaths
 	public static String getToolKeyMouseToClavicom()
 	{
 		return toolKeyMouseToClavicom;
+	}
+
+	public static String getClavicomNG()
+	{
+		return ClavicomNG;
 	}
 	
 	

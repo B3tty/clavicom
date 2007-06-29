@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: TColorPanel.java
+			Filename			: TPicturePanel.java
 			Creation date		: 29 juin 07
 		
 			Project				: Clavicom
@@ -25,50 +25,33 @@
 
 package clavicom.tools;
 
-
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class TColorPanel extends JPanel
+public class TPicturePanel extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//	
+	//---------------------------------------------------------- VARIABLES --//
+	ImageIcon image;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public TColorPanel()
+	public TPicturePanel( String imagePath )
 	{
-		setOpaque(false);
+		image = TSwingUtils.getImage( imagePath );
 		
-		setPreferredSize( new Dimension( 25, 25 ) );
-		
-		setBorder(BorderFactory.createLineBorder( Color.BLACK ));
-		
-		setCursor( new Cursor( Cursor.HAND_CURSOR ) );
 	}
-
-	
 
 	//----------------------------------------------------------- METHODES --//
+
 	
-	public void paintComponent(Graphics myGraphic)
+	@Override
+	public void paintComponent(Graphics g)
 	{
-		
-		// Appel du père
-		super.paintComponent(myGraphic);
-
-		// Récupération du Graphics2D
-		Graphics2D g2 = (Graphics2D) myGraphic;
-		
-		g2.setColor( getBackground() );
-		g2.fillRect(0, 0, getWidth(), getHeight());
-
+		g.drawImage( image.getImage(), 0, 0, getWidth(), getHeight(), null);
 	}
+
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
