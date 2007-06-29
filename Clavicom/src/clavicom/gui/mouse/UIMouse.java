@@ -795,6 +795,28 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 
 
 
+	public void setEnableKeys(boolean b)
+	{
+		moveLeft.listenMouseListener( b );
+		moveRight.listenMouseListener( b );
+		moveUp.listenMouseListener( b );
+		moveDown.listenMouseListener( b );
+
+		// keyClic
+		leftClick.listenMouseListener( b );
+		rightClick.listenMouseListener( b );
+		leftDubbleClick.listenMouseListener( b );
+		leftPress.listenMouseListener( b );
+		leftRelease.listenMouseListener( b );
+
+		// keyClavicom
+		moveMouseMode.listenMouseListener( b );
+		clickMouseMode.listenMouseListener( b );
+		switchMouseKeyboard.listenMouseListener( b );
+	}
+
+
+
 
 
 	

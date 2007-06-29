@@ -38,7 +38,7 @@
   <navigation>
     <type value="STANDARD" />
     <rollover active="true" />
-    <mouse_speed value="64" />
+    <mouse_speed value="51" />
     <click_tempo value="900" />
     <defil_tempo value="846" />
   </navigation>
@@ -65,8 +65,8 @@
         <y>0.2265625</y>
       </left_up>
       <right_down>
-        <x>0.8375</x>
-        <y>0.6201172</y>
+        <x>0.87109375</x>
+        <y>0.6044922</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>

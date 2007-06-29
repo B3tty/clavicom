@@ -29,10 +29,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
 import clavicom.core.profil.CProfil;
-import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.DefilListener;
+import clavicom.gui.mouse.UIMouse;
 
 public class DefilementEngine
 {
@@ -42,20 +42,26 @@ public class DefilementEngine
 	Timer defilTimer;
 	
 	protected EventListenerList listenerList;
-	
 	static DefilementEngine instance;
+	
+	UIKeyboard uiKeyboard;
+	UIMouse uiMouse;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	protected DefilementEngine( ClickEngine myClicEngine )
+	protected DefilementEngine( )
 	{
+		// seront initialisés grace aux Set...
+		uiKeyboard = null;
+		uiMouse = null;
+		
 		listenerList = new EventListenerList();
 		defilTimer = createSelectTimer( );
 	}
 
 
-	static public void createInstance(  )
+	static public void createInstance(   )
 	{
-		instance = new DefilementEngine( ClickEngine.getInstance() );
+		instance = new DefilementEngine(  );
 	}
 	
 	static public DefilementEngine getInstance(  )
@@ -100,11 +106,19 @@ public class DefilementEngine
 		}
 		defilTimer = createSelectTimer( );
 		defilTimer.start();
+		
+		// les keys ne fonctionnent plus
+		uiKeyboard.setEnableKeys( false );
+		uiMouse.setEnableKeys( false );
 	}
 	
 	public void stopDefilement( )
 	{
 		defilTimer.stop();
+		
+		// les keys refonctionnent
+		uiKeyboard.setEnableKeys( true );
+		uiMouse.setEnableKeys( true );
 	}
 	
 	public boolean isDefilement()
@@ -130,6 +144,30 @@ public class DefilementEngine
 		// Création d'un timer qui génère un tic - TODO mettre celui du profil
 		int defilement = CProfil.getInstance().getNavigation().getTemporisationDefilement();
 		return new Timer( defilement ,action );
+	}
+
+
+	public UIKeyboard getUiKeyboard()
+	{
+		return uiKeyboard;
+	}
+
+
+	public void setUiKeyboard(UIKeyboard uiKeyboard)
+	{
+		this.uiKeyboard = uiKeyboard;
+	}
+
+
+	public UIMouse getUiMouse()
+	{
+		return uiMouse;
+	}
+
+
+	public void setUiMouse(UIMouse uiMouse)
+	{
+		this.uiMouse = uiMouse;
 	}
 }
 
