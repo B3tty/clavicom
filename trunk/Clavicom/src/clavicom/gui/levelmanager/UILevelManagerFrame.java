@@ -916,6 +916,11 @@ public class UILevelManagerFrame extends JDialog
 		listScrollUnclassedKeys = new JScrollPane(listUnclassedKeys);
 		btClose = new JButton();
 		
+		// Tooltips
+		btClassKey.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_CLASS_TOOLTIP"));
+		btClassKeyAutomatic.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_CLASS_AUTOMATIC_TOOLTIP"));
+		btClose.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_OK_TOOLTIP"));
+		
 		// Autres variables
 		uiKeyboard = null;
 	}

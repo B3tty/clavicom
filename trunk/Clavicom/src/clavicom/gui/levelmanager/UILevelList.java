@@ -41,6 +41,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import clavicom.CFilePaths;
+import clavicom.gui.language.UIString;
 import clavicom.tools.TSwingUtils;
 
 public class UILevelList extends JPanel
@@ -312,11 +313,13 @@ public class UILevelList extends JPanel
 		listScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
+		// Création
 		btAddElement = new JButton();
 		btRemoveElement = new JButton();
 		btUp = new JButton();
 		btDown = new JButton();
 		
+		// Tailles
 		btAddElement.setMinimumSize(new Dimension(0,0));
 		btRemoveElement.setMinimumSize(new Dimension(0,0));
 		btUp.setMinimumSize(new Dimension(0,0));
@@ -326,6 +329,12 @@ public class UILevelList extends JPanel
 		btRemoveElement.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
 		btUp.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
 		btDown.setPreferredSize(new Dimension(BT_SIZE,BT_SIZE));
+		
+		// Tooltips
+		btAddElement.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_ADD_TOOLTIP"));
+		btRemoveElement.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_REMOVE_TOOLTIP"));
+		btUp.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_UP_TOOLTIP"));
+		btDown.setToolTipText(UIString.getUIString("FR_LEVEL_EDITOR_BT_DOWN_TOOLTIP"));
 		
 		// Initialisation des composants: 
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

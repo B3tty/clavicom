@@ -31,6 +31,8 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 import clavicom.core.profil.CProfil;
@@ -90,6 +92,23 @@ public class UIBackgroundPanel extends UITranslucentPanel
 		
 		// Retour
 		return image;
+	}
+	
+	public Shape getWindowShape()
+	{		
+		if(getWidth() > 0 && getHeight() > 0)
+		{
+			return new RoundRectangle2D.Float(	TAILLE_CONTOUR+1, 
+												TAILLE_CONTOUR+1, 
+												getWidth(), 
+												getHeight(),
+												TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
+		}
+		else
+		{
+			return null;
+		}
+		
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
