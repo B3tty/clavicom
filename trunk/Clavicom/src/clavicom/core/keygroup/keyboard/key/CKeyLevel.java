@@ -52,12 +52,13 @@ public class CKeyLevel extends CKeyOneLevel
 			Color myColorNormal, 
 			Color myColorClicked, 
 			Color myColorEntered, 
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			TLevelEnum myLevel,
 			String myCaption)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax,myCaption);
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin, myPointMax,myCaption);
 
 
 		level = myLevel;

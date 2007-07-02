@@ -113,6 +113,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 													// CFont, mais de la vraie taille
 		private boolean isTransparent;				// Indique si la touche est transparente
 		
+		boolean clicked;
+		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
 		// Mère
@@ -464,16 +466,27 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredUse()
 		{
+			
 			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
 			repaint();
+
 		}
 
 		protected void buttonExitedUse()
 		{
-			setState( TUIKeyState.NORMAL );
+			// si la touche est holdable et dans l'état PRESSED
+			// il ne faut pas changer d'état
+			if( getCoreKey().isHoldable() && clicked )
+			{
+				setState( TUIKeyState.PRESSED );
+			}
+			else
+			{
+				setState( TUIKeyState.NORMAL );
+			}
 			selectGoodImage();
 			
 			// On force le redessin
@@ -494,11 +507,28 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On avertit le noyau du clic
 			getCoreKey().Click();
 			
+			// si la touche est holdable et dans l'état PRESSED
+			// il ne faut pas changer d'état
+			if( getCoreKey().isHoldable() && clicked )
+			{
+				clicked = false;
+				return;
+			}
+
 			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
 			// On force le redessin
 			repaint();
+			
+			if( clicked )
+			{
+				clicked = false;
+			}
+			else
+			{
+				clicked = true;
+			}
 		}
 		
 		//-----------------------------------------------------------------------

@@ -51,12 +51,14 @@ public class CKeyShortcut extends CKeyOneLevel
 			Color myColorNormal, 
 			Color myColorClicked , 
 			Color myColorEntered , 
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax)
 	{
 		this(	myColorNormal, 
 				myColorClicked , 
 				myColorEntered , 
+				holdable,
 				myPointMin, 
 				myPointMax,
 				"",
@@ -66,13 +68,14 @@ public class CKeyShortcut extends CKeyOneLevel
 	public CKeyShortcut(
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered , 
+			Color myColorEntered ,
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption,
 			CCommand myCommand)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		super(myColorNormal,myColorClicked,myColorEntered,holdable, myPointMin,myPointMax,myCaption);
 		command = myCommand;
 		
 		listenerList = new EventListenerList();
@@ -81,12 +84,13 @@ public class CKeyShortcut extends CKeyOneLevel
 	public CKeyShortcut(
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered , 
+			Color myColorEntered ,
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		super(myColorNormal,myColorClicked,myColorEntered,holdable,myPointMin,myPointMax,myCaption);
 		
 		listenerList = new EventListenerList();
 	}

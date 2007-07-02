@@ -328,6 +328,7 @@
 	
 	<!-- optionKey -->
 	<message id = "LB_KEY_BORDER">Couleurs de la touche</message>
+	<message id = "LB_KEY_HOLDABLE">Maintenable</message>
 		
 	<!-- optionKeyCharacter -->
 	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>

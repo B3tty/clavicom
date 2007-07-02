@@ -45,9 +45,10 @@ public class CMouseKeyClick extends CMouseKey
 			String caption,
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered)
+			Color myColorEntered,
+			boolean holdable)
 	{
-		super( caption, myColorNormal, myColorClicked, myColorEntered );
+		super( caption, myColorNormal, myColorClicked, myColorEntered, holdable );
 		click = myClick;
 		
 		listenerList = new EventListenerList();

@@ -48,14 +48,15 @@ public abstract class CKeyThreeLevel extends CKeyKeyboard
 	public CKeyThreeLevel(
 			Color myColorNormal, 
 			Color myColorClicked, 
-			Color myColorEntered, 
+			Color myColorEntered,
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaptionNormal,
 			String myCaptionShift,
 			String myCaptionAltGr)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin, myPointMax);
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin, myPointMax);
 
 		captionNormal = myCaptionNormal;
 		captionShift = myCaptionShift;

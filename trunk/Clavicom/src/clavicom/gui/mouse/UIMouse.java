@@ -184,6 +184,8 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		
 		SwitchMoveMode();
 		
+		
+		
 
 	}
 	
@@ -513,6 +515,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		if( indexSelectedKey >= (selectedList.size() - 1)  )
 		{
 			indexSelectedKey = 0;
+			
 		}
 		else
 		{
@@ -591,7 +594,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		selectedList.add(moveMouseMode);
 		selectedList.add(switchMouseKeyboard);
 		
-		indexSelectedKey = 0;
+		indexSelectedKey = selectedList.size() - 1;
 		
 		
 		
@@ -620,7 +623,6 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		}
 		selectedList.add(switchMouseKeyboard);
 
-		indexSelectedKey = 0;
 		
 		if( dragAndDropMode )
 		{
@@ -634,6 +636,9 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		}
 		
 		panelHaut.revalidate();
+		
+		indexSelectedKey = selectedList.size() - 1;
+		
 		
 	}
 	

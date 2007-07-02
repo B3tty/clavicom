@@ -39,16 +39,17 @@ public abstract class CKeyOneLevel extends CKeyKeyboard
 
 	// ---------------------------------------------------------- VARIABLES --//
 	String caption; // Caption de la touche (label ou chemin vers l'image à
+	
 
 	// afficher)
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 
 	public CKeyOneLevel(Color myColorNormal, Color myColorClicked,
-						Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+						Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax,
 						String myCaption)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin,
 				myPointMax);
 
 		caption = myCaption;
@@ -100,6 +101,8 @@ public abstract class CKeyOneLevel extends CKeyKeyboard
 		// Alerte de changement de la caption
 		fireCaptionChanged();
 	}
+
+
 	
 	// --------------------------------------------------- METHODES PRIVEES --//
 }

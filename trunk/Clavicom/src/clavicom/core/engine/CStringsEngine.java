@@ -28,7 +28,7 @@ package clavicom.core.engine;
 import java.util.ArrayList;
 import java.util.List;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.keygroup.keyboard.key.CKeyOneLevel;
+import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.profil.CKeyboard;
 
 public abstract class CStringsEngine
@@ -36,7 +36,7 @@ public abstract class CStringsEngine
 	// --------------------------------------------------------- CONSTANTES --//
 
 	// ---------------------------------------------------------- VARIABLES --//
-	List<CKeyOneLevel> keyList; // liste des CKeyOneLevel
+	List<CKeyDynamicString> keyList; // liste des CKeyOneLevel
 	List<String> stringList; // liste de chaine de caractere
 	String currentString; // Chaine de caractere courrente
 	
@@ -46,7 +46,7 @@ public abstract class CStringsEngine
 	public CStringsEngine( CKeyboard keyboard )
 	{
 		
-		keyList = new ArrayList<CKeyOneLevel>();
+		keyList = new ArrayList<CKeyDynamicString>();
 		
 		currentString = "";
 		
@@ -85,7 +85,7 @@ public abstract class CStringsEngine
 	{
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
-			CKeyOneLevel keyOneLevelKey = keyList.get( i );
+			CKeyDynamicString keyDynamicString = keyList.get( i );
 			String stringToDisplay;
 			
 			if( i < stringList.size() )
@@ -97,9 +97,10 @@ public abstract class CStringsEngine
 				stringToDisplay = "";
 			}
 			
-			if( (keyOneLevelKey != null ) && ( stringToDisplay != null ) )
+			if( (keyDynamicString != null ) && ( stringToDisplay != null ) )
 			{
-				keyOneLevelKey.setCaption( stringToDisplay );
+				keyDynamicString.setCaption( stringToDisplay );
+				keyDynamicString.setCurrentIndex( currentString.length() );
 			}
 		}
 	}

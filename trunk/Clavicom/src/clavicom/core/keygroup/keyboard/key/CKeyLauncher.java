@@ -48,13 +48,15 @@ public class CKeyLauncher extends CKeyOneLevel
 	public CKeyLauncher(
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered , 
+			Color myColorEntered ,
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax)
 	{
 		this (	myColorNormal, 
 				myColorClicked , 
-				myColorEntered , 
+				myColorEntered ,
+				holdable,
 				myPointMin, 
 				myPointMax,
 				"");
@@ -64,11 +66,12 @@ public class CKeyLauncher extends CKeyOneLevel
 			Color myColorNormal, 
 			Color myColorClicked , 
 			Color myColorEntered , 
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		super(myColorNormal,myColorClicked,myColorEntered,holdable,myPointMin,myPointMax,myCaption);
 		
 		this.listenerList = new EventListenerList();
 	}

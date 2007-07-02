@@ -43,21 +43,22 @@ public class CKeyString extends CKeyDynamicString
 						
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyString(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
+			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax)
 	{
 		this( 	myColorNormal, 
 				myColorClicked,
 				myColorEntered, 
+				holdable,
 				myPointMin, 
 				myPointMax,
 				"");
 	}
 	
 	public CKeyString(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax,
 			String myCaption)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin,
 				myPointMax,myCaption);
 	}
 	

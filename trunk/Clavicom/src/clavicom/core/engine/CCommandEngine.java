@@ -30,6 +30,7 @@ import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.EventListenerList;
+import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.command.CCode;
@@ -56,18 +57,32 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	protected EventListenerList listenerNewMessageList;
 	
-	
 	static CCommandEngine instance;
+	
+	List<CKey> holdKey;
+	
+	Robot robot;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected CCommandEngine( CKeyboard keyboard )
 	{
-
-		
 		listenerNewMessageList = new EventListenerList();
+		
+		holdKey = new ArrayList<CKey>();
+		
+		try
+		{
+			robot = new Robot();
+		}
+		catch ( AWTException e )
+		{
+			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ), e.getMessage() );
+			return;
+		}
 		
 		// Abonnement aux listeners
 		listen( keyboard );
+		
 	}
 
 	public static void createInstance( CKeyboard keyboard )
@@ -157,52 +172,74 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	
 	
-	protected void executeCommande( List<CCommand> commandList )
+	protected void executeCommande( List<CCommand> commandList, CKey key )
 	{
-		Robot robot = null;
 		CCode code = null;
 		
-		
-		try
+
+		// ===============================================================
+		// Cas des touche holdable
+		// ===============================================================
+		if( key.isHoldable() )
 		{
-			robot = new Robot();
-		}
-		catch ( AWTException e )
-		{
-			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ), e.getMessage() );
-			return;
-		}
-		
-		for( CCommand command : commandList )
-		{
-			for( int i = 0 ; i < command.Size() ; ++i )
+			// si elle est déjà dans la liste, alors, on le retire de la liste
+			if( holdKey.contains( key ) )
 			{
-				code = command.GetCode( i );
-				if( code.GetKeyAction() == TKeyAction.PRESSED )
+				// on le retire de la liste
+				holdKey.remove( key );
+			}
+			else
+			{
+				// on l'ajoute a la liste
+				holdKey.add( key );
+			}
+		} else
+		{
+			// ===============================================================
+			// touche non holdable
+			// ===============================================================
+			
+			
+			// on fait le press des touches holdable
+			for( CKey holdableKey : holdKey )
+			{
+				if( holdableKey instanceof CKeyCharacter )
 				{
-					try
-					{
-						robot.keyPress( code.GetKeyEvent() );
-					}
-					catch(Exception ex)
-					{
-						CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
-						return;
-					}
+					DoKeyCharacter( (CKeyCharacter)holdableKey, false );
 				}
-				else if( code.GetKeyAction() == TKeyAction.RELEASED )
+			}
+			
+			
+			// on execute la touche normalement
+			for( CCommand command : commandList )
+			{
+				for( int i = 0 ; i < command.Size() ; ++i )
 				{
-					try
+					code = command.GetCode( i );
+					if( code.GetKeyAction() == TKeyAction.PRESSED )
 					{
-						robot.keyRelease( code.GetKeyEvent() );
+						doKeyCodePress( code );	
 					}
-					catch(Exception ex)
+					else if( code.GetKeyAction() == TKeyAction.RELEASED )
 					{
-						CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
-						return;
+						doKeyCodeRelease( code );
 					}
 				}
 			}
+			
+			
+			// on fait le relesed des touches holdable
+			for( CKey holdableKey : holdKey )
+			{
+				if( holdableKey instanceof CKeyCharacter )
+				{
+					DoKeyCharacter( (CKeyCharacter)holdableKey, true );
+				}
+			}
+			
+			
+			// on vide la liste des touche holdable
+			holdKey.clear();
 		}
 	}
 	
@@ -211,16 +248,75 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	// COMMAND ACTION =========================================|
 	// ========================================================|
 	
+	private void DoKeyCharacter(CKeyCharacter character, boolean release )
+	{
+		CCommand command = character.getCommand( CLevelEngine.getInstance().getCurrentLevel() );
+		CCode code = null;
+		
+		if( command != null )
+		{
+			for( int i = 0 ; i < command.Size() ; ++i )
+			{
+				code = command.GetCode( i );
+				if( release )
+				{
+					if( code.GetKeyAction() == TKeyAction.RELEASED )
+					{
+						doKeyCodeRelease( code );
+					}
+				}
+				else
+				{
+					if( code.GetKeyAction() == TKeyAction.PRESSED )
+					{
+						doKeyCodePress( code );
+					}
+				}
+			}
+		}
+	}
+	
+	protected void doKeyCodePress( CCode code )
+	{
+		try
+		{
+			robot.keyPress( code.GetKeyEvent() );
+			
+		}
+		catch(Exception ex)
+		{
+			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+			return;
+		}
+	}
+	
+	protected void doKeyCodeRelease( CCode code )
+	{
+		try
+		{
+			robot.keyRelease( code.GetKeyEvent() );
+		}
+		catch(Exception ex)
+		{
+			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+			return;
+		}
+	}
+
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
+		// Cas normaux
 		if(keyCharacter.getCommand(CLevelEngine.getInstance().getCurrentLevel()) == null)
 			return;
 		
 		List<CCommand> commandList = new ArrayList<CCommand>();
 
-		commandList.add( keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel() ) );
+		CCommand keyCommand = keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel() );
+
+		commandList.add( keyCommand );
+
 		
-		executeCommande( commandList );
+		executeCommande( commandList, keyCharacter );
 	}
 
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
@@ -231,7 +327,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		List<CCommand> commandList = new ArrayList<CCommand>();
 		commandList.add( keyShortcut.getCommand() );
 		
-		executeCommande( commandList );
+		executeCommande( commandList, keyShortcut );
 		
 	}
 
@@ -249,6 +345,20 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			return;
 		}
 		
+		// on enlève les première lettre déja écrites
+		if( commandList.size() < keyDynamicString.getCurrentIndex() )
+		{
+			commandList.clear();
+		}
+		else
+		{
+			for(int i = 0 ; i < keyDynamicString.getCurrentIndex() ; ++i )
+			{
+				commandList.remove( 0 );
+				//KeyEvent.VK_EURO_SIGN;
+			}
+		}
+		
 		// s'il l'option "ajout d'un espace aprés la chaine" est coché
 		if( CProfil.getInstance().getAdvancedOption().isAddSpaceAfterString() )
 		{
@@ -261,7 +371,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		
 		if(commandList != null)
 		{
-			executeCommande( commandList );
+			executeCommande( commandList, keyDynamicString );
 		}
 	}
 
