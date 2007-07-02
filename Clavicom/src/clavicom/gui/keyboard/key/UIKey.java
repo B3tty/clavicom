@@ -106,6 +106,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		private float opacity;						// Opacité du bouton (de 0 à 1)
 		
+		boolean editable;
+		
 		private int fontSize;						// Entier indiquant la taille de la police
 													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
 													// CFont, mais de la vraie taille
@@ -212,6 +214,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{ 
 			super();
 			
+			editable = false;
+			
 			// Initialisation des attributs
 			fontSize = DEFAULT_FONT_SIZE;
 			
@@ -298,6 +302,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// Deselection
 			setSelected(false);
 			
+			editable = myIsEditable;
+			
 			// Changement du listener sur la souris
 			if(myIsEditable == true)
 			{				
@@ -306,6 +312,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				removeMouseListener(mouseAdapterUse);
 				
 				addMouseListener(mouseAdapterEdit);
+				
+				
 			}
 			else
 			{				
@@ -719,13 +727,18 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		// s'abonne au mouse listeneur
 		public void listenMouseListener( boolean b )
 		{
-			removeMouseListener( mouseAdapterEdit );
-			removeMouseListener( mouseAdapterUse );
-			
-			if( b )
+							
+			// Maj des listeners
+			removeMouseListener(mouseAdapterEdit);
+			removeMouseListener(mouseAdapterUse);
+				
+			if(editable == true)
 			{
-				addMouseListener( mouseAdapterEdit );
-				addMouseListener( mouseAdapterUse );
+				addMouseListener(mouseAdapterEdit);
+			}
+			else
+			{
+				addMouseListener(mouseAdapterUse);			
 			}
 		}
 		
