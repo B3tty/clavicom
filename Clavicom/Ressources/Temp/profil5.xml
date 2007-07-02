@@ -57,15 +57,15 @@
     <shadow>false</shadow>
   </font>
   <advanced_options>
-    <click_souricom>RIGHT_RELEASE</click_souricom>
+    <click_souricom>LEFT_RELEASE</click_souricom>
     <add_space_after_string>false</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.2484375</x>
-        <y>0.58496094</y>
+        <x>0.24453124</x>
+        <y>0.5830078</y>
       </left_up>
       <right_down>
-        <x>0.99921876</x>
+        <x>0.9976562</x>
         <y>0.94140625</y>
       </right_down>
     </clavicom_frame_position>
@@ -3245,6 +3245,8 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words />
+  <prefered_words>
+    <prefered_word frequency="1">trr</prefered_word>
+  </prefered_words>
 </profil>
 
