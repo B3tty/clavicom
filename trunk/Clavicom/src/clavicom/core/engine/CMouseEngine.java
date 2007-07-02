@@ -47,6 +47,7 @@ import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TMouseKeyClickEnum;
 import clavicom.tools.TMouseKeyMoveEnum;
+import clavicom.tools.TNavigationType;
 
 public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickListener
 {
@@ -153,54 +154,81 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// on regarde quel movement il veut faire
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )
 		{
-			// on met en pause le hook 
-			ClickEngine.getInstance().mouseHookPause();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on met en pause le hook 
+				ClickEngine.getInstance().mouseHookPause();
+			}
 			
 			// clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// on reprend le hook
-			ClickEngine.getInstance().mouseHookResume();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on reprend le hook
+				ClickEngine.getInstance().mouseHookResume();
+			}
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_PRESS )
 		{
-			// on met en pause le hook 
-			ClickEngine.getInstance().mouseHookPause();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on met en pause le hook 
+				ClickEngine.getInstance().mouseHookPause();
+			}
 			
 			// clic gauche pressé
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			
-			// on reprend le hook
-			ClickEngine.getInstance().mouseHookResume();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on reprend le hook
+				ClickEngine.getInstance().mouseHookResume();
+			}
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_RELEASE )
 		{
-			// on met en pause le hook 
-			ClickEngine.getInstance().mouseHookPause();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on met en pause le hook 
+				ClickEngine.getInstance().mouseHookPause();
+			}
 			
 			// clic gauche relaché
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// on reprend le hook
-			ClickEngine.getInstance().mouseHookResume();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on reprend le hook
+				ClickEngine.getInstance().mouseHookResume();
+			}
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
-			// on met en pause le hook 
-			ClickEngine.getInstance().mouseHookPause();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on met en pause le hook 
+				ClickEngine.getInstance().mouseHookPause();
+			}
 			
 			// clic droit
 			robot.mousePress( InputEvent.BUTTON3_MASK );
 			robot.mouseRelease( InputEvent.BUTTON3_MASK );	
 			
-			// on reprend le hook
-			ClickEngine.getInstance().mouseHookResume();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on reprend le hook
+				ClickEngine.getInstance().mouseHookResume();
+			}
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{
-			// on met en pause le hook 
-			ClickEngine.getInstance().mouseHookPause();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on met en pause le hook 
+				ClickEngine.getInstance().mouseHookPause();
+			}
 			
 			// double clic gauche
 			robot.mousePress( InputEvent.BUTTON1_MASK );
@@ -208,8 +236,11 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			// on reprend le hook
-			ClickEngine.getInstance().mouseHookResume();
+			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			{
+				// on reprend le hook
+				ClickEngine.getInstance().mouseHookResume();
+			}
 			
 		}
 
