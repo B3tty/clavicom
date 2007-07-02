@@ -25,6 +25,7 @@
 
 package clavicom.gui.keyboard.keyboard;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -36,7 +37,7 @@ import java.util.List;
 public class UIMagnetGrid
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	public final int NONE = -1;			// Numéro de ligne ou colonne par défaut
+	public final static int NONE = -1;			// Numéro de ligne ou colonne par défaut
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<Integer> listVerticals;	// Numéros des pixels des X
@@ -52,6 +53,9 @@ public class UIMagnetGrid
 	private BufferedImage image;		// Image
 	private boolean imageUpToDate;		// Indique si l'image est à jour
 	
+	private int borderSize;				// Bordure du cadre dans lequel se trouve la griller
+										// (permet de ne pas dessiner jusqu'au bord
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIMagnetGrid()
 	{
@@ -62,8 +66,10 @@ public class UIMagnetGrid
 		height = 0;
 		nbVerticals = 0;
 		nbHorizontals = 0;	
+		borderSize = 0;
 		
-		colorGrid = Color.BLACK;
+		colorGrid = new Color(0,0,0,.2f);	// Noir opaque à 20%
+
 		imageUpToDate = false;
 	}
 
@@ -71,18 +77,28 @@ public class UIMagnetGrid
 	/**
 	 * Initialise tous les paramètres
 	 */
-	public void setAll(int width, int height, int nbVerticals, int nbHorizontals)
+	public void setAll(int width, int height, int nbVerticals, int nbHorizontals, int borderSize)
 	{
 		// Recopie des attributs
 		this.width = width;
 		this.height = height;
 		this.nbVerticals = nbVerticals;
 		this.nbHorizontals = nbHorizontals;
+		this.borderSize = borderSize;
 		
 		// On met a jour les listes
 		updateLists();
 		
 		imageUpToDate = false;
+	}
+	
+	/**
+	 * Spécifie la taille de la bordure
+	 * @param borderSize
+	 */
+	public void setBorderSize(int borderSize)
+	{
+		this.borderSize = borderSize;
 	}
 	
 	/**
@@ -133,19 +149,39 @@ public class UIMagnetGrid
 	}
 	
 	/**
+	 * Retourne le point de la grille le plus proche d'un point 
+	 * @param pt
+	 * @return
+	 */
+	public Point getNearestPoint(Point pt)
+	{
+		if(pt == null)
+			return null;
+		
+		int x = getNearestVertical((int)pt.getX());
+		int y = getNearestHorizontal((int)pt.getY());
+		
+		if(x == NONE || y == NONE)
+			return null;
+		
+		return new Point(x,y);
+	}
+	
+	/**
 	 * Retourne la position de la verticale la plus proche,
 	 * -1 en cas d'erreur
 	 */
-	public int getNearestVertical (Point point)
-	{
+	public int getNearestVertical (int x)
+	{		
 		int currentDifference = 0;
 		int minimalDifference = width;
 		Integer lastChoice = 0;
 	
+		int i = 0;
 		for(Integer currentVertical : listVerticals)
 		{
 			// Calcul de la différence avec la verticale
-			currentDifference = Math.abs((int)point.getX() - currentVertical);
+			currentDifference = Math.abs(x - currentVertical);
 			
 			if (currentDifference < minimalDifference)
 			// On se rapproche -> On continue
@@ -156,27 +192,32 @@ public class UIMagnetGrid
 			else
 			// On s'eloigne -> STOP
 			{
+//				System.out.println("Colonne " + (i-1));
 				return lastChoice;
 			}
+			++i;
 		}
-		
-		return NONE;
+
+//		System.out.println("Colonne " + (i-1));
+		return lastChoice;
+
 	}
 	
 	/**
 	 * Retourne la position de l'horizontale la plus proche,
 	 * -1 en cas d'erreur
 	 */
-	public int getNearestHorizontal (Point point)
-	{
+	public int getNearestHorizontal (int y)
+	{		
 		int currentDifference = 0;
-		int minimalDifference = width;
+		int minimalDifference = height;
 		Integer lastChoice = 0;
 	
+		int i = 0;
 		for(Integer currentHorizontal : listHorizontals)
 		{
 			// Calcul de la différence avec la verticale
-			currentDifference = Math.abs((int)point.getY() - currentHorizontal);
+			currentDifference = Math.abs(y - currentHorizontal);
 			
 			if (currentDifference < minimalDifference)
 			// On se rapproche -> On continue
@@ -187,11 +228,14 @@ public class UIMagnetGrid
 			else
 			// On s'eloigne -> STOP
 			{
+//				System.out.println("Ligne " + (i-1));
 				return lastChoice;
 			}
+			i++;
 		}
 		
-		return NONE;
+//		System.out.println("Ligne " + (i-1));
+		return lastChoice;
 	}
 	
 	/**
@@ -209,7 +253,7 @@ public class UIMagnetGrid
 	 * @return
 	 */
 	protected BufferedImage getDrawing()
-	{	
+	{			
 		// Si l'image est à jour, on ne la recréé pas
 		if(imageUpToDate == true)
 		{
@@ -226,22 +270,26 @@ public class UIMagnetGrid
 		// Application de la couleur
 		buffer.setColor(colorGrid);
 		
+		// Application du pinceau
+		buffer.setStroke(new BasicStroke(1));
+		
 		// Création des verticales
-		for(Integer currentVertical : listVerticals)
+		// On dessine tout sauf les bords
+		for(int i = 1 ; i < listVerticals.size()-1 ; ++i)
 		{
-			buffer.drawLine(	currentVertical, 	// X début
-								0, 					// Y début
-								currentVertical, 	// X fin
-								height - 1);		// Y fin
+			buffer.drawLine(	listVerticals.get(i), 		// X début
+								borderSize, 				// Y début
+								listVerticals.get(i), 		// X fin
+								height - 1 - borderSize);	// Y fin
 		}
 		
 		// Création des horizontales
-		for(Integer currentHorizontal : listHorizontals)
+		for(int i = 1 ; i < listHorizontals.size()-1 ; ++i)
 		{
-			buffer.drawLine(	0, 					// X début
-								currentHorizontal, 	// Y début
-								width - 1, 			// X fin
-								currentHorizontal);	// Y fin
+			buffer.drawLine(	borderSize, 				// X début
+								listHorizontals.get(i), 	// Y début
+								width - 1 - borderSize, 	// X fin
+								listHorizontals.get(i));	// Y fin
 		}
 		
 		// On indique que l'image est à jour
@@ -262,29 +310,29 @@ public class UIMagnetGrid
 		listHorizontals.clear();
 		
 		// ---------- VERTICALES --------------------------------------------
-		float pasVertical = (float)width/(float)nbVerticals;
+		float pasVertical = (float)width/(float)(nbVerticals-1);
 		float currentVertivalPos = 0;
 		
-		for(int i = 0 ; i < nbVerticals ; ++i)
+		for(int i = 0 ; i < (nbVerticals-1) ; ++i)
 		{
 			listVerticals.add(Math.round(currentVertivalPos));
 			currentVertivalPos += pasVertical;
 		}
 		
 		// On ajoute une ligne à la fin
-		listVerticals.add(width);
+		listVerticals.add(width - 1);
 		
 		// ---------- HORIZONTALES ------------------------------------------
-		float pasHorizontal = (float)height/(float)nbHorizontals;
+		float pasHorizontal = (float)height/(float)(nbHorizontals-1);
 		float currentHorizontalPos = 0;
 		
-		for(int i = 0 ; i < nbHorizontals ; ++i)
+		for(int i = 0 ; i < (nbHorizontals-1) ; ++i)
 		{
 			listHorizontals.add(Math.round(currentHorizontalPos));
 			currentHorizontalPos += pasHorizontal;
 		}
 		
 		// On ajoute une ligne à la fin
-		listHorizontals.add(height);
+		listHorizontals.add(height - 1);
 	}
 }
