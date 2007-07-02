@@ -37,7 +37,7 @@ public final class TClickSouricomEnum
     public final static TClickSouricomEnum RIGHT_RELEASE	= new TClickSouricomEnum();
     public final static TClickSouricomEnum RIGHT_PRESS		= new TClickSouricomEnum();
     public final static TClickSouricomEnum LEFT_RELEASE		= new TClickSouricomEnum();    
-    
+
     public static TClickSouricomEnum getValue( String clickSouricom )
     {
     	if( clickSouricom == "LEFT_PRESS" )

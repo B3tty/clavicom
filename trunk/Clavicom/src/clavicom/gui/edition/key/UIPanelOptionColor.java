@@ -27,25 +27,24 @@ package clavicom.gui.edition.key;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
-
-import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.CKey;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
+import clavicom.tools.TColorPanel;
 
-public class UIPanelOptionColor extends JPanel implements ActionListener
+public class UIPanelOptionColor extends JPanel implements MouseListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 	CKey key;
-	JButton colorButton;
+	TColorPanel colorPanel;
 	JLabel lColor;
 	TColorKeyEnum colorEnum;
 	
@@ -57,11 +56,11 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 		lColor = new JLabel();
 		add(lColor);
 		
-		colorButton = new JButton();
-		colorButton.setPreferredSize( new Dimension(30,20) );		
-		add( colorButton );
+		colorPanel = new TColorPanel();
+		colorPanel.setPreferredSize( new Dimension(30,20) );		
+		add( colorPanel );
 		
-		colorButton.addActionListener( this );
+		colorPanel.addMouseListener( this );
 	}
 	
 	public void setValues(List<CKey> selectedKeys, TColorKeyEnum myColorEnum)
@@ -79,45 +78,70 @@ public class UIPanelOptionColor extends JPanel implements ActionListener
 		colorEnum = myColorEnum;	
 		lColor.setText(colorEnum.toString());
 		
-		colorButton.setBackground( key.getColor( colorEnum ) );
+		colorPanel.setBackground( key.getColor( colorEnum ) );
 	}
 
-	public void actionPerformed(ActionEvent arg0)
-	{		
+
+	public void mouseClicked(MouseEvent e)
+	{
 		if((selectedKeys == null) && (key != null))
-		// Selection unique
-		{
-			Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
-
-			if( newColor !=  null )
+			// Selection unique
 			{
-				if( newColor != key.getColor( colorEnum ) )
-				{
-					// la couleur à changé
-					key.setColor( newColor, colorEnum );
+				Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
 
-					colorButton.setBackground( newColor );
-				}
-			}
-		}
-		else if ((selectedKeys != null) && (key == null))
-		// Selection multiple
-		{
-			Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), Color.WHITE );
-
-			if( newColor !=  null )
-			{
-				for (CKey currentKey : selectedKeys)
+				if( newColor !=  null )
 				{
-					if( newColor != currentKey.getColor( colorEnum ) )
+					if( newColor != key.getColor( colorEnum ) )
 					{
 						// la couleur à changé
-						currentKey.setColor( newColor, colorEnum );
+						key.setColor( newColor, colorEnum );
+
+						colorPanel.setBackground( newColor );
 					}
 				}
 			}
-			colorButton.setBackground( newColor );
-		}
+			else if ((selectedKeys != null) && (key == null))
+			// Selection multiple
+			{
+				Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), Color.WHITE );
+
+				if( newColor !=  null )
+				{
+					for (CKey currentKey : selectedKeys)
+					{
+						if( newColor != currentKey.getColor( colorEnum ) )
+						{
+							// la couleur à changé
+							currentKey.setColor( newColor, colorEnum );
+						}
+					}
+				}
+				colorPanel.setBackground( newColor );
+			}
+	}
+
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 	//----------------------------------------------------------- METHODES --//
