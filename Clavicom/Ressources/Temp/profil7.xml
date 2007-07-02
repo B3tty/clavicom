@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>Copie de francais.clg</language_ui>
+  <language_ui>francais.clg</language_ui>
   <commandset_name>francais.ccs</commandset_name>
   <shortcutset_name>default.css</shortcutset_name>
   <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.0421875</x>
-        <y>0.17773438</y>
+        <x>0.07578125</x>
+        <y>0.21582031</y>
       </left_up>
       <right_down>
-        <x>0.79609376</x>
-        <y>0.54296875</y>
+        <x>0.8726562</x>
+        <y>0.6191406</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -85,7 +85,7 @@
   <keyboard>
     <keygroup caption="Ligne1" order="0" visible="true">
       <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.0062992126</x>
@@ -124,7 +124,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.11336982</x>
@@ -161,7 +161,7 @@
             <command_altgr id="147" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.1745614</x>
@@ -198,7 +198,7 @@
             <command_altgr id="148" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.23377639</x>
@@ -235,7 +235,7 @@
             <command_altgr id="149" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.29561403</x>
@@ -274,7 +274,7 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.40031275</x>
@@ -311,7 +311,7 @@
             <command_altgr id="151" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.4566929</x>
@@ -348,7 +348,7 @@
             <command_altgr id="152" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5183737</x>
@@ -385,7 +385,7 @@
             <command_altgr id="153" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5833333</x>
@@ -424,7 +424,7 @@
         </keycharacter>
       </keylist>
       <keylist order="3" caption="4">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.67630965</x>
@@ -461,7 +461,7 @@
             <command_altgr id="155" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.73416734</x>
@@ -498,7 +498,7 @@
             <command_altgr id="156" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.7905512</x>
@@ -535,7 +535,7 @@
             <command_altgr id="157" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.84566927</x>
@@ -574,7 +574,7 @@
         </keycharacter>
       </keylist>
       <keylist order="4" caption="5">
-        <keyclavicom order="0" caption_image="true">
+        <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.92105263</x>
@@ -605,7 +605,7 @@
           <caption>configuration.png</caption>
           <action>OPEN_CONFIGURATION</action>
         </keyclavicom>
-        <keyclavicom order="1" caption_image="true">
+        <keyclavicom order="1" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.95877194</x>
@@ -640,7 +640,7 @@
     </keygroup>
     <keygroup caption="Ligne2" order="1" visible="true">
       <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.01023622</x>
@@ -677,7 +677,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.06535433</x>
@@ -714,7 +714,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.122834645</x>
@@ -751,7 +751,7 @@
             <command_altgr id="100" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.17874016</x>
@@ -788,7 +788,7 @@
             <command_altgr id="102" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.23622048</x>
@@ -827,7 +827,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.29291338</x>
@@ -864,7 +864,7 @@
             <command_altgr id="106" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.3535433</x>
@@ -901,7 +901,7 @@
             <command_altgr id="108" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.41496062</x>
@@ -938,7 +938,7 @@
             <command_altgr id="110" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.47559056</x>
@@ -975,7 +975,7 @@
             <command_altgr id="112" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.53385824</x>
@@ -1014,7 +1014,7 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.596063</x>
@@ -1051,7 +1051,7 @@
             <command_altgr id="116" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.65826774</x>
@@ -1088,7 +1088,7 @@
             <command_altgr id="119" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.72047246</x>
@@ -1125,7 +1125,7 @@
             <command_altgr id="122" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.78342456</x>
@@ -1166,7 +1166,7 @@
     </keygroup>
     <keygroup caption="Ligne3" order="2" visible="true">
       <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.010164191</x>
@@ -1203,7 +1203,7 @@
             <command_altgr id="63" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.10115237</x>
@@ -1240,7 +1240,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.1587708</x>
@@ -1277,7 +1277,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.21382843</x>
@@ -1311,10 +1311,10 @@
           <commands>
             <command_normal id="2" />
             <command_shift id="28" />
-            <command_altgr id="" />
+            <command_altgr id="123" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.27272728</x>
@@ -1353,7 +1353,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.33418694</x>
@@ -1390,7 +1390,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.39308578</x>
@@ -1427,7 +1427,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.45198464</x>
@@ -1464,15 +1464,15 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.51338583</x>
-              <y>0.32532752</y>
+              <x>0.51384616</x>
+              <y>0.32380953</y>
             </point>
             <point position="max">
-              <x>0.57086617</x>
-              <y>0.44323143</y>
+              <x>0.571282</x>
+              <y>0.44444445</y>
             </point>
           </coordinates>
           <colors>
@@ -1501,7 +1501,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.57362354</x>
@@ -1540,7 +1540,7 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.6350832</x>
@@ -1577,7 +1577,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.6968504</x>
@@ -1614,7 +1614,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.7574803</x>
@@ -1651,7 +1651,7 @@
             <command_altgr id="130" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.82173574</x>
@@ -1692,7 +1692,7 @@
     </keygroup>
     <keygroup caption="Ligne4" order="3" visible="true">
       <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.008661417</x>
@@ -1729,7 +1729,7 @@
             <command_altgr id="64" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.11102362</x>
@@ -1766,7 +1766,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.17413573</x>
@@ -1803,7 +1803,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.23221266</x>
@@ -1840,7 +1840,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.28897637</x>
@@ -1879,7 +1879,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.34251967</x>
@@ -1916,7 +1916,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.4023622</x>
@@ -1953,7 +1953,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.4609475</x>
@@ -1990,7 +1990,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5183737</x>
@@ -2029,7 +2029,7 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.57362354</x>
@@ -2066,7 +2066,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.6286812</x>
@@ -2103,7 +2103,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.68758005</x>
@@ -2140,7 +2140,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.7482408</x>
@@ -2181,7 +2181,7 @@
     </keygroup>
     <keygroup caption="Ligne5" order="4" visible="true">
       <keylist order="0" caption="1">
-        <keylevel order="0" caption_image="false">
+        <keylevel order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
               <x>0.008661417</x>
@@ -2212,7 +2212,7 @@
           <caption>Maj</caption>
           <level>SHIFT</level>
         </keylevel>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.10393701</x>
@@ -2249,7 +2249,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.16062993</x>
@@ -2286,7 +2286,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.21968503</x>
@@ -2323,7 +2323,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.27637795</x>
@@ -2362,7 +2362,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.33776388</x>
@@ -2399,7 +2399,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.45426115</x>
@@ -2436,7 +2436,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5129007</x>
@@ -2473,7 +2473,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.3943662</x>
@@ -2512,7 +2512,7 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5685039</x>
@@ -2549,7 +2549,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.6251969</x>
@@ -2586,7 +2586,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.6834646</x>
@@ -2623,15 +2623,15 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keylevel order="3" caption_image="false">
+        <keylevel order="3" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.7466771</x>
-              <y>0.61358315</y>
+              <x>0.74673367</x>
+              <y>0.61445785</y>
             </point>
             <point position="max">
-              <x>0.90148556</x>
-              <y>0.73770493</y>
+              <x>0.90150756</x>
+              <y>0.7379518</y>
             </point>
           </coordinates>
           <colors>
@@ -2658,15 +2658,15 @@
     </keygroup>
     <keygroup caption="Ligne6" order="5" visible="true">
       <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.008600469</x>
-              <y>0.7517564</y>
+              <x>0.008205128</x>
+              <y>0.75238097</y>
             </point>
             <point position="max">
-              <x>0.072713055</x>
-              <y>0.8665105</y>
+              <x>0.072820514</x>
+              <y>0.8666667</y>
             </point>
           </coordinates>
           <colors>
@@ -2687,7 +2687,7 @@
             </color_entered>
           </colors>
           <caption_level_1>Ctrl</caption_level_1>
-          <caption_level_2 />
+          <caption_level_2>Ctrl</caption_level_2>
           <caption_level_3>Ctrl</caption_level_3>
           <commands>
             <command_normal id="66" />
@@ -2695,7 +2695,7 @@
             <command_altgr id="66" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.07637795</x>
@@ -2732,7 +2732,7 @@
             <command_altgr id="67" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
               <x>0.13858268</x>
@@ -2771,7 +2771,7 @@
         </keycharacter>
       </keylist>
       <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.2099872</x>
@@ -2810,52 +2810,15 @@
         </keycharacter>
       </keylist>
       <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keylevel order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.7622047</x>
-              <y>0.7532751</y>
+              <x>0.61338663</x>
+              <y>0.75595236</y>
             </point>
             <point position="max">
-              <x>0.82362205</x>
-              <y>0.8668122</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>MC</caption_level_1>
-          <caption_level_2>MC</caption_level_2>
-          <caption_level_3>MC</caption_level_3>
-          <commands>
-            <command_normal id="72" />
-            <command_shift id="72" />
-            <command_altgr id="72" />
-          </commands>
-        </keycharacter>
-        <keylevel order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.61331624</x>
-              <y>0.7557604</y>
-            </point>
-            <point position="max">
-              <x>0.6888604</x>
-              <y>0.87096775</y>
+              <x>0.7112887</x>
+              <y>0.8720238</y>
             </point>
           </coordinates>
           <colors>
@@ -2878,15 +2841,15 @@
           <caption>Alt Gr</caption>
           <level>ALT_GR</level>
         </keylevel>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="1" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.6929134</x>
-              <y>0.7510917</y>
+              <x>0.71428573</x>
+              <y>0.75595236</y>
             </point>
             <point position="max">
-              <x>0.75905514</x>
-              <y>0.8668122</y>
+              <x>0.8031968</x>
+              <y>0.8720238</y>
             </point>
           </coordinates>
           <colors>
@@ -2915,15 +2878,15 @@
             <command_altgr id="71" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.8287725</x>
-              <y>0.7517564</y>
+              <x>0.8071928</x>
+              <y>0.7529762</y>
             </point>
             <point position="max">
-              <x>0.89992183</x>
-              <y>0.8665105</y>
+              <x>0.9000999</x>
+              <y>0.8660714</y>
             </point>
           </coordinates>
           <colors>
@@ -2956,15 +2919,15 @@
     </keygroup>
     <keygroup caption="Ligne7" order="6" visible="true">
       <keylist order="0" caption="1">
-        <keylauncher order="0" caption_image="false">
+        <keylauncher order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.009448819</x>
-              <y>0.87772924</y>
+              <x>0.0090452265</x>
+              <y>0.87650603</y>
             </point>
             <point position="max">
-              <x>0.062992126</x>
-              <y>0.9737991</y>
+              <x>0.06331658</x>
+              <y>0.97289157</y>
             </point>
           </coordinates>
           <colors>
@@ -2987,15 +2950,15 @@
           <caption>IE</caption>
           <applicationpath>C:\Program Files\Internet Explorer\iexplore.exe</applicationpath>
         </keylauncher>
-        <keystring order="1" caption_image="false">
+        <keystring order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.06614173</x>
-              <y>0.8799127</y>
+              <x>0.066331655</x>
+              <y>0.8795181</y>
             </point>
             <point position="max">
-              <x>0.17795275</x>
-              <y>0.97598255</y>
+              <x>0.17788945</x>
+              <y>0.97590363</y>
             </point>
           </coordinates>
           <colors>
@@ -3019,7 +2982,7 @@
           <base_string>Abdel coucou</base_string>
           <order_dynamic>0</order_dynamic>
         </keystring>
-        <keyshortcut order="2" caption_image="false">
+        <keyshortcut order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.27952754</x>
@@ -3050,7 +3013,7 @@
           <caption>Coller</caption>
           <command id="2" />
         </keyshortcut>
-        <keyshortcut order="3" caption_image="false">
+        <keyshortcut order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.18110237</x>
@@ -3083,7 +3046,7 @@
         </keyshortcut>
       </keylist>
       <keylist order="1" caption="2">
-        <keyprediction order="0" caption_image="false">
+        <keyprediction order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.5794872</x>
@@ -3111,10 +3074,10 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>ville</caption>
+          <caption />
           <order_dynamic>0</order_dynamic>
         </keyprediction>
-        <keyprediction order="1" caption_image="false">
+        <keyprediction order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.78503937</x>
@@ -3142,10 +3105,10 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>villes</caption>
+          <caption />
           <order_dynamic>0</order_dynamic>
         </keyprediction>
-        <keyprediction order="2" caption_image="false">
+        <keyprediction order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.68110234</x>
@@ -3173,10 +3136,10 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>village</caption>
+          <caption />
           <order_dynamic>0</order_dynamic>
         </keyprediction>
-        <keyprediction order="3" caption_image="false">
+        <keyprediction order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.8874016</x>
@@ -3204,14 +3167,14 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>villages</caption>
+          <caption />
           <order_dynamic>0</order_dynamic>
         </keyprediction>
       </keylist>
     </keygroup>
     <keygroup caption="AUTO" order="7" visible="true">
       <keylist order="0" caption="AUTO">
-        <keyclavicom order="0" caption_image="true">
+        <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.91768634</x>
@@ -3242,12 +3205,53 @@
           <caption>mouse.png</caption>
           <action>SWITCH_KEYBOARD_MOUSE</action>
         </keyclavicom>
+        <keycharacter order="1" caption_image="false" holdable="false">
+          <coordinates>
+            <point position="min">
+              <x>0.9068385</x>
+              <y>0.7243402</y>
+            </point>
+            <point position="max">
+              <x>0.99405354</x>
+              <y>0.82697946</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>252</red>
+              <green>162</green>
+              <blue>162</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Suppr</caption_level_1>
+          <caption_level_2>Suppr</caption_level_2>
+          <caption_level_3>Suppr</caption_level_3>
+          <commands>
+            <command_normal id="85" />
+            <command_shift id="85" />
+            <command_altgr id="85" />
+          </commands>
+        </keycharacter>
       </keylist>
     </keygroup>
   </keyboard>
   <prefered_words>
     <prefered_word frequency="11295">rou</prefered_word>
     <prefered_word frequency="1">dala</prefered_word>
+    <prefered_word frequency="1">CONTROLALT</prefered_word>
+    <prefered_word frequency="1">ALTCONTROLazetCONTROLALT</prefered_word>
+    <prefered_word frequency="1">AA</prefered_word>
+    <prefered_word frequency="1">ALTaALT</prefered_word>
   </prefered_words>
 </profil>
 

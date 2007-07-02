@@ -367,12 +367,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		
 		// Initialisation des tailles des fenêtres
 		
-		frameOptionKeyOneLevel.setSize(410,250);
-		frameOptionKeyKeyboard.setSize(410,125);
+		frameOptionKeyOneLevel.setSize(410,300);
+		frameOptionKeyKeyboard.setSize(410,175);
 		frameOptionKeyCharacter.setSize(540,540);
 		frameOptionKeyLauncher.setSize(410,350);
-		frameOptionKeyShortcut.setSize(410,350);
-		frameOptionKeyString.setSize(410,310);
+		frameOptionKeyShortcut.setSize(410,400);
+		frameOptionKeyString.setSize(410,360);
 		
 		// Frame d'options de l'application
 		frameOptionApplication.setSize(new Dimension (550,600));

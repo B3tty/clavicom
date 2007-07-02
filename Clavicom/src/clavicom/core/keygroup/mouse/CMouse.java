@@ -89,21 +89,21 @@ public class CMouse
 		// Touche clic gauche
 		CMouseKeyClick leftClick = new CMouseKeyClick(
 				TMouseKeyClickEnum.BUTTON_1, CFilePaths.getToolKeyMouseLeft(),
-				myColorNormal, myColorClicked, myColorEntered);
+				myColorNormal, myColorClicked, myColorEntered, false);
 		leftClick.setCaptionImage( true );
 		mouse.setLeftClick(leftClick);
 
 		// Touche clic droit
 		CMouseKeyClick rightClick = new CMouseKeyClick(
 				TMouseKeyClickEnum.BUTTON_2, CFilePaths.getToolKeyMouseRight(), myColorNormal,
-				myColorClicked, myColorEntered);
+				myColorClicked, myColorEntered, false);
 		rightClick.setCaptionImage( true );
 		mouse.setRightClick(rightClick);
 
 		// Touche double clic gauche
 		CMouseKeyClick leftDubbleClick = new CMouseKeyClick(
 				TMouseKeyClickEnum.DOUBLE_BUTTON_1, CFilePaths.getToolKeyMouseDoubleLeft(),
-				myColorNormal, myColorClicked, myColorEntered);
+				myColorNormal, myColorClicked, myColorEntered, false);
 		leftDubbleClick.setCaptionImage( true );
 		mouse.setLeftDubbleClick(leftDubbleClick);
 
@@ -111,7 +111,7 @@ public class CMouse
 		CMouseKeyClick leftPress = new CMouseKeyClick(
 				TMouseKeyClickEnum.BUTTON_1_PRESS,
 				CFilePaths.getToolKeyMouseDrag(), myColorNormal, myColorClicked,
-				myColorEntered);
+				myColorEntered, false);
 		leftPress.setCaptionImage( true );
 		mouse.setLeftPress(leftPress);
 
@@ -119,14 +119,14 @@ public class CMouse
 		CMouseKeyClick leftRelease = new CMouseKeyClick(
 				TMouseKeyClickEnum.BUTTON_1_RELEASE,
 				CFilePaths.getToolKeyMouseDrop(), myColorNormal,
-				myColorClicked, myColorEntered);
+				myColorClicked, myColorEntered, false);
 		leftRelease.setCaptionImage( true );
 		mouse.setLeftRelease(leftRelease);
 		try
 		{
 			// Touche passer dans le mode SourisMouvement
 			CKeyClavicom moveMouseMode = new CKeyClavicom(myColorNormal,
-					myColorClicked, myColorEntered, new TPoint(0, 0),
+					myColorClicked, myColorEntered, false, new TPoint(0, 0),
 					new TPoint(0, 0),
 					TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE,
 					CFilePaths.getToolKeyMouseMove());
@@ -145,7 +145,7 @@ public class CMouse
 		{
 			// Touche passer dans le mode SourisClic
 			CKeyClavicom clickMouseMode = new CKeyClavicom(myColorNormal,
-					myColorClicked, myColorEntered, new TPoint(0, 0),
+					myColorClicked, myColorEntered, false, new TPoint(0, 0),
 					new TPoint(0, 0),
 					TKeyClavicomActionType.SWITCH_MOUSEMOVE_MOUSECLICK,
 					CFilePaths.getToolKeyMouseClick());
@@ -163,28 +163,28 @@ public class CMouse
 		// Touche aller à gauche
 		CMouseKeyMove moveLeft = new CMouseKeyMove(TMouseKeyMoveEnum.LEFT,
 				CFilePaths.getToolKeyMouseArrowLeft(), myColorNormal, myColorClicked,
-				myColorEntered);
+				myColorEntered, false);
 		moveLeft.setCaptionImage( true );
 		mouse.setMoveLeft(moveLeft);
 
 		// Touche aller à droite
 		CMouseKeyMove moveRight = new CMouseKeyMove(TMouseKeyMoveEnum.RIGHT,
 				CFilePaths.getToolKeyMouseArrowRight(), myColorNormal, myColorClicked,
-				myColorEntered);
+				myColorEntered, false);
 		moveRight.setCaptionImage( true );
 		mouse.setMoveRight(moveRight);
 
 		// Touche aller en haut
 		CMouseKeyMove moveUp = new CMouseKeyMove(TMouseKeyMoveEnum.UP,
 				CFilePaths.getToolKeyMouseArrowUp(), myColorNormal, myColorClicked,
-				myColorEntered);
+				myColorEntered, false);
 		moveUp.setCaptionImage( true );
 		mouse.setMoveUp(moveUp);
 
 		// Touche aller en bas
 		CMouseKeyMove moveDown = new CMouseKeyMove(TMouseKeyMoveEnum.DOWN,
 				CFilePaths.getToolKeyMouseArrowDown(), myColorNormal, myColorClicked,
-				myColorEntered);
+				myColorEntered, false);
 		moveDown.setCaptionImage( true );
 		mouse.setMoveDown(moveDown);
 
@@ -192,7 +192,7 @@ public class CMouse
 		try
 		{
 			CKeyClavicom switchMouseKeyboard = new CKeyClavicom(myColorNormal,
-					myColorClicked, myColorEntered, new TPoint(0, 0),
+					myColorClicked, myColorEntered, false, new TPoint(0, 0),
 					new TPoint(0, 0),
 					TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD,
 					CFilePaths.getToolKeyMouseToClavicom());

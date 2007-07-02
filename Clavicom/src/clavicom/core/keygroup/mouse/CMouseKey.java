@@ -40,9 +40,9 @@ public abstract class CMouseKey extends CKey
 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CMouseKey( String myCaption, Color myNormal, Color myPressed, Color myEntered)
+	public CMouseKey( String myCaption, Color myNormal, Color myPressed, Color myEntered, boolean holdable)
 	{
-		super(myNormal, myPressed, myEntered);
+		super(myNormal, myPressed, myEntered, holdable);
 		
 		caption = myCaption;
 	}

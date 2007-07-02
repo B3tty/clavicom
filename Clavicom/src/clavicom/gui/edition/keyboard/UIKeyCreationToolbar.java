@@ -145,6 +145,7 @@ public class UIKeyCreationToolbar extends JPanel
 				COLOR_NORMAL,
 				COLOR_ENTERED,
 				COLOR_PRESSED,
+				false,
 				new TPoint(0,0),new TPoint(0,0),
 				filePath,
 				type,

@@ -53,12 +53,13 @@ public class CKeyClavicom extends CKeyOneLevel
 			Color myColorNormal, 
 			Color myColorClicked , 
 			Color myColorEntered , 
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			TKeyClavicomActionType myAction,
 			String myCaption)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		super(myColorNormal,myColorClicked,myColorEntered,holdable,myPointMin,myPointMax,myCaption);
 		
 		action = myAction;
 		listenerList = new EventListenerList();

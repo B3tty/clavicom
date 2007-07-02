@@ -101,7 +101,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	public void startKeyDefilEngine()
 	{
 		currentTypeDefil = 0;
-		currentIndexDefilementGroup = 0;
+		currentIndexDefilementGroup = uiKeyboard.getGroupeListSize()-1;
 		currentIndexDefilementList = 0;
 		currentIndexDefilementKey = 0;
 		nbCurrentDefilement = 0;
@@ -238,7 +238,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		{
 			case 0: // groupes
 				currentTypeDefil = 1;
-				currentIndexDefilementList = 0;
+				currentIndexDefilementList = currentGroup.getKeyLists().size() - 1;
 				nbCurrentDefilement = 0;
 				if( currentGroup != null )
 				{
@@ -247,7 +247,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				break;
 			case 1: // listes
 				currentTypeDefil = 2;
-				currentIndexDefilementKey = 0;
+				currentIndexDefilementKey = currentList.getKeys().size() - 1;
 				nbCurrentDefilement = 0;
 				if( currentList != null )
 				{
@@ -262,7 +262,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					currentKey.simulateClick();
 				}
 				currentTypeDefil = 0;
-				currentIndexDefilementGroup = 0;
+				currentIndexDefilementGroup = uiKeyboard.getGroupeListSize()-1;
 				nbCurrentDefilement = 0;
 				currentKey = null;
 				currentList = null;
@@ -270,7 +270,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 				break;
 			default:
 				currentTypeDefil = 0;
-				currentIndexDefilementGroup = 0;
+				currentIndexDefilementGroup = uiKeyboard.getGroupeListSize()-1;
 				nbCurrentDefilement = 0;
 				break;
 		}

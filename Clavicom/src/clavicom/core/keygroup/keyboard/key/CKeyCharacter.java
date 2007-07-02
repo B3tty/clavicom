@@ -54,11 +54,12 @@ public class CKeyCharacter extends CKeyThreeLevel
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 	public CKeyCharacter(Color myColorNormal, Color myColorClicked,
-						 Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
+						 Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax)
 	{
 		this(	myColorNormal, 
 				myColorClicked,
 				myColorEntered, 
+				holdable,
 				myPointMin, 
 				myPointMax, 
 				"", "", "", 
@@ -66,13 +67,13 @@ public class CKeyCharacter extends CKeyThreeLevel
 	}
 	
 	public CKeyCharacter(	Color myColorNormal, Color myColorClicked,
-							Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+							Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax,
 							String captionLeve1, String captionLeve2, String captionLeve3,
 							CCommand myCommandNormal, 
 							CCommand myCommandShift,
 							CCommand myCommandAltGr)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin,
 				myPointMax, captionLeve1, captionLeve2, captionLeve3);
 		commandNormal = myCommandNormal;
 		commandShift = myCommandShift;
@@ -82,10 +83,10 @@ public class CKeyCharacter extends CKeyThreeLevel
 	}
 
 	public CKeyCharacter(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax,
+			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax,
 			String captionLeve1, String captionLeve2, String captionLeve3)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered, myPointMin,
+		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin,
 				myPointMax, captionLeve1, captionLeve2, captionLeve3);
 
 		this.listenerList = new EventListenerList();

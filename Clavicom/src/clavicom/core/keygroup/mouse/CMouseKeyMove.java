@@ -48,9 +48,10 @@ public class CMouseKeyMove extends CMouseKey
 			String caption,
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered )
+			Color myColorEntered,
+			boolean holdable)
 	{
-		super( caption, myColorNormal, myColorClicked, myColorEntered );
+		super( caption, myColorNormal, myColorClicked, myColorEntered, holdable );
 		direction = mydirection;
 		
 		listenerList = new EventListenerList();

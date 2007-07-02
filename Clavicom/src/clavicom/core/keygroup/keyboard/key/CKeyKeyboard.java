@@ -46,9 +46,9 @@ public abstract class CKeyKeyboard extends CKey
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
 	public CKeyKeyboard(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, TPoint myPointMin, TPoint myPointMax)
+			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax)
 	{
-		super(myColorNormal, myColorClicked, myColorEntered);
+		super(myColorNormal, myColorClicked, myColorEntered, holdable);
 
 		pointMin = myPointMin;
 		pointMax = myPointMax;

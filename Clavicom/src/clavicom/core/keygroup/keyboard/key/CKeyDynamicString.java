@@ -44,6 +44,9 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	
 	protected EventListenerList listenerList;
 	
+	int currentIndex; // index du mot courrant (pour pouvoir ne pas réécrire 
+						// le début du mot ex: maimaison)
+	
 	//---------------------------------------------------------- VARIABLES --//	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -51,12 +54,14 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 			Color myColorNormal, 
 			Color myColorClicked , 
 			Color myColorEntered , 
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax)
 	{
 		this(	myColorNormal, 
 				myColorClicked , 
 				myColorEntered , 
+				holdable,
 				myPointMin, 
 				myPointMax,
 				"");
@@ -65,7 +70,8 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	public CKeyDynamicString(
 			Color myColorNormal, 
 			Color myColorClicked , 
-			Color myColorEntered , 
+			Color myColorEntered ,
+			boolean holdable,
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			String myCaption)
@@ -73,6 +79,7 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 		super (	myColorNormal, 
 				myColorClicked , 
 				myColorEntered , 
+				holdable,
 				myPointMin, 
 				myPointMax,
 				myCaption);
@@ -213,6 +220,15 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	public int getOrder()
 	{
 		return order;
+	}
+	
+	public void setCurrentIndex(int i)
+	{
+		currentIndex = i;		
+	}
+	public int getCurrentIndex()
+	{
+		return currentIndex;	
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//

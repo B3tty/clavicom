@@ -46,6 +46,8 @@ public abstract class CKey
 	CColor entered;
 	
 	boolean captionImage;
+	
+	boolean holdable;
 
     // un seul objet pour tous les types d'écouteurs
     protected final EventListenerList listeners = new EventListenerList();
@@ -56,11 +58,13 @@ public abstract class CKey
 	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public CKey( Color myNormal, Color myPressed, Color myEntered )
+	public CKey( Color myNormal, Color myPressed, Color myEntered, boolean myHoldable )
 	{
 		normal = new CColor(myNormal);
 		pressed = new CColor(myPressed);
 		entered = new CColor(myEntered);
+		
+		holdable = myHoldable;
 	}
 	
 	public CKey( Element node ) throws Exception
@@ -121,6 +125,23 @@ public abstract class CKey
 		catch ( Exception ex )
 		{
 			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + caption_image_string + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ) );
+		}
+		
+		// =================================================================
+		// Récupération du booléen holdable
+		// =================================================================
+		String holdable_string = node.getAttributeValue( TXMLNames.KY_ATTRIBUTE_HOLDABLE );
+		if( holdable_string == null )
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) +"] " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_ATTRIBUTE" ) + TXMLNames.KY_ATTRIBUTE_HOLDABLE );
+		}
+		try
+		{
+			holdable = Boolean.parseBoolean( holdable_string );
+		}
+		catch ( Exception ex )
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_KEY_BUILD" ) + "] : "+ UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + holdable_string + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ) );
 		}
 		
 		// =================================================================
@@ -226,6 +247,9 @@ public abstract class CKey
 		Attribute captionImageAttribut = new Attribute( TXMLNames.KY_ATTRIBUTE_CAPTION_IMAGE, String.valueOf( captionImage ) );
 		root.setAttribute( captionImageAttribut );
 		
+		Attribute holdableAttribut = new Attribute( TXMLNames.KY_ATTRIBUTE_HOLDABLE, String.valueOf( holdable ) );
+		root.setAttribute( holdableAttribut );
+		
 		return colors;
 	}
 
@@ -254,5 +278,15 @@ public abstract class CKey
 		{
 			listener.colorChanged(colorType);
 		}
-    }	
+    }
+
+	public boolean isHoldable()
+	{
+		return holdable;
+	}
+
+	public void setHoldable(boolean holdable)
+	{
+		this.holdable = holdable;
+	}	
 }

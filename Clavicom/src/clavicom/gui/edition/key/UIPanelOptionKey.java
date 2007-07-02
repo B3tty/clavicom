@@ -26,13 +26,17 @@
 package clavicom.gui.edition.key;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import clavicom.core.keygroup.CKey;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
@@ -49,6 +53,8 @@ public class UIPanelOptionKey extends JPanel
 	UIPanelOptionColor panelColorEntered;
 	UIPanelOptionColor panelColorNormal;
 	
+	JCheckBox checkHoldable;
+	
 	List<UIKeyKeyboard> selectedKeys;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -56,21 +62,41 @@ public class UIPanelOptionKey extends JPanel
 	{
 		setLayout( new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		JPanel panelGlobal = new JPanel();
+		
+		JPanel panelGlobal = new JPanel( new BorderLayout() );
+		JPanel colorPanel = new JPanel();
 		
 		// création des trois panels des couleurs et ajout
 		panelColorClicked = new UIPanelOptionColor();
 		panelColorEntered = new UIPanelOptionColor();
 		panelColorNormal = new UIPanelOptionColor();
 		
-		panelGlobal.add( panelColorNormal );
-		panelGlobal.add( panelColorEntered );
-		panelGlobal.add( panelColorClicked );
+		colorPanel.add( panelColorNormal );
+		colorPanel.add( panelColorEntered );
+		colorPanel.add( panelColorClicked );
+		
+		panelGlobal.add( colorPanel, BorderLayout.CENTER );
 		
 		panelGlobal.setBorder( BorderFactory.createTitledBorder( BorderFactory.createLineBorder( Color.BLACK ), 
 								UIString.getUIString("LB_KEY_BORDER")) );
+		
+		// création de checkbox holdable
+		JPanel panelHoldable = new JPanel();
+		checkHoldable = new JCheckBox( UIString.getUIString("LB_KEY_HOLDABLE"), false );
+		checkHoldable.addChangeListener( new ChangeListener()
+		{
+			public void stateChanged(ChangeEvent e)
+			{
+				if( key != null )
+				{
+					key.setHoldable( checkHoldable.isSelected() );
+				}
+			}
+		});
+		panelHoldable.add( checkHoldable );
+		panelGlobal.add( panelHoldable, BorderLayout.SOUTH );
 
-		add( panelGlobal);
+		add( panelGlobal );
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -90,6 +116,9 @@ public class UIPanelOptionKey extends JPanel
 		panelColorClicked.setValues( selectedCKeys, TColorKeyEnum.PRESSED );
 		panelColorEntered.setValues( selectedCKeys, TColorKeyEnum.ENTERED );
 		panelColorNormal.setValues( selectedCKeys, TColorKeyEnum.NORMAL );
+		
+		checkHoldable.setVisible( false );
+		//checkHoldable.setSelected( false );
 	}
 	
 	public void setValuesKey( CKey myKey)
@@ -100,6 +129,9 @@ public class UIPanelOptionKey extends JPanel
 		panelColorClicked.setValues( key, TColorKeyEnum.PRESSED );
 		panelColorEntered.setValues( key, TColorKeyEnum.ENTERED );
 		panelColorNormal.setValues( key, TColorKeyEnum.NORMAL );
+		
+		checkHoldable.setVisible( true );
+		checkHoldable.setSelected( key.isHoldable() );
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

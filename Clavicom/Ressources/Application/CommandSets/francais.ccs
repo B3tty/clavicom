@@ -365,7 +365,7 @@
 			<code order="0" action="pressed" value="VK_END"/>
 			<code order="1" action="released" value="VK_END"/>
 		</command>
-		<command id="87" search_string="PAGE_DOWN" caption = "Page inf�rieure">
+		<command id="87" search_string="PAGE_DOWN" caption = "Page inférieure">
 			<code order="0" action="pressed" value="VK_PAGE_DOWN"/>
 			<code order="1" action="released" value="VK_PAGE_DOWN"/>
 		</command>

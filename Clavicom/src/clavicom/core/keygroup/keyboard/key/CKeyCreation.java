@@ -50,14 +50,15 @@ public class CKeyCreation extends CKeyOneLevel
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyCreation(	Color myColorNormal, 
 							Color myColorClicked , 
-							Color myColorEntered , 
+							Color myColorEntered ,
+							boolean holdable,
 							TPoint myPointMin, 
 							TPoint myPointMax,
 							String myCaption,
 							TEnumCreationKey myKeyType,
 							String tooltip)
 	{
-		super(myColorNormal,myColorClicked,myColorEntered,myPointMin,myPointMax,myCaption);
+		super(myColorNormal,myColorClicked,myColorEntered,holdable,myPointMin,myPointMax,myCaption);
 		
 		keyType = myKeyType;
 		this.tooltip = tooltip;
