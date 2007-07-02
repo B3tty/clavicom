@@ -43,6 +43,7 @@ import javax.swing.event.EventListenerList;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 
+import clavicom.gui.keyboard.keyboard.UIMagnetGrid;
 import clavicom.gui.listener.UIKeySelectionListener;
 
 
@@ -57,6 +58,8 @@ public abstract class UIJResizer extends JComponent
 	protected UISelectableBorder resizableBorder;	// Bordure lors du resize
 	protected boolean changeSelection;		
 	protected EventListenerList listeners;
+	
+	protected UIMagnetGrid magnetGrid;				// Grille aimantée 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIJResizer()
@@ -66,6 +69,15 @@ public abstract class UIJResizer extends JComponent
 		resizableBorder.setVisible(false);
 		
 		listeners = new EventListenerList();
+	}
+	
+	/**
+	 * Affecte la magnetGrid
+	 * @param magnetGrid
+	 */
+	public void setMagnetGrid(UIMagnetGrid magnetGrid)
+	{
+		this.magnetGrid = magnetGrid; 
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -199,9 +211,34 @@ public abstract class UIJResizer extends JComponent
 		public void mouseDragged(MouseEvent me)
 		{
 			if ( startPos != null )
-			{				
-				int dx = me.getX() - startPos.x;
-				int dy = me.getY() - startPos.y;
+			{							
+				Point bestPoint;
+				
+				if(magnetGrid == null)
+				// Normal
+				{
+					bestPoint = me.getPoint();
+				}
+				else
+				// Gestion avec les grilles
+				{ 
+					// Stockage de la position de la souris
+					Point mouseParent = getParent().getMousePosition();
+					
+					// Récupération du point de la grille le plus proche
+					Point gridPointParent = magnetGrid.getNearestPoint(mouseParent);
+					
+					// On récupère les incréments à faire pour changer de repère
+					int diffX = (int)(gridPointParent.getX() - mouseParent.getX());
+					int diffY = (int)(gridPointParent.getY() - mouseParent.getY());
+					
+					// On créé le point dans l'espace courant
+					bestPoint = new Point((int)me.getPoint().getX(), (int)me.getPoint().getY());
+					bestPoint.translate(diffX, diffY);
+				}
+				
+				int dx = (int)bestPoint.getX() - startPos.x;
+				int dy = (int)bestPoint.getY() - startPos.y;
 				
 				Rectangle newBounds = new Rectangle(); 
 				
@@ -216,7 +253,7 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.S_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth(), getHeight() + dy);
 						tryResize(newBounds);
-						startPos = me.getPoint();
+						startPos = bestPoint;
 						didResized();
 						break;
 						
@@ -229,7 +266,7 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.E_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth() + dx, getHeight());
 						tryResize(newBounds);
-						startPos = me.getPoint();
+						startPos = bestPoint;
 						didResized();
 						break;
 						
@@ -242,21 +279,21 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.NE_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY() + dy, getWidth() + dx, getHeight() - dy);
 						tryResize(newBounds);
-						startPos = new Point(me.getX(), startPos.y);
+						startPos = new Point((int)bestPoint.getX(), startPos.y);
 						didResized();
 						break;
 						
 					case Cursor.SW_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX() + dx, getY(), getWidth() - dx, getHeight() + dy);
 						tryResize(newBounds);
-						startPos = new Point(startPos.x, me.getY());
+						startPos = new Point(startPos.x, (int)bestPoint.getY());
 						didResized();
 						break;
 						
 					case Cursor.SE_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth() + dx, getHeight() + dy);
 						tryResize(newBounds);
-						startPos = me.getPoint();
+						startPos = bestPoint;
 						didResized();
 						break;
 						

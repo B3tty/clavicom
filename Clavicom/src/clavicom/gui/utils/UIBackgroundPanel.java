@@ -40,9 +40,9 @@ import clavicom.core.profil.CProfil;
 public class UIBackgroundPanel extends UITranslucentPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
-	final int TAILLE_CONTOUR = 3;				// Taille du contour
-	final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
+	protected final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
+	protected final int TAILLE_CONTOUR = 3;				// Taille du contour
+	protected final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 
 	//---------------------------------------------------------- VARIABLES --//	
 

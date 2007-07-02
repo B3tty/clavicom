@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profil>
+  <language_ui>Copie de francais.clg</language_ui>
+  <commandset_name>francais.ccs</commandset_name>
+  <shortcutset_name>default.css</shortcutset_name>
+  <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
+  <keyboard_color>
+    <back_color>
+      <red>193</red>
+      <green>193</green>
+      <blue>254</blue>
+    </back_color>
+    <default_normal>
+      <red>204</red>
+      <green>204</green>
+      <blue>204</blue>
+    </default_normal>
+    <default_clicked>
+      <red>242</red>
+      <green>99</green>
+      <blue>99</blue>
+    </default_clicked>
+    <default_entered>
+      <red>252</red>
+      <green>162</green>
+      <blue>162</blue>
+    </default_entered>
+  </keyboard_color>
+  <transparency>
+    <keyboard_transparency>0.88</keyboard_transparency>
+    <key_transparency>0.90999997</key_transparency>
+  </transparency>
+  <sound>
+    <on_defil active="false" />
+    <on_click active="false" />
+    <on_survol active="false" />
+  </sound>
+  <navigation>
+    <type value="STANDARD" />
+    <rollover active="true" />
+    <mouse_speed value="100" />
+    <click_tempo value="900" />
+    <defil_tempo value="1014" />
+  </navigation>
+  <font>
+    <name>Arial</name>
+    <auto_size>false</auto_size>
+    <size>0.35</size>
+    <auto_color>false</auto_color>
+    <color>
+      <red>0</red>
+      <green>0</green>
+      <blue>0</blue>
+    </color>
+    <bold>false</bold>
+    <italic>false</italic>
+    <shadow>false</shadow>
+  </font>
+  <advanced_options>
+    <click_souricom>RIGHT_RELEASE</click_souricom>
+    <add_space_after_string>false</add_space_after_string>
+    <clavicom_frame_position>
+      <left_up>
+        <x>0.15</x>
+        <y>0.31445312</y>
+      </left_up>
+      <right_down>
+        <x>0.8023437</x>
+        <y>0.7470703</y>
+      </right_down>
+    </clavicom_frame_position>
+    <souricom_frame_position>
+      <left_up>
+        <x>0.6640625</x>
+        <y>0.53222656</y>
+      </left_up>
+      <right_down>
+        <x>0.8828125</x>
+        <y>0.94140625</y>
+      </right_down>
+    </souricom_frame_position>
+    <start_with_os>false</start_with_os>
+    <nb_defil_turn>3</nb_defil_turn>
+  </advanced_options>
+  <keyboard>
+    <keygroup caption="Ligne1" order="0" visible="true">
+      <keylist order="0" caption="Salut">
+        <keyclavicom order="0" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.22062351</x>
+              <y>0.24128686</y>
+            </point>
+            <point position="max">
+              <x>0.55755395</x>
+              <y>0.7587131</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>255</red>
+              <green>102</green>
+              <blue>26</blue>
+            </color_clicked>
+            <color_entered>
+              <red>255</red>
+              <green>153</green>
+              <blue>102</blue>
+            </color_entered>
+          </colors>
+          <caption>configuration.png</caption>
+          <action>OPEN_CONFIGURATION</action>
+        </keyclavicom>
+      </keylist>
+    </keygroup>
+    <keygroup caption="AUTO" order="1" visible="true">
+      <keylist order="0" caption="AUTO">
+        <keyclavicom order="0" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.95726496</x>
+              <y>0.016997168</y>
+            </point>
+            <point position="max">
+              <x>0.991453</x>
+              <y>0.13314448</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>252</red>
+              <green>162</green>
+              <blue>162</blue>
+            </color_entered>
+          </colors>
+          <caption>close.png</caption>
+          <action>CLOSE_APPLICATION</action>
+        </keyclavicom>
+      </keylist>
+    </keygroup>
+  </keyboard>
+  <prefered_words />
+</profil>
+

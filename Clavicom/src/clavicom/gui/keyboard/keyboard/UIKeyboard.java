@@ -115,6 +115,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
 
 	private BufferedImage imgBackground;			// Buffer de l'image cliquée
+	private BufferedImage imgGrid;					// Buffer de l'image de la grille
 	
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
 												// le calcul des images
@@ -125,6 +126,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	
 	private EventListenerList listeners;		// Listeners sur le keyboard
+	
+	private UIMagnetGrid magnetGrid;			// Grille de fond
+	private boolean firstEdition;				// Vrai uniquement à la première édition
 	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -144,6 +148,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
 
 		listeners = new EventListenerList();
+		magnetGrid = new UIMagnetGrid();
+		magnetGrid.setBorderSize(TAILLE_CONTOUR);
+		
+		// TODO : temporaire :
+		magnetGrid.setNbHorizontals(5);
+		magnetGrid.setNbVerticals(10);
+		
+		firstEdition = true;
 		
 		// Récupération du nombre de groupes 
 		int groupCount = coreKeyboard.groupCount();
@@ -216,6 +228,18 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		coreKeyboard.clearKeyboard();		
 		
 		removeAll();
+	}
+	
+	/**
+	 * Affecte à chaque touche le magnetGrid
+	 *
+	 */
+	public void setMagnetGridToKeys()
+	{
+		for(UIKey currentKey : allKeys)
+		{
+			currentKey.setMagnetGrid(magnetGrid);
+		}
 	}
 	
 	public void declassGroup(UIKeyGroup group)
@@ -436,6 +460,12 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Maj des keys
 		updateEdit(true);
+		
+		if(firstEdition == true)
+		{
+			setMagnetGridToKeys();
+			firstEdition = false;
+		}
 		 
 		// Changement de l'état
 		isEdited = true;
@@ -479,7 +509,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
 	{			
-		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -494,7 +523,13 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 		
 		g2.drawImage(imgBackground, 0, 0, null);
-	}
+		
+		// On ajoute la grille si nécessaire
+		if(isEdited == true)
+		{
+			g2.drawImage(imgGrid, 0, 0, null);
+		}
+	}	
 	
 	//-----------------------------------------------------------------------
 	// Méthodes de réaction à la selection de key
@@ -516,18 +551,19 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 	public void componentHidden(ComponentEvent arg0)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire		
 	}
 
 	public void componentMoved(ComponentEvent arg0)
 	{
-		// TODO Auto-generated method stub
-		
+		// Rien à faire				
 	}
 	
 	public void updateAndRepaint()
 	{
+		magnetGrid.setDimensions(getWidth(), getHeight());
+		imgGrid = magnetGrid.getDrawing();
+		
 		imgBackground = recreateBackground();
 		replaceUIKeys();
 		updateKeyFontSize();
@@ -541,6 +577,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		if (imgBackground != null)
 		{
 			imgBackground = TSwingUtils.toBufferedImage(((Image)imgBackground).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
+		}
+		
+		if (imgGrid != null)
+		{
+			imgGrid = TSwingUtils.toBufferedImage(((Image)imgGrid).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
 		}
 		
 		// On recalcule la taille de police
@@ -697,6 +738,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				imgBackground = recreateBackground();
 				replaceUIKeys();
 				updateKeyFontSize();
+				magnetGrid.setDimensions(getWidth(), getHeight());
+				imgGrid = magnetGrid.getDrawing();
 				repaint();
 			}
 		};
@@ -888,14 +931,12 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 		public void keyReleased(KeyEvent arg0)
 		{
-			// TODO Auto-generated method stub
-			
+			// Rien à faire		
 		}
 
 		public void keyTyped(KeyEvent arg0)
 		{
-			// TODO Auto-generated method stub
-			
+			// Rien à faire		
 		}
 	};
 	
@@ -904,12 +945,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 		public void mouseClicked(MouseEvent arg0)
 		{
-//			 TODO Auto-generated method stub
+			// Rien à faire		
 		}
 
 		public void mouseEntered(MouseEvent arg0)
 		{
-			// TODO Auto-generated method stub
 			if(isEdited == true)
 			{
 				requestFocus();
@@ -918,8 +958,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 		public void mouseExited(MouseEvent arg0)
 		{
-			// TODO Auto-generated method stub
-			
+			// Rien à faire			
 		}
 
 		public void mousePressed(MouseEvent arg0)
@@ -937,8 +976,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 		public void mouseReleased(MouseEvent arg0)
 		{
-			// TODO Auto-generated method stub
-			
+			// Rien à faire			
 		}
 
 	};
