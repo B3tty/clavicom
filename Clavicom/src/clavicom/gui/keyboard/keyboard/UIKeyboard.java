@@ -114,7 +114,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private List<UIKeyKeyboard> selectedKeys;		// Liste des key selectionnées
 	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
 
-	
 	private BufferedImage imgBackground;			// Buffer de l'image cliquée
 	
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
