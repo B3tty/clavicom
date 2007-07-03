@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.07578125</x>
-        <y>0.21582031</y>
+        <x>0.46484375</x>
+        <y>0.546875</y>
       </left_up>
       <right_down>
-        <x>0.8726562</x>
-        <y>0.6191406</y>
+        <x>0.99140626</x>
+        <y>0.90722656</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1695,43 +1695,6 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.008661417</x>
-              <y>0.47161573</y>
-            </point>
-            <point position="max">
-              <x>0.106299214</x>
-              <y>0.59825325</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Ver Maj</caption_level_1>
-          <caption_level_2>Ver Maj</caption_level_2>
-          <caption_level_3>Ver Maj</caption_level_3>
-          <commands>
-            <command_normal id="64" />
-            <command_shift id="64" />
-            <command_altgr id="64" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false" holdable="false">
-          <coordinates>
-            <point position="min">
               <x>0.11102362</x>
               <y>0.47161573</y>
             </point>
@@ -1766,7 +1729,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false" holdable="false">
+        <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.17413573</x>
@@ -1803,7 +1766,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false" holdable="false">
+        <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.23221266</x>
@@ -1840,7 +1803,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false" holdable="false">
+        <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
               <x>0.28897637</x>
@@ -3242,6 +3205,38 @@
             <command_altgr id="85" />
           </commands>
         </keycharacter>
+        <keylevel order="2" caption_image="false" holdable="true">
+          <coordinates>
+            <point position="min">
+              <x>0.007835455</x>
+              <y>0.47800586</y>
+            </point>
+            <point position="max">
+              <x>0.10577865</x>
+              <y>0.59530795</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>252</red>
+              <green>162</green>
+              <blue>162</blue>
+            </color_entered>
+          </colors>
+          <caption>CAPS LOCK</caption>
+          <level>SHIFT</level>
+          <always_holdable>true</always_holdable>
+        </keylevel>
       </keylist>
     </keygroup>
   </keyboard>

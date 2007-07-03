@@ -37,6 +37,7 @@ public final class TEnumCreationKey
     public final static TEnumCreationKey T_KEY_LAUNCHER						= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LEVEL_SHIFT					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LEVEL_ALTGR					= new TEnumCreationKey();
+    public final static TEnumCreationKey T_KEY_LEVEL_CAPS_LOCK					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_PREDICTION					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_SHORTCUT						= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_STRING						= new TEnumCreationKey();

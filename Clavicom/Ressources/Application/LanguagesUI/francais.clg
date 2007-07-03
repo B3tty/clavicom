@@ -351,7 +351,7 @@
 	<message id = "LB_KEYLAUNCHER_BORDER">Application lancée</message>
 	
 	<!-- optionKeyLevel -->
-	<message id = "LB_KEYLEVEL_LEVEL">Niveau</message>
+	<message id = "LB_KEYLEVEL_ALWAYHOLDABLE">Reste maintenue</message>
 	
 	<!-- optionKeyShortCut -->
 	<message id = "LB_KEYSHORTCUT_BORDER">Raccourci</message>

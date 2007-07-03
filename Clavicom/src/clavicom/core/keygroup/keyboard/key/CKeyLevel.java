@@ -45,6 +45,8 @@ public class CKeyLevel extends CKeyOneLevel
 	
 	TLevelEnum level;
 	
+	boolean alwaysHoldable; // pour savoir si la touche doit rester appuiyé ou non
+	
 	protected EventListenerList listenerList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -56,12 +58,14 @@ public class CKeyLevel extends CKeyOneLevel
 			TPoint myPointMin, 
 			TPoint myPointMax,
 			TLevelEnum myLevel,
-			String myCaption)
+			String myCaption,
+			boolean myAlwaysHoldable)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin, myPointMax,myCaption);
 
 
 		level = myLevel;
+		alwaysHoldable = myAlwaysHoldable;
 		
 		listenerList = new EventListenerList();
 	}
@@ -83,6 +87,27 @@ public class CKeyLevel extends CKeyOneLevel
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_level );
 		}
+		
+		// Récupération du alwaysHoldable
+		String s_alwaysHoldable = node.getChildText( TXMLNames.KY_ELEMENT_ALWAYSHOLDABLE );
+		if( s_alwaysHoldable != null )
+		{
+			try
+			{
+				alwaysHoldable = Boolean.parseBoolean( s_alwaysHoldable );
+			} 
+			catch ( Exception ex )
+			{
+				throw new Exception("[" + UIString.getUIString( "EX_KEYLEVEL_BUILD" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_alwaysHoldable + UIString.getUIString( "EX_KEYGROUP_TO_BOOLEAN" ) );
+			}
+		}
+		else
+		{
+			// par default
+			alwaysHoldable = false;
+		}
+
+		
 		
 		listenerList = new EventListenerList();
 	}
@@ -122,6 +147,13 @@ public class CKeyLevel extends CKeyOneLevel
 		level_elem.setText( TLevelEnum.getString( level ) );
 		
 		eltKeyNode.addContent( level_elem );
+		
+		if( alwaysHoldable )
+		{
+			Element alwaysHoldable_elem = new Element( TXMLNames.KY_ELEMENT_ALWAYSHOLDABLE );
+			alwaysHoldable_elem.setText( String.valueOf( alwaysHoldable ) );
+			eltKeyNode.addContent( alwaysHoldable_elem );
+		}
 	}
 	
 	@Override
@@ -164,6 +196,16 @@ public class CKeyLevel extends CKeyOneLevel
 					" [" + TLevelEnum.getString(level) + "]");
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+
+	public boolean isAlwaysHoldable()
+	{
+		return alwaysHoldable;
+	}
+
+	public void setAlwaysHoldable(boolean alwaysHoldable)
+	{
+		this.alwaysHoldable = alwaysHoldable;
+	}
 	
 	
 }

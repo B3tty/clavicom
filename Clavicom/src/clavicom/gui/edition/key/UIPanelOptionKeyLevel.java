@@ -25,24 +25,22 @@
 
 package clavicom.gui.edition.key;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TLevelEnum;
 
 
-public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements ActionListener
+public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
 
 	CKeyLevel keyLevel;
-	JComboBox combo;
+	JCheckBox alwaysHoldable;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	
@@ -52,16 +50,17 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 
 		JPanel panel = new JPanel();
 		
-		combo = new JComboBox();
-		combo.addItem( TLevelEnum.SHIFT );
-		combo.addItem( TLevelEnum.ALT_GR );
+		alwaysHoldable = new JCheckBox( UIString.getUIString("LB_KEYLEVEL_ALWAYHOLDABLE"), false );
+		panel.add( alwaysHoldable );
 		
-		combo.addActionListener( this );
-		
-		panel.add( new JLabel( UIString.getUIString("LB_KEYLEVEL_LEVEL") ) );
-		panel.add( combo );
+		// Ajout du titre
+		panel.setBorder( BorderFactory.createTitledBorder( 
+				BorderFactory.createLineBorder( Color.BLACK ), 
+				UIString.getUIString("LB_KEYLAUNCHER_BORDER")) );
 
 		add( panel);
+		
+
 		
 	}
 	//----------------------------------------------------------- METHODES --//
@@ -72,23 +71,10 @@ public class UIPanelOptionKeyLevel extends UIPanelOptionOneLevelKey implements A
 		
 		keyLevel = myKeyLevel;
 		
-		combo.setSelectedItem( keyLevel.GetLevel() );
+		alwaysHoldable.setSelected( myKeyLevel.isAlwaysHoldable() );
 	}
 	
-	public void actionPerformed(ActionEvent arg0)
-	{
-		if( keyLevel != null )
-		{
-			Object object = combo.getSelectedItem();
-			if( object != null )
-			{
-				if ( object instanceof TLevelEnum )
-				{
-					keyLevel.setLevel( (TLevelEnum)object );
-				}
-			}
-		}
-	}
+	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

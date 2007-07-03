@@ -77,6 +77,7 @@ public class TXMLNames
 	// CKeyLevel
 	public static String KY_ELEMENT_KEYLEVEL		 	= "keylevel";
 	public static String KY_ELEMENT_LEVEL		 		= "level";
+	public static String KY_ELEMENT_ALWAYSHOLDABLE 		= "always_holdable";
 
 	// CKeyDynamicString
 	public static String KY_ELEMENT_DYNAMIC_ORDER		= "order_dynamic";

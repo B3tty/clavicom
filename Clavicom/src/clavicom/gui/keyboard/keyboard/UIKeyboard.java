@@ -66,6 +66,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
+import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.UIKeyClavicomEngine;
@@ -92,7 +93,7 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
+public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener, ReleaseHoldableKeysListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -162,6 +163,10 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
+		
+		// on s'abonne au moteur de commande pour qu'il nous prévienne
+		// quand on doit déséléctionner les holdableKeys
+		CCommandEngine.getInstance().addReleaseHoldableKeysListener( this );
 
 		// Variables temporaires
 		UIKeyGroup currentKeyGroup;
@@ -1130,7 +1135,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 													newKeyMin,
 													newKeyMax,
 													TLevelEnum.SHIFT,
-													"");
+													"",
+													false);
 			// Création de l'objet de l'UI
 			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
 			
@@ -1148,7 +1154,27 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 													newKeyMin,
 													newKeyMax,
 													TLevelEnum.ALT_GR,
-													"");
+													"",
+													false);
+			// Création de l'objet de l'UI
+			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK)
+		{
+			// Création de l'objet du noyau
+			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
+													pressedColor,
+													enteredColor,
+													true,
+													newKeyMin,
+													newKeyMax,
+													TLevelEnum.SHIFT,
+													"",
+													true);
 			// Création de l'objet de l'UI
 			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
 			
@@ -1357,6 +1383,32 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
 		{
 			uiKeyKeyboard.listenMouseListener( b );
+		}
+	}
+
+	public void releasedHoldableKeys()
+	{
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
+		{
+			// si c'est une key holdable
+			if( uiKeyKeyboard.getCoreKey().isHoldable() )
+			{
+				// si c'est une key level et qu'elle n'est pas alwaysHoldable
+				if( uiKeyKeyboard instanceof UIKeyLevel )
+				{
+					if( ! ((CKeyLevel)(uiKeyKeyboard.getCoreKey())).isAlwaysHoldable() )
+					{
+						// on la désélectionne
+						uiKeyKeyboard.setClicked( false );
+					}
+
+				}
+				else
+				{
+					// on la désélectionne
+					uiKeyKeyboard.setClicked( false );
+				}
+			}
 		}
 	}
 

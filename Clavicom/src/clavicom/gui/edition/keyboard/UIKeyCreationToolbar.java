@@ -106,6 +106,13 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_SHIFT_TOOLTIP")
 				);
 		
+		// CAPS LOCK - TODO - mettre le bon texte et la bonne image
+		CreateKey(CFilePaths.getToolKeyLevelSHIFTPicture(),
+				UIString.getUIString("LB_KEYCREATION_SHIFT"),
+				TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK,
+				UIString.getUIString("LB_KEYCREATION_SHIFT_TOOLTIP")
+				);
+		
 		CreateKey(CFilePaths.getToolKeyLevelALTGRPicture(),
 				UIString.getUIString("LB_KEYCREATION_ALTGR"),
 				TEnumCreationKey.T_KEY_LEVEL_ALTGR,
