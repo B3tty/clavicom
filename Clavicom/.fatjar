@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Jul 02 09:31:14 CEST 2007
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=Clavicom_fat.jar
+manifest.mergeall=true
+manifest.mainclass=clavicom.Application
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<po|Clavicom>~.svn/;<po|Clavicom>~test/
+includes=

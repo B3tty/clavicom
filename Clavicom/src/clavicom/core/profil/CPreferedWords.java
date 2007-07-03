@@ -111,12 +111,32 @@ public class CPreferedWords
 	
 	public boolean contain( String preferedWord )
 	{
-		return preferedWords.contains( preferedWord );
+		for( CDictionaryWord dictionaryWord : preferedWords )
+		{
+			if( dictionaryWord.getWord().equals( preferedWord ) )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public CDictionaryWord getPreferedWord( int order )
 	{
 		return preferedWords.get( order );
+	}
+	
+	public CDictionaryWord getPreferedWord( String preferedWord )
+	{
+		for( CDictionaryWord dictionaryWord : preferedWords )
+		{
+			if( dictionaryWord.getWord().equals( preferedWord ) )
+			{
+				return dictionaryWord;
+			}
+		}
+		
+		return null;
 	}
 	
 	public int getSize() { return preferedWords.size(); }

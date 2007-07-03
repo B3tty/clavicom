@@ -41,7 +41,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
-import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyDynamicStringCommandListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.message.CMessageEngine;
@@ -51,7 +51,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyAction;
 import clavicom.tools.TLevelEnum;
 
-public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringListener
+public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringCommandListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -112,7 +112,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 				((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 			}else if( keyboardKey instanceof CKeyDynamicString )
 			{
-				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerCommand( this );
 			}else if( keyboardKey instanceof CKeyShortcut )
 			{
 				((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -145,7 +145,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 								}else if( keyboardKey instanceof CKeyDynamicString )
 								{
-									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerCommand( this );
 								}else if( keyboardKey instanceof CKeyShortcut )
 								{
 									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -168,7 +168,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 				((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
 			}else if( keyboardKey instanceof CKeyDynamicString )
 			{
-				((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListener( this );
+				((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListenerCommand( this );
 			}else if( keyboardKey instanceof CKeyShortcut )
 			{
 				((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
@@ -345,7 +345,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		
 	}
 
-	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
+	public void onClickKeyDynamicStringCommand(CKeyDynamicString keyDynamicString)
 	{
 		
 		List<CCommand> commandList = null;
@@ -420,5 +420,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	// ========================================================|
 	// fin Listeners ==========================================|
 	// ========================================================|
+
 	
 }

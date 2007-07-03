@@ -29,7 +29,7 @@ import java.util.EventListener;
 import clavicom.core.keygroup.keyboard.key.CKeyDynamicString;
 
 
-public interface OnClickKeyDynamicStringListener extends EventListener
+public interface OnClickKeyDynamicStringCommandListener extends EventListener
 {
-	public void onClickKeyDynamicString ( CKeyDynamicString keyDynamicString );
+	public void onClickKeyDynamicStringCommand ( CKeyDynamicString keyDynamicString );
 }

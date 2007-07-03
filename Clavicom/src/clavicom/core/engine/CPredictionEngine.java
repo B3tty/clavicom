@@ -39,13 +39,13 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
-import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyDynamicStringPredictionListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CPreferedWords;
 
 public class CPredictionEngine extends CStringsEngine implements
-		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener, OnClickKeyShortcutListener
+		OnClickKeyCharacterListener, OnClickKeyDynamicStringPredictionListener, OnClickKeyShortcutListener
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
@@ -99,7 +99,7 @@ public class CPredictionEngine extends CStringsEngine implements
 			((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 		}else if( keyboardKey instanceof CKeyDynamicString )
 		{
-			((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+			((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerPrediction( this );
 		}else if( keyboardKey instanceof CKeyShortcut )
 		{
 			((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -139,12 +139,13 @@ public class CPredictionEngine extends CStringsEngine implements
 										// Ajout à la liste des keyLastWord
 										keyPredictionListTemp.add(keyPrediction);
 									}
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerPrediction( this );
 								}else if( keyboardKey instanceof CKeyCharacter )
 								{
 									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 								}else if( keyboardKey instanceof CKeyDynamicString )
 								{
-									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerPrediction( this );
 								}else if( keyboardKey instanceof CKeyShortcut )
 								{
 									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -157,7 +158,7 @@ public class CPredictionEngine extends CStringsEngine implements
 		}
 		
 		// ========================================================
-		// tri de la liste des keyLastWord
+		// tri de la liste
 		// ========================================================
 		keyList.clear();
 		for( int i = 0 ; i < keyPredictionListTemp.size() ; ++i )
@@ -189,7 +190,7 @@ public class CPredictionEngine extends CStringsEngine implements
 			((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
 		}else if( keyboardKey instanceof CKeyDynamicString )
 		{
-			((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListener( this );
+			((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListenerPrediction( this );
 		}else if( keyboardKey instanceof CKeyShortcut )
 		{
 			((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
@@ -213,20 +214,25 @@ public class CPredictionEngine extends CStringsEngine implements
 		}
 		else
 		{
-			// on l'ajoute au mot courrant
-			currentString += character;
-			
-			// on récupère la liste des mots de prédiction
-			stringList = CDictionary.getWords( currentString , keyList.size() );
-			
-			// réaffiche les bouttons
-			updateKeys();
+			// si ce n'est qu'on caracter ( pas de F1, ESCAPE, SPACE ... )
+			if( character.length() == 1 )
+			{
+				// on l'ajoute au mot courrant
+				currentString += character;
+				
+				// on récupère la liste des mots de prédiction
+				stringList = CDictionary.getWords( currentString , keyList.size() );
+				
+				// réaffiche les bouttons
+				updateKeys();
+			}
 		}
 	}
 	
 
-	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
+	public void onClickKeyDynamicStringPrediction(CKeyDynamicString keyDynamicString)
 	{
+		currentString = keyDynamicString.getCaption();
 		SaveAndClean();
 	}
 	
@@ -239,20 +245,8 @@ public class CPredictionEngine extends CStringsEngine implements
 	{
 		if( ! currentString.equals( "" ) )
 		{
-			// on sauvegarde le mot courrent dans le dictionnaire et dans les prefered Words
-			CDictionaryWord dictionaryWord = CDictionary.getWord( currentString );
-			if( dictionaryWord == null )
-			{
-				dictionaryWord = new CDictionaryWord( currentString, 0 );
-				
-				// Ajout au dictionnaire
-				CDictionary.addWord( CDictionary.getUserDictionnaryLevel(),dictionaryWord );
-			}
-			
-			dictionaryWord.increaseFrequency();
-			
-			// ajout a la liste des preferedWords
-			preferedWord.addPreferedWord( dictionaryWord );
+			// on ajout ou on augmente la frequence du mots
+			addOrIncreaseWord( currentString );
 			
 			// on vide la chaine courrante
 			currentString = "";
@@ -262,6 +256,26 @@ public class CPredictionEngine extends CStringsEngine implements
 			
 			// réaffiche les bouttons
 			updateKeys();
+		}
+	}
+	
+	void addOrIncreaseWord( String currentString )
+	{
+		CDictionaryWord dictionaryWord = null;
+		
+		//	s'il n'est pas dans les preferedWords
+		if( ! preferedWord.contain( currentString ) )
+		{
+			dictionaryWord = new CDictionaryWord( currentString, 1 );
+			preferedWord.addPreferedWord( dictionaryWord );
+		}
+		else
+		{
+			dictionaryWord = preferedWord.getPreferedWord( currentString );
+			if( dictionaryWord != null )
+			{
+				dictionaryWord.increaseFrequency();
+			}
 		}
 	}
 

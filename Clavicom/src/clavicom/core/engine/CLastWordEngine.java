@@ -37,12 +37,12 @@ import clavicom.core.keygroup.keyboard.key.CKeyLastWord;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
-import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyDynamicStringPredictionListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 
 public class CLastWordEngine extends CStringsEngine implements
-		OnClickKeyCharacterListener, OnClickKeyDynamicStringListener, OnClickKeyShortcutListener
+		OnClickKeyCharacterListener, OnClickKeyDynamicStringPredictionListener, OnClickKeyShortcutListener
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
@@ -86,7 +86,7 @@ public class CLastWordEngine extends CStringsEngine implements
 				((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 			}else if( keyboardKey instanceof CKeyDynamicString )
 			{
-				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerPrediction( this );
 			}else if( keyboardKey instanceof CKeyShortcut )
 			{
 				((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -129,7 +129,7 @@ public class CLastWordEngine extends CStringsEngine implements
 									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
 								}else if( keyboardKey instanceof CKeyDynamicString )
 								{
-									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListener( this );
+									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerPrediction( this );
 								}else if( keyboardKey instanceof CKeyShortcut )
 								{
 									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
@@ -174,7 +174,7 @@ public class CLastWordEngine extends CStringsEngine implements
 			((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
 		}else if( keyboardKey instanceof CKeyDynamicString )
 		{
-			((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListener( this );
+			((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListenerPrediction( this );
 		}else if( keyboardKey instanceof CKeyShortcut )
 		{
 			((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
@@ -217,7 +217,7 @@ public class CLastWordEngine extends CStringsEngine implements
 	}
 	
 
-	public void onClickKeyDynamicString(CKeyDynamicString keyDynamicString)
+	public void onClickKeyDynamicStringPrediction(CKeyDynamicString keyDynamicString)
 	{		
 		// si la chaine courrante n'est pas vide
 		if( ! currentString.equals("") )
