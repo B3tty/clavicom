@@ -219,7 +219,9 @@ public class UIPanelSelectCharacter extends JPanel implements ActionListener
 		{
 			// On grise la selection d'action
 			list.setEnabled(false);
+			list.clearSelection();
 			comboSection.setEnabled(false);
+			
 			
 			// On met une commande nulle dans le noyau
 			keyCharacter.setCommand(null, level);
