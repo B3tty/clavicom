@@ -130,7 +130,7 @@ public class ClickEngine
 	
 	
 	
-	
+		
 	// ========================================================|
 	// Listener ===============================================|
 	// ========================================================|
@@ -139,7 +139,7 @@ public class ClickEngine
 		this.listenerList.add(clickMouseHookListener.class, l);
 	}
 
-	public void removeChangeLevelListener(clickMouseHookListener l)
+	public void removeClickMouseHookListener(clickMouseHookListener l)
 	{
 		this.listenerList.remove(clickMouseHookListener.class, l);
 	}

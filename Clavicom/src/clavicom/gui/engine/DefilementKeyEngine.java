@@ -58,6 +58,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	int nbTurnLevelMax; // nombre de tour que l'on peut faire sur le niveau
 						// list et key
 	
+	boolean firstTime;
+	
 	
 	static DefilementKeyEngine instance;
 
@@ -85,6 +87,8 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		currentGroup = null;
 		currentList = null;
 		currentKey = null;
+		
+		firstTime = true;
 
 	}
 	
@@ -108,8 +112,9 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		currentGroup = null;
 		currentList = null;
 		currentKey = null;
+		firstTime = true;
 		
-		ClickEngine.getInstance().removeChangeLevelListener( this );
+		ClickEngine.getInstance().removeClickMouseHookListener( this );
 		DefilementEngine.getInstance().removeDefilListener( this );
 		ClickEngine.getInstance().addClickMouseHookListener( this );
 		DefilementEngine.getInstance().addDefilListener( this );
@@ -118,18 +123,16 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	
 	public void stopKeyDefilEngine()
 	{
-		ClickEngine.getInstance().removeChangeLevelListener( this );
+		ClickEngine.getInstance().removeClickMouseHookListener( this );
 		DefilementEngine.getInstance().removeDefilListener( this );
 	}
 
 
 	public void defil()
 	{
-		
 		switch(currentTypeDefil)
 		{
 			case 0: // groupes
-				
 				if( uiKeyboard != null )
 				{
 					// on remet en normal l'ancien groupe, et on séléction le nouveau
@@ -232,6 +235,12 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 
 	public void clickMouseHook()
 	{
+		if( firstTime )
+		{
+			firstTime = false;
+			return;
+		}
+		
 		// on change de mode de défilmement
 		// si on est en mode groupe, on passe en mode liste, etc...
 		switch(currentTypeDefil)

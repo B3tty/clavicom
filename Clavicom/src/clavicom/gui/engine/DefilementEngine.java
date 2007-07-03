@@ -30,11 +30,13 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.mouse.UIMouse;
 
-public class DefilementEngine
+public class DefilementEngine implements clickMouseHookListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -46,6 +48,8 @@ public class DefilementEngine
 	
 	UIKeyboard uiKeyboard;
 	UIMouse uiMouse;
+	
+	boolean mustStart;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected DefilementEngine( )
@@ -54,8 +58,12 @@ public class DefilementEngine
 		uiKeyboard = null;
 		uiMouse = null;
 		
+		mustStart = false;
+		
 		listenerList = new EventListenerList();
 		defilTimer = createSelectTimer( );
+		
+		ClickEngine.getInstance().addClickMouseHookListener( this );
 	}
 
 
@@ -99,6 +107,11 @@ public class DefilementEngine
 
 	
 	public void startDefilement( )
+	{
+		mustStart = true;
+	}
+	
+	protected void start()
 	{
 		if( defilTimer != null )
 		{
@@ -168,6 +181,19 @@ public class DefilementEngine
 	public void setUiMouse(UIMouse uiMouse)
 	{
 		this.uiMouse = uiMouse;
+	}
+
+	public void clickMouseHook()
+	{
+		if ( mustStart )
+		{
+			start();
+			
+			// puis on se désabonne
+			ClickEngine.getInstance().removeClickMouseHookListener( this );
+			
+			mustStart = false;
+		}
 	}
 }
 
