@@ -65,7 +65,7 @@
         <y>0.13085938</y>
       </left_up>
       <right_down>
-        <x>0.8640625</x>
+        <x>0.865625</x>
         <y>0.45507812</y>
       </right_down>
     </clavicom_frame_position>
@@ -3246,6 +3246,7 @@
     <prefered_word frequency="1">guerre</prefered_word>
     <prefered_word frequency="1">france</prefered_word>
     <prefered_word frequency="2">familiale</prefered_word>
+    <prefered_word frequency="1">tous</prefered_word>
   </prefered_words>
 </profil>
 

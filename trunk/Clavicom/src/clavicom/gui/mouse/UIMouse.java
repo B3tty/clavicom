@@ -205,7 +205,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	public void stopDefilMouse()
 	{
 		DefilementEngine.getInstance().removeDefilListener( this );
-		ClickEngine.getInstance().removeChangeLevelListener( this );
+		ClickEngine.getInstance().removeClickMouseHookListener( this );
 	}
 	
 	/**

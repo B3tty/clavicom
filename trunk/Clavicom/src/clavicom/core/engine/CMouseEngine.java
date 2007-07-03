@@ -150,6 +150,8 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// on simule le clique en déplacant la souris vers le 
 		// virtual pointer, en faisant le clique puis en replacant la
 		// souris sur le panel des bouttons pour garder le focus
+		
+		
 
 		// on regarde quel movement il veut faire
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )

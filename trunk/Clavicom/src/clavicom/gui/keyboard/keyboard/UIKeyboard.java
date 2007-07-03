@@ -153,8 +153,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		magnetGrid.setBorderSize(TAILLE_CONTOUR);
 		
 		// TODO : temporaire :
-		magnetGrid.setNbHorizontals(5);
-		magnetGrid.setNbVerticals(10);
+//		magnetGrid.setNbHorizontals(5);
+//		magnetGrid.setNbVerticals(10);
 		
 		firstEdition = true;
 		
