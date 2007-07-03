@@ -296,6 +296,18 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		// Selection
 		//-----------------------------------------------------------------------
 		
+		public void setClicked( boolean isClicked )
+		{
+			clicked = isClicked;
+			
+			setState( TUIKeyState.NORMAL );
+	
+			selectGoodImage();
+			
+			// On force le redessin
+			repaint();
+		}
+		
 		public void setEditable(boolean myIsEditable)
 		{
 			// Activation du resizable

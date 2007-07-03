@@ -26,6 +26,9 @@
 package clavicom.core.engine;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
@@ -44,6 +47,8 @@ public class CLevelEngine implements OnClickKeyLevelListener
 	TLevelEnum currentLevel;
 
 	protected EventListenerList listenerChangeLevelList;
+	
+	protected List<CKeyLevel> alwaysHoldableList;
 
 	static CLevelEngine instance;
 	
@@ -63,6 +68,8 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		listenerChangeLevelList = new EventListenerList();
 		
 		currentLevel = TLevelEnum.NORMAL;
+		
+		alwaysHoldableList = new ArrayList<CKeyLevel>();
 		
 		// Abonnement aux listeners
 		listen( keyboard );
@@ -155,10 +162,32 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		if (keyLevel.GetLevel() == null)
 			return;
 		
+		if( keyLevel.isAlwaysHoldable() )
+		{
+			// si elle est déjà dans la liste
+			if( alwaysHoldableList.contains( keyLevel ) )
+			{
+				alwaysHoldableList.remove( keyLevel );
+			}
+			else
+			{
+				alwaysHoldableList.add( keyLevel );
+			}
+			
+		}
+		
 		// Si le level est le même, on repasse au level normal
 		if( keyLevel.GetLevel() == currentLevel )
 		{
-			currentLevel = TLevelEnum.NORMAL;
+			// mais il existe des always holdable keys, on met le niveau à celle-là
+			if( alwaysHoldableList.size() > 0 )
+			{
+				currentLevel = alwaysHoldableList.get(0).GetLevel();
+			}
+			else
+			{
+				currentLevel = TLevelEnum.NORMAL;
+			}
 		}
 		else
 		{
@@ -174,6 +203,28 @@ public class CLevelEngine implements OnClickKeyLevelListener
 	public TLevelEnum getCurrentLevel()
 	{
 		return currentLevel;
+	}
+
+	public void setCurrentLevel(TLevelEnum myCurrentLevel)
+	{
+		// s'il existe des always holdable keys, on met le niveau à celle-là
+		if( myCurrentLevel == TLevelEnum.NORMAL )
+		{
+			if( alwaysHoldableList.size() > 0 )
+			{
+				this.currentLevel = alwaysHoldableList.get(0).GetLevel();
+			}
+			else
+			{
+				this.currentLevel = TLevelEnum.NORMAL;
+			}
+		}
+		else
+		{
+			this.currentLevel = myCurrentLevel;
+		}
+		
+		fireChangeLevel();
 	}
 
 

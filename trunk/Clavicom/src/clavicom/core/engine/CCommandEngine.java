@@ -43,11 +43,13 @@ import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.core.listener.OnClickKeyCharacterListener;
 import clavicom.core.listener.OnClickKeyDynamicStringListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
+import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyAction;
+import clavicom.tools.TLevelEnum;
 
 public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringListener
 {
@@ -62,6 +64,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	List<CKey> holdKey;
 	
 	Robot robot;
+	
+	protected EventListenerList listenerList;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected CCommandEngine( CKeyboard keyboard )
@@ -82,6 +86,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		
 		// Abonnement aux listeners
 		listen( keyboard );
+		
+		listenerList = new EventListenerList();
 		
 	}
 
@@ -240,6 +246,14 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			
 			// on vide la liste des touche holdable
 			holdKey.clear();
+			
+			// on change le level, on se remet en normal
+			CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
+			
+			// on prévient l'UI pour que les holdKeys soient déséléctionnées
+			fireReleaseHoldableKeys();
+			
+			
 		}
 	}
 	
@@ -380,5 +394,31 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	
 	
 
+	
+	// ========================================================|
+	// Listener release holdable keys =========================|
+	// ========================================================|
+	public void addReleaseHoldableKeysListener(ReleaseHoldableKeysListener l)
+	{
+		this.listenerList.add(ReleaseHoldableKeysListener.class, l);
+	}
+
+	public void removeReleaseHoldableKeysListener(ReleaseHoldableKeysListener l)
+	{
+		this.listenerList.remove(ReleaseHoldableKeysListener.class, l);
+	}
+
+	protected void fireReleaseHoldableKeys( )
+	{
+		ReleaseHoldableKeysListener[] listeners = (ReleaseHoldableKeysListener[]) listenerList
+				.getListeners(ReleaseHoldableKeysListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].releasedHoldableKeys();
+		}
+	}
+	// ========================================================|
+	// fin Listeners ==========================================|
+	// ========================================================|
 	
 }

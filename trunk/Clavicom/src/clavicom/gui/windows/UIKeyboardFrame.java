@@ -300,6 +300,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		frameOptionKeyShortcut = new UIModificationKeyDialog(panelOptionKeyShortcut);
 		frameOptionKeyString = new UIModificationKeyDialog(panelOptionKeyString);
 		
+		
 		frameOptionApplication = new UIFrameModificationProfil( uiKeyboard );
 		
 		frameLevelManager = new UILevelManagerFrame();
