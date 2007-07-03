@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>francais.clg</language_ui>
+  <language_ui>Copie de francais.clg</language_ui>
   <commandset_name>francais.ccs</commandset_name>
   <shortcutset_name>default.css</shortcutset_name>
-  <dictionary_name>francaisPlusFreq.cdc</dictionary_name>
+  <dictionary_name>francaisPlusFreq2.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
       <red>193</red>
@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.30546874</x>
-        <y>0.39648438</y>
+        <x>0.1890625</x>
+        <y>0.36621094</y>
       </left_up>
       <right_down>
-        <x>0.93671876</x>
-        <y>0.7607422</y>
+        <x>0.8765625</x>
+        <y>0.67089844</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -3241,12 +3241,16 @@
     </keygroup>
   </keyboard>
   <prefered_words>
-    <prefered_word frequency="11295">rou</prefered_word>
-    <prefered_word frequency="1">dala</prefered_word>
-    <prefered_word frequency="1">CONTROLALT</prefered_word>
-    <prefered_word frequency="1">ALTCONTROLazetCONTROLALT</prefered_word>
-    <prefered_word frequency="1">AA</prefered_word>
-    <prefered_word frequency="1">ALTaALT</prefered_word>
+    <prefered_word frequency="1">guinée</prefered_word>
+    <prefered_word frequency="1">est</prefered_word>
+    <prefered_word frequency="1">un</prefered_word>
+    <prefered_word frequency="1">superbe</prefered_word>
+    <prefered_word frequency="1">pays</prefered_word>
+    <prefered_word frequency="1">f^e</prefered_word>
+    <prefered_word frequency="1">prñ</prefered_word>
+    <prefered_word frequency="1">présent</prefered_word>
+    <prefered_word frequency="1">f</prefered_word>
+    <prefered_word frequency="1">zzrt</prefered_word>
   </prefered_words>
 </profil>
 

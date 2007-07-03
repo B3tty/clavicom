@@ -32,7 +32,8 @@ import javax.swing.event.EventListenerList;
 import org.jdom.Element;
 import clavicom.core.keygroup.keyboard.command.CCommand;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
-import clavicom.core.listener.OnClickKeyDynamicStringListener;
+import clavicom.core.listener.OnClickKeyDynamicStringCommandListener;
+import clavicom.core.listener.OnClickKeyDynamicStringPredictionListener;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TPoint;
 import clavicom.tools.TXMLNames;
@@ -124,23 +125,40 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	//----------------------------------------------------------- METHODES --//	
 	
 	// Listener ==============================================
-	public void addOnClickKeyDynamicStringListener(OnClickKeyDynamicStringListener l)
+	public void addOnClickKeyDynamicStringListenerCommand(OnClickKeyDynamicStringCommandListener l)
 	{
-		this.listenerList.add(OnClickKeyDynamicStringListener.class, l);
+		this.listenerList.add(OnClickKeyDynamicStringCommandListener.class, l);
+	}
+	public void addOnClickKeyDynamicStringListenerPrediction(OnClickKeyDynamicStringPredictionListener l)
+	{
+		this.listenerList.add(OnClickKeyDynamicStringPredictionListener.class, l);
 	}
 
-	public void removeOnClickKeyDynamicStringListener(OnClickKeyDynamicStringListener l)
+	public void removeOnClickKeyDynamicStringListenerCommand(OnClickKeyDynamicStringCommandListener l)
 	{
-		this.listenerList.remove(OnClickKeyDynamicStringListener.class, l);
+		this.listenerList.remove(OnClickKeyDynamicStringCommandListener.class, l);
+	}
+	public void removeOnClickKeyDynamicStringListenerPrediction(OnClickKeyDynamicStringPredictionListener l)
+	{
+		this.listenerList.remove(OnClickKeyDynamicStringPredictionListener.class, l);
 	}
 
-	protected void fireOnClickKeyDynamicString()
+	protected void fireOnClickKeyDynamicStringCommand()
 	{
-		OnClickKeyDynamicStringListener[] listeners = (OnClickKeyDynamicStringListener[]) listenerList
-				.getListeners(OnClickKeyDynamicStringListener.class);
+		OnClickKeyDynamicStringCommandListener[] listeners = (OnClickKeyDynamicStringCommandListener[]) listenerList
+				.getListeners(OnClickKeyDynamicStringCommandListener.class);
 		for ( int i = listeners.length - 1; i >= 0; i-- )
 		{
-			listeners[i].onClickKeyDynamicString(this);
+			listeners[i].onClickKeyDynamicStringCommand(this);
+		}
+	}
+	protected void fireOnClickKeyDynamicStringPrediction()
+	{
+		OnClickKeyDynamicStringPredictionListener[] listeners = (OnClickKeyDynamicStringPredictionListener[]) listenerList
+				.getListeners(OnClickKeyDynamicStringPredictionListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].onClickKeyDynamicStringPrediction(this);
 		}
 	}
 	// fin Listener ============================================
@@ -214,7 +232,8 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	@Override
 	public void Click()
 	{
-		fireOnClickKeyDynamicString();		
+		fireOnClickKeyDynamicStringCommand();
+		fireOnClickKeyDynamicStringPrediction();
 	}
 
 	public int getOrder()

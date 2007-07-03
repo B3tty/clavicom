@@ -91,15 +91,14 @@ public class CDictionary
 
 		// Ouverture du fichier
 		FileInputStream fis = new FileInputStream( dictionaryPath );
-		
 		// On construit et on lit autant d'octets qu'il y a dans le fichier
-		int x= fis.available();
+		int x = fis.available();
 		byte b[]= new byte[x];
 		fis.read(b);
 		fis.close();
 		
 		// On construit la String à partir du buffer
-		String content = new String(b,"UTF-8");
+		String content = new String(b, "UTF-8");
 		String[] tabDico = content.split("[\r][\n]");
 		int frequence = tabDico.length;
 		
