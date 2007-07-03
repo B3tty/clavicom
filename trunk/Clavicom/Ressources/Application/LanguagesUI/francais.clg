@@ -395,7 +395,7 @@
 	<message id = "FR_LEVEL_EDITOR_CLASSED_LISTS_BORDER">Listes</message>
 	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Touches</message>
 	
-	<message id = "FR_LEVEL_EDITOR_BT_OK">OK</message>
+	<message id = "FR_LEVEL_EDITOR_BT_OK">Fermer</message>
 	
 	<message id = "FR_LEVEL_EDITOR_BT_CLASS_TOOLTIP">Classer les touches selectionnée</message>
 	<message id = "FR_LEVEL_EDITOR_BT_CLASS_AUTOMATIC_TOOLTIP">Classer toutes les touches dans le niveau par défaut</message>
@@ -520,7 +520,7 @@
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
 	
-	<message id = "LB_EDITION_CLOSE_EDITION">Fermer</message>
+	<message id = "LB_EDITION_CLOSE_EDITION">Fermer l'éditeur</message>
 	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
 	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER">Niveaux</message>
