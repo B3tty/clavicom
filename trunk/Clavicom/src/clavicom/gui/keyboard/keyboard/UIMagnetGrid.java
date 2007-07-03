@@ -46,8 +46,8 @@ public class UIMagnetGrid
 	private int width;					// Largeur de la grille
 	private int height;					// Hauteur de la grille
 	
-	private int nbVerticals;			// Nombre de verticales
-	private int nbHorizontals;			// Nombre d'horizontales
+	private int verticalStepPixels;		// Step entre les colonnes
+	private int horizontalStepPixels;		// Step entre les lignes 
 	
 	private Color colorGrid;			// Couleur de la grille
 	private BufferedImage image;		// Image
@@ -64,9 +64,9 @@ public class UIMagnetGrid
 		listHorizontals = new ArrayList<Integer>();
 		width = 0;
 		height = 0;
-		nbVerticals = 0;
-		nbHorizontals = 0;	
 		borderSize = 0;
+		verticalStepPixels = 0;
+		verticalStepPixels = 0;
 		
 		colorGrid = new Color(0,0,0,.2f);	// Noir opaque à 20%
 
@@ -77,21 +77,39 @@ public class UIMagnetGrid
 	/**
 	 * Initialise tous les paramètres
 	 */
-	public void setAll(int width, int height, int nbVerticals, int nbHorizontals, int borderSize)
+	public void setAll(int width, int height, int verticalStepPixels, int horizontalStepPixels, int borderSize)
 	{
 		// Recopie des attributs
 		this.width = width;
 		this.height = height;
-		this.nbVerticals = nbVerticals;
-		this.nbHorizontals = nbHorizontals;
+		this.verticalStepPixels = verticalStepPixels;
+		this.horizontalStepPixels = horizontalStepPixels;
 		this.borderSize = borderSize;
 		
 		// On met a jour les listes
 		updateLists();
-		
-		imageUpToDate = false;
 	}
 	
+	public float getHorizontalStepPixels()
+	{
+		return horizontalStepPixels;
+	}
+
+	public void setHorizontalStepPixels(int horizontalStepPixels)
+	{
+		this.horizontalStepPixels = horizontalStepPixels;
+	}
+
+	public int getVerticalStepPixels()
+	{
+		return verticalStepPixels;
+	}
+
+	public void setVerticalStepPixels(int verticalStepPixels)
+	{
+		this.verticalStepPixels = verticalStepPixels;
+	}
+
 	/**
 	 * Spécifie la taille de la bordure
 	 * @param borderSize
@@ -114,38 +132,6 @@ public class UIMagnetGrid
 		
 		// On met a jour les listes
 		updateLists();
-		
-		imageUpToDate = false;
-	}
-	
-	/**
-	 * Met à jour le nombre de verticales
-	 * @param nbVerticals
-	 */
-	public void setNbVerticals(int nbVerticals)
-	{
-		// Recopie des attributs		
-		this.nbVerticals = nbVerticals;
-		
-		// On met a jour les listes
-		updateLists();
-		
-		imageUpToDate = false;
-	}
-	
-	/**
-	 * Met à jour le nombre d'horizontales
-	 * @param nbHorizontals
-	 */
-	public void setNbHorizontals(int nbHorizontals)
-	{
-		// Recopie des attributs
-		this.nbHorizontals = nbHorizontals;
-		
-		// On met a jour les listes
-		updateLists();
-		
-		imageUpToDate = false;
 	}
 	
 	/**
@@ -192,13 +178,11 @@ public class UIMagnetGrid
 			else
 			// On s'eloigne -> STOP
 			{
-//				System.out.println("Colonne " + (i-1));
 				return lastChoice;
 			}
 			++i;
 		}
 
-//		System.out.println("Colonne " + (i-1));
 		return lastChoice;
 
 	}
@@ -228,13 +212,10 @@ public class UIMagnetGrid
 			else
 			// On s'eloigne -> STOP
 			{
-//				System.out.println("Ligne " + (i-1));
 				return lastChoice;
 			}
 			i++;
 		}
-		
-//		System.out.println("Ligne " + (i-1));
 		return lastChoice;
 	}
 	
@@ -248,12 +229,16 @@ public class UIMagnetGrid
 		
 		imageUpToDate = false;
 	}
+	
 	/**
 	 * Retourne l'image correspondant à la grille
 	 * @return
 	 */
 	protected BufferedImage getDrawing()
 	{			
+		if(width <= 0 || height <= 0 )
+			return null;
+		
 		// Si l'image est à jour, on ne la recréé pas
 		if(imageUpToDate == true)
 		{
@@ -275,7 +260,7 @@ public class UIMagnetGrid
 		
 		// Création des verticales
 		// On dessine tout sauf les bords
-		for(int i = 1 ; i < listVerticals.size()-1 ; ++i)
+		for(int i = 1 ; i < listVerticals.size() ; ++i)
 		{
 			buffer.drawLine(	listVerticals.get(i), 		// X début
 								borderSize, 				// Y début
@@ -284,7 +269,7 @@ public class UIMagnetGrid
 		}
 		
 		// Création des horizontales
-		for(int i = 1 ; i < listHorizontals.size()-1 ; ++i)
+		for(int i = 1 ; i < listHorizontals.size() ; ++i)
 		{
 			buffer.drawLine(	borderSize, 				// X début
 								listHorizontals.get(i), 	// Y début
@@ -299,40 +284,35 @@ public class UIMagnetGrid
 		return image;
 	}
 	
-	//--------------------------------------------------- METHODES PRIVEES --//
+	//--------------------------------------------------- METHODES PRIVEES --//	
 	/**
 	 * Recréé les liste des lignes
 	 */
 	protected void updateLists()
 	{
+		if(width <= 0 || height <= 0 )
+			return;
+		
 		// On vide les deux listes
 		listVerticals.clear();
-		listHorizontals.clear();
+		listHorizontals.clear();		
 		
 		// ---------- VERTICALES --------------------------------------------
-		float pasVertical = (float)width/(float)(nbVerticals-1);
 		float currentVertivalPos = 0;
-		
-		for(int i = 0 ; i < (nbVerticals-1) ; ++i)
+		while (currentVertivalPos < width)
 		{
 			listVerticals.add(Math.round(currentVertivalPos));
-			currentVertivalPos += pasVertical;
+			currentVertivalPos += verticalStepPixels;
 		}
-		
-		// On ajoute une ligne à la fin
-		listVerticals.add(width - 1);
 		
 		// ---------- HORIZONTALES ------------------------------------------
-		float pasHorizontal = (float)height/(float)(nbHorizontals-1);
 		float currentHorizontalPos = 0;
-		
-		for(int i = 0 ; i < (nbHorizontals-1) ; ++i)
+		while (currentHorizontalPos < height)
 		{
 			listHorizontals.add(Math.round(currentHorizontalPos));
-			currentHorizontalPos += pasHorizontal;
+			currentHorizontalPos += horizontalStepPixels;
 		}
 		
-		// On ajoute une ligne à la fin
-		listHorizontals.add(height - 1);
+		imageUpToDate = false;
 	}
 }
