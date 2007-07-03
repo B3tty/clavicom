@@ -38,6 +38,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
+
+import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.profil.CPreferedWords;
 import clavicom.gui.language.UIString;
@@ -108,7 +110,19 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		
 		panelGlobal.add( buttons, BorderLayout.SOUTH );
 		
+		
+		wordTableModel = new WordsTableModel( );
+		table = new JTable( wordTableModel );
+		
+		JScrollPane panelTable = new JScrollPane( table );
+		
+		panelGlobal.remove( panelTable );
+		panelGlobal.add( panelTable, BorderLayout.CENTER );
+		
 		add(panelGlobal, BorderLayout.CENTER);
+		
+		
+		
 	}
 
 
@@ -117,24 +131,20 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	public void initValues()
 	{
 		// table
-		List<CDictionaryWord> preferedWordTab = new ArrayList<CDictionaryWord>();
+		
+		wordTableModel.clear();
+		
+		// table
 		for( int i = 0 ; i < preferedWord.getSize() ; ++i)
 		{
 			CDictionaryWord dicWord = preferedWord.getPreferedWord( i );
 			if( dicWord != null )
 			{
-				preferedWordTab.add( dicWord );
+				wordTableModel.addValue( dicWord );
 			}
 			
 		}
-		
-		wordTableModel = new WordsTableModel( preferedWordTab );
-		table = new JTable( wordTableModel );
-		
-		JScrollPane panelTable = new JScrollPane( table );
-		
-		panelGlobal.remove( panelTable );
-		panelGlobal.add( panelTable, BorderLayout.CENTER );
+
 	}
 
 	@Override
@@ -162,6 +172,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 			{
 				// on vide les prefered word
 				preferedWord.clearPreferedWord();
+				CDictionary.clearUserWords();
 				
 				// et on les re-remplit
 				for( int i = 0 ; i < wordTableModel.getRowCount() ; ++i )
@@ -170,6 +181,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 					if( dictionaryWord != null )
 					{
 						preferedWord.addPreferedWord( dictionaryWord );
+						CDictionary.addWord( CDictionary.getUserDictionnaryLevel() , dictionaryWord );
 					}
 				}
 			}
@@ -200,8 +212,23 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 			fireTableDataChanged();
 		}
 		
-
+		public WordsTableModel(  )
+		{
+			dictionaryWords = new ArrayList<CDictionaryWord>();
+			fireTableDataChanged();
+		}
 		
+
+		public void addValue( CDictionaryWord dictionaryWord )
+		{
+			dictionaryWords.add( dictionaryWord );
+		}
+
+		public void clear()
+		{
+			dictionaryWords.clear();
+			fireTableDataChanged();
+		}
 
 
 		public Class<?> getColumnClass(int arg0)
