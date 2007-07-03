@@ -221,10 +221,19 @@ public class CPredictionEngine extends CStringsEngine implements
 				currentString += character;
 				
 				// on récupère la liste des mots de prédiction
-				stringList = CDictionary.getWords( currentString , keyList.size() );
-				
-				// réaffiche les bouttons
-				updateKeys();
+				// Dans un nouveau thread pour éviter de faire rammer l'appli
+				Thread threadDico = new Thread()
+				{
+					public void run() 
+					{
+						stringList = CDictionary.getWords( currentString , keyList.size() );
+						
+						// réaffiche les bouttons
+						updateKeys();
+					}
+				};
+				threadDico.setPriority( Thread.MIN_PRIORITY );
+				threadDico.run();
 			}
 		}
 	}
@@ -268,6 +277,7 @@ public class CPredictionEngine extends CStringsEngine implements
 		{
 			dictionaryWord = new CDictionaryWord( currentString, 1 );
 			preferedWord.addPreferedWord( dictionaryWord );
+			CDictionary.addWord(CDictionary.getUserDictionnaryLevel(), dictionaryWord);
 		}
 		else
 		{

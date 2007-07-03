@@ -995,6 +995,6 @@
 		<end_of_word_character character_string="!"/>
 		<end_of_word_character character_string="?"/>
 		<end_of_word_character character_string="."/>
-		<end_of_word_character character_string="."/>
+		<end_of_word_character character_string="BACK_SPACE"/>
 	</end_of_word_characters>
 </commandset>

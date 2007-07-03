@@ -64,6 +64,13 @@ public class CDictionaryLevel
 		return dictionaryWordMap.get( word );
 	}
 	
+	public void clear()
+	{
+		dictionaryLevelMap.clear();
+		dictionaryWordOrededList.clear();
+		dictionaryWordMap.clear();
+	}
+	
 	public Character getCharacter()
 	{
 		return character;

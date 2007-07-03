@@ -178,7 +178,7 @@ public class CDictionary
 		List<CDictionaryWord> dictionaryWordList = new ArrayList<CDictionaryWord>( nbOfWord );
 		
 		CDictionaryLevel currentLevel = dictionaryGlobal;
-		CDictionaryLevel currentLevelTemp;
+		CDictionaryLevel currentLevelTemp = null;
 		boolean rienTrouve = false;
 		
 		// on trouve le bon level
@@ -190,8 +190,9 @@ public class CDictionary
 				rienTrouve = true;
 				break;
 			}
+
 			currentLevel = currentLevelTemp;
-			
+
 		}
 		
 		List<String> shortListDico = new ArrayList<String>();
@@ -210,6 +211,28 @@ public class CDictionary
 			for( CDictionaryWord dictionaryWord : dictionaryWordList )
 			{
 				shortListDico.add( dictionaryWord.getWord() );
+			}
+		}
+		else
+		{
+			// si le currentLevel n'est pas null
+			if( currentLevel != null )
+			{
+				// on cherche dans le currentLevel
+				dictionaryWordList = currentLevel.getDictionaryWordOrededList( nbOfWord );
+				
+				for( CDictionaryWord dictionaryWord : dictionaryWordList )
+				{
+					if( dictionaryWord.getWord().length() >= beginString.length() )
+					{
+						// si les premières lettres sont les mêmes
+						if( dictionaryWord.getWord().substring( 0, beginString.length() ).equals( beginString ) )
+						{
+							// on met en tableau de string
+							shortListDico.add( dictionaryWord.getWord() );
+						}
+					}
+				}
 			}
 		}
 		
@@ -454,6 +477,11 @@ public class CDictionary
 		dictionaryGlobal = null;
 		dictionaryUser = null;
 		instance = null;
+	}
+
+	public static void clearUserWords()
+	{
+		dictionaryUser.clear();
 	}
 
 	
