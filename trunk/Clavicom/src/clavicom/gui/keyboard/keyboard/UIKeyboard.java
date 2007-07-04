@@ -468,10 +468,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		 
 		// Changement de l'état
 		isEdited = true;
-		
-//		replaceUIKeys();
-//		repaint();
-//		//revalidate();
 	}
 	
 	public void unEdit()
@@ -485,11 +481,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Maj des keys
 		updateEdit(false);
-		
-		// TODO
-//		replaceUIKeys();
-//		repaint();
-//		//revalidate();
 	}
 	
 	public void select(boolean select)
@@ -517,6 +508,10 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
 	{
+		System.out.println("UIKeyboard:paintComponent");
+		
+		// On replace les touches
+		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -612,6 +607,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	public void componentShown(ComponentEvent arg0)
 	{	
 		replaceUIKeys();
+		//revalidate();
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -780,7 +776,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				}
 				
 				replaceUIKeys();
-				repaint();
+				//revalidate();
+				//repaint();
 			}
 		};
 

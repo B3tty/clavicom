@@ -30,9 +30,9 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Paint;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 import clavicom.core.profil.CProfil;
@@ -40,9 +40,11 @@ import clavicom.core.profil.CProfil;
 public class UIBackgroundPanel extends UITranslucentPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	protected final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
-	protected final int TAILLE_CONTOUR = 3;				// Taille du contour
-	protected final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
+//	protected final int TAILLE_ARC = 25;					// Rayon de l'arrondi du fond
+	protected final int TAILLE_CONTOUR = 4;				// Taille du contour
+//	protected final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
+	
+	protected final int DEMI_TAILLE_CONTOUR = Math.round((float)TAILLE_CONTOUR/2f);
 
 	//---------------------------------------------------------- VARIABLES --//	
 
@@ -78,18 +80,23 @@ public class UIBackgroundPanel extends UITranslucentPanel
 		buffer.setPaint(vPaint);
 
 		// Dessin du premier Paint
-		buffer.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
+//		buffer.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
+		buffer.fillRect(0, 0, getWidth(), getHeight());
 		
 		// Dessin du contour
 		buffer.setColor(bgdColor.darker());
 		buffer.setStroke(new BasicStroke(TAILLE_CONTOUR));
 		
-		buffer.drawRoundRect(	TAILLE_CONTOUR/2, 
-								TAILLE_CONTOUR/2, 
-								getWidth()-TAILLE_CONTOUR, 
-								getHeight()-TAILLE_CONTOUR,
-								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
+//		buffer.drawRoundRect(	TAILLE_CONTOUR/2, 
+//								TAILLE_CONTOUR/2, 
+//								getWidth()-TAILLE_CONTOUR, 
+//								getHeight()-TAILLE_CONTOUR,
+//								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
 		
+		buffer.drawRect(	DEMI_TAILLE_CONTOUR-1, 
+							DEMI_TAILLE_CONTOUR-1, 
+							getWidth()-TAILLE_CONTOUR, 
+							getHeight()-TAILLE_CONTOUR);
 		// Retour
 		return image;
 	}
@@ -98,11 +105,10 @@ public class UIBackgroundPanel extends UITranslucentPanel
 	{		
 		if(getWidth() > 0 && getHeight() > 0)
 		{
-			return new RoundRectangle2D.Float(	TAILLE_CONTOUR+2, 
-												TAILLE_CONTOUR+2, 
-												getWidth(), 
-												getHeight(),
-												TAILLE_ARC,TAILLE_ARC);
+			return new Rectangle(	0, 
+									0, 
+									getWidth(), 
+									getHeight());
 		}
 		else
 		{
