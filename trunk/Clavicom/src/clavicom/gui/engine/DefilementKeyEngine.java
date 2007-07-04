@@ -247,20 +247,34 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		{
 			case 0: // groupes
 				currentTypeDefil = 1;
-				currentIndexDefilementList = currentGroup.getKeyLists().size() - 1;
 				nbCurrentDefilement = 0;
 				if( currentGroup != null )
 				{
+					currentIndexDefilementList = currentGroup.getKeyLists().size() - 1;
 					currentGroup.simulateEnter( false );
+					
+					// s'il n'y a qu'une seule liste
+					if( currentGroup.getKeyLists().size() == 1 )
+					{
+						currentList = currentGroup.getKeyLists().get( 0 );
+						clickMouseHook();
+					}
 				}
 				break;
 			case 1: // listes
 				currentTypeDefil = 2;
-				currentIndexDefilementKey = currentList.getKeys().size() - 1;
 				nbCurrentDefilement = 0;
 				if( currentList != null )
 				{
+					currentIndexDefilementKey = currentList.getKeys().size() - 1;
 					currentList.simulateEnter( false );
+					
+					// s'il n'y a qu'une seule key
+					if( currentList.getKeys().size() == 1 )
+					{
+						currentKey = currentList.getKeys().get( 0 );
+						clickMouseHook();
+					}
 				}
 				break;
 			case 2: // key

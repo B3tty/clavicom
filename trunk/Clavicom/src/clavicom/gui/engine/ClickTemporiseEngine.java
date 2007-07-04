@@ -28,6 +28,8 @@ package clavicom.gui.engine;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+
+import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.listener.DefilListener;
 
 public class ClickTemporiseEngine implements DefilListener
@@ -77,8 +79,10 @@ public class ClickTemporiseEngine implements DefilListener
 
 	public void defil()
 	{
+		ClickEngine.getInstance().mouseHookPause();
 		robot.mousePress( InputEvent.BUTTON1_MASK );
 		robot.mouseRelease( InputEvent.BUTTON1_MASK );
+		ClickEngine.getInstance().mouseHookResume();
 	}
 	//----------------------------------------------------------- METHODES --//	
 

@@ -131,6 +131,7 @@ public class UIMouseFrame extends UITranslucentFrame
 		{
 			setTransparency( CProfil.getInstance().getTransparency().getKeyboardTransparency() );
 			CMouseEngine.getInstance().startTimer();
+			uiMouse.SwitchMoveMode();
 		}
 		else
 		{

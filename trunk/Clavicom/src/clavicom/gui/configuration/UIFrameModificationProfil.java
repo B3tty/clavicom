@@ -39,14 +39,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
-
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
-import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
-import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 
 public class UIFrameModificationProfil extends JDialog
@@ -262,25 +259,6 @@ public class UIFrameModificationProfil extends JDialog
 				{
 					// les option de son ont changés
 					panelSound.validateDataEntry();
-					
-					// on regarde si on doit lancer le moteur de son
-					if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-							&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
-						CProfil.getInstance().getSound().isSoundOnClic()  ||
-						CProfil.getInstance().getSound().isSoundOnSurvol()  )
-					{
-						if( SoundEngine.getInstance() == null )
-						{
-							SoundEngine.createInstance( );
-						}
-						// on abonne
-						SoundEngine.getInstance().listen( uiKeyboard );
-					}
-					else
-					{
-						// on désabonne
-						SoundEngine.getInstance().unListen( uiKeyboard );
-					}
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );

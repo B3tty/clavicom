@@ -71,7 +71,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		
 	}
 	
-	public void listen( UIKeyboard uiKeyboard )
+	public void listenEntered( UIKeyboard uiKeyboard )
 	{
 		// abonnement
 		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
@@ -81,15 +81,11 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 				for( UIKey uiKey : uiKeyList.getKeys() )
 				{
 					uiKey.addKeyEnteredListener( this );
-					uiKey.addKeyPressedListener( this );
 				}
 			}
 		}
-		
-		DefilementEngine.getInstance().addDefilListener( this );
 	}
-	
-	public void unListen( UIKeyboard uiKeyboard )
+	public void listenPressed( UIKeyboard uiKeyboard )
 	{
 		// abonnement
 		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
@@ -98,14 +94,51 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 			{
 				for( UIKey uiKey : uiKeyList.getKeys() )
 				{
+					uiKey.addKeyPressedListener( this );
+				}
+			}
+		}
+	}
+	public void listenDefilement( )
+	{
+		DefilementEngine.getInstance().addDefilListener( this );
+	}
+	
+	
+	public void unListenEntered( UIKeyboard uiKeyboard )
+	{
+		// déabonnement
+		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
+		{
+			for( UIKeyList uiKeyList : uiKeyGroup.getKeyLists() )
+			{
+				for( UIKey uiKey : uiKeyList.getKeys() )
+				{
 					uiKey.removeKeyEnteredListener( this );
+				}
+			}
+		}
+	}
+	public void unListenPressed( UIKeyboard uiKeyboard )
+	{
+		// déabonnement
+		for( UIKeyGroup uiKeyGroup : uiKeyboard.getKeyGroups() )
+		{
+			for( UIKeyList uiKeyList : uiKeyGroup.getKeyLists() )
+			{
+				for( UIKey uiKey : uiKeyList.getKeys() )
+				{
 					uiKey.removeKeyPressedListener( this );
 				}
 			}
 		}
-		
+	}
+	public void unListenDefilement( )
+	{
 		DefilementEngine.getInstance().removeDefilListener( this );
 	}
+	
+	
 
 
 	public static void createInstance( )

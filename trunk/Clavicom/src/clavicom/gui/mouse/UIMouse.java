@@ -583,8 +583,6 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		panelHaut.removeAll();
 		
 		panelHaut.add( clickPanel );
-
-		revalidate();
 		
 		selectedList.add(leftClick);
 		selectedList.add(rightClick);
@@ -595,7 +593,7 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		
 		indexSelectedKey = selectedList.size() - 1;
 		
-		
+		panelHaut.revalidate();
 		
 	}
 	
@@ -634,10 +632,9 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 			leftRelease.setVisible( false );
 		}
 		
-		panelHaut.revalidate();
-		
 		indexSelectedKey = selectedList.size() - 1;
 		
+		panelHaut.revalidate();
 		
 	}
 	

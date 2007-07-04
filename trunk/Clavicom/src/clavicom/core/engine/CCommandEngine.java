@@ -246,9 +246,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			}
 			
 			
-			
-		
-			
 			// on vide la liste des touche holdable
 			holdKey.clear();
 			
@@ -259,9 +256,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			
 			// on prévient l'UI pour que les holdKeys soient déséléctionnées
 			fireReleaseHoldableKeys();
-			
-			
-			
 			
 		}
 	}

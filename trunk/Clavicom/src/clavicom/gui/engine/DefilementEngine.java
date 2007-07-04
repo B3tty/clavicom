@@ -188,10 +188,7 @@ public class DefilementEngine implements clickMouseHookListener
 		if ( mustStart )
 		{
 			start();
-			
-			// puis on se désabonne
-			ClickEngine.getInstance().removeClickMouseHookListener( this );
-			
+
 			mustStart = false;
 		}
 	}

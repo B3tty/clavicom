@@ -828,11 +828,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		public void setState(TUIKeyState state)
 		{
+			TUIKeyState stateTmp = this.state;
 			this.state = state;
 			
 			if( state == TUIKeyState.ENTERED )
 			{
-				fireKeyEnteredCharacter();
+				// si l'ancienne n'était pas PRESSED
+				if( stateTmp != TUIKeyState.PRESSED )
+				{
+					fireKeyEnteredCharacter();
+				}
 			}
 			if( state == TUIKeyState.PRESSED )
 			{

@@ -82,6 +82,8 @@ public class CPredictionEngine extends CStringsEngine implements
 		
 	}
 	
+	
+	
 	public void listen( CKeyKeyboard keyboardKey )
 	{
 		// on cast pour savoir si le type est bien
@@ -198,6 +200,8 @@ public class CPredictionEngine extends CStringsEngine implements
 	}
 
 	// ----------------------------------------------------------- METHODES --//
+	
+
 	
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{

@@ -60,6 +60,14 @@ public abstract class CStringsEngine
 
 	// ----------------------------------------------------------- METHODES --//
 	
+	public void clean()
+	{
+		currentString = "";
+		stringList.clear();
+		
+		// réaffiche les bouttons
+		updateKeys();
+	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 	
