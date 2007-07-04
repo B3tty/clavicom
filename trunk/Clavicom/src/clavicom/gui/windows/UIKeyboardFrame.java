@@ -432,8 +432,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			// réabonnement a tous les moteurs
 			panelKeyboard.listenAllKeyKeyboard();
 		}
-		
-		invalidate();		
+		panelKeyboard.updateAndRepaint();
+		//invalidate();		
 	}
 	
 	/**
@@ -547,7 +547,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 				stopDefilMode();
 			}
 			
-			panelKeyboard.updateAndRepaint();
+			//panelKeyboard.updateAndRepaint();
+			panelKeyboard.revalidate();
 		}
 	}
 	

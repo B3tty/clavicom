@@ -66,7 +66,6 @@ import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
-import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.UIKeyClavicomEngine;
@@ -93,7 +92,7 @@ import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener, ReleaseHoldableKeysListener
+public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -153,8 +152,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		magnetGrid.setBorderSize(TAILLE_CONTOUR);
 		
 		// TODO : temporaire :
-//		magnetGrid.setNbHorizontals(5);
-//		magnetGrid.setNbVerticals(10);
+		magnetGrid.setHorizontalStepPixels(10);
+		magnetGrid.setVerticalStepPixels(10);
 		
 		firstEdition = true;
 		
@@ -163,10 +162,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
-		
-		// on s'abonne au moteur de commande pour qu'il nous prévienne
-		// quand on doit déséléctionner les holdableKeys
-		CCommandEngine.getInstance().addReleaseHoldableKeysListener( this );
 
 		// Variables temporaires
 		UIKeyGroup currentKeyGroup;
@@ -514,6 +509,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
 	{			
+		super.paintComponent(myGraphic);
+		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -566,12 +563,16 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	public void updateAndRepaint()
 	{
-		magnetGrid.setDimensions(getWidth(), getHeight());
-		imgGrid = magnetGrid.getDrawing();
-		
-		imgBackground = recreateBackground();
+//		magnetGrid.setDimensions(getWidth(), getHeight());
+//		imgGrid = magnetGrid.getDrawing();
+//		
+//		imgBackground = recreateBackground();
+//		
+//		replaceUIKeys();
+//		updateKeyFontSize();
+//		
+//		repaint();
 		replaceUIKeys();
-		updateKeyFontSize();
 		repaint();
 	}
     
@@ -601,11 +602,16 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 	
 	@Override
+	// TODO : TEMPORAIRE, on ne devrait pas le faire
 	public void paint(Graphics arg0)
 	{
 		// On replace les key. Sinon les touches seront placées
 		// comme dans un panel normal
-		replaceUIKeys();
+
+//		if(isEdited == false)
+//		{
+			replaceUIKeys();
+//		}
 		
 		// Appel au père
 		super.paint(arg0);
@@ -613,7 +619,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	public void componentShown(ComponentEvent arg0)
 	{		
-		// Rien à ajouter
+		replaceUIKeys();
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -652,12 +658,13 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	// Construction
 	//-----------------------------------------------------------------------		
 	private void replaceUIKeys()
-	{		
+	{	
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
 			replaceUIKey(currentKey);
 		}
-
+		
+		//revalidate();
 	}
 	
 	private void replaceUIKey(UIKeyKeyboard currentKey)
@@ -679,6 +686,34 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		currentKey.setLocation(absMinX,absMinY);
 		currentKey.setPreferredSize(new Dimension (	absMaxX - absMinX,
 											 		absMaxY - absMinY));
+	}
+	
+	private void setPositionUIKeys()
+	{
+		for (UIKeyKeyboard currentKey : allKeys)
+		{						
+			setPositionUIKey(currentKey);
+		}
+	}
+	
+	private void setPositionUIKey(UIKeyKeyboard currentKey)
+	{
+		if(getWidth() <= 0 || getHeight() <= 0)
+			return;
+		
+		// On caste en CKeyKeyboard
+		CKeyKeyboard currentKeyKeyboard = (CKeyKeyboard)(currentKey.getCoreKey());
+		
+		// On recalcule les positions
+		float relMinX = (float)currentKey.getLocation().getX() / (float)getWidth();
+		float relMinY = (float)currentKey.getLocation().getY() / (float)getHeight();
+		
+		float relMaxX = (float)(currentKey.getLocation().getX() + currentKey.getWidth()) / (float)getWidth();
+		float relMaxY = (float)(currentKey.getLocation().getY() + currentKey.getHeight()) / (float)getHeight();
+		
+		// On affecte les positions
+		currentKeyKeyboard.setPointMin(new TPoint(relMinX, relMinY));
+		currentKeyKeyboard.setPointMax(new TPoint(relMaxX, relMaxY));
 	}
 	
 	private void addUIKeys()
@@ -708,18 +743,18 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 	}
 	
-	@Override
-	public void invalidate()
-	{
-		// Appel au père
-		super.invalidate();
-		
-		// On recalcule la taille de police
-		updateKeyFontSize();
-		
-		// On replace les touches
-		replaceUIKeys();
-	}
+//	@Override
+//	public void invalidate()
+//	{
+//		// Appel au père
+//		super.invalidate();
+//		
+//		// On recalcule la taille de police
+//		updateKeyFontSize();
+//		
+//		// On replace les touches
+//		replaceUIKeys();
+//	}
 	
 	//-----------------------------------------------------------------------
 	// Dessin
@@ -741,10 +776,19 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			{
 				resizeTimer.stop();
 				imgBackground = recreateBackground();
-				replaceUIKeys();
+				
 				updateKeyFontSize();
-				magnetGrid.setDimensions(getWidth(), getHeight());
-				imgGrid = magnetGrid.getDrawing();
+				
+				if(isEdited == true)
+				{
+					// TODO : temporaire
+//					setPositionUIKeys();
+					
+					magnetGrid.setDimensions(getWidth(), getHeight());
+					imgGrid = magnetGrid.getDrawing();
+				}
+				
+				replaceUIKeys();
 				repaint();
 			}
 		};
@@ -1006,9 +1050,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 										.5f + (NEW_KEY_RELATIVE_HEIGHT/2));
 		
 		
-//		TPoint newKeyMin = new TPoint(	.2f,.2f);
-//
-//		TPoint newKeyMax = new TPoint(	.5f,.5f);	
 		UIKey newUIKeyGlobal;
 		
 		// Points
@@ -1163,25 +1204,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			addCreatedKey(newUIKey);		
 			newUIKeyGlobal = newUIKey;
 		}
-		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK)
-		{
-			// Création de l'objet du noyau
-			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
-													pressedColor,
-													enteredColor,
-													true,
-													newKeyMin,
-													newKeyMax,
-													TLevelEnum.SHIFT,
-													"",
-													true);
-			// Création de l'objet de l'UI
-			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
-			
-			// Affectation à l'objet global
-			addCreatedKey(newUIKey);		
-			newUIKeyGlobal = newUIKey;
-		}
 		else if (keyType == TEnumCreationKey.T_KEY_PREDICTION)
 		{
 			// Création de l'objet du noyau
@@ -1234,6 +1256,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		{
 			return;
 		}
+		
+		// On met la grille à la touche
+		newUIKeyGlobal.setMagnetGrid(magnetGrid);
 		
 		// On alerte qu'une nouvelle key a été créée
 		fireKeyCreated(newUIKeyGlobal);
@@ -1294,8 +1319,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		return selectedKeys;
 	}
-	
-	
 
 	@Override
 	public String toString()
@@ -1383,32 +1406,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
 		{
 			uiKeyKeyboard.listenMouseListener( b );
-		}
-	}
-
-	public void releasedHoldableKeys()
-	{
-		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
-		{
-			// si c'est une key holdable
-			if( uiKeyKeyboard.getCoreKey().isHoldable() )
-			{
-				// si c'est une key level et qu'elle n'est pas alwaysHoldable
-				if( uiKeyKeyboard instanceof UIKeyLevel )
-				{
-					if( ! ((CKeyLevel)(uiKeyKeyboard.getCoreKey())).isAlwaysHoldable() )
-					{
-						// on la désélectionne
-						uiKeyKeyboard.setClicked( false );
-					}
-
-				}
-				else
-				{
-					// on la désélectionne
-					uiKeyKeyboard.setClicked( false );
-				}
-			}
 		}
 	}
 
