@@ -436,8 +436,7 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 		//panelKeyboard.updateAndRepaint();
 		//invalidate();
 		
-		mainPanel.revalidate();
-		panelKeyboard.replaceUIKeys();
+		//mainPanel.repaint();
 		//revalidate();
 	}
 	
