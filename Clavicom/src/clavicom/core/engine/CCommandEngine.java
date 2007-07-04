@@ -215,7 +215,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 				}
 			}
 			
-			
+
 			// on execute la touche normalement
 			for( CCommand command : commandList )
 			{
@@ -234,6 +234,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			}
 			
 			
+			
+			
 			// on fait le relesed des touches holdable
 			for( CKey holdableKey : holdKey )
 			{
@@ -244,14 +246,21 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			}
 			
 			
+			
+		
+			
 			// on vide la liste des touche holdable
 			holdKey.clear();
 			
+
 			// on change le level, on se remet en normal
 			CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
 			
+			
 			// on prévient l'UI pour que les holdKeys soient déséléctionnées
 			fireReleaseHoldableKeys();
+			
+			
 			
 			
 		}
@@ -329,8 +338,9 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 
 		commandList.add( keyCommand );
 
-		
 		executeCommande( commandList, keyCharacter );
+		
+		
 	}
 
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)

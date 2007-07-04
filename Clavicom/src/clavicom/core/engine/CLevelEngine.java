@@ -207,6 +207,13 @@ public class CLevelEngine implements OnClickKeyLevelListener
 
 	public void setCurrentLevel(TLevelEnum myCurrentLevel)
 	{
+		
+		// si le level est le même que celui courant, on ne fait rien
+		if( myCurrentLevel == currentLevel )
+		{
+			return;
+		}
+		
 		// s'il existe des always holdable keys, on met le niveau à celle-là
 		if( myCurrentLevel == TLevelEnum.NORMAL )
 		{
@@ -224,7 +231,9 @@ public class CLevelEngine implements OnClickKeyLevelListener
 			this.currentLevel = myCurrentLevel;
 		}
 		
+
 		fireChangeLevel();
+
 	}
 
 
