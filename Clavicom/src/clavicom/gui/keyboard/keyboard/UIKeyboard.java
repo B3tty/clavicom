@@ -43,6 +43,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
@@ -66,10 +68,12 @@ import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
+import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
+import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
@@ -82,17 +86,19 @@ import clavicom.gui.keyboard.key.UIKeyShortcut;
 import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
+import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
 
-public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener
+public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener, ReleaseHoldableKeysListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -162,6 +168,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Par défaut on n'est pas en édition
 		isEdited = false;
+		
+		// abonnement au release holdable
+		CCommandEngine.getInstance().addReleaseHoldableKeysListener( this );
 
 		// Variables temporaires
 		UIKeyGroup currentKeyGroup;
@@ -468,6 +477,24 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		 
 		// Changement de l'état
 		isEdited = true;
+		
+		// on vide les preferedWords, les lastWords, et on met au niveau 1
+		CPredictionEngine.getInstance().clean();
+		CLastWordEngine.getInstance().clean();
+		CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
+		releasedHoldableKeys();
+		
+		// on arrete le moteur de son
+		if( SoundEngine.getInstance() != null )
+		{
+			SoundEngine.getInstance().unListenPressed( this );
+			SoundEngine.getInstance().unListenEntered( this );
+			SoundEngine.getInstance().unListenDefilement( );
+		}
+		
+//		replaceUIKeys();
+//		repaint();
+//		//revalidate();
 	}
 	
 	public void unEdit()
@@ -481,6 +508,59 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Maj des keys
 		updateEdit(false);
+		
+		// ========================================================================
+		// on regarde si on doit lancer le moteur de son
+		// ========================================================================
+		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+			CProfil.getInstance().getSound().isSoundOnClic()  ||
+			CProfil.getInstance().getSound().isSoundOnSurvol()  )
+		{
+			if( SoundEngine.getInstance() == null )
+			{
+				SoundEngine.createInstance( );
+			}
+		}
+		
+		if( SoundEngine.getInstance() != null )
+		{
+			// on abonne les différants sons
+			if( CProfil.getInstance().getSound().isSoundOnClic() )
+			{
+				SoundEngine.getInstance().listenPressed( this );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenPressed( this );
+			}
+			
+			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
+			{
+				SoundEngine.getInstance().listenEntered( this );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenEntered( this );
+			}
+			
+			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
+			{
+				SoundEngine.getInstance().listenDefilement( );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenDefilement( );
+			}
+		}
+		
+		
+		
+		// TODO
+//		replaceUIKeys();
+//		repaint();
+//		//revalidate();
 	}
 	
 	public void select(boolean select)
@@ -508,10 +588,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
 	{
-		System.out.println("UIKeyboard:paintComponent");
-		
-		// On replace les touches
-		
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -607,7 +683,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	public void componentShown(ComponentEvent arg0)
 	{	
 		replaceUIKeys();
-		//revalidate();
 	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
@@ -776,8 +851,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				}
 				
 				replaceUIKeys();
-				//revalidate();
-				//repaint();
+				repaint();
 			}
 		};
 
@@ -819,88 +893,95 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	 */
 	private void deleteSelectedKeys()
 	{
-		System.out.println("UIKeyboard.deleteSelectedKeys");
-		List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
-		List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
-		List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
-		
-		// Suppression des listes
-		allKeys.removeAll(selectedKeys);
-		threeLevelKeys.removeAll(selectedKeys);
-		unClassedKey.removeAll(selectedKeys);
-		
-		for (UIKeyKeyboard currentKey : selectedKeys)
-		{						
-			// Suppression du panel
-			remove(currentKey);
-		}
-		
-		// On parcours les groupes...
-		for(UIKeyGroup currentGroup : keyGroups)
+		// on demande à l'utilisateur s'il comfirma la suppression
+		if( JOptionPane.showConfirmDialog(
+				this, 
+				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY"), 
+				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY_TITLE"), 
+				JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
 		{
-			// ..les listes...
-			for(UIKeyList currentList : currentGroup.getKeyLists())
+			List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
+			List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
+			List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
+			
+			// Suppression des listes
+			allKeys.removeAll(selectedKeys);
+			threeLevelKeys.removeAll(selectedKeys);
+			unClassedKey.removeAll(selectedKeys);
+			
+			for (UIKeyKeyboard currentKey : selectedKeys)
+			{						
+				// Suppression du panel
+				remove(currentKey);
+			}
+			
+			// On parcours les groupes...
+			for(UIKeyGroup currentGroup : keyGroups)
 			{
-				/// ...et les keys
-				for(UIKeyKeyboard currentKey : currentList.getKeys())
+				// ..les listes...
+				for(UIKeyList currentList : currentGroup.getKeyLists())
 				{
-					// On regarde si la key de la liste est une des keys à 
-					// supprimer
-					if(selectedKeys.contains(currentKey))
+					/// ...et les keys
+					for(UIKeyKeyboard currentKey : currentList.getKeys())
+					{
+						// On regarde si la key de la liste est une des keys à 
+						// supprimer
+						if(selectedKeys.contains(currentKey))
+						{
+							// UI
+							uiKeysToDelete.add(currentKey);
+							
+							// Noyau
+							currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
+						}
+					}
+					
+					// On supprime la liste si elle est vide
+					if (currentList.getCoreKeyList().keyCount() == 0)
 					{
 						// UI
-						uiKeysToDelete.add(currentKey);
+						uiListsToDelete.add(currentList);
 						
 						// Noyau
-						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
+						currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
 					}
 				}
 				
-				// On supprime la liste si elle est vide
-				if (currentList.getCoreKeyList().keyCount() == 0)
+				// On supprime le groupe si il est vide
+				if (currentGroup.getCoreKeyGroup().listCount() == 0)
 				{
 					// UI
-					uiListsToDelete.add(currentList);
+					uiGroupsToDelete.add(currentGroup);
 					
 					// Noyau
-					currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
+					coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
 				}
-			}
+			}		
 			
-			// On supprime le groupe si il est vide
-			if (currentGroup.getCoreKeyGroup().listCount() == 0)
+			// Suppression des objets interface
+			for(UIKeyGroup currentGroup : keyGroups)
 			{
-				// UI
-				uiGroupsToDelete.add(currentGroup);
 				
-				// Noyau
-				coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
-			}
-		}		
-		
-		// Suppression des objets interface
-		for(UIKeyGroup currentGroup : keyGroups)
-		{
-			
-			for(UIKeyList currentList : currentGroup.getKeyLists())
-			{
-				// Les touches
-				currentList.removeKeys(uiKeysToDelete);
+				for(UIKeyList currentList : currentGroup.getKeyLists())
+				{
+					// Les touches
+					currentList.removeKeys(uiKeysToDelete);
+				}
+				
+				// les listes
+				currentGroup.removeLists(uiListsToDelete);
 			}
 			
-			// les listes
-			currentGroup.removeLists(uiListsToDelete);
+			// On vide la liste des selectionnées
+			selectedKeys.clear();
+			
+			// Les groupes
+			keyGroups.removeAll(uiGroupsToDelete);		
+			
+			// On redessine
+			//repaint();
+			revalidate();
 		}
-		
-		// On vide la liste des selectionnées
-		selectedKeys.clear();
-		
-		// Les groupes
-		keyGroups.removeAll(uiGroupsToDelete);		
-		
-		// On redessine
-		//repaint();
-		revalidate();
 	}
 	
 	private void unselectAllKeys()
@@ -1404,6 +1485,29 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 	}
 
-	
+	public void releasedHoldableKeys()
+	{
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
+		{
+			// si c'est une key holdable
+			if( uiKeyKeyboard.getCoreKey().isHoldable() )
+			{
+				// si c'est une key level et qu'elle n'est pas alwaysHoldable
+				if( uiKeyKeyboard instanceof UIKeyLevel )
+				{
+					if( ! ((CKeyLevel)(uiKeyKeyboard.getCoreKey())).isAlwaysHoldable() )
+					{
+						// on la désélectionne
+						uiKeyKeyboard.setClicked( false );
+					}
+				}
+				else
+				{
+					// on la désélectionne
+					uiKeyKeyboard.setClicked( false );
+				}
+			}
+		}
+	}
 	
 }

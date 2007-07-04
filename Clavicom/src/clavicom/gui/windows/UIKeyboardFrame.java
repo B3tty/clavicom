@@ -411,6 +411,8 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			stopDefilMode();
 			
 			panelKeyboard.edit();
+			
+			
 		}
 		else
 		// En utilisation

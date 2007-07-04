@@ -504,6 +504,9 @@
 	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">Changement de la langue de l'interface</message>
 	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
 	
+	<message id = "LB_UIKEYBOARD_DELETE_KEY">Etes-vous sûr de vouloir supprimer les touches séléctionnées ?</message>
+	<message id = "LB_UIKEYBOARD_DELETE_KEY_TITLE">Suppression de touches</message>
+	
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Options avancées</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Ajouter un espace après les chaines de caractères</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Démarrer l'application automatiquement au démarrage du système d'exploitation</message>

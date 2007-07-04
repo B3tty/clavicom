@@ -228,6 +228,7 @@ public class Application
 			DefilementKeyEngine.getInstance().startKeyDefilEngine();
 		}else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
+			ClickEngine.getInstance().mouseHookResume();
 			DefilementEngine.getInstance().startDefilement();
 			ClickTemporiseEngine.getInstance().startClickTempoEngine();
 		}
@@ -599,15 +600,15 @@ public class Application
 		{
 			try
 			{
-				SoundEngine.createInstance( );
+				if( SoundEngine.getInstance() == null )
+				{
+					SoundEngine.createInstance( );
+				}
 			}
 			catch (Exception ex)
 			{
 				CMessageEngine.newError( ex.getMessage() );
 			}
-			
-			// on abonne
-			SoundEngine.getInstance().listen( uiKeyboard );
 		}
 	}
 	

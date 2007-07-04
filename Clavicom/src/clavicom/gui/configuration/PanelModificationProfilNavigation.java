@@ -50,7 +50,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JRadioButton radioButtonDefilement;
 	JRadioButton radioButtonClickTempo;
 	JSlider sliderTempoDefil;
-	JCheckBox blocSelection;
 	JSlider sliderTempoClic;
 	JSlider sliderMouseSpeed;
 	JCheckBox rollOver;
@@ -95,9 +94,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonClickTempo.setSelected(true);
 		}
 		
-		blocSelection.setSelected( navigation.isBlockSelectionActive() );
-		sliderMouseSpeed.setValue( navigation.getTemporisationClic() );
-		sliderTempoClic.setValue( navigation.getTemporisationDefilement() );
+		
+		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
+		sliderTempoClic.setValue( navigation.getTemporisationClic() );
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
 		rollOver.setSelected( navigation.isRolloverActive() ); 
 	}
@@ -184,11 +183,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		panelGlobal.add( sliderTempoDefil );
 		
-		
-		// checkBox BlocSelection
-		blocSelection = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC"), navigation.isRolloverActive() );
-		panelGlobal.add( blocSelection );
-
+	
 		// ========================================================================
 		// Séléction du rollOver ou non
 		// ========================================================================
@@ -227,7 +222,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		radioButtonDefilement.setLocation( 10, 185 );
 		labelTempoDefil.setLocation( 165, 160 );
 		sliderTempoDefil.setLocation( 155, 190 );
-		blocSelection.setLocation( 255, 250 );
 		
 		rollOver.setLocation( 16, 300 );
 		
@@ -251,7 +245,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		radioButtonDefilement.setSize( 120, 30 );
 		labelTempoDefil.setSize( 200, 30 );
 		sliderTempoDefil.setSize( 300, 50 );
-		blocSelection.setSize( 200, 30 );
 		
 		rollOver.setSize( 400, 30 );
 		
@@ -297,7 +290,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setEnabled( true );
 		
 		sliderTempoDefil.setEnabled( false );
-		blocSelection.setEnabled( false );
 		
 		labelTempoClic.setEnabled( true );
 		labelTempoDefil.setEnabled( false );
@@ -309,7 +301,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setEnabled( false );
 		
 		sliderTempoDefil.setEnabled( true );
-		blocSelection.setEnabled( true );
 		
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( true );
@@ -322,7 +313,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setEnabled( false );
 		
 		sliderTempoDefil.setEnabled( false );
-		blocSelection.setEnabled( false );
 		
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( false );
@@ -346,7 +336,9 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			if( navigation.getTypeNavigation() != TNavigationType.STANDARD )
 			{
 				if ( saveData )
+				{
 					navigation.setTypeNavigation( TNavigationType.STANDARD );
+				}
 				
 				retour = true;
 			}
@@ -358,10 +350,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 				if ( saveData )
 				{
 					navigation.setTypeNavigation( TNavigationType.DEFILEMENT );
-	
-					navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
-					
-					navigation.setBlockSelectionActive( rollOver.isSelected() );
 				}
 				
 				retour = true;
@@ -374,12 +362,15 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 				if ( saveData )
 				{
 					navigation.setTypeNavigation( TNavigationType.CLICK_TEMPORISE );
-					navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
 				}
 				
 				retour = true;
 			}
 		}
+		
+		// on sauvegarde ces valeurs dans tous les cas
+		navigation.setTemporisationDefilement( sliderTempoDefil.getValue() );
+		navigation.setTemporisationClic( sliderTempoClic.getValue() );
 		
 		// sliderMouseSpeed
 		if( sliderMouseSpeed.getValue() != navigation.getMouseSpeed() )
