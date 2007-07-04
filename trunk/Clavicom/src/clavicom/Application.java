@@ -133,7 +133,7 @@ public class Application
 		
 		// Chargement du dictionnaire
 		splash.newStep("Loading dictionnary...");
-		//loadDictionnary();
+		loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		splash.newStep("Loading level engine...");
@@ -153,7 +153,7 @@ public class Application
 
 		// Chargement du moteur de prédiction
 		splash.newStep("Loading prediction engine...");
-		//loadPredictionEngine();
+		loadPredictionEngine();
 
 		// Chargement du moteur de prédiction
 		splash.newStep("Loading key creation engine...");

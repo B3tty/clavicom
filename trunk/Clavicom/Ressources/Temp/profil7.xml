@@ -60,12 +60,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.0578125</x>
-        <y>0.38476562</y>
+        <x>0.1078125</x>
+        <y>0.119140625</y>
       </left_up>
       <right_down>
-        <x>0.9507812</x>
-        <y>0.8330078</y>
+        <x>0.9203125</x>
+        <y>0.49902344</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -3246,6 +3246,9 @@
     <prefered_word frequency="1">france</prefered_word>
     <prefered_word frequency="2">familiale</prefered_word>
     <prefered_word frequency="1">tous</prefered_word>
+    <prefered_word frequency="1">reste</prefered_word>
+    <prefered_word frequency="1">homme</prefered_word>
+    <prefered_word frequency="1">fffffffffff</prefered_word>
   </prefered_words>
 </profil>
 
