@@ -36,7 +36,6 @@ public class CTransparency
 
 	//---------------------------------------------------------- VARIABLES --//
 	private float KeyboardTransparency;
-	private float KeyTransparency;
 	
 	public float getKeyboardTransparency()
 	{
@@ -45,14 +44,6 @@ public class CTransparency
 	public void setKeyboardTrancparency(float keyboardTransparency)
 	{
 		KeyboardTransparency = keyboardTransparency;
-	}
-	public float getKeyTransparency()
-	{
-		return KeyTransparency;
-	}
-	public void setKeyTransparency(float keyTransparency)
-	{
-		KeyTransparency = keyTransparency;
 	}
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -80,24 +71,6 @@ public class CTransparency
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyboardTransparency + UIString.getUIString( "EX_KEYGROUP_TO_FLOAT" ));
 		}
-		
-		// ==================================================================
-		// Récupération de la trensparence des touches
-		// ==================================================================
-		String s_keyTransparency = node.getChildText( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
-		if( s_keyTransparency == null )
-		{
-			throw new Exception( "[" + UIString.getUIString("EX_PROFIL_BUILD_TRANSPARENCY") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
-		}
-		
-		try
-		{
-			KeyTransparency = Float.parseFloat( s_keyTransparency );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_TRANSPARENCY" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_keyTransparency + UIString.getUIString( "EX_KEYGROUP_TO_FLOAT" ));
-		}
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -110,11 +83,6 @@ public class CTransparency
 		Element keyboardTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEYBOARD );
 		keyboardTransparency_elem.setText( String.valueOf( KeyboardTransparency ) );
 		transparencyElement.addContent( keyboardTransparency_elem );
-		
-		// ajout de la transparence des touches
-		Element keyTransparency_elem = new Element( TXMLNames.PR_ELEMENT_TRANSPARENCY_KEY );
-		keyTransparency_elem.setText( String.valueOf( KeyTransparency ) );
-		transparencyElement.addContent( keyTransparency_elem );
 		
 		return transparencyElement;
 	}

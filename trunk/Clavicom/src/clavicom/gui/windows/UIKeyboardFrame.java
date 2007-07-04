@@ -405,11 +405,12 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			setFocusableWindowState(true);
 			setAlwaysOnTop(false);
 			
-			panelKeyboard.edit();
 			panelToolbar.setVisible(true);
 			panelBoutons.setVisible(true);
 			
 			stopDefilMode();
+			
+			panelKeyboard.edit();
 		}
 		else
 		// En utilisation
@@ -417,12 +418,10 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			isEdited = false;
 			
 			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());
-			panelKeyboard.setKeysTransparency( CProfil.getInstance().getTransparency().getKeyTransparency() );
 			
 			setFocusableWindowState(false);
 			setAlwaysOnTop(true);
 			
-			panelKeyboard.unEdit();
 			panelToolbar.setVisible(false);
 			panelBoutons.setVisible(false);
 			
@@ -431,9 +430,15 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			
 			// réabonnement a tous les moteurs
 			panelKeyboard.listenAllKeyKeyboard();
+			
+			panelKeyboard.unEdit();
 		}
-		panelKeyboard.updateAndRepaint();
-		//invalidate();		
+		//panelKeyboard.updateAndRepaint();
+		//invalidate();
+		
+		mainPanel.revalidate();
+		panelKeyboard.replaceUIKeys();
+		//revalidate();
 	}
 	
 	/**
@@ -546,9 +551,6 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 			{
 				stopDefilMode();
 			}
-			
-			//panelKeyboard.updateAndRepaint();
-			panelKeyboard.revalidate();
 		}
 	}
 	

@@ -174,7 +174,6 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	            0							// Espace intérieur en Y
 	    );
 		panelHaut = new JPanel();
-		panelHaut.setOpaque(false);
 		panelHaut.setLayout( new BorderLayout() );
 		gbLayoutGlobal.setConstraints(panelHaut, gbConstPanelHaut);
 		add( panelHaut );

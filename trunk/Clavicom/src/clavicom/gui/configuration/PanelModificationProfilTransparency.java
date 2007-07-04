@@ -41,7 +41,6 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	//---------------------------------------------------------- VARIABLES --//
 	CTransparency transparency;
 	JSlider keyboardTransparency;
-	JSlider keysTransparency;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -78,23 +77,6 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keyboardT, BorderLayout.NORTH);
 		
-		JPanel keysT = new JPanel(new BorderLayout());
-		
-		JPanel p3 = new JPanel();
-		p3.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS") ));
-		keysT.add(p3, BorderLayout.NORTH );
-		
-		keysTransparency = new JSlider();
-		keysTransparency.setMaximum( 100 );
-		keysTransparency.setMinimum( 0 );
-		keysTransparency.setMajorTickSpacing(10);
-		keysTransparency.setMinorTickSpacing(10);
-		keysTransparency.setPaintTicks(true);
-		keysTransparency.setPaintLabels(true);
-		
-		keysT.add(keysTransparency, BorderLayout.CENTER);
-		panelGlobal.add(keysT, BorderLayout.SOUTH);
-		
 		add( panelGlobal, BorderLayout.CENTER );
 	}
 
@@ -105,7 +87,6 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	public void initValues()
 	{
 		keyboardTransparency.setValue( (int)(( 1 - transparency.getKeyboardTransparency())*100) );
-		keysTransparency.setValue( (int)(( 1 - transparency.getKeyTransparency())*100) );
 	}
 	
 	@Override
@@ -129,15 +110,6 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 			if( saveData )
 			{
 				transparency.setKeyboardTrancparency( 1-((float)keyboardTransparency.getValue()/100) );
-			}
-			
-			retour = true;
-		}
-		if( (1-((float)keysTransparency.getValue()/100)) != transparency.getKeyTransparency() );
-		{
-			if( saveData )
-			{
-				transparency.setKeyTransparency( 1-((float)keysTransparency.getValue()/100) );
 			}
 			
 			retour = true;
