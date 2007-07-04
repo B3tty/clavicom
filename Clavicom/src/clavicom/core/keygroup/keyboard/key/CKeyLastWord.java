@@ -77,7 +77,7 @@ public class CKeyLastWord extends CKeyDynamicString
 
 	public String getElementName()
 	{
-		return TXMLNames.KY_ELEMENT_PREDICTION;
+		return TXMLNames.KY_ELEMENT_LASTWORD;
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 

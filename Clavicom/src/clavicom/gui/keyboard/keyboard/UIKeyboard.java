@@ -1156,6 +1156,27 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			addCreatedKey(newUIKey);		
 			newUIKeyGlobal = newUIKey;
 		}
+		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZ_APPLICATION)
+		{
+			// Création de l'objet du noyau
+			CKeyClavicom newCoreKey = new CKeyClavicom(	normalColor,
+														pressedColor,
+														enteredColor,
+														false,
+														newKeyMin,
+														newKeyMax,
+														TKeyClavicomActionType.MINIMIZ_APPLICATION,
+														CFilePaths.getToolKeyClavicomClosePicture());
+			// On dit que c'est une image
+			newCoreKey.setCaptionImage(true);
+			
+			// Création de l'objet de l'UI
+			UIKeyClavicom newUIKey = new UIKeyClavicom(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);		
+			newUIKeyGlobal = newUIKey;
+		}
 		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_OPEN_CONFIGURATION)
 		{
 			// Création de l'objet du noyau
