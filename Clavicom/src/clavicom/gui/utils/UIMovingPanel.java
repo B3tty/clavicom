@@ -37,6 +37,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
@@ -45,7 +46,7 @@ import clavicom.gui.keyboard.key.resizer.UIInvisibleBorder;
 import clavicom.gui.keyboard.key.resizer.UIResizableBorder;
 
 
-public class UIMovingPanel extends UITranslucentPanel
+public class UIMovingPanel extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	final int MINIMUM_HEIGHT = 10;
