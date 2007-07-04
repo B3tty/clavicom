@@ -229,10 +229,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			keyEnteredListenerList = new EventListenerList();
 			keyPressedListenerList = new EventListenerList();
 			
-			// On définit la transparence
-			setOpaque(false);
-			isTransparent = true;
-			opacity = CProfil.getInstance().getTransparency().getKeyTransparency();
+			setOpaque(true);
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -421,10 +418,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void paintComponent(Graphics myGraphic)
 		{
-			
-			// Appel du père
-			super.paintComponent(myGraphic);
-
 			// Récupération du Graphics2D
 			Graphics2D g2 = (Graphics2D) myGraphic;
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -481,7 +474,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		//-----------------------------------------------------------------------	
 		protected void buttonEnteredUse()
 		{
-			
 			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
@@ -491,7 +483,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 
 		protected void buttonExitedUse()
-		{
+		{			
 			// si la touche est holdable et dans l'état PRESSED
 			// il ne faut pas changer d'état
 			if( getCoreKey().isHoldable() && clicked )
@@ -507,7 +499,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On force le redessin
 			repaint();
 		}
-
+		
 		protected void buttonPressedUse()
 		{
 			setState( TUIKeyState.PRESSED );
@@ -533,9 +525,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			setState( TUIKeyState.ENTERED );
 			selectGoodImage();
 			
-			// On force le redessin
-			repaint();
-			
 			if( clicked )
 			{
 				clicked = false;
@@ -544,8 +533,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			{
 				clicked = true;
 			}
+			
+			// On force le redessin
+			repaint();
 		}
-		
+
 		//-----------------------------------------------------------------------
 		// Mode édition
 		//-----------------------------------------------------------------------	
@@ -593,9 +585,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Dessine l'image de fond de la touche
 		 */
 		protected void addPaintBackground(Graphics2D bg, Color bgdColor)
-		{			
-			//System.out.println("addPaintBackground");
-			
+		{
 			// Création du Paint du premier calque
 			Color vGradientStartColor, vGradientEndColor;
 			vGradientStartColor =  bgdColor.brighter();
@@ -663,9 +653,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * @param bgdColor
 		 */
 		protected void addPaintCaption(Graphics2D bg, Color bgdColor)
-		{			
-			//System.out.println("addPaintCaption");
-			
+		{
 			// On agrandit le clip (pour dessiner sur tout le bouton)
 			bg.setClip( 0,0,getWidth(), getHeight() );
 

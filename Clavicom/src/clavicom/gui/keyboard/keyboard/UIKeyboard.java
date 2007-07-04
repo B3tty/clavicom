@@ -445,7 +445,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		for (UIKeyThreeLevel currentKey : threeLevelKeys)
 		{
 			currentKey.captionChanged();
-			currentKey.repaint();
 		}
 	}
 	
@@ -469,6 +468,10 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		 
 		// Changement de l'état
 		isEdited = true;
+		
+//		replaceUIKeys();
+//		repaint();
+//		//revalidate();
 	}
 	
 	public void unEdit()
@@ -482,6 +485,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Maj des keys
 		updateEdit(false);
+		
+		// TODO
+//		replaceUIKeys();
+//		repaint();
+//		//revalidate();
 	}
 	
 	public void select(boolean select)
@@ -508,9 +516,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	// Dessin
 	//-----------------------------------------------------------------------	
 	public void paintComponent(Graphics myGraphic)
-	{			
-		super.paintComponent(myGraphic);
-		
+	{
 		// On vide le panel
 		myGraphic.clearRect(0, 0, getWidth(), getHeight());
 		
@@ -560,21 +566,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		// Rien à faire				
 	}
-	
-	public void updateAndRepaint()
-	{
-//		magnetGrid.setDimensions(getWidth(), getHeight());
-//		imgGrid = magnetGrid.getDrawing();
-//		
-//		imgBackground = recreateBackground();
-//		
-//		replaceUIKeys();
-//		updateKeyFontSize();
-//		
-//		repaint();
-		replaceUIKeys();
-		repaint();
-	}
     
 	public void componentResized(ComponentEvent arg0)
 	{
@@ -601,24 +592,25 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	}
 
 	
-	@Override
-	// TODO : TEMPORAIRE, on ne devrait pas le faire
-	public void paint(Graphics arg0)
-	{
-		// On replace les key. Sinon les touches seront placées
-		// comme dans un panel normal
-
-//		if(isEdited == false)
-//		{
-			replaceUIKeys();
-//		}
-		
-		// Appel au père
-		super.paint(arg0);
-	}
+//	@Override
+//	// TODO : TEMPORAIRE, on ne devrait pas le faire
+//	public void paint(Graphics arg0)
+//	{
+//		System.out.println("UIKeyboard.paint");
+//		// On replace les key. Sinon les touches seront placées
+//		// comme dans un panel normal
+//
+////		if(isEdited == false)
+////		{
+//			replaceUIKeys();
+////		}
+//		
+//		// Appel au père
+//		super.paint(arg0);
+//	}
 	
 	public void componentShown(ComponentEvent arg0)
-	{		
+	{	
 		replaceUIKeys();
 	}
 	
@@ -657,8 +649,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------
 	// Construction
 	//-----------------------------------------------------------------------		
-	private void replaceUIKeys()
-	{	
+	public void replaceUIKeys()
+	{
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
 			replaceUIKey(currentKey);
@@ -760,7 +752,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	// Dessin
 	//-----------------------------------------------------------------------	
 	
-	
 	/**
 	 * Créé un Timer de redimension
 	 * @return
@@ -831,6 +822,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	 */
 	private void deleteSelectedKeys()
 	{
+		System.out.println("UIKeyboard.deleteSelectedKeys");
 		List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
 		List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
 		List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
@@ -910,7 +902,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		keyGroups.removeAll(uiGroupsToDelete);		
 		
 		// On redessine
-		repaint();
+		//repaint();
+		revalidate();
 	}
 	
 	private void unselectAllKeys()
@@ -1020,7 +1013,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			
 			// On deselectionne les keys
 			unselectAllKeys();
-			repaint();
+			//repaint();
 		}
 
 		public void mouseReleased(MouseEvent arg0)
@@ -1029,12 +1022,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 
 	};
-	
-	protected void boundChanged()
-	{
-		invalidate();
-		repaint();
-	}
 
 	public void onClickKeyCreation(TEnumCreationKey keyType)
 	{		
@@ -1184,7 +1171,26 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);
 			newUIKeyGlobal = newUIKey;
-		}		
+		}	
+		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK)
+		{
+			// Création de l'objet du noyau
+			CKeyLevel newCoreKey = new CKeyLevel(	normalColor,
+													pressedColor,
+													enteredColor,
+													true,
+													newKeyMin,
+													newKeyMax,
+													TLevelEnum.SHIFT,
+													"",
+													true);
+			// Création de l'objet de l'UI
+			UIKeyLevel newUIKey = new UIKeyLevel(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);
+			newUIKeyGlobal = newUIKey;
+		}
 		else if (keyType == TEnumCreationKey.T_KEY_LEVEL_ALTGR)
 		{
 			// Création de l'objet du noyau
@@ -1295,14 +1301,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// On force le redessin
 		revalidate();
-	}
-	
-	public void setKeysTransparency(float keyboardTransparency)
-	{
-		for( UIKey uiKey : allKeys )
-		{
-			uiKey.setOpacity( keyboardTransparency );
-		}
 	}
 
 	public List<UIKeyGroup> getKeyGroups()

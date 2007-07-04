@@ -43,8 +43,6 @@ public class TColorPanel extends JPanel
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public TColorPanel()
 	{
-		setOpaque(false);
-		
 		setPreferredSize( new Dimension( 25, 25 ) );
 		
 		setBorder(BorderFactory.createLineBorder( Color.BLACK ));
@@ -60,7 +58,7 @@ public class TColorPanel extends JPanel
 	{
 		
 		// Appel du père
-		super.paintComponent(myGraphic);
+//		super.paintComponent(myGraphic);
 
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;

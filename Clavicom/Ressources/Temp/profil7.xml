@@ -27,8 +27,7 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>0.88</keyboard_transparency>
-    <key_transparency>0.90999997</key_transparency>
+    <keyboard_transparency>0.81</keyboard_transparency>
   </transparency>
   <sound>
     <on_defil active="false" />
@@ -61,12 +60,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1375</x>
-        <y>0.13085938</y>
+        <x>0.0578125</x>
+        <y>0.38476562</y>
       </left_up>
       <right_down>
-        <x>0.865625</x>
-        <y>0.45507812</y>
+        <x>0.9507812</x>
+        <y>0.8330078</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1543,12 +1542,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.6350832</x>
-              <y>0.33179724</y>
+              <x>0.66001993</x>
+              <y>0.34188035</y>
             </point>
             <point position="max">
-              <x>0.69270164</x>
-              <y>0.4423963</y>
+              <x>0.71784645</x>
+              <y>0.4722222</y>
             </point>
           </coordinates>
           <colors>
@@ -2737,12 +2736,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.2099872</x>
-              <y>0.7557604</y>
+              <x>0.20979765</x>
+              <y>0.7574627</y>
             </point>
             <point position="max">
-              <x>0.609475</x>
-              <y>0.87096775</y>
+              <x>0.6070288</x>
+              <y>0.85820895</y>
             </point>
           </coordinates>
           <colors>

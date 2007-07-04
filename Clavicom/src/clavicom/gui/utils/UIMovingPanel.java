@@ -262,8 +262,5 @@ public class UIMovingPanel extends UITranslucentPanel
 		{			
 			startPos = null;
 		}
-	};
-	
-	//protected abstract void boundChanged();
-	
+	};	
 }
