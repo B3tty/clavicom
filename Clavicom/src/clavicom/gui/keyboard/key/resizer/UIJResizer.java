@@ -36,6 +36,8 @@ import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
@@ -78,6 +80,44 @@ public abstract class UIJResizer extends JComponent
 	public void setMagnetGrid(UIMagnetGrid magnetGrid)
 	{
 		this.magnetGrid = magnetGrid; 
+	}
+	
+	public Point getNearestCorner (Point actualPoint)
+	{
+		// Création de la liste
+		List<Point> allPoints = new ArrayList<Point>();
+		
+		// Ajout des points
+		int midWidth = getWidth()/2;
+		int midHeight = getHeight()/2;
+		
+		allPoints.add(new Point(0,0));						// Nord Ouest
+		allPoints.add(new Point(midWidth,0));				// Nord
+		allPoints.add(new Point(getWidth(),0));				// Nord Est
+		allPoints.add(new Point(getWidth(),midHeight));		// Est
+		allPoints.add(new Point(getWidth(),getHeight()));	// Sud Est
+		allPoints.add(new Point(midWidth,getHeight()));		// Sud
+		allPoints.add(new Point(0,getHeight()));			// Sud Ouest
+		allPoints.add(new Point(0,midHeight));			// Ouest
+		
+		// Recherche du point le plus près
+		double minDistance = midWidth + midHeight;
+		double actualDistance;
+		
+		Point nearestPoint = null;
+		for (Point currentPoint : allPoints)
+		{
+			actualDistance = actualPoint.distance(currentPoint);
+			
+			if(actualDistance < minDistance)
+			{
+				nearestPoint = currentPoint;
+				minDistance = actualDistance;
+			}
+		}
+		
+		// Retour
+		return nearestPoint;
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -163,7 +203,6 @@ public abstract class UIJResizer extends JComponent
 	}
 	
 	public abstract void onBoundsChanged();
-
 	
 	MouseInputListener resizeMouseListener = new MouseInputAdapter()
 	{
@@ -212,33 +251,44 @@ public abstract class UIJResizer extends JComponent
 		{
 			if ( startPos != null )
 			{							
-				Point bestPoint;
+				Point mousePoint = null;				// Position de la souris
+				Point mousePointParent = null;			// Position de la souris dans le repère du père
+				Point gridPointParent = null;			// Position du coin de grille le plus près du curseur
+				Point mouseNearestCorner = null;		// Position du coin le plus près de la souris
+				Point mouseNearestCornerParent = null;  // Position du coin le plus près de la souris dans le repère du père
 				
-				if(magnetGrid == null)
-				// Normal
-				{
-					bestPoint = me.getPoint();
-				}
-				else
+				int diffX, diffY;
+				int dx = 0;
+				int dy = 0;
+				
+				mousePoint = me.getPoint();
+				mouseNearestCorner = getNearestCorner(mousePoint);
+				
+				if(magnetGrid != null)
 				// Gestion avec les grilles
 				{ 
-					// Stockage de la position de la souris
-					Point mouseParent = getParent().getMousePosition();
-					
+					// Récupération de la souris dans les coordonnées du père
+					mousePointParent = getParent().getMousePosition();
+
 					// Récupération du point de la grille le plus proche
-					Point gridPointParent = magnetGrid.getNearestPoint(mouseParent);
+					gridPointParent = magnetGrid.getNearestPoint(mousePointParent);
 					
-					// On récupère les incréments à faire pour changer de repère
-					int diffX = (int)(gridPointParent.getX() - mouseParent.getX());
-					int diffY = (int)(gridPointParent.getY() - mouseParent.getY());
+					// Récupération des coordonnées du point le plus proche dans les coordonnées du père
+					mouseNearestCornerParent = new Point((int)(mouseNearestCorner.getX() + getLocation().getX()),
+							 							 (int)(mouseNearestCorner.getY() + getLocation().getY())); 
 					
-					// On créé le point dans l'espace courant
-					bestPoint = new Point((int)me.getPoint().getX(), (int)me.getPoint().getY());
-					bestPoint.translate(diffX, diffY);
+					// Calcul des différences (vecteur de déplacement ou d'agrandissement
+					diffX = (int)(gridPointParent.getX() - mouseNearestCornerParent.getX());
+					diffY = (int)(gridPointParent.getY() - mouseNearestCornerParent.getY());
+					
+					dx = diffX;
+					dy = diffY;
 				}
-				
-				int dx = (int)bestPoint.getX() - startPos.x;
-				int dy = (int)bestPoint.getY() - startPos.y;
+				else
+				{
+					dx = (int)mouseNearestCorner.getX() - startPos.x;
+					dy = (int)mouseNearestCorner.getY() - startPos.y;
+				}
 				
 				Rectangle newBounds = new Rectangle(); 
 				
@@ -253,7 +303,7 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.S_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth(), getHeight() + dy);
 						tryResize(newBounds);
-						startPos = bestPoint;
+						startPos = mouseNearestCorner;
 						didResized();
 						break;
 						
@@ -266,7 +316,7 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.E_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth() + dx, getHeight());
 						tryResize(newBounds);
-						startPos = bestPoint;
+						startPos = mouseNearestCorner;
 						didResized();
 						break;
 						
@@ -279,27 +329,28 @@ public abstract class UIJResizer extends JComponent
 					case Cursor.NE_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY() + dy, getWidth() + dx, getHeight() - dy);
 						tryResize(newBounds);
-						startPos = new Point((int)bestPoint.getX(), startPos.y);
+						startPos = new Point((int)mouseNearestCorner.getX(), startPos.y);
 						didResized();
 						break;
 						
 					case Cursor.SW_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX() + dx, getY(), getWidth() - dx, getHeight() + dy);
 						tryResize(newBounds);
-						startPos = new Point(startPos.x, (int)bestPoint.getY());
+						startPos = new Point(startPos.x, (int)mouseNearestCorner.getY());
 						didResized();
 						break;
 						
 					case Cursor.SE_RESIZE_CURSOR :
 						newBounds = new Rectangle(getX(), getY(), getWidth() + dx, getHeight() + dy);
 						tryResize(newBounds);
-						startPos = bestPoint;
+						startPos = mouseNearestCorner;
 						didResized();
 						break;
 						
 					case Cursor.MOVE_CURSOR :
 						Rectangle bounds = getBounds();
 						bounds.translate(dx, dy);
+						
 						setBounds(bounds);
 						didResized();
 				}

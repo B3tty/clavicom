@@ -377,6 +377,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void componentResized(ComponentEvent e)
 		{	
+			if(getWidth() <= 0 || getHeight() <= 0)
+				return;
+			
 			// On ettend l'image
 			if (currentImage != null)
 			{
@@ -399,7 +402,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		public void componentShown(ComponentEvent e)
 		{
-			repaint();
+			// Rien à faire
 		}
 		
 		/**

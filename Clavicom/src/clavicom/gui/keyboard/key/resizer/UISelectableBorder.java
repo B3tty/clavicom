@@ -83,7 +83,7 @@ public class UISelectableBorder implements UIResizableBorder
 	public boolean isBorderOpaque()
 	{
 		return false;
-	}
+	}	
 
 	public void paintBorder(Component component, Graphics g, int x, int y,
 			int w, int h)

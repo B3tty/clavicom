@@ -61,12 +61,12 @@
     <add_space_after_string>false</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.028125</x>
-        <y>0.3935547</y>
+        <x>0.18515626</x>
+        <y>0.25</y>
       </left_up>
       <right_down>
-        <x>0.91015625</x>
-        <y>0.81152344</y>
+        <x>0.57109374</x>
+        <y>0.44140625</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -88,12 +88,12 @@
         <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.008865248</x>
-              <y>0.027548209</y>
+              <x>0.20348836</x>
+              <y>0.028708134</y>
             </point>
             <point position="max">
-              <x>0.2216312</x>
-              <y>0.14049587</y>
+              <x>0.3488372</x>
+              <y>0.09569378</y>
             </point>
           </coordinates>
           <colors>
@@ -123,12 +123,12 @@
         <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.23049645</x>
-              <y>0.027548209</y>
+              <x>0.37518248</x>
+              <y>0.024038462</y>
             </point>
             <point position="max">
-              <x>0.26595744</x>
-              <y>0.13774104</y>
+              <x>0.49343064</x>
+              <y>0.63461536</y>
             </point>
           </coordinates>
           <colors>
@@ -154,12 +154,12 @@
         <keystring order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.27482268</x>
-              <y>0.027548209</y>
+              <x>0.5007299</x>
+              <y>0.052884616</y>
             </point>
             <point position="max">
-              <x>0.3102837</x>
-              <y>0.14049587</y>
+              <x>0.550365</x>
+              <y>0.6057692</y>
             </point>
           </coordinates>
           <colors>
@@ -186,12 +186,12 @@
         <keylevel order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.008865248</x>
-              <y>0.3030303</y>
+              <x>0.5576642</x>
+              <y>0.028846154</y>
             </point>
             <point position="max">
-              <x>0.2216312</x>
-              <y>0.41597795</y>
+              <x>0.649635</x>
+              <y>0.6298077</y>
             </point>
           </coordinates>
           <colors>
