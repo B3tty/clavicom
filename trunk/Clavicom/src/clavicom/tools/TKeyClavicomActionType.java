@@ -41,6 +41,7 @@ public final class TKeyClavicomActionType
     public final static TKeyClavicomActionType NONE					 	= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType( false );
     public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType MINIMIZ_APPLICATION 		= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_KEYBOARD_MOUSE	= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_MOUSEMOVE_MOUSECLICK	= new TKeyClavicomActionType( false );

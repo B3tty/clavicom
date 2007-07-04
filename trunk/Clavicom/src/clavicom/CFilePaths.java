@@ -58,8 +58,10 @@ public class CFilePaths
 	private static String toolKeyShortCutPicture = "shortcut.png";
 	private static String toolKeyStringPicture = "string.png";
 	private static String toolKeyLevelSHIFTPicture = "shift.png";
+	private static String toolKeyLevelCAPSLOCKPicture = "capsLock.png";
 	private static String toolKeyLevelALTGRPicture = "altgr.png";
 	private static String toolKeyClavicomClosePicture = "close.png";
+	private static String toolKeyClavicomMinimizePicture = "minimize.png";
 	private static String toolKeyClavicomConfigurationPicture = "configuration.png";
 	private static String toolKeyClavicomSwitchSouricomPicture = "mouse.png";
 	
@@ -340,6 +342,16 @@ public class CFilePaths
 	public static String getAboutPicture()
 	{
 		return aboutPicture;
+	}
+
+	public static String getToolKeyClavicomMinimizePicture()
+	{
+		return toolKeyClavicomMinimizePicture;
+	}
+
+	public static String getToolKeyLevelCAPSLOCKPicture()
+	{
+		return toolKeyLevelCAPSLOCKPicture;
 	}
 	
 	

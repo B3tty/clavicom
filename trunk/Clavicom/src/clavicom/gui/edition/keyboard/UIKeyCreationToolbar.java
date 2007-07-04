@@ -107,10 +107,10 @@ public class UIKeyCreationToolbar extends JPanel
 				);
 		
 		// CAPS LOCK - TODO - mettre le bon texte et la bonne image
-		CreateKey(CFilePaths.getToolKeyLevelSHIFTPicture(),
-				UIString.getUIString("LB_KEYCREATION_SHIFT"),
+		CreateKey(CFilePaths.getToolKeyLevelCAPSLOCKPicture(),
+				UIString.getUIString("LB_KEYCREATION_CAPSLOCK"),
 				TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK,
-				UIString.getUIString("LB_KEYCREATION_SHIFT_TOOLTIP")
+				UIString.getUIString("LB_KEYCREATION_CAPSLOCK_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyLevelALTGRPicture(),
@@ -123,6 +123,12 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
 				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
 				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP")
+				);
+		
+		CreateKey(CFilePaths.getToolKeyClavicomMinimizePicture(),
+				UIString.getUIString("LB_KEYCREATION_MINIMIZ_APPLICATION"),
+				TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZ_APPLICATION,
+				UIString.getUIString("LB_KEYCREATION_MINIMIZ_APPLICATION_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomConfigurationPicture(),

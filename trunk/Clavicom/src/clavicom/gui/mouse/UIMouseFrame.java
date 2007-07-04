@@ -27,7 +27,6 @@ package clavicom.gui.mouse;
 import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
@@ -169,4 +168,6 @@ public class UIMouseFrame extends UITranslucentFrame
 	{
 		return uiMouse;
 	}
+
+
 }

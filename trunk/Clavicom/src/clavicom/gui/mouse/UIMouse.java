@@ -42,7 +42,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -594,6 +593,9 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		indexSelectedKey = selectedList.size() - 1;
 		
 		panelHaut.revalidate();
+		panelHaut.repaint();
+		
+
 		
 	}
 	
@@ -634,7 +636,9 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		
 		indexSelectedKey = selectedList.size() - 1;
 		
+		
 		panelHaut.revalidate();
+		panelHaut.repaint();
 		
 	}
 	
@@ -817,10 +821,6 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 	}
 
 
-
-
-
-	
 
 	
 

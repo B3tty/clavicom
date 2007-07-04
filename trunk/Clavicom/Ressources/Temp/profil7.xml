@@ -60,22 +60,22 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.10234375</x>
-        <y>0.140625</y>
+        <x>0.08828125</x>
+        <y>0.18261719</y>
       </left_up>
       <right_down>
-        <x>0.928125</x>
-        <y>0.54296875</y>
+        <x>0.8796875</x>
+        <y>0.5546875</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.6640625</x>
-        <y>0.53222656</y>
+        <x>0.6546875</x>
+        <y>0.5390625</y>
       </left_up>
       <right_down>
-        <x>0.9984375</x>
-        <y>0.94140625</y>
+        <x>0.975</x>
+        <y>0.9404297</y>
       </right_down>
     </souricom_frame_position>
     <start_with_os>false</start_with_os>
@@ -3205,6 +3205,37 @@
           <level>SHIFT</level>
           <always_holdable>true</always_holdable>
         </keylevel>
+        <keylastword order="2" caption_image="false" holdable="false">
+          <coordinates>
+            <point position="min">
+              <x>0.38468635</x>
+              <y>0.8757062</y>
+            </point>
+            <point position="max">
+              <x>0.48339483</x>
+              <y>0.9745763</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>252</red>
+              <green>162</green>
+              <blue>162</blue>
+            </color_entered>
+          </colors>
+          <caption />
+          <order_dynamic>0</order_dynamic>
+        </keylastword>
       </keylist>
     </keygroup>
     <keygroup caption="Souricom" order="8" visible="true">
@@ -3254,6 +3285,10 @@
     <prefered_word frequency="1">homme</prefered_word>
     <prefered_word frequency="1">fffffffffff</prefered_word>
     <prefered_word frequency="1">ccc</prefered_word>
+    <prefered_word frequency="1">guillaume</prefered_word>
+    <prefered_word frequency="1">est</prefered_word>
+    <prefered_word frequency="1">trop</prefered_word>
+    <prefered_word frequency="1">fort</prefered_word>
   </prefered_words>
 </profil>
 

@@ -428,10 +428,12 @@
 	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
+	<message id = "LB_KEYCREATION_MINIMIZ_APPLICATION">Reduction de l'application</message>
 	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configuration de l'application</message>
 	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
 	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
 	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
+	<message id = "LB_KEYCREATION_SHIFT">Caps lock</message>
 	
 	<message id = "LB_KEYCREATION_KEYCHARACTER_TOOLTIP">Création d'une touche caractère</message>
 	<message id = "LB_KEYCREATION_KEYSTRING_TOOLTIP">Création d'une touche chaîne de caractères</message>
@@ -440,10 +442,12 @@
 	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
+	<message id = "LB_KEYCREATION_MINIMIZ_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
 	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP">Création d'une touche de configuration de l'application</message>
 	<message id = "LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP">Création d'une touche de passage en mode souris</message>
 	<message id = "LB_KEYCREATION_ALTGR_TOOLTIP">Création d'une touche "Alt-Gr"</message>
 	<message id = "LB_KEYCREATION_SHIFT_TOOLTIP">Création d'une touche "Shift"</message>
+	<message id = "LB_KEYCREATION_CAPSLOCK_TOOLTIP">Création d'une touche "Caps lock"</message>
 	
 	<!-- CONF profil -->
 	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
