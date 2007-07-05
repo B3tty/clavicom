@@ -96,7 +96,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
-	final int RESIZE_TIMER_DURATION = 1000;		// Durée au delà de laquelle le calcul des
+	final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
 	
 	final int NORMAL_TRANSLATION_STEP = 10;
@@ -132,7 +132,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	private boolean resizing;					// Indique si on est en redimensionnement
 	
-	
+	Image image; 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
@@ -208,6 +208,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Création du Timer resize
 		resizeTimer = createResizeTimer();
+		resizeTimer.setRepeats(false);
 		
 		// On s'ajoute en tant que listener de changement de niveau		
 		CLevelEngine.getInstance().addChangeLevelListener(this);
@@ -519,7 +520,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 
 	@Override
 	protected void paintChildren(Graphics arg0)
-	{
+	{		
 		// Si on est en train de resizer on ne redessine pas les fils
 		if(resizing == true)
 		{
@@ -527,19 +528,37 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 		else
 		{
+			//replaceUIKeys(true);
 			super.paintChildren(arg0);
 		}
 	}
 	
+	@Override
+	public void paint(Graphics arg0)
+	{
+		// On paint le composant
+		paintComponent(arg0);
+		
+		// On replace les touches
+		replaceUIKeys(true);
+		
+		// On dessine les fils
+		paintChildren(arg0);
+		
+		super.paint(arg0);
+	}
+	
 	public void paintComponent(Graphics myGraphic)
-	{		
+	{
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
 		
 		// On vide le rectangle
 		g2.clearRect(0, 0, getWidth(), getHeight());
 		
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		// On desactive l'optimisation
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 		
 		// On redessine le fond		
 		g2.drawImage(imgBackground, 0, 0, null);
@@ -549,8 +568,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		{
 			g2.drawImage(imgGrid, 0, 0, null);
 		}
-		
-		//g2.dispose();
 	}	
 	
 	//-----------------------------------------------------------------------
@@ -603,8 +620,19 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	public void componentShown(ComponentEvent arg0)
 	{	
 		// On replace les touches
-		replaceUIKeys();
+//		replaceUIKeys();
 	}
+	
+//	@Override
+//	public void paint(Graphics arg0)
+//	{
+//		System.out.println("START");
+//		paintComponent(arg0);
+//		System.out.println("validate: " + getWidth() + "|" + getHeight());
+//		replaceUIKeys(true);
+//		paintChildren(arg0);
+//		System.out.println("STOP");
+//	}
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	//-----------------------------------------------------------------------
@@ -641,15 +669,15 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------
 	// Construction
 	//-----------------------------------------------------------------------		
-	public void replaceUIKeys()
+	public void replaceUIKeys(boolean recreateImages)
 	{
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
-			replaceUIKey(currentKey);
+			replaceUIKey(currentKey,recreateImages);
 		}
 	}
 	
-	private void replaceUIKey(UIKeyKeyboard currentKey)
+	private void replaceUIKey(UIKeyKeyboard currentKey, boolean recreateImages)
 	{
 		// On caste en CKeyKeyboard
 		CKeyKeyboard currentKeyKeyboard = (CKeyKeyboard)(currentKey.getCoreKey());
@@ -670,6 +698,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 												absMinY,
 												absMaxX - absMinX,
 												absMaxY - absMinY));
+		//currentKey.updateKey();
 	}
 	
 	private void setPositionUIKeys()
@@ -744,7 +773,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			// Méthode appelée à chaque tic du timer
 			public void actionPerformed(ActionEvent event)
 			{
-				resizeTimer.stop();
+				//resizeTimer.stop();
 				imgBackground = recreateBackground();
 				
 				updateKeyFontSize();
@@ -760,15 +789,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				
 				resizing = false;
 				
-				replaceUIKeys();
 				repaint();
 			}
 		};
-
+		
 		// Création d'un timer qui génère un tic
 		// chaque 500 millième de seconde
 		return new Timer(RESIZE_TIMER_DURATION,action);
-	}
+	}	
 	
 	//-----------------------------------------------------------------------
 	// Keylistener
@@ -1279,7 +1307,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		add(newUIKeyKeyboard, 0);
 		
 		// On calcule sa position absolue
-		replaceUIKey(newUIKeyKeyboard);
+		replaceUIKey(newUIKeyKeyboard, true);
 		
 		// On force le redessin
 		revalidate();
@@ -1375,7 +1403,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 	}
 	
-
 	public CKeyboard getCoreKeyboard()
 	{
 		return coreKeyboard;
@@ -1413,4 +1440,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			}
 		}
 	}
+	
+	
 }

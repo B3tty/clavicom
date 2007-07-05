@@ -85,8 +85,9 @@ public class UISplashScreen extends JWindow implements Runnable
 		
 		// Changement du curseur (sablier)
 		startCursor = getCursor();
+		
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				
+			
 		// Affichage du splashscreen
 		run();
 	}
