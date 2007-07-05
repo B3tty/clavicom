@@ -518,33 +518,31 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------	
 
 	@Override
-	public void paintComponents(Graphics arg0)
+	protected void paintChildren(Graphics arg0)
 	{
 		// Si on est en train de resizer on ne redessine pas les fils
 		if(resizing == true)
 		{
-			paintComponent(arg0);
+			return;
 		}
-		
-		super.paintComponents(arg0);
+		else
+		{
+			super.paintChildren(arg0);
+		}
 	}
 	
 	public void paintComponent(Graphics myGraphic)
-	{
-		System.out.println("UIKeyboard:paintComponent");
-		
+	{		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
 		
 		// On vide le rectangle
-		g2.setBackground(Color.RED);
-		
-		g2.fillRect(0, 0, getWidth(), getHeight());
+		g2.clearRect(0, 0, getWidth(), getHeight());
 		
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		// On redessine le fond		
-		g2.drawImage(recreateBackground(), 0, 0, null);
+		g2.drawImage(imgBackground, 0, 0, null);
 		
 		// On ajoute la grille si nécessaire
 		if(isEdited == true)
@@ -705,7 +703,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private void addUIKeys()
 	{
 		for (UIKeyKeyboard currentKey : allKeys)
-		{						
+		{
 			// Ajout au panel
 			add(currentKey);
 			
@@ -746,7 +744,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			// Méthode appelée à chaque tic du timer
 			public void actionPerformed(ActionEvent event)
 			{
-				System.out.println("timer !");
 				resizeTimer.stop();
 				imgBackground = recreateBackground();
 				
@@ -885,9 +882,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// Les groupes
 		keyGroups.removeAll(uiGroupsToDelete);		
 		
-		// On redessine
-		//repaint();
+		// On redessine		
 		revalidate();
+		repaint();
 	}
 	
 	private void unselectAllKeys()
@@ -1416,6 +1413,4 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			}
 		}
 	}
-	
-	
 }

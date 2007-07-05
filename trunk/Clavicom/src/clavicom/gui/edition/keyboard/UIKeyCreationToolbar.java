@@ -172,9 +172,6 @@ public class UIKeyCreationToolbar extends JPanel
 		// Création de l'objet UI
 		uiKeyLauncher = new UIKeyCreation( keyCreation );
 		
-		// On désactive la transparence
-		uiKeyLauncher.setTransparent(false);
-		
 		add( uiKeyLauncher, BorderLayout.CENTER );
 	}
 }
