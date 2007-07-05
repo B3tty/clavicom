@@ -44,6 +44,7 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 	JCheckBox checkDefil;
 	JCheckBox checkEntered;
 	JCheckBox checkPressed;
+	JCheckBox checkStart;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -70,8 +71,14 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		checkEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISENTERED"), sound.isSoundOnSurvol() );
 		panelGlobal.add( checkEntered, BorderLayout.CENTER );
 		
+		JPanel panelSouth = new JPanel( new BorderLayout() );
 		checkPressed = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED"), sound.isSoundOnClic() );
-		panelGlobal.add( checkPressed, BorderLayout.SOUTH );
+		panelSouth.add( checkPressed, BorderLayout.CENTER );
+		
+		checkStart = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISSTARTED"), sound.isSoundOnStartApplication() );
+		panelSouth.add( checkStart, BorderLayout.SOUTH );
+		panelGlobal.add( panelSouth, BorderLayout.SOUTH );
+		
 		pan.add(panelGlobal);
 		
 		add(pan, BorderLayout.CENTER);
@@ -86,6 +93,7 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		checkDefil.setSelected( sound.isSoundOnDefil() );
 		checkEntered.setSelected( sound.isSoundOnSurvol() );
 		checkPressed.setSelected( sound.isSoundOnClic() );
+		checkStart.setSelected( sound.isSoundOnStartApplication() );
 	}
 	
 	@Override
@@ -125,6 +133,14 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 			if( saveData )
 			{
 				sound.setSoundOnClic( checkPressed.isSelected() );
+			}
+			retour = true;
+		}
+		if( checkStart.isSelected() != sound.isSoundOnStartApplication() )
+		{
+			if( saveData )
+			{
+				sound.setSoundOnStartApplication( checkStart.isSelected() );
 			}
 			retour = true;
 		}

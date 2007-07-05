@@ -181,6 +181,7 @@ public class TXMLNames
 	public static String PR_ELEMENT_SOUND_ON_DEFIL		= "on_defil";
 	public static String PR_ELEMENT_SOUND_ON_CLIC		= "on_click";
 	public static String PR_ELEMENT_SOUND_ON_SURVOL		= "on_survol";
+	public static String PR_ELEMENT_SOUND_ON_START		= "on_start";
 	
 	public static String PR_ATTRIBUTE_SOUND_ACTIVE		= "active";
 	

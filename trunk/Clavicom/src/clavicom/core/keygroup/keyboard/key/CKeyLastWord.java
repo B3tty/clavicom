@@ -67,7 +67,14 @@ public class CKeyLastWord extends CKeyDynamicString
 	
 	//----------------------------------------------------------- METHODES --//	
 	
-	
+	@Override // pour ne pas sauvegarder la chaine
+	public void completeNodeSpecific(Element eltKeyNode) throws Exception
+	{
+		
+		caption = "";
+		// TODO Auto-generated method stub
+		super.completeNodeSpecific(eltKeyNode);
+	}
 	
 	
 	public void completeNodeSpecific3(Element eltKeyNode) throws Exception

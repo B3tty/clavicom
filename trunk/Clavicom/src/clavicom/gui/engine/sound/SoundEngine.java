@@ -26,13 +26,6 @@
 package clavicom.gui.engine.sound;
 
 
-import java.io.File;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import clavicom.CFilePaths;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
@@ -178,37 +171,4 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 
 }
 
-class ThreadSound extends Thread
-{
-	private String url; 
-	private Clip clip;
-	
-	public ThreadSound( String mySound )
-	{
-		url = mySound;
-		
-		try  
-		{  
 
-			AudioInputStream stream = AudioSystem.getAudioInputStream(new File(url)); 
-			AudioFormat format = stream.getFormat(); 
-			DataLine.Info info = new DataLine.Info(
-			  Clip.class, stream.getFormat(), ((int)stream.getFrameLength()*format.getFrameSize()));
-			clip = (Clip) AudioSystem.getLine(info); 
-			clip.open(stream); 
-		} 
-		catch (Exception e) {}
-	}
-	
-	@Override
-	public void run()
-	{
-		
-	}
-	
-	public void play()
-	{ 
-		clip.setFramePosition( 0 );
-		clip.start();
-	}
-}

@@ -274,21 +274,25 @@ public class CPredictionEngine extends CStringsEngine implements
 	
 	void addOrIncreaseWord( String currentString )
 	{
-		CDictionaryWord dictionaryWord = null;
-		
-		//	s'il n'est pas dans les preferedWords
-		if( ! preferedWord.contain( currentString ) )
+		// si le mot courent à plus d'un caractère
+		if( currentString.length() > 1 )
 		{
-			dictionaryWord = new CDictionaryWord( currentString, 1 );
-			preferedWord.addPreferedWord( dictionaryWord );
-			CDictionary.addWord(CDictionary.getUserDictionnaryLevel(), dictionaryWord);
-		}
-		else
-		{
-			dictionaryWord = preferedWord.getPreferedWord( currentString );
-			if( dictionaryWord != null )
+			CDictionaryWord dictionaryWord = null;
+			
+			//	s'il n'est pas dans les preferedWords
+			if( ! preferedWord.contain( currentString ) )
 			{
-				dictionaryWord.increaseFrequency();
+				dictionaryWord = new CDictionaryWord( currentString, 1 );
+				preferedWord.addPreferedWord( dictionaryWord );
+				CDictionary.addWord(CDictionary.getUserDictionnaryLevel(), dictionaryWord);
+			}
+			else
+			{
+				dictionaryWord = preferedWord.getPreferedWord( currentString );
+				if( dictionaryWord != null )
+				{
+					dictionaryWord.increaseFrequency();
+				}
 			}
 		}
 	}

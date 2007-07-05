@@ -30,9 +30,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.KeyEventDispatcher;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.List;
@@ -82,7 +84,12 @@ import clavicom.tools.TSize;
 //import com.sun.jna.examples.WindowUtils;
 
 
-public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSelectionChanged, ComponentListener, UIKeyboardNewKeyCreated, WindowListener
+public class UIKeyboardFrame extends UITranslucentFrame 
+implements UIKeyboardSelectionChanged, 
+ComponentListener, 
+UIKeyboardNewKeyCreated, 
+WindowListener,
+KeyEventDispatcher
 {
 
 
@@ -705,5 +712,11 @@ public class UIKeyboardFrame extends UITranslucentFrame implements UIKeyboardSel
 	public void windowOpened(WindowEvent e)
 	{
 		// Rien à faire
+	}
+
+	public boolean dispatchKeyEvent(KeyEvent e)
+	{
+		//KeyboardFocusManager.getCurrentKeyboardFocusManager().dispatchKeyEvent(e);
+		return false;
 	}
 }

@@ -110,8 +110,7 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 						
 						// si le nom du languageUI est le même que celui en train d'être chargé, on le séléctione
 						if( languageUIFile.toString().equals( 
-								langueUIName.getLanguageFileName().substring
-									(0, langueUIName.getLanguageFileName().length()-4) ) )
+								langueUIName.getLanguageFileName() ) )
 						{
 							combo.setSelectedItem( languageUIFile );
 						}
