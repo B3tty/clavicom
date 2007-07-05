@@ -442,11 +442,10 @@ KeyEventDispatcher
 			
 			panelKeyboard.unEdit();
 		}
-		//panelKeyboard.updateAndRepaint();
-		//invalidate();
 		
-		//mainPanel.repaint();
-		//revalidate();
+		
+		mainPanel.revalidate();
+		//repaint();
 	}
 	
 	/**

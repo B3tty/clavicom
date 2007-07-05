@@ -60,15 +60,17 @@ import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
+
 public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
 {
 		//--------------------------------------------------------- CONSTANTES --//
 		// Dessin
-		final int TAILLE_BORDURE_INTERIEURE = 5;	// Taille de la bordure intérieure
-		final int TAILLE_ARC = 25;					// Rayon de l'arrondi du bouton
+		final int TAILLE_BORDURE_INTERIEURE = 4;	// Taille de la bordure intérieure
+		final int TAILLE_ARC = 24;					// Rayon de l'arrondi du bouton
+		final int TAILLE_ARC_INTERNE = 18;			// Rayon de l'arrondi du bouton
 		
-		final int SHADOW_INSET_H = 1;				// Décallage horizontal de l'ombre du texte
-		final int SHADOW_INSET_V = 1;				// Décallage vertical de l'ombre du texte
+		final int SHADOW_INSET_H = 2;				// Décallage horizontal de l'ombre du texte
+		final int SHADOW_INSET_V = 2;				// Décallage vertical de l'ombre du texte
 		
 		final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 													// images est lancé, pendant un resize	
@@ -80,7 +82,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		final int TAILLE_CADRE_SELECTION = 10;		// Taille du cadre de selection
 		
-		final int TAILLE_CONTOUR = 2;				// Taille du contour
+		final int TAILLE_CONTOUR = 1;				// Taille du contour
 		final int TAILLE_ARC_CONTOUR = TAILLE_ARC - TAILLE_CONTOUR;
 		
 		final int DEFAULT_FONT_SIZE = 12;			// Taille par défaut de la police
@@ -227,19 +229,19 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			keyEnteredListenerList = new EventListenerList();
 			keyPressedListenerList = new EventListenerList();
 			
-			setOpaque(false);
-			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
 			addComponentListener(this);
 
 			// Initialisation des états
 			setState( TUIKeyState.NORMAL );
+			selectGoodImage();
+			
 			setEditable(false);
 			
 			// Création du Timer resize
-			resizeTimer = createResizeTimer();
-			
+			resizeTimer = createResizeTimer();		
+			resizeTimer.setRepeats(false);
 			setLayout(new FlowLayout());
 		}
 		
@@ -322,9 +324,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				addMouseListener(mouseAdapterEdit);
 				
-				// On n'est plus opaque (a cause des bordures qui depassent du panel)
 				setOpaque(false);
-
 			}
 			else
 			{				
@@ -332,9 +332,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				removeMouseListener(mouseAdapterEdit);
 				removeMouseListener(mouseAdapterUse);
 				
-				addMouseListener(mouseAdapterUse);		
+				addMouseListener(mouseAdapterUse);
 				
-				// On est opaque (plus de bordure en dehors du panel)
 				setOpaque(true);
 			}
 		}
@@ -361,8 +360,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			buffer = (Graphics2D) image.getGraphics();
 
 			// Construction du buffer
-			//buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-
+			buffer.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			buffer.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+			
 			// Ajout du fond de la touche			
 			addPaintBackground(buffer,bgdColor);
 
@@ -370,6 +370,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			addPaintCaption(buffer,bgdColor);
 
 			return image;
+		}
+		
+		@Override
+		public void setVisible(boolean arg0)
+		{
+			selectGoodImage();
+			repaint();
+			
+			// TODO Auto-generated method stub
+			super.setVisible(arg0);
 		}
 		
 		/**
@@ -421,10 +431,17 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void paintComponent(Graphics myGraphic)
 		{			
+			if (currentImage == null)
+			{
+				recreateNormalImages();
+				selectGoodImage();
+			}
+			
 			// Récupération du Graphics2D
 			Graphics2D g2 = (Graphics2D) myGraphic;
-			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+			
 			// Dessin			
 			g2.drawImage(currentImage, 0, 0, null);
 		}
@@ -621,14 +638,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			bg.setClip(new RoundRectangle2D.Float(	TAILLE_BORDURE_INTERIEURE,
 													TAILLE_BORDURE_INTERIEURE,
 													vButtonHighlightWidth,
-													vButtonHighlightHeight /2, 
-													TAILLE_ARC,TAILLE_ARC));
+													vButtonHighlightHeight/2, 
+													TAILLE_ARC_INTERNE,TAILLE_ARC_INTERNE));
 			
 			bg.fillRoundRect(	TAILLE_BORDURE_INTERIEURE,
 								TAILLE_BORDURE_INTERIEURE,
 								vButtonHighlightWidth,
 								vButtonHighlightHeight,
-								TAILLE_ARC,TAILLE_ARC);
+								TAILLE_ARC_INTERNE,TAILLE_ARC_INTERNE);
 			
 			// Dessin du contour
 			bg.setColor(bgdColor.darker());
@@ -772,15 +789,24 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 		
 		/**
+		 * Recréé les images et selectionne la bonne
+		 *
+		 */		
+		public void updateKey()
+		{
+			if(editable)
+				return;
+			
+			recreateNormalImages();
+			selectGoodImage();
+		}
+		
+		/**
 		 * Selectionne la bonne image courante
 		 *
 		 */
-		protected void selectGoodImage()
+		public void selectGoodImage()
 		{
-			if (currentImage == null)
-			{
-				recreateNormalImages();
-			}
 			
 			if ( getState() == TUIKeyState.ENTERED)
 			{
