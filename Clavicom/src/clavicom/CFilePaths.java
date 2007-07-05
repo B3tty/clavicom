@@ -101,6 +101,7 @@ public class CFilePaths
 	private static String scrollSoundFilePath = sounds + "scroll.wav";
 	private static String enteredSoundFilePath = sounds + "entered.wav";
 	private static String clickSoundFilePath = sounds + "click.wav";
+	private static String startApplicationSoundFilePath = sounds + "intro.wav";
 	
 
 	// ========================================================================
@@ -352,6 +353,11 @@ public class CFilePaths
 	public static String getToolKeyLevelCAPSLOCKPicture()
 	{
 		return toolKeyLevelCAPSLOCKPicture;
+	}
+
+	public static String getStartApplicationSoundFilePath()
+	{
+		return startApplicationSoundFilePath;
 	}
 	
 	

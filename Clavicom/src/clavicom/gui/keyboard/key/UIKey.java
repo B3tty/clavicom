@@ -111,6 +111,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 													// CFont, mais de la vraie taille
 		
 		boolean clicked;
+		boolean mouseExited;
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -458,6 +459,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On force le redessin
 			repaint();
+			
+			mouseExited = false;
 
 		}
 
@@ -477,6 +480,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On force le redessin
 			repaint();
+			
+			mouseExited = true;
 		}
 		
 		protected void buttonPressedUse()
@@ -490,31 +495,35 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 
 		protected void buttonReleasedUse()
 		{
-			// On avertit le noyau du clic
-			getCoreKey().Click();
-			
-			// si la touche est holdable et dans l'état PRESSED
-			// il ne faut pas changer d'état
-			if( getCoreKey().isHoldable() && clicked )
+			// Si la souris n'est pas sortie de la zone de la touche
+			if( ! mouseExited )
 			{
-				clicked = false;
-				return;
+				// On avertit le noyau du clic
+				getCoreKey().Click();
+				
+				// si la touche est holdable et dans l'état PRESSED
+				// il ne faut pas changer d'état
+				if( getCoreKey().isHoldable() && clicked )
+				{
+					clicked = false;
+					return;
+				}
+	
+				setState( TUIKeyState.ENTERED );
+				selectGoodImage();
+				
+				if( clicked )
+				{
+					clicked = false;
+				}
+				else
+				{
+					clicked = true;
+				}
+				
+				// On force le redessin
+				repaint();
 			}
-
-			setState( TUIKeyState.ENTERED );
-			selectGoodImage();
-			
-			if( clicked )
-			{
-				clicked = false;
-			}
-			else
-			{
-				clicked = true;
-			}
-			
-			// On force le redessin
-			repaint();
 		}
 
 		//-----------------------------------------------------------------------
@@ -527,6 +536,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On force le redessin
 			repaint();
+			
+			mouseExited = false;
 		}
 
 		protected void buttonExitedEdit()
@@ -536,6 +547,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On force le redessin
 			repaint();
+			
+			mouseExited = true;
 		}
 
 		protected void buttonPressedEdit()
@@ -549,12 +562,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 
 		protected void buttonReleasedEdit()
-		{					
-			setState( TUIKeyState.ENTERED );
-			selectGoodImage();
-			
-			// On force le redessin
-			repaint();
+		{		
+			// Si la souris n'est pas sortie de la zone de la touche
+			if( ! mouseExited )
+			{
+				setState( TUIKeyState.ENTERED );
+				selectGoodImage();
+				
+				// On force le redessin
+				repaint();
+			}
 		}
 		
 		//-----------------------------------------------------------------------

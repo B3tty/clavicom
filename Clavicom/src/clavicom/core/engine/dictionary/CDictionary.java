@@ -294,7 +294,11 @@ public class CDictionary
 		// Puis celle du dictionnaire
 		for( String word : shortListDico )
 		{
-			finalList.add( word );
+			// Si le mot n'y est pas déjà
+			if( ! finalList.contains( word ) )
+			{
+				finalList.add( word );
+			}
 		}
 		
 		int index = 0;
@@ -310,6 +314,7 @@ public class CDictionary
 		
 		return finalList;
 	}
+
 
 	static public CDictionaryWord getWord( String word )
 	{

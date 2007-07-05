@@ -47,6 +47,7 @@ import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.sound.SoundEngine;
+import clavicom.gui.engine.sound.ThreadSound;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
@@ -120,7 +121,7 @@ public class Application
 		
 		// Chargement du splashscreen
 		UISplashScreen splash = new UISplashScreen(CFilePaths.getSplashScreenFile(), SPLASH_WAIT, SPLASH_WAIT_TOTAL_MIN);
-		
+
 		// Chargement du gestionnaires de paramètres
 		splash.newStep("Loading parameters...");
 		loadSettings();
@@ -193,6 +194,14 @@ public class Application
 		// Fin du chargement
 		splash.newStep("Load complete !");
 		splash.close();
+		
+		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
+		{
+			// Lancement du son de démarage
+			ThreadSound introSound = new ThreadSound( CFilePaths.getStartApplicationSoundFilePath() );
+			introSound.start();
+			introSound.play();
+		}
 		
 		// On affiche la fenêtre principale
 		keyboardFrame.setVisible(true);

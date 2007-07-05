@@ -35,9 +35,10 @@ public class CSound
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//	
-	boolean soundOnDefil; 	// Jouer un son sur le défilement
-	boolean soundOnClic; 	// Jouer un son sur le click sur un bouton
-	boolean soundOnSurvol; 	// Jouer un son sur le survol sur un bouton
+	boolean soundOnDefil; 				// Jouer un son sur le défilement
+	boolean soundOnClic; 				// Jouer un son sur le click sur un bouton
+	boolean soundOnSurvol; 				// Jouer un son sur le survol sur un bouton
+	boolean soundOnStartApplication; 	// Jouer un son au lancement de l'application
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CSound()
@@ -45,6 +46,7 @@ public class CSound
 		soundOnDefil = false;
 		soundOnClic = false;
 		soundOnSurvol = false;
+		soundOnStartApplication = false;
 	}
 	
 	public CSound (Element soundNode) throws Exception
@@ -138,6 +140,37 @@ public class CSound
 									strOnSurvol + 
 									UIString.getUIString("EX_SOUND_BAD_ATTRIBUTE_2"));				
 		}
+		
+		
+		// Récupération de l'element OnStart
+		Element eltOnStart = soundNode.getChild(TXMLNames.PR_ELEMENT_SOUND_ON_START);
+		
+		if (eltOnStart == null)
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_MISSING_ELEMENT_1") +
+									TXMLNames.PR_ELEMENT_SOUND_ON_START + 
+									UIString.getUIString("EX_SOUND_MISSING_ELEMENT_2"));	
+		}
+		
+		String srtOnStart = eltOnStart.getAttributeValue(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE);
+		
+		if (srtOnStart == null || srtOnStart.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_MISSING_ATTRIBUTE_1") +
+									TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE + 
+									UIString.getUIString("EX_SOUND_MISSING_ATTRIBUTE_2"));				
+		}
+		
+		try
+		{
+			soundOnStartApplication = Boolean.parseBoolean(srtOnStart);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_BAD_ATTRIBUTE_1") +
+									srtOnStart + 
+									UIString.getUIString("EX_SOUND_BAD_ATTRIBUTE_2"));				
+		}
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -158,6 +191,10 @@ public class CSound
 		Element eltOnSurvol = new Element (TXMLNames.PR_ELEMENT_SOUND_ON_SURVOL);
 		eltOnSurvol.setAttribute(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE, Boolean.toString(soundOnSurvol));
 		soundNode.addContent(eltOnSurvol);
+		
+		Element eltOnStart = new Element (TXMLNames.PR_ELEMENT_SOUND_ON_START);
+		eltOnStart.setAttribute(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE, Boolean.toString(soundOnStartApplication));
+		soundNode.addContent(eltOnStart);
 				
 		return soundNode;
 	}
@@ -190,6 +227,16 @@ public class CSound
 	public void setSoundOnSurvol(boolean soundOnSurvol)
 	{
 		this.soundOnSurvol = soundOnSurvol;
+	}
+
+	public boolean isSoundOnStartApplication()
+	{
+		return soundOnStartApplication;
+	}
+
+	public void setSoundOnStartApplication(boolean soundOnStartApplication)
+	{
+		this.soundOnStartApplication = soundOnStartApplication;
 	}
 	
 	

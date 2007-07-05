@@ -462,7 +462,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_FONT_SHADOW">Ombres</message>
 	<message id = "LB_CONFPROFIL_PANNEL_FONT_BOLD">Gras</message>
 	<message id = "LB_CONFPROFIL_PANNEL_FONT_ITALIC">Italic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_EXEMPLE">Portez au juge cinq bols de vos fameux whisky</message>
+	<message id = "LB_CONFPROFIL_PANNEL_FONT_EXEMPLE">Mon pauvre zébu ankylosé choque deux fois ton wagon jaune</message>
 	<message id = "LB_CONFPROFIL_PANNEL_FONT_LB_EXEMPLE">Phrase d'exemple</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR">Couleur du clavier</message>
@@ -494,6 +494,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL">Au défilement</message>
 	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISENTERED">Au survol</message>
 	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED">Au clic</message>
+	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISSTARTED">Au démarrage de l'application</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
 	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
