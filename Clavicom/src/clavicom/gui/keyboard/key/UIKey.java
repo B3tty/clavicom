@@ -104,14 +104,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		private BufferedImage originalCaptionImage;	// Image correspondant à la caption
 		
-		private float opacity;						// Opacité du bouton (de 0 à 1)
-		
 		boolean editable;
 		
 		private int fontSize;						// Entier indiquant la taille de la police
 													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
 													// CFont, mais de la vraie taille
-		private boolean isTransparent;				// Indique si la touche est transparente
 		
 		boolean clicked;
 		
@@ -229,7 +226,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			keyEnteredListenerList = new EventListenerList();
 			keyPressedListenerList = new EventListenerList();
 			
-			setOpaque(true);
+			setOpaque(false);
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -324,7 +321,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				addMouseListener(mouseAdapterEdit);
 				
-				
+				// On n'est plus opaque (a cause des bordures qui depassent du panel)
+				setOpaque(false);
+
 			}
 			else
 			{				
@@ -332,7 +331,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				removeMouseListener(mouseAdapterEdit);
 				removeMouseListener(mouseAdapterUse);
 				
-				addMouseListener(mouseAdapterUse);			
+				addMouseListener(mouseAdapterUse);		
+				
+				// On est opaque (plus de bordure en dehors du panel)
+				setOpaque(true);
 			}
 		}
 		
@@ -417,16 +419,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Redessine la touche
 		 */
 		public void paintComponent(Graphics myGraphic)
-		{
+		{			
 			// Récupération du Graphics2D
 			Graphics2D g2 = (Graphics2D) myGraphic;
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			
-			// Application de la transparence
-			if (isTransparent == true)
-			{
-				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-			}
 
 			// Dessin			
 			g2.drawImage(currentImage, 0, 0, null);
@@ -445,23 +441,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{
 			this.fontSize = fontSize;
 		}		
-		
-		
-		public float getOpacity()
-		{
-			return opacity;
-		}
-
-		public void setOpacity(float opacity)
-		{
-			this.opacity = opacity;
-			repaint();
-		}
-		
-		public void setTransparent(boolean isTransparent)
-		{
-			this.isTransparent = isTransparent;
-		}
 
 		//--------------------------------------------------- METHODES PRIVEES --//
 		/**
