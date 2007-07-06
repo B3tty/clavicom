@@ -98,6 +98,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		private BufferedImage imgEntered;			// Buffer de l'image survolée
 		private BufferedImage imgPressed;			// Buffer de l'image cliquée
 		
+		private BufferedImage imgNormalBackground;	// Buffer de fond de l'image normale
+		private BufferedImage imgEnteredBackground;	// Buffer de fond de l'image survolée
+		private BufferedImage imgPressedBackground;	// Buffer de fond de l'image cliquée
 		
 		private BufferedImage currentImage;			// Buffer de l'image courante
 		
@@ -256,15 +259,15 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On recréé l'image buffer qui a été modifiée
 			if (colorType == TColorKeyEnum.NORMAL)
 			{
-				imgNormal = recreateNormalImage(getCoreKey().getColor(colorType));
+				imgNormal = recreateNormalImage(TUIKeyState.NORMAL, true);
 			}
 			else if (colorType == TColorKeyEnum.ENTERED)
 			{
-				imgEntered = recreateNormalImage(getCoreKey().getColor(colorType));
+				imgEntered = recreateNormalImage(TUIKeyState.ENTERED, true);
 			}
 			else if (colorType == TColorKeyEnum.PRESSED)
 			{
-				imgPressed = recreateNormalImage(getCoreKey().getColor(colorType));
+				imgPressed = recreateNormalImage(TUIKeyState.PRESSED, true);
 			}
 			
 			// On reselectionne la bonne image
@@ -280,7 +283,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			alertCaptionChanged();
 			
 			// On recréé les images, car la caption a changé
-			recreateNormalImages();
+			recreateNormalImages(false);
 			
 			// On reselectionne la bonne image
 			selectGoodImage();
@@ -344,13 +347,29 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		/**
 		 * Recréé l'image de fond de la couleur correspondante
 		 */
-		protected BufferedImage recreateNormalImage(Color bgdColor)
+		protected BufferedImage recreateNormalImage(TUIKeyState state, boolean recreateBackground)
 		{
 			if (getWidth() == 0 || getHeight() == 0)
 			{
 				return null;
 			}
-
+			
+			// Couleur de fond
+			Color bgdColor;
+			
+			if (state == TUIKeyState.NORMAL)
+			{
+				bgdColor = getCoreKey().getColor(TColorKeyEnum.NORMAL);
+			}
+			else if (state == TUIKeyState.ENTERED)
+			{
+				bgdColor = getCoreKey().getColor(TColorKeyEnum.ENTERED);
+			}
+			else
+			{
+				bgdColor = getCoreKey().getColor(TColorKeyEnum.PRESSED);
+			}
+			
 			// Variables
 			Graphics2D buffer;
 			BufferedImage image;
@@ -364,8 +383,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			buffer.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			
 			// Ajout du fond de la touche			
-			addPaintBackground(buffer,bgdColor);
-
+			addPaintBackground(buffer, bgdColor, recreateBackground, state);
+			
 			// Ajout de la caption
 			addPaintCaption(buffer,bgdColor);
 
@@ -419,11 +438,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Recréé les buffers des images dans chacun des états
 		 *
 		 */
-		protected void recreateNormalImages()
+		protected void recreateNormalImages(boolean recreateBackground)
 		{
-			imgNormal = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.NORMAL));
-			imgEntered = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.ENTERED));
-			imgPressed = recreateNormalImage(getCoreKey().getColor(TColorKeyEnum.PRESSED));
+			imgNormal = recreateNormalImage(TUIKeyState.NORMAL,recreateBackground);
+			imgEntered = recreateNormalImage(TUIKeyState.ENTERED,recreateBackground);
+			imgPressed = recreateNormalImage(TUIKeyState.PRESSED,recreateBackground);
 		}
 		
 		/**
@@ -433,7 +452,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{			
 			if (currentImage == null)
 			{
-				recreateNormalImages();
+				recreateNormalImages(true);
 				selectGoodImage();
 			}
 			
@@ -597,8 +616,51 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		/**
 		 * Dessine l'image de fond de la touche
 		 */
-		protected void addPaintBackground(Graphics2D bg, Color bgdColor)
+		protected void addPaintBackground(Graphics2D bg, Color bgdColor, boolean recreateBackground, TUIKeyState state)
 		{
+			if(recreateBackground == false)
+			{
+				if (state == TUIKeyState.NORMAL)
+				{
+					bg.drawImage(imgNormalBackground,0,0,null);
+				}
+				else if (state == TUIKeyState.ENTERED)
+				{
+					bg.drawImage(imgEnteredBackground,0,0,null);
+				}
+				else
+				{
+					bg.drawImage(imgPressedBackground,0,0,null);
+				}
+				
+				return;
+			}
+			
+			BufferedImage actualBackground;
+			
+
+			if (state == TUIKeyState.NORMAL)
+			{
+				imgNormalBackground = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+				actualBackground = imgNormalBackground;
+			}
+			else if (state == TUIKeyState.ENTERED)
+			{
+				imgEnteredBackground = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+				actualBackground = imgEnteredBackground;
+			}
+			else
+			{
+				imgPressedBackground = new BufferedImage(getWidth(), getHeight(),BufferedImage.TYPE_INT_ARGB);
+				actualBackground = imgPressedBackground;
+			}
+			
+			Graphics2D g2 = (Graphics2D) actualBackground.getGraphics();
+			
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			
+			
 			// Création du Paint du premier calque
 			Color vGradientStartColor, vGradientEndColor;
 			vGradientStartColor =  bgdColor.brighter();
@@ -611,10 +673,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 												getHeight(), 
 												vGradientEndColor, 
 												true);
-			bg.setPaint(vPaint);
+			g2.setPaint(vPaint);
 
 			// Dessin du premier Paint
-			bg.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
+			g2.fillRoundRect(0, 0, getWidth(), getHeight(), TAILLE_ARC, TAILLE_ARC);
 			
 			// Taille du second Layer
 			int vButtonHighlightHeight = getHeight() - (TAILLE_BORDURE_INTERIEURE * 2);
@@ -633,31 +695,34 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 										false);
 
 			// Dessin du second Paint
-			bg.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,.8f));
-			bg.setPaint(vPaint);
-			bg.setClip(new RoundRectangle2D.Float(	TAILLE_BORDURE_INTERIEURE,
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,.8f));
+			g2.setPaint(vPaint);
+			g2.setClip(new RoundRectangle2D.Float(	TAILLE_BORDURE_INTERIEURE,
 													TAILLE_BORDURE_INTERIEURE,
 													vButtonHighlightWidth,
 													vButtonHighlightHeight/2, 
 													TAILLE_ARC_INTERNE,TAILLE_ARC_INTERNE));
 			
-			bg.fillRoundRect(	TAILLE_BORDURE_INTERIEURE,
+			g2.fillRoundRect(	TAILLE_BORDURE_INTERIEURE,
 								TAILLE_BORDURE_INTERIEURE,
 								vButtonHighlightWidth,
 								vButtonHighlightHeight,
 								TAILLE_ARC_INTERNE,TAILLE_ARC_INTERNE);
 			
 			// Dessin du contour
-			bg.setColor(bgdColor.darker());
-			bg.setStroke(new BasicStroke(TAILLE_CONTOUR));
+			g2.setColor(bgdColor.darker());
+			g2.setStroke(new BasicStroke(TAILLE_CONTOUR));
 			
-			bg.setClip(0, 0, getWidth(), getHeight());
+			g2.setClip(0, 0, getWidth(), getHeight());
 			
-			bg.drawRoundRect(	TAILLE_CONTOUR/2, 
+			g2.drawRoundRect(	TAILLE_CONTOUR/2, 
 								TAILLE_CONTOUR/2, 
 								getWidth()-TAILLE_CONTOUR, 
 								getHeight()-TAILLE_CONTOUR,
 								TAILLE_ARC_CONTOUR,TAILLE_ARC_CONTOUR);
+			
+			// Dessin
+			bg.drawImage(actualBackground,0,0,null);			
 		}
 		
 		/**
@@ -788,18 +853,18 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 		}
 		
-		/**
-		 * Recréé les images et selectionne la bonne
-		 *
-		 */		
-		public void updateKey()
-		{
-			if(editable)
-				return;
-			
-			recreateNormalImages();
-			selectGoodImage();
-		}
+//		/**
+//		 * Recréé les images et selectionne la bonne
+//		 *
+//		 */		
+//		public void updateKey()
+//		{
+//			if(editable)
+//				return;
+//			
+//			recreateNormalImages();
+//			selectGoodImage();
+//		}
 		
 		/**
 		 * Selectionne la bonne image courante
@@ -882,7 +947,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				public void actionPerformed(ActionEvent event)
 				{
 					resizeTimer.stop();
-					recreateNormalImages();
+					recreateNormalImages(true);
 					selectGoodImage();
 					repaint();
 				}
