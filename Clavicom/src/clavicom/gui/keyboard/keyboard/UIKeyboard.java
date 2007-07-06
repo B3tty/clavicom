@@ -599,9 +599,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 	}
 	
+	static int cpt;
 	@Override
 	public void paint(Graphics arg0)
 	{
+		System.out.println("---- START ---" + ++cpt);
 		// On paint le composant
 		paintComponent(arg0);
 		
@@ -612,6 +614,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		paintChildren(arg0);
 		
 		super.paint(arg0);
+		System.out.println("---- STOP ---" + cpt);
 	}
 	
 	public void paintComponent(Graphics myGraphic)
@@ -634,7 +637,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		{
 			g2.drawImage(imgGrid, 0, 0, null);
 		}
-	}	
+	}
 	
 	//-----------------------------------------------------------------------
 	// Méthodes de réaction à la selection de key
