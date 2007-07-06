@@ -525,7 +525,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			if( ! mouseExited )
 			{
 				// On avertit le noyau du clic
-				getCoreKey().Click();
+				clickCoreKey();
 				
 				// si la touche est holdable et dans l'état PRESSED
 				// il ne faut pas changer d'état
@@ -550,6 +550,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// On force le redessin
 				repaint();
 			}
+		}
+		
+		protected void clickCoreKey()
+		{
+			getCoreKey().Click();
 		}
 
 		//-----------------------------------------------------------------------

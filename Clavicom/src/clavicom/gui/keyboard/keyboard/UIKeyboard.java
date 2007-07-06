@@ -37,15 +37,15 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
 import clavicom.CFilePaths;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
@@ -83,6 +83,7 @@ import clavicom.gui.keyboard.key.UIKeyShortcut;
 import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
+import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
@@ -468,7 +469,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		// Ajout des listeners
 		addKeyListener(keyListener);
-		addMouseListener(mouseListener);
+		addMouseListener(mouseAdapter);
 		
 		// Maj des keys
 		updateEdit(true);
@@ -505,7 +506,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		// Ajout des listeners
 		removeKeyListener(keyListener);
-		removeMouseListener(mouseListener);
+		removeMouseListener(mouseAdapter);
 		
 		// Changement de l'état
 		isEdited = false;
@@ -603,7 +604,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	@Override
 	public void paint(Graphics arg0)
 	{
-		System.out.println("---- START ---" + ++cpt);
 		// On paint le composant
 		paintComponent(arg0);
 		
@@ -614,7 +614,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		paintChildren(arg0);
 		
 		super.paint(arg0);
-		System.out.println("---- STOP ---" + cpt);
 	}
 	
 	public void paintComponent(Graphics myGraphic)
@@ -900,88 +899,95 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	 */
 	private void deleteSelectedKeys()
 	{
-		System.out.println("UIKeyboard.deleteSelectedKeys");
-		List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
-		List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
-		List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
-		
-		// Suppression des listes
-		allKeys.removeAll(selectedKeys);
-		threeLevelKeys.removeAll(selectedKeys);
-		unClassedKey.removeAll(selectedKeys);
-		
-		for (UIKeyKeyboard currentKey : selectedKeys)
-		{						
-			// Suppression du panel
-			remove(currentKey);
-		}
-		
-		// On parcours les groupes...
-		for(UIKeyGroup currentGroup : keyGroups)
+		// on demande à l'utilisateur s'il comfirma la suppression
+		if( JOptionPane.showConfirmDialog(
+				this, 
+				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY"), 
+				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY_TITLE"), 
+				JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
 		{
-			// ..les listes...
-			for(UIKeyList currentList : currentGroup.getKeyLists())
+			List<UIKeyGroup> uiGroupsToDelete = new ArrayList<UIKeyGroup>();
+			List<UIKeyList> uiListsToDelete = new ArrayList<UIKeyList>();
+			List<UIKey> uiKeysToDelete = new ArrayList<UIKey>();
+			
+			// Suppression des listes
+			allKeys.removeAll(selectedKeys);
+			threeLevelKeys.removeAll(selectedKeys);
+			unClassedKey.removeAll(selectedKeys);
+			
+			for (UIKeyKeyboard currentKey : selectedKeys)
+			{						
+				// Suppression du panel
+				remove(currentKey);
+			}
+			
+			// On parcours les groupes...
+			for(UIKeyGroup currentGroup : keyGroups)
 			{
-				/// ...et les keys
-				for(UIKeyKeyboard currentKey : currentList.getKeys())
+				// ..les listes...
+				for(UIKeyList currentList : currentGroup.getKeyLists())
 				{
-					// On regarde si la key de la liste est une des keys à 
-					// supprimer
-					if(selectedKeys.contains(currentKey))
+					/// ...et les keys
+					for(UIKeyKeyboard currentKey : currentList.getKeys())
+					{
+						// On regarde si la key de la liste est une des keys à 
+						// supprimer
+						if(selectedKeys.contains(currentKey))
+						{
+							// UI
+							uiKeysToDelete.add(currentKey);
+							
+							// Noyau
+							currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
+						}
+					}
+					
+					// On supprime la liste si elle est vide
+					if (currentList.getCoreKeyList().keyCount() == 0)
 					{
 						// UI
-						uiKeysToDelete.add(currentKey);
+						uiListsToDelete.add(currentList);
 						
 						// Noyau
-						currentList.getCoreKeyList().removeKey(currentKey.getCoreKey());
+						currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
 					}
 				}
 				
-				// On supprime la liste si elle est vide
-				if (currentList.getCoreKeyList().keyCount() == 0)
+				// On supprime le groupe si il est vide
+				if (currentGroup.getCoreKeyGroup().listCount() == 0)
 				{
 					// UI
-					uiListsToDelete.add(currentList);
+					uiGroupsToDelete.add(currentGroup);
 					
 					// Noyau
-					currentGroup.getCoreKeyGroup().removeList(currentList.getCoreKeyList());
+					coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
 				}
-			}
+			}		
 			
-			// On supprime le groupe si il est vide
-			if (currentGroup.getCoreKeyGroup().listCount() == 0)
+			// Suppression des objets interface
+			for(UIKeyGroup currentGroup : keyGroups)
 			{
-				// UI
-				uiGroupsToDelete.add(currentGroup);
 				
-				// Noyau
-				coreKeyboard.removeKeyGroup(currentGroup.getCoreKeyGroup());
-			}
-		}		
-		
-		// Suppression des objets interface
-		for(UIKeyGroup currentGroup : keyGroups)
-		{
-			
-			for(UIKeyList currentList : currentGroup.getKeyLists())
-			{
-				// Les touches
-				currentList.removeKeys(uiKeysToDelete);
+				for(UIKeyList currentList : currentGroup.getKeyLists())
+				{
+					// Les touches
+					currentList.removeKeys(uiKeysToDelete);
+				}
+				
+				// les listes
+				currentGroup.removeLists(uiListsToDelete);
 			}
 			
-			// les listes
-			currentGroup.removeLists(uiListsToDelete);
+			// On vide la liste des selectionnées
+			selectedKeys.clear();
+			
+			// Les groupes
+			keyGroups.removeAll(uiGroupsToDelete);		
+			
+			// On redessine		
+			revalidate();
+			repaint();
 		}
-		
-		// On vide la liste des selectionnées
-		selectedKeys.clear();
-		
-		// Les groupes
-		keyGroups.removeAll(uiGroupsToDelete);		
-		
-		// On redessine		
-		revalidate();
-		repaint();
 	}
 	
 	private void unselectAllKeys()
@@ -1060,25 +1066,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 	};
 	
-	private MouseListener mouseListener = new MouseListener()
+	private MouseAdapter mouseAdapter = new MouseAdapter()
 	{
-
-		public void mouseClicked(MouseEvent arg0)
-		{
-			// Rien à faire		
-		}
-
 		public void mouseEntered(MouseEvent arg0)
 		{
 			if(isEdited == true)
 			{
 				requestFocus();
 			}
-		}
-
-		public void mouseExited(MouseEvent arg0)
-		{
-			// Rien à faire			
 		}
 
 		public void mousePressed(MouseEvent arg0)
@@ -1093,12 +1088,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			unselectAllKeys();
 			//repaint();
 		}
-
-		public void mouseReleased(MouseEvent arg0)
-		{
-			// Rien à faire			
-		}
-
 	};
 
 	public void onClickKeyCreation(TEnumCreationKey keyType)

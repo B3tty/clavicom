@@ -29,6 +29,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JColorChooser;
@@ -81,7 +82,7 @@ public class PanelModificationProfilKeyboardColor extends
 		
 
 		panelBackColor = new TColorPanel();
-		panelBackColor.addMouseListener( new MouseListener()
+		panelBackColor.addMouseListener( new MouseAdapter()
 		{
 
 			public void mouseClicked(MouseEvent e)
@@ -99,31 +100,6 @@ public class PanelModificationProfilKeyboardColor extends
 					}
 				}
 			}
-
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseExited(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
 		});
 
 		DisplayColor(
@@ -133,7 +109,7 @@ public class PanelModificationProfilKeyboardColor extends
 				panel);
 
 		panelNormal = new TColorPanel();
-		panelNormal.addMouseListener( new MouseListener()
+		panelNormal.addMouseListener( new MouseAdapter()
 		{
 
 			public void mouseClicked(MouseEvent e)
@@ -152,31 +128,6 @@ public class PanelModificationProfilKeyboardColor extends
 					}
 				}
 			}
-
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseExited(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-			
 		});
 		
 		DisplayColor(panelNormal, UIString
@@ -184,7 +135,7 @@ public class PanelModificationProfilKeyboardColor extends
 				panel);
 
 		panelEnteredColor = new TColorPanel();
-		panelEnteredColor.addMouseListener( new MouseListener()
+		panelEnteredColor.addMouseListener( new MouseAdapter()
 		{
 
 			public void mouseClicked(MouseEvent e)
@@ -202,30 +153,6 @@ public class PanelModificationProfilKeyboardColor extends
 						panelEnteredColor.setBackground(newColor);
 					}
 				}
-			}
-
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseExited(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
 			}
 
 		});

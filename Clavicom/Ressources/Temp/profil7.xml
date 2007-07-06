@@ -40,7 +40,7 @@
     <rollover active="true" />
     <mouse_speed value="14" />
     <click_tempo value="739" />
-    <defil_tempo value="1147" />
+    <defil_tempo value="1032" />
   </navigation>
   <font>
     <name>Arial</name>
@@ -71,12 +71,12 @@
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.6546875</x>
-        <y>0.5390625</y>
+        <x>0.01015625</x>
+        <y>0.10058594</y>
       </left_up>
       <right_down>
-        <x>0.975</x>
-        <y>0.9404297</y>
+        <x>0.33046874</x>
+        <y>0.5019531</y>
       </right_down>
     </souricom_frame_position>
     <start_with_os>false</start_with_os>
@@ -114,12 +114,12 @@
             </color_entered>
           </colors>
           <caption_level_1>Echap</caption_level_1>
-          <caption_level_2 />
-          <caption_level_3 />
+          <caption_level_2>Echap</caption_level_2>
+          <caption_level_3>Echap</caption_level_3>
           <commands>
             <command_normal id="62" />
-            <command_shift id="" />
-            <command_altgr id="" />
+            <command_shift id="62" />
+            <command_altgr id="62" />
           </commands>
         </keycharacter>
       </keylist>

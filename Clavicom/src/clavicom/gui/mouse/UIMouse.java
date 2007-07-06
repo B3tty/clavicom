@@ -590,6 +590,10 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		selectedList.add(moveMouseMode);
 		selectedList.add(switchMouseKeyboard);
 		
+		// on désélection toutes les key (au cas où il y en aurait une déjà séléctionnée)
+		for(UIKey uiKey : selectedList)
+			uiKey.forceState( TUIKeyState.NORMAL );
+		
 		indexSelectedKey = selectedList.size() - 1;
 		
 		panelHaut.revalidate();
@@ -621,6 +625,10 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 			selectedList.add(clickMouseMode);
 		}
 		selectedList.add(switchMouseKeyboard);
+		
+		// on désélection toutes les key (au cas où il y en aurait une déjà séléctionnée)
+		for(UIKey uiKey : selectedList)
+			uiKey.forceState( TUIKeyState.NORMAL );
 
 		
 		if( dragAndDropMode )

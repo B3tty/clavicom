@@ -151,7 +151,12 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// virtual pointer, en faisant le clique puis en replacant la
 		// souris sur le panel des bouttons pour garder le focus
 		
-		
+		// si on est pas en mode défilement, on ne fait rien
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
+		{
+			
+			return;
+		}
 
 		// on regarde quel movement il veut faire
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )
