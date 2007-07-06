@@ -31,15 +31,17 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
+
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+
 import clavicom.CFilePaths;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TSwingUtils;
@@ -314,22 +316,37 @@ public class UILevelList extends JPanel
 		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		// listener sur le mouse entered pour reséléctionner
-		// l'élément déjà séléctionné
-		list.addMouseListener( new MouseAdapter() 
+		list.addMouseListener( new MouseListener() 
 		{
 
+			public void mouseClicked(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
 
 			public void mouseEntered(MouseEvent e)
 			{
-				// on simule la séléction dans la liste
-				Object object = list.getSelectedValue();
-				if( object != null )
-				{
-					list.clearSelection();
-					list.setSelectedValue(object, true);
-				}
 			}
 
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
 		
 		// Création

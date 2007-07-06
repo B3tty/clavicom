@@ -75,7 +75,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
 													// images est lancé, pendant un resize	
 		
-		final int CAPTION_IMAGE_BORDER_RELATIVE = 0;	// Taille de la bordure de l'image
+		final int CAPTION_IMAGE_BORDER_RELATIVE = 1;	// Taille de la bordure de l'image
 		
 		final int CAPTION_IMAGE_BORDER_SIZE = 	CAPTION_IMAGE_BORDER_RELATIVE + // Taille de la bordure de l'image, tout compris
 												TAILLE_BORDURE_INTERIEURE;
@@ -395,8 +395,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Appelé lors du redimensionnement du composant
 		 */
 		public void componentResized(ComponentEvent e)
-		{	
-			if(getWidth() <= 0 || getHeight() <= 0)
+		{				
+			if((!editable && !(this instanceof UIKeyCreation)) || getWidth() <= 0 || getHeight() <= 0)
 				return;
 			
 			// On ettend l'image
@@ -717,6 +717,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// Dessin
 			bg.drawImage(actualBackground,0,0,null);			
+		}
+		
+		/**
+		 * Méthode appelée lorsque les dimensions de la touche ont changé
+		 *
+		 */
+		public void boundsUpdated()
+		{
+			recreateNormalImages(true);
+			selectGoodImage();
 		}
 		
 		/**

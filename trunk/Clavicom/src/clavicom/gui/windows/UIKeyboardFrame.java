@@ -69,9 +69,11 @@ import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
+import clavicom.gui.keyboard.keyboard.UIGridModifier;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
+import clavicom.gui.listener.UIGridChangedListener;
 import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIMovingPanel;
@@ -89,7 +91,8 @@ implements UIKeyboardSelectionChanged,
 ComponentListener, 
 UIKeyboardNewKeyCreated, 
 WindowListener,
-KeyEventDispatcher
+KeyEventDispatcher,
+UIGridChangedListener
 {
 
 
@@ -139,6 +142,9 @@ KeyEventDispatcher
 	UIPanelOptionKeyLauncher panelOptionKeyLauncher;
 	UIPanelOptionKeyShortCut panelOptionKeyShortcut;
 	UIPanelOptionKeyString panelOptionKeyString;
+	
+	// Panel de modification de grid
+	UIGridModifier gridModifier;
 	
 	// Engine
 	DefilementKeyEngine defilEngine;
@@ -233,8 +239,8 @@ KeyEventDispatcher
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            90,							// Taille horizontale relative
-	            5,							// Taille verticale relative
+	            69,							// Taille horizontale relative
+	            15,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(PANEL_TOOLBAR_UP_SPACE, PANEL_TOOLBAR_LEFT_SPACE, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		// Espace autours (haut, gauche, bas, droite)
@@ -243,14 +249,31 @@ KeyEventDispatcher
 	    );
 		gbLayoutMain.setConstraints(panelToolbar, gbConstToolbar);
 
-		// Contraintes du panel de boutons
-		GridBagConstraints gbConstBoutons = new GridBagConstraints (	
+		// Contraintes du panel de grid modifier
+		GridBagConstraints gbConstGrid = new GridBagConstraints (	
 				1,							// Numéro de colonne
 	            0,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            10,							// Taille horizontale relative
-	            5,							// Taille verticale relative
+	            6,							// Taille horizontale relative
+	            15,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            							// Espace autours (haut, gauche, bas, droite)
+	            new Insets(PANEL_TOOLBAR_UP_SPACE, 0, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(gridModifier, gbConstGrid);
+		
+		// Contraintes du panel de boutons
+		GridBagConstraints gbConstBoutons = new GridBagConstraints (	
+				2,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            25,							// Taille horizontale relative
+	            15,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            							// Espace autours (haut, gauche, bas, droite)
@@ -264,10 +287,10 @@ KeyEventDispatcher
 		GridBagConstraints gbConstKeyboard = new GridBagConstraints (	
 				0,							// Numéro de colonne
 	            1,							// Numéro de ligne
-	            2,							// Nombre de colonnes occupées
+	            3,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            95,						// Taille horizontale relative
-	            90,							// Taille verticale relative
+	            100,						// Taille horizontale relative
+	            85,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
 	            new Insets(0, 0, 0, 0),		// Espace autours (haut, gauche, bas, droite)
@@ -321,6 +344,16 @@ KeyEventDispatcher
 		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
 		btOpenLevelManager = new JButton(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER"));
 		
+		btFermerModeEdition.setMinimumSize(new Dimension(0,0));
+		btOptionsApplication.setMinimumSize(new Dimension(0,0));
+		btEditionKey.setMinimumSize(new Dimension(0,0));
+		btOpenLevelManager.setMinimumSize(new Dimension(0,0));
+		
+		btFermerModeEdition.setPreferredSize(new Dimension(0,0));
+		btOptionsApplication.setPreferredSize(new Dimension(0,0));
+		btEditionKey.setPreferredSize(new Dimension(0,0));
+		btOpenLevelManager.setPreferredSize(new Dimension(0,0));
+		
 		// Ajout des tooltips
 		btFermerModeEdition.setToolTipText(UIString.getUIString("LB_EDITION_CLOSE_EDITION_TOOLTIP"));
 		btOptionsApplication.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_OPTIONS_TOOLTIP"));
@@ -336,6 +369,11 @@ KeyEventDispatcher
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor());
 		
+		// Controleur de grid
+		gridModifier = new UIGridModifier(panelKeyboard.getMagnetGrid());
+		gridModifier.addGridChangedListener(this);
+		
+		gridModifier.setValues(10, 10, true);
 	}
 	
 	/**
@@ -345,6 +383,7 @@ KeyEventDispatcher
 	{	
 		// Frame principale
 		mainPanel.add(panelToolbar);
+		mainPanel.add(gridModifier);
 		mainPanel.add(panelBoutons);
 		mainPanel.add(panelKeyboard);
 		
@@ -413,6 +452,7 @@ KeyEventDispatcher
 			setAlwaysOnTop(false);
 			
 			panelToolbar.setVisible(true);
+			gridModifier.setVisible(true);
 			panelBoutons.setVisible(true);
 			
 			stopDefilMode();
@@ -433,6 +473,7 @@ KeyEventDispatcher
 			
 			panelToolbar.setVisible(false);
 			panelBoutons.setVisible(false);
+			gridModifier.setVisible(false);
 			
 			// désabonnement a tous les moteurs
 			panelKeyboard.unListenAllKeyKeyboard();
@@ -445,7 +486,7 @@ KeyEventDispatcher
 		
 		
 		mainPanel.revalidate();
-		//repaint();
+		repaint();
 	}
 	
 	/**
@@ -717,5 +758,17 @@ KeyEventDispatcher
 	{
 		//KeyboardFocusManager.getCurrentKeyboardFocusManager().dispatchKeyEvent(e);
 		return false;
+	}
+
+	public void gridChanged()
+	{
+		panelKeyboard.recreateGrid();
+		panelKeyboard.repaint();		
+	}
+
+	public void gridUsed(boolean used)
+	{
+		panelKeyboard.useMagnetGrid(used);
+		panelKeyboard.repaint();
 	}
 }

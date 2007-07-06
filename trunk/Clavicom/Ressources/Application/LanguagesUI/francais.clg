@@ -418,6 +418,11 @@
 	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_1">La touche "</message>
 	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_2">" n'a pas pu être classée.</message>
 	
+	<!-- Grid modifier -->
+	<message id = "LB_GRID_MODIFIER_MAIN">Grille</message>
+	<message id = "LB_GRID_MODIFIER_VERTICAL">V</message>
+	<message id = "LB_GRID_MODIFIER_HORIZONTAL">H</message>
+	
 	<!-- Key creation -->
 	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
 	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>

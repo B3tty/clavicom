@@ -62,6 +62,7 @@ public abstract class UIJResizer extends JComponent
 	protected EventListenerList listeners;
 	
 	protected UIMagnetGrid magnetGrid;				// Grille aimantée 
+	protected boolean magnetGridUsed;				// Indique si on utilise la grille aimantée
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIJResizer()
@@ -82,6 +83,13 @@ public abstract class UIJResizer extends JComponent
 		this.magnetGrid = magnetGrid; 
 	}
 	
+	public void setMagnetGridUsed(boolean magnetGridUsed)
+	{
+		this.magnetGridUsed = magnetGridUsed; 
+	}
+	
+	
+	
 	public Point getNearestCorner (Point actualPoint)
 	{
 		// Création de la liste
@@ -101,15 +109,15 @@ public abstract class UIJResizer extends JComponent
 		allPoints.add(new Point(0,midHeight));			// Ouest
 		
 		// Recherche du point le plus près
-		double minDistance = midWidth + midHeight;
-		double actualDistance;
+		double minDistance = magnetGrid.getVerticalStep() + magnetGrid.getHorizontalStep();
+		double actualDistance = -1;
 		
 		Point nearestPoint = null;
 		for (Point currentPoint : allPoints)
 		{
 			actualDistance = actualPoint.distance(currentPoint);
 			
-			if(actualDistance < minDistance)
+			if(actualDistance <= minDistance || actualDistance == -1)
 			{
 				nearestPoint = currentPoint;
 				minDistance = actualDistance;
@@ -262,11 +270,12 @@ public abstract class UIJResizer extends JComponent
 				int dy = 0;
 				
 				mousePoint = me.getPoint();
-				mouseNearestCorner = getNearestCorner(mousePoint);
 				
-				if(magnetGrid != null)
+				if(magnetGridUsed == true)
 				// Gestion avec les grilles
 				{ 
+					mouseNearestCorner = getNearestCorner(mousePoint);
+					
 					// Récupération de la souris dans les coordonnées du père
 					mousePointParent = getParent().getMousePosition();
 
@@ -286,6 +295,8 @@ public abstract class UIJResizer extends JComponent
 				}
 				else
 				{
+					mouseNearestCorner = mousePoint;
+					
 					dx = (int)mouseNearestCorner.getX() - startPos.x;
 					dy = (int)mouseNearestCorner.getY() - startPos.y;
 				}
