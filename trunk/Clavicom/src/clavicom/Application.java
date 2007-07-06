@@ -51,6 +51,7 @@ import clavicom.gui.engine.sound.ThreadSound;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.message.UIMessageEngine;
+import clavicom.gui.mouse.MouseMoveEngine;
 import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
@@ -199,6 +200,10 @@ public class Application
 		splash.newStep("Loading sound engine...");
 		loadSoundEngine();
 		
+		// Chargement du moteur de déplacement de la souricom
+		splash.newStep("Loading mouse move engine...");
+		loadMouseMoveEngine();
+		
 		// Fin du chargement
 		splash.newStep("Load complete !");
 		splash.close();
@@ -221,12 +226,7 @@ public class Application
 	//-----------------------------------------------------------------------
 	// Chargement
 	//-----------------------------------------------------------------------
-	
 
-
-	
-
-	
 
 	private static void LaunchNavigationMode()
 	{
@@ -252,6 +252,8 @@ public class Application
 	{
 		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard());
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
+		
+		toolMessageEngine.setUiKeyboardFrame( keyboardFrame );
 		
 		
 		try
@@ -351,6 +353,16 @@ public class Application
 		toolMessageEngine = new UIMessageEngine();
 	}
 	
+	public static UIKeyboardFrame getKeyboardFrame()
+	{
+		return keyboardFrame;
+	}
+
+	public static void setKeyboardFrame(UIKeyboardFrame keyboardFrame)
+	{
+		Application.keyboardFrame = keyboardFrame;
+	}
+
 	private static void loadSettings()
 	{
 		try
@@ -626,6 +638,11 @@ public class Application
 	private static void loadTemporisationClickEngine()
 	{
 		ClickTemporiseEngine.createInstance();
+	}
+	
+	private static void loadMouseMoveEngine()
+	{
+		MouseMoveEngine.createInstance( mouseFrame.getUiMouse(), mouseFrame );
 	}
 
 }

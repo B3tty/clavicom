@@ -173,11 +173,15 @@ public class CLevelEngine implements OnClickKeyLevelListener
 			{
 				alwaysHoldableList.add( keyLevel );
 			}
-			
 		}
 		
-		// Si le level est le même, on repasse au level normal
-		if( keyLevel.GetLevel() == currentLevel )
+
+		
+		// Si le level est le même et si c'est pas une touche isAlwaysHoldable, 
+		// on repasse au level normal
+		if( (keyLevel.GetLevel() == currentLevel)
+				&&
+			( ! keyLevel.isAlwaysHoldable() ) )
 		{
 			// mais il existe des always holdable keys, on met le niveau à celle-là
 			if( alwaysHoldableList.size() > 0 )
@@ -205,7 +209,7 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		return currentLevel;
 	}
 
-	public void setCurrentLevel(TLevelEnum myCurrentLevel)
+	public void setCurrentLevel(TLevelEnum myCurrentLevel, boolean force )
 	{
 		
 		// si le level est le même que celui courant, on ne fait rien
@@ -219,7 +223,15 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		{
 			if( alwaysHoldableList.size() > 0 )
 			{
-				this.currentLevel = alwaysHoldableList.get(0).GetLevel();
+				if( force )
+				{
+					this.currentLevel = myCurrentLevel;
+					alwaysHoldableList.clear();
+				}
+				else
+				{
+					this.currentLevel = alwaysHoldableList.get(0).GetLevel();
+				}
 			}
 			else
 			{

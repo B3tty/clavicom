@@ -53,6 +53,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JSlider sliderTempoClic;
 	JSlider sliderMouseSpeed;
 	JCheckBox rollOver;
+	JCheckBox mouseMoveOnEntered;
 	JLabel labelTempoDefil;
 	JLabel labelTempoClic;
 	JLabel labelTempoSouriom;
@@ -99,6 +100,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoClic.setValue( navigation.getTemporisationClic() );
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
 		rollOver.setSelected( navigation.isRolloverActive() ); 
+		mouseMoveOnEntered.setSelected( navigation.isMoveMouseOnEntered() ); 
 	}
 
 	private void LoadComponents()
@@ -190,6 +192,12 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 		rollOver = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
 		panelGlobal.add( rollOver );
+		
+		// ========================================================================
+		// Séléction du mouseMoveOnEntered ou non
+		// ========================================================================
+		mouseMoveOnEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED"), navigation.isMoveMouseOnEntered() );
+		panelGlobal.add( mouseMoveOnEntered );
 
 		// ========================================================================
 		// Séléction de la temporisation du clic de la souricom
@@ -225,6 +233,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		rollOver.setLocation( 16, 300 );
 		
+		mouseMoveOnEntered.setLocation( 60, 220 );
+		
 		labelTempoSouriom.setLocation( 20, 330 );
 		sliderMouseSpeed.setLocation( 10, 360 );
 
@@ -247,6 +257,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderTempoDefil.setSize( 300, 50 );
 		
 		rollOver.setSize( 400, 30 );
+		mouseMoveOnEntered.setSize( 500, 30 );
 		
 		labelTempoSouriom.setSize( 200, 30 );
 		sliderMouseSpeed.setSize( 300, 50 );
@@ -293,6 +304,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		labelTempoClic.setEnabled( true );
 		labelTempoDefil.setEnabled( false );
+		
+		mouseMoveOnEntered.setEnabled( false );
 	}
 
 
@@ -305,6 +318,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( true );
 		
+		mouseMoveOnEntered.setEnabled( true );
+		
 	}
 
 
@@ -316,6 +331,8 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( false );
+		
+		mouseMoveOnEntered.setEnabled( false );
 	}
 
 
@@ -386,6 +403,15 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		{
 			if ( saveData )
 				navigation.setRolloverActive( rollOver.isSelected() );
+			
+			retour = true;
+		}
+		
+		// mouseMoveOnEntered
+		if( mouseMoveOnEntered.isSelected() != navigation.isMoveMouseOnEntered() )
+		{
+			if ( saveData )
+				navigation.setMoveMouseOnEntered( mouseMoveOnEntered.isSelected() );
 			
 			retour = true;
 		}

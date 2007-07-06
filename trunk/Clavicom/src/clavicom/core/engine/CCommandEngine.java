@@ -249,10 +249,8 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			// on vide la liste des touche holdable
 			holdKey.clear();
 			
-
 			// on change le level, on se remet en normal
-			CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
-			
+			CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL, false );
 			
 			// on prévient l'UI pour que les holdKeys soient déséléctionnées
 			fireReleaseHoldableKeys();

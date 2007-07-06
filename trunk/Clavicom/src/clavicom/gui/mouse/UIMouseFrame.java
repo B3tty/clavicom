@@ -36,7 +36,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TSize;
 
-public class UIMouseFrame extends UITranslucentFrame
+public class UIMouseFrame extends UITranslucentFrame 
 {
 	
 	//--------------------------------------------------------- CONSTANTES --//
@@ -69,7 +69,8 @@ public class UIMouseFrame extends UITranslucentFrame
 		setBounds( TSize.getRectangleBound( souricomPosition.getLeftUp(), souricomPosition.getRightDown() ) );
 		
 		UIMovingPanel movingPanel = new UIMovingPanel( this );
-		movingPanel.setLayout( new BorderLayout() );
+		BorderLayout myBorderLayout = new BorderLayout();
+		movingPanel.setLayout( myBorderLayout );
 		movingPanel.setEditable( true );
 		movingPanel.add( uiMouse, BorderLayout.CENTER );
 
@@ -87,8 +88,7 @@ public class UIMouseFrame extends UITranslucentFrame
 		
 		
 	}
-	
-	
+
 	
 	@Override
 	public void setVisible(boolean b)

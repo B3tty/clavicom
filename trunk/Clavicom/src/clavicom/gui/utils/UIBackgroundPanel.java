@@ -46,7 +46,8 @@ public class UIBackgroundPanel extends JPanel
 
 	//---------------------------------------------------------- VARIABLES --//	
 
-	//------------------------------------------------------ CONSTRUCTEURS --//	
+	//------------------------------------------------------ CONSTRUCTEURS --//
+
 
 	//----------------------------------------------------------- METHODES --//
 	protected BufferedImage recreateBackground()

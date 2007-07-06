@@ -93,6 +93,7 @@ import clavicom.tools.TNavigationType;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TPoint;
+import clavicom.tools.TUIKeyState;
 
 public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener, ReleaseHoldableKeysListener
 {
@@ -505,7 +506,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		isEdited = true;
 		
 		// on change le level, on se remet en normal
-		CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
+		CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL, true );
 		CCommandEngine.getInstance().ClearHoldKey();
 		releasedHoldableKeys();
 		
@@ -520,6 +521,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			SoundEngine.getInstance().unListenEntered( this );
 			SoundEngine.getInstance().unListenDefilement( );
 		}
+		
+		// on relève toutes les keys
+		releasedAllKeys();
 		
 	}
 	
@@ -580,6 +584,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				SoundEngine.getInstance().unListenDefilement( );
 			}
 		}
+		
 	}
 	
 	public void select(boolean select)
@@ -1526,6 +1531,15 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 					uiKeyKeyboard.setClicked( false );
 				}
 			}
+		}
+	}
+	
+	public void releasedAllKeys()
+	{
+		for( UIKeyKeyboard uiKeyKeyboard : allKeys )
+		{
+			// on la désélectionne
+			uiKeyKeyboard.setState( TUIKeyState.NORMAL );
 		}
 	}
 	
