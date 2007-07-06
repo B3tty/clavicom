@@ -27,8 +27,8 @@ package clavicom.gui.edition.key;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
@@ -38,7 +38,7 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TColorPanel;
 
-public class UIPanelOptionColor extends JPanel implements MouseListener
+public class UIPanelOptionColor extends JPanel
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -60,7 +60,46 @@ public class UIPanelOptionColor extends JPanel implements MouseListener
 		colorPanel.setPreferredSize( new Dimension(30,20) );		
 		add( colorPanel );
 		
-		colorPanel.addMouseListener( this );
+		colorPanel.addMouseListener( new MouseAdapter()
+		{
+			public void mouseClicked(MouseEvent e)
+			{
+				if((selectedKeys == null) && (key != null))
+					// Selection unique
+					{
+						Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
+
+						if( newColor !=  null )
+						{
+							if( newColor != key.getColor( colorEnum ) )
+							{
+								// la couleur à changé
+								key.setColor( newColor, colorEnum );
+
+								colorPanel.setBackground( newColor );
+							}
+						}
+					}
+					else if ((selectedKeys != null) && (key == null))
+					// Selection multiple
+					{
+						Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), Color.WHITE );
+
+						if( newColor !=  null )
+						{
+							for (CKey currentKey : selectedKeys)
+							{
+								if( newColor != currentKey.getColor( colorEnum ) )
+								{
+									// la couleur à changé
+									currentKey.setColor( newColor, colorEnum );
+								}
+							}
+						}
+						colorPanel.setBackground( newColor );
+					}
+			}
+		});
 	}
 	
 	public void setValues(List<CKey> selectedKeys, TColorKeyEnum myColorEnum)
@@ -81,68 +120,6 @@ public class UIPanelOptionColor extends JPanel implements MouseListener
 		colorPanel.setBackground( key.getColor( colorEnum ) );
 	}
 
-
-	public void mouseClicked(MouseEvent e)
-	{
-		if((selectedKeys == null) && (key != null))
-			// Selection unique
-			{
-				Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), key.getColor( colorEnum ) );
-
-				if( newColor !=  null )
-				{
-					if( newColor != key.getColor( colorEnum ) )
-					{
-						// la couleur à changé
-						key.setColor( newColor, colorEnum );
-
-						colorPanel.setBackground( newColor );
-					}
-				}
-			}
-			else if ((selectedKeys != null) && (key == null))
-			// Selection multiple
-			{
-				Color newColor = JColorChooser.showDialog( UIPanelOptionColor.this, UIString.getUIString("LB_CHOOSE_COLOR"), Color.WHITE );
-
-				if( newColor !=  null )
-				{
-					for (CKey currentKey : selectedKeys)
-					{
-						if( newColor != currentKey.getColor( colorEnum ) )
-						{
-							// la couleur à changé
-							currentKey.setColor( newColor, colorEnum );
-						}
-					}
-				}
-				colorPanel.setBackground( newColor );
-			}
-	}
-
-	public void mouseEntered(MouseEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseExited(MouseEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mousePressed(MouseEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
 
 	//----------------------------------------------------------- METHODES --//
 	

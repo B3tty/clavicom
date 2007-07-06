@@ -32,8 +32,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
@@ -553,7 +553,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	
 	
 	
-	class MouseListenerBackGroundColor implements MouseListener
+	class MouseListenerBackGroundColor extends MouseAdapter
 	{
 
 		public void mouseClicked(MouseEvent e)
@@ -567,30 +567,6 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 					panelColor.setBackground( newColor );
 				}
 			}
-		}
-
-		public void mouseEntered(MouseEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void mouseExited(MouseEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void mousePressed(MouseEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		public void mouseReleased(MouseEvent e)
-		{
-			// TODO Auto-generated method stub
-			
 		}
 
 	}

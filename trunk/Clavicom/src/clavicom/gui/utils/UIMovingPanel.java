@@ -104,10 +104,6 @@ public class UIMovingPanel extends JPanel
 	
 	MouseInputListener resizeMouseListener = new MouseInputAdapter()
 	{
-		public void mouseEntered(MouseEvent me)
-		{
-			// Rien à faire
-		}
 		
 		public void mouseMoved(MouseEvent me)
 		{

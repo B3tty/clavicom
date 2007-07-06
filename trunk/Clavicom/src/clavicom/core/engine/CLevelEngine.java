@@ -231,9 +231,8 @@ public class CLevelEngine implements OnClickKeyLevelListener
 			this.currentLevel = myCurrentLevel;
 		}
 		
-
 		fireChangeLevel();
-
+		
 	}
 
 

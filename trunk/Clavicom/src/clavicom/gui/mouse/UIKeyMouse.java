@@ -28,6 +28,7 @@ package clavicom.gui.mouse;
 import java.awt.image.BufferedImage;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.mouse.CMouseKey;
+import clavicom.core.keygroup.mouse.CMouseKeyMove;
 import clavicom.gui.keyboard.key.UIKey;
 
 public class UIKeyMouse extends UIKey
@@ -103,5 +104,24 @@ public class UIKeyMouse extends UIKey
 	{
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	protected void clickCoreKey()
+	{
+		if( getCoreKey() instanceof CMouseKeyMove )
+		{
+			super.clickCoreKey();
+		}
+		else
+		{
+			// c'est une click key
+			// si la souris n'est pas dessus, on peut laisser le click
+			if (		(getMousePosition().getX() < 0) || (getMousePosition().getX() > getWidth()) 
+					||	(getMousePosition().getY() < 0) || (getMousePosition().getX() > getHeight())  )
+			{
+				super.clickCoreKey();
+			}
+		}
 	}
 }

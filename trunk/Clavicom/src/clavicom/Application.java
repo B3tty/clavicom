@@ -167,6 +167,14 @@ public class Application
 		// Chargement du moteur de defilement
 		splash.newStep("Loading scrolling engine...");
 		loadDefilementEngine();	
+		
+		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
+		{
+			// Lancement du son de démarage
+			ThreadSound introSound = new ThreadSound( CFilePaths.getStartApplicationSoundFilePath() );
+			introSound.start();
+			introSound.play();
+		}
 
 		// Création des fenêtres
 		splash.newStep("Creating windows...");		createWindows();
@@ -195,13 +203,7 @@ public class Application
 		splash.newStep("Load complete !");
 		splash.close();
 		
-		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
-		{
-			// Lancement du son de démarage
-			ThreadSound introSound = new ThreadSound( CFilePaths.getStartApplicationSoundFilePath() );
-			introSound.start();
-			introSound.play();
-		}
+
 		
 		// On affiche la fenêtre principale
 		keyboardFrame.setVisible(true);

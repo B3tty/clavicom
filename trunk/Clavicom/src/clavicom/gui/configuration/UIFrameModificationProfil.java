@@ -194,7 +194,6 @@ public class UIFrameModificationProfil extends JDialog
 							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART"),
 							UIString.getUIString("LB_CONFPROFIL_CHANGE_RESTART_TITLE"),
 						    JOptionPane.WARNING_MESSAGE);
-					System.out.println( "panelAdvancedOption" );
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );

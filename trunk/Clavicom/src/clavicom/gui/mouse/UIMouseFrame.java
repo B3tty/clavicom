@@ -25,8 +25,8 @@
 
 package clavicom.gui.mouse;
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
@@ -45,6 +45,8 @@ public class UIMouseFrame extends UITranslucentFrame
 	
 	UIMouse uiMouse;
 	CMouse cMouse;
+
+
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -73,52 +75,20 @@ public class UIMouseFrame extends UITranslucentFrame
 
 		add( movingPanel );
 		
-		addWindowListener(new WindowListener(){
-
-			public void windowActivated(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
+		addWindowListener(new WindowAdapter()
+		{
 
 			public void windowClosed(WindowEvent e)
 			{
 				ClickEngine.getInstance().stopMouseHook();
 			}
-
-			public void windowClosing(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void windowDeactivated(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void windowDeiconified(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void windowIconified(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void windowOpened(WindowEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
 			
 		});
 		
+		
 	}
+	
+	
 	
 	@Override
 	public void setVisible(boolean b)
@@ -168,6 +138,7 @@ public class UIMouseFrame extends UITranslucentFrame
 	{
 		return uiMouse;
 	}
-
-
+	
+	
+	
 }
