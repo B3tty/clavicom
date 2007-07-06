@@ -33,7 +33,7 @@
     <on_defil active="false" />
     <on_click active="false" />
     <on_survol active="false" />
-    <on_start active="true" />
+    <on_start active="false" />
   </sound>
   <navigation>
     <type value="STANDARD" />
@@ -61,12 +61,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.15625</x>
-        <y>0.21972656</y>
+        <x>0.23984376</x>
+        <y>0.11621094</y>
       </left_up>
       <right_down>
-        <x>0.9</x>
-        <y>0.8417969</y>
+        <x>0.91015625</x>
+        <y>0.41015625</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
