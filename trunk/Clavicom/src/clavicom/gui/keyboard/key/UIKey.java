@@ -391,16 +391,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			return image;
 		}
 		
-		@Override
-		public void setVisible(boolean arg0)
-		{
-			selectGoodImage();
-			repaint();
-			
-			// TODO Auto-generated method stub
-			super.setVisible(arg0);
-		}
-		
 		/**
 		 * Appelé lors du redimensionnement du composant
 		 */
@@ -660,7 +650,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 			
-			
 			// Création du Paint du premier calque
 			Color vGradientStartColor, vGradientEndColor;
 			vGradientStartColor =  bgdColor.brighter();
@@ -852,19 +841,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				addMouseListener(mouseAdapterUse);			
 			}
 		}
-		
-//		/**
-//		 * Recréé les images et selectionne la bonne
-//		 *
-//		 */		
-//		public void updateKey()
-//		{
-//			if(editable)
-//				return;
-//			
-//			recreateNormalImages();
-//			selectGoodImage();
-//		}
 		
 		/**
 		 * Selectionne la bonne image courante
