@@ -109,15 +109,15 @@ public abstract class UIJResizer extends JComponent
 		allPoints.add(new Point(0,midHeight));			// Ouest
 		
 		// Recherche du point le plus près
-		double minDistance = magnetGrid.getVerticalStep() + magnetGrid.getHorizontalStep();
-		double actualDistance = -1;
+		double minDistance = -1;
+		double actualDistance;
 		
 		Point nearestPoint = null;
 		for (Point currentPoint : allPoints)
 		{
 			actualDistance = actualPoint.distance(currentPoint);
 			
-			if(actualDistance <= minDistance || actualDistance == -1)
+			if(actualDistance <= minDistance || minDistance < 0)
 			{
 				nearestPoint = currentPoint;
 				minDistance = actualDistance;
