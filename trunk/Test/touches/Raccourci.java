@@ -15,8 +15,6 @@ import javax.swing.KeyStroke;
 
 public class Raccourci 
 {
-
-	private static Robot robot;
 	
 	/**
 	 * @param args
@@ -26,7 +24,7 @@ public class Raccourci
 	
 		try
 		{
-			robot = new Robot();
+			new Robot();
 		}
 		catch ( AWTException e )
 		{
