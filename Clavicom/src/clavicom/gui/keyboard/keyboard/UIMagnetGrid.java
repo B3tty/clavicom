@@ -46,8 +46,8 @@ public class UIMagnetGrid
 	private int width;					// Largeur de la grille
 	private int height;					// Hauteur de la grille
 	
-	private int verticalStepPixels;		// Step entre les colonnes
-	private int horizontalStepPixels;		// Step entre les lignes 
+	private int verticalStep;	// Step entre les colonnes en pourcents
+	private int horizontalStep;// Step entre les lignes en pourcents
 	
 	private Color colorGrid;			// Couleur de la grille
 	private BufferedImage image;		// Image
@@ -65,8 +65,9 @@ public class UIMagnetGrid
 		width = 0;
 		height = 0;
 		borderSize = 0;
-		verticalStepPixels = 0;
-		verticalStepPixels = 0;
+		
+		verticalStep = 0;
+		horizontalStep = 0;
 		
 		colorGrid = new Color(0,0,0,.2f);	// Noir opaque à 20%
 
@@ -77,37 +78,17 @@ public class UIMagnetGrid
 	/**
 	 * Initialise tous les paramètres
 	 */
-	public void setAll(int width, int height, int verticalStepPixels, int horizontalStepPixels, int borderSize)
+	public void setAll(int width, int height, int verticalStep, int horizontalStep, int borderSize)
 	{
 		// Recopie des attributs
 		this.width = width;
 		this.height = height;
-		this.verticalStepPixels = verticalStepPixels;
-		this.horizontalStepPixels = horizontalStepPixels;
+		this.verticalStep = verticalStep;
+		this.horizontalStep = horizontalStep;
 		this.borderSize = borderSize;
 		
 		// On met a jour les listes
 		updateLists();
-	}
-	
-	public float getHorizontalStepPixels()
-	{
-		return horizontalStepPixels;
-	}
-
-	public void setHorizontalStepPixels(int horizontalStepPixels)
-	{
-		this.horizontalStepPixels = horizontalStepPixels;
-	}
-
-	public int getVerticalStepPixels()
-	{
-		return verticalStepPixels;
-	}
-
-	public void setVerticalStepPixels(int verticalStepPixels)
-	{
-		this.verticalStepPixels = verticalStepPixels;
 	}
 
 	/**
@@ -134,6 +115,28 @@ public class UIMagnetGrid
 		updateLists();
 	}
 	
+	public int getHorizontalStep()
+	{
+		return horizontalStep;
+	}
+
+	public void setHorizontalStep(int horizontalStep)
+	{
+		this.horizontalStep = horizontalStep;
+		updateLists();
+	}
+
+	public int getVerticalStep()
+	{
+		return verticalStep;
+	}
+
+	public void setVerticalStep(int verticalStep)
+	{
+		this.verticalStep = verticalStep;
+		updateLists();
+	}
+
 	/**
 	 * Retourne le point de la grille le plus proche d'un point 
 	 * @param pt
@@ -290,19 +293,19 @@ public class UIMagnetGrid
 	 */
 	protected void updateLists()
 	{
-		if(width <= 0 || height <= 0 )
+		if(width <= 0 || height <= 0 || verticalStep <= 0 || horizontalStep <= 0)
 			return;
 		
 		// On vide les deux listes
 		listVerticals.clear();
-		listHorizontals.clear();		
+		listHorizontals.clear();
 		
 		// ---------- VERTICALES --------------------------------------------
 		float currentVertivalPos = 0;
 		while (currentVertivalPos < width)
 		{
 			listVerticals.add(Math.round(currentVertivalPos));
-			currentVertivalPos += verticalStepPixels;
+			currentVertivalPos += verticalStep;
 		}
 		
 		// ---------- HORIZONTALES ------------------------------------------
@@ -310,7 +313,7 @@ public class UIMagnetGrid
 		while (currentHorizontalPos < height)
 		{
 			listHorizontals.add(Math.round(currentHorizontalPos));
-			currentHorizontalPos += horizontalStepPixels;
+			currentHorizontalPos += horizontalStep;
 		}
 		
 		imageUpToDate = false;
