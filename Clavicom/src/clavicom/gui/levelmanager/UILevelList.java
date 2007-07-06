@@ -31,6 +31,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -312,6 +314,41 @@ public class UILevelList extends JPanel
 		listScroll = new JScrollPane(list);
 		listScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		listScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		// listener sur le mouse entered pour reséléctionner
+		list.addMouseListener( new MouseListener() 
+		{
+
+			public void mouseClicked(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e)
+			{
+				System.out.println("mouseEntered");
+			}
+
+			public void mouseExited(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		// Création
 		btAddElement = new JButton();

@@ -260,6 +260,11 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		}
 	}
 	
+	public void ClearHoldKey()
+	{
+		holdKey.clear();
+	}
+	
 	
 	// ========================================================|
 	// COMMAND ACTION =========================================|

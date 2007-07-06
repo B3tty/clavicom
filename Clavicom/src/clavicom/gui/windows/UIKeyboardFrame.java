@@ -418,7 +418,7 @@ KeyEventDispatcher
 			stopDefilMode();
 			
 			panelKeyboard.edit();
-			
+
 			
 		}
 		else

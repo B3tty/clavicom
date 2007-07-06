@@ -70,6 +70,7 @@ import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
+import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
@@ -87,6 +88,7 @@ import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
@@ -479,6 +481,24 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		 
 		// Changement de l'état
 		isEdited = true;
+		
+		// on change le level, on se remet en normal
+		CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL );
+		CCommandEngine.getInstance().ClearHoldKey();
+		releasedHoldableKeys();
+		
+		// on vide les prédictions et les lastWord
+		CPredictionEngine.getInstance().clean();
+		CLastWordEngine.getInstance().clean();
+		
+		// on désactive les sons
+		if( SoundEngine.getInstance() != null )
+		{
+			SoundEngine.getInstance().unListenPressed( this );
+			SoundEngine.getInstance().unListenEntered( this );
+			SoundEngine.getInstance().unListenDefilement( );
+		}
+		
 	}
 	
 	public void unEdit()
@@ -492,6 +512,52 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Maj des keys
 		updateEdit(false);
+		
+		// ========================================================================
+		// on regarde si on doit lancer le moteur de son
+		// ========================================================================
+		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+			CProfil.getInstance().getSound().isSoundOnClic()  ||
+			CProfil.getInstance().getSound().isSoundOnSurvol()  )
+		{
+			if( SoundEngine.getInstance() == null )
+			{
+				SoundEngine.createInstance( );
+			}
+		}
+		
+		if( SoundEngine.getInstance() != null )
+		{
+			// on abonne les différants sons
+			if( CProfil.getInstance().getSound().isSoundOnClic() )
+			{
+				SoundEngine.getInstance().listenPressed( this );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenPressed( this );
+			}
+			
+			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
+			{
+				SoundEngine.getInstance().listenEntered( this );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenEntered( this );
+			}
+			
+			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
+			{
+				SoundEngine.getInstance().listenDefilement( );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenDefilement( );
+			}
+		}
 	}
 	
 	public void select(boolean select)
