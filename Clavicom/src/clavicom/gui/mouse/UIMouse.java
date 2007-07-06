@@ -37,11 +37,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.event.EventListenerList;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -53,12 +56,14 @@ import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
+import clavicom.gui.listener.MouseToMoveListener;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TUIKeyState;
 
-public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener, DefilListener, ComponentListener
+public class UIMouse extends UIBackgroundPanel 
+implements clickMouseHookListener, DefilListener, ComponentListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
@@ -182,12 +187,20 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 		
 		SwitchMoveMode();
 		
+		addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				// on déplace la frame pour ne pas cacher le curseur
+				fireMouseToMove();
+			}
+		});
 		
+		mouseToMoveListenerList = new EventListenerList();
 		
-
 	}
-	
-	
+
 	
 	public void startDefilMouse()
 	{
@@ -831,6 +844,35 @@ public class UIMouse extends UIBackgroundPanel implements clickMouseHookListener
 
 
 	
+	
+	
+	// Listener key Entered et Pressed ==============================================
+	
+	protected EventListenerList mouseToMoveListenerList;
+	
+	public void addMouseToMoveListener(MouseToMoveListener l)
+	{
+		this.mouseToMoveListenerList.add(MouseToMoveListener.class, l);
+	}
+	
+	public void removeMouseToMoveListener(MouseToMoveListener l)
+	{
+		this.mouseToMoveListenerList.remove(MouseToMoveListener.class, l);
+	}
+	
+	protected void fireMouseToMove()
+	{
+		MouseToMoveListener[] listeners = (MouseToMoveListener[]) mouseToMoveListenerList
+				.getListeners(MouseToMoveListener.class);
+		for ( int i = listeners.length - 1; i >= 0; i-- )
+		{
+			listeners[i].mouseToMove();
+		}
+	}
+	
+	
+
+	// fin Listener ============================================
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

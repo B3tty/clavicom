@@ -44,6 +44,8 @@ import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
+import clavicom.gui.mouse.MouseMoveEngine;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 
 public class UIFrameModificationProfil extends JDialog
@@ -298,6 +300,18 @@ public class UIFrameModificationProfil extends JDialog
 				{
 					// le type de navigation à changé
 					panelNavigation.validateDataEntry();
+					
+					// si on est en défilement et qu'il a coché moveMouseOnEntered
+					if( CProfil.getInstance().getNavigation().isMoveMouseOnEntered()
+							&&
+						CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT)
+					{
+						MouseMoveEngine.getInstance().listen();
+					}
+					else
+					{
+						MouseMoveEngine.getInstance().unListen();
+					}
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );

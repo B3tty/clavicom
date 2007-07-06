@@ -38,7 +38,6 @@ public class CNavigation
 	private static int DEFAULT_TEMPORISATION_DEFILEMENT = 1000;
 	private static int DEFAULT_MOUSE_SPEED = 100;
 	
-	private static boolean DEFAULT_BLOCK_SELECTION_ACTIVE = false;
 	private static boolean DEFAULT_ROLLOVER_ACTIVE = false;
 
 	//---------------------------------------------------------- VARIABLES --//	
@@ -48,7 +47,7 @@ public class CNavigation
 	int temporisationDefilement;
 	int mouseSpeed;
 	
-	boolean blockSelectionActive;
+	boolean moveMouseOnEntered;
 	boolean rolloverActive;
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -57,7 +56,7 @@ public class CNavigation
 		// Initialisation par défaut
 		temporisationClic = DEFAULT_TEMPORISATION_CLIC;
 		temporisationDefilement = DEFAULT_TEMPORISATION_DEFILEMENT;
-		blockSelectionActive = DEFAULT_BLOCK_SELECTION_ACTIVE;
+		moveMouseOnEntered = false;
 		rolloverActive = DEFAULT_ROLLOVER_ACTIVE;
 		mouseSpeed = DEFAULT_MOUSE_SPEED;
 		
@@ -123,6 +122,40 @@ public class CNavigation
 									TXMLNames.PR_ATTRIBUTE_NAVIGATION_ROLLOVER +							
 									UIString.getUIString("EX_NAVIGATION_BAD_ROLLOVER_3"));			
 		}
+		
+		
+		// Récupération du mouseMouveOnEntered
+		Element eltMouseMouveOnEntered = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_MOVE_ON_ENTERED);
+		
+		if (eltMouseMouveOnEntered == null)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_1")+
+									TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_MOVE_ON_ENTERED +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ELEMENT_2"));			
+		}
+		
+		String strMouseMouveOnEntered = eltMouseMouveOnEntered.getAttributeValue(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_MOVE_ON_ENTERED);
+		if(strMouseMouveOnEntered == null || strMouseMouveOnEntered.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_1")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_MOVE_ON_ENTERED +
+									UIString.getUIString("EX_NAVIGATION_MISSING_ATTRIBUTE_2"));
+	
+		}
+		
+		try
+		{
+			rolloverActive = Boolean.parseBoolean(strMouseMouveOnEntered);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_1")+
+					strMouseMouveOnEntered +
+									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_2")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_MOVE_ON_ENTERED +							
+									UIString.getUIString("EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_3"));			
+		}
+		
 		
 		// Récupération du mouseSpeed
 		Element eltMouseSpeed = nodeNavigation.getChild(TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_SPEED);
@@ -257,6 +290,11 @@ public class CNavigation
 		eltDefilTempo.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_DEFILEMENT_TEMPO_VALUE, Integer.toString( temporisationDefilement ));
 		eltNavigation.addContent(eltDefilTempo);
 		
+		// Ajout de mouseMoveOnEntered
+		Element eltMouseMoveOnEntered = new Element (TXMLNames.PR_ELEMENT_NAVIGATION_MOUSE_MOVE_ON_ENTERED);
+		eltMouseMoveOnEntered.setAttribute(TXMLNames.PR_ATTRIBUTE_NAVIGATION_MOUSE_MOVE_ON_ENTERED, Boolean.toString( moveMouseOnEntered ));
+		eltNavigation.addContent(eltMouseMoveOnEntered);
+		
 		return eltNavigation;
 	}
 
@@ -273,15 +311,17 @@ public class CNavigation
 	}
 
 
-	public boolean isBlockSelectionActive()
+
+
+	public boolean isMoveMouseOnEntered()
 	{
-		return blockSelectionActive;
+		return moveMouseOnEntered;
 	}
 
 
-	public void setBlockSelectionActive(boolean blockSelectionActive)
+	public void setMoveMouseOnEntered(boolean moveMouseOnEntered)
 	{
-		this.blockSelectionActive = blockSelectionActive;
+		this.moveMouseOnEntered = moveMouseOnEntered;
 	}
 
 

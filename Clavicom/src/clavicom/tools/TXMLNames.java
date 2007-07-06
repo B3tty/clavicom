@@ -203,7 +203,9 @@ public class TXMLNames
 	public static String PR_ATTRIBUTE_NAVIGATION_MOUSE_SPEED = "value";
 	
 	public static String PR_ELEMENT_NAVIGATION_ROLLOVER	= "rollover";
+	public static String PR_ELEMENT_NAVIGATION_MOUSE_MOVE_ON_ENTERED	= "mouse_mouve_on_entered";
 	public static String PR_ATTRIBUTE_NAVIGATION_ROLLOVER	= "active";
+	public static String PR_ATTRIBUTE_NAVIGATION_MOUSE_MOVE_ON_ENTERED	= "active";
 	
 	public static String PR_ELEMENT_FONT = "font";
 	public static String PR_ELEMENT_FONT_NAME	= "name";

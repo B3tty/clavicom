@@ -229,6 +229,10 @@
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>	
 	
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_1">[Chargement de la navigation] La chaîne "</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_3">" valide.</message>
+	
 	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_1">[Chargement de la navigation] La chaîne "</message>
 	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_2">" n'est pas un "</message>		
 	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_3">" valide.</message>
@@ -486,6 +490,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER">Changement de couleur de la touche au passage de la souris</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
 	
