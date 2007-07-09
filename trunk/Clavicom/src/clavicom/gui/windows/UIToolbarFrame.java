@@ -253,7 +253,7 @@ UIGridChangedListener
 	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		mainPanelBg = new UIToolbarPanel(Color.WHITE);
+		mainPanelBg = new UIToolbarPanel(Color.GRAY.brighter());
 		panelBoutons = new JPanel();
 		
 		// Panels de modification de touche
