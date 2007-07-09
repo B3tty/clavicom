@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.01875</x>
-        <y>0.6464844</y>
+        <x>0.18125</x>
+        <y>0.39160156</y>
       </left_up>
       <right_down>
-        <x>0.71015626</x>
-        <y>0.94433594</y>
+        <x>0.875</x>
+        <y>0.6894531</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -89,12 +89,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.024793388</y>
+              <x>0.007882883</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.074408114</x>
-              <y>0.15289256</y>
+              <x>0.074324325</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -128,12 +128,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.09808343</x>
-              <y>0.024793388</y>
+              <x>0.097972974</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.14994363</x>
-              <y>0.15289256</y>
+              <x>0.14977477</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -165,12 +165,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.1578354</x>
-              <y>0.024793388</y>
+              <x>0.15765765</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.210823</x>
-              <y>0.15289256</y>
+              <x>0.21058558</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -202,12 +202,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.21758737</x>
-              <y>0.024793388</y>
+              <x>0.21734235</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.27057496</x>
-              <y>0.15289256</y>
+              <x>0.27027026</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -239,12 +239,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.27733934</x>
-              <y>0.024793388</y>
+              <x>0.27702704</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.33032694</x>
-              <y>0.15289256</y>
+              <x>0.32995495</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -278,12 +278,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.36076662</x>
-              <y>0.024793388</y>
+              <x>0.36036035</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.41262683</x>
-              <y>0.15289256</y>
+              <x>0.41216215</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -315,12 +315,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.4205186</x>
-              <y>0.024793388</y>
+              <x>0.42004505</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.4735062</x>
-              <y>0.15289256</y>
+              <x>0.47297296</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -352,12 +352,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.48139796</x>
-              <y>0.024793388</y>
+              <x>0.48085585</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.5332582</x>
-              <y>0.15289256</y>
+              <x>0.5337838</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -389,12 +389,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.54002255</x>
-              <y>0.024793388</y>
+              <x>0.5405405</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.59075534</x>
-              <y>0.15289256</y>
+              <x>0.5912162</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -428,12 +428,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.61330324</x>
-              <y>0.024793388</y>
+              <x>0.6137387</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.66516346</x>
-              <y>0.15289256</y>
+              <x>0.6655405</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -465,12 +465,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.67418265</x>
-              <y>0.024793388</y>
+              <x>0.6745495</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.72604287</x>
-              <y>0.15289256</y>
+              <x>0.7263514</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -502,12 +502,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.7339346</x>
-              <y>0.024793388</y>
+              <x>0.7342342</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.78466743</x>
-              <y>0.15289256</y>
+              <x>0.7849099</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -539,12 +539,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.7925592</x>
-              <y>0.024793388</y>
+              <x>0.7927928</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.8455468</x>
-              <y>0.15289256</y>
+              <x>0.8457207</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -578,12 +578,12 @@
         <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.8692221</x>
-              <y>0.024793388</y>
+              <x>0.8693694</x>
+              <y>0.026229508</y>
             </point>
             <point position="max">
-              <x>0.90642613</x>
-              <y>0.15289256</y>
+              <x>0.9065315</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -609,12 +609,12 @@
         <keyclavicom order="1" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.951522</x>
-              <y>0.020661157</y>
+              <x>0.9515766</x>
+              <y>0.019672131</y>
             </point>
             <point position="max">
-              <x>0.988726</x>
-              <y>0.14876033</y>
+              <x>0.9887387</x>
+              <y>0.14754099</y>
             </point>
           </coordinates>
           <colors>
@@ -644,12 +644,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.22727273</y>
+              <x>0.007882883</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.059751973</x>
-              <y>0.3553719</y>
+              <x>0.059684686</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -681,12 +681,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.059751973</x>
-              <y>0.22727273</y>
+              <x>0.059684686</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.11273957</x>
-              <y>0.3553719</y>
+              <x>0.11261261</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -718,12 +718,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.11273957</x>
-              <y>0.22727273</y>
+              <x>0.11261261</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.16459978</x>
-              <y>0.3553719</y>
+              <x>0.16441442</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -755,12 +755,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.16572717</x>
-              <y>0.22727273</y>
+              <x>0.16554055</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.21871477</x>
-              <y>0.3553719</y>
+              <x>0.21846847</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -792,12 +792,12 @@
         <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.21758737</x>
-              <y>0.22727273</y>
+              <x>0.21734235</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.27057496</x>
-              <y>0.3553719</y>
+              <x>0.27027026</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -831,12 +831,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.26944757</x>
-              <y>0.22727273</y>
+              <x>0.26914415</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.32243517</x>
-              <y>0.35123968</y>
+              <x>0.32207206</x>
+              <y>0.35081968</y>
             </point>
           </coordinates>
           <colors>
@@ -868,12 +868,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.32243517</x>
-              <y>0.22727273</y>
+              <x>0.32207206</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.37655017</x>
-              <y>0.35123968</y>
+              <x>0.37612614</x>
+              <y>0.35081968</y>
             </point>
           </coordinates>
           <colors>
@@ -905,12 +905,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.37542278</x>
-              <y>0.22727273</y>
+              <x>0.375</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.42841038</x>
-              <y>0.3553719</y>
+              <x>0.42792794</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -942,12 +942,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.427283</x>
-              <y>0.22727273</y>
+              <x>0.4268018</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.48027056</x>
-              <y>0.3553719</y>
+              <x>0.47972974</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -979,12 +979,12 @@
         <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.48027056</x>
-              <y>0.22727273</y>
+              <x>0.47972974</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.5321308</x>
-              <y>0.3553719</y>
+              <x>0.5326577</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -1018,12 +1018,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.53100336</x>
-              <y>0.22727273</y>
+              <x>0.5315315</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.5806088</x>
-              <y>0.3553719</y>
+              <x>0.5810811</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -1055,12 +1055,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.5817362</x>
-              <y>0.22727273</y>
+              <x>0.5822072</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.6347238</x>
-              <y>0.3553719</y>
+              <x>0.6351351</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -1092,12 +1092,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.6335964</x>
-              <y>0.22727273</y>
+              <x>0.634009</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.686584</x>
-              <y>0.3553719</y>
+              <x>0.6869369</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -1129,12 +1129,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.7373168</x>
-              <y>0.22950819</y>
+              <x>0.6869369</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.8410372</x>
-              <y>0.35737705</y>
+              <x>0.7905405</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -1170,12 +1170,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.38016528</y>
+              <x>0.007882883</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.07553551</x>
-              <y>0.5082645</y>
+              <x>0.07545045</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1207,12 +1207,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.07553551</x>
-              <y>0.38016528</y>
+              <x>0.07545045</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.12739572</x>
-              <y>0.5082645</y>
+              <x>0.12725225</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1244,12 +1244,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.12739572</x>
-              <y>0.38016528</y>
+              <x>0.12725225</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.18038331</x>
-              <y>0.5082645</y>
+              <x>0.18018018</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1281,12 +1281,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.18038331</x>
-              <y>0.38016528</y>
+              <x>0.18018018</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.23224352</x>
-              <y>0.5082645</y>
+              <x>0.23198198</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1318,12 +1318,12 @@
         <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.23224352</x>
-              <y>0.38016528</y>
+              <x>0.23198198</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.28410372</x>
-              <y>0.5082645</y>
+              <x>0.2837838</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1357,12 +1357,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.2852311</x>
-              <y>0.38016528</y>
+              <x>0.2849099</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.33821872</x>
-              <y>0.5082645</y>
+              <x>0.33783785</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1394,12 +1394,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.33709133</x>
-              <y>0.38016528</y>
+              <x>0.3367117</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.39007893</x>
-              <y>0.5082645</y>
+              <x>0.38963965</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1431,12 +1431,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.39007893</x>
-              <y>0.38016528</y>
+              <x>0.38963965</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.4430665</x>
-              <y>0.5082645</y>
+              <x>0.44256756</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1468,12 +1468,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.44193912</x>
-              <y>0.38016528</y>
+              <x>0.44144145</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.49492672</x>
-              <y>0.5082645</y>
+              <x>0.49436936</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1505,12 +1505,12 @@
         <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.49492672</x>
-              <y>0.38016528</y>
+              <x>0.49436936</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.5445321</x>
-              <y>0.5082645</y>
+              <x>0.545045</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1544,12 +1544,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.5445321</x>
-              <y>0.38016528</y>
+              <x>0.545045</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.59639233</x>
-              <y>0.5082645</y>
+              <x>0.5968468</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1581,12 +1581,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.5952649</x>
-              <y>0.38016528</y>
+              <x>0.5957207</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.64825255</x>
-              <y>0.5082645</y>
+              <x>0.6486486</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1618,12 +1618,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.64825255</x>
-              <y>0.38016528</y>
+              <x>0.6486486</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.7012401</x>
-              <y>0.5082645</y>
+              <x>0.7015766</x>
+              <y>0.5081967</y>
             </point>
           </coordinates>
           <colors>
@@ -1655,12 +1655,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.7158963</x>
-              <y>0.38016528</y>
+              <x>0.7162162</x>
+              <y>0.38032788</y>
             </point>
             <point position="max">
-              <x>0.7903044</x>
-              <y>0.6487603</y>
+              <x>0.7905405</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1696,12 +1696,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.090191655</x>
-              <y>0.5289256</y>
+              <x>0.09009009</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.14317925</x>
-              <y>0.6487603</y>
+              <x>0.14301802</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1733,12 +1733,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.14205186</x>
-              <y>0.5289256</y>
+              <x>0.1418919</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.19503947</x>
-              <y>0.6487603</y>
+              <x>0.19481982</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1770,12 +1770,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.19503947</x>
-              <y>0.5289256</y>
+              <x>0.19481982</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.24802706</x>
-              <y>0.6487603</y>
+              <x>0.24774775</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1807,12 +1807,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.24802706</x>
-              <y>0.5289256</y>
+              <x>0.24774775</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.29988727</x>
-              <y>0.6487603</y>
+              <x>0.29954955</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1846,12 +1846,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.29988727</x>
-              <y>0.5289256</y>
+              <x>0.29954955</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.35174745</x>
-              <y>0.6487603</y>
+              <x>0.35135135</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1883,12 +1883,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.35174745</x>
-              <y>0.5289256</y>
+              <x>0.35135135</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.40473506</x>
-              <y>0.6487603</y>
+              <x>0.4042793</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1920,12 +1920,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.40473506</x>
-              <y>0.5289256</y>
+              <x>0.4042793</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.45772266</x>
-              <y>0.6487603</y>
+              <x>0.4572072</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1957,12 +1957,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.45659527</x>
-              <y>0.5289256</y>
+              <x>0.4560811</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.50845546</x>
-              <y>0.6487603</y>
+              <x>0.509009</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -1996,12 +1996,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.50845546</x>
-              <y>0.5289256</y>
+              <x>0.509009</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.55918825</x>
-              <y>0.6487603</y>
+              <x>0.5596847</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -2033,12 +2033,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.5580609</x>
-              <y>0.5289256</y>
+              <x>0.5585586</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.6099211</x>
-              <y>0.6487603</y>
+              <x>0.6103604</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -2070,12 +2070,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.61104846</x>
-              <y>0.5289256</y>
+              <x>0.6114865</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.6640361</x>
-              <y>0.6487603</y>
+              <x>0.6644144</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -2107,12 +2107,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.6629087</x>
-              <y>0.5289256</y>
+              <x>0.6632883</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.7158963</x>
-              <y>0.6487603</y>
+              <x>0.7162162</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -2148,12 +2148,12 @@
         <keylevel order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.6735537</y>
+              <x>0.007882883</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.06764374</x>
-              <y>0.79752064</y>
+              <x>0.067567565</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2179,12 +2179,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.06764374</x>
-              <y>0.6735537</y>
+              <x>0.067567565</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.120631345</x>
-              <y>0.79752064</y>
+              <x>0.1204955</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2216,12 +2216,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.119503945</x>
-              <y>0.6735537</y>
+              <x>0.11936937</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.17249155</x>
-              <y>0.79752064</y>
+              <x>0.1722973</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2253,12 +2253,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.17249155</x>
-              <y>0.6735537</y>
+              <x>0.1722973</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.22435175</x>
-              <y>0.79752064</y>
+              <x>0.2240991</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2290,12 +2290,12 @@
         <keycharacter order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.22547914</x>
-              <y>0.6735537</y>
+              <x>0.22522523</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.27846673</x>
-              <y>0.79752064</y>
+              <x>0.27815315</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2329,12 +2329,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.27733934</x>
-              <y>0.6735537</y>
+              <x>0.27702704</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.33032694</x>
-              <y>0.79752064</y>
+              <x>0.32995495</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2366,12 +2366,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.38218716</x>
-              <y>0.6735537</y>
+              <x>0.38175675</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.43517473</x>
-              <y>0.79752064</y>
+              <x>0.4346847</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2403,12 +2403,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.43404734</x>
-              <y>0.6735537</y>
+              <x>0.43355855</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.48703495</x>
-              <y>0.79752064</y>
+              <x>0.4864865</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2440,12 +2440,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.33032694</x>
-              <y>0.6735537</y>
+              <x>0.32995495</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.38218716</x>
-              <y>0.79752064</y>
+              <x>0.38175675</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2479,12 +2479,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.48703495</x>
-              <y>0.6735537</y>
+              <x>0.4864865</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.53776777</x>
-              <y>0.79752064</y>
+              <x>0.5382883</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2516,12 +2516,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.53664035</x>
-              <y>0.6735537</y>
+              <x>0.5371622</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.58850056</x>
-              <y>0.79752064</y>
+              <x>0.588964</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2553,12 +2553,12 @@
         <keycharacter order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.58850056</x>
-              <y>0.6735537</y>
+              <x>0.588964</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.6403608</x>
-              <y>0.79752064</y>
+              <x>0.6407658</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2590,12 +2590,12 @@
         <keylevel order="3" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.64148813</x>
-              <y>0.6735537</y>
+              <x>0.6418919</x>
+              <y>0.6721311</y>
             </point>
             <point position="max">
-              <x>0.7981962</x>
-              <y>0.79752064</y>
+              <x>0.7984234</x>
+              <y>0.79672134</y>
             </point>
           </coordinates>
           <colors>
@@ -2625,12 +2625,12 @@
         <keycharacter order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.8264463</y>
+              <x>0.007882883</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.06764374</x>
-              <y>0.95454544</y>
+              <x>0.067567565</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2662,12 +2662,12 @@
         <keycharacter order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.06764374</x>
-              <y>0.8264463</y>
+              <x>0.067567565</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.120631345</x>
-              <y>0.95454544</y>
+              <x>0.1204955</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2699,12 +2699,12 @@
         <keycharacter order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.119503945</x>
-              <y>0.8264463</y>
+              <x>0.11936937</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.18038331</x>
-              <y>0.95454544</y>
+              <x>0.18018018</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2738,12 +2738,12 @@
         <keycharacter order="0" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.18038331</x>
-              <y>0.8264463</y>
+              <x>0.18018018</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.5524239</x>
-              <y>0.95454544</y>
+              <x>0.5529279</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2777,12 +2777,12 @@
         <keylevel order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.5524239</x>
-              <y>0.8264463</y>
+              <x>0.5529279</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.65050733</x>
-              <y>0.95454544</y>
+              <x>0.6509009</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2808,12 +2808,12 @@
         <keycharacter order="1" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.65050733</x>
-              <y>0.8264463</y>
+              <x>0.6509009</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.7328072</x>
-              <y>0.95454544</y>
+              <x>0.7331081</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2845,12 +2845,12 @@
         <keycharacter order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.7328072</x>
-              <y>0.8264463</y>
+              <x>0.7331081</x>
+              <y>0.8262295</y>
             </point>
             <point position="max">
-              <x>0.8455468</x>
-              <y>0.95454544</y>
+              <x>0.8457207</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2886,12 +2886,12 @@
         <keylevel order="0" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.00789177</x>
-              <y>0.5289256</y>
+              <x>0.007882883</x>
+              <y>0.52786887</y>
             </point>
             <point position="max">
-              <x>0.090191655</x>
-              <y>0.6487603</y>
+              <x>0.09009009</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -2918,12 +2918,12 @@
         <keylastword order="1" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.8579481</x>
-              <y>0.37603307</y>
+              <x>0.8581081</x>
+              <y>0.37704918</y>
             </point>
             <point position="max">
-              <x>0.988726</x>
-              <y>0.4752066</y>
+              <x>0.9887387</x>
+              <y>0.47540984</y>
             </point>
           </coordinates>
           <colors>
@@ -2949,12 +2949,12 @@
         <keyprediction order="2" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.86245775</x>
-              <y>0.8512397</y>
+              <x>0.8626126</x>
+              <y>0.852459</y>
             </point>
             <point position="max">
-              <x>0.99098086</x>
-              <y>0.95454544</y>
+              <x>0.990991</x>
+              <y>0.95409834</y>
             </point>
           </coordinates>
           <colors>
@@ -2980,12 +2980,12 @@
         <keyprediction order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.8635851</x>
-              <y>0.75206614</y>
+              <x>0.8637387</x>
+              <y>0.7508197</y>
             </point>
             <point position="max">
-              <x>0.98759866</x>
-              <y>0.8471074</y>
+              <x>0.9876126</x>
+              <y>0.84590167</y>
             </point>
           </coordinates>
           <colors>
@@ -3011,12 +3011,12 @@
         <keyshortcut order="4" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.8602029</x>
-              <y>0.6446281</y>
+              <x>0.8603604</x>
+              <y>0.6459016</y>
             </point>
             <point position="max">
-              <x>0.988726</x>
-              <y>0.74793386</y>
+              <x>0.9887387</x>
+              <y>0.747541</y>
             </point>
           </coordinates>
           <colors>
@@ -3042,12 +3042,12 @@
         <keystring order="5" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.85907555</x>
-              <y>0.553719</y>
+              <x>0.8592342</x>
+              <y>0.55409837</y>
             </point>
             <point position="max">
-              <x>0.988726</x>
-              <y>0.6487603</y>
+              <x>0.9887387</x>
+              <y>0.64918035</y>
             </point>
           </coordinates>
           <colors>
@@ -3074,12 +3074,12 @@
         <keyclavicom order="6" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.90980834</x>
-              <y>0.02892562</y>
+              <x>0.9099099</x>
+              <y>0.029508196</y>
             </point>
             <point position="max">
-              <x>0.9481398</x>
-              <y>0.15289256</y>
+              <x>0.9481982</x>
+              <y>0.15409836</y>
             </point>
           </coordinates>
           <colors>
@@ -3109,12 +3109,12 @@
         <keyclavicom order="0" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.90642613</x>
-              <y>0.22727273</y>
+              <x>0.9065315</x>
+              <y>0.2262295</y>
             </point>
             <point position="max">
-              <x>0.951522</x>
-              <y>0.3553719</y>
+              <x>0.9515766</x>
+              <y>0.35409835</y>
             </point>
           </coordinates>
           <colors>
@@ -3140,22 +3140,18 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words active="true">
+  <prefered_words active="false">
     <prefered_word frequency="2">famille</prefered_word>
     <prefered_word frequency="1">gub</prefered_word>
     <prefered_word frequency="1">guerre</prefered_word>
     <prefered_word frequency="2">france</prefered_word>
     <prefered_word frequency="3">royaume</prefered_word>
     <prefered_word frequency="1">de</prefered_word>
-    <prefered_word frequency="2">des</prefered_word>
+    <prefered_word frequency="1">des</prefered_word>
     <prefered_word frequency="1">putsch</prefered_word>
     <prefered_word frequency="1">tous</prefered_word>
     <prefered_word frequency="1">histoire</prefered_word>
-    <prefered_word frequency="1">MonPass</prefered_word>
-    <prefered_word frequency="1">thomas</prefered_word>
-    <prefered_word frequency="1">devrait</prefered_word>
-    <prefered_word frequency="1">manger</prefered_word>
-    <prefered_word frequency="1">choux</prefered_word>
+    <prefered_word frequency="1">russie</prefered_word>
   </prefered_words>
 </profil>
 

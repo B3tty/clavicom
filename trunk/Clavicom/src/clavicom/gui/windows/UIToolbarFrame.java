@@ -367,7 +367,7 @@ UIGridChangedListener
 		frameOptionKeyString.setSize(410,360);
 		
 		// Frame d'options de l'application
-		frameOptionApplication.setSize(new Dimension (550,600));
+		frameOptionApplication.setSize(new Dimension (550,620));
 		frameOptionApplication.setResizable(false);
 		frameOptionApplication.setModal(true);
 		frameOptionApplication.setVisible(false);

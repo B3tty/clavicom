@@ -30,8 +30,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -39,7 +39,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.profil.CPreferedWords;
@@ -144,19 +143,26 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	
 	public void initValues()
 	{
-		// table
-		
 		wordTableModel.clear();
 		
-		// table
+		List<CDictionaryWord> sortedList = new ArrayList<CDictionaryWord>();
+		
+		// ajout à une liste non trié
 		for( int i = 0 ; i < preferedWord.getSize() ; ++i)
 		{
 			CDictionaryWord dicWord = preferedWord.getPreferedWord( i );
 			if( dicWord != null )
 			{
-				wordTableModel.addValue( dicWord );
+				sortedList.add( dicWord );
 			}
-			
+		}
+		
+		Collections.sort(sortedList);
+		
+		// ajout à la table
+		for( CDictionaryWord dicWord : sortedList )
+		{
+			wordTableModel.addValue( dicWord );
 		}
 		
 		// active

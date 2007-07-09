@@ -31,6 +31,7 @@ import java.util.List;
 import clavicom.CFilePaths;
 import clavicom.core.profil.CDictionaryName;
 import clavicom.core.profil.CPreferedWords;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
 public class CDictionary
@@ -285,10 +286,15 @@ public class CDictionary
 		// ====================================================================================
 		List<String> finalList = new ArrayList<String>();
 		
-		// celle de l'utilisteur en premier
-		for( String word : shortListUser )
+		// on ne met les mot de l'utilisateur que si le service de ces 
+		// prefered word est actif
+		if( CProfil.getInstance().getPreferedWords().isActive() )
 		{
-			finalList.add( word );
+			// celle de l'utilisteur en premier
+			for( String word : shortListUser )
+			{
+				finalList.add( word );
+			}
 		}
 		
 		// Puis celle du dictionnaire

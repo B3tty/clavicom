@@ -706,6 +706,8 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// Rien à faire				
 	}
     
+
+	
 	public void componentResized(ComponentEvent arg0)
 	{
 		resizing = true;
@@ -722,7 +724,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 //		if (isEdited == true && imgGrid != null)
 //		{
 //			imgGrid = TSwingUtils.toBufferedImage(((Image)imgGrid).getScaledInstance(getWidth(), getHeight(), Image.SCALE_FAST));
-//		}	
+//		}
 	}
 	
 	public void componentShown(ComponentEvent arg0)
@@ -753,12 +755,21 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	//-----------------------------------------------------------------------
 	// Edition
 	//-----------------------------------------------------------------------
-	private void updateEdit( boolean inEdition)
+	public void updateEdit( boolean inEdition)
 	{
 		// Maj des keys
 		for (UIKeyKeyboard currentKey : allKeys)
 		{
 			currentKey.setEditable(inEdition);
+		}
+	}
+	
+	public void redrawAllKeys( )
+	{
+		// Maj des keys
+		for (UIKeyKeyboard currentKey : allKeys)
+		{
+			currentKey.captionChanged();
 		}
 	}
 	

@@ -558,8 +558,8 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 
 		public void mouseClicked(MouseEvent e)
 		{
-			Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), panelColor.getBackground() );
 			
+			Color newColor = JColorChooser.showDialog( null, UIString.getUIString("LB_CHOOSE_COLOR"), panelColor.getBackground() );
 			if( newColor != null )
 			{
 				if( newColor != panelColor.getBackground() )

@@ -25,7 +25,8 @@
 
 package clavicom.core.engine.dictionary;
 
-public class CDictionaryWord
+
+public class CDictionaryWord implements Comparable<CDictionaryWord>
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -69,6 +70,13 @@ public class CDictionaryWord
 	public String toString()
 	{
 		return word;
+	}
+
+	public int compareTo(CDictionaryWord o)
+	{
+		if ( getFrequency() > o.getFrequency())  return -1;
+		else if(getFrequency() == o.getFrequency()) return 0; 
+	    else return 1; 
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
