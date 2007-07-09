@@ -253,7 +253,6 @@ public class Application
 		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard());
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
 		
-		toolMessageEngine.setUiKeyboardFrame( keyboardFrame );
 		
 		
 		try

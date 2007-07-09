@@ -236,7 +236,7 @@ public class UIFrameModificationProfil extends JDialog
 					panelFont.validateDataEntry();
 					
 					// on recharge le uikeyboard
-					uiKeyboard.revalidate();
+					uiKeyboard.redrawAllKeys();
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
