@@ -181,13 +181,10 @@ class MonDialogue extends JDialog
 		
 		panelButton.add(jButton1);
 		
-		
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 		this.getContentPane().add(panelButton, BorderLayout.SOUTH);
 		this.getContentPane().add(lmessage, BorderLayout.NORTH);
 		this.getContentPane().add(ldetail, BorderLayout.CENTER);
-
 	}
-
 }
