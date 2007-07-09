@@ -193,7 +193,7 @@ public class CKeyLevel extends CKeyOneLevel
 	public String toString()
 	{
 		return ( 	UIString.getUIString("ST_KEY_TOSTRING_LEVEL") +
-					" [" + TLevelEnum.getString(level) + "]");
+					" [" + level.toString() + "]");
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 

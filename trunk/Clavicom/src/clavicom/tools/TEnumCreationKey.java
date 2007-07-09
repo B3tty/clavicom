@@ -32,7 +32,7 @@ public final class TEnumCreationKey
     public final static TEnumCreationKey T_KEY_CHARACTER					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_CLAVICOM_OPEN_CONFIGURATION	= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_CLAVICOM_CLOSE_APPLICATION	= new TEnumCreationKey();
-    public final static TEnumCreationKey T_KEY_CLAVICOM_MINIMIZ_APPLICATION	= new TEnumCreationKey();
+    public final static TEnumCreationKey T_KEY_CLAVICOM_MINIMIZE_APPLICATION= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_CLAVICOM_SWITCH_SOURICOM		= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LASTWORD						= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LAUNCHER						= new TEnumCreationKey();

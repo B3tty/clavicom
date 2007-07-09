@@ -930,9 +930,28 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	private void deleteSelectedKeys()
 	{
 		// on demande à l'utilisateur s'il comfirma la suppression
+		
+		// On construit le message le plus approprié
+		String message;
+		
+		switch (selectedKeys.size())
+		{
+			case 0:
+				return;
+
+			case 1:
+				message = UIString.getUIString("LB_UIKEYBOARD_DELETE_ONE_KEY");
+				break;
+				
+			default:
+				message = 	UIString.getUIString("LB_UIKEYBOARD_DELETE_MULTI_KEY_1") + 
+							selectedKeys.size() + 
+							UIString.getUIString("LB_UIKEYBOARD_DELETE_MULTI_KEY_2");
+		}
+		
 		if( JOptionPane.showConfirmDialog(
 				this, 
-				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY"), 
+				message, 
 				UIString.getUIString("LB_UIKEYBOARD_DELETE_KEY_TITLE"), 
 				JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
 		{
@@ -1217,7 +1236,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			addCreatedKey(newUIKey);		
 			newUIKeyGlobal = newUIKey;
 		}
-		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZ_APPLICATION)
+		else if (keyType == TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZE_APPLICATION)
 		{
 			// Création de l'objet du noyau
 			CKeyClavicom newCoreKey = new CKeyClavicom(	normalColor,
@@ -1226,7 +1245,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 														false,
 														newKeyMin,
 														newKeyMax,
-														TKeyClavicomActionType.MINIMIZ_APPLICATION,
+														TKeyClavicomActionType.MINIMIZE_APPLICATION,
 														CFilePaths.getToolKeyClavicomMinimizePicture());
 			// On dit que c'est une image
 			newCoreKey.setCaptionImage(true);

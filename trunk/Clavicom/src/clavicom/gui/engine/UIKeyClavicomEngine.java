@@ -162,7 +162,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			// Passage en mode configuration
 			frameKeyboard.edit(true);
 		}
-		else if (actionType == TKeyClavicomActionType.MINIMIZ_APPLICATION)
+		else if (actionType == TKeyClavicomActionType.MINIMIZE_APPLICATION)
 		{
 			// Réduction de l'application
 			//frameKeyboard.setVisible( false );

@@ -263,6 +263,9 @@
 	
 	<!-- KEY_ONE_LEVEL -->
 	<message id = "EX_KEY_ONE_LEVEL_BUILD">Chargement d'une touche à un niveau</message>
+	<message id = "LB_KEY_ONE_LEVEL_ENUM_NORMAL">Normale</message>
+	<message id = "LB_KEY_ONE_LEVEL_ENUM_SHIFT">Majuscule</message>
+	<message id = "LB_KEY_ONE_LEVEL_ENUM_ALTGR">Alt-Gr</message>
 	
 	<!-- KEY_THREE_LEVEL -->
 	<message id = "EX_KEY_THREE_LEVEL_BUILD">Chargement d'une touche à trois niveau</message>
@@ -363,7 +366,7 @@
 	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
 	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
 	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
-	<message id = "LB_KEYCLAVICOM_MINIMIZ_APPLICATION">Minimiser l'application</message>
+	<message id = "LB_KEYCLAVICOM_MINIMIZE_APPLICATION">Minimiser l'application</message>
 	
 	<!-- optionKeyLauncher -->
 	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
@@ -384,7 +387,7 @@
 	<message id = "LB_KEYSTHREELEVEL_BORDER">Options d'affichage</message>
 	
 	<message id = "LB_KEYSTHREELEVEL_BORDER_NORMAL">Normal</message>
-	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Majuscules</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Majuscule</message>
 	<message id = "LB_KEYSTHREELEVEL_BORDER_ALTGR">Alt-Gr</message>
 		
 	<!-- optionKeyString -->
@@ -452,7 +455,7 @@
 	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
-	<message id = "LB_KEYCREATION_MINIMIZ_APPLICATION">Reduction de l'application</message>
+	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION">Reduction de l'application</message>
 	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configuration de l'application</message>
 	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
 	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
@@ -466,7 +469,7 @@
 	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
-	<message id = "LB_KEYCREATION_MINIMIZ_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
+	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
 	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP">Création d'une touche de configuration de l'application</message>
 	<message id = "LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP">Création d'une touche de passage en mode souris</message>
 	<message id = "LB_KEYCREATION_ALTGR_TOOLTIP">Création d'une touche "Alt-Gr"</message>
@@ -535,7 +538,10 @@
 	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">Changement de la langue de l'interface</message>
 	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
 	
-	<message id = "LB_UIKEYBOARD_DELETE_KEY">Etes-vous sûr de vouloir supprimer les touches séléctionnées ?</message>
+	<message id = "LB_UIKEYBOARD_DELETE_ONE_KEY">Etes-vous sûr de vouloir supprimer la touche sélectionnée ?</message>
+	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_1">Etes-vous sûr de vouloir supprimer les </message>
+	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_2"> touches sélectionnées ? </message>
+	
 	<message id = "LB_UIKEYBOARD_DELETE_KEY_TITLE">Suppression de touches</message>
 	
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Options avancées</message>
