@@ -301,10 +301,10 @@ UIGridChangedListener
 		btEditionKey.setToolTipText(UIString.getUIString("LB_EDITION_EDIT_KEY_TOOLTIP"));
 		btOpenLevelManager.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP"));
 		
-		panelBoutons.add(btOpenLevelManager);
 		panelBoutons.add(btFermerModeEdition);
-		panelBoutons.add(btEditionKey);
 		panelBoutons.add(btOptionsApplication);
+		panelBoutons.add(btOpenLevelManager);
+		panelBoutons.add(btEditionKey);
 		
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),

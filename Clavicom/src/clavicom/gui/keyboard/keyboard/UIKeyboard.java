@@ -496,15 +496,16 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		// Maj des keys
 		updateEdit(true);
 		
+		// Ajout de la grille si c'est la premiere edition		
 		if(firstEdition == true)
-		{
-			// On met à jour les dimensions de la grille
-			magnetGrid.setDimensions(getWidth(), getHeight());
-			recreateGrid();
-			
+		{			
 			setMagnetGridToKeys(magnetGrid);
 			firstEdition = false;
 		}
+		
+		// On met à jour les dimensions de la grille
+		magnetGrid.setDimensions(getWidth(), getHeight());
+		recreateGrid();
 		 
 		// Changement de l'état
 		isEdited = true;
@@ -588,7 +589,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				SoundEngine.getInstance().unListenDefilement( );
 			}
 		}
-		
 	}
 	
 	public void select(boolean select)
@@ -1109,8 +1109,13 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 					fireSelectionChanged();
 					break;
 					
-				case (KeyEvent.VK_SPACE): 
-					
+				case (KeyEvent.VK_A) :
+					if(!arg0.isControlDown())
+						return;
+				
+					select(true);
+					// On indique que la selection a changée
+					fireSelectionChanged();
 					break;
 			}
 		}
