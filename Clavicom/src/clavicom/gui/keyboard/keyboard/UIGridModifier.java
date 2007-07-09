@@ -163,6 +163,8 @@ public class UIGridModifier extends JPanel
 				fireGridChanged();
 			} 
 		});
+		
+		chkUseGrid.setOpaque(false);
 	}
 	
 	protected void createPanels()
@@ -175,6 +177,13 @@ public class UIGridModifier extends JPanel
 		panelSpinnerV = new JPanel();
 		panelLabelH = new JPanel();
 		panelSpinnerH = new JPanel();
+		
+		panelUseGrid.setOpaque(false);
+		panelLabelV.setOpaque(false);
+		panelSpinnerV.setOpaque(false);
+		panelLabelH.setOpaque(false);
+		panelSpinnerH.setOpaque(false);
+		panelMain.setOpaque(false);
 		
 		labelVertical = new JLabel(UIString.getUIString("LB_GRID_MODIFIER_VERTICAL"));
 		labelHorizontal = new JLabel(UIString.getUIString("LB_GRID_MODIFIER_HORIZONTAL"));

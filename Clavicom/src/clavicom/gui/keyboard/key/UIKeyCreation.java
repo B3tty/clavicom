@@ -51,6 +51,8 @@ public class UIKeyCreation extends UIKeyOneLevel
 		// Ajout du tooltip
 		setToolTipText(coreKey.getToolTip());
 		
+		// les touches création ne sont pas opaques
+		setOpaque(false);
 		addListeners();
 	}
 	
