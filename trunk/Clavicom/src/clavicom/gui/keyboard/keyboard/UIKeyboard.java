@@ -534,7 +534,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	public void unEdit()
 	{
-		// Ajout des listeners
+		// Retrait des listeners
 		removeKeyListener(keyListener);
 		removeMouseListener(mouseAdapter);
 		
