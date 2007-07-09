@@ -212,7 +212,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			{
 				buttonReleasedEdit();
 			}
-		}	
+		}
 		
 		// ------------------------------------------------------ CONSTRUCTEURS --//
 		public UIKey()

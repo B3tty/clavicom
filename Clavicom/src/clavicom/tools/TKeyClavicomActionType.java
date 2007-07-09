@@ -41,7 +41,7 @@ public final class TKeyClavicomActionType
     public final static TKeyClavicomActionType NONE					 	= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_MOUSE_KEYBOARD 	= new TKeyClavicomActionType( false );
     public final static TKeyClavicomActionType CLOSE_APPLICATION 		= new TKeyClavicomActionType( true );
-    public final static TKeyClavicomActionType MINIMIZ_APPLICATION 		= new TKeyClavicomActionType( true );
+    public final static TKeyClavicomActionType MINIMIZE_APPLICATION 		= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType OPEN_CONFIGURATION		= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_KEYBOARD_MOUSE	= new TKeyClavicomActionType( true );
     public final static TKeyClavicomActionType SWITCH_MOUSEMOVE_MOUSECLICK	= new TKeyClavicomActionType( false );
@@ -69,9 +69,9 @@ public final class TKeyClavicomActionType
     	{
     		return "OPEN_CONFIGURATION";
     	}
-    	else if (myVal == MINIMIZ_APPLICATION)
+    	else if (myVal == MINIMIZE_APPLICATION)
     	{
-    		return "MINIMIZ_APPLICATION";
+    		return "MINIMIZE_APPLICATION";
     	}
     	else
     	{
@@ -106,9 +106,9 @@ public final class TKeyClavicomActionType
     	{
     		return OPEN_CONFIGURATION;
     	}
-    	else if (myString.equals("MINIMIZ_APPLICATION"))
+    	else if (myString.equals("MINIMIZE_APPLICATION"))
     	{
-    		return MINIMIZ_APPLICATION;
+    		return MINIMIZE_APPLICATION;
     	}
     	else
     	{
@@ -135,9 +135,9 @@ public final class TKeyClavicomActionType
     	{
     		return UIString.getUIString("LB_KEYCLAVICOM_OPEN_CONFIGURATION");
     	}
-    	else if (this == MINIMIZ_APPLICATION)
+    	else if (this == MINIMIZE_APPLICATION)
     	{
-    		return UIString.getUIString("LB_KEYCLAVICOM_MINIMIZ_APPLICATION");
+    		return UIString.getUIString("LB_KEYCLAVICOM_MINIMIZE_APPLICATION");
     	}
     	else
     	{

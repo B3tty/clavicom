@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.18125</x>
-        <y>0.39160156</y>
+        <x>0.01875</x>
+        <y>0.6464844</y>
       </left_up>
       <right_down>
-        <x>0.875</x>
-        <y>0.6894531</y>
+        <x>0.71015626</x>
+        <y>0.94433594</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1129,12 +1129,12 @@
         <keycharacter order="3" caption_image="false" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.686584</x>
-              <y>0.22727273</y>
+              <x>0.7373168</x>
+              <y>0.22950819</y>
             </point>
             <point position="max">
-              <x>0.7903044</x>
-              <y>0.3553719</y>
+              <x>0.8410372</x>
+              <y>0.35737705</y>
             </point>
           </coordinates>
           <colors>
@@ -3100,7 +3100,7 @@
             </color_entered>
           </colors>
           <caption>minimize.png</caption>
-          <action>MINIMIZ_APPLICATION</action>
+          <action>MINIMIZE_APPLICATION</action>
         </keyclavicom>
       </keylist>
     </keygroup>
@@ -3147,10 +3147,15 @@
     <prefered_word frequency="2">france</prefered_word>
     <prefered_word frequency="3">royaume</prefered_word>
     <prefered_word frequency="1">de</prefered_word>
-    <prefered_word frequency="1">des</prefered_word>
+    <prefered_word frequency="2">des</prefered_word>
     <prefered_word frequency="1">putsch</prefered_word>
     <prefered_word frequency="1">tous</prefered_word>
     <prefered_word frequency="1">histoire</prefered_word>
+    <prefered_word frequency="1">MonPass</prefered_word>
+    <prefered_word frequency="1">thomas</prefered_word>
+    <prefered_word frequency="1">devrait</prefered_word>
+    <prefered_word frequency="1">manger</prefered_word>
+    <prefered_word frequency="1">choux</prefered_word>
   </prefered_words>
 </profil>
 

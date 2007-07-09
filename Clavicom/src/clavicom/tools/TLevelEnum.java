@@ -25,6 +25,8 @@
 
 package clavicom.tools;
 
+import clavicom.gui.language.UIString;
+
 public final class TLevelEnum 
 {
     private TLevelEnum() 
@@ -92,15 +94,15 @@ public final class TLevelEnum
     {
     	if (this == NORMAL)
     	{
-    		return "NORMAL";
+    		return UIString.getUIString("LB_KEY_ONE_LEVEL_ENUM_NORMAL");
     	}
     	else if (this == SHIFT)
     	{
-    		return "SHIFT";
+    		return UIString.getUIString("LB_KEY_ONE_LEVEL_ENUM_SHIFT");
     	}
     	else if (this == ALT_GR)
     	{
-    		return "ALT_GR";
+    		return UIString.getUIString("LB_KEY_ONE_LEVEL_ENUM_ALTGR");
     	}    	
     	else
     	{

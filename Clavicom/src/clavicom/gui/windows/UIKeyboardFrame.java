@@ -142,7 +142,7 @@ UIKeyboardNewKeyCreated
 			setTransparency(1f);
 			
 			setFocusableWindowState(true);
-//			setAlwaysOnTop(false);
+			setAlwaysOnTop(false);
 			
 			panelKeyboard.edit();		
 			
@@ -152,7 +152,7 @@ UIKeyboardNewKeyCreated
 		// En utilisation
 		{
 			isEdited = false;
-			
+
 			frameToolbar.setVisible(false);
 			
 			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());

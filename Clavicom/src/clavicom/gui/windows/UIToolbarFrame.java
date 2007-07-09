@@ -71,7 +71,6 @@ import clavicom.gui.listener.UIGridChangedListener;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
-import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 
 //import com.sun.jna.examples.WindowUtils;
@@ -368,17 +367,16 @@ UIGridChangedListener
 		frameOptionKeyString.setSize(410,360);
 		
 		// Frame d'options de l'application
-		frameOptionApplication.setSize(new Dimension (550,620));
+		frameOptionApplication.setSize(new Dimension (550,600));
 		frameOptionApplication.setResizable(false);
 		frameOptionApplication.setModal(true);
-		frameOptionApplication.setAlwaysOnTop( true );
 		frameOptionApplication.setVisible(false);
 		
 		// Initialisation des composants
 		btEditionKey.setEnabled(false);
 		
-		// Toujours au sommet		
-		setAlwaysOnTop(true);
+		// Pas toujours au sommet		
+		setAlwaysOnTop(false);
 	}
 	
 	// ------- Actions des boutons
@@ -496,7 +494,7 @@ UIGridChangedListener
 			{
 				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
 				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
-										TLevelEnum.getString(selectedKeyLevel.GetLevel()));
+										selectedKeyLevel.GetLevel().toString());
 				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
 				frameOptionKeyOneLevel.setVisible(true);
 			}
@@ -588,7 +586,7 @@ UIGridChangedListener
 			{
 				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
 				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
-										TLevelEnum.getString(selectedKeyLevel.GetLevel()));
+												selectedKeyLevel.GetLevel().toString());
 				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
 				frameOptionKeyOneLevel.setVisible(true);
 			}
@@ -608,7 +606,7 @@ UIGridChangedListener
 			{
 				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
 				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
-										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
+											    selectedKeyClavicom.getAction().toString());
 				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
 				
 				frameOptionKeyKeyboard.setVisible(true);

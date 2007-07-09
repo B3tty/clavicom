@@ -126,9 +126,9 @@ public class UIKeyCreationToolbar extends JPanel
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomMinimizePicture(),
-				UIString.getUIString("LB_KEYCREATION_MINIMIZ_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZ_APPLICATION,
-				UIString.getUIString("LB_KEYCREATION_MINIMIZ_APPLICATION_TOOLTIP")
+				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION"),
+				TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZE_APPLICATION,
+				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomConfigurationPicture(),

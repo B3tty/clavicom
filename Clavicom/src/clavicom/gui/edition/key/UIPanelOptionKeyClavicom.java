@@ -72,9 +72,6 @@ public class UIPanelOptionKeyClavicom extends UIPanelOptionOneLevelKey implement
 				UIString.getUIString("LB_KEYCLAVICOM_BORDER")) );
 		
 		add( panel);
-		
-		
-		
 	}
 	//----------------------------------------------------------- METHODES --//	
 	public void setValuesKeyClavicom(CKeyClavicom myKeyClavicom )
