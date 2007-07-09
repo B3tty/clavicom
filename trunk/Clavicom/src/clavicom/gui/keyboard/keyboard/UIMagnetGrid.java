@@ -107,6 +107,7 @@ public class UIMagnetGrid
 	 */
 	public void setDimensions(int width, int height)
 	{
+		System.out.println("New dimensions : " + width + " " + height);
 		// Recopie des attributs
 		this.width = width;
 		this.height = height;
@@ -122,6 +123,7 @@ public class UIMagnetGrid
 
 	public void setHorizontalStep(int horizontalStep)
 	{
+		System.out.println(this + "H :" + horizontalStep);
 		this.horizontalStep = horizontalStep;
 		updateLists();
 	}
@@ -133,6 +135,7 @@ public class UIMagnetGrid
 
 	public void setVerticalStep(int verticalStep)
 	{
+		System.out.println(this + "V :" + verticalStep);
 		this.verticalStep = verticalStep;
 		updateLists();
 	}
@@ -185,9 +188,7 @@ public class UIMagnetGrid
 			}
 			++i;
 		}
-
 		return lastChoice;
-
 	}
 	
 	/**
@@ -292,7 +293,7 @@ public class UIMagnetGrid
 	 * Recréé les liste des lignes
 	 */
 	protected void updateLists()
-	{
+	{		
 		if(width <= 0 || height <= 0 || verticalStep <= 0 || horizontalStep <= 0)
 			return;
 		

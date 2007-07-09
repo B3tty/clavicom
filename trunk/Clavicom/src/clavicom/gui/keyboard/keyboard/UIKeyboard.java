@@ -498,6 +498,10 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		if(firstEdition == true)
 		{
+			// On met à jour les dimensions de la grille
+			magnetGrid.setDimensions(getWidth(), getHeight());
+			recreateGrid();
+			
 			setMagnetGridToKeys(magnetGrid);
 			firstEdition = false;
 		}
@@ -646,7 +650,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	}
 	
 	public void paintComponent(Graphics myGraphic)
-	{
+	{		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
 		
