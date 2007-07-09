@@ -25,6 +25,7 @@
 
 package clavicom.gui.windows;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -32,8 +33,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -65,10 +64,10 @@ import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIGridModifier;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
+import clavicom.gui.keyboard.keyboard.UIToolbarPanel;
 import clavicom.gui.language.UIString;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.listener.UIGridChangedListener;
-import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentFrame;
 import clavicom.tools.TKeyClavicomActionType;
@@ -80,8 +79,7 @@ import clavicom.tools.TNavigationType;
 
 public class UIToolbarFrame extends UITranslucentFrame 
 implements
-UIGridChangedListener,
-ComponentListener
+UIGridChangedListener
 {
 
 
@@ -123,7 +121,7 @@ ComponentListener
 	
 	// Panel principal
 	UIMovingPanel mainPanel;
-	UIBackgroundPanel mainPanelBg;
+	UIToolbarPanel mainPanelBg;
 	
 	// Sous panels
 	JPanel panelBoutons;	// Contient le bouton fermer mode édition et paramètres
@@ -172,8 +170,6 @@ ComponentListener
 		
 		// Initialisation des objets
 		initFrame();
-		
-		addComponentListener(this);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -257,8 +253,9 @@ ComponentListener
 	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		mainPanelBg = new UIBackgroundPanel();
-		panelBoutons = new JPanel();
+		
+		// TODO
+		mainPanelBg = new UIToolbarPanel(Color.WHITE);
 		
 		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
@@ -333,6 +330,8 @@ ComponentListener
 		mainPanel.add(panelBoutons);
 		mainPanel.add(panelKeyboard);
 		
+		mainPanelBg.setBackground(Color.GREEN);
+		
 		mainPanelBg.add(mainPanel);
 		add(mainPanelBg);
 	}
@@ -343,6 +342,7 @@ ComponentListener
 	private void initFrame()
 	{		
 		// On définit de la transparence pour tous
+		mainPanel.setOpaque(false);
 		panelBoutons.setOpaque(false);
 		panelToolbar.setOpaque(false);
 		gridModifier.setOpaque(false);
@@ -527,15 +527,12 @@ ComponentListener
 
 	public void gridChanged()
 	{
-		System.out.println("GRID CHANGED !!!");
 		panelKeyboard.recreateGrid();
 		panelKeyboard.repaint();		
 	}
 
 	public void gridUsed(boolean used)
-	{
-		System.out.println("GRID USED CHANGED !!!");
-		
+	{		
 		panelKeyboard.useMagnetGrid(used);
 		panelKeyboard.repaint();
 	}
@@ -705,30 +702,6 @@ ComponentListener
 		}
 
 		super.setVisible(arg0);
-	}
-
-	public void componentHidden(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void componentMoved(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void componentResized(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		System.out.println(getWidth() + "|" + getHeight());
-	}
-
-	public void componentShown(ComponentEvent arg0)
-	{
-		// TODO Auto-generated method stub
-		
 	}
 }
 

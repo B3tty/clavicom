@@ -609,12 +609,12 @@
         <keyclavicom order="1" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.92491466</x>
-              <y>0.021201413</y>
+              <x>0.9261364</x>
+              <y>0.019830028</y>
             </point>
             <point position="max">
-              <x>0.96245736</x>
-              <y>0.13074204</y>
+              <x>0.9625</x>
+              <y>0.13597734</y>
             </point>
           </coordinates>
           <colors>

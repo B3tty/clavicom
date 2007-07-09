@@ -141,7 +141,7 @@ UIKeyboardNewKeyCreated
 			
 			setTransparency(1f);
 			
-//			setFocusableWindowState(true);
+			setFocusableWindowState(true);
 //			setAlwaysOnTop(false);
 			
 			panelKeyboard.edit();		
@@ -157,7 +157,7 @@ UIKeyboardNewKeyCreated
 			
 			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());
 			
-//			setFocusableWindowState(false);
+			setFocusableWindowState(false);
 			setAlwaysOnTop(true);
 			
 			// désabonnement a tous les moteurs
