@@ -40,6 +40,8 @@ public class CPreferedWords
 	//---------------------------------------------------------- VARIABLES --//
 	List<CDictionaryWord> preferedWords;
 	
+	boolean active;
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CPreferedWords( Element node ) throws Exception
 	{
@@ -49,6 +51,31 @@ public class CPreferedWords
 		}
 		
 		preferedWords = new ArrayList<CDictionaryWord>();
+		
+		// ============================================================
+		// récupération de l'attribut active
+		// ============================================================
+		String strActive = node.getAttributeValue(TXMLNames.PR_ATTRIBUTE_PREFERED_WORD_ACTIVE);
+		if(strActive == null || strActive.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1")+
+									TXMLNames.PR_ATTRIBUTE_NAVIGATION_ROLLOVER +
+									UIString.getUIString("EX_PREFERED_WORDS_MISSING_ATTRIBUTE_2"));
+	
+		}
+		
+		try
+		{
+			active = Boolean.parseBoolean(strActive);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_PREFERED_WORD_BAD_ACTIVE_1")+
+									strActive +
+									UIString.getUIString("EX_PREFERED_WORD_BAD_ACTIVE_2")+
+									TXMLNames.PR_ATTRIBUTE_PREFERED_WORD_ACTIVE +							
+									UIString.getUIString("EX_PREFERED_WORD_BAD_ACTIVE_3"));			
+		}
 		
 		// ============================================================
 		// récupération des Elements preferedWord
@@ -148,6 +175,10 @@ public class CPreferedWords
 		Attribute frequency_att;
 		int frequency;
 		
+		// ajout de l'attribut active
+		Attribute active_att = new Attribute( TXMLNames.PR_ATTRIBUTE_PREFERED_WORD_ACTIVE, String.valueOf( active ) );
+		preferedWords_elem.setAttribute( active_att );
+		
 		for( CDictionaryWord preferedWord : preferedWords )
 		{
 			frequency = preferedWord.getFrequency();
@@ -162,6 +193,16 @@ public class CPreferedWords
 		}
 		
 		return preferedWords_elem;
+	}
+
+	public boolean isActive()
+	{
+		return active;
+	}
+
+	public void setActive(boolean active)
+	{
+		this.active = active;
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//

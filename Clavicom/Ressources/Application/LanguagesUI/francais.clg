@@ -12,6 +12,13 @@
 	<!-- ========================================================================== 
 		Exceptions 
 	==========================================================================  -->
+	
+	<!-- TITLES -->
+	<message id = "EX_TITLE_FATAL_ERROR">Erreur fatale</message>
+	<message id = "EX_TITLE_ERROR">Erreur</message>
+	<message id = "EX_TITLE_INFO">Information</message>
+	<message id = "EX_TITLE_WARNING">Avertissement</message>
+	
 	<!-- COMMANDESET -->
 	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
 	<message id = "EX_COMMANDSET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
@@ -216,6 +223,9 @@
 	
 	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Chargement de la navigation] Attribut "</message>
 	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
+	
+	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1">[Chargement des mots préferes] Attribut "</message>
+	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
 
 	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Chargement de la navigation] La chaîne "</message>
 	<message id = "EX_NAVIGATION_BAD_TYPE_2">" n'est pas un "</message>		
@@ -227,7 +237,11 @@
 	
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Chargement de la navigation] La chaîne "</message>
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
-	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>	
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>
+	
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_1">[Chargement des mots préférés] La chaîne "</message>
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_2">" n'est pas un "</message>		
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_3">" valide.</message>	
 	
 	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_1">[Chargement de la navigation] La chaîne "</message>
 	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_2">" n'est pas un "</message>		
@@ -349,6 +363,7 @@
 	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
 	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
 	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
+	<message id = "LB_KEYCLAVICOM_MINIMIZ_APPLICATION">Minimiser l'application</message>
 	
 	<!-- optionKeyLauncher -->
 	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
@@ -495,6 +510,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
+	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE">actif</message>
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>

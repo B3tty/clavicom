@@ -219,15 +219,12 @@ public class CLastWordEngine extends CStringsEngine implements
 
 	public void onClickKeyDynamicStringPrediction(CKeyDynamicString keyDynamicString)
 	{		
-		// si la chaine courrante n'est pas vide
-		if( ! currentString.equals("") )
-		{
-			// on l'ajoute au début de la liste
-			stringList.add( 0, currentString );
-		}
 		
+		// on l'ajoute au début de la liste
+		stringList.add( 0, keyDynamicString.GetStringCommand() );
+
 		// on met la chaine de keyDynamicString dans la string courrante
-		currentString = keyDynamicString.GetStringCommand();
+		currentString = "";
 		
 		// on met a jour les touches
 		updateKeys();

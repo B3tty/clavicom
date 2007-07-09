@@ -25,6 +25,7 @@
 
 package clavicom.gui.engine;
 
+import javax.swing.JFrame;
 import javax.swing.event.EventListenerList;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
@@ -164,7 +165,8 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 		else if (actionType == TKeyClavicomActionType.MINIMIZ_APPLICATION)
 		{
 			// Réduction de l'application
-			frameKeyboard.setVisible( false );
+			//frameKeyboard.setVisible( false );
+			frameKeyboard.setExtendedState(JFrame.ICONIFIED);
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_KEYBOARD_MOUSE)
 		{

@@ -96,6 +96,7 @@ public class CKeyPrediction extends CKeyDynamicString
 	@Override
 	public String GetStringCommand()
 	{
+		System.out.println(caption);
 		return caption;
 	}
 

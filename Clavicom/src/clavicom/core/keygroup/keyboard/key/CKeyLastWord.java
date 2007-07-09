@@ -95,6 +95,8 @@ public class CKeyLastWord extends CKeyDynamicString
 		return false;
 	}
 
+	
+	
 	@Override
 	public String GetStringCommand()
 	{
