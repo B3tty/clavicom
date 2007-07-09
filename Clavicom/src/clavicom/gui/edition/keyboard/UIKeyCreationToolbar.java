@@ -59,7 +59,7 @@ public class UIKeyCreationToolbar extends JPanel
 			Color myColorEntered,
 			Color myColorPressed)
 	{
-		setLayout( new GridLayout(1, 11, SPACE_BETWEEN_KEYS, SPACE_BETWEEN_KEYS) );
+		setLayout( new GridLayout(2, 6, SPACE_BETWEEN_KEYS, SPACE_BETWEEN_KEYS) );
 		
 		// ===================================================================
 		// création de toutes les touches
