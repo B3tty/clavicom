@@ -253,9 +253,8 @@ UIGridChangedListener
 	{		
 		// Création des panels
 		mainPanel = new UIMovingPanel(this);
-		
-		// TODO
 		mainPanelBg = new UIToolbarPanel(Color.WHITE);
+		panelBoutons = new JPanel();
 		
 		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
