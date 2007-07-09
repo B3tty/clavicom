@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -42,6 +43,7 @@ import javax.swing.table.TableModel;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.profil.CPreferedWords;
+import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
 public class PanelModificationProfilPreferedWords extends PanelModificationProfil
@@ -55,6 +57,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	JTable table;
 	WordsTableModel wordTableModel;
 	JPanel panelGlobal;
+	JCheckBox active;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	
@@ -108,6 +111,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		});
 		buttons.add( buttonDeleteAll );
 		
+		// panel des bouttons
 		panelGlobal.add( buttons, BorderLayout.SOUTH );
 		
 		
@@ -116,13 +120,23 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		
 		JScrollPane panelTable = new JScrollPane( table );
 		
-		panelGlobal.remove( panelTable );
+		
+		// panel du checkbox active
+		JPanel panelActive = new JPanel();
+		active = new JCheckBox( 
+				UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE"),
+				CProfil.getInstance().getPreferedWords().isActive() );
+		panelActive.add( active );
+		panelGlobal.add( panelActive, BorderLayout.NORTH );
+		
+		
+		// panel de la table
 		panelGlobal.add( panelTable, BorderLayout.CENTER );
 		
-		add(panelGlobal, BorderLayout.CENTER);
 		
 		
-		
+		add(panelGlobal, BorderLayout.CENTER );
+	
 	}
 
 
@@ -144,6 +158,9 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 			}
 			
 		}
+		
+		// active
+		active.setSelected( CProfil.getInstance().getPreferedWords().isActive() );
 
 	}
 
@@ -164,6 +181,8 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	protected boolean change( boolean saveData )
 	{
 		// Si les mots préférés ont changé, on les change dans le profil
+		
+		boolean retour = false;
 		
 		// si la taille de la liste à changé, c'est différant
 		if( preferedWord.getSize() != wordTableModel.getRowCount() )
@@ -186,10 +205,21 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 				}
 			}
 			
-			return true;
+			retour = true;
 		}
 		
-		return false;
+		// active
+		if( CProfil.getInstance().getPreferedWords().isActive() != active.isSelected() )
+		{
+			if( saveData )
+			{
+				CProfil.getInstance().getPreferedWords().setActive( active.isSelected() );
+			}
+			
+			retour = true;
+		}
+		
+		return retour;
 	}
 	
 	

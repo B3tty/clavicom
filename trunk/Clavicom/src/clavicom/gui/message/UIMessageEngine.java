@@ -25,10 +25,17 @@
 
 package clavicom.gui.message;
 
-import javax.swing.JOptionPane;
-
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import clavicom.core.listener.CMessageListener;
 import clavicom.core.message.CMessageEngine;
+import clavicom.gui.language.UIString;
 import clavicom.gui.windows.UIKeyboardFrame;
 
 public class UIMessageEngine implements CMessageListener
@@ -48,112 +55,58 @@ public class UIMessageEngine implements CMessageListener
 
 	// ----------------------------------------------------------- METHODES --//
 	public void onNewFatalError(String newMessage, String detail)
-	{/*
-		if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(true);
-			uiKeyboardFrame.setAlwaysOnTop( false );
-			System.out.println("onNewFatalError");
-		}*/
-		
-		if (detail == null)
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage + "\n\n" + detail);
-		}
-		/*
-		if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(false);
-			uiKeyboardFrame.setAlwaysOnTop( true );
-		}*/
-		
-		
+	{
+		MonDialogue d = new MonDialogue( 
+				uiKeyboardFrame, 
+				UIString.getUIString("EX_TITLE_FATAL_ERROR"), 
+				newMessage, 
+				detail, 
+				false );
+		d.pack();
+		d.setAlwaysOnTop( true ); 
+		d.setVisible( true );
+
 		// On ferme l'application
 		System.exit(0);
 	}
 
 	public void onNewError(String newMessage, String detail)
 	{
-/*
-		if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(true);
-			uiKeyboardFrame.setAlwaysOnTop( false );
-			System.out.println("onNewError");
-		}*/
-		
-		if (detail == null)
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage + "\n\n"
-					+ detail);
-		}
-		
-		/*if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(false);
-			uiKeyboardFrame.setAlwaysOnTop( true );
-		}*/
+		MonDialogue d = new MonDialogue( 
+				uiKeyboardFrame, 
+				UIString.getUIString("EX_TITLE_ERROR"), 
+				newMessage, 
+				detail, 
+				false );
+		d.pack();
+		d.setAlwaysOnTop( true ); 
+		d.setVisible( true );
 	}
 
 	public void onNewInfo(String newMessage, String detail)
 	{
-
-		/*if( uiKeyboardFrame != null )
-		{
-			System.out.println("onNewInfo");
-			uiKeyboardFrame.setFocusableWindowState(true);
-			uiKeyboardFrame.setAlwaysOnTop( false );
-		}*/
-		
-		if (detail == null)
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage + "\n\n"
-					+ detail);
-		}
-		
-		/*if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(false);
-			uiKeyboardFrame.setAlwaysOnTop( true );
-		}*/
+		MonDialogue d = new MonDialogue( 
+				uiKeyboardFrame, 
+				UIString.getUIString("EX_TITLE_INFO"), 
+				newMessage, 
+				detail, 
+				false );
+		d.pack();
+		d.setAlwaysOnTop( true ); 
+		d.setVisible( true );
 	}
 
 	public void onNewWarning(String newMessage, String detail)
 	{
-		/*if( uiKeyboardFrame != null )
-		{
-			System.out.println("onNewWarning");
-			uiKeyboardFrame.setFocusableWindowState(true);
-			uiKeyboardFrame.setAlwaysOnTop( false );
-		}*/
-		
-		if (detail == null)
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(uiKeyboardFrame, newMessage + "\n\n"
-					+ detail);
-		}
-		
-		/*if( uiKeyboardFrame != null )
-		{
-			uiKeyboardFrame.setFocusableWindowState(false);
-			uiKeyboardFrame.setAlwaysOnTop( true );
-		}*/
+		MonDialogue d = new MonDialogue( 
+				uiKeyboardFrame, 
+				UIString.getUIString("EX_TITLE_WARNING"), 
+				newMessage, 
+				detail, 
+				false );
+		d.pack();
+		d.setAlwaysOnTop( true ); 
+		d.setVisible( true );
 	}
 
 	public UIKeyboardFrame getUiKeyboardFrame()
@@ -169,3 +122,72 @@ public class UIMessageEngine implements CMessageListener
 	// --------------------------------------------------- METHODES PRIVEES --//
 }
 
+class MonDialogue extends JDialog
+{
+	// les données mises à jour par la boîte de dialogue
+	String message;
+	String detail;
+
+	public MonDialogue(JFrame f, String titre, String myMessage, String myDetail, boolean modal)
+	{
+		super(f, titre, modal);
+		
+		message = myMessage;
+		detail = myDetail;
+		
+		setLocationRelativeTo( f );
+		
+		try
+		{
+			jbInit();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	// les methodes de réponse aux boutons OK et Cancel
+
+	void jButtonOK_actionPerformed(ActionEvent e)
+	{
+		setVisible( false );
+	}
+
+	void jButtonCANCEL_actionPerformed(ActionEvent e)
+	{
+		setVisible( false );
+	}
+
+
+	JButton jButton1 = new JButton();
+	JPanel panelButton = new JPanel();
+	JLabel lmessage = new JLabel();
+	JLabel ldetail = new JLabel();
+
+	private void jbInit() throws Exception
+	{
+		jButton1.setText("OK");
+		jButton1.addActionListener(new java.awt.event.ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				jButtonOK_actionPerformed(e);
+			}
+		});
+
+		lmessage.setText(message);
+		ldetail.setText(detail);
+		
+		panelButton.add(jButton1);
+		
+		
+		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		this.setResizable(false);
+		this.getContentPane().add(panelButton, BorderLayout.SOUTH);
+		this.getContentPane().add(lmessage, BorderLayout.NORTH);
+		this.getContentPane().add(ldetail, BorderLayout.CENTER);
+
+	}
+
+}

@@ -69,6 +69,10 @@ public final class TKeyClavicomActionType
     	{
     		return "OPEN_CONFIGURATION";
     	}
+    	else if (myVal == MINIMIZ_APPLICATION)
+    	{
+    		return "MINIMIZ_APPLICATION";
+    	}
     	else
     	{
     		return "";
@@ -102,6 +106,10 @@ public final class TKeyClavicomActionType
     	{
     		return OPEN_CONFIGURATION;
     	}
+    	else if (myString.equals("MINIMIZ_APPLICATION"))
+    	{
+    		return MINIMIZ_APPLICATION;
+    	}
     	else
     	{
     		return null;
@@ -126,6 +134,10 @@ public final class TKeyClavicomActionType
     	else if (this == OPEN_CONFIGURATION)
     	{
     		return UIString.getUIString("LB_KEYCLAVICOM_OPEN_CONFIGURATION");
+    	}
+    	else if (this == MINIMIZ_APPLICATION)
+    	{
+    		return UIString.getUIString("LB_KEYCLAVICOM_MINIMIZ_APPLICATION");
     	}
     	else
     	{

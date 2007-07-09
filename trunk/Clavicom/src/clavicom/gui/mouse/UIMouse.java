@@ -178,6 +178,7 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 	            0							// Espace intérieur en Y
 	    );
 		panelHaut = new JPanel();
+		panelHaut.setOpaque( false );
 		panelHaut.setLayout( new BorderLayout() );
 		gbLayoutGlobal.setConstraints(panelHaut, gbConstPanelHaut);
 		add( panelHaut );

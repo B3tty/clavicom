@@ -43,6 +43,7 @@ import clavicom.core.listener.OnClickKeyDynamicStringPredictionListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CPreferedWords;
+import clavicom.core.profil.CProfil;
 
 public class CPredictionEngine extends CStringsEngine implements
 		OnClickKeyCharacterListener, OnClickKeyDynamicStringPredictionListener, OnClickKeyShortcutListener
@@ -258,8 +259,12 @@ public class CPredictionEngine extends CStringsEngine implements
 	{
 		if( ! currentString.equals( "" ) )
 		{
-			// on ajout ou on augmente la frequence du mots
-			addOrIncreaseWord( currentString );
+			// si l'utilisateur veux sauvegarder ces mots préférés
+			if( CProfil.getInstance().getPreferedWords().isActive() )
+			{
+				// on ajout ou on augmente la frequence du mots
+				addOrIncreaseWord( currentString );
+			}
 			
 			// on vide la chaine courrante
 			currentString = "";
@@ -274,7 +279,7 @@ public class CPredictionEngine extends CStringsEngine implements
 	
 	void addOrIncreaseWord( String currentString )
 	{
-		// si le mot courent à plus d'un caractère
+		// si le mot courant à plus d'un caractère
 		if( currentString.length() > 1 )
 		{
 			CDictionaryWord dictionaryWord = null;

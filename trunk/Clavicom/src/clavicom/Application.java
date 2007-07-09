@@ -25,8 +25,8 @@
 
 package clavicom;
 
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import javax.swing.UIManager;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
@@ -272,18 +272,8 @@ public class Application
 		keyboardFrame.setTitle(UIString.getUIString("MSG_APPLICATION_NAME"));
 		
 		// listener pour supprimer le hook a la fermeture de l'application
-		keyboardFrame.addWindowListener(new WindowListener(){
-
-			public void windowActivated(WindowEvent e)
-			{
-				// Rien à faire
-				
-			}
-
-			public void windowClosed(WindowEvent e)
-			{
-				// Rien à faire
-			}
+		keyboardFrame.addWindowListener(new WindowAdapter()
+		{
 
 			public void windowClosing(WindowEvent e)
 			{
@@ -293,26 +283,6 @@ public class Application
 				}
 			}
 
-			public void windowDeactivated(WindowEvent e)
-			{
-				// Rien à faire
-			}
-
-			public void windowDeiconified(WindowEvent e)
-			{
-				// Rien à faire
-			}
-
-			public void windowIconified(WindowEvent e)
-			{
-				// Rien à faire
-			}
-
-			public void windowOpened(WindowEvent e)
-			{
-				// Rien à faire
-			}
-			
 		});
 	
 		// donne la réference au moteur de défilement
