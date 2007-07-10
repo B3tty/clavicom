@@ -642,7 +642,7 @@ UIGridChangedListener
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
-			// On vérifie qu'il ne reste pas de touches 
+			// On vérifie qu'il ne reste pas de touches non classées
 			if(panelKeyboard.getUnClassedKey().size() != 0)
 			{
 				// On selectionne les touches non classées
@@ -665,7 +665,7 @@ UIGridChangedListener
 				if (reponse == JOptionPane.YES_OPTION)
 				// Trier
 				{
-					setVisible(false);
+					frameLevelManager.setVisible(true);
 					return;
 				}
 				else if (reponse == JOptionPane.CANCEL_OPTION)	
@@ -701,6 +701,11 @@ UIGridChangedListener
 				stopDefilMode();
 			}
 		}
+	}
+	
+	public void setVisibleOnly(boolean arg0)
+	{
+		super.setVisible(arg0);
 	}
 	
 	@Override

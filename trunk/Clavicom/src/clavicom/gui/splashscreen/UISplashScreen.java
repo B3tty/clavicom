@@ -38,12 +38,12 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
 import javax.swing.JWindow;
 
 import clavicom.core.message.CMessageEngine;
+import clavicom.tools.TSwingUtils;
  
-public class UISplashScreen extends JWindow implements Runnable 
+public class UISplashScreen extends JWindow implements Runnable
 {  
 	//--------------------------------------------------------- CONSTANTES --//
 	private final Font LABEL_FONT = new Font("Arial",Font.PLAIN,10);	// Police de caractère 
@@ -83,6 +83,18 @@ public class UISplashScreen extends JWindow implements Runnable
 		// Sauvegarde du temps
 		startTime = System.currentTimeMillis(); 
 		
+//		// Création du window listener
+//		addWindowListener(new WindowAdapter()
+//						  {
+//								@Override
+//								public void windowLostFocus(WindowEvent arg0)
+//								{
+//									super.windowLostFocus(arg0);
+//									// TODO Auto-generated method stub
+//									setVisible(false);
+//								}
+//						  });
+		
 		// Changement du curseur (sablier)
 		startCursor = getCursor();
 		
@@ -103,7 +115,7 @@ public class UISplashScreen extends JWindow implements Runnable
 		currentAction = "";
     
 		// Utilisation d'ImageIcon, pas besoin de MediaTracker
-		Image image = new ImageIcon(imageFile).getImage();
+		Image image = TSwingUtils.getImage(imageFile).getImage();
 		int imageWidth = image.getWidth(this);
 		int imageHeight = image.getHeight(this);
 		

@@ -26,6 +26,8 @@
 package clavicom.gui.windows;
 
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 import clavicom.core.profil.CFramePosition;
@@ -127,6 +129,28 @@ UIKeyboardNewKeyCreated
 		
 		// On autorise le resize de la fenêtre
 		mainPanel.setEditable(true);
+		
+		// On ajoute un listener pour réafficher la toolbar en cas de redimension
+		addWindowListener(new WindowAdapter()
+		{
+			@Override
+			public void windowDeiconified(WindowEvent arg0)
+			{
+				if(isEdited)
+					frameToolbar.setVisibleOnly(true);
+				
+				super.windowDeiconified(arg0);
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent arg0)
+			{
+				if(isEdited)
+					frameToolbar.setVisibleOnly(false);
+				
+				super.windowIconified(arg0);
+			}
+		});
 	}
 	
 	/**
