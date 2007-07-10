@@ -7,8 +7,6 @@
 	<message id = "MSG_APPLICATION_NAME">Clavicom NG</message>
 	<message id = "MSG_APPLICATION_DESCRIPTION">Clavier virtuel universel</message>
 	
-	
-	
 	<!-- ========================================================================== 
 		Exceptions 
 	==========================================================================  -->
@@ -52,7 +50,7 @@
 	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
 	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
 	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
-	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Jouer un son</message>
+	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Lecture d'un son</message>
 	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
 	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
 	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Chaine de caractere dynamique</message>
@@ -413,7 +411,7 @@
 	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction </message>
 	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot </message>
 	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
-	<message id = "FR_OPTIONS_KEYSOUND">Touche jouer un son</message>
+	<message id = "FR_OPTIONS_KEYSOUND">Touche de lecture d'un son</message>
 	<message id = "FR_OPTIONS_KEYLEVEL">Touche </message>
 	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourcit </message>
 	<message id = "FR_OPTIONS_KEYSTRING">Touche chaîne </message>
@@ -464,7 +462,7 @@
 	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
 	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
 	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
-	<message id = "LB_KEYCREATION_KEYSOUND">Jouer un son</message>
+	<message id = "LB_KEYCREATION_KEYSOUND">Lecture d'un son</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
@@ -480,7 +478,7 @@
 	<message id = "LB_KEYCREATION_KEYLASTWORD_TOOLTIP">Création d'une touche de dernier mot</message>
 	<message id = "LB_KEYCREATION_KEYPREDICTION_TOOLTIP">Création d'une touche de prédiction</message>
 	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
-	<message id = "LB_KEYCREATION_KEYSOUND_TOOLTIP">Création d'une touche pour jouer un son</message>
+	<message id = "LB_KEYCREATION_KEYSOUND_TOOLTIP">Création d'une touche de lecture d'un son</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
 	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
@@ -568,7 +566,7 @@
 	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_VERSION">version 5 (beta)</message>
 	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_CONCEPTION">Conception et developpement par </message>
 	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_DEV_FOR">Developpé pour</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_BUG_CASE">En cas de probleme, veuillez contacter </message>
+	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_BUG_CASE">En cas de problème, veuillez contacter </message>
 	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_WEB_SITE">Site web </message>
 	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_ADRESS">Adresse </message>
 	
@@ -612,10 +610,10 @@
 	<message id = "ST_KEY_TOSTRING_CREATION">Création</message>
 	<message id = "ST_KEY_TOSTRING_LASTWORD">Dernier mot</message>
 	<message id = "ST_KEY_TOSTRING_LAUNCHER">Lancement d'application</message>
-	<message id = "ST_KEY_TOSTRING_SOUND">Jouer un son</message>
+	<message id = "ST_KEY_TOSTRING_SOUND">Lecture d'un son</message>
 	<message id = "ST_KEY_TOSTRING_LEVEL">Niveau</message>
 	<message id = "ST_KEY_TOSTRING_PREDICTION">Prédiction</message>
 	<message id = "ST_KEY_TOSTRING_SHORTCUT">Raccourci</message>
-	<message id = "ST_KEY_TOSTRING_STRING">Chaîne</message>	
+	<message id = "ST_KEY_TOSTRING_STRING">Chaîne</message>
 	
 </language>
