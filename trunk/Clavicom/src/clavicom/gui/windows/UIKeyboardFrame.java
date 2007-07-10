@@ -76,7 +76,7 @@ UIKeyboardNewKeyCreated
 		this.panelKeyboard = panelKeyboard;
 		
 		// Création des objets
-		mainPanel = new UIMovingPanel(this);
+		mainPanel = new UIMovingPanel(this, panelKeyboard.getMouseAdapter());
 		frameToolbar = new UIToolbarFrame(this);
 		
 		// Mise en place du layout

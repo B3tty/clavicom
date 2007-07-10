@@ -68,7 +68,8 @@ public class UIMouseFrame extends UITranslucentFrame
 
 		setBounds( TSize.getRectangleBound( souricomPosition.getLeftUp(), souricomPosition.getRightDown() ) );
 		
-		UIMovingPanel movingPanel = new UIMovingPanel( this );
+		// TODO : utiliser l'autre constructeur de MovingPanel
+		UIMovingPanel movingPanel = new UIMovingPanel( this);
 		BorderLayout myBorderLayout = new BorderLayout();
 		movingPanel.setLayout( myBorderLayout );
 		movingPanel.setEditable( true );
