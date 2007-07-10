@@ -1443,6 +1443,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// On met la grille à la touche
 		newUIKeyGlobal.setMagnetGrid(magnetGrid);
+		newUIKeyGlobal.setMagnetGridUsed(true);
 		
 		// On alerte qu'une nouvelle key a été créée
 		fireKeyCreated(newUIKeyGlobal);
