@@ -50,7 +50,7 @@ public class testLevelList
 			UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"  );
 			
 			CMessageEngine.createInstance();
-			new UIMessageEngine();
+			new UIMessageEngine(null);
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			

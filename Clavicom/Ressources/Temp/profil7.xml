@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.02109375</x>
-        <y>0.40722656</y>
+        <x>0.1015625</x>
+        <y>0.14257812</y>
       </left_up>
       <right_down>
-        <x>0.85</x>
-        <y>0.8496094</y>
+        <x>0.9296875</x>
+        <y>0.58496094</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1154,9 +1154,9 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption_level_1>key_backspace.png</caption_level_1>
-          <caption_level_2>key_backspace.png</caption_level_2>
-          <caption_level_3>key_arrow_left.png</caption_level_3>
+          <caption_level_1>BASE_KEY_backspace.png</caption_level_1>
+          <caption_level_2>BASE_KEY_backspace.png</caption_level_2>
+          <caption_level_3>BASE_KEY_backspace.png</caption_level_3>
           <commands>
             <command_normal id="76" />
             <command_shift id="76" />
@@ -1195,9 +1195,9 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption_level_1>key_tab.png</caption_level_1>
-          <caption_level_2>key_tab.png</caption_level_2>
-          <caption_level_3>key_tab.png</caption_level_3>
+          <caption_level_1>BASE_KEY_tab.png</caption_level_1>
+          <caption_level_2>BASE_KEY_tab.png</caption_level_2>
+          <caption_level_3>BASE_KEY_tab.png</caption_level_3>
           <commands>
             <command_normal id="63" />
             <command_shift id="63" />
@@ -1680,9 +1680,9 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption_level_1>key_enter_text.png</caption_level_1>
-          <caption_level_2>key_enter_text.png</caption_level_2>
-          <caption_level_3>key_enter_text.png</caption_level_3>
+          <caption_level_1>BASE_KEY_enter_text.png</caption_level_1>
+          <caption_level_2>BASE_KEY_enter_text.png</caption_level_2>
+          <caption_level_3>BASE_KEY_enter_text.png</caption_level_3>
           <commands>
             <command_normal id="75" />
             <command_shift id="75" />
@@ -2173,7 +2173,7 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>key_shift.png</caption>
+          <caption>BASE_KEY_shift.png</caption>
           <level>SHIFT</level>
         </keylevel>
         <keycharacter order="1" caption_image="false" holdable="false">
@@ -2587,7 +2587,7 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keylevel order="3" caption_image="false" holdable="true">
+        <keylevel order="3" caption_image="true" holdable="true">
           <coordinates>
             <point position="min">
               <x>0.6186317</x>
@@ -2615,7 +2615,7 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>Maj</caption>
+          <caption>BASE_KEY_shift.png</caption>
           <level>SHIFT</level>
         </keylevel>
       </keylist>
@@ -2687,9 +2687,9 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption_level_1>key_windows.png</caption_level_1>
-          <caption_level_2>key_windows.png</caption_level_2>
-          <caption_level_3>key_windows.png</caption_level_3>
+          <caption_level_1>BASE_KEY_windows.png</caption_level_1>
+          <caption_level_2>BASE_KEY_windows.png</caption_level_2>
+          <caption_level_3>BASE_KEY_windows.png</caption_level_3>
           <commands>
             <command_normal id="67" />
             <command_shift id="67" />
@@ -2833,9 +2833,9 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption_level_1>key_windows.png</caption_level_1>
-          <caption_level_2>key_windows.png</caption_level_2>
-          <caption_level_3>key_windows.png</caption_level_3>
+          <caption_level_1>BASE_KEY_windows.png</caption_level_1>
+          <caption_level_2>BASE_KEY_windows.png</caption_level_2>
+          <caption_level_3>BASE_KEY_windows.png</caption_level_3>
           <commands>
             <command_normal id="71" />
             <command_shift id="71" />
@@ -2911,7 +2911,7 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>key_capslock.png</caption>
+          <caption>BASE_KEY_capslock.png</caption>
           <level>SHIFT</level>
           <always_holdable>true</always_holdable>
         </keylevel>
@@ -3102,15 +3102,15 @@
           <caption>minimize.png</caption>
           <action>MINIMIZE_APPLICATION</action>
         </keyclavicom>
-        <keysound order="7" caption_image="false" holdable="false">
+        <keysound order="7" caption_image="true" holdable="false">
           <coordinates>
             <point position="min">
-              <x>0.7714702</x>
-              <y>0.22868218</y>
+              <x>0.7719133</x>
+              <y>0.22075056</y>
             </point>
             <point position="max">
-              <x>0.8413392</x>
-              <y>0.3255814</y>
+              <x>0.85768145</x>
+              <y>0.33112583</y>
             </point>
           </coordinates>
           <colors>
@@ -3130,7 +3130,7 @@
               <blue>162</blue>
             </color_entered>
           </colors>
-          <caption>Idio</caption>
+          <caption>SOFTWARE_MEDIA_windows_media_player.png</caption>
           <soundpath>C:\Documents and Settings\stagiaire 2\Bureau\idiot.wav</soundpath>
         </keysound>
       </keylist>

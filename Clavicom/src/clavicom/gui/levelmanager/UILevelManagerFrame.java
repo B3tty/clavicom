@@ -35,6 +35,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
@@ -238,6 +240,39 @@ public class UILevelManagerFrame extends JDialog
 			return;
 		}
 		
+		onListGroupClicked();
+
+	}
+	
+	/**
+	 * Appelé lorsqu'on selectionne une liste dans la liste.
+	 * Met a jour la liste des keys
+	 * @param event
+	 */	
+	protected void onListSelected(ListSelectionEvent event)
+	{
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
+		
+		onListListClicked();
+	}
+
+	protected void onKeySelected(ListSelectionEvent event)
+	{
+		// On ne fait rien si la selection est en train de changer
+		if(event.getValueIsAdjusting())
+		{
+			return;
+		}
+		
+		onListKeyClicked();
+	}
+	
+	protected void onListGroupClicked()
+	{
 		// On récupère le groupe selectionné
 		UIKeyGroup selectedGroup;
 		if(!(panelGroups.getList().getSelectedValue() instanceof UIKeyGroup))
@@ -259,19 +294,8 @@ public class UILevelManagerFrame extends JDialog
 		updateEnableState();
 	}
 	
-	/**
-	 * Appelé lorsqu'on selectionne une liste dans la liste.
-	 * Met a jour la liste des keys
-	 * @param event
-	 */	
-	protected void onListSelected(ListSelectionEvent event)
+	protected void onListListClicked()
 	{
-		// On ne fait rien si la selection est en train de changer
-		if(event.getValueIsAdjusting())
-		{
-			return;
-		}
-		
 		// On récupère la liste selectionnée
 		UIKeyList selectedList;
 		if(!(panelLists.getList().getSelectedValue() instanceof UIKeyList))
@@ -293,15 +317,9 @@ public class UILevelManagerFrame extends JDialog
 		// On met a jour la selection
 		updateEnableState();
 	}
-
-	protected void onKeySelected(ListSelectionEvent event)
+	
+	protected void onListKeyClicked()
 	{
-		// On ne fait rien si la selection est en train de changer
-		if(event.getValueIsAdjusting())
-		{
-			return;
-		}
-		
 		// On récupère la touche selectionnée
 		UIKeyKeyboard selectedKey;
 		if(!(panelKeys.getList().getSelectedValue() instanceof UIKeyKeyboard))
@@ -1096,6 +1114,22 @@ public class UILevelManagerFrame extends JDialog
 		panelKeys.getList().addListSelectionListener( new ListSelectionListener()
 													  {	public void valueChanged(ListSelectionEvent arg0)
 													  	{onKeySelected(arg0);}});
+		
+		// TODO : compléter
+		panelGroups.getList().addMouseListener( new MouseAdapter()
+											  {	@Override
+												public void mouseClicked(MouseEvent arg0)
+												{onListGroupClicked();}});
+		
+		panelLists.getList().addMouseListener( new MouseAdapter()
+											  {	@Override
+												public void mouseClicked(MouseEvent arg0)
+												{onListListClicked();}});
+		
+		panelKeys.getList().addMouseListener( new MouseAdapter()
+											  {	@Override
+												public void mouseClicked(MouseEvent arg0)
+												{onListKeyClicked();}});
 		
 		// Mise en place des listeners de clic sur un bouton up
 		panelGroups.getBtUp().addActionListener( new ActionListener()

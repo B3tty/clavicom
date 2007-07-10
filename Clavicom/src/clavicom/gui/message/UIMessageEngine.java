@@ -33,31 +33,35 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+//import java.awt.Component;
+//
+//import javax.swing.JOptionPane;
+
 import clavicom.core.listener.CMessageListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.gui.language.UIString;
-import clavicom.gui.windows.UIKeyboardFrame;
+import clavicom.tools.TSwingUtils;
 
 public class UIMessageEngine implements CMessageListener
 {
 	// --------------------------------------------------------- CONSTANTES --//
 
 	// ---------------------------------------------------------- VARIABLES --//
-	UIKeyboardFrame uiKeyboardFrame;
+	JFrame parentFrame;
 
 	// ------------------------------------------------------ CONSTRUCTEURS --//
-	public UIMessageEngine()
+	public UIMessageEngine(JFrame parentFrame)
 	{
 		// Ajout comme listener de nouveaux messages
 		CMessageEngine.addNewMessageListener(this);
-		uiKeyboardFrame = null;
+		this.parentFrame = parentFrame;
 	}
 
 	// ----------------------------------------------------------- METHODES --//
 	public void onNewFatalError(String newMessage, String detail)
 	{
 		MonDialogue d = new MonDialogue( 
-				uiKeyboardFrame, 
+				parentFrame, 
 				UIString.getUIString("EX_TITLE_FATAL_ERROR"), 
 				newMessage, 
 				detail, 
@@ -68,12 +72,22 @@ public class UIMessageEngine implements CMessageListener
 
 		// On ferme l'application
 		System.exit(0);
+
+		
+//		// Affichage du dialog
+//		JOptionPane.showMessageDialog(	null,											// Parent
+//										formatMessage(newMessage, detail),				// Message (avec détail)
+//										UIString.getUIString("EX_TITLE_FATAL_ERROR"),	// Titre
+//										JOptionPane.ERROR_MESSAGE);						// Icône
+//		// On ferme l'application
+//		System.exit(0);
+
 	}
 
 	public void onNewError(String newMessage, String detail)
 	{
 		MonDialogue d = new MonDialogue( 
-				uiKeyboardFrame, 
+				parentFrame, 
 				UIString.getUIString("EX_TITLE_ERROR"), 
 				newMessage, 
 				detail, 
@@ -81,12 +95,20 @@ public class UIMessageEngine implements CMessageListener
 		d.pack();
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
+		
+//		// Affichage du dialog
+//		
+//		JOptionPane.showMessageDialog(	null,								// Parent
+//										formatMessage(newMessage, detail),				// Message (avec détail)
+//										UIString.getUIString("EX_TITLE_ERROR"),			// Titre
+//										JOptionPane.ERROR_MESSAGE);						// Icône
+//		System.out.println(formatMessage(newMessage, detail));
 	}
 
 	public void onNewInfo(String newMessage, String detail)
 	{
 		MonDialogue d = new MonDialogue( 
-				uiKeyboardFrame, 
+				parentFrame, 
 				UIString.getUIString("EX_TITLE_INFO"), 
 				newMessage, 
 				detail, 
@@ -94,12 +116,18 @@ public class UIMessageEngine implements CMessageListener
 		d.pack();
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
+		
+//		// Affichage du dialog
+//		JOptionPane.showMessageDialog(	null,								// Parent
+//										formatMessage(newMessage, detail),				// Message (avec détail)
+//										UIString.getUIString("EX_TITLE_INFO"),			// Titre
+//										JOptionPane.INFORMATION_MESSAGE);				// Icône
 	}
 
 	public void onNewWarning(String newMessage, String detail)
 	{
 		MonDialogue d = new MonDialogue( 
-				uiKeyboardFrame, 
+				parentFrame, 
 				UIString.getUIString("EX_TITLE_WARNING"), 
 				newMessage, 
 				detail, 
@@ -107,19 +135,33 @@ public class UIMessageEngine implements CMessageListener
 		d.pack();
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
+		
+		// Affichage du dialog
+//		JOptionPane.showMessageDialog(	null,								// Parent
+//										formatMessage(newMessage, detail),				// Message (avec détail)
+//										UIString.getUIString("EX_TITLE_WARNING"),		// Titre
+//										JOptionPane.WARNING_MESSAGE);					// Icône
+//		
+//		
 	}
 
-	public UIKeyboardFrame getUiKeyboardFrame()
-	{
-		return uiKeyboardFrame;
-	}
-
-	public void setUiKeyboardFrame(UIKeyboardFrame uiKeyboardFrame)
-	{
-		this.uiKeyboardFrame = uiKeyboardFrame;
-	}
+//	public void setUiKeyboardFrame(UIKeyboardFrame uiKeyboardFrame)
+//	{
+//		this.uiKeyboardFrame = uiKeyboardFrame;
+//	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
+//	private String formatMessage (String message, String detail)
+//	{
+//		if(detail == null)
+//		{
+//			return message;
+//		}
+//		else
+//		{
+//			return (message + "\n\n" + detail);
+//		}
+//	}
 }
 
 class MonDialogue extends JDialog
@@ -134,8 +176,6 @@ class MonDialogue extends JDialog
 		
 		message = myMessage;
 		detail = myDetail;
-		
-		setLocationRelativeTo( f );
 		
 		try
 		{
@@ -157,6 +197,14 @@ class MonDialogue extends JDialog
 	void jButtonCANCEL_actionPerformed(ActionEvent e)
 	{
 		setVisible( false );
+	}
+	
+	@Override
+	public void setVisible(boolean arg0)
+	{
+		// TODO Auto-generated method stub
+		TSwingUtils.centerComponentToScreen(this);
+		super.setVisible(arg0);
 	}
 
 

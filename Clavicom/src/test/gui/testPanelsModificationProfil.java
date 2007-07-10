@@ -42,7 +42,7 @@ public class testPanelsModificationProfil
 		try
 		{
 			CMessageEngine.createInstance();
-			/*UIMessageEngine messageEngine =*/ new UIMessageEngine();
+			/*UIMessageEngine messageEngine =*/ new UIMessageEngine(null);
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
