@@ -25,11 +25,12 @@
 
 package clavicom.gui.utils;
 
+import javax.swing.JDialog;
 import javax.swing.JRootPane;
 
 import com.sun.jna.examples.WindowUtils;
 
-public class UITranslucentFrame extends UIClavicomFrame
+public class UITranslucentDialog extends JDialog
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -37,12 +38,12 @@ public class UITranslucentFrame extends UIClavicomFrame
 	float transparency;			// Transparence de la fenêtre
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UITranslucentFrame()
+	public UITranslucentDialog()
 	{
 		this(1f);
 	}
 	
-	public UITranslucentFrame(float myTransparency)
+	public UITranslucentDialog(float myTransparency)
 	{
 		// Appel au père
 		super();

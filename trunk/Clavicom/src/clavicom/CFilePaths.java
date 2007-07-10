@@ -83,6 +83,11 @@ public class CFilePaths
 	
 	
 	// ------- IMAGES DE COMPOSANTS AUTRES (JButton,...) ---------
+	
+	// Application
+	private static String iconSmall = pictures + "icon_small.png";
+	
+	// Boutons de création de touche
 	private static String levelEditorAdd = pictures + "add.png";
 	private static String levelEditorRemove = pictures + "remove.png";
 	
@@ -364,6 +369,11 @@ public class CFilePaths
 	public static String getToolKeySoundPicture()
 	{
 		return toolKeySoundPicture;
+	}
+	
+	public static String getIconSmallFilePath()
+	{ 
+		return iconSmall;
 	}
 	
 	

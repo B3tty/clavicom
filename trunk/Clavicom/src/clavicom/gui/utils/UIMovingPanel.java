@@ -31,13 +31,13 @@
 
 package clavicom.gui.utils;
 
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
@@ -59,20 +59,20 @@ public class UIMovingPanel extends JPanel
 	protected UIInvisibleBorder resizableBorder;	// Bordure lors du resize
 	protected boolean changeSelection;		
 	
-	protected JFrame parentFrame;
+	protected Component parentComponent;
 	protected MouseInputAdapter otherAdapter;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIMovingPanel(JFrame myParentFrame, MouseInputAdapter otherAdapter)
+	public UIMovingPanel(Component myParentComponent, MouseInputAdapter otherAdapter)
 	{
-		parentFrame = myParentFrame;
+		parentComponent = myParentComponent;
 		this.otherAdapter = otherAdapter;
 		resizableBorder = new UIInvisibleBorder(BORDER_INSET);
 	}
 	
-	public UIMovingPanel(JFrame myParentFrame)
+	public UIMovingPanel(Component myParentComponent)
 	{
-		this(myParentFrame, null);
+		this(myParentComponent, null);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -158,7 +158,7 @@ public class UIMovingPanel extends JPanel
             
 			if ( startPos != null )
 			{
-				Point framePos = parentFrame.getLocation();
+				Point framePos = parentComponent.getLocation();
 				
 				int dx = me.getX() - startPos.x;
 				int dy = me.getY() - startPos.y;
@@ -170,8 +170,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.N_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX(), 
 													(int)framePos.getY() + dy, 
-													parentFrame.getWidth(), 
-													parentFrame.getHeight()- dy);
+													parentComponent.getWidth(), 
+													parentComponent.getHeight()- dy);
 						tryResize(newBounds);
 						didResized();
 						break;
@@ -179,8 +179,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.S_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX(), 
 													(int)framePos.getY(), 
-													parentFrame.getWidth(), 
-													parentFrame.getHeight() + dy);
+													parentComponent.getWidth(), 
+													parentComponent.getHeight() + dy);
 						tryResize(newBounds);
 						startPos = me.getPoint();
 						didResized();
@@ -189,8 +189,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.W_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX() + dx,
 													(int)framePos.getY(), 
-													parentFrame.getWidth() - dx, 
-													parentFrame.getHeight());
+													parentComponent.getWidth() - dx, 
+													parentComponent.getHeight());
 						tryResize(newBounds);
 						didResized();
 						break;
@@ -198,8 +198,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.E_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX(), 
 													(int)framePos.getY(), 
-													parentFrame.getWidth() + dx, 
-													parentFrame.getHeight());
+													parentComponent.getWidth() + dx, 
+													parentComponent.getHeight());
 						tryResize(newBounds);
 						startPos = me.getPoint();
 						didResized();
@@ -208,8 +208,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.NW_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX() + dx, 
 													(int)framePos.getY() + dy, 
-													parentFrame.getWidth() - dx, 
-													parentFrame.getHeight() - dy);
+													parentComponent.getWidth() - dx, 
+													parentComponent.getHeight() - dy);
 						tryResize(newBounds);
 						didResized();
 						break;
@@ -217,8 +217,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.NE_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX(), 
 													(int)framePos.getY() + dy, 
-													parentFrame.getWidth() + dx, 
-													parentFrame.getHeight() - dy);
+													parentComponent.getWidth() + dx, 
+													parentComponent.getHeight() - dy);
 						tryResize(newBounds);
 						startPos = new Point(me.getX(), startPos.y);
 						didResized();
@@ -227,8 +227,8 @@ public class UIMovingPanel extends JPanel
 					case Cursor.SW_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX() + dx, 
 													(int)framePos.getY(), 
-													parentFrame.getWidth() - dx, 
-													parentFrame.getHeight() + dy);
+													parentComponent.getWidth() - dx, 
+													parentComponent.getHeight() + dy);
 						tryResize(newBounds);
 						startPos = new Point(startPos.x, me.getY());
 						didResized();
@@ -237,17 +237,17 @@ public class UIMovingPanel extends JPanel
 					case Cursor.SE_RESIZE_CURSOR :
 						newBounds = new Rectangle(	(int)framePos.getX(), 
 													(int)framePos.getY(), 
-													parentFrame.getWidth() + dx, 
-													parentFrame.getHeight() + dy);
+													parentComponent.getWidth() + dx, 
+													parentComponent.getHeight() + dy);
 						tryResize(newBounds);
 						startPos = me.getPoint();
 						didResized();
 						break;
 						
 					case Cursor.MOVE_CURSOR :						
-		                Point loc = parentFrame.getLocationOnScreen();
+		                Point loc = parentComponent.getLocationOnScreen();
 		                loc.translate(dx, dy);
-		                parentFrame.setLocation(loc.x, loc.y);
+		                parentComponent.setLocation(loc.x, loc.y);
 			            
 						didResized();
 				}
@@ -267,7 +267,7 @@ public class UIMovingPanel extends JPanel
 		{
 			if ((newSize.getWidth() > MINIMUM_WIDTH) && (newSize.getHeight() > MINIMUM_HEIGHT))
 			{
-				parentFrame.setBounds(newSize);
+				parentComponent.setBounds(newSize);
 			}
 		}
 

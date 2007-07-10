@@ -71,14 +71,14 @@ import clavicom.gui.language.UIString;
 import clavicom.gui.levelmanager.UILevelManagerFrame;
 import clavicom.gui.listener.UIGridChangedListener;
 import clavicom.gui.utils.UIMovingPanel;
-import clavicom.gui.utils.UITranslucentFrame;
+import clavicom.gui.utils.UITranslucentDialog;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TNavigationType;
 
 //import com.sun.jna.examples.WindowUtils;
 
 
-public class UIToolbarFrame extends UITranslucentFrame 
+public class UIToolbarFrame extends UITranslucentDialog 
 implements
 UIGridChangedListener
 {
