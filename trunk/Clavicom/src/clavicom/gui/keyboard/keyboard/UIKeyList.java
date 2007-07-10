@@ -36,6 +36,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
@@ -46,6 +47,7 @@ import clavicom.gui.keyboard.key.UIKeyLauncher;
 import clavicom.gui.keyboard.key.UIKeyLevel;
 import clavicom.gui.keyboard.key.UIKeyPrediction;
 import clavicom.gui.keyboard.key.UIKeyShortcut;
+import clavicom.gui.keyboard.key.UIKeySound;
 import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.tools.TUIKeyState;
@@ -111,6 +113,14 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyLauncher uiKey = new UIKeyLauncher((CKeyLauncher)currentCoreKey);
+				
+				// Ajout à la liste des uiKeys
+				keys.add(uiKey);
+			}
+			else if (currentCoreKey instanceof CKeySound)
+			{
+				// Construction d'une UIKey du bon type
+				UIKeySound uiKey = new UIKeySound((CKeySound)currentCoreKey);
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);

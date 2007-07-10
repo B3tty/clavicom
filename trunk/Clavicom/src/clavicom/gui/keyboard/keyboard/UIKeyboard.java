@@ -64,6 +64,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.listener.ChangeLevelListener;
 import clavicom.core.listener.OnClickKeyCreationListener;
@@ -82,6 +83,7 @@ import clavicom.gui.keyboard.key.UIKeyLauncher;
 import clavicom.gui.keyboard.key.UIKeyLevel;
 import clavicom.gui.keyboard.key.UIKeyPrediction;
 import clavicom.gui.keyboard.key.UIKeyShortcut;
+import clavicom.gui.keyboard.key.UIKeySound;
 import clavicom.gui.keyboard.key.UIKeyString;
 import clavicom.gui.keyboard.key.UIKeyThreeLevel;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
@@ -1306,6 +1308,23 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 														newKeyMax);
 			// Création de l'objet de l'UI
 			UIKeyLauncher newUIKey = new UIKeyLauncher(newCoreKey);
+			
+			// Affectation à l'objet global
+			addCreatedKey(newUIKey);	
+			newUIKeyGlobal = newUIKey;
+			
+		}
+		else if (keyType == TEnumCreationKey.T_KEY_SOUND)
+		{
+			// Création de l'objet du noyau
+			CKeySound newCoreKey = new CKeySound(	normalColor,
+														pressedColor,
+														enteredColor,
+														false,
+														newKeyMin,
+														newKeyMax);
+			// Création de l'objet de l'UI
+			UIKeySound newUIKey = new UIKeySound(newCoreKey);
 			
 			// Affectation à l'objet global
 			addCreatedKey(newUIKey);	

@@ -47,12 +47,14 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
 import clavicom.gui.edition.key.UIPanelOptionKeyLauncher;
 import clavicom.gui.edition.key.UIPanelOptionKeyShortCut;
+import clavicom.gui.edition.key.UIPanelOptionKeySound;
 import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.key.UIPanelOptionOneLevelKey;
@@ -109,6 +111,7 @@ UIGridChangedListener
 	UIModificationKeyDialog frameOptionKeyKeyboard;
 	UIModificationKeyDialog frameOptionKeyCharacter;
 	UIModificationKeyDialog frameOptionKeyLauncher;
+	UIModificationKeyDialog frameOptionKeySound;
 	UIModificationKeyDialog frameOptionKeyShortcut;
 	UIModificationKeyDialog frameOptionKeyString;
 	
@@ -135,6 +138,7 @@ UIGridChangedListener
 	UIPanelOptionKeyboardKey panelOptionKeyKeyboard;
 	UIPanelOptionKeyCharacter panelOptionKeyCharacter;
 	UIPanelOptionKeyLauncher panelOptionKeyLauncher;
+	UIPanelOptionKeySound panelOptionKeySound;
 	UIPanelOptionKeyShortCut panelOptionKeyShortcut;
 	UIPanelOptionKeyString panelOptionKeyString;
 	
@@ -260,6 +264,7 @@ UIGridChangedListener
 		panelOptionKeyKeyboard = new UIPanelOptionKeyboardKey();
 		panelOptionKeyCharacter = new UIPanelOptionKeyCharacter();
 		panelOptionKeyLauncher = new UIPanelOptionKeyLauncher();
+		panelOptionKeySound = new UIPanelOptionKeySound();
 		panelOptionKeyShortcut = new UIPanelOptionKeyShortCut();
 		panelOptionKeyString = new UIPanelOptionKeyString();
 		
@@ -268,6 +273,7 @@ UIGridChangedListener
 		frameOptionKeyKeyboard = new UIModificationKeyDialog(panelOptionKeyKeyboard);
 		frameOptionKeyCharacter = new UIModificationKeyDialog(panelOptionKeyCharacter);
 		frameOptionKeyLauncher = new UIModificationKeyDialog(panelOptionKeyLauncher);
+		frameOptionKeySound = new UIModificationKeyDialog(panelOptionKeySound);
 		frameOptionKeyShortcut = new UIModificationKeyDialog(panelOptionKeyShortcut);
 		frameOptionKeyString = new UIModificationKeyDialog(panelOptionKeyString);
 		
@@ -363,6 +369,7 @@ UIGridChangedListener
 		frameOptionKeyKeyboard.setSize(410,175);
 		frameOptionKeyCharacter.setSize(540,540);
 		frameOptionKeyLauncher.setSize(410,350);
+		frameOptionKeySound.setSize(410,350);
 		frameOptionKeyShortcut.setSize(410,400);
 		frameOptionKeyString.setSize(410,360);
 		
@@ -490,6 +497,12 @@ UIGridChangedListener
 				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
 				frameOptionKeyLauncher.setVisible(true);
 			}
+			else if (selectedKey instanceof CKeySound)
+			{
+				frameOptionKeySound.setTitle(UIString.getUIString("FR_OPTIONS_KEYSOUND"));
+				panelOptionKeySound.setValuesKeySound((CKeySound)selectedKey);
+				frameOptionKeySound.setVisible(true);
+			}
 			else if (selectedKey instanceof CKeyLevel)
 			{
 				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
@@ -581,6 +594,12 @@ UIGridChangedListener
 				frameOptionKeyLauncher.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
 				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
 				frameOptionKeyLauncher.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeySound)
+			{
+				frameOptionKeySound.setTitle(UIString.getUIString("FR_OPTIONS_KEYSOUND"));
+				panelOptionKeySound.setValuesKeySound((CKeySound)selectedKey);
+				frameOptionKeySound.setVisible(true);
 			}
 			else if (selectedKey instanceof CKeyLevel)
 			{

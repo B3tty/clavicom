@@ -99,9 +99,9 @@ public class UIMovingPanel extends JPanel
 			removeMouseMotionListener(resizeMouseListener);
 		}
 	}
-	
+
 	//--------------------------------------------------- METHODES PRIVEES --//
-	
+
 	private void didResized()
 	{
 		if ( getParent() != null )

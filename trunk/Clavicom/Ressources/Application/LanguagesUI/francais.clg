@@ -52,6 +52,7 @@
 	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
 	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
 	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
+	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Jouer un son</message>
 	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
 	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
 	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Chaine de caractere dynamique</message>
@@ -97,6 +98,10 @@
 	<!-- KEYLAUNCHER -->
 	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Chargement d'une touche lancement] : Element </message>
 	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
+	
+	<!-- KEYSOUND -->
+	<message id = "EX_KEYSOUND_MISSING_PATH_1">[Chargement d'une touche de son] : Element </message>
+	<message id = "EX_KEYSOUND_MISSING_PATH_2"> attendu manquant</message>
 	
 	<!-- KEYSHORTCUT -->
 	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
@@ -337,6 +342,8 @@
 	
 	<message id = "MSG_PROFIL_SAVE_FAILED_1">Impossible d'enregistrer le fichier profil à l'emplacement "</message>
 	<message id = "MSG_PROFIL_SAVE_FAILED_2">"</message>
+	
+	<message id = "MSG_SOUND_NOT_LOADED">Impossible de lire le fichier son</message>
 	<!-- ==========================================================================
 		Labels 
 	==========================================================================  -->
@@ -372,6 +379,10 @@
 	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
 	<message id = "LB_KEYLAUNCHER_BORDER">Application lancée</message>
 	
+	<!-- optionKeySound -->
+	<message id = "LB_KEYSOUND_SOUND">Piste audio</message>
+	<message id = "LB_KEYSOUND_BORDER">Son joué</message>
+	
 	<!-- optionKeyLevel -->
 	<message id = "LB_KEYLEVEL_ALWAYHOLDABLE">Reste maintenue</message>
 	
@@ -402,6 +413,7 @@
 	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction </message>
 	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot </message>
 	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
+	<message id = "FR_OPTIONS_KEYSOUND">Touche jouer un son</message>
 	<message id = "FR_OPTIONS_KEYLEVEL">Touche </message>
 	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourcit </message>
 	<message id = "FR_OPTIONS_KEYSTRING">Touche chaîne </message>
@@ -452,6 +464,7 @@
 	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
 	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
 	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
+	<message id = "LB_KEYCREATION_KEYSOUND">Jouer un son</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
@@ -467,6 +480,7 @@
 	<message id = "LB_KEYCREATION_KEYLASTWORD_TOOLTIP">Création d'une touche de dernier mot</message>
 	<message id = "LB_KEYCREATION_KEYPREDICTION_TOOLTIP">Création d'une touche de prédiction</message>
 	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
+	<message id = "LB_KEYCREATION_KEYSOUND_TOOLTIP">Création d'une touche pour jouer un son</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
 	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
 	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
@@ -598,6 +612,7 @@
 	<message id = "ST_KEY_TOSTRING_CREATION">Création</message>
 	<message id = "ST_KEY_TOSTRING_LASTWORD">Dernier mot</message>
 	<message id = "ST_KEY_TOSTRING_LAUNCHER">Lancement d'application</message>
+	<message id = "ST_KEY_TOSTRING_SOUND">Jouer un son</message>
 	<message id = "ST_KEY_TOSTRING_LEVEL">Niveau</message>
 	<message id = "ST_KEY_TOSTRING_PREDICTION">Prédiction</message>
 	<message id = "ST_KEY_TOSTRING_SHORTCUT">Raccourci</message>
