@@ -86,6 +86,7 @@ public class CFilePaths
 	
 	// Application
 	private static String iconSmall = pictures + "icon_small.png";
+	private static String iconBig = pictures + "icon_big.png";
 	
 	// Boutons de création de touche
 	private static String levelEditorAdd = pictures + "add.png";
@@ -374,6 +375,11 @@ public class CFilePaths
 	public static String getIconSmallFilePath()
 	{ 
 		return iconSmall;
+	}
+	
+	public static String getIconBigFilePath()
+	{ 
+		return iconBig;
 	}
 	
 	
