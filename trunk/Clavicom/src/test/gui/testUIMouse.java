@@ -59,7 +59,7 @@ public class testUIMouse
 			System.setProperty("sun.java2d.noddraw", "true");
 			
 			CMessageEngine.createInstance();
-			new UIMessageEngine();
+			new UIMessageEngine(null);
 			
 			// UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			

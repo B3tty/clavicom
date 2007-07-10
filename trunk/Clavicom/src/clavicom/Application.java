@@ -319,7 +319,7 @@ public class Application
 	private static void loadMessageEngine()
 	{
 		CMessageEngine.createInstance();
-		toolMessageEngine = new UIMessageEngine();
+		toolMessageEngine = new UIMessageEngine(keyboardFrame);
 	}
 	
 	public static UIKeyboardFrame getKeyboardFrame()

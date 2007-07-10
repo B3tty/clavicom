@@ -79,7 +79,6 @@ public class UIImageCombo extends JPanel
 			intArray[i] = new Integer(i);
 			images[i] = TSwingUtils.getImage(directory + filenames.get(i));
 			images[i].setImage(resizeImage(images[i].getImage()));
-			
 			if (images[i] != null)
 			{
 				images[i].setDescription(directory + filenames.get(i));

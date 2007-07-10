@@ -104,10 +104,10 @@ public class TSwingUtils
 		fileImage = new File(filepath);
 		if (fileImage.exists() == false)
 		{ 
-			CMessageEngine.newError(	UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_1") + 
-										filepath +
-										UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_2"),
-										UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_3"));
+//			CMessageEngine.newError(	UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_1") + 
+//										filepath +
+//										UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_2"),
+//										UIString.getUIString("MSG_KEY_IMAGE_FILE_NOT_FOUND_3"));
 			
 			filepath = CFilePaths.getDefaultPicturePath();
 			fileImage = new File(filepath);

@@ -41,7 +41,7 @@ public class testTabPanels
 		{
 			
 			CMessageEngine.createInstance();
-			new UIMessageEngine();
+			new UIMessageEngine(null);
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			

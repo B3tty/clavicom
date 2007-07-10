@@ -42,7 +42,7 @@ public class testUIKeyboard
 			System.setProperty("sun.java2d.noddraw", "true");
 			
 			CMessageEngine.createInstance();
-			/*UIMessageEngine test = */new UIMessageEngine();
+			/*UIMessageEngine test = */new UIMessageEngine(null);
 			
 			//UIManager.setLookAndFeel( "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"  );
 			
