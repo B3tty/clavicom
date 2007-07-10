@@ -53,6 +53,7 @@ public class CFilePaths
 	// ------- IMAGES DE TOUCHES (CKeyXXX) -------------------
 	private static String toolKeyCharacterPicture = "character.png";
 	private static String toolKeyLauncherPicture = "launch.png";
+	private static String toolKeySoundPicture = "sound.png";
 	private static String toolKeyLastWordPicture = "last_word.png";
 	private static String toolKeyPredictionPicture = "prediction.png";
 	private static String toolKeyShortCutPicture = "shortcut.png";
@@ -358,6 +359,11 @@ public class CFilePaths
 	public static String getStartApplicationSoundFilePath()
 	{
 		return startApplicationSoundFilePath;
+	}
+
+	public static String getToolKeySoundPicture()
+	{
+		return toolKeySoundPicture;
 	}
 	
 	

@@ -37,7 +37,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -45,6 +44,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+import javax.swing.event.MouseInputAdapter;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
@@ -106,11 +106,12 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 	
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
 												// le calcul des images
+	
+	MyMouseInputAdapter myMouseInputAdapter; 
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIMouse( CMouse myMouse )
 	{
-		
 		mouse = myMouse;
 
 		dragAndDropMode = false;		
@@ -188,18 +189,18 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 		
 		SwitchMoveMode();
 		
-		addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseEntered(MouseEvent e)
-			{
-				// on déplace la frame pour ne pas cacher le curseur
-				fireMouseToMove();
-			}
-		});
-		
 		mouseToMoveListenerList = new EventListenerList();
 		
+		myMouseInputAdapter = new MyMouseInputAdapter();
+		
+		// on ne l'abonne pas , car c'est dans le movingPanel que les méthodes seront appelés
+		//addMouseListener( myMouseInputAdapter );
+		
+	}
+	
+	public MouseInputAdapter getMouseInputAdapter()
+	{
+		return myMouseInputAdapter;
 	}
 
 	
@@ -876,4 +877,14 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 	// fin Listener ============================================
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	class MyMouseInputAdapter extends MouseInputAdapter
+	{
+		@Override
+		public void mouseEntered(MouseEvent e)
+		{
+			// on déplace la frame pour ne pas cacher le curseur
+			fireMouseToMove();
+		}
+	}
 }

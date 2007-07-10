@@ -75,6 +75,12 @@ public class UIKeyCreationToolbar extends JPanel
 				TEnumCreationKey.T_KEY_LAUNCHER,
 				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER_TOOLTIP")
 				);
+		
+		CreateKey(CFilePaths.getToolKeySoundPicture(),
+				UIString.getUIString("LB_KEYCREATION_KEYSOUND"),
+				TEnumCreationKey.T_KEY_SOUND,
+				UIString.getUIString("LB_KEYCREATION_KEYSOUND_TOOLTIP")
+				);
 	
 		CreateKey(CFilePaths.getToolKeyLastWordPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYLASTWORD"),

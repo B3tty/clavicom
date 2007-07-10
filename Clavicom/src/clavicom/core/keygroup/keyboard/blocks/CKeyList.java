@@ -39,6 +39,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyLevel;
 import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
+import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
 import clavicom.gui.language.UIString;
@@ -111,6 +112,16 @@ public class CKeyList
 			catch (Exception ex)
 			{
 				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER" )+ "]" + ex.getMessage() );
+			}
+		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_SOUND ) )
+		{
+			try
+			{
+				keyboardKey = new CKeySound( node );
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("["+ UIString.getUIString( "EX_KEYLIST_KEY_TYPE" )+ " : "+ UIString.getUIString( "EX_KEYLIST_TYPE_SOUND_PLAYER" )+ "]" + ex.getMessage() );
 			}
 		}else if( node.getName().equals( TXMLNames.KY_ELEMENT_SHORTCUT ) )
 		{

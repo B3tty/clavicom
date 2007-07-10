@@ -74,6 +74,10 @@ public class TXMLNames
 	public static String KY_ELEMENT_LAUNCHER		 	= "keylauncher";
 	public static String KY_ELEMENT_LAUNCHER_PATH		= "applicationpath";
 	
+	// CKeySound
+	public static String KY_ELEMENT_SOUND		 	= "keysound";
+	public static String KY_ELEMENT_SOUND_PATH		= "soundpath";
+	
 	// CKeyLevel
 	public static String KY_ELEMENT_KEYLEVEL		 	= "keylevel";
 	public static String KY_ELEMENT_LEVEL		 		= "level";

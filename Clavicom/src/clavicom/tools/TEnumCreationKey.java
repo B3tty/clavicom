@@ -36,6 +36,7 @@ public final class TEnumCreationKey
     public final static TEnumCreationKey T_KEY_CLAVICOM_SWITCH_SOURICOM		= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LASTWORD						= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LAUNCHER						= new TEnumCreationKey();
+    public final static TEnumCreationKey T_KEY_SOUND						= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LEVEL_SHIFT					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LEVEL_ALTGR					= new TEnumCreationKey();
     public final static TEnumCreationKey T_KEY_LEVEL_CAPS_LOCK					= new TEnumCreationKey();
