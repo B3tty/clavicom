@@ -35,6 +35,7 @@ import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,12 +60,19 @@ public class UIMovingPanel extends JPanel
 	protected boolean changeSelection;		
 	
 	protected JFrame parentFrame;
+	protected MouseInputAdapter otherAdapter;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
-	public UIMovingPanel(JFrame myParentFrame)
+	public UIMovingPanel(JFrame myParentFrame, MouseInputAdapter otherAdapter)
 	{
 		parentFrame = myParentFrame;
+		this.otherAdapter = otherAdapter;
 		resizableBorder = new UIInvisibleBorder(BORDER_INSET);
+	}
+	
+	public UIMovingPanel(JFrame myParentFrame)
+	{
+		this(myParentFrame, null);
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -109,6 +117,9 @@ public class UIMovingPanel extends JPanel
 		{
 			UIResizableBorder border = (UIResizableBorder) getBorder();
 			setCursor(Cursor.getPredefinedCursor(border.getResizeCursor(me)));
+			
+			if(otherAdapter != null)
+				otherAdapter.mouseMoved(me);
 		}
 
 		public void mouseExited(MouseEvent mouseEvent)
@@ -133,6 +144,9 @@ public class UIMovingPanel extends JPanel
 			startPos = me.getPoint();
 			
 			changeSelection = true;
+			
+			if(otherAdapter != null)
+				otherAdapter.mousePressed(me);
 		}
 
 		public void mouseDragged(MouseEvent me)
@@ -241,6 +255,8 @@ public class UIMovingPanel extends JPanel
 				// cursor shouldn't change while dragging
 				setCursor(Cursor.getPredefinedCursor(cursor));
 			}
+			if(otherAdapter != null)
+				otherAdapter.mouseDragged(me);
 		}
 		
 		/**
@@ -258,6 +274,30 @@ public class UIMovingPanel extends JPanel
 		public void mouseReleased(MouseEvent mouseEvent)
 		{			
 			startPos = null;
+			
+			if(otherAdapter != null)
+				otherAdapter.mouseReleased(mouseEvent);
 		}
+		
+		public void mouseEntered(MouseEvent arg0)
+		{
+			if(otherAdapter != null)
+				otherAdapter.mouseEntered(arg0);
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent arg0)
+		{
+			if(otherAdapter != null)
+				otherAdapter.mouseClicked(arg0);
+		}
+		
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent arg0)
+		{
+			if(otherAdapter != null)
+				otherAdapter.mouseWheelMoved(arg0);
+		}
+		
 	};	
 }

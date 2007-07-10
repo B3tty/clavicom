@@ -37,15 +37,17 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+import javax.swing.event.MouseInputAdapter;
+
 import clavicom.CFilePaths;
 import clavicom.core.engine.CCommandEngine;
 import clavicom.core.engine.CLastWordEngine;
@@ -89,9 +91,9 @@ import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
-import clavicom.tools.TNavigationType;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TPoint;
 import clavicom.tools.TUIKeyState;
 
@@ -491,7 +493,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		// Ajout des listeners
 		addKeyListener(keyListener);
-		addMouseListener(mouseAdapter);
+//		addMouseListener(mouseAdapter);
 		
 		// Maj des keys
 		updateEdit(true);
@@ -536,7 +538,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	{
 		// Retrait des listeners
 		removeKeyListener(keyListener);
-		removeMouseListener(mouseAdapter);
+//		removeMouseListener(mouseAdapter);
 		
 		// Changement de l'état
 		isEdited = false;
@@ -1131,18 +1133,22 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		}
 	};
 	
-	private MouseAdapter mouseAdapter = new MouseAdapter()
+	private MouseInputAdapter mouseAdapter = new MouseInputAdapter()
 	{
 		public void mouseEntered(MouseEvent arg0)
 		{
-			if(isEdited == true)
-			{
-				requestFocus();
-			}
+			if(isEdited == false)
+				return;
+			
+
+			requestFocus();
 		}
 
 		public void mousePressed(MouseEvent arg0)
 		{
+			if(isEdited == false)
+				return;
+			
 			// Si c'est pas le clic gauche, on annule
 			if (!SwingUtilities.isLeftMouseButton(arg0))
             {
@@ -1567,6 +1573,11 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		{
 			uiKeyKeyboard.listenMouseListener( b );
 		}
+	}
+	
+	public MouseInputAdapter getMouseAdapter()
+	{
+		return mouseAdapter;
 	}
 
 	public void releasedHoldableKeys()

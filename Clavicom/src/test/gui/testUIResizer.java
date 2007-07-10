@@ -88,7 +88,7 @@ public class testUIResizer
 			JFrame frame = new JFrame();
 			frame.setSize(900,400);
 			
-			UIMovingPanel panel = new UIMovingPanel(frame);
+			UIMovingPanel panel = new UIMovingPanel(frame,null);
 			panel.setEditable(true);
 			panel.setSize(500, 500);
 			panel.setBackground(Color.BLUE);
