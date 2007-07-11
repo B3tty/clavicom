@@ -203,7 +203,7 @@ public class UIDialogueProfilSelectLoadOptions extends JDialog
 				{
 					keyboard.setSelected( false );
 					commandSetName.setSelected( false );
-				}
+				} 
 			}
 		});
 	}
