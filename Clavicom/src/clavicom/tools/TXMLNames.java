@@ -43,6 +43,7 @@ public class TXMLNames
 	public static String KY_ATTRIBUTE_ORDER 			= "order";
 	public static String KY_ATTRIBUTE_CAPTION_IMAGE		= "caption_image";
 	public static String KY_ATTRIBUTE_HOLDABLE			= "holdable";
+	public static String KY_ATTRIBUTE_RELEASE_HOLDABLE	= "release_holdable";
 	public static String KY_ELEMENT_CAPTION				= "caption";
 	public static String KY_ELEMENT_CAPTION_LEVEL_1		= "caption_level_1";
 	public static String KY_ELEMENT_CAPTION_LEVEL_2		= "caption_level_2";
@@ -159,6 +160,8 @@ public class TXMLNames
 	
 	// Profil
 	public static String PR_ELEMENT_PROFIL		= "profil";
+	
+	public static String PR_ELEMENT_DEFAULT_MODEL		= "default_model";
 	
 	public static String PR_ELEMENT_LANGUAGE_UI		= "language_ui";
 	

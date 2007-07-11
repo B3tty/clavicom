@@ -1,27 +1,27 @@
 /*-----------------------------------------------------------------------------+
 
-			Filename			: CCommandEngine.java
-			Creation date		: 30 mai 07
-		
-			Project				: Clavicom
-			Package				: clavicom.core.engine
+ Filename			: CCommandEngine.java
+ Creation date		: 30 mai 07
+ 
+ Project				: Clavicom
+ Package				: clavicom.core.engine
 
-			Developed by		: Thomas DEVAUX & Guillaume REBESCHE
-			Copyright (C)		: (2007) Centre ICOM'
+ Developed by		: Thomas DEVAUX & Guillaume REBESCHE
+ Copyright (C)		: (2007) Centre ICOM'
 
-							-------------------------
+ -------------------------
 
-	This program is free software. You can redistribute it and/or modify it 
- 	under the terms of the GNU Lesser General Public License as published by 
-	the Free Software Foundation. Either version 2.1 of the License, or (at your 
-    option) any later version.
+ This program is free software. You can redistribute it and/or modify it 
+ under the terms of the GNU Lesser General Public License as published by 
+ the Free Software Foundation. Either version 2.1 of the License, or (at your 
+ option) any later version.
 
-	This program is distributed in the hope that it will be useful, but WITHOUT 
-	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
-	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
-    more details.
+ This program is distributed in the hope that it will be useful, but WITHOUT 
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for 
+ more details.
 
-+-----------------------------------------------------------------------------*/
+ +-----------------------------------------------------------------------------*/
 
 package clavicom.core.engine;
 
@@ -51,104 +51,121 @@ import clavicom.gui.language.UIString;
 import clavicom.tools.TKeyAction;
 import clavicom.tools.TLevelEnum;
 
-public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeyShortcutListener,OnClickKeyDynamicStringCommandListener
+public class CCommandEngine implements OnClickKeyCharacterListener,
+		OnClickKeyShortcutListener, OnClickKeyDynamicStringCommandListener
 {
-	//--------------------------------------------------------- CONSTANTES --//
+	// --------------------------------------------------------- CONSTANTES --//
 
-	//---------------------------------------------------------- VARIABLES --//
-	
+	// ---------------------------------------------------------- VARIABLES --//
+
 	protected EventListenerList listenerNewMessageList;
-	
+
 	static CCommandEngine instance;
-	
+
 	List<CKey> holdKey;
-	
+
 	Robot robot;
-	
+
 	protected EventListenerList listenerList;
 
-	//------------------------------------------------------ CONSTRUCTEURS --//
-	protected CCommandEngine( CKeyboard keyboard )
+	// ------------------------------------------------------ CONSTRUCTEURS --//
+	protected CCommandEngine(CKeyboard keyboard)
 	{
 		listenerNewMessageList = new EventListenerList();
-		
+
 		holdKey = new ArrayList<CKey>();
-		
+
 		try
 		{
 			robot = new Robot();
 		}
-		catch ( AWTException e )
+		catch (AWTException e)
 		{
-			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_NO_ROBOT" ), e.getMessage() );
+			CMessageEngine
+					.newError(UIString
+							.getUIString("MSG_COMMAND_ENGINE_NO_ROBOT"), e
+							.getMessage());
 			return;
 		}
-		
+
 		// Abonnement aux listeners
-		listen( keyboard );
-		
+		listen(keyboard);
+
 		listenerList = new EventListenerList();
-		
+
 	}
 
-	public static void createInstance( CKeyboard keyboard )
+	public static void createInstance(CKeyboard keyboard)
 	{
-		instance = new CCommandEngine( keyboard );
+		instance = new CCommandEngine(keyboard);
 	}
-	
+
 	public static CCommandEngine getInstance()
 	{
 		return instance;
 	}
-	//----------------------------------------------------------- METHODES --//
-	
-	public void listen( CKeyKeyboard keyboardKey )
+
+	// ----------------------------------------------------------- METHODES --//
+
+	public void listen(CKeyKeyboard keyboardKey)
 	{
-		if( keyboardKey != null )
+		if (keyboardKey != null)
 		{
 			// on cast pour savoir de quel type est la key
-			if( keyboardKey instanceof CKeyCharacter )
+			if (keyboardKey instanceof CKeyCharacter)
 			{
-				((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
-			}else if( keyboardKey instanceof CKeyDynamicString )
+				((CKeyCharacter) keyboardKey)
+						.addOnClickKeyCharacterListener(this);
+			}
+			else if (keyboardKey instanceof CKeyDynamicString)
 			{
-				((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerCommand( this );
-			}else if( keyboardKey instanceof CKeyShortcut )
+				((CKeyDynamicString) keyboardKey)
+						.addOnClickKeyDynamicStringListenerCommand(this);
+			}
+			else if (keyboardKey instanceof CKeyShortcut)
 			{
-				((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
+				((CKeyShortcut) keyboardKey)
+						.addOnClickKeyShortcutListener(this);
 			}
 		}
 	}
-	public void listen( CKeyboard keyboard )
+
+	public void listen(CKeyboard keyboard)
 	{
 		// =============================================================
 		// Abonnement aux listener
 		// =============================================================
-		for( int i = 0 ; i < keyboard.groupCount() ; ++i )
+		for (int i = 0; i < keyboard.groupCount(); ++i)
 		{
-			CKeyGroup keyGroup = keyboard.getKeyGroup( i );
-			if( keyGroup != null )
+			CKeyGroup keyGroup = keyboard.getKeyGroup(i);
+			if (keyGroup != null)
 			{
-				for( int j = 0 ; j < keyGroup.listCount() ; ++j )
+				for (int j = 0; j < keyGroup.listCount(); ++j)
 				{
-					CKeyList keyList = keyGroup.getkeyList( j );
-					if( keyList != null )
+					CKeyList keyList = keyGroup.getkeyList(j);
+					if (keyList != null)
 					{
-						for( int k = 0 ;  k < keyList.keyCount() ; ++k )
+						for (int k = 0; k < keyList.keyCount(); ++k)
 						{
-							CKeyKeyboard keyboardKey = keyList.getKeyKeyboard( k );
-							if( keyboardKey != null )
+							CKeyKeyboard keyboardKey = keyList
+									.getKeyKeyboard(k);
+							if (keyboardKey != null)
 							{
 								// on cast pour savoir de quel type est la key
-								if( keyboardKey instanceof CKeyCharacter )
+								if (keyboardKey instanceof CKeyCharacter)
 								{
-									((CKeyCharacter)keyboardKey).addOnClickKeyCharacterListener( this );
-								}else if( keyboardKey instanceof CKeyDynamicString )
+									((CKeyCharacter) keyboardKey)
+											.addOnClickKeyCharacterListener(this);
+								}
+								else if (keyboardKey instanceof CKeyDynamicString)
 								{
-									((CKeyDynamicString)keyboardKey).addOnClickKeyDynamicStringListenerCommand( this );
-								}else if( keyboardKey instanceof CKeyShortcut )
+									((CKeyDynamicString) keyboardKey)
+											.addOnClickKeyDynamicStringListenerCommand(this);
+								}
+								else if (keyboardKey instanceof CKeyShortcut)
 								{
-									((CKeyShortcut)keyboardKey).addOnClickKeyShortcutListener( this );
+									((CKeyShortcut) keyboardKey)
+											.addOnClickKeyShortcutListener(this);
 								}
 							}
 						}
@@ -157,168 +174,168 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 			}
 		}
 	}
-	
-	public void unListen( CKeyKeyboard keyboardKey )
+
+	public void unListen(CKeyKeyboard keyboardKey)
 	{
-		if( keyboardKey != null )
+		if (keyboardKey != null)
 		{
 			// on cast pour savoir de quel type est la key
-			if( keyboardKey instanceof CKeyCharacter )
+			if (keyboardKey instanceof CKeyCharacter)
 			{
-				((CKeyCharacter)keyboardKey).removeOnClickKeyCharacterListener( this );
-			}else if( keyboardKey instanceof CKeyDynamicString )
+				((CKeyCharacter) keyboardKey)
+						.removeOnClickKeyCharacterListener(this);
+			}
+			else if (keyboardKey instanceof CKeyDynamicString)
 			{
-				((CKeyDynamicString)keyboardKey).removeOnClickKeyDynamicStringListenerCommand( this );
-			}else if( keyboardKey instanceof CKeyShortcut )
+				((CKeyDynamicString) keyboardKey)
+						.removeOnClickKeyDynamicStringListenerCommand(this);
+			}
+			else if (keyboardKey instanceof CKeyShortcut)
 			{
-				((CKeyShortcut)keyboardKey).removeOnClickKeyShortcutListener( this );
+				((CKeyShortcut) keyboardKey)
+						.removeOnClickKeyShortcutListener(this);
 			}
 		}
 	}
-	
-	
-	
-	protected void executeCommande( List<CCommand> commandList, CKey key )
+
+	protected void executeCommande(List<CCommand> commandList, CKey key)
 	{
 		CCode code = null;
-		
 
 		// ===============================================================
 		// Cas des touche holdable
 		// ===============================================================
-		if( key.isHoldable() )
+		if (key.isHoldable())
 		{
 			// si elle est déjà dans la liste, alors, on le retire de la liste
-			if( holdKey.contains( key ) )
+			if (holdKey.contains(key))
 			{
 				// on le retire de la liste
-				holdKey.remove( key );
+				holdKey.remove(key);
 			}
 			else
 			{
 				// on l'ajoute a la liste
-				holdKey.add( key );
+				holdKey.add(key);
 			}
-		} else
+		}
+		else
 		{
 			// ===============================================================
 			// touche non holdable
 			// ===============================================================
-			
-			
+
 			// on fait le press des touches holdable
-			for( CKey holdableKey : holdKey )
+			for (CKey holdableKey : holdKey)
 			{
-				if( holdableKey instanceof CKeyCharacter )
+				if (holdableKey instanceof CKeyCharacter)
 				{
-					DoKeyCharacter( (CKeyCharacter)holdableKey, false );
+					DoKeyCharacter((CKeyCharacter) holdableKey, false);
 				}
 			}
-			
 
 			// on execute la touche normalement
-			for( CCommand command : commandList )
+			for (CCommand command : commandList)
 			{
-				for( int i = 0 ; i < command.Size() ; ++i )
+				for (int i = 0; i < command.Size(); ++i)
 				{
-					code = command.GetCode( i );
-					if( code.GetKeyAction() == TKeyAction.PRESSED )
+					code = command.GetCode(i);
+					if (code.GetKeyAction() == TKeyAction.PRESSED)
 					{
-						doKeyCodePress( code );	
+						doKeyCodePress(code);
 					}
-					else if( code.GetKeyAction() == TKeyAction.RELEASED )
+					else if (code.GetKeyAction() == TKeyAction.RELEASED)
 					{
-						doKeyCodeRelease( code );
+						doKeyCodeRelease(code);
 					}
 				}
 			}
-			
-			
-			
-			
+
 			// on fait le relesed des touches holdable
-			for( CKey holdableKey : holdKey )
+			for (CKey holdableKey : holdKey)
 			{
-				if( holdableKey instanceof CKeyCharacter )
+				if (holdableKey instanceof CKeyCharacter)
 				{
-					DoKeyCharacter( (CKeyCharacter)holdableKey, true );
+					DoKeyCharacter((CKeyCharacter) holdableKey, true);
 				}
 			}
-			
-			
+
 			// on vide la liste des touche holdable
 			holdKey.clear();
-			
+
 			// on change le level, on se remet en normal
-			CLevelEngine.getInstance().setCurrentLevel( TLevelEnum.NORMAL, false );
-			
+			CLevelEngine.getInstance()
+					.setCurrentLevel(TLevelEnum.NORMAL, false);
+
 			// on prévient l'UI pour que les holdKeys soient déséléctionnées
 			fireReleaseHoldableKeys();
-			
 		}
+
 	}
-	
+
 	public void ClearHoldKey()
 	{
 		holdKey.clear();
 	}
-	
-	
+
 	// ========================================================|
 	// COMMAND ACTION =========================================|
 	// ========================================================|
-	
-	private void DoKeyCharacter(CKeyCharacter character, boolean release )
+
+	private void DoKeyCharacter(CKeyCharacter character, boolean release)
 	{
-		CCommand command = character.getCommand( CLevelEngine.getInstance().getCurrentLevel() );
+		CCommand command = character.getCommand(CLevelEngine.getInstance()
+				.getCurrentLevel());
 		CCode code = null;
-		
-		if( command != null )
+
+		if (command != null)
 		{
-			for( int i = 0 ; i < command.Size() ; ++i )
+			for (int i = 0; i < command.Size(); ++i)
 			{
-				code = command.GetCode( i );
-				if( release )
+				code = command.GetCode(i);
+				if (release)
 				{
-					if( code.GetKeyAction() == TKeyAction.RELEASED )
+					if (code.GetKeyAction() == TKeyAction.RELEASED)
 					{
-						doKeyCodeRelease( code );
+						doKeyCodeRelease(code);
 					}
 				}
 				else
 				{
-					if( code.GetKeyAction() == TKeyAction.PRESSED )
+					if (code.GetKeyAction() == TKeyAction.PRESSED)
 					{
-						doKeyCodePress( code );
+						doKeyCodePress(code);
 					}
 				}
 			}
 		}
 	}
-	
-	protected void doKeyCodePress( CCode code )
+
+	protected void doKeyCodePress(CCode code)
 	{
 		try
 		{
-			robot.keyPress( code.GetKeyEvent() );
-			
+			robot.keyPress(code.GetKeyEvent());
+
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
-			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+			CMessageEngine.newError(UIString
+					.getUIString("MSG_COMMAND_ENGINE_CODE_INCORECT"));
 			return;
 		}
 	}
-	
-	protected void doKeyCodeRelease( CCode code )
+
+	protected void doKeyCodeRelease(CCode code)
 	{
 		try
 		{
-			robot.keyRelease( code.GetKeyEvent() );
+			robot.keyRelease(code.GetKeyEvent());
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
-			CMessageEngine.newError( UIString.getUIString( "MSG_COMMAND_ENGINE_CODE_INCORECT" ) );
+			CMessageEngine.newError(UIString
+					.getUIString("MSG_COMMAND_ENGINE_CODE_INCORECT"));
 			return;
 		}
 	}
@@ -326,82 +343,80 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	public void onClickKeyCharacter(CKeyCharacter keyCharacter)
 	{
 		// Cas normaux
-		if(keyCharacter.getCommand(CLevelEngine.getInstance().getCurrentLevel()) == null)
+		if (keyCharacter.getCommand(CLevelEngine.getInstance()
+				.getCurrentLevel()) == null)
 			return;
-		
+
 		List<CCommand> commandList = new ArrayList<CCommand>();
 
-		CCommand keyCommand = keyCharacter.getCommand( CLevelEngine.getInstance().getCurrentLevel() );
+		CCommand keyCommand = keyCharacter.getCommand(CLevelEngine
+				.getInstance().getCurrentLevel());
 
-		commandList.add( keyCommand );
+		commandList.add(keyCommand);
 
-		executeCommande( commandList, keyCharacter );
-		
-		
+		executeCommande(commandList, keyCharacter);
+
 	}
 
 	public void onClickKeyShortcut(CKeyShortcut keyShortcut)
 	{
-		if(keyShortcut.getCommand() == null)
+		if (keyShortcut.getCommand() == null)
 			return;
-		
+
 		List<CCommand> commandList = new ArrayList<CCommand>();
-		commandList.add( keyShortcut.getCommand() );
-		
-		executeCommande( commandList, keyShortcut );
-		
+		commandList.add(keyShortcut.getCommand());
+
+		executeCommande(commandList, keyShortcut);
+
 	}
 
-	public void onClickKeyDynamicStringCommand(CKeyDynamicString keyDynamicString)
+	public void onClickKeyDynamicStringCommand(
+			CKeyDynamicString keyDynamicString)
 	{
-		
+
 		List<CCommand> commandList = null;
-		
+
 		try
 		{
 			commandList = keyDynamicString.getCommands();
 		}
-		catch ( Exception e )
+		catch (Exception e)
 		{
 			return;
 		}
-		
+
 		// on enlève les première lettre déja écrites
-		if( commandList.size() < keyDynamicString.getCurrentIndex() )
+		if (commandList.size() < keyDynamicString.getCurrentIndex())
 		{
 			commandList.clear();
 		}
 		else
 		{
-			for(int i = 0 ; i < keyDynamicString.getCurrentIndex() ; ++i )
+			for (int i = 0; i < keyDynamicString.getCurrentIndex(); ++i)
 			{
-				commandList.remove( 0 );
-				//KeyEvent.VK_EURO_SIGN;
+				commandList.remove(0);
+				// KeyEvent.VK_EURO_SIGN;
 			}
 		}
-		
+
 		// s'il l'option "ajout d'un espace aprés la chaine" est coché
-		if( CProfil.getInstance().getAdvancedOption().isAddSpaceAfterString() )
+		if (CProfil.getInstance().getAdvancedOption().isAddSpaceAfterString())
 		{
 			CCommand commandEspace = CCommandSet.GetInstance().GetCommand(" ");
-			if( commandEspace != null )
+			if (commandEspace != null)
 			{
-				commandList.add( commandEspace );
+				commandList.add(commandEspace);
 			}
 		}
-		
-		if(commandList != null)
+
+		if (commandList != null)
 		{
-			executeCommande( commandList, keyDynamicString );
+			executeCommande(commandList, keyDynamicString);
 		}
 	}
 
+	// --------------------------------------------------- METHODES PRIVEES --//
 
-	//--------------------------------------------------- METHODES PRIVEES --//
-	
-	
-
-	
 	// ========================================================|
 	// Listener release holdable keys =========================|
 	// ========================================================|
@@ -415,11 +430,11 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 		this.listenerList.remove(ReleaseHoldableKeysListener.class, l);
 	}
 
-	protected void fireReleaseHoldableKeys( )
+	protected void fireReleaseHoldableKeys()
 	{
 		ReleaseHoldableKeysListener[] listeners = (ReleaseHoldableKeysListener[]) listenerList
 				.getListeners(ReleaseHoldableKeysListener.class);
-		for ( int i = listeners.length - 1; i >= 0; i-- )
+		for (int i = listeners.length - 1; i >= 0; i--)
 		{
 			listeners[i].releasedHoldableKeys();
 		}
@@ -428,5 +443,4 @@ public class CCommandEngine implements OnClickKeyCharacterListener,OnClickKeySho
 	// fin Listeners ==========================================|
 	// ========================================================|
 
-	
 }

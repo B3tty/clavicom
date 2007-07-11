@@ -56,6 +56,8 @@ public class CProfil
 	CFont keyboardFont;				// Police de caractère utilisée pour le clavier
 	CAdvancedOptions advancedOption;// option avancés du profil
 	
+	boolean defaultModel;
+	
 	String profilFilePath;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -63,6 +65,7 @@ public class CProfil
 	private CProfil( String myProfilFilePath )
 	{
 		profilFilePath = myProfilFilePath;
+		defaultModel = false;
 	}
 
 	//----------------------------------------------------------- METHODES --//
@@ -85,6 +88,30 @@ public class CProfil
 
 		//On initialise un nouvel élément racine avec l'élément racine du document.
 		return document.getRootElement();
+	}
+	
+	public void loadProfileDefautModel() throws Exception
+	{
+		
+		Element racine = openFile();
+		
+		// ======================================================================
+		// chargement du booléen defaultModel
+		// ======================================================================
+		Element defautModel_elem = racine.getChild( TXMLNames.PR_ELEMENT_DEFAULT_MODEL );
+		if( defautModel_elem != null )
+		{
+			String str_defaultModel = defautModel_elem.getText();
+			
+			try
+			{
+				defaultModel = Boolean.parseBoolean( str_defaultModel );
+			}
+			catch(Exception ex)
+			{
+				throw new Exception("[Chargement du profil] Impossible de convertir la chaine " + str_defaultModel + " en booléen" );
+			}
+		}
 	}
 	
 	public void loadProfileLanguageUIName() throws Exception
@@ -486,6 +513,16 @@ public class CProfil
 	public String getProfilFilePath()
 	{
 		return profilFilePath;
+	}
+
+	public boolean isDefaultModel()
+	{
+		return defaultModel;
+	}
+
+	public void setDefaultModel(boolean defaultModel)
+	{
+		this.defaultModel = defaultModel;
 	}
 
 }

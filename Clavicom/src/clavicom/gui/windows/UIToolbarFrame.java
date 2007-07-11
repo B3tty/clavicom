@@ -33,12 +33,14 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import clavicom.CFilePaths;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -74,6 +76,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentDialog;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TNavigationType;
+import clavicom.tools.TSwingUtils;
 
 //import com.sun.jna.examples.WindowUtils;
 
@@ -95,7 +98,6 @@ UIGridChangedListener
 	
 	private final int PREFERED_SPACE_WITH_KEYBOARD = 5;	// Espacement avec le keyboard
 	
-	private final int PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS = 5;
 	
 	private final  String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
@@ -127,6 +129,7 @@ UIGridChangedListener
 	
 	// Sous panels
 	JPanel panelBoutons;	// Contient le bouton fermer mode édition et paramètres
+	JPanel panelBoutonsSaveLoad;	// Contient le bouton Sauvegarder et charger
 	
 	// Sous panels
 	UIKeyboard panelKeyboard;			// Panel contenant le clavier
@@ -150,6 +153,7 @@ UIGridChangedListener
 	
 	// Boutons
 	JButton btFermerModeEdition, btOptionsApplication, btEditionKey, btOpenLevelManager;
+	JButton btSaveAs, btLoad; 
 	
 	
 	
@@ -186,6 +190,10 @@ UIGridChangedListener
 	{
 		// ------------- Layout du panel de bouton ----------------------------
 		panelBoutons.setLayout(new GridLayout(4,1));
+		GridLayout gridButtonSaveLoad = new GridLayout(2,1);
+		gridButtonSaveLoad.setHgap( 2 );
+		gridButtonSaveLoad.setVgap( 2 );
+		panelBoutonsSaveLoad.setLayout( gridButtonSaveLoad );
 		
 		mainPanelBg.setLayout(new GridLayout());
 		// -------------- Layout du panel principal ----------------------------
@@ -243,6 +251,23 @@ UIGridChangedListener
 	    );
 		gbLayoutMain.setConstraints(panelBoutons, gbConstBoutons);
 		
+		// Contraintes du panel de boutons save et load
+		GridBagConstraints gbConstBoutonsSaveLoad = new GridBagConstraints (	
+				3,							// Numéro de colonne
+	            0,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            8,							// Taille horizontale relative
+	            100,						// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            							// Espace autours (haut, gauche, bas, droite)
+	            new Insets(PANEL_TOOLBAR_UP_SPACE, 0, PANEL_TOOLBAR_BOTTOM_SPACE, PANEL_TOOLBAR_RIGHT_SPACE),		
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gbLayoutMain.setConstraints(panelBoutonsSaveLoad, gbConstBoutonsSaveLoad);
+		
 		// -------------- Layout de la frame d'options -------------------------
 		// panelModification.setLayout(new BorderLayout());		
 	}
@@ -258,6 +283,7 @@ UIGridChangedListener
 		mainPanel = new UIMovingPanel(this);
 		mainPanelBg = new UIToolbarPanel(Color.GRAY.brighter());
 		panelBoutons = new JPanel();
+		panelBoutonsSaveLoad = new JPanel();
 		
 		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
@@ -282,35 +308,80 @@ UIGridChangedListener
 		
 		frameLevelManager = new UILevelManagerFrame();
 		frameLevelManager.setUIKeyboard(panelKeyboard);
-		
-		panelBoutons.setLayout(new GridLayout(3,1,0,PANEL_BUTTONS_SPACE_BETWEEN_BUTTONS));
+
 		
 		// Création des boutons 
 		btFermerModeEdition = new JButton(UIString.getUIString("LB_EDITION_CLOSE_EDITION"));
 		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
 		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
 		btOpenLevelManager = new JButton(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER"));
+		btSaveAs = new JButton( );
+		btLoad = new JButton();
 		
 		btFermerModeEdition.setMinimumSize(new Dimension(0,0));
 		btOptionsApplication.setMinimumSize(new Dimension(0,0));
 		btEditionKey.setMinimumSize(new Dimension(0,0));
 		btOpenLevelManager.setMinimumSize(new Dimension(0,0));
+		btSaveAs.setMinimumSize(new Dimension(0,0));
+		btLoad.setMinimumSize(new Dimension(0,0));
 		
 		btFermerModeEdition.setPreferredSize(new Dimension(0,0));
 		btOptionsApplication.setPreferredSize(new Dimension(0,0));
 		btEditionKey.setPreferredSize(new Dimension(0,0));
 		btOpenLevelManager.setPreferredSize(new Dimension(0,0));
+		btSaveAs.setPreferredSize(new Dimension(0,0));
+		// rezise des button
+		btSaveAs.addComponentListener( new ComponentAdapter()
+		{
+			@Override
+			public void componentResized(ComponentEvent e)
+			{
+				// TODO Auto-generated method stub
+				super.componentResized(e);
+				
+				if( (btSaveAs.getWidth() > 7) && (btSaveAs.getHeight() > 7) )
+				{
+					btSaveAs.setIcon( TSwingUtils.scaleImage(TSwingUtils.getImage( CFilePaths.getSaveAs() ), btSaveAs.getWidth()-6, btSaveAs.getHeight()-6)  );
+				}
+			}
+		});
+		
+		btLoad.setPreferredSize(new Dimension(0,0));
+		// rezise des button
+		btLoad.addComponentListener( new ComponentAdapter()
+		{
+			@Override
+			public void componentResized(ComponentEvent e)
+			{
+				// TODO Auto-generated method stub
+				super.componentResized(e);
+				
+				if( (btLoad.getWidth() > 7) && (btLoad.getHeight() > 7) )
+				{
+					btLoad.setIcon( TSwingUtils.scaleImage(TSwingUtils.getImage( CFilePaths.getLoad() ), btLoad.getWidth()-6, btLoad.getHeight()-6)  );
+				}
+			}
+		});
+		
 		
 		// Ajout des tooltips
 		btFermerModeEdition.setToolTipText(UIString.getUIString("LB_EDITION_CLOSE_EDITION_TOOLTIP"));
 		btOptionsApplication.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_OPTIONS_TOOLTIP"));
 		btEditionKey.setToolTipText(UIString.getUIString("LB_EDITION_EDIT_KEY_TOOLTIP"));
 		btOpenLevelManager.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP"));
+		btSaveAs.setToolTipText(UIString.getUIString("LB_EDITION_SAVE_AS_TOOLTIP"));
+		btLoad.setToolTipText(UIString.getUIString("LB_EDITION_LOAD_TOOLTIP"));
 		
 		panelBoutons.add(btFermerModeEdition);
 		panelBoutons.add(btOptionsApplication);
 		panelBoutons.add(btOpenLevelManager);
 		panelBoutons.add(btEditionKey);
+		
+		panelBoutonsSaveLoad.add( btSaveAs );
+		panelBoutonsSaveLoad.add( btLoad );
+		
+		
+		
 		
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
 													CProfil.getInstance().getDefaultColor().getDefaultKeyNormal().getColor(),
@@ -332,6 +403,7 @@ UIGridChangedListener
 		mainPanel.add(panelToolbar);
 		mainPanel.add(gridModifier);
 		mainPanel.add(panelBoutons);
+		mainPanel.add(panelBoutonsSaveLoad);
 		mainPanel.add(panelKeyboard);
 		
 		mainPanelBg.setBackground(Color.GREEN);
@@ -348,6 +420,7 @@ UIGridChangedListener
 		// On définit de la transparence pour tous
 		mainPanel.setOpaque(false);
 		panelBoutons.setOpaque(false);
+		panelBoutonsSaveLoad.setOpaque(false);
 		panelToolbar.setOpaque(false);
 		gridModifier.setOpaque(false);
 		
@@ -362,6 +435,8 @@ UIGridChangedListener
 		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
 		btOptionsApplication.setAction(new BtOptionsApplicationAction(UIString.getUIString("LB_EDITION_OPEN_OPTIONS")));
 		btOpenLevelManager.setAction(new BtOpenLevelManagerAction(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER")));
+		btSaveAs.setAction( new BtSaveAsAction() );
+		btLoad.setAction( new BtLoadAction() );
 		
 		// Initialisation des tailles des fenêtres
 		
@@ -423,6 +498,59 @@ UIGridChangedListener
 		public void actionPerformed(ActionEvent arg0)
 		{
 			frameLevelManager.setVisible(true);
+		}
+	}
+	
+	protected class BtSaveAsAction extends AbstractAction
+	{
+		public BtSaveAsAction()
+		{
+			super();
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// sauvegarder le profil sous
+			
+			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
+			
+			fileChooser.setVisible( true );
+			System.out.println("dddd");
+		}
+	}
+	
+	protected class BtLoadAction extends AbstractAction
+	{
+		public BtLoadAction()
+		{
+			super();
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// charger un profil
+
+			// on affiche le dialogue
+			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
+			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+			{
+				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
+			 
+			
+				// on deande à l'utilisateur quelles sont les éléments qu'il veut charger
+				CProfilSelectLoadOption options = new CProfilSelectLoadOption();
+				UIDialogueProfilSelectLoadOptions d_load = new UIDialogueProfilSelectLoadOptions( options );
+				d_load.setAlwaysOnTop( true );
+				d_load.setModal( true );
+				TSwingUtils.centerComponentToScreen( d_load );
+				d_load.setVisible( true );
+				
+				// on charge les éléments du profil
+				if ( d_load.getOptions() != null )
+				{
+					
+				}
+			}
 		}
 	}
 	

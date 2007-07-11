@@ -25,6 +25,8 @@
 
 package clavicom.tools;
 
+import clavicom.gui.language.UIString;
+
 public final class TClickSouricomEnum 
 {
     private TClickSouricomEnum() 
@@ -40,7 +42,7 @@ public final class TClickSouricomEnum
 
     public static TClickSouricomEnum getValue( String clickSouricom )
     {
-    	if( clickSouricom == "LEFT_PRESS" )
+    	if( clickSouricom.equals( "LEFT_PRESS" ) )
     	{
     		return LEFT_PRESS;
     	} else if( clickSouricom.equals( "RIGHT_RELEASE" ) )
@@ -81,16 +83,16 @@ public final class TClickSouricomEnum
     {
     	if( this == LEFT_PRESS )
     	{
-    		return "LEFT_PRESS";
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_PRESS");
     	} else if( this == RIGHT_RELEASE )
     	{
-    		return "RIGHT_RELEASE";
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_RELEASE");
     	} else if( this == RIGHT_PRESS )
     	{
-    		return "RIGHT_PRESS";
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_PRESS");
     	} else if( this == LEFT_RELEASE )
     	{
-    		return "LEFT_RELEASE";
+    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_RELEASE");
     	}
     	
     	return "";

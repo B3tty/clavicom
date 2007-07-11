@@ -58,10 +58,7 @@ public class CKeySound extends CKeyOneLevel
 				holdable,
 				myPointMin, 
 				myPointMax,
-				"");
-		
-		soundThread = new ThreadSound( soundPath );
-		soundThread.start();
+				"");		
 	}
 	
 	public CKeySound(
@@ -77,6 +74,7 @@ public class CKeySound extends CKeyOneLevel
 		
 		soundThread = new ThreadSound( soundPath );
 		soundThread.start();
+		
 	}
 	
 	public CKeySound (Element eltKeyLauncher) throws Exception
@@ -129,6 +127,8 @@ public class CKeySound extends CKeyOneLevel
 	public void setSoundPath(String soundPath)
 	{
 		this.soundPath = soundPath;
+		soundThread = new ThreadSound( soundPath );
+		soundThread.start();
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 
@@ -142,6 +142,10 @@ public class CKeySound extends CKeyOneLevel
 	public void Click()
 	{
 		// jouer le son
+		if( soundThread == null )
+		{
+			System.out.println("soundThread null");
+		}
 		try
 		{
 			soundThread.play();

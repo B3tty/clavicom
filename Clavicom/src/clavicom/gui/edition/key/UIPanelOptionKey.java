@@ -93,6 +93,8 @@ public class UIPanelOptionKey extends JPanel
 				}
 			}
 		});
+
+		
 		panelHoldable.add( checkHoldable );
 		panelGlobal.add( panelHoldable, BorderLayout.SOUTH );
 
@@ -132,6 +134,7 @@ public class UIPanelOptionKey extends JPanel
 		
 		checkHoldable.setVisible( true );
 		checkHoldable.setSelected( key.isHoldable() );
+		
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 }
