@@ -523,6 +523,10 @@
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
 	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_PRESS">Pression clic gauche</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_RELEASE">Relachement clic droit</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_PRESS">Pression clic droit</message>
+	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_RELEASE">Relachement clic gauche</message>
 	
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
 	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE">actif</message>
