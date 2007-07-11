@@ -36,6 +36,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Paint;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,9 +47,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;
@@ -56,6 +60,7 @@ import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
 import clavicom.gui.listener.KeyEnteredListener;
 import clavicom.gui.listener.KeyPressedListener;
+import clavicom.gui.listener.UIRightClickListener;
 import clavicom.tools.TColorKeyEnum;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
@@ -87,6 +92,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		final int DEFAULT_FONT_SIZE = 12;			// Taille par défaut de la police
 		
+		final int MAX_AUTHORIZED_AREA = 40000;		// Largeur maximale autorisée (en px)
+		
 		//---------------------------------------------------------- ATTRIBUTS --//	
 		
 		private TUIKeyState state;					// Etat de la touche
@@ -114,9 +121,14 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		private int fontSize;						// Entier indiquant la taille de la police
 													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
 													// CFont, mais de la vraie taille
-		
 		boolean clicked;
 		boolean mouseExited;
+		
+		
+		// EventListeners
+		protected EventListenerList keyEnteredListenerList;
+		protected EventListenerList keyPressedListenerList;
+		protected EventListenerList rightClikListenerList;
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -210,7 +222,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			public void mouseReleasedSpecific(MouseEvent e) 
 			{
-				buttonReleasedEdit();
+				buttonReleasedEdit(e);
 			}
 		}
 		
@@ -231,6 +243,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// listener
 			keyEnteredListenerList = new EventListenerList();
 			keyPressedListenerList = new EventListenerList();
+			rightClikListenerList = new EventListenerList();
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -249,6 +262,56 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
+		// On redéfinie les setBounds pour limiter l'aire de la touche
+		@Override
+		public void setBounds(int x, int y, int w, int h)
+		{
+			if(boundsAreOk(x, y, w, h))
+				super.setBounds(x, y, w, h);
+		}
+		
+		@Override
+		public void setBounds(Rectangle r)
+		{
+			if (boundsAreOk(r.x, r.y, r.width, r.height))
+				super.setBounds(r);
+		}
+		
+		/**
+		 * Vérifie si les bounds passées sont dans le cadre du père, entièrement
+		 * @param x
+		 * @param y
+		 * @param w
+		 * @param h
+		 * @return
+		 */
+		private boolean boundsAreOk(int x, int y, int w, int h)
+		{
+			// Aire trop elevée
+			if(w*h > MAX_AUTHORIZED_AREA)
+				return false;
+			
+			// Trop à gauche
+			if(x < 0)
+				return false;
+			
+			// Trop en haut
+			if(y < 0)
+				return false;
+			
+			if(getParent() != null)
+			{
+				// Trop à droite
+				if((x + getWidth()) > (getParent().getWidth()))
+					return false;
+				
+				// Trop en bas
+				if((y + getHeight()) > (getParent().getHeight()))
+					return false;				
+			}
+			
+			return true;
+		}
 		//-----------------------------------------------------------------------
 		// Listeners (en écouteur)
 		//-----------------------------------------------------------------------
@@ -592,11 +655,18 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			repaint();
 		}
 
-		protected void buttonReleasedEdit()
+		protected void buttonReleasedEdit(MouseEvent mouseEvent)
 		{		
 			// Si la souris n'est pas sortie de la zone de la touche
 			if( ! mouseExited )
 			{
+				// Si c'est un clic droit, on avertit qu'il a eu lieu
+				if (SwingUtilities.isRightMouseButton(mouseEvent))
+	            {
+	                fireRightClickOccured(new Point((int)(mouseEvent.getPoint().getX() + getLocation().getX()),
+	                								(int)(mouseEvent.getPoint().getY() + getLocation().getY())));
+	            }
+				
 				setState( TUIKeyState.ENTERED );
 				selectGoodImage();
 				
@@ -742,8 +812,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
-			{	
-
+			{
 				originalCaptionImage = getCaptionImage();
 				if( originalCaptionImage == null )
 				{
@@ -783,11 +852,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		        int yPosition = Math.round(((float)getHeight()/2) - ((float)newH/2));
 
 		        // Dessin de l'image
-		        bg.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-		                            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+//		        bg.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+//		                            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
-		        bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
-
+		        //bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
+		        bg.drawImage(originalCaptionImage.getScaledInstance(newW, newH, Image.SCALE_SMOOTH), xPosition,yPosition,null);
+		        //bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
 			}
 			else
 			// Dessin du texte
@@ -863,7 +933,6 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 */
 		public void selectGoodImage()
 		{
-			
 			if ( getState() == TUIKeyState.ENTERED)
 			{
 				currentImage = imgEntered;
@@ -970,16 +1039,19 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		// Listener key Entered et Pressed ==============================================
 		
-		protected EventListenerList keyEnteredListenerList;
-		protected EventListenerList keyPressedListenerList;
-		
 		public void addKeyEnteredListener(KeyEnteredListener l)
 		{
 			this.keyEnteredListenerList.add(KeyEnteredListener.class, l);
 		}
+		
 		public void addKeyPressedListener(KeyPressedListener l)
 		{
 			this.keyPressedListenerList.add(KeyPressedListener.class, l);
+		}
+		
+		public void addRightClickListener(UIRightClickListener l)
+		{
+			this.rightClikListenerList.add(UIRightClickListener.class, l);
 		}
 
 		public void removeKeyEnteredListener(KeyEnteredListener l)
@@ -990,6 +1062,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		public void removeKeyPressedListener(KeyPressedListener l)
 		{
 			this.keyPressedListenerList.remove(KeyPressedListener.class, l);
+		}
+		
+		public void removeRightClickListener(UIRightClickListener l)
+		{
+			this.rightClikListenerList.remove(UIRightClickListener.class, l);
 		}
 
 		protected void fireKeyEnteredCharacter()
@@ -1009,6 +1086,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			for ( int i = listeners.length - 1; i >= 0; i-- )
 			{
 				listeners[i].keyPressed();
+			}
+		}
+		
+		protected void fireRightClickOccured(Point location)
+		{
+			UIRightClickListener[] listeners = (UIRightClickListener[]) rightClikListenerList
+					.getListeners(UIRightClickListener.class);
+			for ( int i = listeners.length - 1; i >= 0; i-- )
+			{
+				listeners[i].rightClickOccured(location);
 			}
 		}
 

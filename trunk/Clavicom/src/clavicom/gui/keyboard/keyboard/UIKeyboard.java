@@ -26,9 +26,11 @@
 package clavicom.gui.keyboard.keyboard;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
+//import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -91,19 +93,26 @@ import clavicom.gui.language.UIString;
 import clavicom.gui.listener.UIKeySelectionListener;
 import clavicom.gui.listener.UIKeyboardNewKeyCreated;
 import clavicom.gui.listener.UIKeyboardSelectionChanged;
+import clavicom.gui.listener.UIRightClickListener;
 import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TPoint;
+//import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
-public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, UIKeySelectionListener, ChangeLevelListener, OnClickKeyCreationListener, ReleaseHoldableKeysListener
+public class UIKeyboard extends UIBackgroundPanel implements 
+ComponentListener, 
+UIKeySelectionListener, 
+ChangeLevelListener, 
+OnClickKeyCreationListener, 
+ReleaseHoldableKeysListener,
+UIRightClickListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
-	
-	final int RESIZE_TIMER_DURATION = 500;		// Durée au delà de laquelle le calcul des
+	final int RESIZE_TIMER_DURATION = 200;		// Durée au delà de laquelle le calcul des
 												// images est lancé, pendant un resize	
 	
 	final int NORMAL_TRANSLATION_STEP = 10;
@@ -141,7 +150,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	
 	private boolean useMagnedGrid;				// Indique si on affiche la grille
 	
-	Image image; 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
@@ -470,11 +478,26 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
     public void removeKeyCreatedListener(UIKeyboardNewKeyCreated listener) 
     {
         listeners.remove(UIKeyboardNewKeyCreated.class, listener);
-    }
+    }    
     
     public UIKeyboardNewKeyCreated[] getKeyCreatedListeners() 
     {
         return listeners.getListeners(UIKeyboardNewKeyCreated.class);
+    }
+    
+	public void addRightClickListener(UIRightClickListener listener) 
+	{
+        listeners.add(UIRightClickListener.class, listener);
+    }
+    
+    public void removeRightClickListener(UIRightClickListener listener) 
+    {
+        listeners.remove(UIRightClickListener.class, listener);
+    }
+    
+    public UIRightClickListener[] getRightClickListeners() 
+    {
+        return listeners.getListeners(UIRightClickListener.class);
     }
     
 	//-----------------------------------------------------------------------
@@ -645,8 +668,6 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		if(resizing)
 			return;
 		
-		replaceUIKeys();
-		
 		// On dessine les fils
 		paintChildren(arg0);
 		
@@ -654,20 +675,19 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	}
 	
 	public void paintComponent(Graphics myGraphic)
-	{		
+	{	
+		if (resizing == true)
+		{
+			// TODO
+			return;
+		}
+		
 		// Récupération du Graphics2D
 		Graphics2D g2 = (Graphics2D) myGraphic;
-		
 		
 		// On desactive l'optimisation
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-		
-		if (resizing == true)
-		{
-			// TODO :affichage du panel magique !
-			return;
-		}
 		
 		// On vide le rectangle
 		g2.clearRect(0, 0, getWidth(), getHeight());
@@ -676,7 +696,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		g2.drawImage(imgBackground, 0, 0, null);
 		
 		// On ajoute la grille si nécessaire
-		if(isEdited == true && useMagnedGrid == true)
+		if(resizing == false && isEdited == true && useMagnedGrid == true)
 		{
 			g2.drawImage(imgGrid, 0, 0, null);
 		}
@@ -718,7 +738,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// on relance le timer
 		resizeTimer.restart();
-//		
+		
 //		// On recalcule le fond et on etend l'image
 //		if (imgBackground != null)
 //		{
@@ -753,6 +773,14 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	    for ( UIKeyboardNewKeyCreated listener : getKeyCreatedListeners() )
 		{
 			listener.keyCreated(keyCreated);
+		}
+    }
+    
+    protected void fireRightClickOccured(Point mousePositionOnScreen) 
+    {
+	    for ( UIRightClickListener listener : getRightClickListeners() )
+		{
+			listener.rightClickOccured(mousePositionOnScreen);
 		}
     }
     
@@ -850,6 +878,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			
 			// Ajout en tant que listener
 			currentKey.addSelectionListener(this);
+			currentKey.addRightClickListener(this);
 		}
 	}
 	
@@ -900,7 +929,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 				}
 				
 				resizing = false;
-				//replaceUIKeys();
+				replaceUIKeys();
 
 				repaint();
 			}
@@ -915,24 +944,118 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	// Keylistener
 	//-----------------------------------------------------------------------
 	/**
-	 * Effectue une translation de x, y de toutes les touches selectionnées
+	 * Agrandit les touches selectionnées
 	 */
-	private void translateSelectedKeys(int xTranslation, int yTranslation, boolean isControlDown)
+	private void resizeSelectedKeys(KeyEvent keyEvent)
 	{
-		int step;
-		if (isControlDown)
-		{
-			step = FINE_TRANSLATION_STEP;
-		}
-		else
-		{
-			step = NORMAL_TRANSLATION_STEP;
-		}
+		Dimension steps = getSteps(keyEvent);
+		
+		int xStep = (int)steps.getWidth();
+		int yStep = (int)steps.getHeight();
+		
 		
 		for (UIJResizer currentKey : selectedKeys)
 		{						
 			Rectangle bounds = currentKey.getBounds();
-			bounds.translate(xTranslation*step, yTranslation*step);
+			
+			// Réduction verticale
+			if (xStep != 0)
+			{
+				bounds.setSize((int)bounds.getWidth() + 2*xStep, (int)bounds.getHeight());
+				bounds.translate(-xStep, 0);
+			}
+			
+			// Réduction horizontale
+			if (yStep != 0)
+			{
+				bounds.setSize((int)bounds.getWidth(), (int)bounds.getHeight() - 2*yStep);
+				bounds.translate(0, yStep);
+			}
+			
+			currentKey.setBounds(bounds);
+			currentKey.onBoundsChanged();
+			currentKey.invalidate();
+		}		
+	}
+	
+	/**
+	 * Retourne les offsets à faire selon la fleche pressée
+	 * @param keyEvent
+	 * @return
+	 */
+	private Dimension getSteps(KeyEvent keyEvent)
+	{
+		int xStep = 0;
+		int yStep = 0;
+		
+		switch (keyEvent.getKeyCode())
+		{
+			case KeyEvent.VK_UP:
+				if (keyEvent.isControlDown())
+				{
+					xStep = 0;
+					yStep = -FINE_TRANSLATION_STEP;
+				}
+				else
+				{
+					xStep = 0;
+					yStep = -magnetGrid.getHorizontalStep();
+				}
+				break;
+				
+			case KeyEvent.VK_DOWN:
+				if (keyEvent.isControlDown())
+				{
+					xStep = 0;
+					yStep = FINE_TRANSLATION_STEP;
+				}
+				else
+				{
+					xStep = 0;
+					yStep = magnetGrid.getHorizontalStep();
+				}
+				break;
+				
+			case KeyEvent.VK_LEFT:
+				if (keyEvent.isControlDown())
+				{
+					xStep = -FINE_TRANSLATION_STEP;
+					yStep = 0;
+				}
+				else
+				{
+					xStep = -magnetGrid.getVerticalStep();
+					yStep = 0;
+				}
+				break;
+				
+			case KeyEvent.VK_RIGHT:
+				if (keyEvent.isControlDown())
+				{
+					xStep = FINE_TRANSLATION_STEP;
+					yStep = 0;
+				}
+				else
+				{
+					xStep = magnetGrid.getVerticalStep();
+					yStep = 0;						
+				}
+				break;
+		}
+		
+		return new Dimension(xStep, yStep);
+	}
+	/**
+	 * Effectue une translation de x, y de toutes les touches selectionnées
+	 */
+	private void translateSelectedKeys(KeyEvent keyEvent)
+	{
+		Dimension steps = getSteps(keyEvent);
+		
+		for (UIJResizer currentKey : selectedKeys)
+		{						
+			Rectangle bounds = currentKey.getBounds();
+			bounds.translate((int)steps.getWidth(),(int)steps.getHeight());
 			currentKey.setBounds(bounds);
 			currentKey.onBoundsChanged();
 			currentKey.invalidate();
@@ -942,7 +1065,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 	/**
 	 * Supprime toutes les keys selectionnées
 	 */
-	private void deleteSelectedKeys()
+	public void deleteSelectedKeys()
 	{
 		// on demande à l'utilisateur s'il comfirma la suppression
 		
@@ -1089,20 +1212,18 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		{
 			switch(arg0.getKeyCode())
 			{
-				case (KeyEvent.VK_DOWN) :
-					translateSelectedKeys(0,1,arg0.isControlDown());
-					break;
-				
-				case (KeyEvent.VK_UP) :
-					translateSelectedKeys(0,-1,arg0.isControlDown());
-					break;
-				
-				case (KeyEvent.VK_LEFT) :
-					translateSelectedKeys(-1,0,arg0.isControlDown());
-					break;
-					
+				case (KeyEvent.VK_DOWN) :				
+				case (KeyEvent.VK_UP) :				
+				case (KeyEvent.VK_LEFT) :					
 				case (KeyEvent.VK_RIGHT) :
-					translateSelectedKeys(1,0,arg0.isControlDown());
+					if(arg0.isShiftDown())
+					{
+						resizeSelectedKeys(arg0);
+					}
+					else
+					{
+						translateSelectedKeys(arg0);
+					}
 					break;
 					
 				// SUPPRESSION
@@ -1118,6 +1239,13 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 						return;
 				
 					select(true);
+					// On indique que la selection a changée
+					fireSelectionChanged();
+					break;
+					
+				case (KeyEvent.VK_ESCAPE) :
+					// On déselectionne tout
+					select(false);
 					// On indique que la selection a changée
 					fireSelectionChanged();
 					break;
@@ -1443,7 +1571,7 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// On met la grille à la touche
 		newUIKeyGlobal.setMagnetGrid(magnetGrid);
-		newUIKeyGlobal.setMagnetGridUsed(true);
+		newUIKeyGlobal.setMagnetGridUsed(useMagnedGrid);
 		
 		// On alerte qu'une nouvelle key a été créée
 		fireKeyCreated(newUIKeyGlobal);
@@ -1466,6 +1594,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 		
 		// Ajout au listener de selection
 		newUIKeyKeyboard.addSelectionListener(this);
+		
+		// Ajout au listener de click droit
+		newUIKeyKeyboard.addRightClickListener(this);
 		
 		// Ajout de l'objet à la liste des keys non classées
 		unClassedKey.add(newUIKeyKeyboard);
@@ -1633,6 +1764,9 @@ public class UIKeyboard extends UIBackgroundPanel implements ComponentListener, 
 			uiKeyKeyboard.setState( TUIKeyState.NORMAL );
 		}
 	}
-	
-	
+
+	public void rightClickOccured(Point mousePositionOnScreen)
+	{
+		fireRightClickOccured(mousePositionOnScreen);
+	}	
 }

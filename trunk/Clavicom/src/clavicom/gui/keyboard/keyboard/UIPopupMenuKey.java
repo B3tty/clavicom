@@ -28,19 +28,47 @@ package clavicom.gui.keyboard.keyboard;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.event.EventListenerList;
+
+import clavicom.gui.language.UIString;
+import clavicom.gui.listener.UIPopupMenuItemClicked;
 
 public class UIPopupMenuKey extends JPopupMenu
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//	
-
+	// Items des menus
+	JMenuItem menuItemEditer;
+	JMenuItem menuItemSupprimer;
+	
+    // un seul objet pour tous les types d'écouteurs
+    protected final EventListenerList listeners = new EventListenerList();
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIPopupMenuKey()
 	{
-		// TODO : A COMPLETER
+		// Création des menus items
+		menuItemEditer = new JMenuItem(UIString.getUIString("LB_POPUP_MENU_KEY_EDIT"));
+		menuItemSupprimer = new JMenuItem(UIString.getUIString("LB_POPUP_MENU_KEY_DELETE"));
+		
+		// Ajout des menus items
+		add(menuItemEditer);
+		add(menuItemSupprimer);
+		
+		// Ajout des listeners sur click
+		menuItemEditer.addActionListener( new ActionListener()
+										  {public void actionPerformed(ActionEvent arg0)
+										  {menuItemEditerClicked();}});
+		
+		menuItemSupprimer.addActionListener( new ActionListener()
+											 {public void actionPerformed(ActionEvent arg0)
+											 {menuItemSupprimerClicked();}});
 	}	
 	
 	//----------------------------------------------------------- METHODES --//	
@@ -75,4 +103,48 @@ public class UIPopupMenuKey extends JPopupMenu
            super.show(invoker, x, y);
 	}
 	//--------------------------------------------------- METHODES PRIVEES --//
+	
+	protected void menuItemEditerClicked()
+	{
+		// TODO
+		fireEditItemClicked();
+	}
+	
+	protected void menuItemSupprimerClicked()
+	{
+		// TODO
+		fireDeleteItemClicked();
+	}
+	
+	// Listeners sur le click dans le menu
+	public void addPopupMenuListener(UIPopupMenuItemClicked listener) 
+	{
+        listeners.add(UIPopupMenuItemClicked.class, listener);
+    }
+    
+    public void removePopupMenuListener(UIPopupMenuItemClicked listener) 
+    {
+        listeners.remove(UIPopupMenuItemClicked.class, listener);
+    }
+ 
+    public UIPopupMenuItemClicked[] getPopupListeners() 
+    {
+        return listeners.getListeners(UIPopupMenuItemClicked.class);
+    }
+
+    protected void fireDeleteItemClicked() 
+    {
+	    for ( UIPopupMenuItemClicked listener : getPopupListeners() )
+		{
+			listener.deleteItemClicked();
+		}
+    }
+    
+    protected void fireEditItemClicked() 
+    {
+	    for ( UIPopupMenuItemClicked listener : getPopupListeners() )
+		{
+			listener.editItemClicked();
+		}
+    }
 }

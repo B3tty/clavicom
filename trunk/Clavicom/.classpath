@@ -3,9 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="libs/jdom.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/jdic.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/jna.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/examples.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/synthetica.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/syntheticaBlueMoon.jar"/>
 	<classpathentry kind="output" path="class"/>

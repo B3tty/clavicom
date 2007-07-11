@@ -186,7 +186,89 @@ UIGridChangedListener
 	}
 	
 	//----------------------------------------------------------- METHODES --//	
-	
+	public void editSelectedKeys()
+	{
+		// Si pas de touches selectionnées, on arrête
+		if(panelKeyboard.getSelectedKeys().size() == 0)
+			return;
+		
+		if(panelKeyboard.getSelectedKeys().size() > 1)
+		// Modification multiple
+		{
+			frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_MULTIPLE"));
+			
+			panelOptionKeyKeyboard.setValuesKeyKeyboard(panelKeyboard.getSelectedKeys());
+			
+			frameOptionKeyKeyboard.setVisible(true);
+		}
+		else
+		// Modification unique
+		{
+			// Récupération de la touche
+			CKey selectedKey = panelKeyboard.getSelectedKeys().get(0).getCoreKey();
+			
+			// On sélectionne le bon panel
+			if (selectedKey instanceof CKeyCharacter)
+			{
+				frameOptionKeyCharacter.setTitle(UIString.getUIString("FR_OPTIONS_KEYCHARACTER"));
+				panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)selectedKey);
+				frameOptionKeyCharacter.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyPrediction)
+			{
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYPREDICTION"));
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyPrediction)selectedKey);
+				frameOptionKeyKeyboard.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyLastWord)
+			{
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYLASTWORD"));
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyLastWord)selectedKey);
+				frameOptionKeyKeyboard.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyLauncher)
+			{
+				frameOptionKeyLauncher.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
+				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
+				frameOptionKeyLauncher.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeySound)
+			{
+				frameOptionKeySound.setTitle(UIString.getUIString("FR_OPTIONS_KEYSOUND"));
+				panelOptionKeySound.setValuesKeySound((CKeySound)selectedKey);
+				frameOptionKeySound.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyLevel)
+			{
+				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
+				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
+										selectedKeyLevel.GetLevel().toString());
+				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
+				frameOptionKeyOneLevel.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyShortcut)
+			{
+				frameOptionKeyShortcut.setTitle(UIString.getUIString("FR_OPTIONS_KEYSHORTCUT"));
+				panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)selectedKey);
+				frameOptionKeyShortcut.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyString)
+			{
+				frameOptionKeyString.setTitle(UIString.getUIString("FR_OPTIONS_KEYSTRING"));
+				panelOptionKeyString.setValuesKeyString((CKeyString)selectedKey);
+				frameOptionKeyString.setVisible(true);
+			}
+			else if (selectedKey instanceof CKeyClavicom)
+			{
+				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
+				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
+										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
+				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
+				
+				frameOptionKeyKeyboard.setVisible(true);
+			}
+		}
+	}
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	/**
@@ -603,83 +685,7 @@ UIGridChangedListener
 	
 	protected void onClickBtEditionKey()
 	{
-		if(panelKeyboard.getSelectedKeys().size() > 1)
-		// Modification multiple
-		{
-			frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_MULTIPLE"));
-			
-			panelOptionKeyKeyboard.setValuesKeyKeyboard(panelKeyboard.getSelectedKeys());
-			
-			frameOptionKeyKeyboard.setVisible(true);
-		}
-		else
-		// Modification unique
-		{
-			// Récupération de la touche
-			CKey selectedKey = panelKeyboard.getSelectedKeys().get(0).getCoreKey();
-			
-			// On sélectionne le bon panel
-			if (selectedKey instanceof CKeyCharacter)
-			{
-				frameOptionKeyCharacter.setTitle(UIString.getUIString("FR_OPTIONS_KEYCHARACTER"));
-				panelOptionKeyCharacter.setValuesKeyCharacter((CKeyCharacter)selectedKey);
-				frameOptionKeyCharacter.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyPrediction)
-			{
-				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYPREDICTION"));
-				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyPrediction)selectedKey);
-				frameOptionKeyKeyboard.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyLastWord)
-			{
-				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYLASTWORD"));
-				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyLastWord)selectedKey);
-				frameOptionKeyKeyboard.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyLauncher)
-			{
-				frameOptionKeyLauncher.setTitle(UIString.getUIString("FR_OPTIONS_KEYLAUNCHER"));
-				panelOptionKeyLauncher.setValuesKeyLauncher((CKeyLauncher)selectedKey);
-				frameOptionKeyLauncher.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeySound)
-			{
-				frameOptionKeySound.setTitle(UIString.getUIString("FR_OPTIONS_KEYSOUND"));
-				panelOptionKeySound.setValuesKeySound((CKeySound)selectedKey);
-				frameOptionKeySound.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyLevel)
-			{
-				CKeyLevel selectedKeyLevel = (CKeyLevel)selectedKey;
-				frameOptionKeyOneLevel.setTitle(UIString.getUIString("FR_OPTIONS_KEYLEVEL") + 
-										selectedKeyLevel.GetLevel().toString());
-				panelOptionKeyOneLevel.setValuesKeyOneLevel(selectedKeyLevel);
-				frameOptionKeyOneLevel.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyShortcut)
-			{
-				frameOptionKeyShortcut.setTitle(UIString.getUIString("FR_OPTIONS_KEYSHORTCUT"));
-				panelOptionKeyShortcut.setValuesKeyShortcut((CKeyShortcut)selectedKey);
-				frameOptionKeyShortcut.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyString)
-			{
-				frameOptionKeyString.setTitle(UIString.getUIString("FR_OPTIONS_KEYSTRING"));
-				panelOptionKeyString.setValuesKeyString((CKeyString)selectedKey);
-				frameOptionKeyString.setVisible(true);
-			}
-			else if (selectedKey instanceof CKeyClavicom)
-			{
-				CKeyClavicom selectedKeyClavicom = (CKeyClavicom)selectedKey;
-				frameOptionKeyKeyboard.setTitle(UIString.getUIString("FR_OPTIONS_KEYCLAVICOM") + 
-										TKeyClavicomActionType.getString(selectedKeyClavicom.getAction()));
-				panelOptionKeyKeyboard.setValuesKeyKeyboard((CKeyClavicom)selectedKey);
-				
-				frameOptionKeyKeyboard.setVisible(true);
-			}
-		}
-		
+		editSelectedKeys();
 	}
 
 	public void gridChanged()
