@@ -90,7 +90,7 @@ public class PanelModificationProfilAdvancedOption extends
 			{	TClickSouricomEnum.LEFT_RELEASE,
 				TClickSouricomEnum.LEFT_PRESS,
 				TClickSouricomEnum.RIGHT_RELEASE,
-				TClickSouricomEnum.RIGHT_RELEASE
+				TClickSouricomEnum.RIGHT_PRESS
 			};
 		comboClickSouricom = new JComboBox( clickSouricomArray );
 		
@@ -119,7 +119,7 @@ public class PanelModificationProfilAdvancedOption extends
 		
 		// création des panels
 		JPanel panelClickSouricom = new JPanel( new BorderLayout() );
-		panelClickSouricom.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM") ), BorderLayout.WEST );
+		panelClickSouricom.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM") + " " ), BorderLayout.WEST );
 		panelClickSouricom.add( comboClickSouricom, BorderLayout.CENTER );
 		
 		JPanel panelNBDefilTurn = new JPanel();

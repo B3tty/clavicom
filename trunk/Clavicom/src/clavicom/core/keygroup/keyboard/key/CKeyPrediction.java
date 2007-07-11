@@ -42,7 +42,8 @@ public class CKeyPrediction extends CKeyDynamicString
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public CKeyPrediction(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax)
+			Color myColorEntered, boolean holdable,
+			TPoint myPointMin, TPoint myPointMax)
 	{
 		this ( 	myColorNormal, 
 				myColorClicked,
@@ -54,7 +55,8 @@ public class CKeyPrediction extends CKeyDynamicString
 	}
 	
 	public CKeyPrediction(Color myColorNormal, Color myColorClicked,
-			Color myColorEntered, boolean holdable, TPoint myPointMin, TPoint myPointMax,
+			Color myColorEntered, boolean holdable,
+			TPoint myPointMin, TPoint myPointMax,
 			String myCaption)
 	{
 		super(myColorNormal, myColorClicked, myColorEntered, holdable, myPointMin,

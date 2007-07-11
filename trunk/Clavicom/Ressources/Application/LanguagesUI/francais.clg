@@ -355,6 +355,7 @@
 	<!-- optionKey -->
 	<message id = "LB_KEY_BORDER">Couleurs de la touche</message>
 	<message id = "LB_KEY_HOLDABLE">Maintenable</message>
+	<message id = "LB_KEY_RELEASE_HOLDABLE">Relève les touches maintenables</message>
 		
 	<!-- optionKeyCharacter -->
 	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
@@ -585,6 +586,8 @@
 	<message id = "LB_EDITION_OPEN_OPTIONS_TOOLTIP">Ouvrir les options de l'application</message>
 	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Editer les touches selectionnées</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Editer les niveaux de défilement</message>
+	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Sauvegarder le profil sous</message>
+	<message id = "LB_EDITION_LOAD_TOOLTIP">Charger un profil</message>
 	
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>
@@ -605,6 +608,25 @@
 	
 	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Texte</message>
 	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Image</message>
+	
+	<!-- option load profil -->
+	<message id = "LB_LOAD_PROFIL_ADVANCED_OPTIONS">Options avancés</message>
+	<message id = "LB_LOAD_PROFIL_COMMANDSET_NAME">Jeu de commande</message>
+	<message id = "LB_LOAD_PROFIL_DICTIONARY_NAME">Dictionaire</message>
+	<message id = "LB_LOAD_PROFIL_FONT">Police</message>
+	<message id = "LB_LOAD_PROFIL_FRAME_POSITION">Position des fenêtres</message>
+	<message id = "LB_LOAD_PROFIL_KEYBOARD">Clavier</message>
+	<message id = "LB_LOAD_PROFIL_KEYBOARD_COLORS">Couleurs du clavier</message>
+	<message id = "LB_LOAD_PROFIL_LANGUE_UI_NAME">Langue de l'interface</message>
+	<message id = "LB_LOAD_PROFIL_NAVIGATION">Type de navigation</message>
+	<message id = "LB_LOAD_PROFIL_PREFERED_WORD">Mots préférés</message>
+	<message id = "LB_LOAD_PROFIL_SHORTCUTSET_NAME">Jeu de raccourcis</message>
+	<message id = "LB_LOAD_PROFIL_SOUND">Son</message>
+	<message id = "LB_LOAD_PROFIL_TRANSPARENCY">Transparence</message>
+	
+	<message id = "LB_LOAD_PROFIL_INTRO">Choisissez les elements que vous voulez charger :</message>
+	<message id = "LB_LOAD_PROFIL_VALIDER">Valider</message>
+	<message id = "LB_LOAD_PROFIL_ANNULER">Annuler</message>
 	
 	<!-- ========================================================================== 
 		To String des Keys
