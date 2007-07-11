@@ -43,7 +43,7 @@ public class CProfilSelectLoadOption
 	boolean shortcutSetName;
 	boolean sound;
 	boolean transparence;
-
+ 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public CProfilSelectLoadOption()
 	{
