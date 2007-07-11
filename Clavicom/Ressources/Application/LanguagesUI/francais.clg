@@ -343,6 +343,10 @@
 	<message id = "MSG_PROFIL_SAVE_FAILED_2">"</message>
 	
 	<message id = "MSG_SOUND_NOT_LOADED">Impossible de lire le fichier son</message>
+	
+	<!-- Launcher engine -->
+	<message id = "MSG_ENGINE_LAUNCHER_ERROR_1">Le fichier "</message>
+	<message id = "MSG_ENGINE_LAUNCHER_ERROR_2">" n'est pas une application valide.</message>
 	<!-- ==========================================================================
 		Labels 
 	==========================================================================  -->
@@ -628,6 +632,12 @@
 	<message id = "LB_LOAD_PROFIL_INTRO">Choisissez les elements que vous voulez charger :</message>
 	<message id = "LB_LOAD_PROFIL_VALIDER">Valider</message>
 	<message id = "LB_LOAD_PROFIL_ANNULER">Annuler</message>
+	
+	<!-- ========================================================================== 
+		Popup menu des touches
+	==========================================================================  -->
+	<message id = "LB_POPUP_MENU_KEY_EDIT">Editer</message>
+	<message id = "LB_POPUP_MENU_KEY_DELETE">Supprimer</message>
 	
 	<!-- ========================================================================== 
 		To String des Keys

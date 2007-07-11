@@ -27,6 +27,7 @@ package clavicom.gui.edition.key;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JList;
@@ -56,7 +57,11 @@ public class UIPanelOptionKeyShortCut extends UIPanelOptionOneLevelKey
 		super();
 		JPanel panel= new JPanel( new BorderLayout() );
 		
-		list = new JList( CShortcutSet.GetInstance().getValues().toArray() );
+		Object[] tab = CShortcutSet.GetInstance().getValues().toArray();
+		
+		Arrays.sort(tab);
+		
+		list = new JList( tab );
 		
 		JScrollPane sp = new JScrollPane( list);
 		

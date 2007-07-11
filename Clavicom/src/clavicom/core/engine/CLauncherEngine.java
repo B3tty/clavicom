@@ -26,17 +26,18 @@
 package clavicom.core.engine;
 
 
-import java.io.File;
+import java.io.IOException;
+
 import javax.swing.event.EventListenerList;
+
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
-import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.keygroup.keyboard.key.CKeyKeyboard;
+import clavicom.core.keygroup.keyboard.key.CKeyLauncher;
 import clavicom.core.listener.OnClickKeyLauncherListener;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CKeyboard;
-import org.jdesktop.jdic.desktop.Desktop;
-import org.jdesktop.jdic.desktop.DesktopException;
+import clavicom.gui.language.UIString;
 
 public class CLauncherEngine implements OnClickKeyLauncherListener
 {
@@ -128,18 +129,18 @@ public class CLauncherEngine implements OnClickKeyLauncherListener
 		if(keyLauncher.getApplicationPath() == "")
 			return;
 		
-		// lancement de l'application
+		// Lancement de l'application
 		try
 		{
-			Desktop.open( new File ( keyLauncher.getApplicationPath() ) );
+			Runtime.getRuntime().exec(keyLauncher.getApplicationPath());
 		}
-		catch ( DesktopException e )
+		catch (IOException e)
 		{
-			CMessageEngine.newError( e.getMessage() );
-			return;
+			CMessageEngine.newError(UIString.getUIString("MSG_ENGINE_LAUNCHER_ERROR_1") + 
+									keyLauncher.getApplicationPath() + 
+									UIString.getUIString("MSG_ENGINE_LAUNCHER_ERROR_2"));			
 		}
-		
-		
+
 	}
 
 	//----------------------------------------------------------- METHODES --//	

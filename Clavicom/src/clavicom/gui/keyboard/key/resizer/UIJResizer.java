@@ -259,6 +259,9 @@ public abstract class UIJResizer extends JComponent
 
 		public void mouseDragged(MouseEvent me)
 		{
+			if(getParent() == null)
+				return;
+			
 			if ( startPos != null )
 			{							
 				Point mousePoint = null;				// Position de la souris
@@ -280,6 +283,9 @@ public abstract class UIJResizer extends JComponent
 					
 					// Récupération de la souris dans les coordonnées du père
 					mousePointParent = getParent().getMousePosition();
+					
+					if(mousePointParent == null)
+						return;
 
 					// Récupération du point de la grille le plus proche
 					gridPointParent = magnetGrid.getNearestPoint(mousePointParent);
@@ -393,6 +399,12 @@ public abstract class UIJResizer extends JComponent
 
 		public void mouseReleased(MouseEvent mouseEvent)
 		{			
+			// Si c'est pas le clic gauche, on annule
+			if (!SwingUtilities.isLeftMouseButton(mouseEvent))
+            {
+                return;
+            }
+			
 			startPos = null;
 			
 			if (changeSelection == true)

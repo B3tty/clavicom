@@ -92,7 +92,7 @@ public class UISelectableBorder implements UIResizableBorder
 		{
 			if(isSelected == true)
 			{
-				drawBorder(g, Color.RED, Color.RED.brighter().brighter().brighter(),Color.RED, x, y, w, h);
+				drawBorder(g, Color.RED, Color.RED,Color.RED, x, y, w, h);
 			}
 			else
 			{
