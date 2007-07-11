@@ -5,7 +5,5 @@
 	<classpathentry exported="true" kind="lib" path="libs/jdom.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/synthetica.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/syntheticaBlueMoon.jar"/>
-	<classpathentry kind="lib" path="libs/jna.jar"/>
-	<classpathentry kind="lib" path="libs/examples.jar"/>
 	<classpathentry kind="output" path="class"/>
 </classpath>
