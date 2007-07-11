@@ -162,6 +162,7 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		if (keyLevel.GetLevel() == null)
 			return;
 		
+		// liste des keylevel toujour maintenable
 		if( keyLevel.isAlwaysHoldable() )
 		{
 			// si elle est déjà dans la liste
@@ -179,9 +180,7 @@ public class CLevelEngine implements OnClickKeyLevelListener
 		
 		// Si le level est le même et si c'est pas une touche isAlwaysHoldable, 
 		// on repasse au level normal
-		if( (keyLevel.GetLevel() == currentLevel)
-				&&
-			( ! keyLevel.isAlwaysHoldable() ) )
+		if( keyLevel.GetLevel() == currentLevel )
 		{
 			// mais il existe des always holdable keys, on met le niveau à celle-là
 			if( alwaysHoldableList.size() > 0 )

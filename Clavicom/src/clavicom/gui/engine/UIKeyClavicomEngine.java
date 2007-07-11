@@ -27,6 +27,9 @@ package clavicom.gui.engine;
 
 import javax.swing.JFrame;
 import javax.swing.event.EventListenerList;
+
+import clavicom.CFilePaths;
+import clavicom.CSettings;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
 import clavicom.core.keygroup.keyboard.blocks.CKeyList;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -145,6 +148,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			{
 				CProfil.getInstance().getAdvancedOption().recalculateFramesPosition( frameKeyboard, frameMouse);
 				CProfil.getInstance().saveProfil( );
+				CSettings.saveSettings( CFilePaths.getConfigFileFolder() );
 			}
 			catch (Exception ex)
 			{

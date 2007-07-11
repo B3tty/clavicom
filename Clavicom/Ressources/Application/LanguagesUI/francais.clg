@@ -299,6 +299,7 @@
 	<!-- sound -->
 	<message id = "EX_SOUND_ENGINE_BUILD">Erreur lors du chargement du fichier son </message>
 	
+	<message id = "EX_SAVE_PROFIL">Impossible de sauvegarder le profil dans le fichier </message>
 	
 	<!-- ==========================================================================
 		Messages 

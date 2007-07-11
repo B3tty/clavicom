@@ -246,6 +246,7 @@ public class UIFrameModificationProfil extends JDialog
 				{
 					// la couleur du clavier à changé
 					panelKeyboardColor.validateDataEntry();
+					
 				}
 				
 				progressBarApply.setValue( progressBarApply.getValue() + pourcentToAddToProgressBar );
