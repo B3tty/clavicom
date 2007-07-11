@@ -34,8 +34,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -553,6 +551,7 @@ UIGridChangedListener
 			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
+				// TODO - en cours...
 				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
 			 
 			
