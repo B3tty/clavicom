@@ -27,6 +27,7 @@ package clavicom.gui.windows;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -36,11 +37,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import clavicom.CFilePaths;
+import clavicom.CSettings;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
@@ -51,6 +54,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.configuration.UIFrameModificationProfil;
 import clavicom.gui.edition.key.UIPanelOptionKeyCharacter;
@@ -154,6 +158,10 @@ UIGridChangedListener
 	// Boutons
 	JButton btFermerModeEdition, btOptionsApplication, btEditionKey, btOpenLevelManager;
 	JButton btSaveAs, btLoad; 
+	
+	// icon
+	ImageIcon loadIcon;
+	ImageIcon saveIcon;
 	
 	
 	
@@ -283,7 +291,31 @@ UIGridChangedListener
 		mainPanel = new UIMovingPanel(this);
 		mainPanelBg = new UIToolbarPanel(Color.GRAY.brighter());
 		panelBoutons = new JPanel();
-		panelBoutonsSaveLoad = new JPanel();
+		panelBoutonsSaveLoad = new JPanel()
+		{
+			@Override
+			public void paintComponent(Graphics g)
+			{
+				// TODO Auto-generated method stub
+				super.paintComponents(g);
+				
+				if( (btSaveAs.getWidth() > 7) && (btSaveAs.getHeight() > 7) )
+				{
+					if( btSaveAs.getWidth() < btSaveAs.getHeight() )
+					{
+						btSaveAs.setIcon( TSwingUtils.scaleImage(saveIcon, btSaveAs.getWidth()-6, -1)  );
+						btLoad.setIcon( TSwingUtils.scaleImage(loadIcon, btLoad.getWidth()-6, -1)  );
+					}
+					else
+					{
+						btSaveAs.setIcon( TSwingUtils.scaleImage(saveIcon, -1, btSaveAs.getHeight()-6)  );
+						btLoad.setIcon( TSwingUtils.scaleImage(loadIcon, -1, btLoad.getHeight()-6)  );
+					}
+				}
+			}
+		};
+		loadIcon = TSwingUtils.getImage( CFilePaths.getLoad());
+		saveIcon = TSwingUtils.getImage( CFilePaths.getSaveAs());
 		
 		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
@@ -330,38 +362,8 @@ UIGridChangedListener
 		btEditionKey.setPreferredSize(new Dimension(0,0));
 		btOpenLevelManager.setPreferredSize(new Dimension(0,0));
 		btSaveAs.setPreferredSize(new Dimension(0,0));
-		// rezise des button
-		btSaveAs.addComponentListener( new ComponentAdapter()
-		{
-			@Override
-			public void componentResized(ComponentEvent e)
-			{
-				// TODO Auto-generated method stub
-				super.componentResized(e);
-				
-				if( (btSaveAs.getWidth() > 7) && (btSaveAs.getHeight() > 7) )
-				{
-					btSaveAs.setIcon( TSwingUtils.scaleImage(TSwingUtils.getImage( CFilePaths.getSaveAs() ), btSaveAs.getWidth()-6, btSaveAs.getHeight()-6)  );
-				}
-			}
-		});
-		
 		btLoad.setPreferredSize(new Dimension(0,0));
-		// rezise des button
-		btLoad.addComponentListener( new ComponentAdapter()
-		{
-			@Override
-			public void componentResized(ComponentEvent e)
-			{
-				// TODO Auto-generated method stub
-				super.componentResized(e);
-				
-				if( (btLoad.getWidth() > 7) && (btLoad.getHeight() > 7) )
-				{
-					btLoad.setIcon( TSwingUtils.scaleImage(TSwingUtils.getImage( CFilePaths.getLoad() ), btLoad.getWidth()-6, btLoad.getHeight()-6)  );
-				}
-			}
-		});
+		
 		
 		
 		// Ajout des tooltips
@@ -379,6 +381,7 @@ UIGridChangedListener
 		
 		panelBoutonsSaveLoad.add( btSaveAs );
 		panelBoutonsSaveLoad.add( btLoad );
+		
 		
 		
 		
@@ -513,9 +516,25 @@ UIGridChangedListener
 			// sauvegarder le profil sous
 			
 			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
-			
-			fileChooser.setVisible( true );
-			System.out.println("dddd");
+			fileChooser.setApproveButtonText( UIString.getUIString("LB_LOAD_PROFIL_VALIDER") );
+			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+			{
+				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
+				
+				CSettings.setLastProfilePath( profilPath );
+				
+				try
+				{
+					// sauvegarde du dernier profil
+					CProfil.getInstance().saveProfilAs( profilPath );
+					CProfil.getInstance().setProfilFilePath( profilPath );
+				}
+				catch ( Exception ex )
+				{
+					CMessageEngine.newError( UIString.getUIString("EX_SAVE_PROFIL") + profilPath, ex.getMessage() );
+				}
+
+			}
 		}
 	}
 	

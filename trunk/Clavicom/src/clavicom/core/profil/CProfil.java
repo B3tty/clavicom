@@ -525,4 +525,9 @@ public class CProfil
 		this.defaultModel = defaultModel;
 	}
 
+	public void setProfilFilePath(String profilFilePath)
+	{
+		this.profilFilePath = profilFilePath;
+	}
+
 }
