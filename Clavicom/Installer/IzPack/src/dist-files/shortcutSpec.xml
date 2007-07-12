@@ -50,7 +50,6 @@
      target="$INSTALL_PATH\doc\izpack\javadoc\index.html"
      commandLine=""
      description="This opens a WebBrowser to look into the IzPack @build.number@ (Java) developer documentation">
-          
      <createForPack name="Java Documentation" />
    </shortcut>
   

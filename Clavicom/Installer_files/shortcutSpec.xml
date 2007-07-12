@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<shortcuts>
+  <skipIfNotSupported />
+  <programGroup defaultName="Handicap International\Clavicom NG" location="applications"/>
+
+	<!-- Menu démarrer, lancement -->
+   <shortcut
+     name="Clavicom NG"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Clavicom_NG.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_install.ico"
+     iconIndex="0"
+     description="Lance Clavicom NG">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, désinstaller -->
+   <shortcut
+     name="Supprimer Clavicom NG"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Uninstaller\uninstaller.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_uninstall.ico"
+     iconIndex="0" 
+     description="Supprime Clavicom NG de l'ordinateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, lancer au démarrage -->
+   <shortcut
+     name="Clavicom NG"
+     programGroup="no"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="yes"
+     target="$INSTALL_PATH\Clavicom_NG.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_install.ico"
+     iconIndex="0" 
+     description="Lance Clavicom NG">
+     <createForPack name="Application" />
+   </shortcut>  
+   
+   <!-- Raccourci sur le bureau -->
+   <shortcut
+     name="Clavicom NG"
+     programGroup="no"
+     desktop="yes"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Clavicom_NG.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_install.ico"
+     iconIndex="0" 
+     description="Lance Clavicom NG">
+     <createForPack name="Application" />
+   </shortcut>   
+</shortcuts>
