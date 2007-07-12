@@ -53,7 +53,6 @@
         </authors>
         <url>http://izpack.org/</url>
         <javaversion>1.4</javaversion>
-        <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
     </info>
 
     <!-- Flexible and in the screen proportions -->
@@ -143,6 +142,7 @@
         <panel classname="InstallPanel" id="installpanel"/>
         <panel classname="ShortcutPanel" id="shortcutpanel"/>
         <!-- We use temporary the FinishPanel in the 3.9 Release
+        <!-- We use temporary the FinishPanel in the 3.9 Release
              to get Access to the [Generate an automatic installation script]-Button
              to get feedback so quick as possible from all of users,
              who wants to get back this feature ;-) -->
@@ -223,7 +223,6 @@
                 <exclude name="src/*.manifest"/>
             </fileset>
         </pack>
-
     </packs>
 
     <!-- The native libraries to add -->
