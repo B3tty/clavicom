@@ -302,11 +302,11 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			if(getParent() != null)
 			{
 				// Trop à droite
-				if((x + getWidth()) > (getParent().getWidth()))
+				if((x + w) > (getParent().getWidth()))
 					return false;
 				
 				// Trop en bas
-				if((y + getHeight()) > (getParent().getHeight()))
+				if((y + h) > (getParent().getHeight()))
 					return false;				
 			}
 			
