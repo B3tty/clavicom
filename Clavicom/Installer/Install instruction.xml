@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<!-- 
+    Fichier d'installation du Clavicom NG.
+    Pour générer l'installeur associé, appelez le script "Generate installer.bat"
+-->
+
+<installation version="1.0">
+
+    <!-- Informations sur l'application -->
+    <info>
+        <appname>Clavicom NG</appname>
+        <appversion>Bêta 3.0</appversion>
+        <authors>
+            <author name="Thomas Devaux" email="thomas.devaux@gmail.com"/>
+            <author name="Guillaume Rebesche" email="guillaume.rebesche@gmail.com"/>
+        </authors>
+        <url>http://www.handicap-icom.asso.fr/</url>
+		<javaversion>1.6</javaversion>
+    </info>
+    
+    <!-- Préférences graphiques de l'installeur -->
+    <guiprefs width="640" height="480" resizable="no"/>
+    
+    <!-- Langages de l'installeur proposés -->
+    <locale>
+        <langpack iso3="eng"/>
+        <langpack iso3="fra"/>
+		<langpack iso3="deu"/>
+		<langpack iso3="ita"/>
+		<langpack iso3="jpn"/>
+		<langpack iso3="spa"/>
+    </locale>
+    
+    <!-- Ressources nécessaires à certains panels. Ici pour le panel de license et d'info -->
+    <resources>
+        <res id="LicencePanel.licence" src="Licence.txt"/>
+        <res id="InfoPanel.info" src="Readme.txt"/>
+    </resources>
+    
+    <!-- Panels de l'installateur à utiliser (l'ordre est respecté) -->
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="InfoPanel"/>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel"/> 
+        <panel classname="PacksPanel"/>
+		<panel classname="ShortcutPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="FinishPanel"/>
+    </panels>
+    
+    <!-- Liste des packs utilisé (groupes de fichiers à installer ou non) -->
+    <packs>
+		<pack name="Application" required="yes" preselected="yes">
+            <description>Liste des fichiers nécessaires à l'execution de l'application</description>
+            <file src="class" targetdir="$INSTALL_PATH"/>
+            <file src="libs" targetdir="$INSTALL_PATH"/>
+			<file src="Ressources" targetdir="$INSTALL_PATH"/>
+			<file src="clavicom_gui_engine_click_ClickEngine.dll" targetdir="$INSTALL_PATH"/>
+			<file src="Clavicom_NG.jar" targetdir="$INSTALL_PATH"/>
+        </pack>
+        <pack name="Fichiers sources" required="no" preselected="no">
+            <description>Fichiers source de l'application</description>
+            <file src="src" targetdir="$INSTALL_PATH"/>
+        </pack>
+    </packs>
+	
+	<!-- Spécification des raccourcis -->
+	<shortcuts>
+		<skipIfNotSupported/>
+		<programGroup defaultName="Handicap International\Clavicom NG" 
+			location="applications||startMenu"/>
+		<shortcut
+			name="Clavicom NG"
+			target="$INSTALL_PATH\Clavicom_NG.jar"
+			commandLine=""
+			workingDirectory="$INSTALL_PATH\Clavicom_NG.jar"
+			description="Lancement de l'application"
+			iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_big.png"
+			iconIndex="0"
+			initialState="noShow||normal||maximized||minimized"
+			programGroup="yes||no"
+			desktop="yes||no"
+			applications="yes||no"
+			startMenu="yes||no"
+			startup="yes||no">
+		</shortcut>
+	</shortcuts>
+    
+</installation>
