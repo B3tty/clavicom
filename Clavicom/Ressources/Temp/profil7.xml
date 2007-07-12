@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1234375</x>
-        <y>0.22949219</y>
+        <x>0.06875</x>
+        <y>0.43945312</y>
       </left_up>
       <right_down>
-        <x>0.94609374</x>
-        <y>0.5498047</y>
+        <x>0.88984376</x>
+        <y>0.7597656</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -3310,7 +3310,7 @@
             </color_entered>
           </colors>
           <caption>SOFTWARE_MS_OFFICE_powerpoint.png</caption>
-          <applicationpath>C:\Program Files\FileZilla\FileZilla.exe</applicationpath>
+          <applicationpath>C:\Program Files\Movie Maker\wmmres.dll</applicationpath>
         </keylauncher>
       </keylist>
     </keygroup>
