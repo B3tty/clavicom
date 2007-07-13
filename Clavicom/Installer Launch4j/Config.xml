@@ -1,0 +1,20 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>0</headerType>
+  <jar>..\ClavicomNG.jar</jar>
+  <outfile>..\ClavicomNG.exe</outfile>
+  <errTitle></errTitle>
+  <jarArgs></jarArgs>
+  <chdir></chdir>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <icon>..\Ressources\Application\Pictures\icon_install.ico</icon>
+  <jre>
+    <path>C:\Program Files\Java\jdk1.6.0_01</path>
+    <minVersion>1.6.0_01</minVersion>
+    <maxVersion></maxVersion>
+    <initialHeapSize>0</initialHeapSize>
+    <maxHeapSize>0</maxHeapSize>
+    <args></args>
+  </jre>
+</launch4jConfig>

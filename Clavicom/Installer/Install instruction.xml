@@ -101,8 +101,8 @@
             <file src="class" targetdir="$INSTALL_PATH"/>
             <file src="libs" targetdir="$INSTALL_PATH"/>
 			<file src="Ressources" targetdir="$INSTALL_PATH"/>
-			<file src="clavicom_gui_engine_click_ClickEngine.dll" targetdir="$INSTALL_PATH"/>
-			<file src="Clavicom_NG.jar" targetdir="$INSTALL_PATH"/>
+			<file src="winHook.dll" targetdir="$INSTALL_PATH"/>
+			<file src="ClavicomNG.exe" targetdir="$INSTALL_PATH"/>
         </pack>
         <pack name="Sources" required="no" preselected="no">
             <description>Cochez cette option pour installer les fichiers sources de l'application.
