@@ -124,7 +124,7 @@ public class Application
 		UISplashScreen splash = new UISplashScreen(CFilePaths.getSplashScreenFile(), SPLASH_WAIT, SPLASH_WAIT_TOTAL_MIN);
 
 		// Chargement du gestionnaires de paramètres
-		splash.newStep("Loading parameters...");
+		splash.newStep("Loading general settings...");
 		loadSettings();
 		
 		// Chargement du profil
@@ -193,7 +193,7 @@ public class Application
 		loadKeySouricomEngine();
 		
 		// Chargement du moteur de click temporise
-		splash.newStep("Loading temporisation click engine...");
+		splash.newStep("Loading temporised click engine...");
 		loadTemporisationClickEngine();
 		
 		// Chargement du moteur de son
@@ -207,8 +207,6 @@ public class Application
 		// Fin du chargement
 		splash.newStep("Load complete !");
 		splash.close();
-		
-
 		
 		// On affiche la fenêtre principale
 		keyboardFrame.setVisible(true);
@@ -253,8 +251,6 @@ public class Application
 	{
 		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard());
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
-		
-		
 		
 		try
 		{
