@@ -36,7 +36,7 @@
     <on_start active="false" />
   </sound>
   <navigation>
-    <type value="DEFILEMENT" />
+    <type value="STANDARD" />
     <rollover active="false" />
     <mouse_speed value="14" />
     <click_tempo value="979" />
