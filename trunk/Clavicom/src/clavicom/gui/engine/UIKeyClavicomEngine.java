@@ -176,7 +176,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 		{
 			// Switch en mode souriscom
 			frameKeyboard.setVisible( false );
-			frameMouse.setVisible( true );
+			
 			
 			// si on est en défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
@@ -184,20 +184,23 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 				DefilementKeyEngine.getInstance().stopKeyDefilEngine();
 			}
 			frameMouse.startDefilMouse();
+			
+			frameMouse.setVisible( true );
+			
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSE_KEYBOARD)
 		{
 			// Switch en mode clavicom
 			frameMouse.setVisible( false );
-			frameKeyboard.setVisible( true );
+			frameMouse.stopDefilMouse();
 			
 			// si on est en défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
-				DefilementKeyEngine.getInstance().startKeyDefilEngine();
+				DefilementKeyEngine.getInstance().startKeyDefilEngine(false);
 			}
+			frameKeyboard.setVisible( true );
 			
-			frameMouse.stopDefilMouse();
 		}
 		else if (actionType == TKeyClavicomActionType.SWITCH_MOUSECLICK_MOUSEMOVE)
 		{

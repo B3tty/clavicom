@@ -750,6 +750,7 @@ UIRightClickListener
 		for (UIKeyKeyboard currentKey : allKeys)
 		{
 			currentKey.setEditable(inEdition);
+			currentKey.forceState(TUIKeyState.NORMAL);
 		}
 	}
 	

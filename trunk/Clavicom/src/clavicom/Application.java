@@ -236,8 +236,9 @@ public class Application
 			
 			DefilementEngine.getInstance().startDefilement();
 			
-			DefilementKeyEngine.getInstance().startKeyDefilEngine();
-		}else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+			DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
+		}
+		else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			ClickEngine.getInstance().mouseHookResume();
 			DefilementEngine.getInstance().startDefilement();

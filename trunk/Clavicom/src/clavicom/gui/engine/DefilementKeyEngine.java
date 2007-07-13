@@ -102,17 +102,17 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		return instance;
 	}
 	
-	public void startKeyDefilEngine()
+	public void startKeyDefilEngine(boolean firstTime)
 	{
 		currentTypeDefil = 0;
-		currentIndexDefilementGroup = uiKeyboard.getGroupeListSize()-1;
+		currentIndexDefilementGroup = 0;
 		currentIndexDefilementList = 0;
 		currentIndexDefilementKey = 0;
 		nbCurrentDefilement = 0;
 		currentGroup = null;
 		currentList = null;
 		currentKey = null;
-		firstTime = true;
+		this.firstTime = firstTime;
 		
 		ClickEngine.getInstance().removeClickMouseHookListener( this );
 		DefilementEngine.getInstance().removeDefilListener( this );
@@ -129,103 +129,114 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 
 
 	public void defil()
-	{
+	{		
 		switch(currentTypeDefil)
 		{
 			case 0: // groupes
 				if( uiKeyboard != null )
 				{
-					// on remet en normal l'ancien groupe, et on séléction le nouveau
 					if( currentGroup != null )
 					{
+						// on remet en normal l'ancien groupe, et on séléction le nouveau
 						currentGroup.simulateEnter( false );
-					}
-					
-					if( currentIndexDefilementGroup >= (uiKeyboard.getGroupeListSize()-1) )
-					{
-						currentIndexDefilementGroup = 0;
-						nbCurrentDefilement++;
-					}
-					else
-					{
-						currentIndexDefilementGroup++;
-					}
-					
+						
+						if( currentIndexDefilementGroup == (uiKeyboard.getGroupeListSize()-1) )
+						{
+							nbCurrentDefilement++;
+							currentIndexDefilementGroup = 0;
+							
+							if( nbCurrentDefilement == nbTurnLevelMax )
+							{
+								nbCurrentDefilement = 0;
+								
+								
+//								// on repasse en mode de defilement group
+//								currentTypeDefil = 0;
+								
+								return;
+							}
+						}
+						else
+						{
+							currentIndexDefilementGroup++;
+						}
+					}			
+
 					currentGroup = uiKeyboard.getUIKeyGroup( currentIndexDefilementGroup );
 					currentGroup.simulateEnter( true );
 					
+
 				}
 
 				
 				break;
 			case 1: // listes
-
-				
 				if( currentGroup != null )
 				{
 					// on remet en normal l'ancienne liste, et on séléction la nouvelle
 					if( currentList != null )
 					{
 						currentList.simulateEnter( false );
-					}
-					
-					if( currentIndexDefilementList >= (currentGroup.getKeyLists().size() - 1) )
-					{
-						currentIndexDefilementList = 0;
-						nbCurrentDefilement++;
-					}
-					else
-					{
-						currentIndexDefilementList++;
+						
+						if( currentIndexDefilementList == (currentGroup.getKeyLists().size() - 1) )
+						{
+							nbCurrentDefilement++;
+							currentIndexDefilementList = 0;
+							
+							// si le nombre de tour sur le niveau est supérieur à trois
+							if( nbCurrentDefilement == nbTurnLevelMax )
+							{
+								nbCurrentDefilement = 0;
+								
+								// on repasse en mode de defilement group
+								currentTypeDefil = 0;
+								
+								return;
+							}
+						}
+						else
+						{
+							currentIndexDefilementList++;
+						}
 					}
 					
 					currentList = currentGroup.getKeyLists().get( currentIndexDefilementList );
 					currentList.simulateEnter( true );
-					
-					// si le nombre de tour sur le niveau est supérieur à trois
-					
-					if( nbCurrentDefilement > nbTurnLevelMax )
-					{
-						nbCurrentDefilement = 0;
-						
-						// on repasse en mode de defilement group
-						currentTypeDefil = 0;
-					}
 				}
 
 				break;
 			case 2: // key
-				
 				if( currentList != null )
 				{
 					// on remet en normal l'ancienne key, et on séléction la nouvelle
 					if( currentKey != null )
 					{
 						currentKey.forceState( TUIKeyState.NORMAL );
+						
+						if( currentIndexDefilementKey == (currentList.getKeys().size() - 1) )
+						{
+							nbCurrentDefilement++;
+							currentIndexDefilementKey = 0;
+							
+							// si le nombre de tour sur le niveau est supérieur a
+							if( nbCurrentDefilement == nbTurnLevelMax )
+							{
+								nbCurrentDefilement = 0;
+								
+								// on repasse en mode de defilement list
+								currentTypeDefil = 1;
+								return;
+							}
+						}
+						else
+						{
+							currentIndexDefilementKey++;
+						}
 					}
-					
-					
-					if( currentIndexDefilementKey >= (currentList.getKeys().size() - 1) )
-					{
-						currentIndexDefilementKey = 0;
-						nbCurrentDefilement++;
-					}
-					else
-					{
-						currentIndexDefilementKey++;
-					}
-					
 					currentKey = currentList.getKeys().get( currentIndexDefilementKey );
 					currentKey.forceState( TUIKeyState.ENTERED );
 					
-					// si le nombre de tour sur le niveau est supérieur à trois
-					if( nbCurrentDefilement > nbTurnLevelMax )
-					{
-						nbCurrentDefilement = 0;
-						
-						// on repasse en mode de defilement list
-						currentTypeDefil = 1;
-					}
+
 				}
 				break;
 			default:
@@ -235,6 +246,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 
 	public void clickMouseHook()
 	{
+		
 		if( firstTime )
 		{
 			firstTime = false;
@@ -248,9 +260,10 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 			case 0: // groupes
 				currentTypeDefil = 1;
 				nbCurrentDefilement = 0;
+				
 				if( currentGroup != null )
 				{
-					currentIndexDefilementList = currentGroup.getKeyLists().size() - 1;
+					currentIndexDefilementList = 0;
 					currentGroup.simulateEnter( false );
 					
 					// s'il n'y a qu'une seule liste
@@ -260,13 +273,17 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 						clickMouseHook();
 					}
 				}
+//				else
+//				{
+//					currentGroup = uiKeyboard.getUIKeyGroup(0);
+//				}
 				break;
 			case 1: // listes
 				currentTypeDefil = 2;
 				nbCurrentDefilement = 0;
 				if( currentList != null )
 				{
-					currentIndexDefilementKey = currentList.getKeys().size() - 1;
+					currentIndexDefilementKey =0;
 					currentList.simulateEnter( false );
 					
 					// s'il n'y a qu'une seule key
@@ -285,7 +302,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 					currentKey.simulateClick();
 				}
 				currentTypeDefil = 0;
-				currentIndexDefilementGroup = uiKeyboard.getGroupeListSize()-1;
+				currentIndexDefilementGroup = 0;
 				nbCurrentDefilement = 0;
 				currentKey = null;
 				currentList = null;
