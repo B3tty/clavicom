@@ -64,7 +64,7 @@ public class UIMessageEngine implements CMessageListener
 				parentFrame, 
 				UIString.getUIString("EX_TITLE_FATAL_ERROR"), 
 				newMessage, 
-				detail, 
+				detail, 		
 				false );
 		d.pack();
 		d.setAlwaysOnTop( true ); 

@@ -47,11 +47,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyColorChangedListener;

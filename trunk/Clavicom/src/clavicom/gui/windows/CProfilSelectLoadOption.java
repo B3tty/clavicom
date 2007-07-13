@@ -34,7 +34,6 @@ public class CProfilSelectLoadOption
 	boolean commandSetName;
 	boolean dictionaryName;
 	boolean font;
-	boolean framePosition;
 	boolean keyboard;
 	boolean keyboardColors;
 	boolean LangueUIName;
@@ -51,7 +50,6 @@ public class CProfilSelectLoadOption
 		commandSetName = true;
 		dictionaryName = true;
 		font = true;
-		framePosition = true;
 		keyboard = true;
 		keyboardColors = true;
 		LangueUIName = true;
@@ -102,15 +100,6 @@ public class CProfilSelectLoadOption
 		this.font = font;
 	}
 
-	public boolean isFramePosition()
-	{
-		return framePosition;
-	}
-
-	public void setFramePosition(boolean framePosition)
-	{
-		this.framePosition = framePosition;
-	}
 
 	public boolean isKeyboard()
 	{

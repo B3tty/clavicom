@@ -299,7 +299,23 @@
 	<!-- sound -->
 	<message id = "EX_SOUND_ENGINE_BUILD">Erreur lors du chargement du fichier son </message>
 	
+	<!-- load/save profil -->
 	<message id = "EX_SAVE_PROFIL">Impossible de sauvegarder le profil dans le fichier </message>
+	<message id = "EX_LOAD_PROFIL_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_LOAD_PROFIL_ADVANCED_OPTION">Erreur lors du chargement des options avancées</message>
+	<message id = "EX_LOAD_PROFIL_COMMAND_SET">Erreur lors du chargement du commandSet</message>
+	<message id = "EX_LOAD_PROFIL_DICTIONARY">Erreur lors du chargement du dictionaire</message>
+	<message id = "EX_LOAD_PROFIL_FONT">Erreur lors du chargement de la police</message>
+	<message id = "EX_LOAD_PROFIL_FRAME_POSITION">Erreur lors du chargement des position des fenêtres</message>
+	<message id = "EX_LOAD_PROFIL_KEYBOARD">Erreur lors du chargement du clavier</message>
+	<message id = "EX_LOAD_PROFIL_KEYBOARD_COLOR">Erreur lors du chargement des couleurs du clavier</message>
+	<message id = "EX_LOAD_PROFIL_LANGUE_UI">Erreur lors du chargement du language de l'interface</message>
+	<message id = "EX_LOAD_PROFIL_NAVIGATION">Erreur lors du chargement de la navigation</message>
+	<message id = "EX_LOAD_PROFIL_PREFERED_WORD">Erreur lors du chargement des mots préférés</message>
+	<message id = "EX_LOAD_PROFIL_SOUND">Erreur lors du chargement des sons</message>
+	<message id = "EX_LOAD_PROFIL_SHORTCUTSET">Erreur lors du chargement du jeu de raccourci</message>
+	<message id = "EX_LOAD_PROFIL_TRANSPARENCY">Erreur lors du chargement de la transparence</message>
+
 	
 	<!-- ==========================================================================
 		Messages 
@@ -592,7 +608,7 @@
 	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Editer les touches selectionnées</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Editer les niveaux de défilement</message>
 	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Sauvegarder le profil sous</message>
-	<message id = "LB_EDITION_LOAD_TOOLTIP">Charger un profil</message>
+	<message id = "LB_EDITION_LOAD_TOOLTIP">Importer les éléments d'un profil</message>
 	
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>
@@ -632,6 +648,8 @@
 	<message id = "LB_LOAD_PROFIL_INTRO">Choisissez les elements que vous voulez charger :</message>
 	<message id = "LB_LOAD_PROFIL_VALIDER">Valider</message>
 	<message id = "LB_LOAD_PROFIL_ANNULER">Annuler</message>
+
+	<message id = "LB_LOAD_PROFIL_RESTART">L'application va maintenant redémarrer</message>
 	
 	<!-- ========================================================================== 
 		Popup menu des touches

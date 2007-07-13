@@ -56,7 +56,6 @@ public class PanelModificationProfilAdvancedOption extends
 	
 	JComboBox comboClickSouricom;
 	JCheckBox addSpaceAfterString;
-	JCheckBox startWithOS;
 	JSpinner nbDefilTurn;
 	
 	PanelModificationProfilCommandSetName panelCommandSet;
@@ -98,10 +97,7 @@ public class PanelModificationProfilAdvancedOption extends
 		addSpaceAfterString = new JCheckBox( 
 				UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING"), 
 				advancedOption.isAddSpaceAfterString() );
-		
-		startWithOS = new JCheckBox(
-				UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS"), 
-				advancedOption.isStartWithOS() );
+	
 		
 		String[] interval = new String[101];
 		for( int i = 0 ; i < 101 ; ++i) 
@@ -164,23 +160,7 @@ public class PanelModificationProfilAdvancedOption extends
 		gridBagLayout.setConstraints(addSpaceAfterString, gbConstAOSpaceAfterString);
 		add( addSpaceAfterString );
 		
-		// start with os
-		GridBagConstraints gbConstAOStartWithOS = new GridBagConstraints (	
-				0,							// Numéro de colonne
-	            2,							// Numéro de ligne
-	            1,							// Nombre de colonnes occupées
-	            1,							// Nombre de lignes occupées
-	            100,							// Taille horizontale relative
-	            17,							// Taille verticale relative
-	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
-	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
-	            0,							// Espace intérieur en X
-	            0							// Espace intérieur en Y
-	    );
-		gridBagLayout.setConstraints(startWithOS, gbConstAOStartWithOS);
-		add( startWithOS );
-		
+
 		// nb turn
 		GridBagConstraints gbConstAONBDefilTurn = new GridBagConstraints (	
 				0,							// Numéro de colonne
@@ -239,7 +219,6 @@ public class PanelModificationProfilAdvancedOption extends
 	{
 		comboClickSouricom.setSelectedItem( advancedOption.getClickSouricom() );
 		addSpaceAfterString.setSelected( advancedOption.isAddSpaceAfterString() );
-		startWithOS.setSelected( advancedOption.isStartWithOS() );
 		nbDefilTurn.setValue( String.valueOf( advancedOption.getNumberOfDefilTurn() ) );
 		
 		panelCommandSet.initValues();
@@ -279,13 +258,7 @@ public class PanelModificationProfilAdvancedOption extends
 			advancedOption.setAddSpaceAfterString( addSpaceAfterString.isSelected()  );
 			retour = true;			
 		}
-		
-		// start with os
-		if( startWithOS.isSelected() != advancedOption.isStartWithOS() )
-		{
-			advancedOption.setStartWithOS( startWithOS.isSelected()  );
-			retour = true;			
-		}
+
 		
 		// nb defil turn
 		if( Integer.parseInt( (String)nbDefilTurn.getValue() ) != advancedOption.getNumberOfDefilTurn() )

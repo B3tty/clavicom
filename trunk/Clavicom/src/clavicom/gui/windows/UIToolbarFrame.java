@@ -34,12 +34,17 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.jdom.Element;
+
 import clavicom.CFilePaths;
 import clavicom.CSettings;
 import clavicom.core.keygroup.CKey;
@@ -67,6 +72,7 @@ import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
+import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIGridModifier;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
@@ -487,7 +493,6 @@ UIGridChangedListener
 		mainPanel.add(gridModifier);
 		mainPanel.add(panelBoutons);
 		mainPanel.add(panelBoutonsSaveLoad);
-		mainPanel.add(panelKeyboard);
 		
 		mainPanelBg.setBackground(Color.GREEN);
 		
@@ -633,7 +638,6 @@ UIGridChangedListener
 			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				// TODO - en cours...
 				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
 			 
 			
@@ -646,9 +650,231 @@ UIGridChangedListener
 				d_load.setVisible( true );
 				
 				// on charge les éléments du profil
+				boolean mustRestart = false;
 				if ( d_load.getOptions() != null )
 				{
+					Element racine = null;
+					try
+					{
+						racine = CProfil.openFile( profilPath );
+					}
+					catch (Exception ex)
+					{
+						CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_OPEN_FILE") + profilPath, ex.getMessage() );
+					}
 					
+					// chargement des options avancées
+					if( options.isAdvancedOptions() )
+					{
+						try
+						{
+							CProfil.getInstance().loadAdvancedOptions( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_ADVANCED_OPTION"), ex.getMessage() );
+						}
+						
+						mustRestart = true;
+					}
+					
+					// chargement du dictionnaire
+					if( options.isDictionaryName() )
+					{
+						try
+						{
+							CProfil.getInstance().loadDictionnary( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_DICTIONARY"), ex.getMessage() );
+						}
+						mustRestart = true;
+					}
+					
+					// chargement de la police
+					if( options.isFont() )
+					{
+						try
+						{
+							CProfil.getInstance().loadFont( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_FONT"), ex.getMessage() );
+						}
+						
+						// rechargement des keys
+						panelKeyboard.redrawAllKeys();
+					}
+
+					
+					// chargement des couleurs du clavier
+					if( options.isKeyboardColors() )
+					{
+						try
+						{
+							CProfil.getInstance().loadDefaultColor( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_KEYBOARD_COLOR"), ex.getMessage() );
+						}
+					}
+					
+					// chargement de la langue ui
+					if( options.isLangueUIName() )
+					{
+						try
+						{
+							CProfil.getInstance().loadProfileLanguageUIName( );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_LANGUE_UI"), ex.getMessage() );
+						}
+						
+						mustRestart = true;
+					}
+					
+					// chargement de la navigation
+					if( options.isNavigation() )
+					{
+						try
+						{
+							CProfil.getInstance().loadNavigation( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_NAVIGATION"), ex.getMessage() );
+						}
+					}
+					
+					// chargement des mots preferes
+					if( options.isPreferedWord() )
+					{
+						try
+						{
+							CProfil.getInstance().loadPreferedWord( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_PREFERED_WORD"), ex.getMessage() );
+						}
+						mustRestart = true;
+					}
+					
+
+
+					// chargement du son
+					if( options.isSound() )
+					{
+						try
+						{
+							CProfil.getInstance().loadSound( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_SOUND"), ex.getMessage() );
+						}
+						
+						// on vérifie le son
+						SoundEngine.verifySoundEngine( panelKeyboard );
+					}
+					
+					// chargement de la transparence
+					if( options.isTransparence() )
+					{
+						try
+						{
+							CProfil.getInstance().loadTransparency( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_TRANSPARENCY"), ex.getMessage() );
+						}
+						mustRestart = true;
+					}
+					
+					// chargement du jeu de commande
+					if( options.isCommandSetName() )
+					{
+						try
+						{
+							CProfil.getInstance().loadProfileCommandSetName( );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_COMMAND_SET"), ex.getMessage() );
+							return;
+						}
+						
+						mustRestart = true;
+					}
+					
+					// chargement du jeu de raccourcis
+					if( options.isShortcutSetName() )
+					{
+						try
+						{
+							CProfil.getInstance().loadProfileShortCutName();
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_SHORTCUTSET"), ex.getMessage() );
+							return;
+						}
+						
+						mustRestart = true;
+					}
+					
+					
+					// chargement du clavier
+					if( options.isKeyboard() )
+					{
+						try
+						{
+							CProfil.getInstance().loadKeyboard( racine );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_KEYBOARD"), ex.getMessage() );
+						}
+						
+						mustRestart = true;
+					}
+					
+					
+					if( mustRestart )
+					{
+						// dit a l'utilisateur que ca va redemarrer
+						JOptionPane.showMessageDialog(null, UIString.getUIString("LB_LOAD_PROFIL_RESTART"));
+						
+						// on redémarre l'application
+						try
+						{
+							Runtime.getRuntime().exec( "ClavicomNG.exe" );
+						}
+						catch (IOException e)
+						{
+						}
+						
+						// sauvegarde du profil
+						try
+						{
+							CProfil.getInstance().saveProfil( );
+						}
+						catch (Exception ex)
+						{
+							CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
+															CProfil.getInstance().getProfilFilePath() + 
+															UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"),
+															ex.getMessage());
+						}
+						
+						// on fermer cette application-ci
+						System.exit( 0 );
+					}
 				}
 			}
 		}

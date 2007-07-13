@@ -43,7 +43,6 @@ public class CAdvancedOptions
 	boolean addSpaceAfterString;
 	CFramePosition clavicomFramePosition;
 	CFramePosition souricomFramePosition;
-	boolean startWithOS;
 	int numberOfDefilTurn;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
@@ -110,21 +109,6 @@ public class CAdvancedOptions
 		}
 		
 		
-		// startWithOS
-		Element eltStartWithOS = node.getChild( TXMLNames.FP_START_WITH_OS );
-		if( eltStartWithOS == null )
-		{
-			throw new Exception( "[" + UIString.getUIString("EX_ADVANCED_OPTION_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.FP_START_WITH_OS);
-		}
-		try
-		{
-			startWithOS = Boolean.parseBoolean( eltStartWithOS.getText() );
-		}
-		catch (Exception ex)
-		{
-			throw new Exception( "[" + UIString.getUIString("EX_ADVANCED_OPTION_BUILD") + "][" + TXMLNames.FP_START_WITH_OS + "] : " + UIString.getUIString("EX_KEYGROUP_CAN_NOT_CONVERT") + eltStartWithOS.getText() + UIString.getUIString("EX_KEYGROUP_TO_BOOLEAN"));
-		}
-		
 		
 		// numberOfDefilTurn
 		Element eltNumberOfDefilTurn = node.getChild( TXMLNames.FP_NB_DEFIL_TURN );
@@ -164,10 +148,7 @@ public class CAdvancedOptions
 		souricomFramePosition.buildNode( elt_souricomFramePosition );
 		elt_advancedOption.addContent( elt_souricomFramePosition );
 		
-		Element elt_startWithOS = new Element( TXMLNames.FP_START_WITH_OS );
-		elt_startWithOS.setText( String.valueOf( startWithOS ) );
-		elt_advancedOption.addContent( elt_startWithOS );
-		
+
 		Element elt_nbDefilTurn = new Element( TXMLNames.FP_NB_DEFIL_TURN );
 		elt_nbDefilTurn.setText( String.valueOf( numberOfDefilTurn ) );
 		elt_advancedOption.addContent( elt_nbDefilTurn );
@@ -232,15 +213,7 @@ public class CAdvancedOptions
 		this.souricomFramePosition = souricomFramePosition;
 	}
 
-	public boolean isStartWithOS()
-	{
-		return startWithOS;
-	}
 
-	public void setStartWithOS(boolean startWithOS)
-	{
-		this.startWithOS = startWithOS;
-	}
 
 
 	

@@ -50,7 +50,6 @@ public class UIDialogueProfilSelectLoadOptions extends JDialog
 	JCheckBox commandSetName;
 	JCheckBox dictionaryName;
 	JCheckBox font;
-	JCheckBox framePosition;
 	JCheckBox keyboard;
 	JCheckBox keyboardColors;
 	JCheckBox langueUIName;
@@ -72,7 +71,6 @@ public class UIDialogueProfilSelectLoadOptions extends JDialog
 		commandSetName = 	new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_COMMANDSET_NAME"), options.isCommandSetName() );
 		dictionaryName = 	new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_DICTIONARY_NAME"), options.isDictionaryName() );
 		font = 				new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_FONT"), options.isFont() );
-		framePosition = 	new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_FRAME_POSITION"), options.isFramePosition() );
 		keyboard = 			new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_KEYBOARD"), options.isKeyboard() );
 		keyboardColors = 	new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_KEYBOARD_COLORS"), options.isKeyboardColors() );
 		langueUIName = 		new JCheckBox( UIString.getUIString("LB_LOAD_PROFIL_LANGUE_UI_NAME"), options.isLangueUIName() );
@@ -95,7 +93,6 @@ public class UIDialogueProfilSelectLoadOptions extends JDialog
 		global.add( shortcutSetName );
 		global.add( dictionaryName );
 		global.add( font );
-		global.add( framePosition );
 		global.add( keyboardColors );
 		global.add( langueUIName );
 		global.add( navigation );
@@ -115,7 +112,6 @@ public class UIDialogueProfilSelectLoadOptions extends JDialog
 				options.setCommandSetName( commandSetName.isSelected() );
 				options.setDictionaryName( dictionaryName.isSelected() );
 				options.setFont( font.isSelected() );
-				options.setFramePosition( framePosition.isSelected() );
 				options.setKeyboard( keyboard.isSelected() );
 				options.setKeyboardColors( keyboardColors.isSelected() );
 				options.setLangueUIName( langueUIName.isSelected() );
