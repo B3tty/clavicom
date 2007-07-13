@@ -52,7 +52,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JSlider sliderTempoDefil;
 	JSlider sliderTempoClic;
 	JSlider sliderMouseSpeed;
-	JCheckBox rollOver;
 	JCheckBox mouseMoveOnEntered;
 	JLabel labelTempoDefil;
 	JLabel labelTempoClic;
@@ -99,7 +98,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
 		sliderTempoClic.setValue( navigation.getTemporisationClic() );
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
-		rollOver.setSelected( navigation.isRolloverActive() ); 
 		mouseMoveOnEntered.setSelected( navigation.isMoveMouseOnEntered() ); 
 	}
 
@@ -185,14 +183,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		panelGlobal.add( sliderTempoDefil );
 		
-	
-		// ========================================================================
-		// Séléction du rollOver ou non
-		// ========================================================================
-
-		rollOver = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_ROLLOVER"), navigation.isRolloverActive() );
-		panelGlobal.add( rollOver );
-		
 		// ========================================================================
 		// Séléction du mouseMoveOnEntered ou non
 		// ========================================================================
@@ -231,8 +221,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoDefil.setLocation( 165, 160 );
 		sliderTempoDefil.setLocation( 155, 190 );
 		
-		rollOver.setLocation( 16, 300 );
-		
 		mouseMoveOnEntered.setLocation( 60, 220 );
 		
 		labelTempoSouriom.setLocation( 20, 330 );
@@ -256,7 +244,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoDefil.setSize( 200, 30 );
 		sliderTempoDefil.setSize( 300, 50 );
 		
-		rollOver.setSize( 400, 30 );
 		mouseMoveOnEntered.setSize( 500, 30 );
 		
 		labelTempoSouriom.setSize( 200, 30 );
@@ -394,15 +381,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		{
 			if ( saveData )
 				navigation.setMouseSpeed( sliderMouseSpeed.getValue() );
-			
-			retour = true;
-		}
-		
-		// rollOver
-		if( rollOver.isSelected() != navigation.isRolloverActive() )
-		{
-			if ( saveData )
-				navigation.setRolloverActive( rollOver.isSelected() );
 			
 			retour = true;
 		}
