@@ -47,7 +47,7 @@ public class CFilePaths
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";
 	
-	private static String toolDllMouseHookPath = "clavicom_gui_engine_click_ClickEngine";
+	private static String toolDllMouseHookPath = "winHook";
 	
 	// ------- IMAGES DE TOUCHES (CKeyXXX) -------------------
 	private static String toolKeyCharacterPicture = "character.png";
