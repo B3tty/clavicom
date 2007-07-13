@@ -208,6 +208,8 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 	{
 		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
+			indexSelectedKey = 0;
+			
 			DefilementEngine.getInstance().addDefilListener( this );
 			ClickEngine.getInstance().addClickMouseHookListener( this );
 			DefilementEngine.getInstance().startDefilement();

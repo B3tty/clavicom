@@ -36,7 +36,6 @@ public class CFilePaths
 	private static String commandSets = application + "CommandSets\\";
 	private static String defaultProfile = application + "DefaultProfiles\\";
 	private static String dictionaries = application + "Dictionaries\\";
-	private static String keyboardModels = application + "KeybordModels\\";
 	private static String languagesUI = application + "LanguagesUI\\";
 	private static String shortcutSets = application + "ShortcutSets\\";
 	private static String pictures = application + "Pictures\\";
@@ -135,11 +134,6 @@ public class CFilePaths
 	public static String getDictionariesFolder()
 	{
 		return dictionaries;
-	}
-
-	public static String getKeyboardModelsFolder()
-	{
-		return keyboardModels;
 	}
 
 	public static String getLanguagesUIFolder()
