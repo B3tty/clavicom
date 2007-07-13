@@ -3,12 +3,12 @@
   <language_ui>french.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>azerty.css</shortcutset_name>
-  <dictionary_name>uk_standard.cdc</dictionary_name>
+  <dictionary_name>french_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
-      <red>193</red>
-      <green>193</green>
-      <blue>254</blue>
+      <red>204</red>
+      <green>204</green>
+      <blue>204</blue>
     </back_color>
     <default_normal>
       <red>204</red>
@@ -39,14 +39,14 @@
     <type value="STANDARD" />
     <rollover active="false" />
     <mouse_speed value="14" />
-    <click_tempo value="979" />
-    <defil_tempo value="1032" />
+    <click_tempo value="1014" />
+    <defil_tempo value="3000" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
   <font>
-    <name>Arial</name>
+    <name>Lucida Sans</name>
     <auto_size>false</auto_size>
-    <size>0.35</size>
+    <size>0.3</size>
     <auto_color>false</auto_color>
     <color>
       <red>0</red>
@@ -62,45 +62,45 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.075</x>
-        <y>0.47265625</y>
+        <x>0.175</x>
+        <y>0.3935547</y>
       </left_up>
       <right_down>
-        <x>0.7625</x>
-        <y>0.8173828</y>
+        <x>0.93046874</x>
+        <y>0.76171875</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
         <x>0.0</x>
-        <y>0.10058594</y>
+        <y>0.09863281</y>
       </left_up>
       <right_down>
         <x>0.3203125</x>
-        <y>0.5019531</y>
+        <y>0.4970703</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
   </advanced_options>
   <keyboard>
-    <keygroup caption="Ligne1" order="0" visible="true">
-      <keylist order="0" caption="1">
+    <keygroup caption="lettres" order="0" visible="true">
+      <keylist order="0" caption="1ère ligne">
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.007963595</x>
-              <y>0.021201413</y>
+              <x>0.113842174</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.07508533</x>
-              <y>0.13074204</y>
+              <x>0.1694696</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -108,1127 +108,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Echap</caption_level_1>
-          <caption_level_2>Echap</caption_level_2>
-          <caption_level_3>Echap</caption_level_3>
-          <commands>
-            <command_normal id="62" />
-            <command_shift id="62" />
-            <command_altgr id="62" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.09897611</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.1513083</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F1</caption_level_1>
-          <caption_level_2>F1</caption_level_2>
-          <caption_level_3>F1</caption_level_3>
-          <commands>
-            <command_normal id="147" />
-            <command_shift id="147" />
-            <command_altgr id="147" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.1592719</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.21274175</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F2</caption_level_1>
-          <caption_level_2>F2</caption_level_2>
-          <caption_level_3>F2</caption_level_3>
-          <commands>
-            <command_normal id="148" />
-            <command_shift id="148" />
-            <command_altgr id="148" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.21956769</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.27303755</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F3</caption_level_1>
-          <caption_level_2>F3</caption_level_2>
-          <caption_level_3>F3</caption_level_3>
-          <commands>
-            <command_normal id="149" />
-            <command_shift id="149" />
-            <command_altgr id="149" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.27986348</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.33333334</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F4</caption_level_1>
-          <caption_level_2>F4</caption_level_2>
-          <caption_level_3>F4</caption_level_3>
-          <commands>
-            <command_normal id="150" />
-            <command_shift id="150" />
-            <command_altgr id="150" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.36405006</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.41638225</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F5</caption_level_1>
-          <caption_level_2>F5</caption_level_2>
-          <caption_level_3>F5</caption_level_3>
-          <commands>
-            <command_normal id="151" />
-            <command_shift id="151" />
-            <command_altgr id="151" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.42434585</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.4778157</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F6</caption_level_1>
-          <caption_level_2>F6</caption_level_2>
-          <caption_level_3>F6</caption_level_3>
-          <commands>
-            <command_normal id="152" />
-            <command_shift id="152" />
-            <command_altgr id="152" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.4857793</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.5381115</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F7</caption_level_1>
-          <caption_level_2>F7</caption_level_2>
-          <caption_level_3>F7</caption_level_3>
-          <commands>
-            <command_normal id="153" />
-            <command_shift id="153" />
-            <command_altgr id="153" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.5460751</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.59840727</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F8</caption_level_1>
-          <caption_level_2>F8</caption_level_2>
-          <caption_level_3>F8</caption_level_3>
-          <commands>
-            <command_normal id="154" />
-            <command_shift id="154" />
-            <command_altgr id="154" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="3" caption="4">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.6211604</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.6734926</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F9</caption_level_1>
-          <caption_level_2>F9</caption_level_2>
-          <caption_level_3>F9</caption_level_3>
-          <commands>
-            <command_normal id="155" />
-            <command_shift id="155" />
-            <command_altgr id="155" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.6825939</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.73492604</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F10</caption_level_1>
-          <caption_level_2>F10</caption_level_2>
-          <caption_level_3>F10</caption_level_3>
-          <commands>
-            <command_normal id="156" />
-            <command_shift id="156" />
-            <command_altgr id="156" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.74288964</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.79522187</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F11</caption_level_1>
-          <caption_level_2>F11</caption_level_2>
-          <caption_level_3>F11</caption_level_3>
-          <commands>
-            <command_normal id="157" />
-            <command_shift id="157" />
-            <command_altgr id="157" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.80318546</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.8555176</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>F12</caption_level_1>
-          <caption_level_2>F12</caption_level_2>
-          <caption_level_3>F12</caption_level_3>
-          <commands>
-            <command_normal id="158" />
-            <command_shift id="158" />
-            <command_altgr id="158" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="4" caption="5">
-        <keyclavicom order="0" caption_image="true">
-          <coordinates>
-            <point position="min">
-              <x>0.8794084</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.91695106</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>255</red>
+              <red>102</red>
               <green>102</green>
-              <blue>26</blue>
-            </color_clicked>
-            <color_entered>
-              <red>255</red>
-              <green>153</green>
-              <blue>102</blue>
-            </color_entered>
-          </colors>
-          <caption>configuration.png</caption>
-          <action>OPEN_CONFIGURATION</action>
-        </keyclavicom>
-        <keyclavicom order="1" caption_image="true">
-          <coordinates>
-            <point position="min">
-              <x>0.92491466</x>
-              <y>0.021201413</y>
-            </point>
-            <point position="max">
-              <x>0.96245736</x>
-              <y>0.13074204</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>255</red>
-              <green>102</green>
-              <blue>26</blue>
-            </color_clicked>
-            <color_entered>
-              <red>255</red>
-              <green>153</green>
-              <blue>102</blue>
-            </color_entered>
-          </colors>
-          <caption>close.png</caption>
-          <action>CLOSE_APPLICATION</action>
-        </keyclavicom>
-      </keylist>
-    </keygroup>
-    <keygroup caption="Ligne2" order="1" visible="true">
-      <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.007963595</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.06029579</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>²</caption_level_1>
-          <caption_level_2 />
-          <caption_level_3 />
-          <commands>
-            <command_normal id="" />
-            <command_shift id="" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.06029579</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.11376564</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>&amp;</caption_level_1>
-          <caption_level_2>1</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="98" />
-            <command_shift id="137" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.11376564</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.16609783</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>é</caption_level_1>
-          <caption_level_2>2</caption_level_2>
-          <caption_level_3>~</caption_level_3>
-          <commands>
-            <command_normal id="99" />
-            <command_shift id="138" />
-            <command_altgr id="100" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.1672355</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.22070535</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>"</caption_level_1>
-          <caption_level_2>3</caption_level_2>
-          <caption_level_3>#</caption_level_3>
-          <commands>
-            <command_normal id="101" />
-            <command_shift id="139" />
-            <command_altgr id="102" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="4" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.21956769</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.27303755</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>'</caption_level_1>
-          <caption_level_2>4</caption_level_2>
-          <caption_level_3>{</caption_level_3>
-          <commands>
-            <command_normal id="103" />
-            <command_shift id="140" />
-            <command_altgr id="104" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.27189988</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.32536975</x>
-              <y>0.30388692</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>(</caption_level_1>
-          <caption_level_2>5</caption_level_2>
-          <caption_level_3>[</caption_level_3>
-          <commands>
-            <command_normal id="105" />
-            <command_shift id="141" />
-            <command_altgr id="106" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.32536975</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.37997726</x>
-              <y>0.30388692</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>-</caption_level_1>
-          <caption_level_2>6</caption_level_2>
-          <caption_level_3>|</caption_level_3>
-          <commands>
-            <command_normal id="107" />
-            <command_shift id="142" />
-            <command_altgr id="108" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.37883958</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.43230945</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>è</caption_level_1>
-          <caption_level_2>7</caption_level_2>
-          <caption_level_3>`</caption_level_3>
-          <commands>
-            <command_normal id="109" />
-            <command_shift id="143" />
-            <command_altgr id="110" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.43117177</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.48464164</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>_</caption_level_1>
-          <caption_level_2>8</caption_level_2>
-          <caption_level_3>\</caption_level_3>
-          <commands>
-            <command_normal id="111" />
-            <command_shift id="144" />
-            <command_altgr id="112" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="4" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.48464164</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.53697383</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>ç</caption_level_1>
-          <caption_level_2>9</caption_level_2>
-          <caption_level_3>^</caption_level_3>
-          <commands>
-            <command_normal id="113" />
-            <command_shift id="145" />
-            <command_altgr id="114" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.53583616</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.5881684</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>à</caption_level_1>
-          <caption_level_2>0</caption_level_2>
-          <caption_level_3>@</caption_level_3>
-          <commands>
-            <command_normal id="115" />
-            <command_shift id="146" />
-            <command_altgr id="116" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.58930606</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.6427759</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>)</caption_level_1>
-          <caption_level_2>°</caption_level_2>
-          <caption_level_3>]</caption_level_3>
-          <commands>
-            <command_normal id="117" />
-            <command_shift id="118" />
-            <command_altgr id="119" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.6416382</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.69510806</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>=</caption_level_1>
-          <caption_level_2>+</caption_level_2>
-          <caption_level_3>}</caption_level_3>
-          <commands>
-            <command_normal id="120" />
-            <command_shift id="121" />
-            <command_altgr id="122" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.69510806</x>
-              <y>0.1943463</y>
-            </point>
-            <point position="max">
-              <x>0.8009101</x>
-              <y>0.3074205</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Backspace</caption_level_1>
-          <caption_level_2>Backspace</caption_level_2>
-          <caption_level_3>Backspace</caption_level_3>
-          <commands>
-            <command_normal id="76" />
-            <command_shift id="76" />
-            <command_altgr id="76" />
-          </commands>
-        </keycharacter>
-      </keylist>
-    </keygroup>
-    <keygroup caption="Ligne3" order="2" visible="true">
-      <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.007963595</x>
-              <y>0.3286219</y>
-            </point>
-            <point position="max">
-              <x>0.07622298</x>
-              <y>0.43816254</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Tab</caption_level_1>
-          <caption_level_2>Tab</caption_level_2>
-          <caption_level_3>Tab</caption_level_3>
-          <commands>
-            <command_normal id="63" />
-            <command_shift id="63" />
-            <command_altgr id="63" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.07622298</x>
-              <y>0.3286219</y>
-            </point>
-            <point position="max">
-              <x>0.12855518</x>
-              <y>0.43816254</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>a</caption_level_1>
@@ -1240,22 +122,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.12855518</x>
-              <y>0.3286219</y>
+              <x>0.17205693</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.18202503</x>
-              <y>0.43816254</y>
+              <x>0.22897801</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1263,9 +145,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>z</caption_level_1>
@@ -1277,22 +159,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.18202503</x>
-              <y>0.3286219</y>
+              <x>0.23156533</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.23435722</x>
-              <y>0.43816254</y>
+              <x>0.28719276</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1300,9 +182,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>e</caption_level_1>
@@ -1314,22 +196,22 @@
             <command_altgr id="123" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.23435722</x>
-              <y>0.3286219</y>
+              <x>0.28978008</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.28668943</x>
-              <y>0.43816254</y>
+              <x>0.34670117</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1337,9 +219,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>r</caption_level_1>
@@ -1351,24 +233,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="4" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.28782707</x>
-              <y>0.3286219</y>
+              <x>0.3492885</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.34129694</x>
-              <y>0.43816254</y>
+              <x>0.40620956</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1376,9 +256,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>t</caption_level_1>
@@ -1390,22 +270,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="5" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.34015927</x>
-              <y>0.3286219</y>
+              <x>0.4087969</x>
+              <y>0.22421524</y>
             </point>
             <point position="max">
-              <x>0.39362913</x>
-              <y>0.43816254</y>
+              <x>0.46571797</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1413,9 +293,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>y</caption_level_1>
@@ -1427,22 +307,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="6" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.39362913</x>
-              <y>0.3286219</y>
+              <x>0.4683053</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.44709897</x>
-              <y>0.43816254</y>
+              <x>0.5226391</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1450,9 +330,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>u</caption_level_1>
@@ -1464,22 +344,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="7" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.44596133</x>
-              <y>0.3286219</y>
+              <x>0.5252264</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.49943116</x>
-              <y>0.43816254</y>
+              <x>0.57956016</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1487,9 +367,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>i</caption_level_1>
@@ -1501,22 +381,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="8" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.49943116</x>
-              <y>0.3286219</y>
+              <x>0.5821475</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.5506257</x>
-              <y>0.43816254</y>
+              <x>0.63906854</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1524,9 +404,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>o</caption_level_1>
@@ -1538,24 +418,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-      </keylist>
-      <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="9" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.5506257</x>
-              <y>0.3286219</y>
+              <x>0.64165586</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.6040956</x>
-              <y>0.43816254</y>
+              <x>0.698577</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1563,9 +441,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>p</caption_level_1>
@@ -1577,137 +455,24 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.6029579</x>
-              <y>0.3286219</y>
-            </point>
-            <point position="max">
-              <x>0.65642774</x>
-              <y>0.43816254</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>^</caption_level_1>
-          <caption_level_2>¨</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="126" />
-            <command_shift id="127" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.65642774</x>
-              <y>0.3286219</y>
-            </point>
-            <point position="max">
-              <x>0.70989764</x>
-              <y>0.43816254</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>$</caption_level_1>
-          <caption_level_2>£</caption_level_2>
-          <caption_level_3>¤</caption_level_3>
-          <commands>
-            <command_normal id="128" />
-            <command_shift id="129" />
-            <command_altgr id="130" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.72468716</x>
-              <y>0.3286219</y>
-            </point>
-            <point position="max">
-              <x>0.8009101</x>
-              <y>0.56537104</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Entrée</caption_level_1>
-          <caption_level_2>Entrée</caption_level_2>
-          <caption_level_3>Entrée</caption_level_3>
-          <commands>
-            <command_normal id="75" />
-            <command_shift id="75" />
-            <command_altgr id="75" />
-          </commands>
-        </keycharacter>
       </keylist>
-    </keygroup>
-    <keygroup caption="Ligne4" order="3" visible="true">
-      <keylist order="0" caption="1">
+      <keylist order="1" caption="2e ligne">
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.091012515</x>
-              <y>0.45936397</y>
+              <x>0.11513583</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.14448236</x>
-              <y>0.56537104</y>
+              <x>0.17076325</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1715,9 +480,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>q</caption_level_1>
@@ -1732,19 +497,19 @@
         <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.14334472</x>
-              <y>0.45936397</y>
+              <x>0.17335059</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.19681457</x>
-              <y>0.56537104</y>
+              <x>0.22897801</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1752,9 +517,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>s</caption_level_1>
@@ -1769,19 +534,19 @@
         <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.19681457</x>
-              <y>0.45936397</y>
+              <x>0.23156533</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.2502844</x>
-              <y>0.56537104</y>
+              <x>0.28719276</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1789,9 +554,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>d</caption_level_1>
@@ -1806,19 +571,19 @@
         <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.2502844</x>
-              <y>0.45936397</y>
+              <x>0.28978008</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.3026166</x>
-              <y>0.56537104</y>
+              <x>0.34670117</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1826,9 +591,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>f</caption_level_1>
@@ -1840,24 +605,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="4" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.3026166</x>
-              <y>0.45936397</y>
+              <x>0.3492885</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.35494882</x>
-              <y>0.56537104</y>
+              <x>0.40620956</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1865,9 +628,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>g</caption_level_1>
@@ -1879,22 +642,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="5" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.35494882</x>
-              <y>0.45936397</y>
+              <x>0.4087969</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.40841866</x>
-              <y>0.56537104</y>
+              <x>0.46571797</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1902,9 +665,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>h</caption_level_1>
@@ -1916,22 +679,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="6" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.40841866</x>
-              <y>0.45936397</y>
+              <x>0.4683053</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.46188852</x>
-              <y>0.56537104</y>
+              <x>0.5226391</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1939,9 +702,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>j</caption_level_1>
@@ -1953,22 +716,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="7" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.46075085</x>
-              <y>0.45936397</y>
+              <x>0.5252264</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.51308304</x>
-              <y>0.56537104</y>
+              <x>0.57956016</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -1976,9 +739,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>k</caption_level_1>
@@ -1990,24 +753,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-      </keylist>
-      <keylist order="2" caption="3">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="8" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.51308304</x>
-              <y>0.45936397</y>
+              <x>0.5821475</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.5665529</x>
-              <y>0.56537104</y>
+              <x>0.63906854</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2015,9 +776,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>l</caption_level_1>
@@ -2029,22 +790,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="9" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.56541526</x>
-              <y>0.45936397</y>
+              <x>0.64165586</x>
+              <y>0.40807176</y>
             </point>
             <point position="max">
-              <x>0.6177474</x>
-              <y>0.56537104</y>
+              <x>0.698577</x>
+              <y>0.5650224</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2052,9 +813,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>m</caption_level_1>
@@ -2066,100 +827,24 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.6188851</x>
-              <y>0.45936397</y>
-            </point>
-            <point position="max">
-              <x>0.67235494</x>
-              <y>0.56537104</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>ù</caption_level_1>
-          <caption_level_2>%</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="190" />
-            <command_shift id="134" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.67121726</x>
-              <y>0.45936397</y>
-            </point>
-            <point position="max">
-              <x>0.72468716</x>
-              <y>0.56537104</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>*</caption_level_1>
-          <caption_level_2>µ</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="131" />
-            <command_shift id="132" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
       </keylist>
-    </keygroup>
-    <keygroup caption="Ligne5" order="4" visible="true">
-      <keylist order="0" caption="1">
-        <keylevel order="0" caption_image="false" holdable="true">
+      <keylist order="2" caption="3e ligne">
+        <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.007963595</x>
-              <y>0.5865724</y>
+              <x>0.11513583</x>
+              <y>0.59641254</y>
             </point>
             <point position="max">
-              <x>0.06825939</x>
-              <y>0.69611305</y>
+              <x>0.17076325</x>
+              <y>0.75336325</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2167,77 +852,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption>Maj</caption>
-          <level>SHIFT</level>
-        </keylevel>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.06825939</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.12172924</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>&lt;</caption_level_1>
-          <caption_level_2>&gt;</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="124" />
-            <command_shift id="125" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.12059158</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.17406143</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>w</caption_level_1>
@@ -2249,22 +866,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.17406143</x>
-              <y>0.5865724</y>
+              <x>0.17335059</x>
+              <y>0.59641254</y>
             </point>
             <point position="max">
-              <x>0.22639363</x>
-              <y>0.69611305</y>
+              <x>0.22897801</x>
+              <y>0.75336325</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2272,9 +889,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>x</caption_level_1>
@@ -2286,22 +903,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.22753128</x>
-              <y>0.5865724</y>
+              <x>0.23156533</x>
+              <y>0.59641254</y>
             </point>
             <point position="max">
-              <x>0.28100115</x>
-              <y>0.69611305</y>
+              <x>0.28719276</x>
+              <y>0.75336325</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2309,9 +926,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>c</caption_level_1>
@@ -2323,24 +940,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
+        <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.27986348</x>
-              <y>0.5865724</y>
+              <x>0.28978008</x>
+              <y>0.59641254</y>
             </point>
             <point position="max">
-              <x>0.33333334</x>
-              <y>0.69611305</y>
+              <x>0.34670117</x>
+              <y>0.75336325</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2348,9 +963,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>v</caption_level_1>
@@ -2362,22 +977,22 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="4" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.38566554</x>
-              <y>0.5865724</y>
+              <x>0.3492885</x>
+              <y>0.59641254</y>
             </point>
             <point position="max">
-              <x>0.43913537</x>
-              <y>0.69611305</y>
+              <x>0.40620956</x>
+              <y>0.75336325</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2385,83 +1000,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>n</caption_level_1>
-          <caption_level_2>N</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="25" />
-            <command_shift id="61" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.43799773</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.49146757</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>,</caption_level_1>
-          <caption_level_2>?</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="92" />
-            <command_shift id="96" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.33333334</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.38566554</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1>b</caption_level_1>
@@ -2473,24 +1014,61 @@
             <command_altgr id="" />
           </commands>
         </keycharacter>
+        <keycharacter order="5" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.4087969</x>
+              <y>0.59641254</y>
+            </point>
+            <point position="max">
+              <x>0.46571797</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>188</red>
+              <green>188</green>
+              <blue>254</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>n</caption_level_1>
+          <caption_level_2>N</caption_level_2>
+          <caption_level_3 />
+          <commands>
+            <command_normal id="25" />
+            <command_shift id="61" />
+            <command_altgr id="" />
+          </commands>
+        </keycharacter>
       </keylist>
-      <keylist order="2" caption="3">
+      <keylist order="3" caption="espace">
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.49146757</x>
-              <y>0.5865724</y>
+              <x>0.20698577</x>
+              <y>0.7847534</y>
             </point>
             <point position="max">
-              <x>0.54379976</x>
-              <y>0.69611305</y>
+              <x>0.54333764</x>
+              <y>0.94170403</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2498,268 +1076,9 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>;</caption_level_1>
-          <caption_level_2>.</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="93" />
-            <command_shift id="97" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.54266214</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.596132</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>:</caption_level_1>
-          <caption_level_2 />
-          <caption_level_3 />
-          <commands>
-            <command_normal id="94" />
-            <command_shift id="135" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.596132</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.64846414</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>!</caption_level_1>
-          <caption_level_2>§</caption_level_2>
-          <caption_level_3 />
-          <commands>
-            <command_normal id="95" />
-            <command_shift id="136" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keylevel order="3" caption_image="false" holdable="true">
-          <coordinates>
-            <point position="min">
-              <x>0.6496018</x>
-              <y>0.5865724</y>
-            </point>
-            <point position="max">
-              <x>0.8088737</x>
-              <y>0.69611305</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption>Maj</caption>
-          <level>SHIFT</level>
-        </keylevel>
-      </keylist>
-    </keygroup>
-    <keygroup caption="Ligne6" order="5" visible="true">
-      <keylist order="0" caption="1">
-        <keycharacter order="0" caption_image="false" holdable="true">
-          <coordinates>
-            <point position="min">
-              <x>0.007963595</x>
-              <y>0.7208481</y>
-            </point>
-            <point position="max">
-              <x>0.06825939</x>
-              <y>0.83038867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Ctrl</caption_level_1>
-          <caption_level_2>Ctrl</caption_level_2>
-          <caption_level_3>Ctrl</caption_level_3>
-          <commands>
-            <command_normal id="66" />
-            <command_shift id="66" />
-            <command_altgr id="66" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.06825939</x>
-              <y>0.7208481</y>
-            </point>
-            <point position="max">
-              <x>0.12172924</x>
-              <y>0.83038867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Win</caption_level_1>
-          <caption_level_2>Win</caption_level_2>
-          <caption_level_3>Win</caption_level_3>
-          <commands>
-            <command_normal id="67" />
-            <command_shift id="67" />
-            <command_altgr id="67" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false" holdable="true">
-          <coordinates>
-            <point position="min">
-              <x>0.12059158</x>
-              <y>0.7208481</y>
-            </point>
-            <point position="max">
-              <x>0.18202503</x>
-              <y>0.83038867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Alt</caption_level_1>
-          <caption_level_2>Alt</caption_level_2>
-          <caption_level_3>Alt</caption_level_3>
-          <commands>
-            <command_normal id="68" />
-            <command_shift id="68" />
-            <command_altgr id="68" />
-          </commands>
-        </keycharacter>
-      </keylist>
-      <keylist order="1" caption="2">
-        <keycharacter order="0" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.18202503</x>
-              <y>0.7208481</y>
-            </point>
-            <point position="max">
-              <x>0.55972695</x>
-              <y>0.83038867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
           <caption_level_1 />
@@ -2772,23 +1091,25 @@
           </commands>
         </keycharacter>
       </keylist>
-      <keylist order="2" caption="3">
-        <keylevel order="0" caption_image="false" holdable="true">
+    </keygroup>
+    <keygroup caption="touches de fonction" order="1" visible="true">
+      <keylist order="0" caption="droite">
+        <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.55972695</x>
-              <y>0.7208481</y>
+              <x>0.7076326</x>
+              <y>0.21973094</y>
             </point>
             <point position="max">
-              <x>0.6587031</x>
-              <y>0.83038867</y>
+              <x>0.79172057</x>
+              <y>0.37668163</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>153</red>
+              <green>196</green>
+              <blue>196</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2796,67 +1117,180 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
             </color_entered>
           </colors>
-          <caption>Alt Gr</caption>
-          <level>ALT_GR</level>
-        </keylevel>
-        <keycharacter order="1" caption_image="false" holdable="true">
-          <coordinates>
-            <point position="min">
-              <x>0.6587031</x>
-              <y>0.7208481</y>
-            </point>
-            <point position="max">
-              <x>0.74175197</x>
-              <y>0.83038867</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>Win</caption_level_1>
-          <caption_level_2>Win</caption_level_2>
-          <caption_level_3>Win</caption_level_3>
+          <caption_level_1>Suppr</caption_level_1>
+          <caption_level_2>Suppr</caption_level_2>
+          <caption_level_3>Suppr</caption_level_3>
           <commands>
-            <command_normal id="71" />
-            <command_shift id="71" />
-            <command_altgr id="71" />
+            <command_normal id="85" />
+            <command_shift id="85" />
+            <command_altgr id="85" />
           </commands>
         </keycharacter>
+        <keycharacter order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.7076326</x>
+              <y>0.40807176</y>
+            </point>
+            <point position="max">
+              <x>0.79172057</x>
+              <y>0.6591928</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>153</red>
+              <green>196</green>
+              <blue>196</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Entrée</caption_level_1>
+          <caption_level_2>Entrée</caption_level_2>
+          <caption_level_3>Entrée</caption_level_3>
+          <commands>
+            <command_normal id="75" />
+            <command_shift id="75" />
+            <command_altgr id="75" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.7076326</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.79172057</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>153</red>
+              <green>196</green>
+              <blue>196</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Efface</caption_level_1>
+          <caption_level_2>Efface</caption_level_2>
+          <caption_level_3>Efface</caption_level_3>
+          <commands>
+            <command_normal id="76" />
+            <command_shift id="76" />
+            <command_altgr id="76" />
+          </commands>
+        </keycharacter>
+      </keylist>
+      <keylist order="1" caption="gauche">
+        <keycharacter order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.014230272</x>
+              <y>0.21973094</y>
+            </point>
+            <point position="max">
+              <x>0.0996119</x>
+              <y>0.37668163</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>179</red>
+              <green>232</green>
+              <blue>232</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Tab</caption_level_1>
+          <caption_level_2>Tab</caption_level_2>
+          <caption_level_3>Tab</caption_level_3>
+          <commands>
+            <command_normal id="63" />
+            <command_shift id="63" />
+            <command_altgr id="63" />
+          </commands>
+        </keycharacter>
+        <keylevel order="1" caption_image="false" holdable="true">
+          <coordinates>
+            <point position="min">
+              <x>0.014230272</x>
+              <y>0.59641254</y>
+            </point>
+            <point position="max">
+              <x>0.0996119</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>134</red>
+              <green>176</green>
+              <blue>176</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption>Maj</caption>
+          <level>SHIFT</level>
+        </keylevel>
         <keycharacter order="2" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.74175197</x>
-              <y>0.7208481</y>
+              <x>0.014230272</x>
+              <y>0.7847534</y>
             </point>
             <point position="max">
-              <x>0.8555176</x>
-              <y>0.83038867</y>
+              <x>0.0996119</x>
+              <y>0.94170403</y>
             </point>
           </coordinates>
           <colors>
             <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
+              <red>179</red>
+              <green>232</green>
+              <blue>232</blue>
             </color_normal>
             <color_clicked>
               <red>242</red>
@@ -2864,33 +1298,885 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
             </color_entered>
           </colors>
           <caption_level_1>Ctrl</caption_level_1>
           <caption_level_2>Ctrl</caption_level_2>
           <caption_level_3>Ctrl</caption_level_3>
           <commands>
-            <command_normal id="73" />
-            <command_shift id="73" />
-            <command_altgr id="73" />
+            <command_normal id="66" />
+            <command_shift id="66" />
+            <command_altgr id="66" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false" holdable="true">
+          <coordinates>
+            <point position="min">
+              <x>0.112548515</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.19663648</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>179</red>
+              <green>232</green>
+              <blue>232</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Alt</caption_level_1>
+          <caption_level_2>Alt</caption_level_2>
+          <caption_level_3>Alt</caption_level_3>
+          <commands>
+            <command_normal id="68" />
+            <command_shift id="68" />
+            <command_altgr id="68" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="4" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.014230272</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.0996119</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>179</red>
+              <green>232</green>
+              <blue>232</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>Echap</caption_level_1>
+          <caption_level_2>Echap</caption_level_2>
+          <caption_level_3>Echap</caption_level_3>
+          <commands>
+            <command_normal id="62" />
+            <command_shift id="62" />
+            <command_altgr id="62" />
+          </commands>
+        </keycharacter>
+        <keylevel order="5" caption_image="false" holdable="true">
+          <coordinates>
+            <point position="min">
+              <x>0.014230272</x>
+              <y>0.40807176</y>
+            </point>
+            <point position="max">
+              <x>0.0996119</x>
+              <y>0.5650224</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>179</red>
+              <green>232</green>
+              <blue>232</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>0</red>
+              <green>153</green>
+              <blue>153</blue>
+            </color_entered>
+          </colors>
+          <caption>Ver Maj</caption>
+          <level>SHIFT</level>
+          <always_holdable>true</always_holdable>
+        </keylevel>
+      </keylist>
+    </keygroup>
+    <keygroup caption="touches spéciales" order="2" visible="true">
+      <keylist order="0" caption="1ère ligne">
+        <keycharacter order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.2923674</x>
+              <y>0.031390134</y>
+            </point>
+            <point position="max">
+              <x>0.3350582</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>¨</caption_level_1>
+          <caption_level_2>¨</caption_level_2>
+          <caption_level_3>¨</caption_level_3>
+          <commands>
+            <command_normal id="127" />
+            <command_shift id="127" />
+            <command_altgr id="127" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.5614489</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.602846</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>"</caption_level_1>
+          <caption_level_2>"</caption_level_2>
+          <caption_level_3>"</caption_level_3>
+          <commands>
+            <command_normal id="101" />
+            <command_shift id="101" />
+            <command_altgr id="101" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.60672706</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.6494179</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>_</caption_level_1>
+          <caption_level_2>_</caption_level_2>
+          <caption_level_3>_</caption_level_3>
+          <commands>
+            <command_normal id="111" />
+            <command_shift id="111" />
+            <command_altgr id="111" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.112548515</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.15782665</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>à</caption_level_1>
+          <caption_level_2>à</caption_level_2>
+          <caption_level_3>à</caption_level_3>
+          <commands>
+            <command_normal id="115" />
+            <command_shift id="115" />
+            <command_altgr id="115" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="4" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.16041397</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.20051746</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>é</caption_level_1>
+          <caption_level_2>é</caption_level_2>
+          <caption_level_3>é</caption_level_3>
+          <commands>
+            <command_normal id="99" />
+            <command_shift id="99" />
+            <command_altgr id="99" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="5" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.20310478</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.24579561</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>è</caption_level_1>
+          <caption_level_2>è</caption_level_2>
+          <caption_level_3>è</caption_level_3>
+          <commands>
+            <command_normal id="109" />
+            <command_shift id="109" />
+            <command_altgr id="109" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="6" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.6520052</x>
+              <y>0.031390134</y>
+            </point>
+            <point position="max">
+              <x>0.694696</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>@</caption_level_1>
+          <caption_level_2>@</caption_level_2>
+          <caption_level_3>@</caption_level_3>
+          <commands>
+            <command_normal id="116" />
+            <command_shift id="116" />
+            <command_altgr id="116" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="7" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.24838293</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.28978008</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>^</caption_level_1>
+          <caption_level_2>^</caption_level_2>
+          <caption_level_3>^</caption_level_3>
+          <commands>
+            <command_normal id="126" />
+            <command_shift id="126" />
+            <command_altgr id="126" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="8" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.33764553</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.38033634</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>ç</caption_level_1>
+          <caption_level_2>ç</caption_level_2>
+          <caption_level_3>ç</caption_level_3>
+          <commands>
+            <command_normal id="113" />
+            <command_shift id="113" />
+            <command_altgr id="113" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="9" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.38421732</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.42690814</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>'</caption_level_1>
+          <caption_level_2>'</caption_level_2>
+          <caption_level_3>'</caption_level_3>
+          <commands>
+            <command_normal id="103" />
+            <command_shift id="103" />
+            <command_altgr id="103" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="10" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.42949548</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.4721863</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>(</caption_level_1>
+          <caption_level_2>(</caption_level_2>
+          <caption_level_3>(</caption_level_3>
+          <commands>
+            <command_normal id="105" />
+            <command_shift id="105" />
+            <command_altgr id="105" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="11" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.47477362</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.5148771</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>)</caption_level_1>
+          <caption_level_2>)</caption_level_2>
+          <caption_level_3>)</caption_level_3>
+          <commands>
+            <command_normal id="117" />
+            <command_shift id="117" />
+            <command_altgr id="117" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="12" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.5174644</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.55886155</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>167</red>
+              <green>167</green>
+              <blue>251</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>-</caption_level_1>
+          <caption_level_2>-</caption_level_2>
+          <caption_level_3>-</caption_level_3>
+          <commands>
+            <command_normal id="107" />
+            <command_shift id="107" />
+            <command_altgr id="107" />
+          </commands>
+        </keycharacter>
+      </keylist>
+      <keylist order="1" caption="ponctuation">
+        <keycharacter order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.4683053</x>
+              <y>0.59641254</y>
+            </point>
+            <point position="max">
+              <x>0.5084088</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>.</caption_level_1>
+          <caption_level_2>.</caption_level_2>
+          <caption_level_3>.</caption_level_3>
+          <commands>
+            <command_normal id="97" />
+            <command_shift id="97" />
+            <command_altgr id="97" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.5549806</x>
+              <y>0.59641254</y>
+            </point>
+            <point position="max">
+              <x>0.59637773</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>?</caption_level_1>
+          <caption_level_2>?</caption_level_2>
+          <caption_level_3>?</caption_level_3>
+          <commands>
+            <command_normal id="96" />
+            <command_shift id="96" />
+            <command_altgr id="96" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.59896505</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.64165586</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>;</caption_level_1>
+          <caption_level_2>;</caption_level_2>
+          <caption_level_3>;</caption_level_3>
+          <commands>
+            <command_normal id="93" />
+            <command_shift id="93" />
+            <command_altgr id="93" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.5109961</x>
+              <y>0.59192824</y>
+            </point>
+            <point position="max">
+              <x>0.55239326</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>,</caption_level_1>
+          <caption_level_2>,</caption_level_2>
+          <caption_level_3>,</caption_level_3>
+          <commands>
+            <command_normal id="92" />
+            <command_shift id="92" />
+            <command_altgr id="92" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="4" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.59896505</x>
+              <y>0.59641254</y>
+            </point>
+            <point position="max">
+              <x>0.64165586</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>:</caption_level_1>
+          <caption_level_2>:</caption_level_2>
+          <caption_level_3>:</caption_level_3>
+          <commands>
+            <command_normal id="94" />
+            <command_shift id="94" />
+            <command_altgr id="94" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="5" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.6442432</x>
+              <y>0.60089684</y>
+            </point>
+            <point position="max">
+              <x>0.686934</x>
+              <y>0.75336325</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>€</caption_level_1>
+          <caption_level_2>€</caption_level_2>
+          <caption_level_3>€</caption_level_3>
+          <commands>
+            <command_normal id="123" />
+            <command_shift id="123" />
+            <command_altgr id="123" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="6" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.5549806</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.59637773</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>142</red>
+              <green>142</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>102</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>!</caption_level_1>
+          <caption_level_2>!</caption_level_2>
+          <caption_level_3>!</caption_level_3>
+          <commands>
+            <command_normal id="95" />
+            <command_shift id="95" />
+            <command_altgr id="95" />
           </commands>
         </keycharacter>
       </keylist>
     </keygroup>
-    <keygroup caption="AUTO" order="6" visible="true">
-      <keylist order="0" caption="AUTO">
-        <keylevel order="0" caption_image="false" holdable="true">
+    <keygroup caption="flèches" order="3" visible="true">
+      <keylist order="0" caption="flèches">
+        <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.007963595</x>
-              <y>0.45936397</y>
+              <x>0.7076326</x>
+              <y>0.8206278</y>
             </point>
             <point position="max">
-              <x>0.091012515</x>
-              <y>0.56537104</y>
+              <x>0.7503234</x>
+              <y>0.94618833</y>
             </point>
           </coordinates>
           <colors>
@@ -2905,24 +2191,29 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
-          <caption>Caps Lock</caption>
-          <level>SHIFT</level>
-          <always_holdable>true</always_holdable>
-        </keylevel>
-        <keylastword order="1" caption_image="false">
+          <caption_level_1>B</caption_level_1>
+          <caption_level_2>B</caption_level_2>
+          <caption_level_3>B</caption_level_3>
+          <commands>
+            <command_normal id="90" />
+            <command_shift id="90" />
+            <command_altgr id="90" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.86803186</x>
-              <y>0.32508835</y>
+              <x>0.7076326</x>
+              <y>0.69058293</y>
             </point>
             <point position="max">
-              <x>0.96473265</x>
-              <y>0.409894</y>
+              <x>0.7503234</x>
+              <y>0.8116592</y>
             </point>
           </coordinates>
           <colors>
@@ -2937,23 +2228,29 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
-          <caption />
-          <order_dynamic>0</order_dynamic>
-        </keylastword>
-        <keyprediction order="2" caption_image="false">
+          <caption_level_1>H</caption_level_1>
+          <caption_level_2>H</caption_level_2>
+          <caption_level_3>H</caption_level_3>
+          <commands>
+            <command_normal id="88" />
+            <command_shift id="88" />
+            <command_altgr id="88" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.87030715</x>
-              <y>0.7349823</y>
+              <x>0.6649418</x>
+              <y>0.8206278</y>
             </point>
             <point position="max">
-              <x>0.96700794</x>
-              <y>0.8233216</y>
+              <x>0.70633894</x>
+              <y>0.94618833</y>
             </point>
           </coordinates>
           <colors>
@@ -2968,23 +2265,29 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
-          <caption />
-          <order_dynamic>0</order_dynamic>
-        </keyprediction>
-        <keyprediction order="3" caption_image="false">
+          <caption_level_1>G</caption_level_1>
+          <caption_level_2>G</caption_level_2>
+          <caption_level_3>G</caption_level_3>
+          <commands>
+            <command_normal id="89" />
+            <command_shift id="89" />
+            <command_altgr id="89" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.86916953</x>
-              <y>0.6501767</y>
+              <x>0.7516171</x>
+              <y>0.8161435</y>
             </point>
             <point position="max">
-              <x>0.96700794</x>
-              <y>0.7349823</y>
+              <x>0.7930142</x>
+              <y>0.94618833</y>
             </point>
           </coordinates>
           <colors>
@@ -2999,121 +2302,95 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>153</red>
+              <green>153</green>
+              <blue>255</blue>
             </color_entered>
           </colors>
-          <caption />
-          <order_dynamic>0</order_dynamic>
-        </keyprediction>
-        <keyshortcut order="4" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.87030715</x>
-              <y>0.56183743</y>
-            </point>
-            <point position="max">
-              <x>0.96700794</x>
-              <y>0.6501767</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption>Copier</caption>
-          <command id="0" />
-        </keyshortcut>
-        <keystring order="5" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.86916953</x>
-              <y>0.48056537</y>
-            </point>
-            <point position="max">
-              <x>0.96700794</x>
-              <y>0.56537104</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption>MonPass</caption>
-          <base_string>super mot de passe !</base_string>
-          <order_dynamic>0</order_dynamic>
-        </keystring>
-        <keylastword order="6" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.82045454</x>
-              <y>0.8356941</y>
-            </point>
-            <point position="max">
-              <x>0.92045456</x>
-              <y>0.9348442</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>204</red>
-              <green>204</green>
-              <blue>204</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
-            </color_entered>
-          </colors>
-          <caption />
-          <order_dynamic>0</order_dynamic>
-        </keylastword>
+          <caption_level_1>D</caption_level_1>
+          <caption_level_2>D</caption_level_2>
+          <caption_level_3>D</caption_level_3>
+          <commands>
+            <command_normal id="91" />
+            <command_shift id="91" />
+            <command_altgr id="91" />
+          </commands>
+        </keycharacter>
       </keylist>
     </keygroup>
-    <keygroup caption="Souricom" order="7" visible="true">
-      <keylist order="0" caption="Souricom">
+    <keygroup caption="touches d'état" order="4" visible="true">
+      <keylist order="0" caption="touches état">
         <keyclavicom order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.91695106</x>
-              <y>0.1943463</y>
+              <x>0.847348</x>
+              <y>0.03587444</y>
             </point>
             <point position="max">
-              <x>0.96245736</x>
-              <y>0.3074205</y>
+              <x>0.8887451</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>255</red>
+              <green>102</green>
+              <blue>26</blue>
+            </color_clicked>
+            <color_entered>
+              <red>249</red>
+              <green>169</green>
+              <blue>90</blue>
+            </color_entered>
+          </colors>
+          <caption>configuration.png</caption>
+          <action>OPEN_CONFIGURATION</action>
+        </keyclavicom>
+        <keyclavicom order="1" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.9366106</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.97930145</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>255</red>
+              <green>102</green>
+              <blue>26</blue>
+            </color_clicked>
+            <color_entered>
+              <red>249</red>
+              <green>169</green>
+              <blue>90</blue>
+            </color_entered>
+          </colors>
+          <caption>close.png</caption>
+          <action>CLOSE_APPLICATION</action>
+        </keyclavicom>
+        <keyclavicom order="2" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.8033635</x>
+              <y>0.031390134</y>
+            </point>
+            <point position="max">
+              <x>0.84476066</x>
+              <y>0.18834081</y>
             </point>
           </coordinates>
           <colors>
@@ -3128,21 +2405,613 @@
               <blue>99</blue>
             </color_clicked>
             <color_entered>
-              <red>252</red>
-              <green>162</green>
-              <blue>162</blue>
+              <red>249</red>
+              <green>169</green>
+              <blue>90</blue>
             </color_entered>
           </colors>
           <caption>mouse.png</caption>
           <action>SWITCH_KEYBOARD_MOUSE</action>
         </keyclavicom>
+        <keyclavicom order="3" caption_image="true">
+          <coordinates>
+            <point position="min">
+              <x>0.89133245</x>
+              <y>0.03587444</y>
+            </point>
+            <point position="max">
+              <x>0.93402326</x>
+              <y>0.18834081</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>204</red>
+              <green>204</green>
+              <blue>204</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>249</red>
+              <green>169</green>
+              <blue>90</blue>
+            </color_entered>
+          </colors>
+          <caption>close.png</caption>
+          <action>CLOSE_APPLICATION</action>
+        </keyclavicom>
+      </keylist>
+    </keygroup>
+    <keygroup caption="pavé numérique" order="5" visible="true">
+      <keylist order="0" caption="chiffres">
+        <keycharacter order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.8033635</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.8861578</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>0</caption_level_1>
+          <caption_level_2>0</caption_level_2>
+          <caption_level_3>0</caption_level_3>
+          <commands>
+            <command_normal id="165" />
+            <command_shift id="165" />
+            <command_altgr id="165" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.8033635</x>
+              <y>0.6188341</y>
+            </point>
+            <point position="max">
+              <x>0.84476066</x>
+              <y>0.77578473</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>1</caption_level_1>
+          <caption_level_2>1</caption_level_2>
+          <caption_level_3>1</caption_level_3>
+          <commands>
+            <command_normal id="166" />
+            <command_shift id="166" />
+            <command_altgr id="166" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.847348</x>
+              <y>0.6188341</y>
+            </point>
+            <point position="max">
+              <x>0.8887451</x>
+              <y>0.77578473</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>2</caption_level_1>
+          <caption_level_2>2</caption_level_2>
+          <caption_level_3>2</caption_level_3>
+          <commands>
+            <command_normal id="167" />
+            <command_shift id="167" />
+            <command_altgr id="167" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.89133245</x>
+              <y>0.6188341</y>
+            </point>
+            <point position="max">
+              <x>0.93402326</x>
+              <y>0.77578473</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>3</caption_level_1>
+          <caption_level_2>3</caption_level_2>
+          <caption_level_3>3</caption_level_3>
+          <commands>
+            <command_normal id="168" />
+            <command_shift id="168" />
+            <command_altgr id="168" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="4" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.8033635</x>
+              <y>0.4529148</y>
+            </point>
+            <point position="max">
+              <x>0.84476066</x>
+              <y>0.6098655</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>4</caption_level_1>
+          <caption_level_2>4</caption_level_2>
+          <caption_level_3>4</caption_level_3>
+          <commands>
+            <command_normal id="169" />
+            <command_shift id="169" />
+            <command_altgr id="169" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="5" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.847348</x>
+              <y>0.4529148</y>
+            </point>
+            <point position="max">
+              <x>0.8887451</x>
+              <y>0.6098655</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>5</caption_level_1>
+          <caption_level_2>5</caption_level_2>
+          <caption_level_3>5</caption_level_3>
+          <commands>
+            <command_normal id="170" />
+            <command_shift id="170" />
+            <command_altgr id="170" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="6" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.89133245</x>
+              <y>0.4529148</y>
+            </point>
+            <point position="max">
+              <x>0.93402326</x>
+              <y>0.6098655</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>6</caption_level_1>
+          <caption_level_2>6</caption_level_2>
+          <caption_level_3>6</caption_level_3>
+          <commands>
+            <command_normal id="171" />
+            <command_shift id="171" />
+            <command_altgr id="171" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="7" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.8033635</x>
+              <y>0.28699553</y>
+            </point>
+            <point position="max">
+              <x>0.84476066</x>
+              <y>0.44394618</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>7</caption_level_1>
+          <caption_level_2>7</caption_level_2>
+          <caption_level_3>7</caption_level_3>
+          <commands>
+            <command_normal id="172" />
+            <command_shift id="172" />
+            <command_altgr id="172" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="8" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.847348</x>
+              <y>0.28699553</y>
+            </point>
+            <point position="max">
+              <x>0.8887451</x>
+              <y>0.44394618</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>8</caption_level_1>
+          <caption_level_2>8</caption_level_2>
+          <caption_level_3>8</caption_level_3>
+          <commands>
+            <command_normal id="173" />
+            <command_shift id="173" />
+            <command_altgr id="173" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="9" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.89133245</x>
+              <y>0.28699553</y>
+            </point>
+            <point position="max">
+              <x>0.93402326</x>
+              <y>0.44394618</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>9</caption_level_1>
+          <caption_level_2>9</caption_level_2>
+          <caption_level_3>9</caption_level_3>
+          <commands>
+            <command_normal id="174" />
+            <command_shift id="174" />
+            <command_altgr id="174" />
+          </commands>
+        </keycharacter>
+      </keylist>
+      <keylist order="1" caption="signes">
+        <keycharacter order="0" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.9366106</x>
+              <y>0.28699553</y>
+            </point>
+            <point position="max">
+              <x>0.97930145</x>
+              <y>0.44394618</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>+</caption_level_1>
+          <caption_level_2>+</caption_level_2>
+          <caption_level_3>+</caption_level_3>
+          <commands>
+            <command_normal id="162" />
+            <command_shift id="162" />
+            <command_altgr id="162" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="1" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.9366106</x>
+              <y>0.4529148</y>
+            </point>
+            <point position="max">
+              <x>0.97930145</x>
+              <y>0.6098655</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>-</caption_level_1>
+          <caption_level_2>-</caption_level_2>
+          <caption_level_3>-</caption_level_3>
+          <commands>
+            <command_normal id="162" />
+            <command_shift id="162" />
+            <command_altgr id="162" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="2" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.9366106</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.97930145</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>/</caption_level_1>
+          <caption_level_2>/</caption_level_2>
+          <caption_level_3>/</caption_level_3>
+          <commands>
+            <command_normal id="160" />
+            <command_shift id="160" />
+            <command_altgr id="160" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="3" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.9366106</x>
+              <y>0.6188341</y>
+            </point>
+            <point position="max">
+              <x>0.97930145</x>
+              <y>0.77578473</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>x</caption_level_1>
+          <caption_level_2>x</caption_level_2>
+          <caption_level_3>x</caption_level_3>
+          <commands>
+            <command_normal id="161" />
+            <command_shift id="161" />
+            <command_altgr id="161" />
+          </commands>
+        </keycharacter>
+        <keycharacter order="4" caption_image="false">
+          <coordinates>
+            <point position="min">
+              <x>0.89133245</x>
+              <y>0.7847534</y>
+            </point>
+            <point position="max">
+              <x>0.93402326</x>
+              <y>0.94170403</y>
+            </point>
+          </coordinates>
+          <colors>
+            <color_normal>
+              <red>166</red>
+              <green>195</green>
+              <blue>255</blue>
+            </color_normal>
+            <color_clicked>
+              <red>242</red>
+              <green>99</green>
+              <blue>99</blue>
+            </color_clicked>
+            <color_entered>
+              <red>102</red>
+              <green>153</green>
+              <blue>255</blue>
+            </color_entered>
+          </colors>
+          <caption_level_1>=</caption_level_1>
+          <caption_level_2>=</caption_level_2>
+          <caption_level_3>=</caption_level_3>
+          <commands>
+            <command_normal id="120" />
+            <command_shift id="120" />
+            <command_altgr id="120" />
+          </commands>
+        </keycharacter>
       </keylist>
     </keygroup>
   </keyboard>
   <prefered_words active="true">
     <prefered_word frequency="2">famille</prefered_word>
     <prefered_word frequency="1">gub</prefered_word>
-    <prefered_word frequency="2">guerre</prefered_word>
+    <prefered_word frequency="1">guerre</prefered_word>
     <prefered_word frequency="1">france</prefered_word>
     <prefered_word frequency="2">familiale</prefered_word>
     <prefered_word frequency="1">tous</prefered_word>
@@ -3160,14 +3029,36 @@
     <prefered_word frequency="1">uytuyytttttt</prefered_word>
     <prefered_word frequency="1">ttttàERTYI^pitfTYTreryuiirghfv</prefered_word>
     <prefered_word frequency="1">notuyy</prefered_word>
-    <prefered_word frequency="1">yuiy</prefered_word>
-    <prefered_word frequency="1">iu</prefered_word>
-    <prefered_word frequency="1">oiu</prefered_word>
-    <prefered_word frequency="1">guinée</prefered_word>
-    <prefered_word frequency="1">gui</prefered_word>
-    <prefered_word frequency="1">jh</prefered_word>
-    <prefered_word frequency="1">as</prefered_word>
-    <prefered_word frequency="1">data</prefered_word>
+    <prefered_word frequency="1">pmllkjhgtgdgjkjhgt</prefered_word>
+    <prefered_word frequency="1">0412526</prefered_word>
+    <prefered_word frequency="1">@€</prefered_word>
+    <prefered_word frequency="1">ggFsfgg</prefered_word>
+    <prefered_word frequency="1">4&amp;</prefered_word>
+    <prefered_word frequency="1">5*5=</prefered_word>
+    <prefered_word frequency="1">5+5=</prefered_word>
+    <prefered_word frequency="1">bonj</prefered_word>
+    <prefered_word frequency="1">je</prefered_word>
+    <prefered_word frequency="1">suis</prefered_word>
+    <prefered_word frequency="1">^alger</prefered_word>
+    <prefered_word frequency="1">c'esst</prefered_word>
+    <prefered_word frequency="1">joli-lesMAIS</prefered_word>
+    <prefered_word frequency="1">ons</prefered_word>
+    <prefered_word frequency="1">@dv</prefered_word>
+    <prefered_word frequency="1">bonjour</prefered_word>
+    <prefered_word frequency="1">nous</prefered_word>
+    <prefered_word frequency="1">sommes</prefered_word>
+    <prefered_word frequency="1">jeudi</prefered_word>
+    <prefered_word frequency="1">l'heure</prefered_word>
+    <prefered_word frequency="1">de</prefered_word>
+    <prefered_word frequency="1">la</prefered_word>
+    <prefered_word frequency="1">sieste</prefered_word>
+    <prefered_word frequency="1">fdgvdfr</prefered_word>
+    <prefered_word frequency="1">gth</prefered_word>
+    <prefered_word frequency="1">bv</prefered_word>
+    <prefered_word frequency="1">5-5=5+5=</prefered_word>
+    <prefered_word frequency="1">sz</prefered_word>
+    <prefered_word frequency="1">gfyjg</prefered_word>
+    <prefered_word frequency="1">ffjffgtd</prefered_word>
   </prefered_words>
 </profil>
 
