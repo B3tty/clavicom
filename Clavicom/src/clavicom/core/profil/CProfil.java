@@ -70,7 +70,7 @@ public class CProfil
 
 	//----------------------------------------------------------- METHODES --//
 	
-	public Element openFile() throws Exception
+	static public Element openFile( String profilFilePath ) throws Exception
 	{
 		// ======================================================================
 		// chargement du fichier de profil
@@ -93,7 +93,7 @@ public class CProfil
 	public void loadProfileDefautModel() throws Exception
 	{
 		
-		Element racine = openFile();
+		Element racine = openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement du booléen defaultModel
@@ -117,7 +117,7 @@ public class CProfil
 	public void loadProfileLanguageUIName() throws Exception
 	{
 		
-		Element racine = openFile();
+		Element racine = openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement de la langueUI
@@ -139,7 +139,7 @@ public class CProfil
 	
 	public void loadProfileCommandSetName() throws Exception
 	{
-		Element racine = openFile();
+		Element racine = openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement du nom du fichier de commande set à utiliser
@@ -160,7 +160,7 @@ public class CProfil
 	}
 	public void loadProfileShortCutName() throws Exception
 	{
-		Element racine = openFile();
+		Element racine = openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement du nom du fichier de commande set à utiliser
@@ -344,12 +344,8 @@ public class CProfil
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	public void loadProfile ( ) throws Exception
+	public void loadDictionnary (Element racine ) throws Exception
 	{
-		
-		//On initialise un nouvel élément racine avec l'élément racine du document.
-		Element racine = openFile();
-
 		// ======================================================================
 		// chargement du dictionnaire
 		// ======================================================================
@@ -366,7 +362,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadDefaultColor (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement de la couleur par defaut
 		// ======================================================================
@@ -383,7 +382,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadFont (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement de la police
 		// ======================================================================
@@ -400,7 +402,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadTransparency (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement de la transparence
 		// ======================================================================
@@ -417,7 +422,10 @@ public class CProfil
 		{
 			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadSound (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement de la gestion du son
 		// ======================================================================
@@ -434,7 +442,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadNavigation (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement de la navigation
 		// ======================================================================
@@ -451,7 +462,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadKeyboard (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement du clavier
 		// ======================================================================
@@ -468,7 +482,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-
+	}
+	
+	public void loadPreferedWord (Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement des mots préférés de l'utilisateur
 		// ======================================================================
@@ -485,7 +502,10 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-		
+	}
+	
+	public void loadAdvancedOptions(Element racine ) throws Exception
+	{
 		// ======================================================================
 		// chargement des options avancés
 		// ======================================================================
@@ -502,8 +522,22 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
+	}
+	
+	public void loadProfile ( ) throws Exception
+	{
+		//On initialise un nouvel élément racine avec l'élément racine du document.
+		Element racine = openFile( profilFilePath );
 		
-		
+		loadDictionnary( racine );
+		loadDefaultColor( racine );
+		loadFont( racine );
+		loadTransparency( racine );
+		loadSound( racine );
+		loadNavigation( racine );
+		loadKeyboard( racine );
+		loadPreferedWord( racine );
+		loadAdvancedOptions( racine );
 	}
 
 	public CAdvancedOptions getAdvancedOption()

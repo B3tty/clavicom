@@ -195,17 +195,21 @@ public class CLastWordEngine extends CStringsEngine implements
 		// Si ce caractere est un caractere de fin de mot
 		if( IsEndWordCharacter( character ) )
 		{
-			// si la chaine courrente n'est pas vide
-			if( ! currentString.equals("") )
+			// si ce n'est qu'on caracter ( pas de F1, ESCAPE, SPACE ... )
+			if( character.length() == 1 )
 			{
-				// on l'ajoute au début de la liste
-				stringList.add( 0, currentString );
-				
-				// on vide la chaine courrante
-				currentString = "";
-				
-				// on mes a jour les touches
-				updateKeys();
+				// si la chaine courrente n'est pas vide
+				if( ! currentString.equals("") )
+				{
+					// on l'ajoute au début de la liste
+					stringList.add( 0, currentString );
+					
+					// on vide la chaine courrante
+					currentString = "";
+					
+					// on mes a jour les touches
+					updateKeys();
+				}
 			}
 		}
 		else

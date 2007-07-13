@@ -166,6 +166,55 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	{
 		clickThread.play();
 	}
+	
+	public static void verifySoundEngine( UIKeyboard uiKeyboard )
+	{
+		// ========================================================================
+		// on regarde si on doit lancer le moteur de son
+		// ========================================================================
+		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+			CProfil.getInstance().getSound().isSoundOnClic()  ||
+			CProfil.getInstance().getSound().isSoundOnSurvol()  )
+		{
+			if( SoundEngine.getInstance() == null )
+			{
+				SoundEngine.createInstance( );
+			}
+		}
+		
+		if( SoundEngine.getInstance() != null )
+		{
+			// on abonne les différants sons
+			if( CProfil.getInstance().getSound().isSoundOnClic() )
+			{
+				SoundEngine.getInstance().listenPressed( uiKeyboard );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenPressed( uiKeyboard );
+			}
+			
+			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
+			{
+				SoundEngine.getInstance().listenEntered( uiKeyboard );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenEntered( uiKeyboard );
+			}
+			
+			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
+					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
+			{
+				SoundEngine.getInstance().listenDefilement( );
+			}
+			else
+			{
+				SoundEngine.getInstance().unListenDefilement( );
+			}
+		}
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 

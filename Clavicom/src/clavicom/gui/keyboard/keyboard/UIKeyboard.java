@@ -98,7 +98,6 @@ import clavicom.gui.utils.UIBackgroundPanel;
 import clavicom.tools.TEnumCreationKey;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TLevelEnum;
-import clavicom.tools.TNavigationType;
 import clavicom.tools.TPoint;
 //import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
@@ -571,51 +570,9 @@ UIRightClickListener
 		// Maj des keys
 		updateEdit(false);
 		
-		// ========================================================================
-		// on regarde si on doit lancer le moteur de son
-		// ========================================================================
-		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
-			CProfil.getInstance().getSound().isSoundOnClic()  ||
-			CProfil.getInstance().getSound().isSoundOnSurvol()  )
-		{
-			if( SoundEngine.getInstance() == null )
-			{
-				SoundEngine.createInstance( );
-			}
-		}
+		// vérifie le moteur de son
+		SoundEngine.verifySoundEngine( this );
 		
-		if( SoundEngine.getInstance() != null )
-		{
-			// on abonne les différants sons
-			if( CProfil.getInstance().getSound().isSoundOnClic() )
-			{
-				SoundEngine.getInstance().listenPressed( this );
-			}
-			else
-			{
-				SoundEngine.getInstance().unListenPressed( this );
-			}
-			
-			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
-			{
-				SoundEngine.getInstance().listenEntered( this );
-			}
-			else
-			{
-				SoundEngine.getInstance().unListenEntered( this );
-			}
-			
-			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
-			{
-				SoundEngine.getInstance().listenDefilement( );
-			}
-			else
-			{
-				SoundEngine.getInstance().unListenDefilement( );
-			}
-		}
 	}
 	
 	public void select(boolean select)

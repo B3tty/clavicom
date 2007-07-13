@@ -35,6 +35,7 @@ import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.mouse.UIMouse;
+import clavicom.tools.TNavigationType;
 
 public class DefilementEngine implements clickMouseHookListener
 {
@@ -111,7 +112,7 @@ public class DefilementEngine implements clickMouseHookListener
 		mustStart = true;
 	}
 	
-	protected void start()
+	public void forceStartDefilement()
 	{
 		if( defilTimer != null )
 		{
@@ -143,19 +144,26 @@ public class DefilementEngine implements clickMouseHookListener
 	
 	protected Timer createSelectTimer()
 	{
-
 		ActionListener action = new ActionListener()
 		{
-
 			public void actionPerformed(ActionEvent e)
 			{
 				fireDefil();
 			}
-			
 		};
 		
-		// Création d'un timer qui génère un tic - TODO mettre celui du profil
-		int defilement = CProfil.getInstance().getNavigation().getTemporisationDefilement();
+		// Création d'un timer qui génère un tic
+		int defilement = 1000;
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		{
+			// en défilement
+			defilement = CProfil.getInstance().getNavigation().getTemporisationDefilement();
+		}
+		else
+		{
+			// en click temporisé
+			defilement = CProfil.getInstance().getNavigation().getTemporisationClic();
+		}
 		return new Timer( defilement ,action );
 	}
 
@@ -187,7 +195,7 @@ public class DefilementEngine implements clickMouseHookListener
 	{
 		if ( mustStart )
 		{
-			start();
+			forceStartDefilement();
 
 			mustStart = false;
 		}

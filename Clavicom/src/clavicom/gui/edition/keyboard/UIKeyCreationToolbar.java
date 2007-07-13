@@ -25,13 +25,10 @@
 
 package clavicom.gui.edition.keyboard;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
-
 import clavicom.CFilePaths;
 import clavicom.core.keygroup.keyboard.key.CKeyCreation;
 import clavicom.gui.engine.UIKeyCreationEngine;
@@ -59,7 +56,7 @@ public class UIKeyCreationToolbar extends JPanel
 			Color myColorEntered,
 			Color myColorPressed)
 	{
-		setLayout( new GridLayout(2, 6, SPACE_BETWEEN_KEYS, SPACE_BETWEEN_KEYS) );
+		setLayout( new GridLayout(2, 7, SPACE_BETWEEN_KEYS, SPACE_BETWEEN_KEYS) );
 		
 		// ===================================================================
 		// création de toutes les touches
@@ -70,16 +67,28 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER_TOOLTIP")
 				);
 		
-		CreateKey(CFilePaths.getToolKeyLauncherPicture(),
-				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
-				TEnumCreationKey.T_KEY_LAUNCHER,
-				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER_TOOLTIP")
+		CreateKey(CFilePaths.getToolKeyStringPicture(),
+				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
+				TEnumCreationKey.T_KEY_STRING,
+				UIString.getUIString("LB_KEYCREATION_KEYSTRING_TOOLTIP")
+				);
+		
+		CreateKey(CFilePaths.getToolKeyShortCutPicture(),
+				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
+				TEnumCreationKey.T_KEY_SHORTCUT,
+				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeySoundPicture(),
 				UIString.getUIString("LB_KEYCREATION_KEYSOUND"),
 				TEnumCreationKey.T_KEY_SOUND,
 				UIString.getUIString("LB_KEYCREATION_KEYSOUND_TOOLTIP")
+				);
+		
+		CreateKey(CFilePaths.getToolKeyLauncherPicture(),
+				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER"),
+				TEnumCreationKey.T_KEY_LAUNCHER,
+				UIString.getUIString("LB_KEYCREATION_KEYLAUNCHER_TOOLTIP")
 				);
 	
 		CreateKey(CFilePaths.getToolKeyLastWordPicture(),
@@ -93,18 +102,6 @@ public class UIKeyCreationToolbar extends JPanel
 				TEnumCreationKey.T_KEY_PREDICTION,
 				UIString.getUIString("LB_KEYCREATION_KEYPREDICTION_TOOLTIP")
 				);
-		
-		CreateKey(CFilePaths.getToolKeyShortCutPicture(),
-				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT"),
-				TEnumCreationKey.T_KEY_SHORTCUT,
-				UIString.getUIString("LB_KEYCREATION_KEYSHORTCUT_TOOLTIP")
-				);
-		
-		CreateKey(CFilePaths.getToolKeyStringPicture(),
-				UIString.getUIString("LB_KEYCREATION_KEYSTRING"),
-				TEnumCreationKey.T_KEY_STRING,
-				UIString.getUIString("LB_KEYCREATION_KEYSTRING_TOOLTIP")
-				);
 
 		CreateKey(CFilePaths.getToolKeyLevelSHIFTPicture(),
 				UIString.getUIString("LB_KEYCREATION_SHIFT"),
@@ -112,7 +109,6 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_SHIFT_TOOLTIP")
 				);
 		
-		// CAPS LOCK - TODO - mettre le bon texte et la bonne image
 		CreateKey(CFilePaths.getToolKeyLevelCAPSLOCKPicture(),
 				UIString.getUIString("LB_KEYCREATION_CAPSLOCK"),
 				TEnumCreationKey.T_KEY_LEVEL_CAPS_LOCK,
@@ -125,16 +121,10 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_KEYCHARACTER_TOOLTIP")
 				);
 		
-		CreateKey(CFilePaths.getToolKeyClavicomClosePicture(),
-				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
-				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP")
-				);
-		
-		CreateKey(CFilePaths.getToolKeyClavicomMinimizePicture(),
-				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION"),
-				TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZE_APPLICATION,
-				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP")
+		CreateKey(CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
+				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
+				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM,
+				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP")
 				);
 		
 		CreateKey(CFilePaths.getToolKeyClavicomConfigurationPicture(),
@@ -143,11 +133,19 @@ public class UIKeyCreationToolbar extends JPanel
 				UIString.getUIString("LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP")
 				);
 		
-		CreateKey(CFilePaths.getToolKeyClavicomSwitchSouricomPicture(),
-				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM"),
-				TEnumCreationKey.T_KEY_CLAVICOM_SWITCH_SOURICOM,
-				UIString.getUIString("LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP")
+		CreateKey(CFilePaths.getToolKeyClavicomMinimizePicture(),
+				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION"),
+				TEnumCreationKey.T_KEY_CLAVICOM_MINIMIZE_APPLICATION,
+				UIString.getUIString("LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP")
 				);
+		
+		CreateKey(CFilePaths.getToolKeyClavicomClosePicture(),
+				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION"),
+				TEnumCreationKey.T_KEY_CLAVICOM_CLOSE_APPLICATION,
+				UIString.getUIString("LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP")
+				);
+		
+
 	}
 
 	//----------------------------------------------------------- METHODES --//	
@@ -178,7 +176,7 @@ public class UIKeyCreationToolbar extends JPanel
 		// Création de l'objet UI
 		uiKeyLauncher = new UIKeyCreation( keyCreation );
 		
-		add( uiKeyLauncher, BorderLayout.CENTER );
+		add( uiKeyLauncher);
 	}
 }
 
