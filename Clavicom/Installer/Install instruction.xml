@@ -11,6 +11,7 @@
     <info>
         <appname>Clavicom NG</appname>
         <appversion>Bêta 3.0</appversion>
+		<appsubpath>Handicap International\Clavicom NG</appsubpath>
         <authors>
             <author name="Thomas Devaux" email="thomas.devaux@gmail.com"/>
             <author name="Guillaume Rebesche" email="guillaume.rebesche@gmail.com"/>
@@ -96,7 +97,7 @@
     <!-- Liste des packs utilisé (groupes de fichiers à installer ou non) -->
     <packs>
 		<pack name="Application" required="yes" preselected="yes">
-            <description>Liste des fichiers nécessaires à l'execution de l'application</description>
+            <description>Liste des fichiers nécessaires à l'execution de l'application.</description>
             <file src="class" targetdir="$INSTALL_PATH"/>
             <file src="libs" targetdir="$INSTALL_PATH"/>
 			<file src="Ressources" targetdir="$INSTALL_PATH"/>
@@ -104,8 +105,17 @@
 			<file src="Clavicom_NG.jar" targetdir="$INSTALL_PATH"/>
         </pack>
         <pack name="Sources" required="no" preselected="no">
-            <description>Fichiers source de l'application</description>
+            <description>Cochez cette option pour installer les fichiers sources de l'application.
+Cette option est utile si vous souhaitez participer à l'amélioration de Clavicom NG.</description>
             <file src="src" targetdir="$INSTALL_PATH"/>
+        </pack>
+        <pack name="Documentation du logiciel" required="no" preselected="yes">
+            <description>Cochez cette option pour installer la documentation utilisateur de Clavicom NG.</description>
+            <file src="Doc" targetdir="$INSTALL_PATH"/>
+        </pack>
+        <pack name="Demarrage au lancement de l'ordinateur" required="no" preselected="yes">
+            <description>Cochez cette option pour ajouter un raccourci qui lancera l'application au demarrage de l'ordinateur.</description>
+            <file src="Doc" targetdir="$INSTALL_PATH"/>
         </pack>
     </packs>
 	

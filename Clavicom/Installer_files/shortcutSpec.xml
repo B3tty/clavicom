@@ -20,9 +20,25 @@
      <createForPack name="Application" />
    </shortcut>
    
+   <!-- Menu démarrer, documentation -->
+   <shortcut
+     name="Documentation"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Doc\ClavicomNG_user_manual.pdf"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_documentation.ico"
+     iconIndex="0"
+     description="Documentation de Clavicom NG">
+     <createForPack name="Documentation du logiciel" />
+   </shortcut>
+   
    <!-- Menu démarrer, désinstaller -->
    <shortcut
-     name="Supprimer Clavicom NG"
+     name="Desinstaller"
      programGroup="yes"
      desktop="no"
      applications="no"
@@ -34,6 +50,54 @@
      iconIndex="0" 
      description="Supprime Clavicom NG de l'ordinateur">
      <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, profils -->
+   <shortcut
+     name="Mes profils"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_profiles.ico"
+     iconIndex="0" 
+     description="Profils de l'utilisateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, Images -->
+   <shortcut
+     name="Mes images"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles\Pictures"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_pictures.ico"
+     iconIndex="0" 
+     description="Images de l'utilisateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, Sources -->
+   <shortcut
+     name="Sources"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\src"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_sources.ico"
+     iconIndex="0" 
+     description="Sources de l'application">
+     <createForPack name="Sources" />
    </shortcut>
    
    <!-- Menu démarrer, lancer au démarrage -->
@@ -49,7 +113,7 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_install.ico"
      iconIndex="0" 
      description="Lance Clavicom NG">
-     <createForPack name="Application" />
+     <createForPack name="Demarrage au lancement de l'ordinateur" />
    </shortcut>  
    
    <!-- Raccourci sur le bureau -->
