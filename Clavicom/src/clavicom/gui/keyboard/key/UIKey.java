@@ -271,7 +271,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 		
 		@Override
-		public void setBounds(Rectangle r)
+		public void setBounds(Rectangle r) 
 		{
 			if (boundsAreOk(r.x, r.y, r.width, r.height))
 				super.setBounds(r);
