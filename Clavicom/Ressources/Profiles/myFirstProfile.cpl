@@ -3,7 +3,7 @@
   <language_ui>french.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>azerty.css</shortcutset_name>
-  <dictionary_name>french_standard.cdc</dictionary_name>
+  <dictionary_name>uk_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
       <red>193</red>
@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1484375</x>
-        <y>0.23046875</y>
+        <x>0.075</x>
+        <y>0.47265625</y>
       </left_up>
       <right_down>
-        <x>0.8359375</x>
-        <y>0.5751953</y>
+        <x>0.7625</x>
+        <y>0.8173828</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -3166,6 +3166,8 @@
     <prefered_word frequency="1">guinée</prefered_word>
     <prefered_word frequency="1">gui</prefered_word>
     <prefered_word frequency="1">jh</prefered_word>
+    <prefered_word frequency="1">as</prefered_word>
+    <prefered_word frequency="1">data</prefered_word>
   </prefered_words>
 </profil>
 

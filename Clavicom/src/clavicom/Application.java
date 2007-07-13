@@ -270,7 +270,6 @@ public class Application
 		// listener pour supprimer le hook a la fermeture de l'application
 		keyboardFrame.addWindowListener(new WindowAdapter()
 		{
-
 			public void windowClosing(WindowEvent e)
 			{
 				if(ClickEngine.getInstance() != null)
@@ -278,7 +277,6 @@ public class Application
 					ClickEngine.getInstance().FinishMouseHook();
 				}
 			}
-
 		});
 	
 		// donne la réference au moteur de défilement
