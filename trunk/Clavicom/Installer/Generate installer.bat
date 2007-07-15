@@ -1,1 +1,0 @@
-".\IzPack\bin\compile" ".\Install instruction.xml" -o "..\..\Clavicom_NG_Installer.jar" -h ".\IzPack" -b "..";
