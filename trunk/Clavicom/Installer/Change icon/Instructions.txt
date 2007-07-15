@@ -1,0 +1,12 @@
+1- Ouvrez ResHacker
+2- Faites "File->Open" et selectionner l'executable (ClavicomNG-install.exe) 
+3- Dans les dossiers qui apparaissent, selectionnez le dossier Icon->1
+4- Faites un clic droit sur la petite icône puis "Replace Resource"
+5- Cliquez sur le bouton "Open file with new icon"
+6- Allez chercher le fichier "icon_install.ico" puis cliquez sur "Ouvrir" puis "Replace".
+7- Une fois revenu à l'écran précédent, faites "File->Save".
+8- Vous pouvez fermer ResHack.
+9- Supprimez le fichier "ClavicomNG-install_original.exe" qui est une copie de l'installeur du début.
+10- "ClavicomNG-Installer.exe" a maintenant une belle icône ! Si vous ne la voyez pas, c'est un bug 
+d'affichage de l'explorateur, copiez l'executable ailleurs ou actualisez.
+
