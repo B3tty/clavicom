@@ -1,238 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Français">
+<language name="English">
 	<!-- ==========================================================================
 		Générales à l'application 
 	==========================================================================  -->
 	
 	<message id = "MSG_APPLICATION_NAME">ClavicomNG</message>
-	<message id = "MSG_APPLICATION_DESCRIPTION">Clavier virtuel universel</message>
+	<message id = "MSG_APPLICATION_DESCRIPTION">Universal virtual keyboard</message>
 	
 	<!-- ========================================================================== 
 		Exceptions 
 	==========================================================================  -->
 	
 	<!-- TITLES -->
-	<message id = "EX_TITLE_FATAL_ERROR">Erreur fatale</message>
-	<message id = "EX_TITLE_ERROR">Erreur</message>
+	<message id = "EX_TITLE_FATAL_ERROR">Fatal error</message>
+	<message id = "EX_TITLE_ERROR">Error</message>
 	<message id = "EX_TITLE_INFO">Information</message>
-	<message id = "EX_TITLE_WARNING">Avertissement</message>
+	<message id = "EX_TITLE_WARNING">Warning</message>
 	
 	<!-- COMMANDESET -->
-	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
-	<message id = "EX_COMMANDSET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
-	<message id = "EX_COMMANDSET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
+	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> CommandSet construction</message>
+	<message id = "EX_COMMANDSET_OPEN_FILE">Error opening file </message>
+	<message id = "EX_COMMANDSET_ERR_ADD_SECTION">Error adding section </message>
 	
 	<!-- SECTION -->
-	<message id = "EX_SECTION_BUILD_SECTION">Construction d'une section de clavier </message>
-	<message id = "EX_SECTION_ERR_ADD_COMMAND">Impossible d'ajouter la commande à la liste des commandes</message>
+	<message id = "EX_SECTION_BUILD_SECTION">Keyboard section construction </message>
+	<message id = "EX_SECTION_ERR_ADD_COMMAND">Cannot add the command to the commands list</message>
 	
 	<!-- CODE -->
-	<message id = "EX_CODE_BUILD_CODE">Construction d'un code de clavier </message>
-	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Impossible de trouver le code caractere correspondant à </message>
-	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Impossible de trouver la bonne action correspondante à </message>
+	<message id = "EX_CODE_BUILD_CODE">Key code construction </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_CODE">Cannot find a code matching </message>
+	<message id = "EX_CODE_CAN_NOT_FIND_KEY_ACTION">Cannot find a action matching </message>
 	
 	<!-- COMMAND -->
-	<message id = "EX_COMMAND_BUILD_COMMANDE">Construction d'une commande de clavier </message>
-	<message id = "EX_COMMAND_CAN_NOT_ADD_CODE">Impossible d'ajouter le code </message>
-	<message id = "EX_COMMAND_IN_THE_COMMANDE"> dans la commande </message>
+	<message id = "EX_COMMAND_BUILD_COMMANDE">Key command construction </message>
+	<message id = "EX_COMMAND_CAN_NOT_ADD_CODE">Cannot add the code </message>
+	<message id = "EX_COMMAND_IN_THE_COMMANDE"> to the command </message>
 	
 	<!-- KEYGROUP -->
-	<message id = "EX_KEYGROUP_BUILD_GROUP">Construction d'un groupe </message>
-	<message id = "EX_KEYGROUP_NOT_FIND_NODE">Impossible de trouver le noeud XML </message>
-	<message id = "EX_KEYGROUP_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
-	<message id = "EX_KEYGROUP_CAN_NOT_CONVERT">Impossible de convertir </message>
-	<message id = "EX_KEYGROUP_TO_BOOLEAN"> en booléen </message>
-	<message id = "EX_KEYGROUP_TO_INTEGER"> en entier </message>
-	<message id = "EX_KEYGROUP_TO_FLOAT"> en float </message>
+	<message id = "EX_KEYGROUP_BUILD_GROUP">Group construction </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_NODE">Cannot find the XML node </message>
+	<message id = "EX_KEYGROUP_NOT_FIND_ATTRIBUTE">Cannot find attribute </message>
+	<message id = "EX_KEYGROUP_CAN_NOT_CONVERT">Cannot convert </message>
+	<message id = "EX_KEYGROUP_TO_BOOLEAN"> to boolean </message>
+	<message id = "EX_KEYGROUP_TO_INTEGER"> to integer </message>
+	<message id = "EX_KEYGROUP_TO_FLOAT"> to float </message>
 	
 	<!-- KEYLIST -->
-	<message id = "EX_KEYLIST_KEY_TYPE">Type de touche </message>
-	<message id = "EX_KEYLIST_TYPE_CHARACTER">Caractere</message>
+	<message id = "EX_KEYLIST_KEY_TYPE">Key type </message>
+	<message id = "EX_KEYLIST_TYPE_CHARACTER">Character</message>
 	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
-	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Lanceur d'application</message>
-	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Lecture d'un son</message>
-	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Raccourci</message>
-	<message id = "EX_KEYLIST_TYPE_STRING">Chaine de caractere</message>
-	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Chaine de caractere dynamique</message>
-	<message id = "EX_KEYLIST_TYPE_LAST_WORD">Dernier mot</message>
+	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Software launcher</message>
+	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Sound player</message>
+	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Shortcut</message>
+	<message id = "EX_KEYLIST_TYPE_STRING">String</message>
+	<message id = "EX_KEYLIST_TYPE_DYNAMIC_STRING">Dynamic string</message>
+	<message id = "EX_KEYLIST_TYPE_LAST_WORD">Last word</message>
 	<message id = "EX_KEYLIST_TYPE_PREDICTION">Prediction</message>
-	<message id = "EX_KEYLIST_TYPE_LEVEL">Gestion des niveaux</message>
-	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Type de touche inconnu</message>
-	<message id = "EX_KEYLIST_BUILD_LIST">Construction d'une liste</message>
-	<message id = "EX_KEYLIST_NOT_FIND_ATTRIBUTE">Impossible de trouver l'attribut </message>
-	<message id = "EX_KEYLIST_FOR_THE_NODE"> pour le noeud </message>
-	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Impossible d'ajouter la touche à la liste </message>
+	<message id = "EX_KEYLIST_TYPE_LEVEL">Level</message>
+	<message id = "EX_KEYLIST_UNKNOWN_KEY_TYPE">Unknown key type</message>
+	<message id = "EX_KEYLIST_BUILD_LIST">List construction</message>
+	<message id = "EX_KEYLIST_NOT_FIND_ATTRIBUTE">Cannot find attribute </message>
+	<message id = "EX_KEYLIST_FOR_THE_NODE"> for the node </message>
+	<message id = "EX_KEYLIST_CAN_NOT_ADD_KEY"> Cannot add key to list </message>
 	
 	<!-- KEYBOARDKEY -->
-	<message id = "EX_KEYBOARDKEY_EMPTY_NODE">[Chargement d'une touche] : Noeud vide</message>
-	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_2"> attendu manquant</message>
+	<message id = "EX_KEYBOARDKEY_EMPTY_NODE">[Key loading] : Empty node</message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_1">[Key loading] : Element </message>
+	<message id = "EX_KEYBOARDKEY_MISSING_ATTRIBUTE_COORDINATE_2"> needed not found</message>
 	
-	<message id = "EX_KEYBOARDKEY_BAD_NUMBER_OF_POINT">[Chargement d'une touche] : Mauvais nombre de </message>
+	<message id = "EX_KEYBOARDKEY_BAD_NUMBER_OF_POINT">[Key loading] : Bad count of </message>
 	
-	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_2"> n'est pas un noeud valide</message>
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_1">[Key loading] : Element </message>
+	<message id = "EX_KEYBOARDKEY_UNVALID_COORDINATE_POS_2"> is not a valid node</message>
 	
-	<message id = "EX_KEYBOARDKEY_BAD_MAX_POINT">[Chargement d'une touche] : point max </message>
+	<message id = "EX_KEYBOARDKEY_BAD_MAX_POINT">[Key loading] : Max point </message>
 	
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_2"> d'attribut </message>
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_3"> trouvé deux fois</message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_1">[Key loading] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_2"> with attribute </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MAX_POINT_3"> found twice</message>
 	
-	<message id = "EX_KEYBOARDKEY_BAD_MIN_POINT">[Chargement d'une touche] : point min </message>
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2"> d'attribut </message>
-	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3"> trouvé deux fois</message>
+	<message id = "EX_KEYBOARDKEY_BAD_MIN_POINT">[Key loading] : Min point </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_1">[Key loading] : Element </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_2"> with attribute </message>
+	<message id = "EX_KEYBOARDKEY_SURNUMEROUS_MIN_POINT_3"> found twice</message>
 	
 	<!-- KEYCLAVICOM -->
-	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
-	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_2"> attendu manquant</message>
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_1">[Clavicom key loading] : Element </message>
+	<message id = "EX_KEYCLAVICOM_MISSING_ACTION_2"> needed not found</message>
 
-	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_1">[Chargement d'une touche clavicom] : Element </message>
-	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_2"> invalide</message>
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_1">[Clavicom key loading] : Element </message>
+	<message id = "EX_KEYCLAVICOM_INVALID_ACTION_2"> is invalid</message>
 	
-	<message id = "EX_KEYCLAVICOM_UNKNOWN_ACTION">[Création d'un noeud touche clavicom] : action inconnue</message>
+	<message id = "EX_KEYCLAVICOM_UNKNOWN_ACTION">[Clavicom key node loading] : unknown action</message>
 
 	<!-- KEYLAUNCHER -->
-	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Chargement d'une touche lancement] : Element </message>
-	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> attendu manquant</message>
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_1">[Launcher key loading] : Element </message>
+	<message id = "EX_KEYLAUNCHER_MISSING_PATH_2"> needed not found</message>
 	
 	<!-- KEYSOUND -->
-	<message id = "EX_KEYSOUND_MISSING_PATH_1">[Chargement d'une touche de son] : Element </message>
-	<message id = "EX_KEYSOUND_MISSING_PATH_2"> attendu manquant</message>
+	<message id = "EX_KEYSOUND_MISSING_PATH_1">[Sound player key loading] : Element </message>
+	<message id = "EX_KEYSOUND_MISSING_PATH_2"> needed not found</message>
 	
 	<!-- KEYSHORTCUT -->
-	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1">[Chargement d'une touche raccourci] : Element </message>
-	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2"> attendu manquant</message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_1">[Shortcut key loading] : Element </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND_2"> needed not found</message>
 
-	<message id = "EX_KEYSHORTCUT_MISSING_ID_1">[Chargement d'une touche raccourci] : Attribut </message>
-	<message id = "EX_KEYSHORTCUT_MISSING_ID_2"> attendu manquant</message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_1">[Shortcut key loading] : Attribute </message>
+	<message id = "EX_KEYSHORTCUT_MISSING_ID_2"> needed not found</message>
 
-	<message id = "EX_KEYSHORTCUT_BAD_ID_1">[Chargement d'une touche raccourci] : Id "</message>
-	<message id = "EX_KEYSHORTCUT_BAD_ID_2">" non trouvé</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_1">[Shortcut key loading] : Id "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_2">" needed not found</message>
 	
-	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
-	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_1">[Character key loading] The string "</message>
+	<message id = "EX_KEYSHORTCUT_BAD_ID_NOT_INT_2">" cannot be converted to integer. "</message>
 		
 	<!-- KEYCHARACTER -->
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Construction de touche caractère] Element "</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED">[Construction de touche caractère] Jeu de commande non chargé</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Construction de touche caractère] Element "</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_2">" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ID_1">[Construction de touche caractère] Attribut "</message>
-	<message id = "EX_KEYCHARACTER_MISSING_ID_2">" attendu non trouvé</message>
-	<message id = "EX_KEYCHARACTER_BAD_ID_1">[Construction de touche caractère] Attribut "</message>
-	<message id = "EX_KEYCHARACTER_BAD_ID_2">" invalide</message>
-	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_1">[Construction de touche caractère] La chaîne "</message>
-	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_2">" ne peut pas être convertie en entier. "</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">[Character key loading] Element "</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMANDS_1">\" needed not found</message>
+	<message id = "EX_KEYCHARACTER_COMMAND_SET_NOT_loadingED">[Character key loading] Command set not loadinged</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1">[Character key loading] Element "</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_2">" needed not found</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_1">[Character key loading] Attribute "</message>
+	<message id = "EX_KEYCHARACTER_MISSING_ID_2">" needed not found</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_1">[Character key loading] Attribute "</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_2">" is invalid</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_1">[Character key loading] The string "</message>
+	<message id = "EX_KEYCHARACTER_BAD_ID_NOT_INT_2">" cannot be converted to integer. "</message>
 	
 	<!-- KEYDYNAMICSTRING -->
-	<message id = "EX_KEYDYNAMICSTRING_COMMANDSET_NOT_LOADED">[Construction de touche chaîne dynamique] Le jeu de commmande n'est pas chargé."</message>
+	<message id = "EX_KEYDYNAMICSTRING_COMMANDSET_NOT_loadingED">[Dynamic string loading] Command set is not loadinged."</message>
 	
-	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_1">[Construction de touche chaîne dynamique] La chaîne "</message>
-	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_2">" ne correpond à aucune commande du jeu de commande.</message>
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_1">[Dynamic string loading] The string "</message>
+	<message id = "EX_KEYDYNAMICSTRING_COMMAND_NOT_FOUND_2">" does not match any command.</message>
 	
-	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique]</message>
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Dynamic string loading]</message>
 	
-	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Construction de touche chaîne dynamique] Attribut "</message>
-	<message id = "EX_KEYDYNAMICSTRING_BUILD">" attendu manquant</message>
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">[Dynamic string loading] Attribute "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BUILD">" needed is missing</message>
 	
-	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_1">[Construction de touche chaîne dynamique] Attribut "</message>
-	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_2">" attendu manquant</message>
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_1">[Dynamic string loading] Attribute "</message>
+	<message id = "EX_KEYDYNAMICSTRING_MISSING_ORDER_2">" needed is missing</message>
 
-	<message id = "EX_KEYDYNAMICSTRING_BAS_ORDER_1">[Construction de touche chaîne dynamique] Attribut ordre "</message>
-	<message id = "EX_KEYDYNAMICSTRING_BAD_ORDER_2">" ne peut pas être converti en entier</message>
+	<message id = "EX_KEYDYNAMICSTRING_BAS_ORDER_1">[Dynamic string loading] Order attribute "</message>
+	<message id = "EX_KEYDYNAMICSTRING_BAD_ORDER_2">" cannot be converted to integer</message>
 		
 	<!-- KEYSTRING -->
-	<message id = "EX_KEYSTRING_MISSING_BASESTRING_1">[Construction de touche chaîne] Element "</message>
-	<message id = "EX_KEYSTRING_MISSING_BASESTRING_2">" manquant</message>
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_1">[String key loading] Element "</message>
+	<message id = "EX_KEYSTRING_MISSING_BASESTRING_2">" needed is missing</message>
 		
 	<!-- SHORTCUTSET -->
-	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Construction du jeu de raccourcis] : Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_SHORTCUTSET_BAD_PATH_1">[Shortcut set loading] : Error opening the file "</message>
 	<message id = "EX_SHORTCUTSET_BAD_PATH_2">"</message>
 	
-	<message id = "EX_SHORTCUTSET_BAD_ROOT_1">[Construction du jeu de raccourcis] : Balise "</message>
-	<message id = "EX_SHORTCUTSET_BAD_ROOT_2">" attendue, "</message>
-	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">" trouvée</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_1">[Shortcut set loading] : Tag "</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_2">" needed, "</message>
+	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">" found</message>
 	
-	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de raccourcis] : Erreur lors de l'ajout de la commande</message>
+	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Shortcut set loading] : Error adding the command </message>
 	
 	<!-- KEY -->
-	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
-	<message id = "EX_KEY_SAVE">Sauvegarde d'une touche </message>
+	<message id = "EX_KEY_BUILD">Key loading </message>
+	<message id = "EX_KEY_SAVE">Key save </message>
 	
 	<!-- COLOR -->
-	<message id = "EX_COLOR_BILD">Chargement de la couleur </message>
-	<message id = "EX_KEY_MISSING_COLOR_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_MISSING_COLOR_2"> attendu manquant</message>
+	<message id = "EX_COLOR_BILD">Color loading </message>
+	<message id = "EX_KEY_MISSING_COLOR_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_2"> needed is missing</message>
 
-	<message id = "EX_KEY_MISSING_COLOR_R_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_MISSING_COLOR_R_2"> attendu manquant</message>
+	<message id = "EX_KEY_MISSING_COLOR_R_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_R_2"> needed is missing</message>
 
-	<message id = "EX_KEY_MISSING_COLOR_G_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_MISSING_COLOR_G_2"> attendu manquant</message>
+	<message id = "EX_KEY_MISSING_COLOR_G_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_G_2"> needed is missing</message>
 
-	<message id = "EX_KEY_MISSING_COLOR_B_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_MISSING_COLOR_B_2"> attendu manquant</message>
+	<message id = "EX_KEY_MISSING_COLOR_B_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_MISSING_COLOR_B_2"> needed is missing</message>
 
-	<message id = "EX_KEY_BAD_COLOR_R_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_BAD_COLOR_R_2"> n'est pas un entier</message>
+	<message id = "EX_KEY_BAD_COLOR_R_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_R_2"> is not a valid integer</message>
 
-	<message id = "EX_KEY_BAD_COLOR_G_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_BAD_COLOR_G_2"> n'est pas un entier</message>
+	<message id = "EX_KEY_BAD_COLOR_G_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_G_2"> is not a valid integer</message>
 
-	<message id = "EX_KEY_BAD_COLOR_B_1">[Chargement d'une touche] : Element </message>
-	<message id = "EX_KEY_BAD_COLOR_B_2"> n'est pas un entier</message>
+	<message id = "EX_KEY_BAD_COLOR_B_1">[Key loading] : Element </message>
+	<message id = "EX_KEY_BAD_COLOR_B_2"> is not a valid integer</message>
 	 
-	<message id = "EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED">[Chargement d'une touche raccourci] : Le jeu de raccourcis n'a pas été chargé, il est impossible de récupérer la commande.</message>
+	<message id = "EX_KEYSHORTCUT_SHORTCUT_SET_NOT_LOADED">[Shortcut key loading] : Shortcut set is not loaded, it is impossible to find the command</message>
 	
 	<!-- Settings -->
-	<message id = "EX_SETTINGS_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
-	<message id = "EX_SETTINGS">Gestion de la configuration de l'application</message>
+	<message id = "EX_SETTINGS_OPEN_FILE">Error loading the file </message>
+	<message id = "EX_SETTINGS">Application settings configuration</message>
 	
 	<!-- keylevel -->
-	<message id = "EX_KEYLEVEL_BUILD">Chargement d'une touche keylevel </message>
+	<message id = "EX_KEYLEVEL_BUILD">Level key loading </message>
 	
 	<!-- Profil -->
-	<message id = "EX_LANGUAGE_UI_BUILD">Chargement du language de l'interface</message>
-	<message id = "EX_LANGUAGE_UI_STRING_NOT_FOUND">Le fichier de language utilisateur n'est pas précisé</message>
+	<message id = "EX_LANGUAGE_UI_BUILD">User interface language loading </message>
+	<message id = "EX_LANGUAGE_UI_STRING_NOT_FOUND">User interface language is not specified</message>
 	
-	<message id = "EX_KEYBOARD_COLOR_BUILD">Chargement de la couleur du clavier</message>
+	<message id = "EX_KEYBOARD_COLOR_BUILD">Keyboard color loading</message>
 	
-	<message id = "EX_KEYBOARD_BUILD">Chargement du clavier</message>
+	<message id = "EX_KEYBOARD_BUILD">Keyboard loading</message>
 	
-	<message id = "EX_SOUND_MISSING_ELEMENT_1">[Chargement des sons] Element "</message>
-	<message id = "EX_SOUND_MISSING_ELEMENT_2">" attendu non trouvé.</message>
+	<message id = "EX_SOUND_MISSING_ELEMENT_1">[Sounds loading] Element "</message>
+	<message id = "EX_SOUND_MISSING_ELEMENT_2">" needed not found.</message>
 
-	<message id = "EX_SOUND_MISSING_ATTRIBUTE_1">[Chargement des sons] Attribut "</message>
-	<message id = "EX_SOUND_MISSING_ATTRIBUTE_2">" attendu non trouvé.</message>	
+	<message id = "EX_SOUND_MISSING_ATTRIBUTE_1">[Sounds loading] Attribute "</message>
+	<message id = "EX_SOUND_MISSING_ATTRIBUTE_2">" needed not found.</message>	
 	
-	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">[Chargement des sons] La chaîne "</message>
-	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">" ne peut être convertie en booléen.</message>		
+	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">[Sounds loading] The string "</message>
+	<message id = "EX_SOUND_BAD_ATTRIBUTE_1">" cannot be converted to boolean.</message>		
 
-	<message id = "EX_PROFIL_BUILD_TRANSPARENCY">Chargement de la transparence</message>
+	<message id = "EX_PROFIL_BUILD_TRANSPARENCY">Transparency loading</message>
 	
-	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Chargement du nom du dictionnaire utilisé</message>
-	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Impossible de trouver le nom du dictionnaire utilisé</message>
+	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Dictionnary name loading</message>
+	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Cannot found the dictionary name</message>
 	
-	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">Chargement des mots préférés de l'utilisateur</message>
+	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">User prefered words loading</message>
 	
-	<message id = "EX_PROFIL_BUILD_PROFIL">Chargement du profil</message>
-	<message id = "EX_PROFIL_SAVE_PROFIL">Enregistrement du profil</message>
+	<message id = "EX_PROFIL_BUILD_PROFIL">Profile loading</message>
+	<message id = "EX_PROFIL_SAVE_PROFIL">Profile saving</message>
 	
-	<message id = "EX_NAVIGATION_MISSING_ELEMENT_1">[Chargement de la navigation] Element "</message>
-	<message id = "EX_NAVIGATION_MISSING_ELEMENT_2">" attendu manquant.</message>
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_1">[Navigation loading] Element "</message>
+	<message id = "EX_NAVIGATION_MISSING_ELEMENT_2">" needed not found.</message>
 	
-	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Chargement de la navigation] Attribut "</message>
-	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Navigation loading] Attribute "</message>
+	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" needed not found.</message>	
 	
-	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1">[Chargement des mots préferes] Attribut "</message>
-	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_2">" attendu manquant.</message>	
+	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1">[Prefered words loading] Attribute "</message>
+	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_2">" required not found.</message>	
 
-	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Chargement de la navigation] La chaîne "</message>
-	<message id = "EX_NAVIGATION_BAD_TYPE_2">" n'est pas un "</message>		
-	<message id = "EX_NAVIGATION_BAD_TYPE_3">" valide.</message>		
+	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Navigation loading] The string "</message>
+	<message id = "EX_NAVIGATION_BAD_TYPE_2">" is not a "</message>		
+	<message id = "EX_NAVIGATION_BAD_TYPE_3">".</message>	
+
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->	
 
 	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_1">[Chargement de la navigation] La chaîne "</message>
 	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_2">" n'est pas un "</message>		
