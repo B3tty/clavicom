@@ -1,1 +1,0 @@
-rem Creation du JAR (utiliser fat jar sous eclipse et le nommer ClavicomNG.jar)
