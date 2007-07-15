@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<shortcuts>
+  <skipIfNotSupported />
+  <programGroup defaultName="Handicap International\Clavicom NG" location="applications"/>
+
+	<!-- Menu démarrer, lancement -->
+   <shortcut
+     name="ClavicomNG"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0"
+     description="Lance ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, documentation -->
+   <shortcut
+     name="Documentation"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Doc\ClavicomNG_user_manual.pdf"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_documentation.ico"
+     iconIndex="0"
+     description="Documentation de ClavicomNG">
+     <createForPack name="Documentation du logiciel" />
+   </shortcut>
+   
+   <!-- Menu démarrer, désinstaller -->
+   <shortcut
+     name="Desinstaller"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Uninstaller\uninstaller.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_uninstall.ico"
+     iconIndex="0" 
+     description="Supprime ClavicomNG de l'ordinateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, profils -->
+   <shortcut
+     name="Mes profils"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_profiles.ico"
+     iconIndex="0" 
+     description="Profils de l'utilisateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, Images -->
+   <shortcut
+     name="Mes images"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles\Pictures"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_pictures.ico"
+     iconIndex="0" 
+     description="Images de l'utilisateur">
+     <createForPack name="Application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, Sources -->
+   <shortcut
+     name="Sources"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\src"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_sources.ico"
+     iconIndex="0" 
+     description="Sources de l'application">
+     <createForPack name="Sources" />
+   </shortcut>
+   
+   <!-- Menu démarrer, lancer au démarrage -->
+   <shortcut
+     name="Clavicom NG"
+     programGroup="no"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="yes"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0" 
+     description="Lance ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="Demarrage au lancement de l'ordinateur" />
+   </shortcut>  
+   
+   <!-- Raccourci sur le bureau -->
+   <shortcut
+     name="Clavicom NG"
+     programGroup="no"
+     desktop="yes"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0" 
+     description="Lance ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="Application" />
+   </shortcut>   
+</shortcuts>
