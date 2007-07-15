@@ -1,0 +1,29 @@
+Pour faire le NativeInstaller : 
+
+Télécharger http://www.softpedia.com/get/System/Launchers-Shutdown-Tools/IzPack-Native-Launcher.shtml .
+le dézipper
+copier le contenu du dossier dist dans le dossier que vous voulez.
+Y placer le fichier launcher.ini (se trouvant dans src)
+Placer le fichier Clavicom_NG_Installer.jar (l'installeur java) dans ce même dossier
+Placer aussi la jre 1.6
+Modifier le contenu du fichier launcher.ini en indiquant le chein vers Clavicom_NG_Installer.jar et la jre ( jar = ... et jre = ... )
+Tester en lancant launcher-Win32.exe pour savoir si cela fonctionne bien
+
+Il faut maintenant empaqueter tout le dossier avec 7-Zip (http://www.7-zip.org/fr/) en séléctionnant tous les fichiers du répèrtoire, puis clique droit, puis 7-zip -> add to archive, choisisez le mode archive 7z, puis ok
+ATTENTION : ne pas séléctionner tout le dossier pour faire l'archivage, il faut bien séléctionner tous les fichiers avant de faire clique droit...
+On se retrouve donc avec un fichier NativeInstaller.7z
+creer un fichier config.txt (dans le même dossier) et y placer les lignes suivantes :
+
+;!@Install@!UTF-8!
+Title="ClavicomNG"
+BeginPrompt="Voulez-vous installer ClavicomNG ?"
+RunProgram="launcher-Win32.exe"
+;!@InstallEnd@!
+
+Copier le fichier 7zS.sfx dans ce même dossier (le fichier 7zS.sfx est un fichier se trouvant dans le repertoir d'installation des ancienne version de 7-zip, il faut le rechercher sur internet si vous ne le trouvez pas dans le dossier d'installation)
+enfin, en ligne de commande, placer-vous dans le dossier, puis tapez la commande :
+copy /B 7zS.sfx + config.txt + NativeInstaller.7z Clavicom.exe
+
+Le fichier Clavicom.exe à été créé et peut maintenant être éxecuté.
+enjoy !
+

@@ -1,0 +1,5 @@
+;!@Install@!UTF-8!
+Title="ClavicomNG"
+BeginPrompt="Voulez-vous installer ClavicomNG ?"
+RunProgram="launcher-Win32.exe"
+;!@InstallEnd@!
