@@ -37,6 +37,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileFilter;
 
 import clavicom.CFilePaths;
 import clavicom.core.message.CMessageEngine;
@@ -208,5 +209,63 @@ public class TSwingUtils
 
 		component.setLocation(x, y);
 	}
+
+	/**
+	 * Récupère l'extension d'un fichier
+	 * @param f
+	 * @return
+	 */
+	public static String getExtension(File f)
+	{
+		String s = f.getName();
+		
+		return getExtension(s);
+	}
+	
+	/**
+	 * Récupère l'extension d'une chaîne
+	 * @param f
+	 * @return
+	 */
+	public static String getExtension(String s)
+	{
+		String ext = null;
+		int i = s.lastIndexOf('.');
+
+		if (i > 0 && i < s.length() - 1)
+		{
+			ext = s.substring(i + 1).toLowerCase();
+		}
+		return ext;
+	}
+
+	public static class FiltreSimple extends FileFilter
+	{
+	   //Description et extension acceptée par le filtre
+	   private String description;
+	   private String extension;
+	   //Constructeur à partir de la description et de l'extension acceptée
+	   public FiltreSimple(String description, String extension){
+	      if(description == null || extension ==null){
+	         throw new NullPointerException("La description (ou extension) ne peut être null.");
+	      }
+	      this.description = description;
+	      this.extension = extension;
+	   }
+	   
+	   //Implémentation de FileFilter
+	   public boolean accept(File file){
+	      if(file.isDirectory()) { 
+	         return true; 
+	      } 
+	      String nomFichier = file.getName().toLowerCase(); 
+
+	      return nomFichier.endsWith(extension);
+	   }
+	      public String getDescription(){
+	      return description;
+	   }
+	}
+
 	// --------------------------------------------------- METHODES PRIVEES --//
 }

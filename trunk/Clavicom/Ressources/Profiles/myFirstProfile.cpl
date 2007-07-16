@@ -62,11 +62,11 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.175</x>
-        <y>0.3935547</y>
+        <x>0.1734375</x>
+        <y>0.40429688</y>
       </left_up>
       <right_down>
-        <x>0.93046874</x>
+        <x>0.928125</x>
         <y>0.76171875</y>
       </right_down>
     </clavicom_frame_position>
@@ -1097,12 +1097,12 @@
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.7076326</x>
-              <y>0.21973094</y>
+              <x>0.71118015</x>
+              <y>0.20689656</y>
             </point>
             <point position="max">
-              <x>0.79172057</x>
-              <y>0.37668163</y>
+              <x>0.7867495</x>
+              <y>0.37931034</y>
             </point>
           </coordinates>
           <colors>
@@ -1131,7 +1131,7 @@
             <command_altgr id="85" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.7076326</x>
@@ -1159,16 +1159,16 @@
               <blue>153</blue>
             </color_entered>
           </colors>
-          <caption_level_1>Entrée</caption_level_1>
-          <caption_level_2>Entrée</caption_level_2>
-          <caption_level_3>Entrée</caption_level_3>
+          <caption_level_1>BASE_KEY_enter_text.png</caption_level_1>
+          <caption_level_2>BASE_KEY_enter_text.png</caption_level_2>
+          <caption_level_3>BASE_KEY_enter_text.png</caption_level_3>
           <commands>
             <command_normal id="75" />
             <command_shift id="75" />
             <command_altgr id="75" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="2" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.7076326</x>
@@ -1196,9 +1196,9 @@
               <blue>153</blue>
             </color_entered>
           </colors>
-          <caption_level_1>Efface</caption_level_1>
-          <caption_level_2>Efface</caption_level_2>
-          <caption_level_3>Efface</caption_level_3>
+          <caption_level_1>BASE_KEY_enter.png</caption_level_1>
+          <caption_level_2>BASE_KEY_enter.png</caption_level_2>
+          <caption_level_3>BASE_KEY_enter.png</caption_level_3>
           <commands>
             <command_normal id="76" />
             <command_shift id="76" />
@@ -1244,7 +1244,7 @@
             <command_altgr id="63" />
           </commands>
         </keycharacter>
-        <keylevel order="1" caption_image="false" holdable="true">
+        <keylevel order="1" caption_image="true" holdable="true">
           <coordinates>
             <point position="min">
               <x>0.014230272</x>
@@ -1272,7 +1272,7 @@
               <blue>153</blue>
             </color_entered>
           </colors>
-          <caption>Maj</caption>
+          <caption>BASE_KEY_shift.png</caption>
           <level>SHIFT</level>
         </keylevel>
         <keycharacter order="2" caption_image="false" holdable="true">
@@ -1644,7 +1644,7 @@
             <command_altgr id="109" />
           </commands>
         </keycharacter>
-        <keycharacter order="6" caption_image="false">
+        <keycharacter order="6" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.6520052</x>
@@ -1672,9 +1672,9 @@
               <blue>255</blue>
             </color_entered>
           </colors>
-          <caption_level_1>@</caption_level_1>
-          <caption_level_2>@</caption_level_2>
-          <caption_level_3>@</caption_level_3>
+          <caption_level_1>BASE_KEY_apple.png</caption_level_1>
+          <caption_level_2>BASE_KEY_apple.png</caption_level_2>
+          <caption_level_3>BASE_KEY_apple.png</caption_level_3>
           <commands>
             <command_normal id="116" />
             <command_shift id="116" />
@@ -2205,7 +2205,7 @@
             <command_altgr id="90" />
           </commands>
         </keycharacter>
-        <keycharacter order="1" caption_image="false">
+        <keycharacter order="1" caption_image="true">
           <coordinates>
             <point position="min">
               <x>0.7076326</x>
@@ -2233,9 +2233,9 @@
               <blue>255</blue>
             </color_entered>
           </colors>
-          <caption_level_1>H</caption_level_1>
-          <caption_level_2>H</caption_level_2>
-          <caption_level_3>H</caption_level_3>
+          <caption_level_1>BASE_KEY_arrow_up.png</caption_level_1>
+          <caption_level_2>BASE_KEY_arrow_up.png</caption_level_2>
+          <caption_level_3>BASE_KEY_arrow_up.png</caption_level_3>
           <commands>
             <command_normal id="88" />
             <command_shift id="88" />
