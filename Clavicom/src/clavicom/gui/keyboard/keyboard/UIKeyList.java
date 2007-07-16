@@ -169,7 +169,7 @@ public class UIKeyList
 		
 		// Déplacement de l'objet du noyau
 		coreKeyList.removeKey(cKey);
-		coreKeyList.addKeyboardKey(cKey);
+		coreKeyList.addKeyboardKey(requiredIndex,cKey);
 		
 		// Déplacement de l'objet de l'UI
 		keys.remove(uiKey);

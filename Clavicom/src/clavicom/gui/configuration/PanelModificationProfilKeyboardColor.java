@@ -62,7 +62,7 @@ public class PanelModificationProfilKeyboardColor extends
 
 	public PanelModificationProfilKeyboardColor(CKeyboardColor myKeyboardColor)
 	{
-		super(UIString.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR"));
+		super(UIString.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR"));
 
 		keyboardColor = myKeyboardColor;
 
@@ -105,7 +105,7 @@ public class PanelModificationProfilKeyboardColor extends
 		DisplayColor(
 				panelBackColor,
 				UIString
-						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR"),
+						.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_BACKCOLOR"),
 				panel);
 
 		panelNormal = new TColorPanel();
@@ -131,7 +131,7 @@ public class PanelModificationProfilKeyboardColor extends
 		});
 		
 		DisplayColor(panelNormal, UIString
-				.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR"),
+				.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_NORMALCOLOR"),
 				panel);
 
 		panelEnteredColor = new TColorPanel();
@@ -159,7 +159,7 @@ public class PanelModificationProfilKeyboardColor extends
 		DisplayColor(
 				panelEnteredColor,
 				UIString
-						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR"),
+						.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_ENTEREDCOLOR"),
 				panel);
 
 		panelClickedColor = new TColorPanel();
@@ -211,7 +211,7 @@ public class PanelModificationProfilKeyboardColor extends
 		DisplayColor(
 				panelClickedColor,
 				UIString
-						.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR"),
+				.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_PRESSEDCOLOR"),
 				panel);
 		
 		
@@ -220,7 +220,6 @@ public class PanelModificationProfilKeyboardColor extends
                 4, 2, //rows, cols
                 6, 6,        //initX, initY
                 6, 6);       //xPad, yPad
-		
 		
 
 		JPanel panelGlobal = new JPanel( );

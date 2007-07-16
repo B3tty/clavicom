@@ -60,7 +60,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfilNavigation(CNavigation myNavigation)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION") );
 		
 		navigation = myNavigation;
 		
@@ -137,7 +137,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		
 		// on initialise avec la temporisation de défilement  
-		labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION") + " : " );
+		labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION") + " : " );
 		panelGlobal.add( labelTempoClic );
 		
 
@@ -168,7 +168,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		
 		// on initialise avec la temporisation de défilement  
-		labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION") + " : " );
+		labelTempoDefil = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION") + " : " );
 		panelGlobal.add( labelTempoDefil );
 		
 		
@@ -186,14 +186,14 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		// ========================================================================
 		// Séléction du mouseMoveOnEntered ou non
 		// ========================================================================
-		mouseMoveOnEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED"), navigation.isMoveMouseOnEntered() );
+		mouseMoveOnEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED"), navigation.isMoveMouseOnEntered() );
 		panelGlobal.add( mouseMoveOnEntered );
 
 		// ========================================================================
 		// Séléction de la temporisation du clic de la souricom
 		// ========================================================================
 		
-		labelTempoSouriom = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED") + " : " );
+		labelTempoSouriom = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_SPEED") + " : " );
 		panelGlobal.add( labelTempoSouriom );
 
 		sliderMouseSpeed = new JSlider();

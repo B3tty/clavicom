@@ -106,7 +106,7 @@ public class UIKeyGroup
 		
 		// Déplacement de l'objet du noyau
 		coreKeyGroup.removeList(cKeyList);
-		coreKeyGroup.AddKeyList(requiredIndex, cKeyList);
+		coreKeyGroup.addKeyList(requiredIndex, cKeyList);
 		
 		// Déplacement de l'objet de l'UI
 		keyLists.remove(uiKeyList);

@@ -49,7 +49,7 @@ public class PanelModificationProfilCommandSetName extends
 	public PanelModificationProfilCommandSetName(
 			CCommandSetName myCommandSetName)
 	{
-		super(UIString.getUIString("LB_CONFPROFIL_PANNEL_COMMANDSET"));
+		super(UIString.getUIString("LB_CONFPROFIL_PANEL_COMMANDSET"));
 
 		commandSetName = myCommandSetName;
 
@@ -64,7 +64,7 @@ public class PanelModificationProfilCommandSetName extends
 
 		JPanel panel = new JPanel();
 		panel.add(new JLabel(UIString
-				.getUIString("LB_CONFPROFIL_PANNEL_COMMANDSET")));
+				.getUIString("LB_CONFPROFIL_PANEL_COMMANDSET")));
 		add(panel, BorderLayout.NORTH);
 
 		combo = new JComboBox();

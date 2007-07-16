@@ -86,9 +86,9 @@ public class PanelModificationProfilAdvancedOption extends
 		// construction des composants
 		// ========================================================
 		TClickSouricomEnum[] clickSouricomArray = 
-			{	TClickSouricomEnum.LEFT_RELEASE,
+			{	/*TClickSouricomEnum.LEFT_RELEASE,*/
 				TClickSouricomEnum.LEFT_PRESS,
-				TClickSouricomEnum.RIGHT_RELEASE,
+				/*TClickSouricomEnum.RIGHT_RELEASE,*/
 				TClickSouricomEnum.RIGHT_PRESS
 			};
 		comboClickSouricom = new JComboBox( clickSouricomArray );

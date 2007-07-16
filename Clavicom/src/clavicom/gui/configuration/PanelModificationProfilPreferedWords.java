@@ -62,7 +62,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 	
 	public PanelModificationProfilPreferedWords(CPreferedWords myPreferedWord)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS") );
 		
 		preferedWord = myPreferedWord;
 		
@@ -79,7 +79,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		// boutton
 		JPanel buttons = new JPanel();
 		
-		JButton buttonDeleteSelected = new JButton( UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS") );
+		JButton buttonDeleteSelected = new JButton( UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_SELECTED_WORDS") );
 		buttonDeleteSelected.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
@@ -100,7 +100,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		});
 		buttons.add( buttonDeleteSelected );
 		
-		JButton buttonDeleteAll = new JButton( UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS") );
+		JButton buttonDeleteAll = new JButton( UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_ALL_WORDS") );
 		buttonDeleteAll.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
@@ -123,7 +123,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		// panel du checkbox active
 		JPanel panelActive = new JPanel();
 		active = new JCheckBox( 
-				UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE"),
+				UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_ACTIVE"),
 				CProfil.getInstance().getPreferedWords().isActive() );
 		panelActive.add( active );
 		panelGlobal.add( panelActive, BorderLayout.NORTH );
@@ -235,8 +235,8 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		List<CDictionaryWord> dictionaryWords;
 		
 		protected String[] columnNames = new String[] {
-				UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS"), 
-				UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY")  };
+				UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_WORDS"), 
+				UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_FREQUENCY")  };
 		
 		protected Class[] columnClasses = new Class[] { 
 				CDictionaryWord.class, Integer.class,   };

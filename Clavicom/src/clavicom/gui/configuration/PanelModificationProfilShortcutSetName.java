@@ -49,7 +49,7 @@ public class PanelModificationProfilShortcutSetName extends
 	public PanelModificationProfilShortcutSetName(
 			CShortCutSetName myShotrcutSetName)
 	{
-		super(UIString.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET"));
+		super(UIString.getUIString("LB_CONFPROFIL_PANEL_SHORTCUTSET"));
 
 		shortcutSetName = myShotrcutSetName;
 
@@ -64,7 +64,7 @@ public class PanelModificationProfilShortcutSetName extends
 
 		JPanel panel = new JPanel();
 		panel.add(new JLabel(UIString
-				.getUIString("LB_CONFPROFIL_PANNEL_SHORTCUTSET")));
+				.getUIString("LB_CONFPROFIL_PANEL_SHORTCUTSET")));
 		add(panel, BorderLayout.NORTH);
 
 		combo = new JComboBox();

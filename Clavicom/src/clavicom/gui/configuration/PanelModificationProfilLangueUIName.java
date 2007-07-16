@@ -49,7 +49,7 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 	
 	public PanelModificationProfilLangueUIName(CLangueUIName myLangueUIName)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_LANGUAGE") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_LANGUAGE") );
 		
 		langueUIName = myLangueUIName;
 		
@@ -63,7 +63,7 @@ public class PanelModificationProfilLangueUIName extends PanelModificationProfil
 		setLayout(new BorderLayout());
 		
 		JPanel panel1 = new JPanel();
-		panel1.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE") ) );
+		panel1.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_LANGUAGE_CHOOSE") ) );
 		add( panel1, BorderLayout.NORTH );
 		
 		combo = new JComboBox();

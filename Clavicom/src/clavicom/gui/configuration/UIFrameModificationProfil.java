@@ -358,49 +358,49 @@ public class UIFrameModificationProfil extends JDialog
 		JPanel panel = new JPanel(); 
 		panelDictionaryName = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
 		panel.add( panelDictionaryName );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_DICTIONARY"), panel);
 		
 		// panel des fonts
 		panel = new JPanel(); 
 		panelFont = new PanelModificationProfilFont( profil.getKeyboardFont() );
 		panel.add( panelFont );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT"), panel);
 		
 		// panel des kayboard color
 		panel = new JPanel(); 
 		panelKeyboardColor = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
 		panel.add( panelKeyboardColor );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR"), panel);
 		
 		// panel des languesUI
 		panel = new JPanel(); 
 		panelLangueUI = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
 		panel.add( panelLangueUI );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_LANGUAGE"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_LANGUAGE"), panel);
 		
 		// panel de navigation
 		panel = new JPanel( new BorderLayout() ); 
 		panelNavigation = new PanelModificationProfilNavigation( profil.getNavigation() );
 		panel.add( panelNavigation, BorderLayout.CENTER );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION"), panel);
 		
 		// panel des preferedWords
 		panel = new JPanel(); 
 		panelPreferedWords = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );
 		panel.add( panelPreferedWords );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_PREFEREDWORDS"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS"), panel);
 		
 		// panel des sound
 		panel = new JPanel(); 
 		panelSound = new PanelModificationProfilSound( profil.getSound() );
 		panel.add( panelSound );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND"), panel);
 		
 		// panel de la transparence
 		panel = new JPanel(); 
 		panelTransparency = new PanelModificationProfilTransparency( profil.getTransparency() );
 		panel.add( panelTransparency );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_TRANSPARENCY"), panel);
 		
 		// panel advancedOptions
 		panel = new JPanel(); 
@@ -415,7 +415,7 @@ public class UIFrameModificationProfil extends JDialog
 		panel = new JPanel(); 
 		panelabout = new PanelModificationProfilAbout(  );
 		panel.add( panelabout );
-		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT"), panel);
+		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT"), panel);
 		
 		// Ajout au panel
 		add(tabbedPane);
