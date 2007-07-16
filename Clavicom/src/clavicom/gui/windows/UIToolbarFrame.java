@@ -611,7 +611,7 @@ UIGridChangedListener
 				if(TSwingUtils.getExtension(profilPath) == null)
 				{
 					profilPath += ".cpl";
-				}					
+				}
 				
 				CSettings.setLastProfilePath( profilPath );
 				

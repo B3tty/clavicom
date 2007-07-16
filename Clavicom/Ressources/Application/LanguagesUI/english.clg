@@ -236,12 +236,12 @@
 
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->	
 
-	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_1">[Chargement de la navigation] La chaîne "</message>
-	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_2">" n'est pas un "</message>		
-	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_3">" valide.</message>
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_1">[Navigation loading] The string "</message>
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_2">" is not a "</message>		
+	<message id = "EX_NAVIGATION_BAD_TEMPORISATION_3">".</message>
 	
-	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Chargement de la navigation] La chaîne "</message>
-	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" n'est pas un "</message>		
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Navigation loading] The string "</message>
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" is not a "</message>		
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>
 	
 	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_1">[Chargement des mots préférés] La chaîne "</message>

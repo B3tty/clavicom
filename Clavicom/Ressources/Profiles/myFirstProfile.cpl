@@ -62,12 +62,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1734375</x>
-        <y>0.40429688</y>
+        <x>0.16171876</x>
+        <y>0.41992188</y>
       </left_up>
       <right_down>
-        <x>0.928125</x>
-        <y>0.76171875</y>
+        <x>0.9164063</x>
+        <y>0.77734375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1126,9 +1126,9 @@
           <caption_level_2>Suppr</caption_level_2>
           <caption_level_3>Suppr</caption_level_3>
           <commands>
-            <command_normal id="85" />
-            <command_shift id="85" />
-            <command_altgr id="85" />
+            <command_normal id="84" />
+            <command_shift id="84" />
+            <command_altgr id="84" />
           </commands>
         </keycharacter>
         <keycharacter order="1" caption_image="true">

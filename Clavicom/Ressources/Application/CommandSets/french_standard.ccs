@@ -353,11 +353,11 @@
 			<code order="0" action="pressed" value="VK_BEGIN"/>
 			<code order="1" action="released" value="VK_BEGIN"/>
 		</command>
-		<command id="84" search_string="DELETE" caption = "Page supérieure">
+		<command id="84" search_string="DELETE" caption = "Suppression">
 			<code order="0" action="pressed" value="VK_DELETE"/>
 			<code order="1" action="released" value="VK_DELETE"/>
 		</command>
-		<command id="85" search_string="PAGE_UP" caption = "Suppression">
+		<command id="85" search_string="PAGE_UP" caption = "Page supérieure">
 			<code order="0" action="pressed" value="VK_PAGE_UP"/>
 			<code order="1" action="released" value="VK_PAGE_UP"/>
 		</command>
