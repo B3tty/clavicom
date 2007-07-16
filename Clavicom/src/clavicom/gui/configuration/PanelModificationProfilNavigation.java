@@ -50,7 +50,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	final int TEMPO_CLIC_MAXIMUM = 3000;
 	
 	final int TEMPO_DEFIL_MINIMUM = 500;
-	final int TEMPO_DEFIL_MAXIMUM = 3000;
+	final int TEMPO_DEFIL_MAXIMUM = 5000;
 	
 	final int MOUSE_SPEED_CLIC_MINIMUM = 0;
 	final int MOUSE_SPEED_CLIC_MAXIMUM = 100;
