@@ -380,7 +380,6 @@ UIGridChangedListener
 			@Override
 			public void paintComponent(Graphics g)
 			{
-				// TODO Auto-generated method stub
 				super.paintComponents(g);
 				
 				if( (btSaveAs.getWidth() > 7) && (btSaveAs.getHeight() > 7) )
@@ -599,11 +598,20 @@ UIGridChangedListener
 		{
 			// sauvegarder le profil sous
 			
-			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
+			JFileChooser fileChooser = new JFileChooser( CFilePaths.getProfilsFolder() );
 			fileChooser.setApproveButtonText( UIString.getUIString("LB_LOAD_PROFIL_VALIDER") );
+			
+			fileChooser.addChoosableFileFilter(new TSwingUtils.FiltreSimple("Clavicom Profile (*.cpl)",".cpl"));
+			
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
 				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
+				
+				// On ajoute l'extension si elle n'y est pas
+				if(TSwingUtils.getExtension(profilPath) == null)
+				{
+					profilPath += ".cpl";
+				}					
 				
 				CSettings.setLastProfilePath( profilPath );
 				
@@ -635,6 +643,10 @@ UIGridChangedListener
 
 			// on affiche le dialogue
 			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
+			
+			// Spécification des extensions affichées
+			fileChooser.addChoosableFileFilter(new TSwingUtils.FiltreSimple("Clavicom Profile (*.cpl)",".cpl"));
+			
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
 				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
