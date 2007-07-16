@@ -2,7 +2,6 @@
 of
 to
 and
-a
 in
 for
 is
@@ -49,18 +48,14 @@ In
 one
 you
 new
-A
-I
 other
 year
 all
 two
-S
 But
 It
 company
 into
-U
 Mr.
 system
 some
@@ -249,7 +244,6 @@ told
 does
 going
 plan
-C
 technology
 increase
 until
@@ -381,7 +375,6 @@ here
 foreign
 began
 Washington
-N
 operations
 future
 best
@@ -632,7 +625,6 @@ states
 functions
 release
 corporate
-T
 across
 needed
 miles
@@ -698,7 +690,6 @@ released
 German
 itself
 exchange
-J
 personal
 something
 telephone
@@ -730,7 +721,6 @@ communications
 officer
 estimated
 Unix
-D
 led
 charge
 black
@@ -871,7 +861,6 @@ rules
 works
 hold
 cannot
-R
 gave
 necessary
 getting
@@ -928,11 +917,9 @@ command
 directly
 nation's
 fiscal
-X
 develop
 thought
 account
-P
 complex
 takes
 produce
@@ -1048,7 +1035,6 @@ direct
 aid
 worked
 DEC
-M
 election
 February
 original
@@ -1062,7 +1048,6 @@ Michael
 idea
 message
 history
-B
 St
 themselves
 allowed
@@ -1111,7 +1096,6 @@ wife
 nothing
 whole
 minutes
-L
 mode
 dollars
 care
@@ -1156,7 +1140,6 @@ George
 game
 executives
 versions
-Y
 bought
 IBM's
 gives
@@ -1212,7 +1195,6 @@ subject
 met
 projects
 raise
-E
 Services
 generally
 primary
@@ -1239,7 +1221,6 @@ de
 site
 internal
 ways
-O
 morning
 aren't
 Dukakis
@@ -1386,7 +1367,6 @@ maker
 Intel
 contains
 task
-H
 normal
 story
 Act
@@ -1468,7 +1448,6 @@ SQL
 natural
 currency
 mainframe
-V
 pounds
 negotiations
 maximum
@@ -1541,7 +1520,6 @@ labor
 relations
 upon
 Dr
-W
 architecture
 adding
 buyers
@@ -1674,7 +1652,6 @@ continuing
 arms
 enter
 waste
-F
 Kuwait
 drugs
 living
@@ -1686,7 +1663,6 @@ largely
 publishing
 dividend
 ask
-K
 looks
 reduction
 prevent
@@ -1830,7 +1806,6 @@ heard
 served
 played
 Only
-G
 parents
 replace
 considering
@@ -2364,7 +2339,6 @@ middle
 ounce
 Inc.'s
 industries
-x
 urged
 falling
 guilty
@@ -2513,7 +2487,6 @@ Williams
 commitment
 presentation
 Using
-s
 somewhat
 regulators
 warned
@@ -2533,12 +2506,10 @@ friend
 Lee
 ideas
 treaty
-Q
 rapidly
 Dallas
 Joseph
 regulatory
-e
 implement
 implemented
 Capital
@@ -3116,7 +3087,6 @@ specifically
 electron
 Week
 appearance
-m
 arrest
 recognition
 holiday
@@ -3386,7 +3356,6 @@ concerning
 delegates
 categories
 Manhattan
-n
 Royal
 arguments
 collapse
@@ -3727,7 +3696,6 @@ NATO
 Credit
 Anderson
 collected
-d
 Avenue
 gateway
 institutional
@@ -3808,7 +3776,6 @@ scandal
 programmer
 sit
 anywhere
-p
 explains
 talked
 Later
@@ -3853,7 +3820,6 @@ suits
 Page
 anniversary
 hoping
-i
 Telecom
 Northwest
 symbol
@@ -4299,7 +4265,6 @@ Integrated
 shortage
 deposit
 Circuit
-c
 stayed
 Steel
 bars
@@ -4447,7 +4412,6 @@ branches
 they've
 citing
 arrangements
-g
 lowered
 restaurants
 profile
@@ -4968,7 +4932,6 @@ pack
 arena
 investing
 recalled
-y
 tube
 clinical
 surged
@@ -5986,7 +5949,6 @@ firefighters
 explore
 rental
 surprisingly
-b
 soldier
 lung
 Reports
@@ -6487,7 +6449,6 @@ challenging
 Olympic
 sand
 objections
-h
 Brazilian
 sellers
 Features
@@ -6859,7 +6820,6 @@ microwave
 please
 abandon
 ranking
-t
 defendant
 traveled
 physicians
@@ -7362,7 +7322,6 @@ receiver
 sealed
 orange
 undertaken
-v
 hunting
 customize
 Urban
@@ -8022,7 +7981,6 @@ terminated
 sky
 wholly
 Quality
-Z
 wires
 drinks
 organizers
@@ -8956,7 +8914,6 @@ Automation
 Smalltalk
 deserve
 habits
-o
 Bancorp
 seal
 devised
@@ -9530,7 +9487,6 @@ sweep
 scenarios
 deliberately
 Walt
-l
 AR
 starring
 Menlo
