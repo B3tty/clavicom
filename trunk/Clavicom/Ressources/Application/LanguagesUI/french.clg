@@ -390,7 +390,7 @@
 	<message id = "LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD">Passage du souricom au clavicom</message>
 	<message id = "LB_KEYCLAVICOM_SWITCH_KEYBOARD_MOUSE">Passage du clavicom au souricom</message>
 	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Fermer l'application</message>
-	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
+	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir la configuration</message>
 	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
 	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
 	<message id = "LB_KEYCLAVICOM_MINIMIZE_APPLICATION">Minimiser l'application</message>
@@ -435,7 +435,7 @@
 	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
 	<message id = "FR_OPTIONS_KEYSOUND">Touche de lecture d'un son</message>
 	<message id = "FR_OPTIONS_KEYLEVEL">Touche </message>
-	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourcit </message>
+	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourci </message>
 	<message id = "FR_OPTIONS_KEYSTRING">Touche chaîne </message>
 	<message id = "FR_OPTIONS_KEYCLAVICOM">Touche </message>
 	
@@ -480,7 +480,6 @@
 	<!-- Key creation -->
 	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
 	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>
-	<message id = "LB_KEYCREATION_KEYSTRING_EXEMPLE">Abdelmalek BOUREGHDA</message>
 	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
 	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
 	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
@@ -511,60 +510,60 @@
 	<message id = "LB_KEYCREATION_CAPSLOCK_TOOLTIP">Création d'une touche "Caps lock"</message>
 	
 	<!-- CONF profil -->
-	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SHORTCUTSET">Type de raccourcis disponibles</message>
-	<message id = "LB_CONFPROFIL_PANNEL_DICTIONARY">Dictionnaire</message>
+	<message id = "LB_CONFPROFIL_PANEL_COMMANDSET">Type de clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_SHORTCUTSET">Type de raccourcis disponibles</message>
+	<message id = "LB_CONFPROFIL_PANEL_DICTIONARY">Dictionnaire</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_FONT">Police</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOSIZE">Taille automatique</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_SIZE">Taille</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOCOLOR">Couleur automatique</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_COLOR">Couleur du texte</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_SHADOW">Ombres</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_BOLD">Gras</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_ITALIC">Italic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_EXEMPLE">Mon pauvre zébu ankylosé choque deux fois ton wagon jaune</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_LB_EXEMPLE">Phrase d'exemple</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT">Police</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_AUTOSIZE">Taille automatique</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_SIZE">Taille</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_AUTOCOLOR">Couleur automatique</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_COLOR">Couleur du texte</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_SHADOW">Ombre</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_BOLD">Gras</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_ITALIC">Italique</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_EXEMPLE">Mon pauvre zébu ankylosé choque deux fois ton wagon jaune</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_LB_EXEMPLE">Phrase d'exemple</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR">Couleur du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR">Couleur de fond du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR">Couleur par defaut d'une touche</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR">Couleur par defaut d'une touche pour le survol</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR">Couleur par defaut d'une touche au clic</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR">Couleur du clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_BACKCOLOR">Couleur de fond du clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_NORMALCOLOR">Couleur par defaut d'une touche</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_ENTEREDCOLOR">Couleur par defaut d'une touche pour le survol</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_PRESSEDCOLOR">Couleur par defaut d'une touche au clic</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE">Langue</message>
-	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE">Choisissez le language</message>
+	<message id = "LB_CONFPROFIL_PANEL_LANGUAGE">Langue</message>
+	<message id = "LB_CONFPROFIL_PANEL_LANGUAGE_CHOOSE">Choisissez le language</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION">Navigation</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD">Standard</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT">Defilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_PRESS">Pression clic gauche</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_RELEASE">Relachement clic droit</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_PRESS">Pression clic droit</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_RELEASE">Relachement clic gauche</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION">Navigation</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_STANDARD">Standard</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT">Defilement</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_PRESS">Pression clic gauche</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_RELEASE">Relachement clic droit</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_PRESS">Pression clic droit</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_RELEASE">Relachement clic gauche</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE">actif</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS">Mots préférés</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_ACTIVE">Actif</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_WORDS">Mot</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND">Son</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL">Au défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISENTERED">Au survol</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED">Au clic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISSTARTED">Au démarrage de l'application</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND">Son</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISDEFIL">Au défilement</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISENTERED">Au survol</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISPRESSED">Au clic</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISSTARTED">Au démarrage de l'application</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Transparence</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
 	
 	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
 	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
@@ -584,16 +583,16 @@
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Options avancées</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Ajouter un espace après les chaines de caractères</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Démarrer l'application automatiquement au démarrage du système d'exploitation</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Clic utilisé pour utliser la souricom</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Clic utilisé pour la souris</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Nombre de défilement avant de remonter d'un niveau</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT">A Propos</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_VERSION">version 5 (beta)</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_CONCEPTION">Conception et developpement par </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_DEV_FOR">Developpé pour</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_BUG_CASE">En cas de problème, veuillez contacter </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_WEB_SITE">Site web </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_ADRESS">Adresse </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT">A Propos</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION">Version 1.0 Bêta 1</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_CONCEPTION">Conception et developpement par </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_DEV_FOR">Developpé pour</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_BUG_CASE">En cas de problème, veuillez contacter </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_WEB_SITE">Site web </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_ADRESS">Adresse </message>
 	
 	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
 	
@@ -645,7 +644,7 @@
 	<message id = "LB_LOAD_PROFIL_TRANSPARENCY">Transparence</message>
 	
 	<message id = "LB_LOAD_PROFIL_INTRO">Choisissez les elements que vous voulez charger :</message>
-	<message id = "LB_LOAD_PROFIL_VALIDER">Valider</message>
+	<message id = "LB_LOAD_PROFIL_VALIDER">OK</message>
 	<message id = "LB_LOAD_PROFIL_ANNULER">Annuler</message>
 
 	<message id = "LB_LOAD_PROFIL_RESTART">L'application va maintenant redémarrer</message>

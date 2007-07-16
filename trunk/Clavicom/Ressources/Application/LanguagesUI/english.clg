@@ -49,7 +49,7 @@
 	<message id = "EX_KEYLIST_KEY_TYPE">Key type </message>
 	<message id = "EX_KEYLIST_TYPE_CHARACTER">Character</message>
 	<message id = "EX_KEYLIST_TYPE_CLAVICOM">Clavicom</message>
-	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Software launcher</message>
+	<message id = "EX_KEYLIST_TYPE_APPLICATION_LAUNCHER">Application launcher</message>
 	<message id = "EX_KEYLIST_TYPE_SOUND_PLAYER">Sound player</message>
 	<message id = "EX_KEYLIST_TYPE_SHORTCUT">Shortcut</message>
 	<message id = "EX_KEYLIST_TYPE_STRING">String</message>
@@ -216,7 +216,7 @@
 	<message id = "EX_PROFIL_BUILD_DICTIONARY_NAME">Dictionnary name loading</message>
 	<message id = "EX_PROFIL_DICTIONARY_NAME_MISSING">Cannot found the dictionary name</message>
 	
-	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">User prefered words loading</message>
+	<message id = "EX_PROFIL_BUILD_PREFERED_WORDS">User preferred words loading</message>
 	
 	<message id = "EX_PROFIL_BUILD_PROFIL">Profile loading</message>
 	<message id = "EX_PROFIL_SAVE_PROFIL">Profile saving</message>
@@ -227,7 +227,7 @@
 	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_1">[Navigation loading] Attribute "</message>
 	<message id = "EX_NAVIGATION_MISSING_ATTRIBUTE_2">" needed not found.</message>	
 	
-	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1">[Prefered words loading] Attribute "</message>
+	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_1">[Preferred words loading] Attribute "</message>
 	<message id = "EX_PREFERED_WORDS_MISSING_ATTRIBUTE_2">" required not found.</message>	
 
 	<message id = "EX_NAVIGATION_BAD_TYPE_1">[Navigation loading] The string "</message>
@@ -242,434 +242,433 @@
 	
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_1">[Navigation loading] The string "</message>
 	<message id = "EX_NAVIGATION_BAD_ROLLOVER_2">" is not a "</message>		
-	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">" valide.</message>
+	<message id = "EX_NAVIGATION_BAD_ROLLOVER_3">".</message>
 	
-	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_1">[Chargement des mots préférés] La chaîne "</message>
-	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_2">" n'est pas un "</message>		
-	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_3">" valide.</message>	
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_1">[Preferred words loading] The string "</message>
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_2">" is not a "</message>		
+	<message id = "EX_PREFERED_WORD_BAD_ACTIVE_3">".</message>	
 	
-	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_1">[Chargement de la navigation] La chaîne "</message>
-	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_2">" n'est pas un "</message>		
-	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_3">" valide.</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_1">[Navigation loading] The string "</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_2">" is not a "</message>		
+	<message id = "EX_NAVIGATION_BAD_MOUSE_MOVE_ENTERED_3">".</message>
 	
-	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_1">[Chargement de la navigation] La chaîne "</message>
-	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_2">" n'est pas un "</message>		
-	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_3">" valide.</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_1">[Navigation loading] The string "</message>
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_2">" is not a "</message>		
+	<message id = "EX_NAVIGATION_BAD_MOUSE_SPEED_3">".</message>
 	
-	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Chargement du nom du commandSet</message>
-	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Impossible de trouver le nom du commandSet utilisé</message>
+	<message id = "EX_PROFIL_BUILD_COMMANDSET_NAME">Command set loading</message>
+	<message id = "EX_PROFIL_COMMANDSET_NAME_MISSING">Cannot find the command set</message>
 	
-	<message id = "EX_PROFIL_FONT_BAD_CAST_1">[Chargement de la police] La chaîne "</message>
-	<message id = "EX_PROFIL_FONT_BAD_CAST_2">" n'est pas un "</message>
-	<message id = "EX_PROFIL_FONT_BAD_CAST_3">" valide.</message>
-	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_1">[Chargement de la police] Element "</message>
-	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_2">" attendu manquant.</message>
-	<message id = "EX_PROFIL_FONT_BAD_COLOR">[Chargement de la police] Impossible de créer la couleur</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_1">[Font loading] The string "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_2">" is not a "</message>
+	<message id = "EX_PROFIL_FONT_BAD_CAST_3">".</message>
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_1">[Font loading] Element "</message>
+	<message id = "EX_PROFIL_FONT_ELEMENT_MISSING_2">" needed is missing.</message>
+	<message id = "EX_PROFIL_FONT_BAD_COLOR">[Font loading] Cannot create color</message>
 	
 	<!-- KEY_ONE_LEVEL -->
-	<message id = "EX_KEY_ONE_LEVEL_BUILD">Chargement d'une touche à un niveau</message>
-	<message id = "LB_KEY_ONE_LEVEL_ENUM_NORMAL">Normale</message>
-	<message id = "LB_KEY_ONE_LEVEL_ENUM_SHIFT">Majuscule</message>
+	<message id = "EX_KEY_ONE_LEVEL_BUILD">Key level loading</message>
+	<message id = "LB_KEY_ONE_LEVEL_ENUM_NORMAL">Normal</message>
+	<message id = "LB_KEY_ONE_LEVEL_ENUM_SHIFT">Upper case</message>
 	<message id = "LB_KEY_ONE_LEVEL_ENUM_ALTGR">Alt-Gr</message>
 	
 	<!-- KEY_THREE_LEVEL -->
-	<message id = "EX_KEY_THREE_LEVEL_BUILD">Chargement d'une touche à trois niveau</message>
+	<message id = "EX_KEY_THREE_LEVEL_BUILD">Three level key loading</message>
 	
 	<!-- UI_KEY -->
-	<message id = "EX_UIKEY_COLOR_ERROR">[Interface touche] Impossible d'accéder à la couleur</message>
+	<message id = "EX_UIKEY_COLOR_ERROR">[Key interface] Cannot find color</message>
 	
 	<!-- DICTIONARY -->
-	<message id = "EX_DICTIONARY_BUILD">Chargement du dictionaire</message>
-	<message id = "EX_DICTIONARY_OPEN">Impossible de lire le fichier </message>
-	<message id = "EX_DICTIONARY_READ">Erreur lors de la lecture du dictionnaire </message>
+	<message id = "EX_DICTIONARY_BUILD">Dictionary loading</message>
+	<message id = "EX_DICTIONARY_OPEN">Cannot read file </message>
+	<message id = "EX_DICTIONARY_READ">Error loading dictionary </message>
 	
 	<!-- MOUSE -->
-	<message id = "EX_MOUSE_BUILD">Construction de la souricom</message>
-	<message id = "EX_MOUSE_KEYSWITCH_CLICKMODE">Erreur lors de la construction de la touche de passage en mode clic de la souricom</message>
-	<message id = "EX_MOUSE_KEYSWITCH_MOVEMODE">Erreur lors de la construction de la touche de passage en mode mouvement de la souricom</message>
-	<message id = "EX_MOUSE_KEYSWITCH_KEYBOARDMODE">Erreur lors de la construction de la touche de passage en mode clavicom de la souricom</message>
-	<message id = "EX_MOUSE_CAN_NOT_LOAD">Impossible de charger la souricom</message>
+	<message id = "EX_MOUSE_BUILD">Souricom construction</message>
+	<message id = "EX_MOUSE_KEYSWITCH_CLICKMODE">Error loading key that switches to souricom click options</message>
+	<message id = "EX_MOUSE_KEYSWITCH_MOVEMODE">Error loading key that switches to souricom move options</message>
+	<message id = "EX_MOUSE_KEYSWITCH_KEYBOARDMODE">Error loading key that switches to keyboard</message>
+	<message id = "EX_MOUSE_CAN_NOT_LOAD">Cannot load souricom</message>
 	
-	<message id = "EX_CLICK_ENGINE_NON_CREE">Le moteur de clic n'est pas créé</message>
+	<message id = "EX_CLICK_ENGINE_NON_CREE">Click engine is not created</message>
 	
 	<!-- CFRAMEPOSITION -->
-	<message id = "EX_FRAME_POSITION_BUILD">Construction de la position de la fenêtre</message>
+	<message id = "EX_FRAME_POSITION_BUILD">Screen position loading</message>
 	
 	<!-- CAdvanced_option -->
-	<message id = "EX_ADVANCED_OPTION_BUILD">Construction des options avancés</message>
+	<message id = "EX_ADVANCED_OPTION_BUILD">Advanced options loading</message>
 	
 	<!-- sound -->
-	<message id = "EX_SOUND_ENGINE_BUILD">Erreur lors du chargement du fichier son </message>
+	<message id = "EX_SOUND_ENGINE_BUILD">Error loading the sound </message>
 	
 	<!-- load/save profil -->
-	<message id = "EX_SAVE_PROFIL">Impossible de sauvegarder le profil dans le fichier </message>
-	<message id = "EX_LOAD_PROFIL_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
-	<message id = "EX_LOAD_PROFIL_ADVANCED_OPTION">Erreur lors du chargement des options avancées</message>
-	<message id = "EX_LOAD_PROFIL_COMMAND_SET">Erreur lors du chargement du commandSet</message>
-	<message id = "EX_LOAD_PROFIL_DICTIONARY">Erreur lors du chargement du dictionaire</message>
-	<message id = "EX_LOAD_PROFIL_FONT">Erreur lors du chargement de la police</message>
-	<message id = "EX_LOAD_PROFIL_FRAME_POSITION">Erreur lors du chargement des position des fenêtres</message>
-	<message id = "EX_LOAD_PROFIL_KEYBOARD">Erreur lors du chargement du clavier</message>
-	<message id = "EX_LOAD_PROFIL_KEYBOARD_COLOR">Erreur lors du chargement des couleurs du clavier</message>
-	<message id = "EX_LOAD_PROFIL_LANGUE_UI">Erreur lors du chargement du language de l'interface</message>
-	<message id = "EX_LOAD_PROFIL_NAVIGATION">Erreur lors du chargement de la navigation</message>
-	<message id = "EX_LOAD_PROFIL_PREFERED_WORD">Erreur lors du chargement des mots préférés</message>
-	<message id = "EX_LOAD_PROFIL_SOUND">Erreur lors du chargement des sons</message>
-	<message id = "EX_LOAD_PROFIL_SHORTCUTSET">Erreur lors du chargement du jeu de raccourci</message>
-	<message id = "EX_LOAD_PROFIL_TRANSPARENCY">Erreur lors du chargement de la transparence</message>
+	<message id = "EX_SAVE_PROFIL">Cannot save the profile to the file </message>
+	<message id = "EX_LOAD_PROFIL_OPEN_FILE">Error opening the file </message>
+	<message id = "EX_LOAD_PROFIL_ADVANCED_OPTION">Error loading advanced options</message>
+	<message id = "EX_LOAD_PROFIL_COMMAND_SET">Error loading command set</message>
+	<message id = "EX_LOAD_PROFIL_DICTIONARY">Error loading dictionary</message>
+	<message id = "EX_LOAD_PROFIL_FONT">Error loading font</message>
+	<message id = "EX_LOAD_PROFIL_FRAME_POSITION">Error loading window positions</message>
+	<message id = "EX_LOAD_PROFIL_KEYBOARD">Error loading keyboard</message>
+	<message id = "EX_LOAD_PROFIL_KEYBOARD_COLOR">Error loading keyboard colors</message>
+	<message id = "EX_LOAD_PROFIL_LANGUE_UI">Error loading user interface language</message>
+	<message id = "EX_LOAD_PROFIL_NAVIGATION">Error loading navigation options</message>
+	<message id = "EX_LOAD_PROFIL_PREFERED_WORD">Error loading preferred words</message>
+	<message id = "EX_LOAD_PROFIL_SOUND">Error loading sounds</message>
+	<message id = "EX_LOAD_PROFIL_SHORTCUTSET">Error loading shortcut sets</message>
+	<message id = "EX_LOAD_PROFIL_TRANSPARENCY">Error loading transparency</message>
 
 	
 	<!-- ==========================================================================
 		Messages 
 	==========================================================================  -->
 	<!-- Application (main seulement)-->
-	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_1">Impossible de charger le dictionnaire "</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_1">Cannot load dictionary "</message>
 	<message id = "MSG_MAIN_CANT_LOAD_DICTIONNARY_2">".</message>
-	<message id = "MSG_MAIN_CANT_LOAD_LEVEL_ENGINE_1">Impossible de charger le moteur de niveau.</message>
-	<message id = "MSG_MAIN_CANT_LOAD_COMMAND_ENGINE_1">Impossible de charger le moteur de commande.</message>
-	<message id = "MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1">Impossible de charger le moteur de derniers mots.</message>
-	<message id = "MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1">Impossible de charger le moteur de lancement d'application.</message>
-	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Impossible de charger le moteur de prediction.</message>
-	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Impossible de charger le moteur de click</message>
-	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
-	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement</message>
-	<message id = "MSG_MAIN_CANT_LOAD_KEY_DEFIL_ENGINE_1">Impossible de charger le moteur de defilement des touches</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LEVEL_ENGINE_1">Cannot load level engine.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_COMMAND_ENGINE_1">Cannot load command engine.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAST_WORD_ENGINE_1">Cannot load last word engine.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_LAUNCHER_ENGINE_1">Cannot load application loader engine.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Cannot load prediction engine.</message>
+	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Cannot load click engine</message>
+	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Cannot load scroll engine</message>
+	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Cannot load keyboard scroll engine</message>
+	<message id = "MSG_MAIN_CANT_LOAD_KEY_DEFIL_ENGINE_1">Cannot key load scroll engine</message>
 		
 	<!-- Message engine -->
-	<message id = "MSG_ENGINE_TITLE_ERROR">Erreur</message>
-	<message id = "MSG_ENGINE_TITLE_WARNING">Avertissement</message>
+	<message id = "MSG_ENGINE_TITLE_ERROR">Error</message>
+	<message id = "MSG_ENGINE_TITLE_WARNING">Warning</message>
 	<message id = "MSG_ENGINE_TITLE_INFO">Information</message>
 	
 	<!-- Command engine -->
-	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Impossible de creer le robot envoyant les caractères</message>
-	<message id = "MSG_COMMAND_ENGINE_CODE_INCORECT">Code de la touche incorrect</message>
-	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">Une ou pluseurs lettres ne sont pas connues</message>
+	<message id = "MSG_COMMAND_ENGINE_NO_ROBOT">Cannot find the robot that generate the characters</message>
+	<message id = "MSG_COMMAND_ENGINE_CODE_INCORECT">Bad key code</message>
+	<message id = "MSG_COMMAND_ENGINE_COMMANDS_UNKNOWN">One or several letters are unknown</message>
 	
-	<message id = "MSG_FONT_MISSING_FONT_1">Impossible de charger la police "</message>
+	<message id = "MSG_FONT_MISSING_FONT_1">Cannot load font "</message>
 	<message id = "MSG_FONT_MISSING_FONT_2">".</message>
 	
-	<message id = "MSG_FONT_MISSING_FONT_REPLACE_1">La police "</message>
-	<message id = "MSG_FONT_MISSING_FONT_REPLACE_2">" sera chargée par défaut."</message>	
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_1">Font "</message>
+	<message id = "MSG_FONT_MISSING_FONT_REPLACE_2">" will be loaded."</message>	
 	
-	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_1">L'image "</message>
-	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_2">" est manquante.</message>
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_1">Picture "</message>
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_2">" is missing.</message>
 	
-	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_3">Le fichier par défaut va être chargé.</message>
+	<message id = "MSG_KEY_IMAGE_FILE_NOT_FOUND_3">Default profile will be loaded.</message>
 	
 	
-	<message id = "MSG_PROFIL_SAVE_FAILED_1">Impossible d'enregistrer le fichier profil à l'emplacement "</message>
+	<message id = "MSG_PROFIL_SAVE_FAILED_1">Cannot save the profile at the place "</message>
 	<message id = "MSG_PROFIL_SAVE_FAILED_2">"</message>
 	
-	<message id = "MSG_SOUND_NOT_LOADED">Impossible de lire le fichier son</message>
+	<message id = "MSG_SOUND_NOT_LOADED">Cannot play the sound file</message>
 	
 	<!-- Launcher engine -->
-	<message id = "MSG_ENGINE_LAUNCHER_ERROR_1">Le fichier "</message>
-	<message id = "MSG_ENGINE_LAUNCHER_ERROR_2">" n'est pas une application valide.</message>
+	<message id = "MSG_ENGINE_LAUNCHER_ERROR_1">The file "</message>
+	<message id = "MSG_ENGINE_LAUNCHER_ERROR_2">" is not a valid executable.</message>
 	<!-- ==========================================================================
 		Labels 
 	==========================================================================  -->
 	
 	<!-- Color -->
-	<message id = "LB_COLOR_CLICKED">Couleur de click</message>
-	<message id = "LB_COLOR_ENTERED">Couleur de survol</message>
-	<message id = "LB_COLOR_NORMAL">Couleur normal</message>
-	<message id = "LB_COLOR_COLOR_MANAGEMENT">Gestion de la couleur</message>
+	<message id = "LB_COLOR_CLICKED">Click color</message>
+	<message id = "LB_COLOR_ENTERED">Entered color</message>
+	<message id = "LB_COLOR_NORMAL">Normal color</message>
+	<message id = "LB_COLOR_COLOR_MANAGEMENT">Color options</message>
 	
 	<!-- optionKey -->
-	<message id = "LB_KEY_BORDER">Couleurs de la touche</message>
-	<message id = "LB_KEY_HOLDABLE">Maintenable</message>
-	<message id = "LB_KEY_RELEASE_HOLDABLE">Relève les touches maintenables</message>
+	<message id = "LB_KEY_BORDER">Key colors</message>
+	<message id = "LB_KEY_HOLDABLE">Holdable</message>
+	<message id = "LB_KEY_RELEASE_HOLDABLE">Release the holdable keys</message>
 		
 	<!-- optionKeyCharacter -->
-	<message id = "LB_KEYCHARACTER_CAPTION">Libéllé</message>
-	<message id = "LB_KEYCHARACTER_CLOSE">Fermer</message>
-	<message id = "LB_KEYCHARACTER_BORDER">Actions des touches</message>
-	<message id = "LB_KEYCHARACTER_CHECKBOX_NOACTION">Aucune action</message>
+	<message id = "LB_KEYCHARACTER_CAPTION">Label</message>
+	<message id = "LB_KEYCHARACTER_CLOSE">Close</message>
+	<message id = "LB_KEYCHARACTER_BORDER">Key actions</message>
+	<message id = "LB_KEYCHARACTER_CHECKBOX_NOACTION">No action</message>
 	
 	
 	<!-- optionKeyClavicom -->
-	<message id = "LB_KEYCLAVICOM_NONE">Rien</message>
-	<message id = "LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD">Passage du souricom au clavicom</message>
-	<message id = "LB_KEYCLAVICOM_SWITCH_KEYBOARD_MOUSE">Passage du clavicom au souricom</message>
-	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Fermer l'application</message>
-	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Ouvrir les configurations</message>
+	<message id = "LB_KEYCLAVICOM_NONE">None</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_MOUSE_KEYBOARD">Switch from mouse to keyboard</message>
+	<message id = "LB_KEYCLAVICOM_SWITCH_KEYBOARD_MOUSE">Switch from keyboard to mouse</message>
+	<message id = "LB_KEYCLAVICOM_CLOSE_APPLICATION">Close application</message>
+	<message id = "LB_KEYCLAVICOM_OPEN_CONFIGURATION">Open options</message>
 	<message id = "LB_KEYCLAVICOM_ACTION">Action</message>
-	<message id = "LB_KEYCLAVICOM_BORDER">Configuration de l'action</message>
-	<message id = "LB_KEYCLAVICOM_MINIMIZE_APPLICATION">Minimiser l'application</message>
+	<message id = "LB_KEYCLAVICOM_BORDER">Action options</message>
+	<message id = "LB_KEYCLAVICOM_MINIMIZE_APPLICATION">Minimize application</message>
 	
 	<!-- optionKeyLauncher -->
 	<message id = "LB_KEYLAUNCHER_APPLICATION">Application</message>
-	<message id = "LB_KEYLAUNCHER_BORDER">Application lancée</message>
+	<message id = "LB_KEYLAUNCHER_BORDER">Launched application</message>
 	
 	<!-- optionKeySound -->
-	<message id = "LB_KEYSOUND_SOUND">Piste audio</message>
-	<message id = "LB_KEYSOUND_BORDER">Son joué</message>
+	<message id = "LB_KEYSOUND_SOUND">Audio track</message>
+	<message id = "LB_KEYSOUND_BORDER">Played sound</message>
 	
 	<!-- optionKeyLevel -->
-	<message id = "LB_KEYLEVEL_ALWAYHOLDABLE">Reste maintenue</message>
+	<message id = "LB_KEYLEVEL_ALWAYHOLDABLE">Stay pressed</message>
 	
 	<!-- optionKeyShortCut -->
-	<message id = "LB_KEYSHORTCUT_BORDER">Raccourci</message>
+	<message id = "LB_KEYSHORTCUT_BORDER">Shortcut</message>
 	
 
 	<!-- optionKeyOneLevel -->
-	<message id = "LB_KEYSONELEVEL_BORDER">Options d'affichage</message>
-	<message id = "LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL">Choisir une image</message>
+	<message id = "LB_KEYSONELEVEL_BORDER">Display options</message>
+	<message id = "LB_KEYSONELEVEL_CAPTION_CHECKBOX_LABEL">Choose a picture</message>
 
 	<!-- optionKeyThreeLevel -->
-	<message id = "LB_KEYSTHREELEVEL_BORDER">Options d'affichage</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER">Display options</message>
 	
 	<message id = "LB_KEYSTHREELEVEL_BORDER_NORMAL">Normal</message>
-	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Majuscule</message>
+	<message id = "LB_KEYSTHREELEVEL_BORDER_SHIFT">Upper case</message>
 	<message id = "LB_KEYSTHREELEVEL_BORDER_ALTGR">Alt-Gr</message>
 		
 	<!-- optionKeyString -->
-	<message id = "LB_KEYSTRING_TEXTDISPLAY">Texte affiché sur la touche</message>
-	<message id = "LB_KEYSTRING_TEXTWRITE">Texte écrit par l'ordinateur</message>
-	<message id = "LB_KEYSTRING_BORDER">Chaîne générée</message>
+	<message id = "LB_KEYSTRING_TEXTDISPLAY">Text displayed on the key</message>
+	<message id = "LB_KEYSTRING_TEXTWRITE">Text written by the computer</message>
+	<message id = "LB_KEYSTRING_BORDER">Generated string</message>
 	
 	<!-- Titres des frames de modification -->
-	<message id = "FR_OPTIONS_MULTIPLE">Modification de plusieurs touches</message>
+	<message id = "FR_OPTIONS_MULTIPLE">Multiple keys edition</message>
 	
-	<message id = "FR_OPTIONS_KEYCHARACTER">Touche caractère </message>
-	<message id = "FR_OPTIONS_KEYPREDICTION">Touche prédiction </message>
-	<message id = "FR_OPTIONS_KEYLASTWORD">Touche de dernier mot </message>
-	<message id = "FR_OPTIONS_KEYLAUNCHER">Touche lancement d'application</message>
-	<message id = "FR_OPTIONS_KEYSOUND">Touche de lecture d'un son</message>
-	<message id = "FR_OPTIONS_KEYLEVEL">Touche </message>
-	<message id = "FR_OPTIONS_KEYSHORTCUT">Touche raccourcit </message>
-	<message id = "FR_OPTIONS_KEYSTRING">Touche chaîne </message>
-	<message id = "FR_OPTIONS_KEYCLAVICOM">Touche </message>
+	<message id = "FR_OPTIONS_KEYCHARACTER">Character key </message>
+	<message id = "FR_OPTIONS_KEYPREDICTION">Prediction key </message>
+	<message id = "FR_OPTIONS_KEYLASTWORD">Last word key </message>
+	<message id = "FR_OPTIONS_KEYLAUNCHER">Application launcher key</message>
+	<message id = "FR_OPTIONS_KEYSOUND">Sound player key</message>
+	<message id = "FR_OPTIONS_KEYLEVEL">Key </message>
+	<message id = "FR_OPTIONS_KEYSHORTCUT">Shortcut key </message>
+	<message id = "FR_OPTIONS_KEYSTRING">String key </message>
+	<message id = "FR_OPTIONS_KEYCLAVICOM">Key </message>
 	
 	<!-- Level editor --> 
-	<message id = "FR_LEVEL_EDITOR_TITLE">Configuration des niveaux de défilement</message>
+	<message id = "FR_LEVEL_EDITOR_TITLE">Edit scroll levels</message>
 	
-	<message id = "FR_LEVEL_EDITOR_UNCLASSED_BORDER">Touches non classées</message>
-	<message id = "FR_LEVEL_EDITOR_CLASSED_BORDER">Touches classées</message>
+	<message id = "FR_LEVEL_EDITOR_UNCLASSED_BORDER">Unclassed keys</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_BORDER">Classed keys</message>
 	
-	<message id = "FR_LEVEL_EDITOR_CLASSED_GROUPS_BORDER">Groupes</message>
-	<message id = "FR_LEVEL_EDITOR_CLASSED_LISTS_BORDER">Listes</message>
-	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Touches</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_GROUPS_BORDER">Groups</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_LISTS_BORDER">Lists</message>
+	<message id = "FR_LEVEL_EDITOR_CLASSED_KEYS_BORDER">Keys</message>
 	
-	<message id = "FR_LEVEL_EDITOR_BT_OK">Fermer</message>
+	<message id = "FR_LEVEL_EDITOR_BT_OK">Close</message>
 	
-	<message id = "FR_LEVEL_EDITOR_BT_CLASS_TOOLTIP">Classer les touches selectionnée</message>
-	<message id = "FR_LEVEL_EDITOR_BT_CLASS_AUTOMATIC_TOOLTIP">Classer toutes les touches dans le niveau par défaut</message>
+	<message id = "FR_LEVEL_EDITOR_BT_CLASS_TOOLTIP">Class selected keys</message>
+	<message id = "FR_LEVEL_EDITOR_BT_CLASS_AUTOMATIC_TOOLTIP">Class all keys in the default level</message>
 	
-	<message id = "FR_LEVEL_EDITOR_BT_ADD_TOOLTIP">Ajouter l'élément</message>
-	<message id = "FR_LEVEL_EDITOR_BT_REMOVE_TOOLTIP">Retirer l'élément</message>
-	<message id = "FR_LEVEL_EDITOR_BT_UP_TOOLTIP">Monter l'élément</message>
-	<message id = "FR_LEVEL_EDITOR_BT_DOWN_TOOLTIP">Descendre l'élément</message>
+	<message id = "FR_LEVEL_EDITOR_BT_ADD_TOOLTIP">Add element</message>
+	<message id = "FR_LEVEL_EDITOR_BT_REMOVE_TOOLTIP">Remove element</message>
+	<message id = "FR_LEVEL_EDITOR_BT_UP_TOOLTIP">Put up element</message>
+	<message id = "FR_LEVEL_EDITOR_BT_DOWN_TOOLTIP">Put down element</message>
 	
-	<message id = "FR_LEVEL_EDITOR_BT_OK_TOOLTIP">Fermer l'éditeur de niveau</message>
+	<message id = "FR_LEVEL_EDITOR_BT_OK_TOOLTIP">Close level manager</message>
 	
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_1">Le groupe "</message>
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_2">" est déja utilisé.</message>
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_3">Choisissez un autre nom.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_1">The group "</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_2">" is already used.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_GROUP_3">Select another name.</message>
 
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_1">La liste "</message>
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_2">" est déja utilisée.</message>
-	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_3">Choisissez un autre nom.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_1">The list "</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_2">" is already used.</message>
+	<message id = "MSG_LEVEL_EDITOR_EXISTING_LIST_3">Select another name.</message>
 
-	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_1">La touche "</message>
-	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_2">" n'a pas pu être classée.</message>
+	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_1">The key "</message>
+	<message id = "MSG_LEVEL_EDITOR_IMPOSSIBLE_CLASSIFICATION_2">" cannot been classed.</message>
 	
 	<!-- Grid modifier -->
-	<message id = "LB_GRID_MODIFIER_MAIN">Grille</message>
+	<message id = "LB_GRID_MODIFIER_MAIN">Grid</message>
 	<message id = "LB_GRID_MODIFIER_VERTICAL">V</message>
 	<message id = "LB_GRID_MODIFIER_HORIZONTAL">H</message>
 	
 	<!-- Key creation -->
-	<message id = "LB_KEYCREATION_KEYCHARACTER">Caractere</message>
-	<message id = "LB_KEYCREATION_KEYSTRING">Chaine de caractere</message>
-	<message id = "LB_KEYCREATION_KEYSTRING_EXEMPLE">Abdelmalek BOUREGHDA</message>
-	<message id = "LB_KEYCREATION_KEYLASTWORD">Derniers mots utilisés</message>
-	<message id = "LB_KEYCREATION_KEYPREDICTION">Prédiction de mots</message>
-	<message id = "LB_KEYCREATION_KEYLAUNCHER">Lancement d'application</message>
-	<message id = "LB_KEYCREATION_KEYSOUND">Lecture d'un son</message>
+	<message id = "LB_KEYCREATION_KEYCHARACTER">Character</message>
+	<message id = "LB_KEYCREATION_KEYSTRING">String</message>
+	<message id = "LB_KEYCREATION_KEYLASTWORD">Last words used</message>
+	<message id = "LB_KEYCREATION_KEYPREDICTION">Word prediction</message>
+	<message id = "LB_KEYCREATION_KEYLAUNCHER">Application launcher</message>
+	<message id = "LB_KEYCREATION_KEYSOUND">Sound player</message>
 	<message id = "LB_KEYCREATION_KEYSHORTCUT">Raccourci</message>
-	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">COPIER</message>
-	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Fermeture de l'application</message>
-	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION">Reduction de l'application</message>
-	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configuration de l'application</message>
-	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Passage en mode souricom</message>
-	<message id = "LB_KEYCREATION_ALTGR">Alt Graphique</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT_EXEMPLE">Cut</message>
+	<message id = "LB_KEYCREATION_CLOSE_APPLICATION">Close application</message>
+	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION">Minimize application</message>
+	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION">Configure application</message>
+	<message id = "LB_KEYCREATION_SWITCH_SOURICOM">Switch to mouse</message>
+	<message id = "LB_KEYCREATION_ALTGR">Alt Graph</message>
 	<message id = "LB_KEYCREATION_SHIFT">Shift</message>
 	<message id = "LB_KEYCREATION_SHIFT">Caps lock</message>
 	
-	<message id = "LB_KEYCREATION_KEYCHARACTER_TOOLTIP">Création d'une touche caractère</message>
-	<message id = "LB_KEYCREATION_KEYSTRING_TOOLTIP">Création d'une touche chaîne de caractères</message>
-	<message id = "LB_KEYCREATION_KEYLASTWORD_TOOLTIP">Création d'une touche de dernier mot</message>
-	<message id = "LB_KEYCREATION_KEYPREDICTION_TOOLTIP">Création d'une touche de prédiction</message>
-	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Création d'une touche de lancement d'application</message>
-	<message id = "LB_KEYCREATION_KEYSOUND_TOOLTIP">Création d'une touche de lecture d'un son</message>
-	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Création d'une touche raccourci</message>
-	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Création d'une touche de fermeture de l'application</message>
-	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP">Création d'une touche de réduction de l'application</message>
-	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP">Création d'une touche de configuration de l'application</message>
-	<message id = "LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP">Création d'une touche de passage en mode souris</message>
-	<message id = "LB_KEYCREATION_ALTGR_TOOLTIP">Création d'une touche "Alt-Gr"</message>
-	<message id = "LB_KEYCREATION_SHIFT_TOOLTIP">Création d'une touche "Shift"</message>
-	<message id = "LB_KEYCREATION_CAPSLOCK_TOOLTIP">Création d'une touche "Caps lock"</message>
+	<message id = "LB_KEYCREATION_KEYCHARACTER_TOOLTIP">Create a character key</message>
+	<message id = "LB_KEYCREATION_KEYSTRING_TOOLTIP">Create a string key</message>
+	<message id = "LB_KEYCREATION_KEYLASTWORD_TOOLTIP">Create a last word key</message>
+	<message id = "LB_KEYCREATION_KEYPREDICTION_TOOLTIP">Create a prediction key</message>
+	<message id = "LB_KEYCREATION_KEYLAUNCHER_TOOLTIP">Create an application launcher key</message>
+	<message id = "LB_KEYCREATION_KEYSOUND_TOOLTIP">Create a sound player key</message>
+	<message id = "LB_KEYCREATION_KEYSHORTCUT_TOOLTIP">Create a shortcut key</message>
+	<message id = "LB_KEYCREATION_CLOSE_APPLICATION_TOOLTIP">Create a close application key</message>
+	<message id = "LB_KEYCREATION_MINIMIZE_APPLICATION_TOOLTIP">Create a minimize application key</message>
+	<message id = "LB_KEYCREATION_CONFIGURE_APPLICATION_TOOLTIP">Create a configure application key</message>
+	<message id = "LB_KEYCREATION_SWITCH_SOURICOM_TOOLTIP">Create a switch to mouse key</message>
+	<message id = "LB_KEYCREATION_ALTGR_TOOLTIP">Create an "Alt-Gr" key</message>
+	<message id = "LB_KEYCREATION_SHIFT_TOOLTIP">Create a "Shift" key</message>
+	<message id = "LB_KEYCREATION_CAPSLOCK_TOOLTIP">Create a "Caps lock" key</message>
 	
 	<!-- CONF profil -->
-	<message id = "LB_CONFPROFIL_PANNEL_COMMANDSET">Type de clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SHORTCUTSET">Type de raccourcis disponibles</message>
-	<message id = "LB_CONFPROFIL_PANNEL_DICTIONARY">Dictionnaire</message>
+	<message id = "LB_CONFPROFIL_PANEL_COMMANDSET">Keyboard type</message>
+	<message id = "LB_CONFPROFIL_PANEL_SHORTCUTSET">Available shortcuts</message>
+	<message id = "LB_CONFPROFIL_PANEL_DICTIONARY">Dictionary</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_FONT">Police</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOSIZE">Taille automatique</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_SIZE">Taille</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_AUTOCOLOR">Couleur automatique</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_COLOR">Couleur du texte</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_SHADOW">Ombres</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_BOLD">Gras</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_ITALIC">Italic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_EXEMPLE">Mon pauvre zébu ankylosé choque deux fois ton wagon jaune</message>
-	<message id = "LB_CONFPROFIL_PANNEL_FONT_LB_EXEMPLE">Phrase d'exemple</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT">Font</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_AUTOSIZE">Automatic size</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_SIZE">Size</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_AUTOCOLOR">Automatic color</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_COLOR">Font color</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_SHADOW">Shadow</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_BOLD">Bold</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_ITALIC">Italic</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_EXEMPLE">The jay, pig, fox, zebra and my wolves quack!</message>
+	<message id = "LB_CONFPROFIL_PANEL_FONT_LB_EXEMPLE">Sample sentence</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR">Couleur du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_BACKCOLOR">Couleur de fond du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_NORMALCOLOR">Couleur par defaut d'une touche</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_ENTEREDCOLOR">Couleur par defaut d'une touche pour le survol</message>
-	<message id = "LB_CONFPROFIL_PANNEL_KEYBOARDCOLOR_PRESSEDCOLOR">Couleur par defaut d'une touche au clic</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR">Keyboard color</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_BACKCOLOR">Background color</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_NORMALCOLOR">Key default color</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_ENTEREDCOLOR">Key entered default color</message>
+	<message id = "LB_CONFPROFIL_PANEL_KEYBOARDCOLOR_PRESSEDCOLOR">Key click default color</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE">Langue</message>
-	<message id = "LB_CONFPROFIL_PANNEL_LANGUAGE_CHOOSE">Choisissez le language</message>
+	<message id = "LB_CONFPROFIL_PANEL_LANGUAGE">Language</message>
+	<message id = "LB_CONFPROFIL_PANEL_LANGUAGE_CHOOSE">Choose your language</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION">Navigation</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD">Standard</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT">Defilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_PRESS">Pression clic gauche</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_RELEASE">Relachement clic droit</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_RIGHT_PRESS">Pression clic droit</message>
-	<message id = "LB_CONFPROFIL_PANNEL_NAVIGATION_LB_LEFT_RELEASE">Relachement clic gauche</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION">Navigation</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_STANDARD">Standard</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT">Scroll</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE">Delayed click</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Scroll duration</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Delayed click duration</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Automaticaly move mouse window while entering it, in scroll mode.</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_BLOC">Block scroll</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_SPEED">Cursor speed</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_PRESS">Left pressed</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_RELEASE">Left released</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_PRESS">Right pressed</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_RELEASE">Right released</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS">Mots préférés</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_ACTIVE">actif</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_WORDS">Mot</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_COL_FREQUENCY">Fréquence</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Supprimer les mots séléctionnés</message>
-	<message id = "LB_CONFPROFIL_PANNEL_PREFEREDWORDS_DELETE_ALL_WORDS">Supprimer tous les mots</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS">Preferred words</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_ACTIVE">Active</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_WORDS">Word</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_COL_FREQUENCY">Frequency</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_SELECTED_WORDS">Remove selected words</message>
+	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_DELETE_ALL_WORDS">Remove all words</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND">Son</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL">Au défilement</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISENTERED">Au survol</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED">Au clic</message>
-	<message id = "LB_CONFPROFIL_PANNEL_SOUND_ISSTARTED">Au démarrage de l'application</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND">Sound</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISDEFIL">On scroll</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISENTERED">On enter</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISPRESSED">On click</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISSTARTED">On launch</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY">Transparence</message>
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
-	<message id = "LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Trasnparency</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Keyboard transparency</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYS">Key transparency</message>
 	
-	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
-	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
-	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Le fichier des raccourcis a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
-	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE">Changement des raccourcis</message>
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Command set has changed. Existing keyboard is not valid anymore, and will be deleted.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Command set change</message>
+	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Shortcut set has changed. Existing keyboard is not valid anymore, and will be deleted.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE">Shortcut change</message>
 	
-	<message id = "LB_CONFPROFIL_CHANGE_RESTART">Veuillez redemarrer l'application pour que les changements soient pris en compte</message>
-	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">Changement de la langue de l'interface</message>
-	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Etes-vous sûr de vouloir continuer ?</message>
+	<message id = "LB_CONFPROFIL_CHANGE_RESTART">Please restart application to apply changes.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_RESTART_TITLE">User interface change</message>
+	<message id = "LB_CONFPROFIL_CHANGE_CONTINUE">Do you really want to continue?</message>
 	
-	<message id = "LB_UIKEYBOARD_DELETE_ONE_KEY">Etes-vous sûr de vouloir supprimer la touche sélectionnée ?</message>
-	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_1">Etes-vous sûr de vouloir supprimer les </message>
-	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_2"> touches sélectionnées ? </message>
+	<message id = "LB_UIKEYBOARD_DELETE_ONE_KEY">Do you really want to remove the selected key? </message>
+	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_1">Do you really want to remove the </message>
+	<message id = "LB_UIKEYBOARD_DELETE_MULTI_KEY_2"> selected keys? </message>
 	
-	<message id = "LB_UIKEYBOARD_DELETE_KEY_TITLE">Suppression de touches</message>
+	<message id = "LB_UIKEYBOARD_DELETE_KEY_TITLE">Key deletion</message>
 	
-	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Options avancées</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Ajouter un espace après les chaines de caractères</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Démarrer l'application automatiquement au démarrage du système d'exploitation</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Clic utilisé pour utliser la souricom</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Nombre de défilement avant de remonter d'un niveau</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Advanced options</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Add a space after pressing a key</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Launch on startup</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Used clicked for mouse</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Number of scrolls before returning to previous level</message>
 	
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT">A Propos</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_VERSION">version 5 (beta)</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_CONCEPTION">Conception et developpement par </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_DEV_FOR">Developpé pour</message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_BUG_CASE">En cas de problème, veuillez contacter </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_WEB_SITE">Site web </message>
-	<message id = "LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_ADRESS">Adresse </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT">About</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION">Version 1.0 Bêta 1</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_CONCEPTION">Design and development by </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_DEV_FOR">Developed for </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_BUG_CASE">For any question, please contact </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_WEB_SITE">Website </message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_ADRESS">Address </message>
 	
-	<message id = "LB_CHOOSE_COLOR">Choix de la couleur</message>
+	<message id = "LB_CHOOSE_COLOR">Color selection</message>
 	
-	<message id = "LB_EDITION_CLOSE_EDITION">Fermer l'éditeur</message>
+	<message id = "LB_EDITION_CLOSE_EDITION">Close editor</message>
 	<message id = "LB_EDITION_OPEN_OPTIONS">Options</message>
-	<message id = "LB_EDITION_EDIT_KEY">Editer touche</message>
-	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER">Niveaux</message>
+	<message id = "LB_EDITION_EDIT_KEY">Edit key</message>
+	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER">Levels</message>
 	
-	<message id = "LB_EDITION_CLOSE_EDITION_TOOLTIP">Repasser en mode utilisation</message>
-	<message id = "LB_EDITION_OPEN_OPTIONS_TOOLTIP">Ouvrir les options de l'application</message>
-	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Editer les touches selectionnées</message>
-	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Editer les niveaux de défilement</message>
-	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Sauvegarder le profil sous</message>
-	<message id = "LB_EDITION_LOAD_TOOLTIP">Importer les éléments d'un profil</message>
+	<message id = "LB_EDITION_CLOSE_EDITION_TOOLTIP">Goes back to use mode</message>
+	<message id = "LB_EDITION_OPEN_OPTIONS_TOOLTIP">Open application options</message>
+	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Edit selected keys</message>
+	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Edit scroll levels</message>
+	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Save profile as</message>
+	<message id = "LB_EDITION_LOAD_TOOLTIP">Import elements from a profile</message>
 	
-	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_2">Si elles ne sont pas triées, elles seront perdues au prochain démarrage. </message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_3">Que voulez-vous faire ?</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Scroll levels</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">The selected keys are not classed.</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_2">If you don't class those keys, your work will be lost on next launch.</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_3">What do you want to do?</message>
 	
-	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Classer</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignorer</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Annuler</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Class</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignore</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Cancel</message>
 	
-	<message id = "LB_EDITION_OPTION_KEY_TITLE">Edition de touche</message>
+	<message id = "LB_EDITION_OPTION_KEY_TITLE">Key options</message>
 	<message id = "LB_EDITION_OPTION_KEY_OK">OK</message>
 	
 	<message id = "LB_EDITION_OPTION_APPLICATION_OK">OK</message>
-	<message id = "LB_EDITION_OPTION_APPLICATION_CANCEL">Annuler</message>
-	<message id = "LB_EDITION_OPTION_APPLICATION_APPLY">Appliquer</message>
-	<message id = "LB_EDITION_OPTION_APPLICATION_TITLE">Options de l'application</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_CANCEL">Cancel</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_APPLY">Apply</message>
+	<message id = "LB_EDITION_OPTION_APPLICATION_TITLE">Application options</message>
 	
-	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Texte</message>
-	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Image</message>
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_TEXT">Text</message>
+	<message id = "LB_EDITION_OPTION_KEY_CAPTION_IMAGE">Picture</message>
 	
 	<!-- option load profil -->
-	<message id = "LB_LOAD_PROFIL_ADVANCED_OPTIONS">Options avancés</message>
-	<message id = "LB_LOAD_PROFIL_COMMANDSET_NAME">Jeu de commande</message>
-	<message id = "LB_LOAD_PROFIL_DICTIONARY_NAME">Dictionaire</message>
-	<message id = "LB_LOAD_PROFIL_FONT">Police</message>
-	<message id = "LB_LOAD_PROFIL_FRAME_POSITION">Position des fenêtres</message>
-	<message id = "LB_LOAD_PROFIL_KEYBOARD">Clavier</message>
-	<message id = "LB_LOAD_PROFIL_KEYBOARD_COLORS">Couleurs du clavier</message>
-	<message id = "LB_LOAD_PROFIL_LANGUE_UI_NAME">Langue de l'interface</message>
-	<message id = "LB_LOAD_PROFIL_NAVIGATION">Type de navigation</message>
-	<message id = "LB_LOAD_PROFIL_PREFERED_WORD">Mots préférés</message>
-	<message id = "LB_LOAD_PROFIL_SHORTCUTSET_NAME">Jeu de raccourcis</message>
-	<message id = "LB_LOAD_PROFIL_SOUND">Son</message>
-	<message id = "LB_LOAD_PROFIL_TRANSPARENCY">Transparence</message>
+	<message id = "LB_LOAD_PROFIL_ADVANCED_OPTIONS">Advanced options</message>
+	<message id = "LB_LOAD_PROFIL_COMMANDSET_NAME">Command set</message>
+	<message id = "LB_LOAD_PROFIL_DICTIONARY_NAME">Dictionary</message>
+	<message id = "LB_LOAD_PROFIL_FONT">Font</message>
+	<message id = "LB_LOAD_PROFIL_FRAME_POSITION">Window position</message>
+	<message id = "LB_LOAD_PROFIL_KEYBOARD">Keyboard</message>
+	<message id = "LB_LOAD_PROFIL_KEYBOARD_COLORS">Keyboard colors</message>
+	<message id = "LB_LOAD_PROFIL_LANGUE_UI_NAME">User interface language</message>
+	<message id = "LB_LOAD_PROFIL_NAVIGATION">Navigation type</message>
+	<message id = "LB_LOAD_PROFIL_PREFERED_WORD">Preferred words</message>
+	<message id = "LB_LOAD_PROFIL_SHORTCUTSET_NAME">Shortcut set</message>
+	<message id = "LB_LOAD_PROFIL_SOUND">Sounds</message>
+	<message id = "LB_LOAD_PROFIL_TRANSPARENCY">Transparency</message>
 	
-	<message id = "LB_LOAD_PROFIL_INTRO">Choisissez les elements que vous voulez charger :</message>
-	<message id = "LB_LOAD_PROFIL_VALIDER">Valider</message>
-	<message id = "LB_LOAD_PROFIL_ANNULER">Annuler</message>
+	<message id = "LB_LOAD_PROFIL_INTRO">Select options you want to import :</message>
+	<message id = "LB_LOAD_PROFIL_VALIDER">OK</message>
+	<message id = "LB_LOAD_PROFIL_ANNULER">Cancel</message>
 
-	<message id = "LB_LOAD_PROFIL_RESTART">L'application va maintenant redémarrer</message>
+	<message id = "LB_LOAD_PROFIL_RESTART">Application will now restart.</message>
 	
 	<!-- ========================================================================== 
 		Popup menu des touches
 	==========================================================================  -->
-	<message id = "LB_POPUP_MENU_KEY_EDIT">Editer</message>
-	<message id = "LB_POPUP_MENU_KEY_DELETE">Supprimer</message>
+	<message id = "LB_POPUP_MENU_KEY_EDIT">Edit</message>
+	<message id = "LB_POPUP_MENU_KEY_DELETE">Remove</message>
 	
 	<!-- ========================================================================== 
 		To String des Keys
 	==========================================================================  -->
-	<message id = "ST_KEY_TOSTRING_CHARACTER">Caractère</message>
+	<message id = "ST_KEY_TOSTRING_CHARACTER">Character</message>
 	<message id = "ST_KEY_TOSTRING_CLAVICOM">Clavicom</message>
-	<message id = "ST_KEY_TOSTRING_CREATION">Création</message>
-	<message id = "ST_KEY_TOSTRING_LASTWORD">Dernier mot</message>
-	<message id = "ST_KEY_TOSTRING_LAUNCHER">Lancement d'application</message>
-	<message id = "ST_KEY_TOSTRING_SOUND">Lecture d'un son</message>
-	<message id = "ST_KEY_TOSTRING_LEVEL">Niveau</message>
-	<message id = "ST_KEY_TOSTRING_PREDICTION">Prédiction</message>
-	<message id = "ST_KEY_TOSTRING_SHORTCUT">Raccourci</message>
-	<message id = "ST_KEY_TOSTRING_STRING">Chaîne</message>
+	<message id = "ST_KEY_TOSTRING_CREATION">Creation</message>
+	<message id = "ST_KEY_TOSTRING_LASTWORD">Last word</message>
+	<message id = "ST_KEY_TOSTRING_LAUNCHER">Application launcher</message>
+	<message id = "ST_KEY_TOSTRING_SOUND">Sound player</message>
+	<message id = "ST_KEY_TOSTRING_LEVEL">Level</message>
+	<message id = "ST_KEY_TOSTRING_PREDICTION">Prediction</message>
+	<message id = "ST_KEY_TOSTRING_SHORTCUT">Shortcut</message>
+	<message id = "ST_KEY_TOSTRING_STRING">String</message>
 	
 </language>

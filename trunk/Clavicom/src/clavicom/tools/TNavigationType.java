@@ -95,15 +95,15 @@ public final class TNavigationType
     {
     	if (this == STANDARD)
     	{
-    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_STANDARD");
+    		return UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_STANDARD");
     	}
     	else if (this == DEFILEMENT)
     	{
-    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_DEFILEMENT");
+    		return UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT");
     	}
     	else if (this == CLICK_TEMPORISE)
     	{
-    		return UIString.getUIString("LB_CONFPROFIL_PANNEL_NAVIGATION_CLIC_TEMPORISE");
+    		return UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE");
     	}    	
     	else
     	{

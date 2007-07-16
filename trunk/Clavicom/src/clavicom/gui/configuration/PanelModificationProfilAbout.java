@@ -50,26 +50,26 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	
 	public PanelModificationProfilAbout()
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_TRANSPARENCY") );
 
 		
 		
 		
 		TPicturePanel ClavicomNG = new TPicturePanel( CFilePaths.getAboutPicture() );
 		// labels
-		JLabel ClavicomVersion = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_VERSION") );
-		JLabel ConceptionAndDevBy = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_CONCEPTION") );
+		JLabel ClavicomVersion = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION") );
+		JLabel ConceptionAndDevBy = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_CONCEPTION") );
 		JLabel TDAndGR = new JLabel(				"Thomas DEVAUX et Guillaume REBESCHE" );
 		JLabel TDAndGREmail = new JLabel(			"thomas.devaux@gmail.com et guillaume.rebesche@gmail.com" );
-		JLabel DevFor = new JLabel(					UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_DEV_FOR") );
+		JLabel DevFor = new JLabel(					UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_DEV_FOR") );
 		JLabel IComHI = new JLabel(					"Centre Icom (Handicap International)" );
 		JLabel LEmail = new JLabel(					"Email" );
 		JLabel Email = new JLabel(					"icom@handicap-icom.asso.fr" );
-		JLabel LAdress = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_ADRESS") );
+		JLabel LAdress = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_ADRESS") );
 		JLabel Adress = new JLabel(					"18 rue de Gerland, Lyon, FRANCE");
-		JLabel LWebSite = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_WEB_SITE") );
+		JLabel LWebSite = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_WEB_SITE") );
 		JLabel WebSite = new JLabel(				"http://www.handicap-icom.asso.fr/" );
-		JLabel bugCase = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANNEL_ABOUT_CLAVICOM_BUG_CASE") );
+		JLabel bugCase = new JLabel(				UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_BUG_CASE") );
 		JLabel bugCaseContact = new JLabel(			"icom@handicap-icom.asso.fr" );
 		
 		// placement des labels		

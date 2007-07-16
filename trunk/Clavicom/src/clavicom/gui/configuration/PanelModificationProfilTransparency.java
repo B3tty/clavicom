@@ -46,7 +46,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 	
 	public PanelModificationProfilTransparency(CTransparency myTransparency)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_TRANSPARENCY") );
 
 		transparency = myTransparency;
 		
@@ -63,7 +63,7 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		JPanel keyboardT = new JPanel(new BorderLayout());
 		
 		JPanel p2 = new JPanel();
-		p2.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_TRANSPARENCY_KEYBOARD") ));
+		p2.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD") ));
 		keyboardT.add(p2, BorderLayout.NORTH );
 		
 		keyboardTransparency = new JSlider();

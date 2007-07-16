@@ -53,7 +53,7 @@ public class CKeyGroup
 	}
 
 	//----------------------------------------------------------- METHODES --//
-	public void AddKeyList( int order, CKeyList blocLevel2 )
+	public void addKeyList( int order, CKeyList blocLevel2 )
 	{
 		keyListList.add( order, blocLevel2 );
 	}
@@ -172,7 +172,7 @@ public class CKeyGroup
 						throw new Exception("[caption : " + caption + "]" + ex.getMessage() );
 					}
 					
-					keyGroup.AddKeyList( i_order, keyList );
+					keyGroup.addKeyList( i_order, keyList );
 				}
 			}
 		}

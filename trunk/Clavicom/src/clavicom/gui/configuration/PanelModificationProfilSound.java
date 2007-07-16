@@ -50,7 +50,7 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 	
 	public PanelModificationProfilSound(CSound mySound)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND") );
 		
 		sound = mySound;
 		
@@ -65,17 +65,17 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		JPanel pan = new JPanel();
 		JPanel panelGlobal = new JPanel( new BorderLayout() );
 		
-		checkDefil = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISDEFIL"), sound.isSoundOnDefil() );
+		checkDefil = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_ISDEFIL"), sound.isSoundOnDefil() );
 		panelGlobal.add( checkDefil, BorderLayout.NORTH );
 		
-		checkEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISENTERED"), sound.isSoundOnSurvol() );
+		checkEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_ISENTERED"), sound.isSoundOnSurvol() );
 		panelGlobal.add( checkEntered, BorderLayout.CENTER );
 		
 		JPanel panelSouth = new JPanel( new BorderLayout() );
-		checkPressed = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISPRESSED"), sound.isSoundOnClic() );
+		checkPressed = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_ISPRESSED"), sound.isSoundOnClic() );
 		panelSouth.add( checkPressed, BorderLayout.CENTER );
 		
-		checkStart = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_SOUND_ISSTARTED"), sound.isSoundOnStartApplication() );
+		checkStart = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_ISSTARTED"), sound.isSoundOnStartApplication() );
 		panelSouth.add( checkStart, BorderLayout.SOUTH );
 		panelGlobal.add( panelSouth, BorderLayout.SOUTH );
 		

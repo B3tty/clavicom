@@ -48,7 +48,7 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfilDictionaryName(CDictionaryName myDictionaryName)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_DICTIONARY") );
 		
 		dictionaryName = myDictionaryName;
 		
@@ -63,7 +63,7 @@ public class PanelModificationProfilDictionaryName extends PanelModificationProf
 
 		JPanel panel = new JPanel();
 		panel.add(new JLabel(UIString
-				.getUIString("LB_CONFPROFIL_PANNEL_DICTIONARY")));
+				.getUIString("LB_CONFPROFIL_PANEL_DICTIONARY")));
 		add(panel, BorderLayout.NORTH);
 
 		combo = new JComboBox();

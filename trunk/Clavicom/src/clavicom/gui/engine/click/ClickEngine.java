@@ -48,19 +48,23 @@ public class ClickEngine
 			// 		1 : WM_LBUTTONDOWN
 			// 		2 : WM_RBUTTONDOWN
 			// 		3 : WM_RBUTTONUP
-			if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_RELEASE )
+			/*if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_RELEASE )
 			{
 				InitMouseHook( 0 );
-			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_PRESS )
+			} 
+			else*/
+			if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.LEFT_PRESS )
 			{
 				InitMouseHook( 1 );
-			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_PRESS )
+			} 
+			else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_PRESS )
 			{
 				InitMouseHook( 2 );
-			} else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_RELEASE )
+			} 
+			/*else if( profil.getAdvancedOption().getClickSouricom() == TClickSouricomEnum.RIGHT_RELEASE )
 			{
 				InitMouseHook( 3 );
-			}
+			}*/
 		}
 		
 		@Override

@@ -62,7 +62,7 @@ public class CKeyList
 	}
 
 	//----------------------------------------------------------- METHODES --//
-	public void AddKeyboardKey( int order, CKeyKeyboard keybordKey )
+	public void addKeyboardKey( int order, CKeyKeyboard keybordKey )
 	{
 		keyList.add( order, keybordKey );
 	}
@@ -248,7 +248,7 @@ public class CKeyList
 					
 					try
 					{
-						keylist.AddKeyboardKey( i_order , keybordKey );
+						keylist.addKeyboardKey( i_order , keybordKey );
 					}
 					catch(Exception ex)
 					{

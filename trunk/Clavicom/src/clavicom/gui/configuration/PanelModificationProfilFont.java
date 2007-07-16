@@ -77,7 +77,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	
 	public PanelModificationProfilFont(CFont myFont)
 	{
-		super( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT") );
+		super( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT") );
 		
 		lisBackGround = new MouseListenerBackGroundColor();
 		
@@ -191,10 +191,10 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    JPanel exemplePanel = new JPanel( new BorderLayout() );
 	    
 	    JPanel exemplePanelBis = new JPanel();
-	    exemplePanelBis.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_LB_EXEMPLE") )  );
+	    exemplePanelBis.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_LB_EXEMPLE") )  );
 	    exemplePanel.add(exemplePanelBis, BorderLayout.NORTH );
 	    
-	    exempleText = new JTextArea( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_EXEMPLE") );
+	    exempleText = new JTextArea( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_EXEMPLE") );
 	    Font exempleFont = new Font( font.getFontName(), Font.PLAIN, 20 );
 	    exempleText.setFont( exempleFont );
 	    exempleText.setLineWrap(true);
@@ -214,7 +214,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 	    GridBagLayout gbLayoutGlobal = new GridBagLayout();
 	    panelOption.setLayout( gbLayoutGlobal );
 	    
-	    autoSize = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_AUTOSIZE"), font.isAutoSize() );
+	    autoSize = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_AUTOSIZE"), font.isAutoSize() );
 	    
 	    autoSize.addChangeListener(new ChangeListener()
 	    {
@@ -250,7 +250,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		panelOption.add( autoSize );
 
 	    
-	    labelSize = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SIZE") + " : ");
+	    labelSize = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_SIZE") + " : ");
 	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100});
 
 		// Ajout des Contraintes de LabelSize
@@ -288,7 +288,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		panelOption.add( comboSize );
 
 	    
-	    autoColor = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_AUTOCOLOR"), font.isAutoColor() );
+	    autoColor = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_AUTOCOLOR"), font.isAutoColor() );
 	    autoColor.addChangeListener(new ChangeListener()
 	    {
 	    	public void stateChanged(ChangeEvent arg0)
@@ -323,7 +323,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		gbLayoutGlobal.setConstraints(autoColor, gbConstAutoColor);
 		panelOption.add( autoColor );
 	    
-	    labelColor = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_COLOR")+ " : ");
+	    labelColor = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_COLOR")+ " : ");
 	    panelColor = new TColorPanel();
 	    panelColor.removeMouseListener( lisBackGround );
 	    panelColor.addMouseListener( lisBackGround );
@@ -364,7 +364,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 
 
 
-	    shadow = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_SHADOW"), font.isShadow() );
+	    shadow = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_SHADOW"), font.isShadow() );
 		// Ajout des Contraintes de ComboSize
 		GridBagConstraints gbConstShadow = new GridBagConstraints (	
 				0,							// Numéro de colonne
@@ -382,7 +382,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		gbLayoutGlobal.setConstraints(shadow, gbConstShadow);
 		panelOption.add( shadow );
 		
-	    bold = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_BOLD"), font.isBold() );
+	    bold = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_BOLD"), font.isBold() );
 		// Ajout des Contraintes de ComboSize
 		GridBagConstraints gbConstBold = new GridBagConstraints (	
 				0,							// Numéro de colonne
@@ -400,7 +400,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 		gbLayoutGlobal.setConstraints(bold, gbConstBold);
 		panelOption.add( bold );
 		
-	    italic = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANNEL_FONT_ITALIC"), font.isItalic() );
+	    italic = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_ITALIC"), font.isItalic() );
 		// Ajout des Contraintes de ComboSize
 		GridBagConstraints gbConstItalic = new GridBagConstraints (	
 				0,							// Numéro de colonne
