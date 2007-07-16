@@ -208,4 +208,10 @@
 			<code order="4" action="released" value="VK_CONTROL"/>
 			<code order="5" action="released" value="VK_SHIFT"/>
 		</command>
+		<command id= "33" caption = "Imprimer (Ctrl+P)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_P"/>
+			<code order="2" action="released" value="VK_P"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
 </shortcuts>
