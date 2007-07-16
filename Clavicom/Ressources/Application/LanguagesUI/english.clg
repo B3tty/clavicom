@@ -540,9 +540,17 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_STANDARD">Standard</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT">Scroll</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE">Delayed click</message>
-	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Scroll duration</message>
-	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Delayed click duration</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Scroll speed</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Click speed</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Automaticaly move mouse window while entering it, in scroll mode.</message>
+	
+	<message id = "LB_CONFIG_TEMPO_DEFIL_FAST">Fast</message>
+	<message id = "LB_CONFIG_TEMPO_DEFIL_SLOW">Slow</message>
+	<message id = "LB_CONFIG_TEMPO_CLIC_FAST">Fast</message>
+	<message id = "LB_CONFIG_TEMPO_CLIC_SLOW">Slow</message>
+	<message id = "LB_CONFIG_MOUSE_SPEED_SLOW">Slow</message>
+	<message id = "LB_CONFIG_MOUSE_SPEED_FAST">Fast</message>
+	
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_BLOC">Block scroll</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_SPEED">Cursor speed</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_PRESS">Left pressed</message>
@@ -563,7 +571,7 @@
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISPRESSED">On click</message>
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISSTARTED">On launch</message>
 	
-	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Trasnparency</message>
+	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Transparency</message>
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Keyboard transparency</message>
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYS">Key transparency</message>
 	

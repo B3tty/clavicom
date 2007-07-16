@@ -37,7 +37,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Paint;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -260,56 +259,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		}
 		
 		//----------------------------------------------------------- METHODES --//	
-		// On redéfinie les setBounds pour limiter l'aire de la touche
-		@Override
-		public void setBounds(int x, int y, int w, int h)
-		{
-			if(boundsAreOk(x, y, w, h))
-				super.setBounds(x, y, w, h);
-		}
-		
-		@Override
-		public void setBounds(Rectangle r) 
-		{
-			if (boundsAreOk(r.x, r.y, r.width, r.height))
-				super.setBounds(r);
-		}
-		
-		/**
-		 * Vérifie si les bounds passées sont dans le cadre du père, entièrement
-		 * @param x
-		 * @param y
-		 * @param w
-		 * @param h
-		 * @return
-		 */
-		private boolean boundsAreOk(int x, int y, int w, int h)
-		{
-			// Aire trop elevée
-			if(w*h > MAX_AUTHORIZED_AREA)
-				return false;
-			
-			// Trop à gauche
-			if(x < 0)
-				return false;
-			
-			// Trop en haut
-			if(y < 0)
-				return false;
-			
-			if(getParent() != null)
-			{
-				// Trop à droite
-				if((x + w) > (getParent().getWidth()))
-					return false;
-				
-				// Trop en bas
-				if((y + h) > (getParent().getHeight()))
-					return false;				
-			}
-			
-			return true;
-		}
+
 		//-----------------------------------------------------------------------
 		// Listeners (en écouteur)
 		//-----------------------------------------------------------------------

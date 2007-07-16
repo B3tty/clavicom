@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
+  <language_ui>french.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>azerty.css</shortcutset_name>
   <dictionary_name>french_standard.cdc</dictionary_name>
@@ -39,7 +39,7 @@
     <type value="STANDARD" />
     <rollover active="false" />
     <mouse_speed value="14" />
-    <click_tempo value="2849" />
+    <click_tempo value="761" />
     <defil_tempo value="3000" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
@@ -72,12 +72,12 @@
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.0</x>
-        <y>0.09863281</y>
+        <x>0.5703125</x>
+        <y>0.24609375</y>
       </left_up>
       <right_down>
-        <x>0.3203125</x>
-        <y>0.4970703</y>
+        <x>0.84765625</x>
+        <y>0.7890625</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>

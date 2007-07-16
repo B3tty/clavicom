@@ -28,12 +28,15 @@ package clavicom.gui.configuration;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+
 import clavicom.core.profil.CNavigation;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TNavigationType;
@@ -43,7 +46,14 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 	
 	//--------------------------------------------------------- CONSTANTES --//
-
+	final int TEMPO_CLIC_MINIMUM = 500;
+	final int TEMPO_CLIC_MAXIMUM = 3000;
+	
+	final int TEMPO_DEFIL_MINIMUM = 500;
+	final int TEMPO_DEFIL_MAXIMUM = 3000;
+	
+	final int MOUSE_SPEED_CLIC_MINIMUM = 0;
+	final int MOUSE_SPEED_CLIC_MAXIMUM = 100;
 	//---------------------------------------------------------- VARIABLES --//
 	CNavigation navigation;
 	JRadioButton radioButtonStandard;
@@ -56,6 +66,10 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 	JLabel labelTempoDefil;
 	JLabel labelTempoClic;
 	JLabel labelTempoSouriom;
+	
+	Hashtable<Integer,JLabel> sliderTempoDefilLabel;
+	Hashtable<Integer,JLabel> sliderTempoClicLabel;
+	Hashtable<Integer,JLabel> sliderMouseSpeedLabel;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public PanelModificationProfilNavigation(CNavigation myNavigation)
@@ -79,14 +93,16 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonDefilement.setSelected(false);
 			radioButtonClickTempo.setSelected(false);
 			
-		} else if( navigation.getTypeNavigation() == TNavigationType.DEFILEMENT )
+		} 
+		else if( navigation.getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
 			SwitchDefilementMode();
 			radioButtonStandard.setSelected(false);
 			radioButtonDefilement.setSelected(true);
 			radioButtonClickTempo.setSelected(false);
 			
-		} else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+		} 
+		else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			SwitchClicMode();
 			radioButtonStandard.setSelected(false);
@@ -94,10 +110,29 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 			radioButtonClickTempo.setSelected(true);
 		}
 		
+		sliderTempoDefilLabel = new Hashtable<Integer,JLabel>();
+		sliderTempoDefilLabel.put( new Integer(TEMPO_DEFIL_MINIMUM), new JLabel(UIString.getUIString("LB_CONFIG_TEMPO_DEFIL_FAST")));
+		sliderTempoDefilLabel.put( new Integer(TEMPO_DEFIL_MAXIMUM), new JLabel(UIString.getUIString("LB_CONFIG_TEMPO_DEFIL_SLOW")));
+		sliderTempoDefil.setLabelTable(sliderTempoDefilLabel);
+		
+		sliderTempoClicLabel = new Hashtable<Integer,JLabel>();
+		sliderTempoClicLabel.put( new Integer(TEMPO_CLIC_MINIMUM), new JLabel(UIString.getUIString("LB_CONFIG_TEMPO_CLIC_FAST")));
+		sliderTempoClicLabel.put( new Integer(TEMPO_CLIC_MAXIMUM), new JLabel(UIString.getUIString("LB_CONFIG_TEMPO_CLIC_SLOW")));
+		sliderTempoClic.setLabelTable(sliderTempoClicLabel);
+		
+		sliderMouseSpeedLabel = new Hashtable<Integer,JLabel>();
+		sliderMouseSpeedLabel.put( new Integer(MOUSE_SPEED_CLIC_MINIMUM), new JLabel(UIString.getUIString("LB_CONFIG_MOUSE_SPEED_SLOW")));
+		sliderMouseSpeedLabel.put( new Integer(MOUSE_SPEED_CLIC_MAXIMUM), new JLabel(UIString.getUIString("LB_CONFIG_MOUSE_SPEED_FAST")));
+		sliderMouseSpeed.setLabelTable(sliderMouseSpeedLabel);
 		
 		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
 		sliderTempoClic.setValue( navigation.getTemporisationClic() );
 		sliderTempoDefil.setValue( navigation.getTemporisationDefilement() );
+		
+		// On inverse les deux tempo pour afficher les 3 dans le même sens
+		sliderTempoClic.setInverted(true);
+		sliderTempoDefil.setInverted(true);
+		
 		mouseMoveOnEntered.setSelected( navigation.isMoveMouseOnEntered() ); 
 	}
 
@@ -143,12 +178,12 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 		
 		sliderTempoClic = new JSlider();
-		sliderTempoClic.setMaximum( 3000 );
-		sliderTempoClic.setMinimum( 500 );
+		sliderTempoClic.setMaximum( TEMPO_CLIC_MAXIMUM );
+		sliderTempoClic.setMinimum( TEMPO_CLIC_MINIMUM );
 		sliderTempoClic.setMajorTickSpacing(500);
 		sliderTempoClic.setMinorTickSpacing(500);
 		sliderTempoClic.setPaintTicks(true);
-		//sliderTempoClic.setPaintLabels(true);
+		sliderTempoClic.setPaintLabels(true);
 		
 		
 		panelGlobal.add( sliderTempoClic );
@@ -173,12 +208,12 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		
 		sliderTempoDefil = new JSlider();
-		sliderTempoDefil.setMaximum( 3000 );
-		sliderTempoDefil.setMinimum( 500 );
+		sliderTempoDefil.setMaximum( TEMPO_DEFIL_MAXIMUM );
+		sliderTempoDefil.setMinimum( TEMPO_DEFIL_MINIMUM );
 		sliderTempoDefil.setMajorTickSpacing(500);
 		sliderTempoDefil.setMinorTickSpacing(500);
 		sliderTempoDefil.setPaintTicks(true);
-		//sliderTempoDefil.setPaintLabels(true);
+		sliderTempoDefil.setPaintLabels(true);
 		
 		
 		panelGlobal.add( sliderTempoDefil );
@@ -197,12 +232,12 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		panelGlobal.add( labelTempoSouriom );
 
 		sliderMouseSpeed = new JSlider();
-		sliderMouseSpeed.setMaximum( 100 );
-		sliderMouseSpeed.setMinimum( 0 );
+		sliderMouseSpeed.setMaximum( MOUSE_SPEED_CLIC_MAXIMUM );
+		sliderMouseSpeed.setMinimum( MOUSE_SPEED_CLIC_MINIMUM );
 		sliderMouseSpeed.setMajorTickSpacing(10);
 		sliderMouseSpeed.setMinorTickSpacing(10);
 		sliderMouseSpeed.setPaintTicks(true);
-		//sliderMouseSpeed.setPaintLabels(true);
+		sliderMouseSpeed.setPaintLabels(true);
 		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
 		
 		panelGlobal.add( sliderMouseSpeed );
@@ -221,7 +256,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoDefil.setLocation( 165, 160 );
 		sliderTempoDefil.setLocation( 155, 190 );
 		
-		mouseMoveOnEntered.setLocation( 60, 220 );
+		mouseMoveOnEntered.setLocation( 60, 250 );
 		
 		labelTempoSouriom.setLocation( 20, 330 );
 		sliderMouseSpeed.setLocation( 10, 360 );
