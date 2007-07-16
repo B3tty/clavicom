@@ -107,7 +107,7 @@ UIGridChangedListener
 	private final int PREFERED_SPACE_WITH_KEYBOARD = 5;	// Espacement avec le keyboard
 	
 	
-	private final  String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
+	private final String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
 
@@ -166,8 +166,6 @@ UIGridChangedListener
 	// icon
 	ImageIcon loadIcon;
 	ImageIcon saveIcon;
-	
-	
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	public UIToolbarFrame(UIKeyboardFrame frameKeyboard)
