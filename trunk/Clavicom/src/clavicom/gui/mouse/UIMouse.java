@@ -130,6 +130,8 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 		leftPress = new UIKeyMouse( mouse.getLeftPress() );
 		leftRelease = new UIKeyMouse( mouse.getLeftRelease() );
 		
+		leftClick.setLayout(new BorderLayout());
+		
 		CKeyClavicom clavMoveMoveMode = mouse.getMoveMouseMode();
 		moveMouseMode = new UIKeyClavicom( clavMoveMoveMode );
 		
@@ -238,6 +240,7 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 			{
 				resizeTimer.stop();
 				imgBackground = recreateBackground();
+
 				repaint();
 			}
 		};

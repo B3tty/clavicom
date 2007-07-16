@@ -90,11 +90,9 @@ public class UIMouseFrame extends UITranslucentFrame
 		
 	}
 
-	
 	@Override
 	public void setVisible(boolean b)
 	{
-		// TODO Auto-generated method stub
 		super.setVisible(b);
 		
 		if( b )

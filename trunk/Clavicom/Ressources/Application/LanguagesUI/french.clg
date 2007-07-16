@@ -538,9 +538,17 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_STANDARD">Standard</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT">Defilement</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE">Clic temporise</message>
-	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Temporisation du défilement</message>
-	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Temporisation du clic</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Vitesse du défilement</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Vitesse de clic</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de la souris au passage du pointeur en mode défilement</message>
+	
+	<message id = "LB_CONFIG_TEMPO_DEFIL_FAST">Rapide</message>
+	<message id = "LB_CONFIG_TEMPO_DEFIL_SLOW">Lente</message>
+	<message id = "LB_CONFIG_TEMPO_CLIC_FAST">Rapide</message>
+	<message id = "LB_CONFIG_TEMPO_CLIC_SLOW">Lente</message>
+	<message id = "LB_CONFIG_MOUSE_SPEED_SLOW">Lente</message>
+	<message id = "LB_CONFIG_MOUSE_SPEED_FAST">Rapide</message>
+		
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_BLOC">Defilement par bloc</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_SPEED">Vitesse du curseur</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_PRESS">Pression clic gauche</message>

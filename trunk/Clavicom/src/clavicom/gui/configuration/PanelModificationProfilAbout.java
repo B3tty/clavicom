@@ -59,8 +59,8 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 		// labels
 		JLabel ClavicomVersion = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION") );
 		JLabel ConceptionAndDevBy = new JLabel(		UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_CONCEPTION") );
-		JLabel TDAndGR = new JLabel(				"Thomas DEVAUX et Guillaume REBESCHE" );
-		JLabel TDAndGREmail = new JLabel(			"thomas.devaux@gmail.com et guillaume.rebesche@gmail.com" );
+		JLabel TD = new JLabel(						"Thomas DEVAUX (thomas.devaux@gmail.com)" );
+		JLabel GR = new JLabel(						"Guillaume REBESCHE (guillaume.rebesche@gmail.com)" );
 		JLabel DevFor = new JLabel(					UIString.getUIString("LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_DEV_FOR") );
 		JLabel IComHI = new JLabel(					"Centre Icom (Handicap International)" );
 		JLabel LEmail = new JLabel(					"Email" );
@@ -116,8 +116,8 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 		gbLayoutGlobal.setConstraints(ConceptionAndDevBy, gbConstConceptionAndDevBy);
 		panelGlobal.add( ConceptionAndDevBy );
 		
-		// Ajout des Contraintes de TDAndGR
-		GridBagConstraints gbConstTDAndGR = new GridBagConstraints (	
+		// Ajout des Contraintes de TD
+		GridBagConstraints gbConstTD = new GridBagConstraints (	
 				1,							// Numéro de colonne
 	            7,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
@@ -130,11 +130,11 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
-		gbLayoutGlobal.setConstraints(TDAndGR, gbConstTDAndGR);
-		panelGlobal.add( TDAndGR );
+		gbLayoutGlobal.setConstraints(TD, gbConstTD);
+		panelGlobal.add( TD );
 		
 		// Ajout des Contraintes de TDAndGREmail
-		GridBagConstraints gbConstTDAndGREmail = new GridBagConstraints (	
+		GridBagConstraints gbConstGR = new GridBagConstraints (	
 				1,							// Numéro de colonne
 	            8,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
@@ -147,8 +147,8 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
-		gbLayoutGlobal.setConstraints(TDAndGREmail, gbConstTDAndGREmail);
-		panelGlobal.add( TDAndGREmail );
+		gbLayoutGlobal.setConstraints(GR, gbConstGR);
+		panelGlobal.add( GR );
 		
 		// Ajout des Contraintes de DevFor
 		GridBagConstraints gbConstDevFor = new GridBagConstraints (	
@@ -292,7 +292,7 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	            13,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            100,						// Taille horizontale relative
+	            50,						// Taille horizontale relative
 	            10,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
@@ -309,18 +309,18 @@ public class PanelModificationProfilAbout extends PanelModificationProfil
 	            13,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
-	            100,						// Taille horizontale relative
+	            50,							// Taille horizontale relative
 	            10,							// Taille verticale relative
 	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
 	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
-	            new Insets(10, 10,10,10),		// Espace autours (haut, gauche, bas, droite)
+	            new Insets(10, 10,10,10),	// Espace autours (haut, gauche, bas, droite)
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
 		gbLayoutGlobal.setConstraints(bugCaseContact, gbConstbugCaseContact);
 		panelGlobal.add( bugCaseContact );
 		
-		add( panelGlobal, BorderLayout.SOUTH );
+		add( panelGlobal);
 		
 		
 	}
