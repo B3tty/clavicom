@@ -2,7 +2,7 @@
 
 <shortcuts>
   <skipIfNotSupported />
-  <programGroup defaultName="Handicap International\Clavicom NG" location="applications"/>
+  <programGroup defaultName="Handicap International\ClavicomNG" location="applications"/>
 
 	<!-- Menu démarrer, lancement -->
    <shortcut
