@@ -36,11 +36,11 @@
     <on_start active="false" />
   </sound>
   <navigation>
-    <type value="STANDARD" />
+    <type value="DEFILEMENT" />
     <rollover active="false" />
     <mouse_speed value="14" />
     <click_tempo value="761" />
-    <defil_tempo value="3000" />
+    <defil_tempo value="564" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
   <font>
