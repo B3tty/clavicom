@@ -395,7 +395,7 @@ public class Application
 			
 			try
 			{
-				CProfil.createInstance( CFilePaths.getDefaultProfileFolder() +
+				CProfil.createInstance( CFilePaths.getProfilsFolder() +
 										CSettings.getDefaultProfileName());
 			}
 			catch (Exception ex2)
