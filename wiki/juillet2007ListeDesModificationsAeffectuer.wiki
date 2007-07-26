@@ -19,7 +19,7 @@ En mode réduction : enlever le bouton plein écran
 Pas d’info bulle sur les icones enregistrer ou charger un profil (ou alors mettre du texte)
 
 7. Options : 
-Un changement de police ne s’applique pas tout de suite (il faut redémarrer)
+Un changement de taille de police ne s’applique pas tout de suite (il faut redémarrer)
 
 8. Affichage :
 Redimensionnement du souricom : les images ne sont pas proportionnelles à la taille de la fenêtre (elles gardent leur taille originelle). Lorsque l'on diminue la taille du souricom, les images se chevauchent.
