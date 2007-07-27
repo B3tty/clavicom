@@ -62,11 +62,11 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.19765624</x>
+        <x>0.196875</x>
         <y>0.7109375</y>
       </left_up>
       <right_down>
-        <x>0.75625</x>
+        <x>0.7554687</x>
         <y>0.921875</y>
       </right_down>
     </clavicom_frame_position>
