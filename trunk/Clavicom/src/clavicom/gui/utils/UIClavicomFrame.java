@@ -39,6 +39,9 @@ public class UIClavicomFrame extends JFrame
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	public UIClavicomFrame()
 	{
+		// Rajouté pour empecher de maximizer la fenêtre
+		setResizable(false);
+		
 		// Application de l'icone
 		setIconImage(TSwingUtils.getImage(CFilePaths.getIconSmallFilePath()).getImage());
 	}
