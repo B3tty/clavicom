@@ -62,22 +62,22 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.196875</x>
-        <y>0.7109375</y>
+        <x>0.109375</x>
+        <y>0.8017578</y>
       </left_up>
       <right_down>
-        <x>0.7554687</x>
-        <y>0.921875</y>
+        <x>0.4640625</x>
+        <y>0.90625</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.51171875</x>
-        <y>0.3095703</y>
+        <x>0.7015625</x>
+        <y>0.6064453</y>
       </left_up>
       <right_down>
-        <x>0.81640625</x>
-        <y>0.6767578</y>
+        <x>0.9085938</x>
+        <y>0.8925781</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
@@ -1171,12 +1171,12 @@
         <keycharacter order="2" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.6817761</x>
-              <y>0.4152249</y>
+              <x>0.68169016</x>
+              <y>0.4535316</y>
             </point>
             <point position="max">
-              <x>0.78075856</x>
-              <y>0.650519</y>
+              <x>0.7812207</x>
+              <y>0.5576208</y>
             </point>
           </coordinates>
           <colors>
