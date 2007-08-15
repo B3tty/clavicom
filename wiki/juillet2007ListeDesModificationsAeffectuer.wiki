@@ -47,3 +47,6 @@ Copier Coller une touche en mode édition
 Annuler la dernière opération en mode édition
 
 Augmenter la transparence lorsque l'on sort du clavier
+
+***********************************************************************
+5=> Reglé. Il est grisé.
