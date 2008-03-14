@@ -1,5 +1,6 @@
-= Introduction =
 #summary Page d'accueil du Wiki
+
+= Introduction =
 
 Wiki pour le projet Clavicom 5
 
