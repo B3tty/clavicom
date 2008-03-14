@@ -1,4 +1,4 @@
-#summary Quelques liens utiles
+#summary Quelques liens utiles sur le développement Java et les interfaces SWING
 
 = Java =
 || 1 || *Créer ses propres listeners en java* || [http://rom.developpez.com/java-listeners/] ||
