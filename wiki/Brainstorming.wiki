@@ -1,4 +1,4 @@
-#summary Idées en vrac.
+#summary Idées en vrac (bloc-notes pour futures versions).
 
   * Reprendre la disposition d'un clavier classique ?
   * Grouper les icônes par type (une section alphanumérique, numérique, caractères spéciaux,...)
