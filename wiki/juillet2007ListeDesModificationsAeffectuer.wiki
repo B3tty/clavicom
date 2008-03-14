@@ -1,3 +1,5 @@
+=Important : Cette liste n'est plus utilisée ! Pour rapporter un bug ou une remarque, merci de vous rendre à l'onglet "Issues" et créer un nouveau rapport en cliquant sur "New Issue". Les nouvelles entrées dans cette feuille ne seront pas consultées.=
+
 par ordre de priorité :
 
 1. Clic temporisé : 
