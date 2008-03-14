@@ -62,22 +62,22 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.109375</x>
-        <y>0.8017578</y>
+        <x>0.0984375</x>
+        <y>0.6</y>
       </left_up>
       <right_down>
-        <x>0.4640625</x>
-        <y>0.90625</y>
+        <x>0.8695313</x>
+        <y>0.94125</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
         <x>0.7015625</x>
-        <y>0.6064453</y>
+        <y>0.605</y>
       </left_up>
       <right_down>
         <x>0.9085938</x>
-        <y>0.8925781</y>
+        <y>0.88625</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
