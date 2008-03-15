@@ -32,14 +32,15 @@
   <sound>
     <on_defil active="true" />
     <on_click active="true" />
-    <on_survol active="false" />
+    <on_survol active="true" />
+    <on_mouse_delay active="false" />
     <on_start active="false" />
   </sound>
   <navigation>
     <type value="STANDARD" />
     <rollover active="false" />
-    <mouse_speed value="85" />
-    <click_tempo value="837" />
+    <mouse_speed value="27" />
+    <click_tempo value="2632" />
     <defil_tempo value="1267" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
@@ -3047,6 +3048,9 @@
   </keyboard>
   <prefered_words active="true">
     <prefered_word frequency="1">eeeeeee</prefered_word>
+    <prefered_word frequency="1">oooo</prefered_word>
+    <prefered_word frequency="1">_____''ytr-iipppppppppppppppra</prefered_word>
+    <prefered_word frequency="1">ppp</prefered_word>
   </prefered_words>
 </profil>
 

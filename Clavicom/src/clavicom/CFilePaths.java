@@ -110,6 +110,7 @@ public class CFilePaths
 	private static String enteredSoundFilePath = sounds + "entered.wav";
 	private static String clickSoundFilePath = sounds + "click.wav";
 	private static String startApplicationSoundFilePath = sounds + "intro.wav";
+	private static String mouseClickSoundFilePath = sounds + "mouse_click.wav";
 	
 
 	// ========================================================================
@@ -358,6 +359,11 @@ public class CFilePaths
 		return toolKeyLevelCAPSLOCKPicture;
 	}
 
+	public static String getMouseClickSoundFilePath()
+	{
+		return mouseClickSoundFilePath;
+	}
+	
 	public static String getStartApplicationSoundFilePath()
 	{
 		return startApplicationSoundFilePath;
