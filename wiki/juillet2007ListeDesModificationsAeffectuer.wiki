@@ -11,7 +11,7 @@ le clic temporisé n'est actif qu'après un clic mécanique sur la souris
 Dans les options : la vitesse du curseur ne change pas après modification du curseur
 (Réponse : A priori ça marche)~~
 
-3. Clic temporisé : 
+3. Clic temporisé : EN COURS DE MODIF (Thomas)
 Le clic temporisé ne doit pas être actif en dehors du clavier (ou alors il faut affecter au clic du son et créer un bouton pour désactiver le clic temporairement (stop, reprise).
 
 4. Touches de fonction :
