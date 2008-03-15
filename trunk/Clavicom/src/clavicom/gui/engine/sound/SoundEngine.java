@@ -49,6 +49,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	ThreadSound clickThread;
 	ThreadSound enteredThread;
 	ThreadSound scrollThread;
+	ThreadSound mouseDelayedClickThread;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected SoundEngine( )
@@ -61,7 +62,9 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 
 		scrollThread = new ThreadSound( CFilePaths.getScrollSoundFilePath() );
 		scrollThread.start();
-		
+
+		mouseDelayedClickThread = new ThreadSound( CFilePaths.getMouseClickSoundFilePath() );
+		mouseDelayedClickThread.start();
 	}
 	
 	public void listenEntered( UIKeyboard uiKeyboard )
@@ -130,9 +133,6 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	{
 		DefilementEngine.getInstance().removeDefilListener( this );
 	}
-	
-	
-
 
 	public static void createInstance( )
 	{
@@ -152,6 +152,13 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		{
 			scrollThread.play();
 		}
+		
+		// si on est en mode défilement
+		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE
+				&& CProfil.getInstance().getSound().isSoundOnMouseDelay())
+		{
+			mouseDelayedClickThread.play();
+		}
 	}
 
 	public void keyEntered()
@@ -167,6 +174,11 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		clickThread.play();
 	}
 	
+	public void mouseDelayedClick()
+	{
+		mouseDelayedClickThread.play();
+	}
+	
 	public static void verifySoundEngine( UIKeyboard uiKeyboard )
 	{
 		// ========================================================================
@@ -175,43 +187,54 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
 				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
 			CProfil.getInstance().getSound().isSoundOnClic()  ||
-			CProfil.getInstance().getSound().isSoundOnSurvol()  )
+			CProfil.getInstance().getSound().isSoundOnSurvol() ||
+			CProfil.getInstance().getSound().isSoundOnMouseDelay())
 		{
-			if( SoundEngine.getInstance() == null )
+			if( instance == null )
 			{
-				SoundEngine.createInstance( );
+				createInstance( );
 			}
 		}
 		
-		if( SoundEngine.getInstance() != null )
+		if( instance != null )
 		{
-			// on abonne les différants sons
+			// on abonne les différent sons
 			if( CProfil.getInstance().getSound().isSoundOnClic() )
 			{
-				SoundEngine.getInstance().listenPressed( uiKeyboard );
+				instance.listenPressed( uiKeyboard );
 			}
 			else
 			{
-				SoundEngine.getInstance().unListenPressed( uiKeyboard );
+				instance.unListenPressed( uiKeyboard );
 			}
 			
 			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
 			{
-				SoundEngine.getInstance().listenEntered( uiKeyboard );
+				instance.listenEntered( uiKeyboard );
 			}
 			else
 			{
-				SoundEngine.getInstance().unListenEntered( uiKeyboard );
+				instance.unListenEntered( uiKeyboard );
 			}
 			
 			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
 					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
 			{
-				SoundEngine.getInstance().listenDefilement( );
+				instance.listenDefilement( );
 			}
 			else
 			{
-				SoundEngine.getInstance().unListenDefilement( );
+				instance.unListenDefilement( );
+			}
+			
+			if( ( CProfil.getInstance().getSound().isSoundOnMouseDelay() 
+					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE) )
+			{
+				instance.listenDefilement( );
+			}
+			else
+			{
+				instance.unListenDefilement( );
 			}
 		}
 	}

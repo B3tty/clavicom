@@ -38,6 +38,7 @@ public class CSound
 	boolean soundOnDefil; 				// Jouer un son sur le défilement
 	boolean soundOnClic; 				// Jouer un son sur le click sur un bouton
 	boolean soundOnSurvol; 				// Jouer un son sur le survol sur un bouton
+	boolean soundOnMouseDelay; 			// Jouer un son sur le click temporisé
 	boolean soundOnStartApplication; 	// Jouer un son au lancement de l'application
 	
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -46,6 +47,7 @@ public class CSound
 		soundOnDefil = false;
 		soundOnClic = false;
 		soundOnSurvol = false;
+		soundOnMouseDelay = false;
 		soundOnStartApplication = false;
 	}
 	
@@ -142,6 +144,36 @@ public class CSound
 		}
 		
 		
+		// Récupération de l'element OnMouseDelay
+		Element eltOnMouseDelay = soundNode.getChild(TXMLNames.PR_ELEMENT_SOUND_ON_MOUSE_DELAY);
+		
+		if (eltOnMouseDelay == null)
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_MISSING_ELEMENT_1") +
+									TXMLNames.PR_ELEMENT_SOUND_ON_MOUSE_DELAY + 
+									UIString.getUIString("EX_SOUND_MISSING_ELEMENT_2"));	
+		}
+		
+		String strOnMouseDelay = eltOnMouseDelay.getAttributeValue(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE);
+		
+		if (strOnMouseDelay == null || strOnMouseDelay.equals(""))
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_MISSING_ATTRIBUTE_1") +
+									TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE + 
+									UIString.getUIString("EX_SOUND_MISSING_ATTRIBUTE_2"));				
+		}
+		
+		try
+		{
+			soundOnMouseDelay = Boolean.parseBoolean(strOnMouseDelay);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception (	UIString.getUIString("EX_SOUND_BAD_ATTRIBUTE_1") +
+									strOnMouseDelay + 
+									UIString.getUIString("EX_SOUND_BAD_ATTRIBUTE_2"));				
+		}
+		
 		// Récupération de l'element OnStart
 		Element eltOnStart = soundNode.getChild(TXMLNames.PR_ELEMENT_SOUND_ON_START);
 		
@@ -192,6 +224,10 @@ public class CSound
 		eltOnSurvol.setAttribute(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE, Boolean.toString(soundOnSurvol));
 		soundNode.addContent(eltOnSurvol);
 		
+		Element eltOnMouseDelay = new Element (TXMLNames.PR_ELEMENT_SOUND_ON_MOUSE_DELAY);
+		eltOnMouseDelay.setAttribute(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE, Boolean.toString(soundOnMouseDelay));
+		soundNode.addContent(eltOnMouseDelay);
+		
 		Element eltOnStart = new Element (TXMLNames.PR_ELEMENT_SOUND_ON_START);
 		eltOnStart.setAttribute(TXMLNames.PR_ATTRIBUTE_SOUND_ACTIVE, Boolean.toString(soundOnStartApplication));
 		soundNode.addContent(eltOnStart);
@@ -213,6 +249,11 @@ public class CSound
 	{
 		return soundOnDefil;
 	}
+	
+	public boolean isSoundOnMouseDelay()
+	{
+		return soundOnMouseDelay;
+	}
 
 	public void setSoundOnDefil(boolean soundOnDefil)
 	{
@@ -227,6 +268,11 @@ public class CSound
 	public void setSoundOnSurvol(boolean soundOnSurvol)
 	{
 		this.soundOnSurvol = soundOnSurvol;
+	}
+	
+	public void setSoundOnMouseDelay(boolean soundOnMouseDelay)
+	{
+		this.soundOnMouseDelay = soundOnMouseDelay;
 	}
 
 	public boolean isSoundOnStartApplication()

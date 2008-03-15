@@ -44,6 +44,7 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 	JCheckBox checkDefil;
 	JCheckBox checkEntered;
 	JCheckBox checkPressed;
+	JCheckBox checkMouseDelay;
 	JCheckBox checkStart;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
@@ -77,6 +78,10 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		
 		checkStart = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_ISSTARTED"), sound.isSoundOnStartApplication() );
 		panelSouth.add( checkStart, BorderLayout.SOUTH );
+		
+		checkMouseDelay = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND_IDMOUSEDELAY"), sound.isSoundOnMouseDelay() );
+		panelSouth.add( checkMouseDelay, BorderLayout.SOUTH );
+		
 		panelGlobal.add( panelSouth, BorderLayout.SOUTH );
 		
 		pan.add(panelGlobal);
@@ -93,6 +98,7 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 		checkDefil.setSelected( sound.isSoundOnDefil() );
 		checkEntered.setSelected( sound.isSoundOnSurvol() );
 		checkPressed.setSelected( sound.isSoundOnClic() );
+		checkMouseDelay.setSelected( sound.isSoundOnMouseDelay());
 		checkStart.setSelected( sound.isSoundOnStartApplication() );
 	}
 	
@@ -133,6 +139,14 @@ public class PanelModificationProfilSound extends PanelModificationProfil
 			if( saveData )
 			{
 				sound.setSoundOnClic( checkPressed.isSelected() );
+			}
+			retour = true;
+		}
+		if( checkMouseDelay.isSelected() != sound.isSoundOnMouseDelay() )
+		{
+			if( saveData )
+			{
+				sound.setSoundOnMouseDelay( checkMouseDelay.isSelected() );
 			}
 			retour = true;
 		}

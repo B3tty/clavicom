@@ -568,6 +568,7 @@
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISENTERED">Au survol</message>
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISPRESSED">Au clic</message>
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISSTARTED">Au démarrage de l'application</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_IDMOUSEDELAY">Au clic temporisé de la souris</message>
 	
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Transparence</message>
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>

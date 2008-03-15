@@ -570,6 +570,7 @@
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISENTERED">On enter</message>
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISPRESSED">On click</message>
 	<message id = "LB_CONFPROFIL_PANEL_SOUND_ISSTARTED">On launch</message>
+	<message id = "LB_CONFPROFIL_PANEL_SOUND_IDMOUSEDELAY">On mouse delayed click</message>
 	
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY">Transparency</message>
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Keyboard transparency</message>
