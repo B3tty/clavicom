@@ -1,8 +1,8 @@
-ï»¿<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
 
 <!-- 
-    Fichier d'installation du Clavicom NG.
-    Pour gÃ©nÃ©rer l'installeur associÃ©, appelez le script "Generate installer.bat"
+    Fichier d'installation du ClavicomNG.
+    Pour générer l'installeur associé, appelez le script "Generate installer.bat"
 -->
 
 <installation version="1.0">
@@ -10,7 +10,7 @@
     <!-- Informations sur l'application -->
     <info>
         <appname>ClavicomNG</appname>
-        <appversion>1.0 BÃªta 1</appversion>
+        <appversion>1.0 Bêta 1</appversion>
 		<appsubpath>Handicap International\ClavicomNG</appsubpath>
         <authors>
             <author name="Thomas Devaux" email="thomas.devaux@gmail.com"/>
@@ -20,7 +20,7 @@
 		<javaversion>1.6</javaversion>
     </info>
     
-    <!-- PrÃ©fÃ©rences graphiques de l'installeur -->
+    <!-- Préférences graphiques de l'installeur -->
      <guiprefs height="600" resizable="no" width="800">
         <laf name="looks">
             <os family="unix"/>
@@ -35,7 +35,7 @@
 		<modifier key="filler3XGap" value="10"/>
     </guiprefs>
     
-    <!-- Langages de l'installeur proposÃ©s -->
+    <!-- Langages de l'installeur proposés -->
     <locale>
 	    <langpack iso3="fra"/>
         <langpack iso3="eng"/>
@@ -50,7 +50,7 @@
         <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
     </variables>
     
-    <!-- Ressources nÃ©cessaires Ã  certains panels. Ici pour le panel de license et d'info -->
+    <!-- Ressources nécessaires à certains panels. Ici pour le panel de license et d'info -->
     <resources>
         <res src="Installer\Jar installer\Installer_Files\Readme.html" id="HTMLInfoPanel.info"/>
         <res src="Installer\Jar installer\Installer_Files\Licence.txt" id="LicencePanel.licence"/>
@@ -73,7 +73,7 @@
         <res src="Installer\Jar installer\Installer_Files\border8.png" id="Installer.image.8"/>
     </resources>
     
-    <!-- Panels de l'installateur Ã  utiliser (l'ordre est respectÃ©) -->
+    <!-- Panels de l'installateur à utiliser (l'ordre est respecté) -->
     <panels>
         <panel classname="HTMLInfoPanel" id="infopanel"/>
         <panel classname="LicencePanel" id="licensepanel"/>
@@ -94,10 +94,10 @@
         </listener>
     </listeners>
     
-    <!-- Liste des packs utilisÃ© (groupes de fichiers Ã  installer ou non) -->
+    <!-- Liste des packs utilisé (groupes de fichiers à installer ou non) -->
     <packs>
 		<pack name="Application" required="yes" preselected="yes">
-            <description>Liste des fichiers nÃ©cessaires Ã  l'execution de l'application.</description>
+            <description>Liste des fichiers nécessaires à l'execution de l'application.</description>
 			<file src="Installer\Temp\ClavicomNG.exe" targetdir="$INSTALL_PATH"/>
             <file src="class" targetdir="$INSTALL_PATH"/>
             <file src="libs" targetdir="$INSTALL_PATH"/>
@@ -106,7 +106,7 @@
         </pack>
         <pack name="Sources" required="no" preselected="no">
             <description>Cochez cette option pour installer les fichiers sources de l'application.
-Cette option est utile si vous souhaitez participer Ã  l'amÃ©lioration de ClavicomNG.</description>
+Cette option est utile si vous souhaitez participer à l'amélioration de ClavicomNG.</description>
             <file src="src" targetdir="$INSTALL_PATH"/>
         </pack>
         <pack name="Documentation du logiciel" required="no" preselected="yes">
@@ -119,7 +119,7 @@ Cette option est utile si vous souhaitez participer Ã  l'amÃ©lioration de Clavic
         </pack>
     </packs>
 	
-	<!-- SpÃ©cification des raccourcis -->
+	<!-- Spécification des raccourcis -->
 	<native type="izpack" name="ShellLink.dll"/>
     <native type="3rdparty" name="COIOSHelper.dll" stage="both">
     <os family="windows"/></native>    
