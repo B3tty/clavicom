@@ -51,7 +51,7 @@ public class UISplashScreen extends JWindow implements Runnable
 	private final Color LABEL_COLOR = new Color(210,210,210);			// Couleur des caractères
 	
 	private final int LABEL_POS_X = 303;	// Position du label, X
-	private final int LABEL_POS_Y = 228; 	// Position du label, y
+	private final int LABEL_POS_Y = 229; 	// Position du label, y
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	private String imageFile;			// Chemin de l'image
