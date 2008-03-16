@@ -37,7 +37,7 @@
     <on_start active="false" />
   </sound>
   <navigation>
-    <type value="STANDARD" />
+    <type value="CLICK_TEMPORISE" />
     <rollover active="false" />
     <mouse_speed value="27" />
     <click_tempo value="2632" />
@@ -59,16 +59,16 @@
     <shadow>false</shadow>
   </font>
   <advanced_options>
-    <click_souricom>LEFT_PRESS</click_souricom>
+    <click_souricom>RIGHT_PRESS</click_souricom>
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1296875</x>
-        <y>0.64375</y>
+        <x>0.09375</x>
+        <y>0.6125</y>
       </left_up>
       <right_down>
-        <x>0.9171875</x>
-        <y>0.94125</y>
+        <x>0.88125</x>
+        <y>0.91</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -3056,6 +3056,7 @@
     <prefered_word frequency="1">azedrtgoo</prefered_word>
     <prefered_word frequency="1">test</prefered_word>
     <prefered_word frequency="1">@@@@@@@€€€€€€€€€€€€€</prefered_word>
+    <prefered_word frequency="1">ac</prefered_word>
   </prefered_words>
 </profil>
 
