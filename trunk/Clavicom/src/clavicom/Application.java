@@ -56,6 +56,7 @@ import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TNavigationType;
+import clavicom.tools.TStartDefilEnum;
 
 public class Application
 {
@@ -230,15 +231,32 @@ public class Application
 		{
 			ClickEngine.getInstance().mouseHookResume();
 			
-			DefilementEngine.getInstance().startDefilement();
 			
 			DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
+			
+			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+			{
+				DefilementEngine.getInstance().startDefilement();
+			}
+			else
+			{
+				DefilementEngine.getInstance().forceStartDefilement();
+			}
 		}
 		else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			ClickEngine.getInstance().mouseHookResume();
-			DefilementEngine.getInstance().startDefilement();
+			
 			ClickTemporiseEngine.getInstance().startClickTempoEngine();
+			
+			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+			{
+				DefilementEngine.getInstance().startDefilement();
+			}
+			else
+			{
+				DefilementEngine.getInstance().forceStartDefilement();
+			}
 		}
 	}
 
