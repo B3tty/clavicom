@@ -180,7 +180,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	}
 	
 	public static void verifySoundEngine( UIKeyboard uiKeyboard )
-	{
+	{		
 		// ========================================================================
 		// on regarde si on doit lancer le moteur de son
 		// ========================================================================
@@ -192,7 +192,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		{
 			if( instance == null )
 			{
-				createInstance( );
+				createInstance();
 			}
 		}
 		
