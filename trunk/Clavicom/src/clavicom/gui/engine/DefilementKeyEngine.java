@@ -118,7 +118,6 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 		DefilementEngine.getInstance().removeDefilListener( this );
 		ClickEngine.getInstance().addClickMouseHookListener( this );
 		DefilementEngine.getInstance().addDefilListener( this );
-		
 	}
 	
 	public void stopKeyDefilEngine()

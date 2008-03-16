@@ -213,8 +213,6 @@ public class Application
 		
 		// on lance le mode de navigation
 		LaunchNavigationMode();
-		
-		// </TEMPORAIRE>
 	}
 	
 	
