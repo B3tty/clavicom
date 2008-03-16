@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
+  <language_ui>french.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>azerty.css</shortcutset_name>
   <dictionary_name>french_standard.cdc</dictionary_name>
@@ -27,20 +27,20 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>1.0</keyboard_transparency>
+    <keyboard_transparency>0.73</keyboard_transparency>
   </transparency>
   <sound>
     <on_defil active="true" />
     <on_click active="true" />
-    <on_survol active="true" />
-    <on_mouse_delay active="true" />
+    <on_survol active="false" />
     <on_start active="false" />
+    <on_mouse_delay="true" />
   </sound>
   <navigation>
     <type value="STANDARD" />
     <rollover active="false" />
-    <mouse_speed value="27" />
-    <click_tempo value="1815" />
+    <mouse_speed value="85" />
+    <click_tempo value="837" />
     <defil_tempo value="1267" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
@@ -54,7 +54,7 @@
       <green>0</green>
       <blue>0</blue>
     </color>
-    <bold>true</bold>
+    <bold>false</bold>
     <italic>false</italic>
     <shadow>false</shadow>
   </font>
@@ -64,12 +64,12 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.1265625</x>
-        <y>0.63875</y>
+        <x>0.15703125</x>
+        <y>0.65875</y>
       </left_up>
       <right_down>
-        <x>0.9125</x>
-        <y>0.93375</y>
+        <x>0.8804687</x>
+        <y>0.95125</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -1058,12 +1058,12 @@
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.20535715</x>
-              <y>0.7941176</y>
+              <x>0.2026287</x>
+              <y>0.7937743</y>
             </point>
             <point position="max">
-              <x>0.5218254</x>
-              <y>0.9537815</y>
+              <x>0.5224534</x>
+              <y>0.95719844</y>
             </point>
           </coordinates>
           <colors>
@@ -1099,12 +1099,12 @@
         <keycharacter order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.67956346</x>
-              <y>0.025210084</y>
+              <x>0.67907995</x>
+              <y>0.023346303</y>
             </point>
             <point position="max">
-              <x>0.7777778</x>
-              <y>0.18907563</y>
+              <x>0.7776561</x>
+              <y>0.19066148</y>
             </point>
           </coordinates>
           <colors>
@@ -1136,12 +1136,12 @@
         <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.68108106</x>
-              <y>0.22222222</y>
+              <x>0.67907995</x>
+              <y>0.21789883</y>
             </point>
             <point position="max">
-              <x>0.7794595</x>
-              <y>0.38222224</y>
+              <x>0.7776561</x>
+              <y>0.3774319</y>
             </point>
           </coordinates>
           <colors>
@@ -1173,12 +1173,12 @@
         <keycharacter order="2" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.68154764</x>
-              <y>0.4117647</y>
+              <x>0.68017524</x>
+              <y>0.4085603</y>
             </point>
             <point position="max">
-              <x>0.77876985</x>
-              <y>0.64285713</y>
+              <x>0.7776561</x>
+              <y>0.6420233</y>
             </point>
           </coordinates>
           <colors>
@@ -1386,12 +1386,12 @@
         <keycharacter order="5" caption_image="false" holdable="true">
           <coordinates>
             <point position="min">
-              <x>0.10810811</x>
-              <y>0.79555553</y>
+              <x>0.10733844</x>
+              <y>0.7937743</y>
             </point>
             <point position="max">
-              <x>0.19459459</x>
-              <y>0.96444446</y>
+              <x>0.1894852</x>
+              <y>0.96498054</y>
             </point>
           </coordinates>
           <colors>
@@ -3048,16 +3048,7 @@
     </keygroup>
   </keyboard>
   <prefered_words active="true">
-    <prefered_word frequency="1">eeeeeee</prefered_word>
-    <prefered_word frequency="1">oooo</prefered_word>
-    <prefered_word frequency="1">_____''ytr-iipppppppppppppppra</prefered_word>
-    <prefered_word frequency="1">ppp</prefered_word>
-    <prefered_word frequency="1">juyhg</prefered_word>
-    <prefered_word frequency="1">zzzz</prefered_word>
-    <prefered_word frequency="1">azedrtgoo</prefered_word>
-    <prefered_word frequency="1">test</prefered_word>
-    <prefered_word frequency="1">@@@@@@@€€€€€€€€€€€€€</prefered_word>
-    <prefered_word frequency="1">ac</prefered_word>
+    <prefered_word frequency="1">ancerise21</prefered_word>
   </prefered_words>
 </profil>
 
