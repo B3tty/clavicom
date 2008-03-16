@@ -34,7 +34,7 @@
     <on_click active="true" />
     <on_survol active="false" />
     <on_start active="false" />
-    <on_mouse_delay active="false" />
+    <on_mouse_delay="true" />
   </sound>
   <navigation>
     <type value="STANDARD" />
