@@ -60,6 +60,7 @@
   </font>
   <advanced_options>
     <click_souricom>LEFT_PRESS</click_souricom>
+    <start_defil_mode>ON_STARTUP</start_defil_mode>
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>

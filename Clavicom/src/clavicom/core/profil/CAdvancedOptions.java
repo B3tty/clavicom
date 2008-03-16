@@ -32,6 +32,7 @@ import org.jdom.Element;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TClickSouricomEnum;
 import clavicom.tools.TSize;
+import clavicom.tools.TStartDefilEnum;
 import clavicom.tools.TXMLNames;
 
 public class CAdvancedOptions
@@ -40,6 +41,7 @@ public class CAdvancedOptions
 
 	//---------------------------------------------------------- VARIABLES --//
 	TClickSouricomEnum clickSouricom;
+	TStartDefilEnum startDefilMode;
 	boolean addSpaceAfterString;
 	CFramePosition clavicomFramePosition;
 	CFramePosition souricomFramePosition;
@@ -60,6 +62,14 @@ public class CAdvancedOptions
 			throw new Exception( "[" + UIString.getUIString("EX_ADVANCED_OPTION_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.FP_CLICK_SOURICOM);
 		}
 		clickSouricom = TClickSouricomEnum.getValue( eltClickSouricom.getText() );
+		
+		// Start defil mode
+		Element eltStartDefil = node.getChild( TXMLNames.FP_START_DEFIL_MODE );
+		if( eltStartDefil == null )
+		{
+			throw new Exception( "[" + UIString.getUIString("EX_ADVANCED_OPTION_BUILD") + "] : " + UIString.getUIString("EX_KEYGROUP_NOT_FIND_NODE") + TXMLNames.FP_START_DEFIL_MODE);
+		}
+		startDefilMode = TStartDefilEnum.getValue( eltStartDefil.getText() );
 		
 		// addSpaceAfterString
 		Element eltAddSpaceBevorString = node.getChild( TXMLNames.FP_ADD_SPACE_AFTER_STRING );
@@ -136,6 +146,10 @@ public class CAdvancedOptions
 		elt_clickSouricom.setText( TClickSouricomEnum.getString( clickSouricom ) );
 		elt_advancedOption.addContent( elt_clickSouricom );
 		
+		Element elt_startDefilMode = new Element( TXMLNames.FP_START_DEFIL_MODE );
+		elt_startDefilMode.setText( TStartDefilEnum.getString( startDefilMode ) );
+		elt_advancedOption.addContent( elt_startDefilMode );
+		
 		Element elt_spaceAfterString = new Element( TXMLNames.FP_ADD_SPACE_AFTER_STRING );
 		elt_spaceAfterString.setText( String.valueOf( addSpaceAfterString ) );
 		elt_advancedOption.addContent( elt_spaceAfterString );
@@ -187,10 +201,20 @@ public class CAdvancedOptions
 	{
 		return clickSouricom;
 	}
+	
+	public TStartDefilEnum getStartDefilMode()
+	{
+		return startDefilMode;
+	}
 
 	public void setClickSouricom(TClickSouricomEnum clickSouricom)
 	{
 		this.clickSouricom = clickSouricom;
+	}
+	
+	public void setStartDefilMode(TStartDefilEnum startDefilMode)
+	{
+		this.startDefilMode = startDefilMode;
 	}
 
 	public int getNumberOfDefilTurn()

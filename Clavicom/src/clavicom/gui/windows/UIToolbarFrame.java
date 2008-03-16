@@ -84,6 +84,7 @@ import clavicom.gui.utils.UIMovingPanel;
 import clavicom.gui.utils.UITranslucentDialog;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TNavigationType;
+import clavicom.tools.TStartDefilEnum;
 import clavicom.tools.TSwingUtils;
 
 //import com.sun.jna.examples.WindowUtils;
@@ -906,18 +907,34 @@ UIGridChangedListener
 	{
 		ClickEngine.getInstance().mouseHookResume();
 		
-		DefilementEngine.getInstance().startDefilement();
-		
+		// (Lignes interverties)
 		DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
+		
+		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+		{
+			DefilementEngine.getInstance().startDefilement();
+		}
+		else
+		{
+			DefilementEngine.getInstance().forceStartDefilement();
+		}
 	}
 	
 	private void startClickTempoMode()
 	{
 		ClickEngine.getInstance().mouseHookResume();
 		
-		DefilementEngine.getInstance().startDefilement();
+		// (Lignes interverties)
+		ClickTemporiseEngine.getInstance().startClickTempoEngine();
 		
-		ClickTemporiseEngine.getInstance().startClickTempoEngine();	
+		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+		{
+			DefilementEngine.getInstance().startDefilement();
+		}
+		else
+		{
+			DefilementEngine.getInstance().forceStartDefilement();
+		}
 	}
 	
 	protected void onClickBtEditionKey()

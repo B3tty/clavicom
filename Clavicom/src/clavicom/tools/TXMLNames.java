@@ -140,6 +140,7 @@ public class TXMLNames
 	
 	// advanced options
 	public static String FP_CLICK_SOURICOM				= "click_souricom";
+	public static String FP_START_DEFIL_MODE			= "start_defil_mode";
 	public static String FP_ADD_SPACE_AFTER_STRING		= "add_space_after_string";
 	public static String FP_CLAVICOM_FRAME_POSITION		= "clavicom_frame_position";
 	public static String FP_SOURICOM_FRAME_POSITION		= "souricom_frame_position";

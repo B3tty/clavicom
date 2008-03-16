@@ -542,7 +542,7 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLIC_TEMPORISE">Delayed click</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_DEFILEMENT_TEMPORISATION">Scroll speed</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Click speed</message>
-	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Automaticaly move mouse window while entering it, in scroll mode.</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Automaticaly move application window while cursor is entering</message>
 	
 	<message id = "LB_CONFIG_TEMPO_DEFIL_FAST">Fast</message>
 	<message id = "LB_CONFIG_TEMPO_DEFIL_SLOW">Slow</message>
@@ -557,6 +557,9 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_RELEASE">Left released</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_RIGHT_PRESS">Right pressed</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_LEFT_RELEASE">Right released</message>
+
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_STARTDEFIL_ON_STARTUP">On application startup</message>
+	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_LB_STARTDEFIL_ON_ACTION_CLICK">At first click on action button</message>
 	
 	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS">Preferred words</message>
 	<message id = "LB_CONFPROFIL_PANEL_PREFEREDWORDS_ACTIVE">Active</message>
@@ -594,7 +597,8 @@
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION">Advanced options</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_ADD_SPACE_AFTER_STRING">Add a space after pressing a key</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_OPTION_START_WITH_OS">Launch on startup</message>
-	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Used clicked for mouse</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM">Mouse button for scrolling</message>
+	<message id = "LB_CONFPROFIL_ADVANCED_START_DEFIL">Start scrolling</message>
 	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Number of scrolls before returning to previous level</message>
 	
 	<message id = "LB_CONFPROFIL_PANEL_ABOUT">About</message>

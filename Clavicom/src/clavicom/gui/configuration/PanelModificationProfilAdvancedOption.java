@@ -42,6 +42,7 @@ import clavicom.core.profil.CCommandSetName;
 import clavicom.core.profil.CShortCutSetName;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TClickSouricomEnum;
+import clavicom.tools.TStartDefilEnum;
 
 public class PanelModificationProfilAdvancedOption extends
 		PanelModificationProfil
@@ -55,6 +56,7 @@ public class PanelModificationProfilAdvancedOption extends
 	CShortCutSetName shortcutSetName;
 	
 	JComboBox comboClickSouricom;
+	JComboBox comboStartDefil;
 	JCheckBox addSpaceAfterString;
 	JSpinner nbDefilTurn;
 	
@@ -91,7 +93,15 @@ public class PanelModificationProfilAdvancedOption extends
 				/*TClickSouricomEnum.RIGHT_RELEASE,*/
 				TClickSouricomEnum.RIGHT_PRESS
 			};
+		
+		TStartDefilEnum[] startDefilArray = 
+		{	
+			TStartDefilEnum.ON_STARTUP,
+			TStartDefilEnum.ON_ACTION_CLICK,
+		};
+		
 		comboClickSouricom = new JComboBox( clickSouricomArray );
+		comboStartDefil = new JComboBox( startDefilArray );
 		
 		
 		addSpaceAfterString = new JCheckBox( 
@@ -114,9 +124,13 @@ public class PanelModificationProfilAdvancedOption extends
 		// ========================================================
 		
 		// création des panels
-		JPanel panelClickSouricom = new JPanel( new BorderLayout() );
-		panelClickSouricom.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM") + " " ), BorderLayout.WEST );
-		panelClickSouricom.add( comboClickSouricom, BorderLayout.CENTER );
+		JPanel panelDefilSouricom = new JPanel( new BorderLayout() );
+		panelDefilSouricom.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_CLICK_SOURICOM") + " " ), BorderLayout.WEST );
+		panelDefilSouricom.add( comboClickSouricom, BorderLayout.CENTER );
+		
+		JPanel panelStartDefil = new JPanel( new BorderLayout() );
+		panelStartDefil.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_START_DEFIL") + " " ), BorderLayout.WEST );
+		panelStartDefil.add( comboStartDefil, BorderLayout.CENTER );
 		
 		JPanel panelNBDefilTurn = new JPanel();
 		panelNBDefilTurn.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN") ), BorderLayout.WEST );
@@ -140,13 +154,30 @@ public class PanelModificationProfilAdvancedOption extends
 	            0,							// Espace intérieur en X
 	            0							// Espace intérieur en Y
 	    );
-		gridBagLayout.setConstraints(panelClickSouricom, gbConstAOClicSouricom);
-		add( panelClickSouricom );
+		gridBagLayout.setConstraints(panelDefilSouricom, gbConstAOClicSouricom);
+		add( panelDefilSouricom );
+		
+		// Start defil
+		GridBagConstraints gbConstStartDefil = new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            1,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,							// Taille horizontale relative
+	            17,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(0, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gridBagLayout.setConstraints(panelStartDefil, gbConstStartDefil);
+		add( panelStartDefil );
 		
 		// space after
 		GridBagConstraints gbConstAOSpaceAfterString = new GridBagConstraints (	
 				0,							// Numéro de colonne
-	            1,							// Numéro de ligne
+	            2,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,							// Taille horizontale relative
@@ -218,6 +249,7 @@ public class PanelModificationProfilAdvancedOption extends
 	public void initValues()
 	{
 		comboClickSouricom.setSelectedItem( advancedOption.getClickSouricom() );
+		comboStartDefil.setSelectedItem( advancedOption.getStartDefilMode() );
 		addSpaceAfterString.setSelected( advancedOption.isAddSpaceAfterString() );
 		nbDefilTurn.setValue( String.valueOf( advancedOption.getNumberOfDefilTurn() ) );
 		
@@ -242,13 +274,20 @@ public class PanelModificationProfilAdvancedOption extends
 	
 	protected boolean change( boolean saveData )
 	{
-		// si les options avancés on changés
+		// si les options avancées on changé
 		boolean retour = false;
 		
 		// clic souricom
 		if( comboClickSouricom.getSelectedItem() != advancedOption.getClickSouricom() )
 		{
 			advancedOption.setClickSouricom( (TClickSouricomEnum)comboClickSouricom.getSelectedItem() );
+			retour = true;
+		}
+		
+		// clic souricom
+		if( comboStartDefil.getSelectedItem() != advancedOption.getStartDefilMode() )
+		{
+			advancedOption.setStartDefilMode( (TStartDefilEnum)comboStartDefil.getSelectedItem() );
 			retour = true;
 		}
 		
@@ -267,8 +306,6 @@ public class PanelModificationProfilAdvancedOption extends
 			retour = true;			
 		}
 		
-		
-
 		return retour;
 	}
 
@@ -277,13 +314,10 @@ public class PanelModificationProfilAdvancedOption extends
 		return panelCommandSet;
 	}
 
-	
-
 	public PanelModificationProfilShortcutSetName getPanelShortcutSet()
 	{
 		return panelShortcutSet;
 	}
-
-
+	
 	// --------------------------------------------------- METHODES PRIVEES --//
 }
