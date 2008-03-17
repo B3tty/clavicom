@@ -1,4 +1,7 @@
-===== VERSION BETA 1.1 (générée le XX/XX/XXXX) =====
+===== VERSION BETA 1.2 (générée le XX/XX/XXXX) =====
+ - 
+ 
+===== VERSION BETA 1.1 (générée le 17/03/2008) =====
  - Modification du splashscreen (logo Icom' et aliasing sur le texte)
  - Ajout de l'option "jouer un son sur le clic temporisé"
  - Ajout de l'option "Démarrer le défilement au lancement de l'application ou sur clic"
