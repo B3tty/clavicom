@@ -27,14 +27,14 @@
     </default_entered>
   </keyboard_color>
   <transparency>
-    <keyboard_transparency>0.73</keyboard_transparency>
+    <keyboard_transparency>1.0</keyboard_transparency>
   </transparency>
   <sound>
     <on_defil active="true" />
     <on_click active="true" />
     <on_survol active="false" />
-    <on_start active="false" />
     <on_mouse_delay active="true" />
+    <on_start active="false" />
   </sound>
   <navigation>
     <type value="STANDARD" />
@@ -65,11 +65,11 @@
     <clavicom_frame_position>
       <left_up>
         <x>0.15703125</x>
-        <y>0.65875</y>
+        <y>0.6575</y>
       </left_up>
       <right_down>
-        <x>0.8804687</x>
-        <y>0.95125</y>
+        <x>0.8796875</x>
+        <y>0.95</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
