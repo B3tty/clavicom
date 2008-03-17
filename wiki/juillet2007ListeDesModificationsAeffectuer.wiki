@@ -4,15 +4,15 @@
 
 par ordre de priorité :
 
-1. Clic temporisé : 
-le clic temporisé n'est actif qu'après un clic mécanique sur la souris
+~~1. Clic temporisé : 
+le clic temporisé n'est actif qu'après un clic mécanique sur la souris (Modif par Thomas)~~
 
 ~~2. Souricom : 
 Dans les options : la vitesse du curseur ne change pas après modification du curseur
-(Réponse : A priori ça marche)~~
+(Réponse : A priori ça marche) (Modif par Thomas)~~
 
 ~~3. Clic temporisé :
-Le clic temporisé ne doit pas être actif en dehors du clavier (ou alors il faut affecter au clic du son et créer un bouton pour désactiver le clic temporairement (stop, reprise).~~
+Le clic temporisé ne doit pas être actif en dehors du clavier (ou alors il faut affecter au clic du son et créer un bouton pour désactiver le clic temporairement (stop, reprise). (Modif par Thomas)~~
 
 4. Touches de fonction :
 Les raccourcis sélection de texte ne fonctionnent pas (d’une manière générale, lorsque l’on clique sur ctrl, shift et flèche, ça ne sélectionne pas)
