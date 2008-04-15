@@ -27,7 +27,6 @@ package clavicom.gui.windows;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -90,12 +89,8 @@ import clavicom.tools.TSwingUtils;
 //import com.sun.jna.examples.WindowUtils;
 
 
-public class UIToolbarFrame extends UITranslucentDialog 
-implements
-UIGridChangedListener 
+public class UIToolbarFrame extends UITranslucentDialog implements UIGridChangedListener
 {
-
-
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int PANEL_TOOLBAR_RIGHT_SPACE = 5;
 	private final int PANEL_TOOLBAR_LEFT_SPACE = 5;
@@ -112,7 +107,8 @@ UIGridChangedListener
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
 
-
+	private final int BT_IMAGE_SIZE = 30;
+	
 	//---------------------------------------------------------- VARIABLES --//
 	@SuppressWarnings("unused")
 	private boolean isEdited; 	// Indique si on est en édition
@@ -287,8 +283,8 @@ UIGridChangedListener
 		gridButtonSaveLoad.setHgap( 2 );
 		gridButtonSaveLoad.setVgap( 2 );
 		panelBoutonsSaveLoad.setLayout( gridButtonSaveLoad );
-		
 		mainPanelBg.setLayout(new GridLayout());
+		
 		// -------------- Layout du panel principal ----------------------------
 		GridBagLayout gbLayoutMain = new GridBagLayout();
 		
@@ -376,30 +372,7 @@ UIGridChangedListener
 		mainPanel = new UIMovingPanel(this);
 		mainPanelBg = new UIToolbarPanel(Color.GRAY.brighter());
 		panelBoutons = new JPanel();
-		panelBoutonsSaveLoad = new JPanel()
-		{
-			@Override
-			public void paintComponent(Graphics g)
-			{
-				super.paintComponents(g);
-				
-				if( (btSaveAs.getWidth() > 7) && (btSaveAs.getHeight() > 7) )
-				{
-					if( btSaveAs.getWidth() < btSaveAs.getHeight() )
-					{
-						btSaveAs.setIcon( TSwingUtils.scaleImage(saveIcon, btSaveAs.getWidth()-6, -1)  );
-						btLoad.setIcon( TSwingUtils.scaleImage(loadIcon, btLoad.getWidth()-6, -1)  );
-					}
-					else
-					{
-						btSaveAs.setIcon( TSwingUtils.scaleImage(saveIcon, -1, btSaveAs.getHeight()-6)  );
-						btLoad.setIcon( TSwingUtils.scaleImage(loadIcon, -1, btLoad.getHeight()-6)  );
-					}
-				}
-			}
-		};
-		loadIcon = TSwingUtils.getImage( CFilePaths.getLoad());
-		saveIcon = TSwingUtils.getImage( CFilePaths.getSaveAs());
+		panelBoutonsSaveLoad = new JPanel();
 		
 		// Panels de modification de touche
 		panelOptionKeyOneLevel = new UIPanelOptionOneLevelKey();
@@ -431,7 +404,7 @@ UIGridChangedListener
 		btOptionsApplication = new JButton(UIString.getUIString("LB_EDITION_OPEN_OPTIONS"));
 		btEditionKey = new JButton(UIString.getUIString("LB_EDITION_EDIT_KEY"));
 		btOpenLevelManager = new JButton(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER"));
-		btSaveAs = new JButton( );
+		btSaveAs = new JButton();
 		btLoad = new JButton();
 		
 		btFermerModeEdition.setMinimumSize(new Dimension(0,0));
@@ -448,16 +421,6 @@ UIGridChangedListener
 		btSaveAs.setPreferredSize(new Dimension(0,0));
 		btLoad.setPreferredSize(new Dimension(0,0));
 		
-		
-		
-		// Ajout des tooltips
-		btFermerModeEdition.setToolTipText(UIString.getUIString("LB_EDITION_CLOSE_EDITION_TOOLTIP"));
-		btOptionsApplication.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_OPTIONS_TOOLTIP"));
-		btEditionKey.setToolTipText(UIString.getUIString("LB_EDITION_EDIT_KEY_TOOLTIP"));
-		btOpenLevelManager.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP"));
-		btSaveAs.setToolTipText(UIString.getUIString("LB_EDITION_SAVE_AS_TOOLTIP"));
-		btLoad.setToolTipText(UIString.getUIString("LB_EDITION_LOAD_TOOLTIP"));
-		
 		panelBoutons.add(btFermerModeEdition);
 		panelBoutons.add(btOptionsApplication);
 		panelBoutons.add(btOpenLevelManager);
@@ -465,9 +428,6 @@ UIGridChangedListener
 		
 		panelBoutonsSaveLoad.add( btSaveAs );
 		panelBoutonsSaveLoad.add( btLoad );
-		
-		
-		
 		
 		
 		panelToolbar = new UIKeyCreationToolbar(	CProfil.getInstance().getDefaultColor().getDefaultKeyClicked().getColor(),
@@ -517,6 +477,7 @@ UIGridChangedListener
 		// Affectation de la taille
 		setBounds(0, 0, PREFERED_WIDTH, PREFERED_HEIGHT);
 		
+		
 		// Ajout des actions aux boutons
 		btEditionKey.setAction(new BtEditionKeyAction(UIString.getUIString("LB_EDITION_EDIT_KEY")));
 		btFermerModeEdition.setAction(new BtFermerModeEditionAction(UIString.getUIString("LB_EDITION_CLOSE_EDITION")));
@@ -525,8 +486,18 @@ UIGridChangedListener
 		btSaveAs.setAction( new BtSaveAsAction() );
 		btLoad.setAction( new BtLoadAction() );
 		
-		// Initialisation des tailles des fenêtres
+		btSaveAs.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getSaveAs()),BT_IMAGE_SIZE,-1));
+		btLoad.setIcon(TSwingUtils.scaleImage(TSwingUtils.getImage(CFilePaths.getLoad()),BT_IMAGE_SIZE,-1));
 		
+		// Ajout des tooltips
+		btFermerModeEdition.setToolTipText(UIString.getUIString("LB_EDITION_CLOSE_EDITION_TOOLTIP"));
+		btOptionsApplication.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_OPTIONS_TOOLTIP"));
+		btEditionKey.setToolTipText(UIString.getUIString("LB_EDITION_EDIT_KEY_TOOLTIP"));
+		btOpenLevelManager.setToolTipText(UIString.getUIString("LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP"));
+		btSaveAs.setToolTipText(UIString.getUIString("LB_EDITION_SAVE_AS_TOOLTIP"));
+		btLoad.setToolTipText(UIString.getUIString("LB_EDITION_LOAD_TOOLTIP"));
+		
+		// Initialisation des tailles des fenêtres
 		frameOptionKeyOneLevel.setSize(410,300);
 		frameOptionKeyKeyboard.setSize(410,175);
 		frameOptionKeyCharacter.setSize(540,540);
@@ -949,7 +920,7 @@ UIGridChangedListener
 	}
 
 	public void gridUsed(boolean used)
-	{		
+	{
 		panelKeyboard.useMagnetGrid(used);
 		panelKeyboard.repaint();
 	}
@@ -1128,7 +1099,6 @@ UIGridChangedListener
 			
 			setLocation(location);
 		}
-
 		super.setVisible(arg0);
 	}
 	
