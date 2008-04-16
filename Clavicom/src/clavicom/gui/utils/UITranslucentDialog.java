@@ -28,6 +28,8 @@ package clavicom.gui.utils;
 import javax.swing.JDialog;
 import javax.swing.JRootPane;
 
+import clavicom.tools.OSTypeEnum;
+
 import com.sun.jna.examples.WindowUtils;
 
 public class UITranslucentDialog extends JDialog
@@ -65,7 +67,19 @@ public class UITranslucentDialog extends JDialog
 		
 		if(newTransparency > 0)
 		{
-			WindowUtils.setWindowAlpha(this, transparency);
+			if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+			{
+				WindowUtils.setWindowAlpha(this, transparency);
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+			{
+				// TODO
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+			{
+				// TODO
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+			{
+				// TODO
+			}
 		}
 	}
 	

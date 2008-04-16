@@ -26,6 +26,7 @@
 package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -41,6 +42,7 @@ import clavicom.core.profil.CAdvancedOptions;
 import clavicom.core.profil.CCommandSetName;
 import clavicom.core.profil.CShortCutSetName;
 import clavicom.gui.language.UIString;
+import clavicom.tools.OSTypeEnum;
 import clavicom.tools.TClickSouricomEnum;
 import clavicom.tools.TStartDefilEnum;
 
@@ -136,6 +138,42 @@ public class PanelModificationProfilAdvancedOption extends
 		panelNBDefilTurn.add( new JLabel( UIString.getUIString("LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN") ), BorderLayout.WEST );
 		panelNBDefilTurn.add( nbDefilTurn, BorderLayout.CENTER );
 		
+		// ========================================================================
+		// Check OS type
+		// ========================================================================
+		JLabel lb_OSREstriction = new JLabel( );
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			// nothing to do
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Linux" );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			comboClickSouricom.setEnabled( false );
+			comboStartDefil.setEnabled( false );
+			nbDefilTurn.setEnabled( false );
+			
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Mac" );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			comboClickSouricom.setEnabled( false );
+			comboStartDefil.setEnabled( false );
+			nbDefilTurn.setEnabled( false );
+			
+		} else
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			comboClickSouricom.setEnabled( false );
+			comboStartDefil.setEnabled( false );
+			nbDefilTurn.setEnabled( false );
+		}
+		
+		
 		// placement dans le gridbag
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		setLayout( gridBagLayout );
@@ -157,6 +195,11 @@ public class PanelModificationProfilAdvancedOption extends
 		gridBagLayout.setConstraints(panelDefilSouricom, gbConstAOClicSouricom);
 		add( panelDefilSouricom );
 		
+		
+		
+		panelDefilSouricom.setEnabled(false);
+
+		
 		// Start defil
 		GridBagConstraints gbConstStartDefil = new GridBagConstraints (	
 				0,							// Numéro de colonne
@@ -174,10 +217,13 @@ public class PanelModificationProfilAdvancedOption extends
 		gridBagLayout.setConstraints(panelStartDefil, gbConstStartDefil);
 		add( panelStartDefil );
 		
+
+		panelStartDefil.setEnabled(false);
+		
 		// space after
 		GridBagConstraints gbConstAOSpaceAfterString = new GridBagConstraints (	
 				0,							// Numéro de colonne
-	            2,							// Numéro de ligne
+	            3,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,							// Taille horizontale relative
@@ -195,7 +241,7 @@ public class PanelModificationProfilAdvancedOption extends
 		// nb turn
 		GridBagConstraints gbConstAONBDefilTurn = new GridBagConstraints (	
 				0,							// Numéro de colonne
-	            3,							// Numéro de ligne
+	            2,							// Numéro de ligne
 	            1,							// Nombre de colonnes occupées
 	            1,							// Nombre de lignes occupées
 	            100,							// Taille horizontale relative
@@ -208,6 +254,9 @@ public class PanelModificationProfilAdvancedOption extends
 	    );
 		gridBagLayout.setConstraints(panelNBDefilTurn, gbConstAONBDefilTurn);
 		add( panelNBDefilTurn );
+
+		panelNBDefilTurn.setEnabled(false);
+
 		
 		// jeu de commande
 		GridBagConstraints gbConstAOCommandeSet = new GridBagConstraints (	
@@ -242,6 +291,23 @@ public class PanelModificationProfilAdvancedOption extends
 	    );
 		gridBagLayout.setConstraints(panelShortcutSet, gbConstAOShortcutSet);
 		add( panelShortcutSet );
+		
+		// OS restriction msg
+		GridBagConstraints gbOSREstriction= new GridBagConstraints (	
+				0,							// Numéro de colonne
+	            6,							// Numéro de ligne
+	            1,							// Nombre de colonnes occupées
+	            1,							// Nombre de lignes occupées
+	            100,							// Taille horizontale relative
+	            17,							// Taille verticale relative
+	            GridBagConstraints.CENTER,	// Ou placer le composant en cas de redimension
+	            GridBagConstraints.BOTH,	// Manière de rétrécir le composant
+	            new Insets(20, 0, 5, 5),		// Espace autours (haut, gauche, bas, droite)
+	            0,							// Espace intérieur en X
+	            0							// Espace intérieur en Y
+	    );
+		gridBagLayout.setConstraints(lb_OSREstriction, gbOSREstriction);
+		add( lb_OSREstriction );
 
 		
 	}

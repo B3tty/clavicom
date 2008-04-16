@@ -25,24 +25,26 @@
 
 package clavicom;
 
+import java.io.File;
+
 public class CFilePaths
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
 	//---------------------------------------------------------- VARIABLES --//
-	private static String ressources = "Ressources\\"; 
-	private static String application = ressources + "Application\\";
+	private static String ressources = "Ressources" + File.separator; 
+	private static String application = ressources + "Application" + File.separator;
 	
-	private static String commandSets = application + "CommandSets\\";
-	private static String defaultProfile = application + "DefaultProfiles\\";
-	private static String dictionaries = application + "Dictionaries\\";
-	private static String languagesUI = application + "LanguagesUI\\";
-	private static String shortcutSets = application + "ShortcutSets\\";
-	private static String pictures = application + "Pictures\\";
-	private static String profils = ressources + "Profiles\\";
-	private static String sounds = application + "Sounds\\";
+	private static String commandSets = application + "CommandSets" + File.separator;
+	private static String defaultProfile = application + "DefaultProfiles" + File.separator;
+	private static String dictionaries = application + "Dictionaries" + File.separator;
+	private static String languagesUI = application + "LanguagesUI" + File.separator;
+	private static String shortcutSets = application + "ShortcutSets" + File.separator;
+	private static String pictures = application + "Pictures" + File.separator;
+	private static String profils = ressources + "Profiles" + File.separator;
+	private static String sounds = application + "Sounds" + File.separator;
 	
-	private static String userPictures = profils + "Pictures\\";
+	private static String userPictures = profils + "Pictures" + File.separator;
 	
 	private static String configFile = application + "config.xml";
 	private static String splashScreenFile = pictures + "splash.png";

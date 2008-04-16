@@ -162,13 +162,17 @@ public class Application
 		splash.newStep("Loading key creation engine...");
 		loadKeyCreationEngine();
 		
+
 		// Chargement du moteur de click
 		splash.newStep("Loading click engine...");
 		loadClickEngine();
+
 		
+
 		// Chargement du moteur de defilement
 		splash.newStep("Loading scrolling engine...");
 		loadDefilementEngine();	
+		
 		
 		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
 		{
@@ -181,29 +185,36 @@ public class Application
 		// Création des fenêtres
 		splash.newStep("Creating windows...");		createWindows();
 
+
 		// Chargement du moteur de defilement des key
 		splash.newStep("Loading key scrolling engine...");
 		loadKeyDefilementEngine();
+
 		
 		// Chargement du moteur de key clavicom
 		splash.newStep("Loading keyboard keys engine...");
 		loadKeyClavicomEngine();
 		
+
 		// Chargement du moteur des touches de le souricom
 		splash.newStep("Loading mouse keys engine...");
 		loadKeySouricomEngine();
-		
+
+
 		// Chargement du moteur de click temporise
 		splash.newStep("Loading temporised click engine...");
 		loadTemporisationClickEngine();
+
 		
 		// Chargement du moteur de son
 		splash.newStep("Loading sound engine...");
 		loadSoundEngine();
 		
+
 		// Chargement du moteur de déplacement de la souricom
 		splash.newStep("Loading mouse move engine...");
 		loadMouseMoveEngine();
+		
 		
 		// Fin du chargement
 		splash.newStep("Load complete !");
@@ -267,7 +278,7 @@ public class Application
 	{
 		uiKeyboard = new UIKeyboard(CProfil.getInstance().getKeyboard());
 		keyboardFrame = new UIKeyboardFrame(uiKeyboard);
-		
+
 		try
 		{
 			mouseFrame = new UIMouseFrame(  );
@@ -277,6 +288,7 @@ public class Application
 		{
 			CMessageEngine.newError( UIString.getUIString("EX_MOUSE_CAN_NOT_LOAD"), e1.getMessage() );
 		}
+		
 		
 		// TODO : enlever ces deux lignes
 		
@@ -295,9 +307,12 @@ public class Application
 			}
 		});
 	
+
 		// donne la réference au moteur de défilement
 		DefilementEngine.getInstance().setUiKeyboard( uiKeyboard );
+		
 		DefilementEngine.getInstance().setUiMouse( mouseFrame.getUiMouse() );
+
 	}
 	
 
@@ -578,11 +593,13 @@ public class Application
 	private static void loadKeyClavicomEngine()
 	{
 		// Création de l'engine
+
 		UIKeyClavicomEngine.createInstance(	CProfil.getInstance().getKeyboard(), mouseFrame.getCMouse() );
-		
+
 		// Ajout de la frame keyboard
 		UIKeyClavicomEngine.getInstance().setFrameKeyboard(keyboardFrame);
 		
+
 		// Ajout de la frame souricom
 		UIKeyClavicomEngine.getInstance().setFrameMouse( mouseFrame );
 	}

@@ -92,6 +92,7 @@ public class UIPanelOptionKeyCharacter extends UIPanelOptionThreeLevelKey
 		selectCharacterShift.setValues(myKeyCharacter);
 		selectCharacterAltGr.setValues(myKeyCharacter);
 		
+		
 	}
 
 
