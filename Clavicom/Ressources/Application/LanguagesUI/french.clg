@@ -542,6 +542,8 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Vitesse de clic</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Changement de position de l'application au passage du pointeur</message>
 	
+	<message id = "LB_OS_RESTRICTION">Certaines fonctions ne sont pas disponibles pour votre systeme d'exploitation</message>
+	
 	<message id = "LB_CONFIG_TEMPO_DEFIL_FAST">Rapide</message>
 	<message id = "LB_CONFIG_TEMPO_DEFIL_SLOW">Lente</message>
 	<message id = "LB_CONFIG_TEMPO_CLIC_FAST">Rapide</message>

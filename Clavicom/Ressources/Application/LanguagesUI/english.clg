@@ -544,6 +544,8 @@
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION">Click speed</message>
 	<message id = "LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED">Automaticaly move application window while cursor is entering</message>
 	
+	<message id = "LB_OS_RESTRICTION">Some features are not available for your operating system</message>
+	
 	<message id = "LB_CONFIG_TEMPO_DEFIL_FAST">Fast</message>
 	<message id = "LB_CONFIG_TEMPO_DEFIL_SLOW">Slow</message>
 	<message id = "LB_CONFIG_TEMPO_CLIC_FAST">Fast</message>
