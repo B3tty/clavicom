@@ -125,7 +125,6 @@ UIRightClickListener
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
 	private List<UIKeyKeyboard> allKeys;			// Liste des keys
-	private List<UIKeyThreeLevel> threeLevelKeys;	// Liste des ThreeLevelKeys
 	private List<UIKeyKeyboard> selectedKeys;		// Liste des key selectionnées
 	private List<UIKeyKeyboard> unClassedKey;		// Liste des key non placées dans les groupes
 
@@ -162,7 +161,6 @@ UIRightClickListener
 		keyGroups = new ArrayList<UIKeyGroup>();
 		allKeys = new ArrayList<UIKeyKeyboard>();
 		unClassedKey = new ArrayList<UIKeyKeyboard>();
-		threeLevelKeys = new ArrayList<UIKeyThreeLevel>();
 		selectedKeys = new ArrayList<UIKeyKeyboard>();
 
 		listeners = new EventListenerList();
@@ -203,11 +201,6 @@ UIRightClickListener
 			currentThreeLevelKeys.clear();
 			currentThreeLevelKeys = currentKeyGroup.getThreeLevelKeys();
 			
-			if(currentThreeLevelKeys != null)
-			{
-				threeLevelKeys.addAll(currentThreeLevelKeys);
-			}
-			
 			// Demande de récupération des Keys
 			currentKeys.clear();
 			currentKeys = currentKeyGroup.getKeys();
@@ -243,7 +236,6 @@ UIRightClickListener
 		// Destruction de tous les groupes UI
 		keyGroups.clear();
 		allKeys.clear();
-		threeLevelKeys.clear();
 		selectedKeys.clear();
 		unClassedKey.clear();
 		
@@ -504,9 +496,12 @@ UIRightClickListener
 	//-----------------------------------------------------------------------
 	public void changeLevel(TLevelEnum level)
 	{
-		for (UIKeyThreeLevel currentKey : threeLevelKeys)
+		for (UIKeyKeyboard currentKey : allKeys)
 		{
-			currentKey.captionChanged();
+			if ( currentKey instanceof UIKeyThreeLevel)
+			{
+				((UIKeyThreeLevel)currentKey).captionChanged();
+			}
 		}
 	}
 	
@@ -1057,7 +1052,6 @@ UIRightClickListener
 			
 			// Suppression des listes
 			allKeys.removeAll(selectedKeys);
-			threeLevelKeys.removeAll(selectedKeys);
 			unClassedKey.removeAll(selectedKeys);
 			
 			for (UIKeyKeyboard currentKey : selectedKeys)

@@ -28,6 +28,7 @@ package clavicom.gui.engine.click;
 import javax.swing.event.EventListenerList;
 
 import clavicom.core.profil.CProfil;
+import clavicom.tools.OSTypeEnum;
 import clavicom.tools.TClickSouricomEnum;
 
 public class ClickEngine
@@ -72,7 +73,19 @@ public class ClickEngine
 		{
 			super.finalize();
 			
-			FinishMouseHook();
+			if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+			{
+				FinishMouseHook();
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+			{
+				// TODO
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+			{
+				// TODO
+			}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+			{
+				// TODO
+			}
 		}
 		
 	};
@@ -91,10 +104,22 @@ public class ClickEngine
 	{
 		listenerList = new EventListenerList();
 		
-		System.loadLibrary( dllPath );	
-		
-		startHook();
-		mouseHookPause();
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			System.loadLibrary( dllPath );	
+			
+			startHook();
+			mouseHookPause();
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+		{
+			// TODO
+		}
 	}
 	
 	static public void createInstance( String dllPath )
@@ -110,25 +135,73 @@ public class ClickEngine
 	//----------------------------------------------------------- METHODES --//
 	public void startHook()
 	{
-		// Lancement du Hook
-		threadMouseHook.start();
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			// Lancement du Hook
+			threadMouseHook.start();
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+		{
+			// TODO
+		}
 	}
 	
 	@SuppressWarnings("deprecation")
 	public void stopMouseHook()
 	{
-		threadMouseHook.stop();
-		FinishMouseHook();
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			threadMouseHook.stop();
+			FinishMouseHook();
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+		{
+			// TODO
+		}
 	}
 	
 	public void mouseHookPause()
 	{
-		InhibitMouseHook( true );
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			InhibitMouseHook( true );
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+		{
+			// TODO
+		}
 	}
 	
 	public void mouseHookResume()
 	{
-		InhibitMouseHook( false );
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			InhibitMouseHook( false );
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			// TODO
+		}else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.UNKNOWN )
+		{
+			// TODO
+		}
 	}
 	
 	

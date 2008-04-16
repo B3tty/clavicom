@@ -45,6 +45,7 @@ import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TKeyClavicomActionType;
 import clavicom.tools.TNavigationType;
 
+
 public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
@@ -62,6 +63,10 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 	{
 		instance = new UIKeyClavicomEngine( keyboard, mouse );
 	}
+	public static void createInstance( CKeyboard keyboard )
+	{
+		instance = new UIKeyClavicomEngine( keyboard );
+	}
 	public static UIKeyClavicomEngine getInstance()
 	{
 		return instance;
@@ -69,15 +74,26 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 	
 	protected UIKeyClavicomEngine( CKeyboard keyboard, CMouse mouse )
 	{
-		listeners = new EventListenerList();
-		
-		// Abonnement aux listeners
-		listen( keyboard );
+		constructor( keyboard );
 		
 		// Abonnement au keyClavicom de la mouse
 		mouse.getClickMouseMode().addOnClickKeyClavicomListener( this );
 		mouse.getMoveMouseMode().addOnClickKeyClavicomListener( this );
 		mouse.getSwitchMouseKeyboard().addOnClickKeyClavicomListener( this );
+	}
+	
+	protected UIKeyClavicomEngine( CKeyboard keyboard )
+	{
+		constructor( keyboard );
+	}
+	
+	protected void constructor( CKeyboard keyboard )
+	{
+		listeners = new EventListenerList();
+		
+		// Abonnement aux listeners
+		listen( keyboard );
+		
 	}
 	
 	public void listen( CKeyKeyboard keyboardKey )

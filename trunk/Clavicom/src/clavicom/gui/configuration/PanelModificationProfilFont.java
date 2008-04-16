@@ -251,7 +251,7 @@ public class PanelModificationProfilFont extends PanelModificationProfil
 
 	    
 	    labelSize = new JLabel( "    " + UIString.getUIString("LB_CONFPROFIL_PANEL_FONT_SIZE") + " : ");
-	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100});
+	    comboSize = new JComboBox(new Object[]{0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,125,150,175,200,250,300});
 
 		// Ajout des Contraintes de LabelSize
 		GridBagConstraints gbConstLabelSize = new GridBagConstraints (	

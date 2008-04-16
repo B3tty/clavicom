@@ -316,7 +316,6 @@ public class CCommandEngine implements OnClickKeyCharacterListener,
 		try
 		{
 			robot.keyPress(code.GetKeyEvent());
-
 		}
 		catch (Exception ex)
 		{
@@ -352,6 +351,7 @@ public class CCommandEngine implements OnClickKeyCharacterListener,
 		CCommand keyCommand = keyCharacter.getCommand(CLevelEngine
 				.getInstance().getCurrentLevel());
 
+		
 		commandList.add(keyCommand);
 
 		executeCommande(commandList, keyCharacter);

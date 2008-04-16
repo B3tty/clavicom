@@ -97,7 +97,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 	private final int PANEL_TOOLBAR_BOTTOM_SPACE = 5;
 	private final int PANEL_TOOLBAR_UP_SPACE = 5;
 	
-	private final int PREFERED_WIDTH = 680;		// Largeur de la barre
+	private final int PREFERED_WIDTH = 780;		// Largeur de la barre
 	private final int PREFERED_HEIGHT = 110;	// Hauteur de la barre
 	
 	private final int PREFERED_SPACE_WITH_KEYBOARD = 5;	// Espacement avec le keyboard
@@ -865,17 +865,20 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 	
 	private void stopDefilMode()
 	{
+
 		ClickEngine.getInstance().mouseHookPause();
-		
+			
 		DefilementEngine.getInstance().stopDefilement();
-		
+			
 		DefilementKeyEngine.getInstance().stopKeyDefilEngine();
-		
+			
 		ClickTemporiseEngine.getInstance().stopClickTempoEngine();
+		
 	}
 
 	private void startDefilMode()
 	{
+
 		ClickEngine.getInstance().mouseHookResume();
 		
 		// (Lignes interverties)
@@ -889,10 +892,12 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		{
 			DefilementEngine.getInstance().forceStartDefilement();
 		}
+
 	}
 	
 	private void startClickTempoMode()
 	{
+		
 		ClickEngine.getInstance().mouseHookResume();
 		
 		// (Lignes interverties)
@@ -906,6 +911,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		{
 			DefilementEngine.getInstance().forceStartDefilement();
 		}
+
 	}
 	
 	protected void onClickBtEditionKey()
@@ -1063,6 +1069,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			
 			// On repasse en mode clavicom normal
 			frameKeyboard.edit(false);
+			
 			
 			// on regarde si on doit lancer le défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )

@@ -67,7 +67,7 @@
 		</command>
 		<command id="16" search_string="j" caption = "j">
 			<code order="0" action="pressed" value="VK_J"/>
-			<code order="1" action="released" value="VK_A"/>
+			<code order="1" action="released" value="VK_J"/>
 		</command>
 		<command id="17" search_string="k" caption = "k">
 			<code order="0" action="pressed" value="VK_K"/>

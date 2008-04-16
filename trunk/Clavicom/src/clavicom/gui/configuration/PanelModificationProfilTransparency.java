@@ -26,11 +26,14 @@
 package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import clavicom.core.profil.CTransparency;
 import clavicom.gui.language.UIString;
+import clavicom.tools.OSTypeEnum;
 
 public class PanelModificationProfilTransparency extends PanelModificationProfil
 {
@@ -76,6 +79,36 @@ public class PanelModificationProfilTransparency extends PanelModificationProfil
 		
 		keyboardT.add(keyboardTransparency, BorderLayout.CENTER);
 		panelGlobal.add(keyboardT, BorderLayout.NORTH);
+		
+		// ========================================================================
+		// Check OS type
+		// ========================================================================
+		JLabel lb_OSREstriction = new JLabel( );
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			// nothing to do
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Linux" );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			keyboardTransparency.setEnabled( false );
+			
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Mac" );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			keyboardTransparency.setEnabled( false );
+			
+		} else
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() );
+			lb_OSREstriction.setForeground(Color.red);
+			
+			keyboardTransparency.setEnabled( false );
+		}
+		panelGlobal.add(lb_OSREstriction, BorderLayout.SOUTH);
 		
 		add( panelGlobal, BorderLayout.CENTER );
 	}

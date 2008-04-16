@@ -26,6 +26,7 @@
 package clavicom.gui.configuration;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
@@ -39,6 +40,7 @@ import javax.swing.JSlider;
 
 import clavicom.core.profil.CNavigation;
 import clavicom.gui.language.UIString;
+import clavicom.tools.OSTypeEnum;
 import clavicom.tools.TNavigationType;
 
 public class PanelModificationProfilNavigation extends PanelModificationProfil implements ActionListener
@@ -96,14 +98,32 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		} 
 		else if( navigation.getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
+
 			SwitchDefilementMode();
 			radioButtonStandard.setSelected(false);
 			radioButtonDefilement.setSelected(true);
 			radioButtonClickTempo.setSelected(false);
 			
+			// check the OS type
+			if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+    		{
+				radioButtonDefilement.setSelected(true);
+    		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+    		{
+    			radioButtonDefilement.setSelected(false);
+    		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+    		{
+    			radioButtonDefilement.setSelected(false);
+    		} else
+    		{
+    			radioButtonDefilement.setSelected(false);
+    		}
+
+			
 		} 
 		else if( navigation.getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
+
 			SwitchClicMode();
 			radioButtonStandard.setSelected(false);
 			radioButtonDefilement.setSelected(false);
@@ -170,7 +190,6 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		panelGlobal.add( radioButtonClickTempo );
 		
 		
-		
 		// on initialise avec la temporisation de défilement  
 		labelTempoClic = new JLabel( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_CLICK_TEMPORISATION") + " : " );
 		panelGlobal.add( labelTempoClic );
@@ -188,6 +207,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		panelGlobal.add( sliderTempoClic );
 		
+		sliderTempoClic.setEnabled( false );
 		
 		
 		// ========================================================================
@@ -197,7 +217,22 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		// navigation défilement
 		radioButtonDefilement = new JRadioButton( TNavigationType.DEFILEMENT.toString(), false );
 		buttonGroup.add( radioButtonDefilement );
-		radioButtonDefilement.addActionListener(this);
+		
+		// check the OS type
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+			radioButtonDefilement.addActionListener(this);
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			radioButtonDefilement.setEnabled( false );
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			radioButtonDefilement.setEnabled( false );
+		} else
+		{
+			radioButtonDefilement.setEnabled( false );
+		}
+		
 		panelGlobal.add( radioButtonDefilement );
 		
 		
@@ -218,11 +253,16 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		
 		panelGlobal.add( sliderTempoDefil );
 		
+
+		sliderTempoDefil.setEnabled( false );
+		
 		// ========================================================================
 		// Séléction du mouseMoveOnEntered ou non
 		// ========================================================================
 		mouseMoveOnEntered = new JCheckBox( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION_MOUSE_MOVE_ON_ENTERED"), navigation.isMoveMouseOnEntered() );
 		panelGlobal.add( mouseMoveOnEntered );
+
+		mouseMoveOnEntered.setEnabled( false );
 
 		// ========================================================================
 		// Séléction de la temporisation du clic de la souricom
@@ -241,6 +281,31 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		sliderMouseSpeed.setValue( navigation.getMouseSpeed() );
 		
 		panelGlobal.add( sliderMouseSpeed );
+
+		sliderMouseSpeed.setEnabled( false );
+		
+		// ========================================================================
+		// Check OS type
+		// ========================================================================
+		JLabel lb_OSREstriction = new JLabel( );
+		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+		{
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Linux" );
+			lb_OSREstriction.setForeground(Color.red);
+		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Mac" );
+			lb_OSREstriction.setForeground(Color.red);
+		} else
+		{
+			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() );
+			lb_OSREstriction.setForeground(Color.red);
+		}
+		
+		panelGlobal.add( lb_OSREstriction );
+
 		
 		
 		// ========================================================================
@@ -261,7 +326,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoSouriom.setLocation( 20, 330 );
 		sliderMouseSpeed.setLocation( 10, 360 );
 
-		
+		lb_OSREstriction.setLocation( 50, 420 );
 		
 		
 		
@@ -284,10 +349,13 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		labelTempoSouriom.setSize( 200, 30 );
 		sliderMouseSpeed.setSize( 300, 50 );
 		
+		lb_OSREstriction.setSize( 500, 50 );
 		
 		
 
 		add( panelGlobal, BorderLayout.CENTER );
+		
+		
 	}
 
 
@@ -320,26 +388,28 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 
 	private void SwitchClicMode()
 	{
+
 		sliderTempoClic.setEnabled( true );
-		
+			
 		sliderTempoDefil.setEnabled( false );
-		
+			
 		labelTempoClic.setEnabled( true );
 		labelTempoDefil.setEnabled( false );
-		
+			
 		mouseMoveOnEntered.setEnabled( false );
 	}
 
 
 	private void SwitchDefilementMode()
 	{
+
 		sliderTempoClic.setEnabled( false );
-		
+			
 		sliderTempoDefil.setEnabled( true );
-		
+			
 		labelTempoClic.setEnabled( false );
 		labelTempoDefil.setEnabled( true );
-		
+			
 		mouseMoveOnEntered.setEnabled( true );
 		
 	}

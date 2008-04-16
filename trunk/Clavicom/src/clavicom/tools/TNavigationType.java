@@ -77,7 +77,23 @@ public final class TNavigationType
     	}
     	else if (myString.equals("DEFILEMENT"))
     	{
-    		return DEFILEMENT;
+    		// check the OS type
+    		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
+    		{
+    			return DEFILEMENT;
+    		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
+    		{
+    			// keep standard
+    			return STANDARD;
+    		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC )
+    		{
+    			// keep standard
+    			return STANDARD;
+    		} else
+    		{
+    			// keep standard
+    			return STANDARD;
+    		}
     	}
     	else if (myString.equals("CLICK_TEMPORISE"))
     	{

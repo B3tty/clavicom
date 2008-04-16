@@ -408,7 +408,7 @@ public class CKeyCharacter extends CKeyThreeLevel
 	}
 	
 	public String getCaption( TLevelEnum level )
-	{
+	{		
 		String myCaption = "";
 		if( level == TLevelEnum.NORMAL )
 		{
