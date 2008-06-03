@@ -10,7 +10,7 @@
     <!-- Informations sur l'application -->
     <info>
         <appname>ClavicomNG</appname>
-        <appversion>1.0 Bêta 1</appversion>
+        <appversion>1.0 Bêta 1.1</appversion>
 		<appsubpath>Handicap International\ClavicomNG</appsubpath>
         <authors>
             <author name="Thomas Devaux" email="thomas.devaux@gmail.com"/>
@@ -22,9 +22,13 @@
     
     <!-- Préférences graphiques de l'installeur -->
      <guiprefs height="600" resizable="no" width="800">
-        <laf name="looks">
-            <os family="unix"/>
-        </laf>
+		<laf name="metouia">
+		    <os family="unix" />
+		</laf>
+		<laf name="looks">
+		    <os family="windows" />
+		    <param name="variant" value="extwin" />
+		</laf>
         <!-- GUI addaption for more informations see "Modifying the GUI" in the documentation -->
     	<modifier key="layoutAnchor" value="CENTER"/>
     	<modifier key="headingPanelCounter" value="progressbar"/>
@@ -39,10 +43,6 @@
     <locale>
 	    <langpack iso3="fra"/>
         <langpack iso3="eng"/>
-		<langpack iso3="deu"/>
-		<langpack iso3="ita"/>
-		<langpack iso3="jpn"/>
-		<langpack iso3="spa"/>
     </locale>
 	
 	<!-- Variables -->
@@ -52,7 +52,9 @@
     
     <!-- Ressources nécessaires à certains panels. Ici pour le panel de license et d'info -->
     <resources>
-        <res src="Installer\Jar installer\Installer_Files\Readme.html" id="HTMLInfoPanel.info"/>
+        <res src="Installer\Jar installer\Installer_Files\Readme_eng.html" id="HTMLInfoPanel.info_eng"/>
+        <res src="Installer\Jar installer\Installer_Files\Readme_fra.html" id="HTMLInfoPanel.info_fra"/>
+        
         <res src="Installer\Jar installer\Installer_Files\Licence.txt" id="LicencePanel.licence"/>
         <res src="Installer\Jar installer\Installer_Files\splash-3.10.png" id="installer.langsel.img"/>
         <res src="Installer\Jar installer\Installer_Files\shortcutSpec.xml" id="shortcutSpec.xml"/>
@@ -88,16 +90,15 @@
 	<!-- The listeners section for CustomActions -->
     <listeners>
         <listener installer="SummaryLoggerInstallerListener"/>
-        <listener installer="RegistryInstallerListener"
-                  uninstaller="RegistryUninstallerListener">
+        <listener installer="RegistryInstallerListener" uninstaller="RegistryUninstallerListener">
             <os family="windows"/>
         </listener>
     </listeners>
     
     <!-- Liste des packs utilisé (groupes de fichiers à installer ou non) -->
     <packs>
-		<pack name="Application" required="yes" preselected="yes">
-            <description>Liste des fichiers nécessaires à l'execution de l'application.</description>
+		<pack id="application.package" name="application" required="yes" preselected="yes">
+            <description/>
 			<file src="Installer\Temp\ClavicomNG.exe" targetdir="$INSTALL_PATH"/>
             <file src="class" targetdir="$INSTALL_PATH"/>
             <file src="libs" targetdir="$INSTALL_PATH"/>
@@ -122,5 +123,6 @@ Cette option est utile si vous souhaitez participer à l'amélioration de Clavicom
 	<!-- Spécification des raccourcis -->
 	<native type="izpack" name="ShellLink.dll"/>
     <native type="3rdparty" name="COIOSHelper.dll" stage="both">
-    <os family="windows"/></native>    
+    	<os family="windows"/>
+    </native>    
 </installation>
