@@ -136,7 +136,7 @@ public class Application
 		
 		// Chargement du dictionnaire
 		splash.newStep("Loading dictionnary...");
-		//loadDictionnary();
+		loadDictionnary();
 		
 		// Chargement du moteur de niveaux
 		splash.newStep("Loading level engine...");
@@ -165,14 +165,11 @@ public class Application
 
 		// Chargement du moteur de click
 		splash.newStep("Loading click engine...");
-		loadClickEngine();
-
-		
+		loadClickEngine();		
 
 		// Chargement du moteur de defilement
 		splash.newStep("Loading scrolling engine...");
 		loadDefilementEngine();	
-		
 		
 		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
 		{
@@ -288,9 +285,6 @@ public class Application
 		{
 			CMessageEngine.newError( UIString.getUIString("EX_MOUSE_CAN_NOT_LOAD"), e1.getMessage() );
 		}
-		
-		
-		// TODO : enlever ces deux lignes
 		
 		// Initialisation de la fenêtre
 		keyboardFrame.setTitle(UIString.getUIString("MSG_APPLICATION_NAME"));

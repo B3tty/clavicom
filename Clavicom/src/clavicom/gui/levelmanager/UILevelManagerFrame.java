@@ -929,7 +929,7 @@ public class UILevelManagerFrame extends JDialog
 		// Composants
 		btClassKey = new JButton();
 		btClassKeyAutomatic = new JButton();
-		
+						
 		listUnclassedKeys = new JList();
 		listScrollUnclassedKeys = new JScrollPane(listUnclassedKeys);
 		btClose = new JButton();
