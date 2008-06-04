@@ -18,7 +18,7 @@
      iconIndex="0"
      description="Lance ClavicomNG"
 	 workingDirectory="$INSTALL_PATH">
-     <createForPack name="Application" />
+     <createForPack name="application" />
    </shortcut>
    
    <!-- Menu démarrer, documentation -->
@@ -34,7 +34,7 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_documentation.ico"
      iconIndex="0"
      description="Documentation de ClavicomNG">
-     <createForPack name="Documentation du logiciel" />
+     <createForPack name="documentation" />
    </shortcut>
    
    <!-- Menu démarrer, désinstaller -->
@@ -50,10 +50,10 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_uninstall.ico"
      iconIndex="0" 
      description="Supprime ClavicomNG de l'ordinateur">
-     <createForPack name="Application" />
+     <createForPack name="application" />
    </shortcut>
    
-   <!-- Menu d�marrer, profils -->
+   <!-- Menu demarrer, profils -->
    <shortcut
      name="Mes profils"
      programGroup="yes"
@@ -66,7 +66,7 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_profiles.ico"
      iconIndex="0" 
      description="Profils de l'utilisateur">
-     <createForPack name="Application" />
+     <createForPack name="application" />
    </shortcut>
    
    <!-- Menu démarrer, Images -->
@@ -82,10 +82,10 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_pictures.ico"
      iconIndex="0" 
      description="Images de l'utilisateur">
-     <createForPack name="Application" />
+     <createForPack name="application" />
    </shortcut>
    
-   <!-- Menu d�marrer, Sources -->
+   <!-- Menu demarrer, Sources -->
    <shortcut
      name="Sources"
      programGroup="yes"
@@ -98,7 +98,7 @@
 	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_sources.ico"
      iconIndex="0" 
      description="Sources de l'application">
-     <createForPack name="Sources" />
+     <createForPack name="sources" />
    </shortcut>
    
    <!-- Menu démarrer, lancer au démarrage -->
@@ -115,7 +115,7 @@
      iconIndex="0" 
      description="Lance ClavicomNG"
 	 workingDirectory="$INSTALL_PATH">
-     <createForPack name="Demarrage au lancement de l'ordinateur" />
+     <createForPack name="startup" />
    </shortcut>  
    
    <!-- Raccourci sur le bureau -->
@@ -132,6 +132,6 @@
      iconIndex="0" 
      description="Lance ClavicomNG"
 	 workingDirectory="$INSTALL_PATH">
-     <createForPack name="Application" />
+     <createForPack name="application" />
    </shortcut>   
 </shortcuts>
