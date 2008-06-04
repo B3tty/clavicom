@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<shortcuts>
+  <skipIfNotSupported />
+  <programGroup defaultName="Handicap International\ClavicomNG" location="applications"/>
+
+	<!-- Menu démarrer, lancement -->
+   <shortcut
+     name="ClavicomNG"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0"
+     description="Start ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, documentation -->
+   <shortcut
+     name="User manual"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Doc\ClavicomNG_user_manual.pdf"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_documentation.ico"
+     iconIndex="0"
+     description="ClavicomNG user manual">
+     <createForPack name="documentation" />
+   </shortcut>
+   
+   <!-- Menu démarrer, désinstaller -->
+   <shortcut
+     name="Uninstall"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Uninstaller\uninstaller.jar"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_uninstall.ico"
+     iconIndex="0" 
+     description="Remove ClavicomNG from your computer">
+     <createForPack name="application" />
+   </shortcut>
+   
+   <!-- Menu demarrer, profils -->
+   <shortcut
+     name="My profiles"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_profiles.ico"
+     iconIndex="0" 
+     description="User profiles">
+     <createForPack name="application" />
+   </shortcut>
+   
+   <!-- Menu démarrer, Images -->
+   <shortcut
+     name="My pictures"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\Ressources\Profiles\Pictures"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_pictures.ico"
+     iconIndex="0" 
+     description="User custom pictures">
+     <createForPack name="application" />
+   </shortcut>
+   
+   <!-- Menu demarrer, Sources -->
+   <shortcut
+     name="Sources"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\src"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_sources.ico"
+     iconIndex="0" 
+     description="Application sources">
+     <createForPack name="sources" />
+   </shortcut>
+   
+   <!-- Menu démarrer, lancer au démarrage -->
+   <shortcut
+     name="ClavicomNG"
+     programGroup="no"
+     desktop="no"
+     applications="no"
+     startMenu="no"
+     startup="yes"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0" 
+     description="Start ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="startup" />
+   </shortcut>  
+   
+   <!-- Raccourci sur le bureau -->
+   <shortcut
+     name="ClavicomNG"
+     programGroup="no"
+     desktop="yes"
+     applications="no"
+     startMenu="no"
+     startup="no"
+     target="$INSTALL_PATH\ClavicomNG.exe"     
+     commandLine=""
+	 iconFile="$INSTALL_PATH\Ressources\Application\Pictures\icon_clavicom.ico"
+     iconIndex="0" 
+     description="Start ClavicomNG"
+	 workingDirectory="$INSTALL_PATH">
+     <createForPack name="application" />
+   </shortcut>   
+</shortcuts>

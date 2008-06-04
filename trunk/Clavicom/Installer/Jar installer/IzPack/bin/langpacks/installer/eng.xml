@@ -302,4 +302,18 @@
     <str id="InstallationGroupPanel.colNameSize" txt="Size"/>
 
     <str id="debug.changevariable" txt="modify value"/>
+    
+    <!-- Chaînes spécifiques à ClavicomNG -->
+	<str id="application.package" txt="Application"/>
+	<str id="application.package.description" txt="Core files. Those files are necessary to run ClavicomNG."/>
+
+	<str id="sources.package" txt="Source files"/>
+	<str id="sources.package.description" txt="Tick this option if you want to get sources. This could be useful if you want to help us to improve ClavicomNG!"/>
+
+	<str id="documentation.package" txt="User manual"/>
+	<str id="documentation.package.description" txt="Tick this option to install the user manual (French)."/>
+
+	<str id="startup.package" txt="Launch on startup"/>
+	<str id="startup.package.description" txt="Tick this option to automatically launch ClavicomNG on computer startup."/>
+    
 </langpack>
