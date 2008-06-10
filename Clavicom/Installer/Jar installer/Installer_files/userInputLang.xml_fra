@@ -1,0 +1,9 @@
+<langpack>
+  <str id="commandset.title" txt="Choix du jeu de commande par défaut"/>
+  <str id="commandset.description.1" txt="Veuillez choisir le jeu de commande que ClavicomNG utilisera par défaut. Il correspond au type du clavier mécanique réel que vous utilisez actuellement."/>
+  <str id="commandset.description.2" txt="IMPORTANT : un mauvais choix pourrait provoquer l'insertion d'un autre caractère lors de l'appui sur un touche du clavier. Ce n'est pas un bug ! Ce choix est indispensable pour pouvoir simuler ensuite correctement le fonctionnement du clavier virtuel."/>
+  <str id="commandset.description.3" txt="Vous pourrez toujours modifier le jeu de commandes utilisé dans les options de ClavicomNG."/>
+  <str id="commandset.radio.description" txt="Jeu de commande par défaut :"/>
+  <str id="commandset.radio.choice.qwerty" txt="QWERTY (Américain)"/>
+  <str id="commandset.radio.choice.azerty" txt="AZERTY (Français)"/>
+</langpack>

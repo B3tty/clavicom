@@ -39,8 +39,8 @@
     
     <!-- Langages de l'installeur proposés -->
     <locale>
+    	<langpack iso3="eng"/>
 	    <langpack iso3="fra"/>
-        <langpack iso3="eng"/>
     </locale>
 	
 	<!-- Variables -->
@@ -50,8 +50,8 @@
     
     <!-- Ressources nécessaires à certains panels. Ici pour le panel de license et d'info -->
     <resources>
-    	<res id="CustomLangpack.xml_fra" src="Installer\Jar installer\IzPack\bin\langpacks\installer\fra.xml"/>
-    	<res id="CustomLangpack.xml_eng" src="Installer\Jar installer\IzPack\bin\langpacks\installer\eng.xml"/>
+    	<res id="CustomLangpack.xml_fra" src="Installer\Jar installer\Installer_Files\language_fra.xml"/>
+    	<res id="CustomLangpack.xml_eng" src="Installer\Jar installer\Installer_Files\language_eng.xml"/>
     	
         <res src="Installer\Jar installer\Installer_Files\Readme_eng.html" id="HTMLInfoPanel.info_eng"/>
         <res src="Installer\Jar installer\Installer_Files\Readme_fra.html" id="HTMLInfoPanel.info_fra"/>
@@ -62,6 +62,10 @@
         <res src="Installer\Jar installer\Installer_Files\shortcutSpec_fra.xml" id="shortcutSpec.xml_fra"/>
         <res src="Installer\Jar installer\Installer_Files\shortcutSpec_eng.xml" id="shortcutSpec.xml_eng"/>
         
+  		<res src="Installer\Jar installer\Installer_Files\userInputSpec.xml" id="userInputSpec.xml"/>
+		<res src="Installer\Jar installer\Installer_Files\userInputLang.xml_eng" id="userInputLang.xml_eng" />
+		<res src="Installer\Jar installer\Installer_Files\userInputLang.xml_fra" id="userInputLang.xml_fra" />
+  
         <res src="Installer\Jar installer\Installer_Files\core.png" id="ImgPacksPanel.img.0"/>
         <res src="Installer\Jar installer\Installer_Files\doc-html.png" id="ImgPacksPanel.img.1"/>
         <res src="Installer\Jar installer\Installer_Files\javadocs.png" id="ImgPacksPanel.img.2"/>
@@ -77,20 +81,15 @@
         <res src="Installer\Jar installer\Installer_Files\border6.png" id="Installer.image.6"/>
         <res src="Installer\Jar installer\Installer_Files\border7.png" id="Installer.image.7"/>
         <res src="Installer\Jar installer\Installer_Files\border8.png" id="Installer.image.8"/>
-        
-        <res src="Installer\Jar installer\Installer_Files\Installer_application.jpg" id="ImgPacksPanel.img.0"/>
-        <res src="Installer\Jar installer\Installer_Files\Installer_source.jpg" id="ImgPacksPanel.img.1"/>
-        <res src="Installer\Jar installer\Installer_Files\Installer_documentation.jpg" id="ImgPacksPanel.img.2"/>
-        <res src="Installer\Jar installer\Installer_Files\Installer_startup.jpg" id="ImgPacksPanel.img.3"/>
-        
     </resources>
     
     <!-- Panels de l'installateur à utiliser (l'ordre est respecté) -->
     <panels>
         <panel classname="HTMLInfoPanel" id="infopanel"/>
         <panel classname="LicencePanel" id="licensepanel"/>
+        <panel classname="UserInputPanel"/>
         <panel classname="TargetPanel" id="targetpanel"/>
-        <panel classname="ImgPacksPanel" id="packspanel"/>
+        <panel classname="PacksPanel" id="packspanel"/>
         <panel classname="SummaryPanel" id="summarypanel"/>
         <panel classname="InstallPanel" id="installpanel"/>
         <panel classname="ShortcutPanel" id="shortcutpanel"/>
@@ -105,25 +104,41 @@
         </listener>
     </listeners>
     
+    <!--  Conditions -->
+    <conditions>
+	   	<condition type="variable" id="condition.qwerty">
+	      <name>defaultConfigFilePath</name>
+	      <value>qwerty</value>
+	   	</condition>
+	   	<condition type="variable" id="condition.azerty">
+	      <name>defaultConfigFilePath</name>
+	      <value>azerty</value>
+	   	</condition>
+   </conditions>
+    
     <!-- Liste des packs utilisé (groupes de fichiers à installer ou non) -->
     <packs>
-		<pack id="application.package" name="application" required="yes" preselected="yes" packImgId="ImgPacksPanel.img.0">
+		<pack id="application.package" name="application" required="yes" preselected="yes">
             <description/>
 			<file src="Installer\Temp\ClavicomNG.exe" targetdir="$INSTALL_PATH"/>
             <file src="class" targetdir="$INSTALL_PATH"/>
             <file src="libs" targetdir="$INSTALL_PATH"/>
-			<file src="Ressources" targetdir="$INSTALL_PATH"/>
+			<file src="Ressources\Application" targetdir="$INSTALL_PATH\Ressources"/>
+			<file src="Ressources\Profiles" targetdir="$INSTALL_PATH\Ressources"/>
 			<file src="winHook.dll" targetdir="$INSTALL_PATH"/>
+			
+			<file src="Installer\configFiles\qwerty\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.qwerty"/>
+			<file src="Installer\configFiles\azerty\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.azerty"/>
         </pack>
-        <pack id="sources.package" name="sources" required="no" preselected="no" packImgId="ImgPacksPanel.img.1">
+        <pack id="sources.package" name="sources" required="no" preselected="no">
             <description/>
-            <file src="src" targetdir="$INSTALL_PATH"/>
+            <file src="src" targetdir="$INSTALL_PATH"/>          
         </pack>
-        <pack id="documentation.package" name="documentation" required="no" preselected="yes" packImgId="ImgPacksPanel.img.2">
+        <pack id="documentation.package" name="documentation" required="no" preselected="yes">
             <description/>
             <file src="Doc" targetdir="$INSTALL_PATH"/>
         </pack>
-        <pack id="startup.package" name="startup" required="no" preselected="yes" packImgId="ImgPacksPanel.img.3">
+        <pack id="startup.package" name="startup" required="no" preselected="yes">
             <description/>
             <file src="Doc" targetdir="$INSTALL_PATH"/>
         </pack>
