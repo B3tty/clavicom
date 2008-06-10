@@ -1,5 +1,6 @@
 ===== VERSION BETA 1.2 (générée le XX/XX/XXXX) =====
- - 
+ - Modification de l'installeur (gestion complète Anglais/Français)
+ - Correction du bug de performance en mode édition
  
 ===== VERSION BETA 1.1 (générée le 17/03/2008) =====
  - Modification du splashscreen (logo Icom' et aliasing sur le texte)
