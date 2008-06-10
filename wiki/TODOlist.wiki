@@ -1,0 +1,3 @@
+#summary Mémo des points à revoir ou corriger (non bug)
+
+  * Renommer les profils disponibles (genre QwertyPrediction.cpl, ...)
