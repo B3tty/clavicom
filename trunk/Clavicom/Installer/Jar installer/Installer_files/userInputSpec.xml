@@ -1,0 +1,26 @@
+<userInput>
+  <!-- Install -->
+    <panel order="0">
+        <field type="title" id="commandset.title" bold="true" size="1" />
+        <field type="divider" align="top"/>
+        <!-- Description -->
+        <field type="staticText" id="commandset.description.1" align="left" />        
+        <field type="space"/>
+        <field type="staticText" id="commandset.description.2" align="left" />
+        <field type="space"/>
+        <field type="staticText" id="commandset.description.3" align="left" />
+        <field type="space"/>
+        <field type="divider" align="top"/>
+        
+        <!-- Keyboard layout -->
+        <field type="space"/>
+        <field type="space"/>
+        <field type="radio" variable="defaultConfigFilePath" align="center">
+			<description id="commandset.radio.description"/>
+			<spec>
+				<choice id="commandset.radio.choice.qwerty" value="qwerty" set="true"/>
+			    <choice id="commandset.radio.choice.azerty" value="azerty" />
+			</spec>
+		</field>
+    </panel>
+</userInput>

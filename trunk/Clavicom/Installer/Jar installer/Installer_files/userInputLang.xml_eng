@@ -1,0 +1,9 @@
+<langpack>
+  <str id="commandset.title" txt="Default commandset selection"/>
+  <str id="commandset.description.1" txt="Please choose the default commandset of ClavicomNG. It has to match the real mecanical keyboard you are presently using."/>
+  <str id="commandset.description.2" txt="IMPORTANT: a wrong choice could generate a bad output character while pressing a key. This is not a bug! This choice is necessary for the virtual keyboard to work properly."/>
+  <str id="commandset.description.3" txt="However, you will still be able to change commandset from the option board of ClavicomNG."/>
+  <str id="commandset.radio.description" txt="Default commandset:"/>
+  <str id="commandset.radio.choice.qwerty" txt="QWERTY (US)"/>
+  <str id="commandset.radio.choice.azerty" txt="AZERTY (French)"/>
+</langpack>
