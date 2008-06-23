@@ -49,6 +49,14 @@ public class CCommand implements Comparable<CCommand>
 		search_string = mySearchString;
 		CodeList = new ArrayList<CCode>();
 	}
+	
+	public CCommand()
+	{
+		caption = "";
+		id = -1;
+		search_string = "";
+		CodeList = new ArrayList<CCode>();
+	}
 
 	//----------------------------------------------------------- METHODES --//
 	/**

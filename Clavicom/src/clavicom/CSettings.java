@@ -42,6 +42,7 @@ public class CSettings
 	//---------------------------------------------------------- VARIABLES --//
 	static String lastProfilePath;
 	static String defaultProfileName;
+	static String defaultLanguageFileName;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 
@@ -81,6 +82,14 @@ public class CSettings
 		}
 		
 		defaultProfileName = defaultProfileName_elem.getText();
+		
+		// Récupération du fichier de langue par défaut
+		Element defaultLanguageFileName_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_LANGUAGE_UI );
+		
+		if( defaultLanguageFileName_elem != null  )
+		{
+			defaultLanguageFileName = defaultLanguageFileName_elem.getText();
+		}
 	}
 	
 	public static void saveSettings( String configFilePath ) throws Exception
@@ -96,6 +105,11 @@ public class CSettings
 		Element defaultProfileName_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_PROFILE );
 		defaultProfileName_elem.setText( defaultProfileName );
 		racine.addContent( defaultProfileName_elem );
+		
+		// Enregistrement de la langue par défaut
+		Element defaultLanguageFileName_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_LANGUAGE_UI );
+		defaultLanguageFileName_elem.setText( defaultLanguageFileName );
+		racine.addContent( defaultLanguageFileName_elem );
 		
 		// Sauvegarde
 		
@@ -125,6 +139,16 @@ public class CSettings
 	public static void setDefaultProfileName(String defaultProfileName)
 	{
 		CSettings.defaultProfileName = defaultProfileName;
+	}
+
+	public static String getDefaultLanguageFileName()
+	{
+		return defaultLanguageFileName;
+	}
+
+	public static void setDefaultLanguageFileName(String defaultLanguageFileName)
+	{
+		CSettings.defaultLanguageFileName = defaultLanguageFileName;
 	}
 		
 

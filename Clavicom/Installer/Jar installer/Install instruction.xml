@@ -106,13 +106,21 @@
     
     <!--  Conditions -->
     <conditions>
-	   	<condition type="variable" id="condition.qwerty">
-	      <name>defaultConfigFilePath</name>
+	   	<condition type="variable" id="condition.commandset.qwerty">
+	      <name>commandset</name>
 	      <value>qwerty</value>
 	   	</condition>
-	   	<condition type="variable" id="condition.azerty">
-	      <name>defaultConfigFilePath</name>
+	   	<condition type="variable" id="condition.commandset.azerty">
+	      <name>commandset</name>
 	      <value>azerty</value>
+	   	</condition>
+	   	<condition type="variable" id="condition.language.fra">
+	      <name>ISO3_LANG</name>
+	      <value>fra</value>
+	   	</condition>
+	   	<condition type="variable" id="condition.language.eng">
+	      <name>ISO3_LANG</name>
+	      <value>eng</value>
 	   	</condition>
    </conditions>
     
@@ -127,8 +135,10 @@
 			<file src="Ressources\Profiles" targetdir="$INSTALL_PATH\Ressources"/>
 			<file src="winHook.dll" targetdir="$INSTALL_PATH"/>
 			
-			<file src="Installer\configFiles\qwerty\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.qwerty"/>
-			<file src="Installer\configFiles\azerty\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.azerty"/>
+			<file src="Installer\configFiles\qwerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.eng"/>
+			<file src="Installer\configFiles\qwerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.fra"/>
+			<file src="Installer\configFiles\azerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.eng"/>
+			<file src="Installer\configFiles\azerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.fra"/>
         </pack>
         <pack id="sources.package" name="sources" required="no" preselected="no">
             <description/>

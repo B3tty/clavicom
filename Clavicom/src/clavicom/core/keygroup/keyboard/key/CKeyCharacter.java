@@ -119,174 +119,11 @@ public class CKeyCharacter extends CKeyThreeLevel
 			throw new Exception(UIString
 					.getUIString("EX_KEYCHARACTER_COMMAND_SET_NOT_LOADED"));
 		}
-
-		// ------ Chargement de la commande NORMAL
-		Element eltCommandNormal = eltCommands
-				.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL);
-
-		if ( eltCommandNormal == null )
-		{
-			throw new Exception(
-					UIString
-							.getUIString("EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1")
-							+ TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL
-							+ UIString
-									.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2"));
-		}
-
-		// Récupération de l'attribut id
-		String strIdNormal = eltCommandNormal
-				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( strIdNormal == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
-		}
-
-		// Transformation de la chaine en int
-		if( strIdNormal.equals("") )
-		{
-			commandNormal = null;
-		}
-		else
-		{
-			int idNormal;
-			try
-			{
-				idNormal = Integer.parseInt(strIdNormal);
-			}
-			catch ( Exception e )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-						+ strIdNormal
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-			}
-	
-			commandNormal = CCommandSet.GetInstance().GetCommand(idNormal);
-	
-			if ( commandNormal == null )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
-			}
-		}
-
-		// ------ Chargement de la commande SHIFT
-		Element eltCommandShift = eltCommands
-				.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT);
-
-		if ( eltCommandShift == null )
-		{
-			throw new Exception(
-					UIString
-							.getUIString("EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1")
-							+ TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT
-							+ UIString
-									.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2"));
-		}
-
-		// Récupération de l'attribut id
-		String strIdShift = eltCommandShift
-				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( strIdShift == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
-		}
-
-		if ( strIdShift.equals("") )
-		{
-			commandShift = null;
-		}
-		else
-		{
-			// Transformation de la chaine en int
-			int idShift;
-			try
-			{
-				idShift = Integer.parseInt(strIdShift);
-			}
-			catch ( Exception e )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-						+ strIdShift
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-			}
-	
-			commandShift = CCommandSet.GetInstance().GetCommand(idShift);
-	
-			if ( commandShift == null )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
-			}
-		}
-
-		// ------ Chargement de la commande ALTGR
-		Element eltCommandAltGr = eltCommands
-				.getChild(TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR);
-
-		if ( eltCommandAltGr == null )
-		{
-			throw new Exception(
-					UIString
-							.getUIString("EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1")
-							+ TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR
-							+ UIString
-									.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2"));
-		}
-
-		// Récupération de l'attribut id
-		String strIdAltGr = eltCommandAltGr
-				.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
-		if ( strIdAltGr == null )
-		{
-			throw new Exception(UIString
-					.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
-					+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-					+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
-		}
-
-		if ( strIdAltGr.equals("") )
-		{
-			commandAltGr = null;
-		}
-		else
-		{
-			// Transformation de la chaine en int
-			int idAltGr;
-			try
-			{
-				idAltGr = Integer.parseInt(strIdAltGr);
-			}
-			catch ( Exception e )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
-						+ strIdAltGr
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
-			}
-	
-			commandAltGr = CCommandSet.GetInstance().GetCommand(idAltGr);
-	
-			if ( commandAltGr == null )
-			{
-				throw new Exception(UIString
-						.getUIString("EX_KEYCHARACTER_BAD_ID_1")
-						+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
-						+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_2"));
-			}
-		}
+		
+		// Chargement des commandes de chaque niveau
+		commandNormal = getCommand(eltCommands,TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_NORMAL, captionNormal);
+		commandShift = getCommand(eltCommands,TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_SHIFT, captionShift);
+		commandAltGr = getCommand(eltCommands,TXMLNames.KY_ELEMENT_CHARACTER_COMMAND_ALTGR, captionAltGr);
 
 		this.listenerList = new EventListenerList();
 	}
@@ -437,5 +274,55 @@ public class CKeyCharacter extends CKeyThreeLevel
 	}
 
 	// --------------------------------------------------- METHODES PRIVEES --//
+	private CCommand getCommand(Element eltCommands, String XMLNodeName, String caption) throws Exception{
+		
+		Element eltCommand = eltCommands.getChild(XMLNodeName);
+		CCommand resCommand = null;
+		
+		if ( eltCommand == null )
+		{
+			throw new Exception(UIString.getUIString("EX_KEYCHARACTER_MISSING_ELEMENT_COMMAND_1")
+								+ XMLNodeName
+								+ UIString.getUIString("EX_KEYSHORTCUT_MISSING_ELEMENT_COMMAND2"));
+		}
+		
+		// Récupération de l'attribut id
+		String strId = eltCommand.getAttributeValue(TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID);
+		if ( strId == null )
+		{
+			throw new Exception(UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_1")
+								+ TXMLNames.KY_ATTRIBUTE_CHARACTER_COMMAND_ID
+								+ UIString.getUIString("EX_KEYCHARACTER_MISSING_ID_2"));
+		}
+		
+		if ( strId.equals("") )
+		{
+			eltCommands = null;
+		}
+		else
+		{
+			// Transformation de la chaine en int
+			int id;
+			try
+			{
+				id = Integer.parseInt(strId);
+			}
+			catch ( Exception e )
+			{
+				throw new Exception(UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_1")
+									+ strId
+									+ UIString.getUIString("EX_KEYCHARACTER_BAD_ID_NOT_INT_2"));
+			}
+		
+			// On essaye de récupérer la commande par id
+			resCommand = CCommandSet.GetInstance().GetCommand(id);
+			if ( resCommand == null )
+			{
+				// Affectation d'une commande vide qui génèrera un message d'erreur
+				resCommand = new CCommand();
+			}
+		}
+		return resCommand;
+	}
 
 }

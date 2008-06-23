@@ -148,6 +148,8 @@ UIRightClickListener
 	
 	private boolean useMagnedGrid;				// Indique si on affiche la grille
 	
+	private int fontSize;						// Taille actuelle du texte des touches
+	
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	/**
 	 * Créé l'UIKeyboard à partir du CKeyboard
@@ -630,7 +632,6 @@ UIRightClickListener
 	{	
 		if (resizing == true)
 		{
-			// TODO
 			return;
 		}
 		
@@ -648,7 +649,7 @@ UIRightClickListener
 		g2.drawImage(imgBackground, 0, 0, null);
 		
 		// On ajoute la grille si nécessaire
-		if(resizing == false && isEdited == true && useMagnedGrid == true)
+		if(isEdited == true && useMagnedGrid == true)
 		{
 			g2.drawImage(imgGrid, 0, 0, null);
 		}
@@ -841,7 +842,7 @@ UIRightClickListener
 		float heightFactor = CProfil.getInstance().getKeyboardFont().getHeightFactor();
 		
 		// Calcul de la valeur
-		int fontSize = Math.round(getHeight()*heightFactor* FONT_REDUCTION_FACTOR);
+		fontSize = Math.round(getHeight()*heightFactor* FONT_REDUCTION_FACTOR);
 		
 		// Changement de la taille de toutes les keys
 		for (UIKeyKeyboard currentKey : allKeys)
@@ -1525,6 +1526,9 @@ UIRightClickListener
 		newUIKeyGlobal.setMagnetGrid(magnetGrid);
 		newUIKeyGlobal.setMagnetGridUsed(useMagnedGrid);
 		
+		// Taille du texte par défaut
+		newUIKeyGlobal.setFontSize(fontSize);
+		
 		// On alerte qu'une nouvelle key a été créée
 		fireKeyCreated(newUIKeyGlobal);
 	}
@@ -1720,5 +1724,10 @@ UIRightClickListener
 	public void rightClickOccured(Point mousePositionOnScreen)
 	{
 		fireRightClickOccured(mousePositionOnScreen);
+	}
+
+	public int getFontSize()
+	{
+		return fontSize;
 	}	
 }

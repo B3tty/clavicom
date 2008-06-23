@@ -63,7 +63,7 @@ public class UIString
 		return ("*** No string information ***" );
 	}
 	
-	public static void LoadUIStringFile( String path ) throws Exception
+	public static void LoadUIStringFile( String path) throws Exception
 	{
 		uiStringMap = new HashMap<String, String>();
 		

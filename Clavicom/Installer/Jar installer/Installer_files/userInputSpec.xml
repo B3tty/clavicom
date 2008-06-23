@@ -15,7 +15,7 @@
         <!-- Keyboard layout -->
         <field type="space"/>
         <field type="space"/>
-        <field type="radio" variable="defaultConfigFilePath" align="center">
+        <field type="radio" variable="commandset" align="center">
 			<description id="commandset.radio.description"/>
 			<spec>
 				<choice id="commandset.radio.choice.qwerty" value="qwerty" set="true"/>

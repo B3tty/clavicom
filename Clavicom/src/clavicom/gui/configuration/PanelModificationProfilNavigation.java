@@ -290,6 +290,7 @@ public class PanelModificationProfilNavigation extends PanelModificationProfil i
 		JLabel lb_OSREstriction = new JLabel( );
 		if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS )
 		{
+			sliderMouseSpeed.setEnabled(true);
 		} else if ( OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX )
 		{
 			lb_OSREstriction.setText( OSTypeEnum.getMessageOSREstriction() + " Linux" );

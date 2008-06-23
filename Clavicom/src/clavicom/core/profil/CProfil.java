@@ -32,6 +32,8 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
+import clavicom.CSettings;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
 
@@ -123,17 +125,13 @@ public class CProfil
 		// chargement de la langueUI
 		// ======================================================================
 		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
-		if( langueUI_elem == null )
-		{
-			throw new Exception("[Chargement du profil] : Impossible de trouver le noeud XML " + TXMLNames.PR_ELEMENT_LANGUAGE_UI );
-		}
 		try
 		{
 			langueUI = new CLangueUIName( langueUI_elem );
 		}
 		catch(Exception ex)
 		{
-			throw new Exception("[Chargement du profil] : " + ex.getMessage() );
+			langueUI = new CLangueUIName( CSettings.getDefaultLanguageFileName() );
 		}
 	}
 	

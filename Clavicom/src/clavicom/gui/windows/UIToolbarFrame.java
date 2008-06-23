@@ -104,7 +104,6 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 	
 	
 	private final String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
-														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_IGNORE"), 	// Effacer
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
 
 	private final int BT_IMAGE_SIZE = 30;
@@ -1036,8 +1035,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 				
 				// Affichage d'un dialog pour demander à l'utilisateur ce qu'il veut faire
 				int reponse = JOptionPane.showOptionDialog(UIToolbarFrame.this, 
-							UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_1") + "\n" +
-						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_2") + "\n\n" +
+							UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_1") + "\n\n" +
 						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_3"), 
 						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_TITLE"), 
 						    JOptionPane.YES_NO_CANCEL_OPTION,
@@ -1051,20 +1049,12 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 					frameLevelManager.setVisible(true);
 					return;
 				}
-				else if (reponse == JOptionPane.CANCEL_OPTION)	
+				else
 				// Annuler
 				{
 					// On arrête
 					return;
 				}
-				else 
-				// Ignorer
-				{
-					 // Rien à faire
-				}
-				
-				// On déselectionne tout
-				panelKeyboard.select(false);
 			}
 			
 			// On repasse en mode clavicom normal

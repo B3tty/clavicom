@@ -375,25 +375,24 @@ public class Application
 	{		
 		// Récupération de la langue du profil
 		CProfil.getInstance().loadProfileLanguageUIName();
-
 		
 		// Chargement de la langue du profil
 		UIString.LoadUIStringFile(  CFilePaths.getLanguagesUIFolder() + 
-										CProfil.getInstance().getLangueUI().getLanguageFileName());
+									CProfil.getInstance().getLangueUI().getLanguageFileName());
 		
 		// Récupération du nom du commandset
 		CProfil.getInstance().loadProfileCommandSetName();
 		
 		// Chargement du commandset
 		CCommandSet.CreateInstance( CFilePaths.getCommandSetsFolder() +
-										CProfil.getInstance().getCommandSetName().getcommandSetName());
+									CProfil.getInstance().getCommandSetName().getcommandSetName());
 		
 		// Récupération du nom du shortcutset
 		CProfil.getInstance().loadProfileShortCutName();
 		
 		// Chargement du commandset
-		CShortcutSet.CreateInstance(	CFilePaths.getShortcutSetsFolder() + 
-											CProfil.getInstance().getShortcutSetName().getShortCutName());
+		CShortcutSet.CreateInstance(CFilePaths.getShortcutSetsFolder() + 
+									CProfil.getInstance().getShortcutSetName().getShortCutName());
 		
 		// Chargement du reste du profil
 		CProfil.getInstance().loadProfile();
@@ -440,7 +439,7 @@ public class Application
 		try
 		{
 			CDictionary.createInstance( CProfil.getInstance().getDictionnaryName(),
-														CProfil.getInstance().getPreferedWords());
+										CProfil.getInstance().getPreferedWords());
 		}
 		catch (Exception ex)
 		{

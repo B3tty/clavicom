@@ -51,7 +51,11 @@ public class CLangueUIName
 			throw new Exception( "[Chargement du nom du profil] : Noeud XML Vide") ;
 		}
 	}
-
+	
+	public CLangueUIName( String languageFileName ) throws Exception
+	{		
+		this.languageFileName = languageFileName;
+	}
 	
 	
 	public void setLanguageFileName(String languageFileName)

@@ -7,5 +7,10 @@
 	<classpathentry exported="true" kind="lib" path="libs/syntheticaBlueMoon.jar"/>
 	<classpathentry kind="lib" path="libs/examples.jar"/>
 	<classpathentry kind="lib" path="libs/jna.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="class"/>
 </classpath>
