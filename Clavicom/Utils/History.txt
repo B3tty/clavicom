@@ -2,7 +2,8 @@
  - Modification de l'installeur (gestion complète Anglais/Français)
  - Choix du jeu de commande dans l'installeur
  - Correction du bug de performance en mode édition
- - Possibilité de charger un clavier utilisant un autre commandset 
+ - Possibilité de charger un clavier utilisant un autre commandset
+ - Correction du bug des mots prefere
  
 ===== VERSION BETA 1.1 (générée le 17/03/2008) =====
  - Modification du splashscreen (logo Icom' et aliasing sur le texte)
@@ -11,11 +12,3 @@
 
 ===== VERSION BETA 1.0 (générée le 01/08/2007) =====
  - Version de base
- 
- il y avait une erreur dans le fichier des commandesset 
- 
- 		<command id="16" search_string="j" caption = "j">
-			<code order="0" action="pressed" value="VK_J"/>
-			<code order="1" action="released" value="VK_A"/>
-		</command>
-Je l'ai corrige. Mais c'est bizard que ca ne fasse pas de la merde sous windows...
