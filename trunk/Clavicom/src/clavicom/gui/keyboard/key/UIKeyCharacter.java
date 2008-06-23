@@ -73,11 +73,7 @@ public class UIKeyCharacter extends UIKeyThreeLevel
 	 * @return
 	 */
 	private boolean boundsAreOk(int x, int y, int w, int h)
-	{
-		// Aire trop elevée
-		if(w*h > MAX_AUTHORIZED_AREA)
-			return false;
-		
+	{		
 		// Trop à gauche
 		if(x < 0)
 			return false;

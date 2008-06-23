@@ -89,7 +89,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		
 		final int DEFAULT_FONT_SIZE = 12;			// Taille par défaut de la police
 		
-		final int MAX_AUTHORIZED_AREA = 40000;		// Largeur maximale autorisée (en px)
+		final int TEXT_CAPTION_OFFSET_X = 1;
+		final int TEXT_CAPTION_OFFSET_Y = 1;
 		
 		//---------------------------------------------------------- ATTRIBUTS --//	
 		
@@ -119,8 +120,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 													// IL NE S'AGIT PAS DU HEIGHT FACTOR DE LA 
 													// CFont, mais de la vraie taille
 		boolean clicked;
-		boolean mouseExited;
-		
+		boolean mouseExited;		
 		
 		// EventListeners
 		protected EventListenerList keyEnteredListenerList;
@@ -406,7 +406,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		 * Appelé lors du redimensionnement du composant
 		 */
 		public void componentResized(ComponentEvent e)
-		{				
+		{
 			if((!editable && !(this instanceof UIKeyCreation)) || getWidth() <= 0 || getHeight() <= 0)
 				return;
 			
@@ -756,7 +756,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{
 			// On agrandit le clip (pour dessiner sur tout le bouton)
 			bg.setClip( 0,0,getWidth(), getHeight() );
-
+			
 			// On regarde ce que l'on doit dessiner, image ou texte
 			if (getCoreKey().isCaptionImage() == true)
 			// Dessin de l'image
@@ -800,12 +800,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		        int yPosition = Math.round(((float)getHeight()/2) - ((float)newH/2));
 
 		        // Dessin de l'image
-//		        bg.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-//		                            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-
-		        //bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
 		        bg.drawImage(originalCaptionImage.getScaledInstance(newW, newH, Image.SCALE_SMOOTH), xPosition,yPosition,null);
-		        //bg.drawImage(originalCaptionImage, xPosition, yPosition, newW, newH, null);
 			}
 			else
 			// Dessin du texte
@@ -837,10 +832,10 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				// Calcul des positions de dessin du texte
 				FontMetrics fontMetrics = bg.getFontMetrics();
 				int captionWidth= fontMetrics.stringWidth(getCaptionText());
-				int captionHeight= fontMetrics.getHeight();
+				int captionHeight= fontMetrics.getAscent();
 				
-				int xPosition = (getWidth()/2) - (captionWidth/2);
-				int yPosition = (getHeight()/2) + (captionHeight/3);;
+				int xPosition = (getWidth()/2) - (captionWidth/2) - TEXT_CAPTION_OFFSET_X;
+				int yPosition = (getHeight()/2) + (captionHeight/3) - TEXT_CAPTION_OFFSET_Y;
 
 				// Ajout de l'ombre
 				if (profilFont.isShadow())
@@ -853,6 +848,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				// On écrit le texte
 				bg.setColor(profilFont.getFontColor().getColor());
+				
+				bg.scale(1.1, 1.1);
 				bg.drawString(getCaptionText(),xPosition,yPosition);
 			}
 		}

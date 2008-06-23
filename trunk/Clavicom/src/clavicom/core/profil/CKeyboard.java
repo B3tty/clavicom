@@ -81,8 +81,6 @@ public class CKeyboard
 						throw new Exception("[" + UIString.getUIString( "EX_KEYBOARD_BUILD" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_CAN_NOT_CONVERT" ) + s_order + UIString.getUIString( "EX_KEYGROUP_TO_INTEGER" ));
 					}
 					
-					
-					
 					// récupération du groupe
 					CKeyGroup key_group = null;
 					try
