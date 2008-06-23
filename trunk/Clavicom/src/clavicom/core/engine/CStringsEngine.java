@@ -91,6 +91,7 @@ public abstract class CStringsEngine
 	
 	protected void updateKeys()
 	{
+
 		for( int i = 0 ; i < keyList.size() ; ++i )
 		{
 			CKeyDynamicString keyDynamicString = keyList.get( i );

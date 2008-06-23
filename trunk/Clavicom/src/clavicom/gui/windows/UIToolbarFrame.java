@@ -841,10 +841,11 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 						{
 						}
 						
-						// sauvegarde du profil
+						// sauvegarde du profil et de la configuration
 						try
 						{
 							CProfil.getInstance().saveProfil( );
+							CSettings.saveSettings( CFilePaths.getConfigFileFolder() );
 						}
 						catch (Exception ex)
 						{
@@ -854,7 +855,9 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 															ex.getMessage());
 						}
 						
-						// on fermer cette application-ci
+						
+						
+						// on ferme cette application... et il faudrait la redemarer TODO
 						System.exit( 0 );
 					}
 				}

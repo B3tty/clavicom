@@ -851,6 +851,8 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 				
 				bg.scale(1.1, 1.1);
 				bg.drawString(getCaptionText(),xPosition,yPosition);
+				
+				
 			}
 		}
 		

@@ -55,6 +55,7 @@ import clavicom.gui.mouse.MouseMoveEngine;
 import clavicom.gui.mouse.UIMouseFrame;
 import clavicom.gui.splashscreen.UISplashScreen;
 import clavicom.gui.windows.UIKeyboardFrame;
+import clavicom.tools.OSTypeEnum;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TStartDefilEnum;
 
@@ -294,9 +295,27 @@ public class Application
 		{
 			public void windowClosing(WindowEvent e)
 			{
-				if(ClickEngine.getInstance() != null)
+				if (ClickEngine.getInstance() != null)
 				{
-					ClickEngine.getInstance().FinishMouseHook();
+					// ========================================================================
+					// Check OS type
+					// ========================================================================
+					if (OSTypeEnum.getCurrentOSType() == OSTypeEnum.WINDOWS)
+					{
+						// Disable the Hook
+						ClickEngine.getInstance().FinishMouseHook();
+					}
+					else if (OSTypeEnum.getCurrentOSType() == OSTypeEnum.LINUX)
+					{
+						// nothing to do
+					}
+					else if (OSTypeEnum.getCurrentOSType() == OSTypeEnum.MAC)
+					{
+						// nothing to do
+					} else
+					{
+						// nothing to do
+					}
 				}
 			}
 		});

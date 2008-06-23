@@ -58,6 +58,8 @@ public class UIMessageEngine implements CMessageListener
 		d.pack();
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
+		
+		System.out.println(newMessage + "|" + detail);
 
 		// On ferme l'application
 		System.exit(0);
@@ -85,6 +87,8 @@ public class UIMessageEngine implements CMessageListener
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
 		
+		System.out.println(newMessage + "|" + detail);
+		
 //		// Affichage du dialog
 //		
 //		JOptionPane.showMessageDialog(	null,								// Parent
@@ -106,6 +110,8 @@ public class UIMessageEngine implements CMessageListener
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
 		
+		System.out.println(newMessage + "|" + detail);
+		
 //		// Affichage du dialog
 //		JOptionPane.showMessageDialog(	null,								// Parent
 //										formatMessage(newMessage, detail),				// Message (avec détail)
@@ -124,6 +130,9 @@ public class UIMessageEngine implements CMessageListener
 		d.pack();
 		d.setAlwaysOnTop( true ); 
 		d.setVisible( true );
+		
+		
+		System.out.println(newMessage + "|" + detail);
 		
 		// Affichage du dialog
 //		JOptionPane.showMessageDialog(	null,								// Parent
