@@ -11,3 +11,11 @@
 
 ===== VERSION BETA 1.0 (générée le 01/08/2007) =====
  - Version de base
+ 
+ il y avait une erreur dans le fichier des commandesset 
+ 
+ 		<command id="16" search_string="j" caption = "j">
+			<code order="0" action="pressed" value="VK_J"/>
+			<code order="1" action="released" value="VK_A"/>
+		</command>
+Je l'ai corrige. Mais c'est bizard que ca ne fasse pas de la merde sous windows...
