@@ -1426,43 +1426,6 @@
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.38918918</x>
-              <y>0.021551725</y>
-            </point>
-            <point position="max">
-              <x>0.42594594</x>
-              <y>0.18965517</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>'</caption_level_1>
-          <caption_level_2>'</caption_level_2>
-          <caption_level_3>'</caption_level_3>
-          <commands>
-            <command_normal id="114" />
-            <command_shift id="114" />
-            <command_altgr id="114" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
               <x>0.43483022</x>
               <y>0.023346303</y>
             </point>
@@ -1497,7 +1460,7 @@
             <command_altgr id="102" />
           </commands>
         </keycharacter>
-        <keycharacter order="2" caption_image="false">
+        <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.48192772</x>
@@ -1534,7 +1497,7 @@
             <command_altgr id="103" />
           </commands>
         </keycharacter>
-        <keycharacter order="3" caption_image="false">
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.5279299</x>
@@ -1571,7 +1534,7 @@
             <command_altgr id="104" />
           </commands>
         </keycharacter>
-        <keycharacter order="4" caption_image="false">
+        <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.5750274</x>
@@ -1608,7 +1571,7 @@
             <command_altgr id="115" />
           </commands>
         </keycharacter>
-        <keycharacter order="5" caption_image="false">
+        <keycharacter order="4" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.62212485</x>
