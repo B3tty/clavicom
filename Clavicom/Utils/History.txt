@@ -1,9 +1,13 @@
-===== VERSION BETA 1.2 (générée le XX/XX/XXXX) =====
+===== VERSION XXXXXXX (générée le XX/XX/XXXX) =====
+ - 
+ 
+===== VERSION BETA 1.2 (générée le 26/06/2008) =====
  - Modification de l'installeur (gestion complète Anglais/Français)
  - Choix du jeu de commande dans l'installeur
  - Correction du bug de performance en mode édition
  - Possibilité de charger un clavier utilisant un autre commandset
  - Correction du bug des mots prefere
+ - Prise en compte de la taille de la police en mode edition
  
 ===== VERSION BETA 1.1 (générée le 17/03/2008) =====
  - Modification du splashscreen (logo Icom' et aliasing sur le texte)
