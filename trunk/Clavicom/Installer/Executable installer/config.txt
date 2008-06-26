@@ -1,5 +1,5 @@
 ;!@Install@!UTF-8!
 Title="ClavicomNG"
-BeginPrompt="Voulez-vous installer ClavicomNG ?"
+BeginPrompt="Voulez-vous installer ClavicomNG ? / Would you like to install ClavicomNG?"
 RunProgram="launcher-Win32.exe"
 ;!@InstallEnd@!
