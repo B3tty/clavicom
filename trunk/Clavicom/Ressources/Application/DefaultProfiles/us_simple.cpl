@@ -2824,15 +2824,6 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words active="true">
-    <prefered_word frequency="1">__")(</prefered_word>
-    <prefered_word frequency="1">$@</prefered_word>
-    <prefered_word frequency="1">()_"</prefered_word>
-    <prefered_word frequency="1">__---_-qg</prefered_word>
-    <prefered_word frequency="1">----________----""</prefered_word>
-    <prefered_word frequency="1">''"</prefered_word>
-    <prefered_word frequency="1">$$$-_</prefered_word>
-    <prefered_word frequency="1">@$</prefered_word>
-  </prefered_words>
+  <prefered_words active="false" />
 </profil>
 
