@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
   <commandset_name>us_standard.ccs</commandset_name>
   <shortcutset_name>us_standard.css</shortcutset_name>
   <dictionary_name>us_standard.cdc</dictionary_name>
