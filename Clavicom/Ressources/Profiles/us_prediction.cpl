@@ -3,7 +3,7 @@
   <language_ui>english.clg</language_ui>
   <commandset_name>us_standard.ccs</commandset_name>
   <shortcutset_name>us_standard.css</shortcutset_name>
-  <dictionary_name>french_standard.cdc</dictionary_name>
+  <dictionary_name>us_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
       <red>204</red>
@@ -69,7 +69,7 @@
       </left_up>
       <right_down>
         <x>0.8359375</x>
-        <y>0.895</y>
+        <y>0.89375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -79,7 +79,7 @@
       </left_up>
       <right_down>
         <x>0.921875</x>
-        <y>0.80125</y>
+        <y>0.8</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
@@ -1555,265 +1555,6 @@
         <keycharacter order="0" caption_image="false">
           <coordinates>
             <point position="min">
-              <x>0.108256884</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.14587156</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>à</caption_level_1>
-          <caption_level_2>à</caption_level_2>
-          <caption_level_3>à</caption_level_3>
-          <commands>
-            <command_normal id="115" />
-            <command_shift id="115" />
-            <command_altgr id="115" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="1" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.15412845</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.19266056</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>é</caption_level_1>
-          <caption_level_2>é</caption_level_2>
-          <caption_level_3>é</caption_level_3>
-          <commands>
-            <command_normal id="99" />
-            <command_shift id="99" />
-            <command_altgr id="99" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="2" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.20091744</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.23944955</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>è</caption_level_1>
-          <caption_level_2>è</caption_level_2>
-          <caption_level_3>è</caption_level_3>
-          <commands>
-            <command_normal id="109" />
-            <command_shift id="109" />
-            <command_altgr id="109" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="3" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.24770643</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.28623852</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>^</caption_level_1>
-          <caption_level_2>^</caption_level_2>
-          <caption_level_3>^</caption_level_3>
-          <commands>
-            <command_normal id="99" />
-            <command_shift id="99" />
-            <command_altgr id="99" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="4" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.2944954</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.3330275</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>¨</caption_level_1>
-          <caption_level_2>¨</caption_level_2>
-          <caption_level_3>¨</caption_level_3>
-          <commands>
-            <command_normal id="" />
-            <command_shift id="" />
-            <command_altgr id="" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="5" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.3412844</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.3798165</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>ç</caption_level_1>
-          <caption_level_2>ç</caption_level_2>
-          <caption_level_3>ç</caption_level_3>
-          <commands>
-            <command_normal id="113" />
-            <command_shift id="113" />
-            <command_altgr id="113" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="6" caption_image="false">
-          <coordinates>
-            <point position="min">
-              <x>0.38807338</x>
-              <y>0.17867436</y>
-            </point>
-            <point position="max">
-              <x>0.4266055</x>
-              <y>0.31988472</y>
-            </point>
-          </coordinates>
-          <colors>
-            <color_normal>
-              <red>167</red>
-              <green>167</green>
-              <blue>251</blue>
-            </color_normal>
-            <color_clicked>
-              <red>242</red>
-              <green>99</green>
-              <blue>99</blue>
-            </color_clicked>
-            <color_entered>
-              <red>102</red>
-              <green>102</green>
-              <blue>255</blue>
-            </color_entered>
-          </colors>
-          <caption_level_1>'</caption_level_1>
-          <caption_level_2>'</caption_level_2>
-          <caption_level_3>'</caption_level_3>
-          <commands>
-            <command_normal id="103" />
-            <command_shift id="103" />
-            <command_altgr id="103" />
-          </commands>
-        </keycharacter>
-        <keycharacter order="7" caption_image="false">
-          <coordinates>
-            <point position="min">
               <x>0.43486238</x>
               <y>0.17867436</y>
             </point>
@@ -1843,12 +1584,12 @@
           <caption_level_2>(</caption_level_2>
           <caption_level_3>(</caption_level_3>
           <commands>
-            <command_normal id="105" />
-            <command_shift id="105" />
-            <command_altgr id="105" />
+            <command_normal id="102" />
+            <command_shift id="102" />
+            <command_altgr id="102" />
           </commands>
         </keycharacter>
-        <keycharacter order="8" caption_image="false">
+        <keycharacter order="1" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.48165137</x>
@@ -1880,12 +1621,12 @@
           <caption_level_2>)</caption_level_2>
           <caption_level_3>)</caption_level_3>
           <commands>
-            <command_normal id="117" />
-            <command_shift id="117" />
-            <command_altgr id="117" />
+            <command_normal id="103" />
+            <command_shift id="103" />
+            <command_altgr id="103" />
           </commands>
         </keycharacter>
-        <keycharacter order="9" caption_image="false">
+        <keycharacter order="2" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.52844036</x>
@@ -1917,12 +1658,12 @@
           <caption_level_2>-</caption_level_2>
           <caption_level_3>-</caption_level_3>
           <commands>
-            <command_normal id="107" />
-            <command_shift id="107" />
-            <command_altgr id="107" />
+            <command_normal id="104" />
+            <command_shift id="104" />
+            <command_altgr id="104" />
           </commands>
         </keycharacter>
-        <keycharacter order="10" caption_image="false">
+        <keycharacter order="3" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.57522935</x>
@@ -1954,12 +1695,12 @@
           <caption_level_2>"</caption_level_2>
           <caption_level_3>"</caption_level_3>
           <commands>
-            <command_normal id="101" />
-            <command_shift id="101" />
-            <command_altgr id="101" />
+            <command_normal id="115" />
+            <command_shift id="115" />
+            <command_altgr id="115" />
           </commands>
         </keycharacter>
-        <keycharacter order="11" caption_image="false">
+        <keycharacter order="4" caption_image="false">
           <coordinates>
             <point position="min">
               <x>0.62201834</x>
@@ -1991,9 +1732,9 @@
           <caption_level_2>_</caption_level_2>
           <caption_level_3>_</caption_level_3>
           <commands>
-            <command_normal id="111" />
-            <command_shift id="111" />
-            <command_altgr id="111" />
+            <command_normal id="105" />
+            <command_shift id="105" />
+            <command_altgr id="105" />
           </commands>
         </keycharacter>
       </keylist>
@@ -2030,9 +1771,9 @@
           <caption_level_2>.</caption_level_2>
           <caption_level_3>.</caption_level_3>
           <commands>
-            <command_normal id="97" />
-            <command_shift id="97" />
-            <command_altgr id="97" />
+            <command_normal id="118" />
+            <command_shift id="118" />
+            <command_altgr id="118" />
           </commands>
         </keycharacter>
         <keycharacter order="1" caption_image="false">
@@ -2067,9 +1808,9 @@
           <caption_level_2>,</caption_level_2>
           <caption_level_3>,</caption_level_3>
           <commands>
-            <command_normal id="92" />
-            <command_shift id="92" />
-            <command_altgr id="92" />
+            <command_normal id="116" />
+            <command_shift id="116" />
+            <command_altgr id="116" />
           </commands>
         </keycharacter>
         <keycharacter order="2" caption_image="false">
@@ -2104,9 +1845,9 @@
           <caption_level_2>?</caption_level_2>
           <caption_level_3>?</caption_level_3>
           <commands>
-            <command_normal id="96" />
-            <command_shift id="96" />
-            <command_altgr id="96" />
+            <command_normal id="121" />
+            <command_shift id="121" />
+            <command_altgr id="121" />
           </commands>
         </keycharacter>
         <keycharacter order="3" caption_image="false">
@@ -2141,9 +1882,9 @@
           <caption_level_2>:</caption_level_2>
           <caption_level_3>:</caption_level_3>
           <commands>
-            <command_normal id="94" />
-            <command_shift id="94" />
-            <command_altgr id="94" />
+            <command_normal id="113" />
+            <command_shift id="113" />
+            <command_altgr id="113" />
           </commands>
         </keycharacter>
         <keycharacter order="4" caption_image="false">
@@ -2178,9 +1919,9 @@
           <caption_level_2>@</caption_level_2>
           <caption_level_3>@</caption_level_3>
           <commands>
-            <command_normal id="116" />
-            <command_shift id="116" />
-            <command_altgr id="116" />
+            <command_normal id="95" />
+            <command_shift id="95" />
+            <command_altgr id="95" />
           </commands>
         </keycharacter>
         <keycharacter order="5" caption_image="false">
@@ -2215,9 +1956,9 @@
           <caption_level_2>!</caption_level_2>
           <caption_level_3>!</caption_level_3>
           <commands>
-            <command_normal id="95" />
-            <command_shift id="95" />
-            <command_altgr id="95" />
+            <command_normal id="94" />
+            <command_shift id="94" />
+            <command_altgr id="94" />
           </commands>
         </keycharacter>
         <keycharacter order="6" caption_image="false">
@@ -2252,9 +1993,9 @@
           <caption_level_2>;</caption_level_2>
           <caption_level_3>;</caption_level_3>
           <commands>
-            <command_normal id="93" />
-            <command_shift id="93" />
-            <command_altgr id="93" />
+            <command_normal id="112" />
+            <command_shift id="112" />
+            <command_altgr id="112" />
           </commands>
         </keycharacter>
         <keycharacter order="7" caption_image="false">
@@ -2285,13 +2026,13 @@
               <blue>255</blue>
             </color_entered>
           </colors>
-          <caption_level_1>€</caption_level_1>
-          <caption_level_2>€</caption_level_2>
-          <caption_level_3>€</caption_level_3>
+          <caption_level_1>$</caption_level_1>
+          <caption_level_2>$</caption_level_2>
+          <caption_level_3>$</caption_level_3>
           <commands>
-            <command_normal id="" />
-            <command_shift id="" />
-            <command_altgr id="" />
+            <command_normal id="97" />
+            <command_shift id="97" />
+            <command_altgr id="97" />
           </commands>
         </keycharacter>
       </keylist>
@@ -3130,9 +2871,9 @@
           <caption_level_2>=</caption_level_2>
           <caption_level_3>=</caption_level_3>
           <commands>
-            <command_normal id="120" />
-            <command_shift id="120" />
-            <command_altgr id="120" />
+            <command_normal id="106" />
+            <command_shift id="106" />
+            <command_altgr id="106" />
           </commands>
         </keycharacter>
         <keycharacter order="5" caption_image="false">
