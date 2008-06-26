@@ -135,10 +135,10 @@
 			<file src="Ressources\Profiles" targetdir="$INSTALL_PATH\Ressources"/>
 			<file src="winHook.dll" targetdir="$INSTALL_PATH"/>
 			
-			<file src="Installer\configFiles\qwerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.eng"/>
-			<file src="Installer\configFiles\qwerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.fra"/>
-			<file src="Installer\configFiles\azerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.eng"/>
-			<file src="Installer\configFiles\azerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.fra"/>
+			<file src="Installer\Config files\qwerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.eng"/>
+			<file src="Installer\Config files\qwerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.qwerty+condition.language.fra"/>
+			<file src="Installer\Config files\azerty_eng\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.eng"/>
+			<file src="Installer\Config files\azerty_fra\config.xml" targetdir="$INSTALL_PATH\Ressources\Application" condition="condition.commandset.azerty+condition.language.fra"/>
         </pack>
         <pack id="sources.package" name="sources" required="no" preselected="no">
             <description/>
