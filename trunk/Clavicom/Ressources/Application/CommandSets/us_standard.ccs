@@ -460,13 +460,13 @@
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
 		<command id="104" search_string="-" caption = "-">
-			<code order="0" action="pressed" value="VK_SUBTRACT"/>
-			<code order="1" action="released" value="VK_SUBTRACT"/>
+			<code order="0" action="pressed" value="VK_MINUS"/>
+			<code order="1" action="released" value="VK_MINUS"/>
 		</command>
 		<command id="105" search_string="_" caption = "_">
 			<code order="0" action="pressed" value="VK_SHIFT"/>
-			<code order="1" action="pressed" value="VK_SUBTRACT"/>
-			<code order="2" action="released" value="VK_SUBTRACT"/>
+			<code order="1" action="pressed" value="VK_MINUS"/>
+			<code order="2" action="released" value="VK_MINUS"/>
 			<code order="3" action="released" value="VK_SHIFT"/>
 		</command>
 		<command id="106" search_string="=" caption = "=">

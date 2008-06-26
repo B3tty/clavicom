@@ -1,0 +1,217 @@
+﻿<shortcuts>
+		<!-- WINDOWS commands -->
+		<command id= "0" caption = "Reduce windows (Windows+M)" search_string = "">
+			<code order="0" action="pressed" value="VK_WINDOWS"/>
+			<code order="1" action="pressed" value="VK_M"/>
+			<code order="2" action="released" value="VK_M"/>
+			<code order="3" action="released" value="VK_WINDOWS"/>
+		</command>
+		<command id= "1" caption = "Open explorer (Windows+E)" search_string = "">
+			<code order="0" action="pressed" value="VK_WINDOWS"/>
+			<code order="1" action="pressed" value="VK_E"/>
+			<code order="2" action="released" value="VK_E"/>
+			<code order="3" action="released" value="VK_WINDOWS"/>
+		</command>
+		<command id= "2" caption = "Open system properties (Windows+Pause)" search_string = "">
+			<code order="0" action="pressed" value="VK_WINDOWS"/>
+			<code order="1" action="pressed" value="VK_PAUSE"/>
+			<code order="2" action="released" value="VK_PAUSE"/>
+			<code order="3" action="released" value="VK_WINDOWS"/>
+		</command>
+		<command id= "3" caption = "Search a file (Windows+F)" search_string = "">
+			<code order="0" action="pressed" value="VK_WINDOWS"/>
+			<code order="1" action="pressed" value="VK_F"/>
+			<code order="2" action="released" value="VK_F"/>
+			<code order="3" action="released" value="VK_WINDOWS"/>
+		</command>		
+		<command id= "4" caption = "Open prompt (Windows+R)" search_string = "">
+			<code order="0" action="pressed" value="VK_WINDOWS"/>
+			<code order="1" action="pressed" value="VK_R"/>
+			<code order="2" action="released" value="VK_R"/>
+			<code order="3" action="released" value="VK_WINDOWS"/>
+		</command>			
+		<command id= "5" caption = "Close active application (Alt+F4)" search_string = "">
+			<code order="0" action="pressed" value="VK_ALT"/>
+			<code order="1" action="pressed" value="VK_F4"/>
+			<code order="2" action="released" value="VK_F4"/>
+			<code order="3" action="released" value="VK_ALT"/>
+		</command>
+		<command id= "6" caption = "Open context menu (Alt+Espace)" search_string = "">
+			<code order="0" action="pressed" value="VK_ALT"/>
+			<code order="1" action="pressed" value="VK_SPACE"/>
+			<code order="2" action="released" value="VK_SPACE"/>
+			<code order="3" action="released" value="VK_ALT"/>
+		</command>		
+		<command id= "7" caption = "Open task manager (Ctrl+Shift+Esc)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_SHIFT"/>
+			<code order="2" action="pressed" value="VK_ESCAPE"/>
+			<code order="3" action="released" value="VK_ESCAPE"/>
+			<code order="4" action="released" value="VK_SHIFT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+		</command>	
+
+		<!-- Text editor major commands (Word, OpenOffice,...) -->
+		<command id= "8" caption = "Print preview (Ctrl+Alt+I)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ALT"/>
+			<code order="2" action="pressed" value="VK_I"/>
+			<code order="3" action="released" value="VK_I"/>
+			<code order="4" action="released" value="VK_ALT"/>
+			<code order="5" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "9" caption = "Change case (Shift+F3)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_F3"/>
+			<code order="2" action="released" value="VK_F3"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "10" caption = "Copy (Ctrl+C)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_C"/>
+			<code order="2" action="released" value="VK_C"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "11" caption = "Cut (Ctrl+X)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_X"/>
+			<code order="2" action="released" value="VK_X"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "12" caption = "Paste (Ctrl+V)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_V"/>
+			<code order="2" action="released" value="VK_V"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "13" caption = "Undo (Ctrl+Z)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_Z"/>
+			<code order="2" action="released" value="VK_Z"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "14" caption = "Repeat (Ctrl+Y)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_Y"/>
+			<code order="2" action="released" value="VK_Y"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "15" caption = "Create a new document (Ctrl+N)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_N"/>
+			<code order="2" action="released" value="VK_N"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>	
+		<command id= "16" caption = "Open existing document (Ctrl+O)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_O"/>
+			<code order="2" action="released" value="VK_O"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>	
+		<command id= "17" caption = "Save (Ctrl+S)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_S"/>
+			<code order="2" action="released" value="VK_S"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>		
+		<command id= "18" caption = "Insert page break (Ctrl+Enter)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_ENTER"/>
+			<code order="2" action="released" value="VK_ENTER"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>		
+		<command id= "19" caption = "Search (Ctrl+F)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_F"/>
+			<code order="2" action="released" value="VK_F"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>	
+		<command id= "20" caption = "Select all (Ctrl+A)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_A"/>
+			<code order="2" action="released" value="VK_A"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "21" caption = "Bold (Ctrl+B)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_B"/>
+			<code order="2" action="released" value="VK_B"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "22" caption = "Itallic (Ctrl+I)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_I"/>
+			<code order="2" action="released" value="VK_I"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "23" caption = "Move cursor to next word (Ctrl+Right)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_RIGHT"/>
+			<code order="2" action="released" value="VK_RIGHT"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "24" caption = "Move cursor to previous word (Ctrl+Left)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_LEFT"/>
+			<code order="2" action="released" value="VK_LEFT"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "25" caption = "Move cursor to previous paragraph (Ctrl+Top)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_UP"/>
+			<code order="2" action="released" value="VK_UP"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "26" caption = "Move cursor to next paragraph (Ctrl+Bottom)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_DOWN"/>
+			<code order="2" action="released" value="VK_DOWN"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+		<command id= "27" caption = "Select previous character (Shift+Left)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_LEFT"/>
+			<code order="2" action="released" value="VK_LEFT"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "28" caption = "Select next character (Shift+Right)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_RIGHT"/>
+			<code order="2" action="released" value="VK_RIGHT"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "29" caption = "Select previous line (Shift+Top)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_UP"/>
+			<code order="2" action="released" value="VK_UP"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "30" caption = "Select next line (Shift+Bottom)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_DOWN"/>
+			<code order="2" action="released" value="VK_DOWN"/>
+			<code order="3" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "31" caption = "Select previous word (Shift+Ctrl+Left)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_CONTROL"/>
+			<code order="2" action="pressed" value="VK_LEFT"/>
+			<code order="3" action="released" value="VK_LEFT"/>
+			<code order="4" action="released" value="VK_CONTROL"/>
+			<code order="5" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "32" caption = "Select next word (Shift+Ctrl+Right)" search_string = "">
+			<code order="0" action="pressed" value="VK_SHIFT"/>
+			<code order="1" action="pressed" value="VK_CONTROL"/>
+			<code order="2" action="pressed" value="VK_RIGHT"/>
+			<code order="3" action="released" value="VK_RIGHT"/>
+			<code order="4" action="released" value="VK_CONTROL"/>
+			<code order="5" action="released" value="VK_SHIFT"/>
+		</command>
+		<command id= "33" caption = "Print (Ctrl+P)" search_string = "">
+			<code order="0" action="pressed" value="VK_CONTROL"/>
+			<code order="1" action="pressed" value="VK_P"/>
+			<code order="2" action="released" value="VK_P"/>
+			<code order="3" action="released" value="VK_CONTROL"/>
+		</command>
+</shortcuts>
