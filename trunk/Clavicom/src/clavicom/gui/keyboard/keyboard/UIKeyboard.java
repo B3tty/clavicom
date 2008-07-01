@@ -600,7 +600,7 @@ UIRightClickListener
 	protected void paintChildren(Graphics arg0)
 	{		
 		// Si on est en train de resizer on ne redessine pas les fils
-		if(resizing == true)
+		if(resizing)
 		{
 			return;
 		}
@@ -630,7 +630,7 @@ UIRightClickListener
 	
 	public void paintComponent(Graphics myGraphic)
 	{	
-		if (resizing == true)
+		if (resizing)
 		{
 			return;
 		}
@@ -836,19 +836,21 @@ UIRightClickListener
 		}
 	}
 	
-	protected void updateKeyFontSize()
+	public void updateKeyFontSize()
 	{
 		// Calcul de la taille
 		float heightFactor = CProfil.getInstance().getKeyboardFont().getHeightFactor();
 		
 		// Calcul de la valeur
-		fontSize = Math.round(getHeight()*heightFactor* FONT_REDUCTION_FACTOR);
+		fontSize = Math.round(getHeight() * heightFactor * FONT_REDUCTION_FACTOR);
 		
 		// Changement de la taille de toutes les keys
 		for (UIKeyKeyboard currentKey : allKeys)
 		{						
 			currentKey.setFontSize(fontSize);
 		}
+		
+		System.out.println(fontSize);
 	}
 	
 	//-----------------------------------------------------------------------
@@ -1730,4 +1732,10 @@ UIRightClickListener
 	{
 		return fontSize;
 	}	
+	
+	public void recreateKeyboardBackground()
+	{
+		imgBackground = recreateBackground();
+	}
+	
 }

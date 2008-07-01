@@ -159,6 +159,8 @@ public class PanelModificationProfilCommandSetName extends
 
 		return false;
 	}
+	
+	
 
 	// --------------------------------------------------- METHODES PRIVEES --//
 }

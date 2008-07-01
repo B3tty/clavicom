@@ -65,21 +65,21 @@
     <clavicom_frame_position>
       <left_up>
         <x>0.13828126</x>
-        <y>0.58875</y>
+        <y>0.59</y>
       </left_up>
       <right_down>
         <x>0.8617188</x>
-        <y>0.8825</y>
+        <y>0.88375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
         <x>0.690625</x>
-        <y>0.58875</y>
+        <y>0.59</y>
       </left_up>
       <right_down>
         <x>0.9953125</x>
-        <y>0.9575</y>
+        <y>0.95875</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>

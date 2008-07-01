@@ -20,6 +20,7 @@
 	<!-- COMMANDESET -->
 	<message id = "EX_COMMANDSET_BUILD_COMMANDESET"> Construction du CommandSet du clavier </message>
 	<message id = "EX_COMMANDSET_OPEN_FILE">Erreur lors de l'ouverture du fichier </message>
+	<message id = "EX_COMMANDSET_FILE_ERROR">Impossible de charger le fichier </message>
 	<message id = "EX_COMMANDSET_ERR_ADD_SECTION">Erreur lors de l'ajout de la section </message>
 	
 	<!-- SECTION -->
@@ -157,6 +158,7 @@
 	<message id = "EX_SHORTCUTSET_BAD_ROOT_3">" trouvée</message>
 	
 	<message id = "EX_SHORTCUTSET_BAD_COMMAND">[Construction du jeu de raccourcis] : Erreur lors de l'ajout de la commande</message>
+	<message id = "EX_SHORTCUTSET_FILE_ERROR">Impossible de charger le fichier </message>
 	
 	<!-- KEY -->
 	<message id = "EX_KEY_BUILD">Chargement d'une touche </message>
@@ -579,9 +581,9 @@
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYBOARD">Transparence du clavier</message>
 	<message id = "LB_CONFPROFIL_PANEL_TRANSPARENCY_KEYS">Transparence des touches du clavier</message>
 	
-	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET">Le fichier de jeu de commande a changé. Le clavier existant n'est plus utilisable, veuillez redéfinir les actions des touches.</message>
 	<message id = "LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE">Changement du jeu de commande</message>
-	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Le fichier des raccourcis a changé. Le clavier existant n'est plus utilisable et va être totalement supprimé.</message>
+	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET">Le fichier des raccourcis a changé. Le clavier existant n'est plus utilisable, veuillez redéfinir les actions des touches.</message>
 	<message id = "LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE">Changement des raccourcis</message>
 	
 	<message id = "LB_CONFPROFIL_CHANGE_RESTART">Veuillez redemarrer l'application pour que les changements soient pris en compte</message>

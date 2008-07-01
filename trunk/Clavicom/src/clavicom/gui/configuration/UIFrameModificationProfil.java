@@ -39,12 +39,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
+
+import clavicom.CFilePaths;
 import clavicom.core.engine.dictionary.CDictionary;
+import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
+import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
+import clavicom.core.keygroup.keyboard.key.CKeyCharacter;
+import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.message.CMessageEngine;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.language.UIString;
 import clavicom.gui.mouse.MouseMoveEngine;
+import clavicom.gui.windows.UIKeyboardFrame;
 import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 
@@ -85,16 +92,18 @@ public class UIFrameModificationProfil extends JDialog
 	
 	// reference sur l'iukeyboard pour faire un clear
 	UIKeyboard uiKeyboard;
+	UIKeyboardFrame uiKeyboardFrame;
 	
 	UIFrameModificationProfil thisObject; // reference sur lui-même (utilisé dans le thread)
 	boolean closeWindows;
 	
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
-	public UIFrameModificationProfil( UIKeyboard myUIKeyboard )
+	public UIFrameModificationProfil( UIKeyboardFrame myUIKeyboardFrame)
 	{
-
-		uiKeyboard = myUIKeyboard;
+		uiKeyboardFrame = myUIKeyboardFrame;
+		
+		uiKeyboard = myUIKeyboardFrame.getUIKeyboard();
 		thisObject = this;
 		
 		// Initialisation de la fenêtre
@@ -131,7 +140,6 @@ public class UIFrameModificationProfil extends JDialog
 			@Override
 			public void run()
 			{
-				// TODO Auto-generated method stub
 				super.run();
 			
 				CProfil profil = CProfil.getInstance();
@@ -151,8 +159,19 @@ public class UIFrameModificationProfil extends JDialog
 							UIString.getUIString("LB_CONFPROFIL_CHANGE_COMMANDESET_TITLE"), 
 							JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
 					{
-						ClearKeyboard();
-						panelCommandSetName.validateDataEntry();
+						// On change le commandset si aucune erreur
+						String oldCommandSetName = CProfil.getInstance().getCommandSetName().getcommandSetName();
+						try {
+							panelCommandSetName.validateDataEntry();
+							CCommandSet.GetInstance().LoadCommandSetFile(CFilePaths.getCommandSetsFolder() + CProfil.getInstance().getCommandSetName().getcommandSetName());
+							uiKeyboard.getCoreKeyboard().flushAllKeysFromClass(CKeyCharacter.class);
+						} 
+						catch (Exception ex) 
+						{
+							CProfil.getInstance().getCommandSetName().setcommandSetName(oldCommandSetName);
+							CMessageEngine.newError(	UIString.getUIString("EX_COMMANDSET_FILE_ERROR") + CProfil.getInstance().getCommandSetName().getcommandSetName(),
+														ex.getMessage());
+						}
 					}
 					else
 					{
@@ -174,8 +193,20 @@ public class UIFrameModificationProfil extends JDialog
 							UIString.getUIString("LB_CONFPROFIL_CHANGE_SHORTCUTSET_TITLE"), 
 							JOptionPane.YES_NO_OPTION ) == JOptionPane.YES_OPTION )
 					{
-						ClearKeyboard();
-						panelShortcutSetName.validateDataEntry();
+						
+						// On change le shortcutset si aucune erreur
+						String oldShortcutSetName = CProfil.getInstance().getShortcutSetName().getShortCutName();
+						try {
+							panelShortcutSetName.validateDataEntry();
+							CShortcutSet.GetInstance().LoadShortcutSetFile(CFilePaths.getShortcutSetsFolder() + CProfil.getInstance().getShortcutSetName().getShortCutName());
+							uiKeyboard.getCoreKeyboard().flushAllKeysFromClass(CKeyShortcut.class);
+						} catch (Exception ex) 
+						{
+							CProfil.getInstance().getShortcutSetName().setShortCutName(oldShortcutSetName);
+							CMessageEngine.newError(	UIString.getUIString("EX_SHORTCUTSET_FILE_ERROR") + CProfil.getInstance().getShortcutSetName().getShortCutName(),
+														ex.getMessage());
+						}
+						
 					}
 					else
 					{
@@ -321,18 +352,9 @@ public class UIFrameModificationProfil extends JDialog
 			}
 		};
 		
-
 		apply.start();
-
 	}
 	
-	
-	
-	private void ClearKeyboard()
-	{
-		// vide le keyboard
-		uiKeyboard.clear();
-	}
 
 	/**
 	 * Initialise la fenêtre
@@ -462,6 +484,10 @@ public class UIFrameModificationProfil extends JDialog
 	
 	void EndThread(boolean retour)
 	{
+		uiKeyboard.recreateKeyboardBackground();
+		uiKeyboard.updateKeyFontSize();
+		uiKeyboard.repaint();
+		
 		if (retour)
 		{
 			if(closeWindows)

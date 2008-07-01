@@ -137,7 +137,7 @@ public class CCommandSet
 
 	// ---------------------------------------------------------------- XML --//
 
-	private void LoadCommandSetFile(String CommandSetfilePath) throws Exception
+	public void LoadCommandSetFile(String CommandSetfilePath) throws Exception
 	{
 		// =======================================================
 		// Chargement du fichier XML
