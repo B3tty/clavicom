@@ -165,6 +165,14 @@ public class CKeyboard
 	{
 		keyGroupList.clear();
 	}
+	
+	public void flushAllKeysFromClass(Class myClass)
+	{
+		for(CKeyGroup curKeyGroup : keyGroupList)
+		{
+			curKeyGroup.flushAllKeysFromClass(myClass);
+		}
+	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
 }

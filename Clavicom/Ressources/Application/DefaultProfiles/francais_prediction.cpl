@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
+  <language_ui>english.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>french_standard.css</shortcutset_name>
   <dictionary_name>french_standard.cdc</dictionary_name>
@@ -32,8 +33,8 @@
     <on_defil active="true" />
     <on_click active="true" />
     <on_survol active="false" />
-    <on_start active="false" />
     <on_mouse_delay active="true" />
+    <on_start active="false" />
   </sound>
   <navigation>
     <type value="STANDARD" />
@@ -68,17 +69,17 @@
       </left_up>
       <right_down>
         <x>0.8359375</x>
-        <y>0.8955078</y>
+        <y>0.895</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
         <x>0.6171875</x>
-        <y>0.4326172</y>
+        <y>0.4325</y>
       </left_up>
       <right_down>
         <x>0.921875</x>
-        <y>0.8017578</y>
+        <y>0.80125</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>

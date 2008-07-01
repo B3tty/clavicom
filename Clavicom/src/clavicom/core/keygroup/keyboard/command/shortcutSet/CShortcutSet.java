@@ -75,7 +75,7 @@ public class CShortcutSet
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
-	private void LoadShortcutSetFile ( String myShortcutsetfilePath ) throws Exception
+	public void LoadShortcutSetFile ( String myShortcutsetfilePath ) throws Exception
 	{
 		// =======================================================
 		//	Chargement du fichier XML

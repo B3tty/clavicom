@@ -324,5 +324,12 @@ public class CKeyCharacter extends CKeyThreeLevel
 		}
 		return resCommand;
 	}
+	
+	public void flush()
+	{
+		commandNormal = new CCommand();
+		commandShift = new CCommand();
+		commandAltGr = new CCommand();
+	}
 
 }

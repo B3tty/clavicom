@@ -232,6 +232,11 @@ public class CKeyShortcut extends CKeyOneLevel
 					" [" + caption + "]");
 	}
 	
+	public void flush()
+	{
+		command = new CCommand();
+	}
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 }

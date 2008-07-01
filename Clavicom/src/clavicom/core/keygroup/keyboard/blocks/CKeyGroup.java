@@ -237,5 +237,13 @@ public class CKeyGroup
 		this.caption = caption;
 	}
 	
+	public void flushAllKeysFromClass(Class myClass)
+	{
+		for(CKeyList curKeyList : keyListList)
+		{
+			curKeyList.flushAllKeysFromClass(myClass);
+		}
+	}
+	
 	
 }

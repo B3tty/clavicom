@@ -296,5 +296,12 @@ public abstract class CKey
 	{
 		this.holdable = holdable;
 	}
-
+	
+	public void flush(){}
+	
+	public void flushIfFromClass (Class myClass)
+	{
+		if (getClass() == myClass)
+			flush();
+	}
 }

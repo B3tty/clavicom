@@ -392,7 +392,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		frameOptionKeyString = new UIModificationKeyDialog(panelOptionKeyString);
 		
 		
-		frameOptionApplication = new UIFrameModificationProfil( panelKeyboard);
+		frameOptionApplication = new UIFrameModificationProfil(frameKeyboard);
 		
 		frameLevelManager = new UILevelManagerFrame();
 		frameLevelManager.setUIKeyboard(panelKeyboard);

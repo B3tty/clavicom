@@ -320,4 +320,12 @@ public class CKeyList
 		// TODO Auto-generated method stub
 		return caption;
 	}
+	
+	public void flushAllKeysFromClass(Class myClass)
+	{
+		for(CKey curKey : keyList)
+		{
+			curKey.flushIfFromClass(myClass);
+		}
+	}
 }
