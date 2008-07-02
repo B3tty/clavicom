@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
   <language_ui>english.clg</language_ui>
-  <commandset_name>french_standard.ccs</commandset_name>
-  <shortcutset_name>french_standard.css</shortcutset_name>
   <dictionary_name>french_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
