@@ -1,5 +1,7 @@
 ===== VERSION XXXXXXX (générée le XX/XX/XXXX) =====
- - 
+ - Simplification du chargement des profils (plus d'import, ouverture réelle)
+ - Correction du clic temporisé (valable uniquement sur le clavier et lorsqu'on attend sur une touche)
+ -
  
 ===== VERSION BETA 1.2 (générée le 26/06/2008) =====
  - Modification de l'installeur (gestion complète Anglais/Français)
