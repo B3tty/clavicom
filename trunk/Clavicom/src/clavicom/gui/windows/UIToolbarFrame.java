@@ -42,8 +42,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.jdom.Element;
-
 import clavicom.CFilePaths;
 import clavicom.CSettings;
 import clavicom.core.keygroup.CKey;
@@ -70,7 +68,6 @@ import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
-import clavicom.gui.engine.sound.SoundEngine;
 import clavicom.gui.keyboard.key.UIKeyKeyboard;
 import clavicom.gui.keyboard.keyboard.UIGridModifier;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
@@ -609,7 +606,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
-//			 charger un profil
+			// charger un profil
 
 			// on affiche le dialogue
 			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
@@ -619,7 +616,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
 			{
-				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
+				/*String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
 			 
 			
 				// on deande à l'utilisateur quelles sont les éléments qu'il veut charger
@@ -858,8 +855,38 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 						
 						// on ferme cette application... et il faudrait la redemarer TODO
 						System.exit( 0 );
-					}
+					}				
 				}
+				FIN ANCIENNE VERSION */
+				
+				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
+				CSettings.setLastProfilePath(profilPath);
+				
+				// dit a l'utilisateur que ca va redemarrer
+				JOptionPane.showMessageDialog(null, UIString.getUIString("LB_LOAD_PROFIL_RESTART"));
+				
+				// sauvegarde du profil et de la configuration
+				try
+				{
+					CSettings.saveSettings( CFilePaths.getConfigFileFolder() );
+				}
+				catch (Exception ex)
+				{
+					CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
+													CProfil.getInstance().getProfilFilePath() + 
+													UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"),
+													ex.getMessage());
+				}
+				
+				// on redémarre l'application
+				try
+				{
+					Runtime.getRuntime().exec( "ClavicomNG.exe" );
+				}
+				catch (IOException e){}
+				
+				// on ferme l'application...
+				System.exit( 0 );
 			}
 		}
 	}

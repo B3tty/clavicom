@@ -624,7 +624,7 @@
 	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Editer les touches selectionnées</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Editer les niveaux de défilement</message>
 	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Sauvegarder le profil sous</message>
-	<message id = "LB_EDITION_LOAD_TOOLTIP">Importer les éléments d'un profil</message>
+	<message id = "LB_EDITION_LOAD_TOOLTIP">Ouvrir un profil</message>
 	
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Niveaux de défilement</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">Les touches selectionnées n'ont pas été classées dans un niveau de defilement.</message>

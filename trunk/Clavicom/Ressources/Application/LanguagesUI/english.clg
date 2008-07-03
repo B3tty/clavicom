@@ -626,7 +626,7 @@
 	<message id = "LB_EDITION_EDIT_KEY_TOOLTIP">Edit selected keys</message>
 	<message id = "LB_EDITION_OPEN_LEVEL_MANAGER_TOOLTIP">Edit scroll levels</message>
 	<message id = "LB_EDITION_SAVE_AS_TOOLTIP">Save profile as</message>
-	<message id = "LB_EDITION_LOAD_TOOLTIP">Import elements from a profile</message>
+	<message id = "LB_EDITION_LOAD_TOOLTIP">Open a profile</message>
 	
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_TITLE">Scroll levels</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_1">The selected keys are not classed.</message>
