@@ -185,6 +185,8 @@ public abstract class CKey
 	public CColor GetColorPressed(){return pressed;}
 	public CColor GetColorEntered(){return entered;}
 	
+	public abstract void Click();
+	
 	public boolean isCaptionImage()
 	{
 		return captionImage;
@@ -258,9 +260,8 @@ public abstract class CKey
 		}
 		
 		return colors;
-	}
-
-	public abstract void Click(); 
+	} 
+	
 	//--------------------------------------------------- METHODES PRIVEES --//
 	
 	// Listeners sur les couleurs

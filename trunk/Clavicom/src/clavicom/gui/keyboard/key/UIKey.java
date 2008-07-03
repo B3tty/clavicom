@@ -46,12 +46,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
+import clavicom.core.listener.CKeyClickListener;
 import clavicom.core.listener.CKeyColorChangedListener;
+import clavicom.core.listener.CKeyMouseOverEventListener;
 import clavicom.core.profil.CFont;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.keyboard.key.resizer.UIJResizer;
@@ -63,7 +67,7 @@ import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
 
-public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener
+public abstract class UIKey extends UIJResizer implements ComponentListener, CKeyColorChangedListener, CKeyCaptionChangedListener, CKeyClickListener
 {
 		//--------------------------------------------------------- CONSTANTES --//
 		// Dessin
@@ -126,6 +130,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		protected EventListenerList keyEnteredListenerList;
 		protected EventListenerList keyPressedListenerList;
 		protected EventListenerList rightClikListenerList;
+		protected EventListenerList mouseOverListenerList;
 		
 		//---------------------------------------------------- CLASSES PRIVEES --//
 		//-----------------------------------------------------------------------
@@ -241,6 +246,7 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			keyEnteredListenerList = new EventListenerList();
 			keyPressedListenerList = new EventListenerList();
 			rightClikListenerList = new EventListenerList();
+			mouseOverListenerList = new EventListenerList();
 			
 			// Ajout en tant que listener de component
 			// (pour le resize,...)
@@ -497,6 +503,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			// On force le redessin
 			repaint();
 			
+			// On alerte les objets attentifs à l'évenement
+			fireMouseOverEntered();
+			
 			mouseExited = false;
 
 		}
@@ -517,6 +526,9 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			
 			// On force le redessin
 			repaint();
+			
+			// On alerte les objets attentifs à l'évenement
+			fireMouseOverLeft();
 			
 			mouseExited = true;
 		}
@@ -566,6 +578,12 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		protected void clickCoreKey()
 		{
 			getCoreKey().Click();
+		}
+		
+		public void Click()
+		{
+			buttonPressedUse();
+			buttonReleasedUse();			
 		}
 
 		//-----------------------------------------------------------------------
@@ -1015,6 +1033,16 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 		{
 			this.rightClikListenerList.remove(UIRightClickListener.class, l);
 		}
+		
+		public void addMouseOverListener(CKeyMouseOverEventListener l )
+		{
+			this.mouseOverListenerList.add(CKeyMouseOverEventListener.class, l);
+		}
+
+		public void removeMouseOverListener(CKeyMouseOverEventListener l)
+		{
+			this.mouseOverListenerList.remove(CKeyMouseOverEventListener.class, l);
+		}
 
 		protected void fireKeyEnteredCharacter()
 		{
@@ -1043,6 +1071,26 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			for ( int i = listeners.length - 1; i >= 0; i-- )
 			{
 				listeners[i].rightClickOccured(location);
+			}
+		}
+		
+		protected void fireMouseOverEntered()
+		{
+			CKeyMouseOverEventListener[] listeners = (CKeyMouseOverEventListener[]) mouseOverListenerList
+					.getListeners(CKeyMouseOverEventListener.class);
+			for ( int i = listeners.length - 1; i >= 0; i-- )
+			{
+				listeners[i].mouseEntered(this);
+			}
+		}
+		
+		protected void fireMouseOverLeft()
+		{
+			CKeyMouseOverEventListener[] listeners = (CKeyMouseOverEventListener[]) mouseOverListenerList
+					.getListeners(CKeyMouseOverEventListener.class);
+			for ( int i = listeners.length - 1; i >= 0; i-- )
+			{
+				listeners[i].mouseLeft();
 			}
 		}
 

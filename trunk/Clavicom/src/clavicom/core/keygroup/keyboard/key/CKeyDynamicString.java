@@ -229,7 +229,6 @@ public abstract class CKeyDynamicString extends CKeyOneLevel
 	
 	public abstract void completeNodeSpecific3(Element eltKeyNode) throws Exception;
 	
-	@Override
 	public void Click()
 	{
 		fireOnClickKeyDynamicStringCommand();

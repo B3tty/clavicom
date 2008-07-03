@@ -25,36 +25,31 @@
 
 package clavicom.gui.engine;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.InputEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import clavicom.gui.engine.click.ClickEngine;
-import clavicom.gui.listener.DefilListener;
+import javax.swing.Timer;
 
-public class ClickTemporiseEngine implements DefilListener
+import clavicom.core.listener.CKeyClickListener;
+import clavicom.core.listener.CKeyMouseOverEventListener;
+import clavicom.core.profil.CProfil;
+import clavicom.tools.TNavigationType;
+
+public class ClickTemporiseEngine implements CKeyMouseOverEventListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
 
 	//---------------------------------------------------------- VARIABLES --//
 	
-	Robot robot;
-	
 	static ClickTemporiseEngine instance;
+	protected Timer clickTimer;
+	protected CKeyClickListener curClickListener;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//	
 	protected ClickTemporiseEngine()
 	{
-		try
-		{
-			robot = new Robot();
-		}
-		catch (AWTException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		clickTimer = createTimer( );
 	}
 	
 	public static void createInstance()
@@ -65,28 +60,45 @@ public class ClickTemporiseEngine implements DefilListener
 	{
 		return instance;
 	}
-	
-	public void startClickTempoEngine()
+
+	public void mouseEntered(CKeyClickListener clickListener)
 	{
-		DefilementEngine.getInstance().addDefilListener( this );
-	}
-	
-	public void stopClickTempoEngine()
-	{
-		DefilementEngine.getInstance().removeDefilListener( this );
+		if (CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
+			return;
+		
+		curClickListener = clickListener;
+		clickTimer.start();
 	}
 
-
-	public void defil()
+	public void mouseLeft()
 	{
-		ClickEngine.getInstance().mouseHookPause();
-		robot.mousePress( InputEvent.BUTTON1_MASK );
-		robot.mouseRelease( InputEvent.BUTTON1_MASK );
-		ClickEngine.getInstance().mouseHookResume();
+		if (CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
+			return;
+		
+		clickTimer.stop();
+		curClickListener = null;
 	}
+
 	//----------------------------------------------------------- METHODES --//	
 
 	//--------------------------------------------------- METHODES PRIVEES --//
+	protected Timer createTimer()
+	{
+		ActionListener action = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				if (curClickListener != null)
+				{
+					curClickListener.Click();
+					clickTimer.stop();
+				}
+			}
+		};
+		
+		// Création d'un timer qui génère un tic		
+		return new Timer( CProfil.getInstance().getNavigation().getTemporisationClic() ,action );
+	} 
 }
 
 

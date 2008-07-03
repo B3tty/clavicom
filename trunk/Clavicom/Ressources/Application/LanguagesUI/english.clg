@@ -334,6 +334,7 @@
 	<message id = "MSG_MAIN_CANT_LOAD_PREDICTION_ENGINE_1">Cannot load prediction engine.</message>
 	<message id = "MSG_MAIN_CANT_LOAD_CLICK_ENGINE_1">Cannot load click engine</message>
 	<message id = "MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1">Cannot load scroll engine</message>
+	<message id = "MSG_MAIN_CANT_LOAD_CLICK_TEMPORISE_ENGINE_1">Cannot load delayed click engine</message>
 	<message id = "MSG_MAIN_CANT_LOAD_KEYBOARD_DEFIL_ENGINE_1">Cannot load keyboard scroll engine</message>
 	<message id = "MSG_MAIN_CANT_LOAD_KEY_DEFIL_ENGINE_1">Cannot key load scroll engine</message>
 		

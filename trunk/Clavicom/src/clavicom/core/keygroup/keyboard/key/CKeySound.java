@@ -138,7 +138,6 @@ public class CKeySound extends CKeyOneLevel
 		return true;
 	}
 
-	@Override
 	public void Click()
 	{
 		// jouer le son

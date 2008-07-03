@@ -170,7 +170,7 @@ UIRightClickListener
 	 */
 	public void edit(boolean edit)
 	{
-		if (edit == true)
+		if (edit)
 		// En edition
 		{
 			isEdited = true;

@@ -73,6 +73,7 @@ import clavicom.core.listener.OnClickKeyCreationListener;
 import clavicom.core.listener.ReleaseHoldableKeysListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CProfil;
+import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.UIKeyClavicomEngine;
 import clavicom.gui.engine.UIKeyCreationEngine;
 import clavicom.gui.engine.sound.SoundEngine;
@@ -849,8 +850,6 @@ UIRightClickListener
 		{						
 			currentKey.setFontSize(fontSize);
 		}
-		
-		System.out.println(fontSize);
 	}
 	
 	//-----------------------------------------------------------------------
@@ -1530,6 +1529,9 @@ UIRightClickListener
 		
 		// Taille du texte par défaut
 		newUIKeyGlobal.setFontSize(fontSize);
+		
+		// Abonnement au moteur de clic temporisé
+		newUIKeyGlobal.addMouseOverListener(ClickTemporiseEngine.getInstance());
 		
 		// On alerte qu'une nouvelle key a été créée
 		fireKeyCreated(newUIKeyGlobal);
