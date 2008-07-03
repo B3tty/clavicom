@@ -667,6 +667,9 @@
 
 	<message id = "LB_LOAD_PROFIL_RESTART">L'application va maintenant redémarrer</message>
 	
+	<message id = "MSG_LOAD_PROFIL_SAVE_1">Les modifications récentes du profil courant vont être perdues.</message>
+	<message id = "MSG_LOAD_PROFIL_SAVE_2">Voulez-vous enregistrer le profil courant ?</message>
+	
 	<!-- ========================================================================== 
 		Popup menu des touches
 	==========================================================================  -->

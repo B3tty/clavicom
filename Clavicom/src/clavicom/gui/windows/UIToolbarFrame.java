@@ -606,6 +606,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		
 		public void actionPerformed(ActionEvent arg0)
 		{
+			
 			// charger un profil
 
 			// on affiche le dialogue
@@ -615,249 +616,31 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			fileChooser.addChoosableFileFilter(new TSwingUtils.FiltreSimple("Clavicom Profile (*.cpl)",".cpl"));
 			
 			if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-			{
-				/*String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
-			 
-			
-				// on deande à l'utilisateur quelles sont les éléments qu'il veut charger
-				CProfilSelectLoadOption options = new CProfilSelectLoadOption();
-				UIDialogueProfilSelectLoadOptions d_load = new UIDialogueProfilSelectLoadOptions( options );
-				d_load.setAlwaysOnTop( true );
-				d_load.setModal( true );
-				TSwingUtils.centerComponentToScreen( d_load );
-				d_load.setVisible( true );
+			{	
 				
-				// on charge les éléments du profil
-				boolean mustRestart = false;
-				if ( d_load.getOptions() != null )
-				{
-					Element racine = null;
-					try
-					{
-						racine = CProfil.openFile( profilPath );
-					}
-					catch (Exception ex)
-					{
-						CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_OPEN_FILE") + profilPath, ex.getMessage() );
-					}
-					
-					// chargement des options avancées
-					if( options.isAdvancedOptions() )
-					{
-						try
-						{
-							CProfil.getInstance().loadAdvancedOptions( racine );
+				// On demande si l'utilisateur veut sauvegarder son profil courant
+				switch (JOptionPane.showConfirmDialog(null, UIString.getUIString("MSG_LOAD_PROFIL_SAVE_1") + "\n" + 
+															UIString.getUIString("MSG_LOAD_PROFIL_SAVE_2"))){
+					case JOptionPane.YES_OPTION:
+						try{
+							CProfil.getInstance().saveProfil();
 						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_ADVANCED_OPTION"), ex.getMessage() );
-						}
-						
-						mustRestart = true;
-					}
-					
-					// chargement du dictionnaire
-					if( options.isDictionaryName() )
-					{
-						try
-						{
-							CProfil.getInstance().loadDictionnary( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_DICTIONARY"), ex.getMessage() );
-						}
-						mustRestart = true;
-					}
-					
-					// chargement de la police
-					if( options.isFont() )
-					{
-						try
-						{
-							CProfil.getInstance().loadFont( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_FONT"), ex.getMessage() );
-						}
-						
-						// rechargement des keys
-						panelKeyboard.redrawAllKeys();
-					}
-
-					
-					// chargement des couleurs du clavier
-					if( options.isKeyboardColors() )
-					{
-						try
-						{
-							CProfil.getInstance().loadDefaultColor( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_KEYBOARD_COLOR"), ex.getMessage() );
-						}
-					}
-					
-					// chargement de la langue ui
-					if( options.isLangueUIName() )
-					{
-						try
-						{
-							CProfil.getInstance().loadProfileLanguageUIName( );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_LANGUE_UI"), ex.getMessage() );
-						}
-						
-						mustRestart = true;
-					}
-					
-					// chargement de la navigation
-					if( options.isNavigation() )
-					{
-						try
-						{
-							CProfil.getInstance().loadNavigation( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_NAVIGATION"), ex.getMessage() );
-						}
-					}
-					
-					// chargement des mots preferes
-					if( options.isPreferedWord() )
-					{
-						try
-						{
-							CProfil.getInstance().loadPreferedWord( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_PREFERED_WORD"), ex.getMessage() );
-						}
-						mustRestart = true;
-					}
-					
-
-
-					// chargement du son
-					if( options.isSound() )
-					{
-						try
-						{
-							CProfil.getInstance().loadSound( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_SOUND"), ex.getMessage() );
-						}
-						
-						// on vérifie le son
-						SoundEngine.verifySoundEngine( panelKeyboard );
-					}
-					
-					// chargement de la transparence
-					if( options.isTransparence() )
-					{
-						try
-						{
-							CProfil.getInstance().loadTransparency( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_TRANSPARENCY"), ex.getMessage() );
-						}
-						mustRestart = true;
-					}
-					
-					// chargement du jeu de commande
-					if( options.isCommandSetName() )
-					{
-						try
-						{
-							CProfil.getInstance().loadProfileCommandSetName( );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_COMMAND_SET"), ex.getMessage() );
-							return;
-						}
-						
-						mustRestart = true;
-					}
-					
-					// chargement du jeu de raccourcis
-					if( options.isShortcutSetName() )
-					{
-						try
-						{
-							CProfil.getInstance().loadProfileShortCutName();
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_SHORTCUTSET"), ex.getMessage() );
-							return;
-						}
-						
-						mustRestart = true;
-					}
-					
-					
-					// chargement du clavier
-					if( options.isKeyboard() )
-					{
-						try
-						{
-							CProfil.getInstance().loadKeyboard( racine );
-						}
-						catch (Exception ex)
-						{
-							CMessageEngine.newError( UIString.getUIString("EX_LOAD_PROFIL_KEYBOARD"), ex.getMessage() );
-						}
-						
-						mustRestart = true;
-					}
-					
-					
-					if( mustRestart )
-					{
-						// dit a l'utilisateur que ca va redemarrer
-						JOptionPane.showMessageDialog(null, UIString.getUIString("LB_LOAD_PROFIL_RESTART"));
-						
-						// on redémarre l'application
-						try
-						{
-							Runtime.getRuntime().exec( "ClavicomNG.exe" );
-						}
-						catch (IOException e)
-						{
-						}
-						
-						// sauvegarde du profil et de la configuration
-						try
-						{
-							CProfil.getInstance().saveProfil( );
-							CSettings.saveSettings( CFilePaths.getConfigFileFolder() );
-						}
-						catch (Exception ex)
-						{
+						catch (Exception ex){
 							CMessageEngine.newFatalError(	UIString.getUIString("MSG_PROFIL_SAVE_FAILED_1")+
 															CProfil.getInstance().getProfilFilePath() + 
 															UIString.getUIString("MSG_PROFIL_SAVE_FAILED_2"),
 															ex.getMessage());
 						}
+						break;
 						
+					case JOptionPane.NO_OPTION:
+						break;
 						
-						
-						// on ferme cette application... et il faudrait la redemarer TODO
-						System.exit( 0 );
-					}				
+					case JOptionPane.CANCEL_OPTION:
+					default:
+						return;
+					
 				}
-				FIN ANCIENNE VERSION */
 				
 				String profilPath = fileChooser.getSelectedFile().getAbsolutePath();
 				CSettings.setLastProfilePath(profilPath);
@@ -1042,7 +825,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 				
 				// Affichage d'un dialog pour demander à l'utilisateur ce qu'il veut faire
 				int reponse = JOptionPane.showOptionDialog(UIToolbarFrame.this, 
-							UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_1") + "\n\n" +
+							UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_1") + "\n" +
 						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_3"), 
 						  	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_KEYS_TITLE"), 
 						    JOptionPane.YES_NO_CANCEL_OPTION,

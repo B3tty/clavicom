@@ -1227,12 +1227,12 @@
         <keycharacter order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.6788991</x>
-              <y>0.17867436</y>
+              <x>0.744559</x>
+              <y>0.17916666</y>
             </point>
             <point position="max">
-              <x>0.77798164</x>
-              <y>0.31988472</y>
+              <x>0.7777778</x>
+              <y>0.32083333</y>
             </point>
           </coordinates>
           <colors>
