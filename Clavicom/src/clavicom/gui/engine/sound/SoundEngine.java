@@ -100,7 +100,6 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		DefilementEngine.getInstance().addDefilListener( this );
 	}
 	
-	
 	public void unListenEntered( UIKeyboard uiKeyboard )
 	{
 		// déabonnement
