@@ -103,7 +103,6 @@ public class CKeyCreation extends CKeyOneLevel
 		return false;
 	}
 
-	@Override
 	public void Click()
 	{
 		// On balance un evenement

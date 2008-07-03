@@ -168,11 +168,15 @@ public class Application
 
 		// Chargement du moteur de click
 		splash.newStep("Loading click engine...");
-		loadClickEngine();		
+		loadClickEngine();
+		
+		// Chargement du moteur de click temporisé
+		splash.newStep("Loading delayed click engine...");
+		loadClickTemporiseEngine();
 
 		// Chargement du moteur de defilement
 		splash.newStep("Loading scrolling engine...");
-		loadDefilementEngine();	
+		loadDefilementEngine();
 		
 		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
 		{
@@ -257,8 +261,6 @@ public class Application
 		else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
 		{
 			ClickEngine.getInstance().mouseHookResume();
-			
-			ClickTemporiseEngine.getInstance().startClickTempoEngine();
 			
 			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
 			{
@@ -584,6 +586,22 @@ public class Application
 		catch (Exception ex)
 		{
 			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DEFIL_ENGINE_1"),
+										ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Chargement du moteur de clic temporise
+	 */
+	private static void loadClickTemporiseEngine()
+	{
+		try
+		{
+			ClickTemporiseEngine.createInstance( );
+		}
+		catch (Exception ex)
+		{
+			CMessageEngine.newError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_CLICK_TEMPORISE_ENGINE_1"),
 										ex.getMessage());
 		}
 	}

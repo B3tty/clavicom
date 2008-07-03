@@ -94,7 +94,6 @@ public class CMouseKeyMove extends CMouseKey
 	
 	//--------------------------------------------------- METHODES PRIVEES --//
 
-	@Override
 	public void Click()
 	{
 		fireOnClicMouseMove();

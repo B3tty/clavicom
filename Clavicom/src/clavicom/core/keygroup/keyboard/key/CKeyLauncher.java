@@ -157,7 +157,6 @@ public class CKeyLauncher extends CKeyOneLevel
 		return true;
 	}
 
-	@Override
 	public void Click()
 	{
 		fireOnClickKeyLauncher();

@@ -238,7 +238,6 @@ public class CKeyCharacter extends CKeyThreeLevel
 		eltKeyNode.addContent(eltCommands);
 	}
 
-	@Override
 	public void Click()
 	{
 		fireOnClickKeyCharacter();

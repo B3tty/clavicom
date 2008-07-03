@@ -166,13 +166,11 @@ public class CKeyClavicom extends CKeyOneLevel
 		return true;
 	}
 
-	@Override
 	public void Click()
 	{
 		fireOnClickKeyClavicom();
 	}
 	
-	@Override
 	public String getCaption()
 	{
 		return CFilePaths.getPictures() + caption;

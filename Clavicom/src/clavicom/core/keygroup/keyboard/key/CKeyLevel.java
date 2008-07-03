@@ -169,7 +169,6 @@ public class CKeyLevel extends CKeyOneLevel
 		return true;
 	}
 
-	@Override
 	public void Click()
 	{
 		fireOnClickKeyLevel();

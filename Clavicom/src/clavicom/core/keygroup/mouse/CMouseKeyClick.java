@@ -87,7 +87,6 @@ public class CMouseKeyClick extends CMouseKey
 	
 	public TMouseKeyClickEnum GetClick(){return click;}
 
-	@Override
 	public void Click()
 	{
 		fireOnClicMouseClick();

@@ -38,6 +38,7 @@ import clavicom.core.keygroup.keyboard.key.CKeyPrediction;
 import clavicom.core.keygroup.keyboard.key.CKeyShortcut;
 import clavicom.core.keygroup.keyboard.key.CKeySound;
 import clavicom.core.keygroup.keyboard.key.CKeyString;
+import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.key.UIKeyCharacter;
 import clavicom.gui.keyboard.key.UIKeyClavicom;
@@ -80,12 +81,14 @@ public class UIKeyList
 		{		
 			// On récupère la CKeyKeyboard courante
 			currentCoreKey = coreKeyList.getKeyKeyboard(i);
+			UIKey uiKeyGlobal = null;
 			
 			// On caste pour savoir quel objet on doit créer
 			if (currentCoreKey instanceof CKeyCharacter)
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyCharacter uiKey = new UIKeyCharacter((CKeyCharacter)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -97,6 +100,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyPrediction uiKey = new UIKeyPrediction((CKeyPrediction)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -105,6 +109,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyLastWord uiKey = new UIKeyLastWord((CKeyLastWord)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -113,6 +118,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyLauncher uiKey = new UIKeyLauncher((CKeyLauncher)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -121,6 +127,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeySound uiKey = new UIKeySound((CKeySound)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -129,6 +136,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyLevel uiKey = new UIKeyLevel((CKeyLevel)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -137,6 +145,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyShortcut uiKey = new UIKeyShortcut((CKeyShortcut)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -145,6 +154,7 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyString uiKey = new UIKeyString((CKeyString)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
@@ -153,10 +163,13 @@ public class UIKeyList
 			{
 				// Construction d'une UIKey du bon type
 				UIKeyClavicom uiKey = new UIKeyClavicom((CKeyClavicom)currentCoreKey);
+				uiKeyGlobal = uiKey;
 				
 				// Ajout à la liste des uiKeys
 				keys.add(uiKey);
 			}
+			if (uiKeyGlobal != null)
+				uiKeyGlobal.addMouseOverListener(ClickTemporiseEngine.getInstance());
 		}
 	}
 	//----------------------------------------------------------- METHODES --//	

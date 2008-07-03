@@ -67,7 +67,6 @@ import clavicom.gui.edition.key.UIPanelOptionKeyString;
 import clavicom.gui.edition.key.UIPanelOptionKeyboardKey;
 import clavicom.gui.edition.key.UIPanelOptionOneLevelKey;
 import clavicom.gui.edition.keyboard.UIKeyCreationToolbar;
-import clavicom.gui.engine.ClickTemporiseEngine;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.DefilementKeyEngine;
 import clavicom.gui.engine.click.ClickEngine;
@@ -872,10 +871,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			
 		DefilementEngine.getInstance().stopDefilement();
 			
-		DefilementKeyEngine.getInstance().stopKeyDefilEngine();
-			
-		ClickTemporiseEngine.getInstance().stopClickTempoEngine();
-		
+		DefilementKeyEngine.getInstance().stopKeyDefilEngine();		
 	}
 
 	private void startDefilMode()
@@ -885,25 +881,6 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		
 		// (Lignes interverties)
 		DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
-		
-		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
-		{
-			DefilementEngine.getInstance().startDefilement();
-		}
-		else
-		{
-			DefilementEngine.getInstance().forceStartDefilement();
-		}
-
-	}
-	
-	private void startClickTempoMode()
-	{
-		
-		ClickEngine.getInstance().mouseHookResume();
-		
-		// (Lignes interverties)
-		ClickTemporiseEngine.getInstance().startClickTempoEngine();
 		
 		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
 		{
@@ -1063,17 +1040,12 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			// On repasse en mode clavicom normal
 			frameKeyboard.edit(false);
 			
-			
 			// on regarde si on doit lancer le défilement
 			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				startDefilMode();
 			}
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
-			{
-				startClickTempoMode();
-			}
-			else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.STANDARD )
+			else 
 			{
 				stopDefilMode();
 			}
