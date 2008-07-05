@@ -30,9 +30,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import clavicom.CSettings;
 import clavicom.core.listener.CKeyClickListener;
 import clavicom.core.listener.CKeyMouseOverEventListener;
-import clavicom.core.profil.CProfil;
 import clavicom.tools.TNavigationType;
 
 public class ClickTemporiseEngine implements CKeyMouseOverEventListener
@@ -63,7 +63,7 @@ public class ClickTemporiseEngine implements CKeyMouseOverEventListener
 
 	public void mouseEntered(CKeyClickListener clickListener)
 	{
-		if (CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
+		if (CSettings.getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
 			return;
 		
 		curClickListener = clickListener;
@@ -72,7 +72,7 @@ public class ClickTemporiseEngine implements CKeyMouseOverEventListener
 
 	public void mouseLeft()
 	{
-		if (CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
+		if (CSettings.getNavigation().getTypeNavigation() != TNavigationType.CLICK_TEMPORISE)
 			return;
 		
 		clickTimer.stop();
@@ -97,7 +97,7 @@ public class ClickTemporiseEngine implements CKeyMouseOverEventListener
 		};
 		
 		// Création d'un timer qui génère un tic		
-		return new Timer( CProfil.getInstance().getNavigation().getTemporisationClic() ,action );
+		return new Timer( CSettings.getNavigation().getTemporisationClic() ,action );
 	} 
 }
 

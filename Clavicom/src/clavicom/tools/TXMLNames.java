@@ -157,7 +157,6 @@ public class TXMLNames
 	// Settings
 	public static String SE_ELEMENT_LAST_PROFILE		= "last_profile_path";
 	public static String SE_ELEMENT_DEFAULT_PROFILE		= "default_profile_name";
-	public static String SE_ELEMENT_DEFAULT_LANGUAGE_UI	= "default_language_ui";
 	public static String SE_ELEMENT_SETTINGS			= "settings";
 	
 	// Profil

@@ -39,10 +39,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
+
+import clavicom.CSettings;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.profil.CPreferedWords;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.language.UIString;
 
 public class PanelModificationProfilPreferedWords extends PanelModificationProfil
@@ -124,7 +125,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		JPanel panelActive = new JPanel();
 		active = new JCheckBox( 
 				UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS_ACTIVE"),
-				CProfil.getInstance().getPreferedWords().isActive() );
+				CSettings.getPreferedWords().isActive() );
 		panelActive.add( active );
 		panelGlobal.add( panelActive, BorderLayout.NORTH );
 		
@@ -166,7 +167,7 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		}
 		
 		// active
-		active.setSelected( CProfil.getInstance().getPreferedWords().isActive() );
+		active.setSelected( CSettings.getPreferedWords().isActive() );
 
 	}
 
@@ -215,11 +216,11 @@ public class PanelModificationProfilPreferedWords extends PanelModificationProfi
 		}
 		
 		// active
-		if( CProfil.getInstance().getPreferedWords().isActive() != active.isSelected() )
+		if( CSettings.getPreferedWords().isActive() != active.isSelected() )
 		{
 			if( saveData )
 			{
-				CProfil.getInstance().getPreferedWords().setActive( active.isSelected() );
+				CSettings.getPreferedWords().setActive( active.isSelected() );
 			}
 			
 			retour = true;

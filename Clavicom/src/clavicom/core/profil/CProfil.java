@@ -25,17 +25,15 @@
 
 package clavicom.core.profil;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import clavicom.CSettings;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
+import clavicom.tools.XMLTools;
 
 
 public class CProfil
@@ -45,20 +43,14 @@ public class CProfil
 	
 	//---------------------------------------------------------- VARIABLES --//
 	
-	CLangueUIName langueUI;			// Langue de l'interface utilisateur
+	
 	CCommandSetName commandSetName; // nom du fichier du commandSet
 	CShortCutSetName shortcutSetName; // nom du fichier du shortcutSet
-	CDictionaryName dictionnaryName;	// nom du fichier de dictionnaire
 	CKeyboardColor defaultColor;	// Couleur par défaut du clavicom
-	CTransparency transparency;		// Transparence
-	CSound sound;					// Gestion du son
-	CNavigation navigation;			// Type de navigation de l'utilisateur
+	
 	CKeyboard keyboard;				// Structure du clavicom
-	CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
 	CFont keyboardFont;				// Police de caractère utilisée pour le clavier
 	CAdvancedOptions advancedOption;// option avancés du profil
-	
-	boolean defaultModel;
 	
 	String profilFilePath;
 
@@ -67,77 +59,13 @@ public class CProfil
 	private CProfil( String myProfilFilePath )
 	{
 		profilFilePath = myProfilFilePath;
-		defaultModel = false;
 	}
 
 	//----------------------------------------------------------- METHODES --//
 	
-	static public Element openFile( String profilFilePath ) throws Exception
-	{
-		// ======================================================================
-		// chargement du fichier de profil
-		// ======================================================================
-		SAXBuilder sxb = new SAXBuilder();
-		Document document = null;
-		try
-		{
-			document = sxb.build(new File( profilFilePath ));
-		}
-		catch(Exception e)
-		{
-			throw new Exception("[Chargement du profil] : Impossible d'ouvrir le fichier de profil" + "\n" + e.getMessage());
-		}
-
-		//On initialise un nouvel élément racine avec l'élément racine du document.
-		return document.getRootElement();
-	}
-	
-	public void loadProfileDefautModel() throws Exception
-	{
-		
-		Element racine = openFile( profilFilePath );
-		
-		// ======================================================================
-		// chargement du booléen defaultModel
-		// ======================================================================
-		Element defautModel_elem = racine.getChild( TXMLNames.PR_ELEMENT_DEFAULT_MODEL );
-		if( defautModel_elem != null )
-		{
-			String str_defaultModel = defautModel_elem.getText();
-			
-			try
-			{
-				defaultModel = Boolean.parseBoolean( str_defaultModel );
-			}
-			catch(Exception ex)
-			{
-				throw new Exception("[Chargement du profil] Impossible de convertir la chaine " + str_defaultModel + " en booléen" );
-			}
-		}
-	}
-	
-	public void loadProfileLanguageUIName() throws Exception
-	{
-		
-		Element racine = openFile( profilFilePath );
-		
-		// ======================================================================
-		// chargement de la langueUI
-		// ======================================================================
-		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
-		try
-		{
-			langueUI = new CLangueUIName( langueUI_elem );
-		}
-		catch(Exception ex)
-		{
-			langueUI = new CLangueUIName( CSettings.getDefaultLanguageFileName() );
-		}
-	}
-	
 	public void loadProfileCommandSetName() throws Exception
 	{
-		Element racine = openFile( profilFilePath );
+		Element racine = XMLTools.openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement du nom du fichier de commande set à utiliser
@@ -158,7 +86,7 @@ public class CProfil
 	}
 	public void loadProfileShortCutName() throws Exception
 	{
-		Element racine = openFile( profilFilePath );
+		Element racine = XMLTools.openFile( profilFilePath );
 		
 		// ======================================================================
 		// chargement du nom du fichier de commande set à utiliser
@@ -197,41 +125,6 @@ public class CProfil
 	{
 		return defaultColor;
 	}
-
-	public CDictionaryName getDictionnaryName()
-	{
-		return dictionnaryName;
-	}
-
-	public CKeyboard getKeyboard()
-	{
-		return keyboard;
-	}
-
-	public CLangueUIName getLangueUI()
-	{
-		return langueUI;
-	}
-
-	public CNavigation getNavigation()
-	{
-		return navigation;
-	}
-
-	public CPreferedWords getPreferedWords()
-	{
-		return preferedWords;
-	}
-
-	public CSound getSound()
-	{
-		return sound;
-	}
-
-	public CTransparency getTransparency()
-	{
-		return transparency;
-	}
 	
 	public CFont getKeyboardFont()
 	{
@@ -260,14 +153,7 @@ public class CProfil
 		// Création de la structure SAX
 		// ===============================================================
 		Element racine = new Element( TXMLNames.PR_ELEMENT_PROFIL );
-		Document document = new Document( racine );		
-		
-		
-		
-		// ===============================================================
-		// Attachement de la langueUI
-		// ===============================================================
-		racine.addContent( langueUI.buildNode() );
+		Document document = new Document( racine );
 		
 		// ===============================================================
 		// Attachement du nom du fichier de commande set à utiliser
@@ -278,32 +164,12 @@ public class CProfil
 		// Attachement du nom du fichier de shortcut set à utiliser
 		// ===============================================================
 		racine.addContent( shortcutSetName.buildNode() );
-
-		// ===============================================================
-		// Attachement du dictionnaire
-		// ===============================================================
-		racine.addContent( dictionnaryName.buildNode() );
 		
 		// ===============================================================
 		// Attachement de la couleur par defaut
 		// ===============================================================
 		racine.addContent( defaultColor.buildNode() );
 		
-		// ===============================================================
-		// Attachement de la transparence
-		// ===============================================================
-		racine.addContent( transparency.buildNode() );
-
-		// ===============================================================
-		// Attachement de la gestion du son
-		// ===============================================================
-		racine.addContent( sound.buildNode() );
-		
-		// ===============================================================
-		// Attachement de la navigation
-		// ===============================================================
-		racine.addContent( navigation.buildNode() );
-
 		// ===============================================================
 		// Attachement de la police
 		// ===============================================================
@@ -326,10 +192,7 @@ public class CProfil
 			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_SAVE_PROFIL" ) + "]" + ex.getMessage() );
 		}
 		
-		// ===============================================================
-		// Attachement des mots préférés de l'utilisateur
-		// ===============================================================
-		racine.addContent( preferedWords.buildNode() );
+
 
 		
 		// ===============================================================
@@ -341,26 +204,6 @@ public class CProfil
 	}
 
 	//--------------------------------------------------- METHODES PRIVEES --//
-	
-	public void loadDictionnary (Element racine ) throws Exception
-	{
-		// ======================================================================
-		// chargement du dictionnaire
-		// ======================================================================
-		Element dictionary_elem = racine.getChild( TXMLNames.PR_ELEMENT_DICTIONARY_NAME );
-		if( dictionary_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_DICTIONARY_NAME );
-		}
-		try
-		{
-			dictionnaryName = new CDictionaryName( dictionary_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
-	}
 	
 	public void loadDefaultColor (Element racine ) throws Exception
 	{
@@ -400,67 +243,7 @@ public class CProfil
 		{
 			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
 		}
-	}
-	
-	public void loadTransparency (Element racine ) throws Exception
-	{
-		// ======================================================================
-		// chargement de la transparence
-		// ======================================================================
-		Element transparency_elem = racine.getChild( TXMLNames.PR_ELEMENT_TRANSPARENCY );
-		if( transparency_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_TRANSPARENCY );
-		}
-		try
-		{
-			transparency = new CTransparency( transparency_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "]"  + ex.getMessage() );
-		}
-	}
-	
-	public void loadSound (Element racine ) throws Exception
-	{
-		// ======================================================================
-		// chargement de la gestion du son
-		// ======================================================================
-		Element sound_elem = racine.getChild( TXMLNames.PR_ELEMENT_SOUND );
-		if( sound_elem == null )
-		{
-			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_SOUND );
-		}
-		try
-		{
-			sound = new CSound( sound_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
-	}
-	
-	public void loadNavigation (Element racine ) throws Exception
-	{
-		// ======================================================================
-		// chargement de la navigation
-		// ======================================================================
-		Element navigation_elem = racine.getChild( TXMLNames.PR_ELEMENT_NAVIGATION );
-		if( navigation_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_NAVIGATION );
-		}
-		try
-		{
-			navigation = new CNavigation( navigation_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
-	}
+	}	
 	
 	public void loadKeyboard (Element racine ) throws Exception
 	{
@@ -482,25 +265,6 @@ public class CProfil
 		}
 	}
 	
-	public void loadPreferedWord (Element racine ) throws Exception
-	{
-		// ======================================================================
-		// chargement des mots préférés de l'utilisateur
-		// ======================================================================
-		Element preferedWords_elem = racine.getChild( TXMLNames.PR_ELEMENT_PREFERED_WORDS );
-		if( preferedWords_elem == null )
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_PREFERED_WORDS );
-		}
-		try
-		{
-			preferedWords = new CPreferedWords( preferedWords_elem );
-		}
-		catch(Exception ex)
-		{
-			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
-		}
-	}
 	
 	public void loadAdvancedOptions(Element racine ) throws Exception
 	{
@@ -525,16 +289,11 @@ public class CProfil
 	public void loadProfile ( ) throws Exception
 	{
 		//On initialise un nouvel élément racine avec l'élément racine du document.
-		Element racine = openFile( profilFilePath );
+		Element racine = XMLTools.openFile( profilFilePath );
 		
-		loadDictionnary( racine );
 		loadDefaultColor( racine );
 		loadFont( racine );
-		loadTransparency( racine );
-		loadSound( racine );
-		loadNavigation( racine );
 		loadKeyboard( racine );
-		loadPreferedWord( racine );
 		loadAdvancedOptions( racine );
 	}
 
@@ -547,19 +306,39 @@ public class CProfil
 		return profilFilePath;
 	}
 
-	public boolean isDefaultModel()
-	{
-		return defaultModel;
-	}
-
-	public void setDefaultModel(boolean defaultModel)
-	{
-		this.defaultModel = defaultModel;
-	}
-
 	public void setProfilFilePath(String profilFilePath)
 	{
 		this.profilFilePath = profilFilePath;
+	}
+
+	public CKeyboard getKeyboard()
+	{
+		return keyboard;
+	}
+
+	public void setKeyboard(CKeyboard keyboard)
+	{
+		this.keyboard = keyboard;
+	}
+
+	public void setCommandSetName(CCommandSetName commandSetName)
+	{
+		this.commandSetName = commandSetName;
+	}
+
+	public void setDefaultColor(CKeyboardColor defaultColor)
+	{
+		this.defaultColor = defaultColor;
+	}
+
+	public void setKeyboardFont(CFont keyboardFont)
+	{
+		this.keyboardFont = keyboardFont;
+	}
+
+	public void setAdvancedOption(CAdvancedOptions advancedOption)
+	{
+		this.advancedOption = advancedOption;
 	}
 
 }

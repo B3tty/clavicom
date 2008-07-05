@@ -28,6 +28,7 @@ package clavicom.core.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import clavicom.CSettings;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.engine.dictionary.CDictionaryWord;
 import clavicom.core.keygroup.keyboard.blocks.CKeyGroup;
@@ -43,7 +44,6 @@ import clavicom.core.listener.OnClickKeyDynamicStringPredictionListener;
 import clavicom.core.listener.OnClickKeyShortcutListener;
 import clavicom.core.profil.CKeyboard;
 import clavicom.core.profil.CPreferedWords;
-import clavicom.core.profil.CProfil;
 
 public class CPredictionEngine extends CStringsEngine implements
 		OnClickKeyCharacterListener, OnClickKeyDynamicStringPredictionListener, OnClickKeyShortcutListener
@@ -260,7 +260,7 @@ public class CPredictionEngine extends CStringsEngine implements
 		if( ! currentString.equals( "" ) )
 		{
 			// si l'utilisateur veux sauvegarder ces mots préférés
-			if( CProfil.getInstance().getPreferedWords().isActive() )
+			if( CSettings.getPreferedWords().isActive() )
 			{
 				// on ajout ou on augmente la frequence du mots
 				addOrIncreaseWord( currentString );

@@ -41,6 +41,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
 
 import clavicom.CFilePaths;
+import clavicom.CSettings;
 import clavicom.core.engine.dictionary.CDictionary;
 import clavicom.core.keygroup.keyboard.command.commandSet.CCommandSet;
 import clavicom.core.keygroup.keyboard.command.shortcutSet.CShortcutSet;
@@ -141,8 +142,7 @@ public class UIFrameModificationProfil extends JDialog
 			public void run()
 			{
 				super.run();
-			
-				CProfil profil = CProfil.getInstance();
+
 				boolean retour = true;
 
 				int pourcentToAddToProgressBar = 10;
@@ -247,12 +247,12 @@ public class UIFrameModificationProfil extends JDialog
 					// on créé le nouveau
 					try
 					{
-						CDictionary.createInstance( profil.getDictionnaryName(), profil.getPreferedWords() );
+						CDictionary.createInstance( CSettings.getDictionnaryName(), CSettings.getPreferedWords() );
 					}
 					catch (Exception ex)
 					{
 						CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
-														CProfil.getInstance().getDictionnaryName().getDictionaryName() +
+														CSettings.getDictionnaryName().getDictionaryName() +
 														UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
 														ex.getMessage());
 					}
@@ -333,9 +333,8 @@ public class UIFrameModificationProfil extends JDialog
 					panelNavigation.validateDataEntry();
 					
 					// si on est en défilement et qu'il a coché moveMouseOnEntered
-					if( CProfil.getInstance().getNavigation().isMoveMouseOnEntered()
-							&&
-						CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT)
+					if( CSettings.getNavigation().isMoveMouseOnEntered() &&
+						CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT)
 					{
 						MouseMoveEngine.getInstance().listen();
 					}
@@ -372,64 +371,62 @@ public class UIFrameModificationProfil extends JDialog
 	 */
 	protected void createTabs()
 	{
-		tabbedPane = new JTabbedPane();
-		CProfil profil = CProfil.getInstance();
-		
+		tabbedPane = new JTabbedPane();		
 
 		// panel des dictionary name
 		JPanel panel = new JPanel(); 
-		panelDictionaryName = new PanelModificationProfilDictionaryName( profil.getDictionnaryName() );
+		panelDictionaryName = new PanelModificationProfilDictionaryName( CSettings.getDictionnaryName() );
 		panel.add( panelDictionaryName );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_DICTIONARY"), panel);
 		
 		// panel des fonts
 		panel = new JPanel(); 
-		panelFont = new PanelModificationProfilFont( profil.getKeyboardFont() );
+		panelFont = new PanelModificationProfilFont( CProfil.getInstance().getKeyboardFont() );
 		panel.add( panelFont );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_FONT"), panel);
 		
 		// panel des kayboard color
 		panel = new JPanel(); 
-		panelKeyboardColor = new PanelModificationProfilKeyboardColor( profil.getDefaultColor() );
+		panelKeyboardColor = new PanelModificationProfilKeyboardColor( CProfil.getInstance().getDefaultColor() );
 		panel.add( panelKeyboardColor );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_KEYBOARDCOLOR"), panel);
 		
 		// panel des languesUI
 		panel = new JPanel(); 
-		panelLangueUI = new PanelModificationProfilLangueUIName( profil.getLangueUI() );
+		panelLangueUI = new PanelModificationProfilLangueUIName( CSettings.getLangueUI() );
 		panel.add( panelLangueUI );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_LANGUAGE"), panel);
 		
 		// panel de navigation
 		panel = new JPanel( new BorderLayout() ); 
-		panelNavigation = new PanelModificationProfilNavigation( profil.getNavigation() );
+		panelNavigation = new PanelModificationProfilNavigation( CSettings.getNavigation() );
 		panel.add( panelNavigation, BorderLayout.CENTER );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_NAVIGATION"), panel);
 		
 		// panel des preferedWords
 		panel = new JPanel(); 
-		panelPreferedWords = new PanelModificationProfilPreferedWords( profil.getPreferedWords() );
+		panelPreferedWords = new PanelModificationProfilPreferedWords( CSettings.getPreferedWords() );
 		panel.add( panelPreferedWords );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_PREFEREDWORDS"), panel);
 		
 		// panel des sound
 		panel = new JPanel(); 
-		panelSound = new PanelModificationProfilSound( profil.getSound() );
+		panelSound = new PanelModificationProfilSound( CSettings.getSound() );
 		panel.add( panelSound );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_SOUND"), panel);
 		
 		// panel de la transparence
 		panel = new JPanel(); 
-		panelTransparency = new PanelModificationProfilTransparency( profil.getTransparency() );
+		panelTransparency = new PanelModificationProfilTransparency( CSettings.getTransparency() );
 		panel.add( panelTransparency );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_PANEL_TRANSPARENCY"), panel);
 		
 		// panel advancedOptions
 		panel = new JPanel(); 
 		panelAdvancedOption = new PanelModificationProfilAdvancedOption( 
-				profil.getAdvancedOption(), 
-				profil.getCommandSetName(),
-				profil.getShortcutSetName());
+								CProfil.getInstance().getAdvancedOption(), 
+								CProfil.getInstance().getCommandSetName(),
+								CProfil.getInstance().getShortcutSetName());
 		panel.add( panelAdvancedOption );
 		tabbedPane.addTab( UIString.getUIString("LB_CONFPROFIL_ADVANCED_OPTION"), panel);
 		

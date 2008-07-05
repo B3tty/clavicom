@@ -195,7 +195,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			
 			
 			// si on est en défilement
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				DefilementKeyEngine.getInstance().stopKeyDefilEngine();
 			}
@@ -211,7 +211,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			frameMouse.stopDefilMouse();
 			
 			// si on est en défilement
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				DefilementKeyEngine.getInstance().startKeyDefilEngine(false);
 			}

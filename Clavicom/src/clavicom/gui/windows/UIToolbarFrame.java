@@ -851,7 +851,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			frameKeyboard.edit(false);
 			
 			// on regarde si on doit lancer le défilement
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				startDefilMode();
 			}

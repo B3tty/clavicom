@@ -29,7 +29,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-import clavicom.core.profil.CProfil;
+
+import clavicom.CSettings;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
@@ -152,7 +153,7 @@ public class DefilementEngine implements clickMouseHookListener
 		};
 		
 		// Création d'un timer qui génère un tic		
-		return new Timer( CProfil.getInstance().getNavigation().getTemporisationDefilement() ,action );
+		return new Timer( CSettings.getNavigation().getTemporisationDefilement() ,action );
 	}
 
 

@@ -41,15 +41,17 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 import javax.swing.event.MouseInputAdapter;
+
+import clavicom.CSettings;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.keyboard.key.CKeyClavicom;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.engine.click.clickMouseHookListener;
@@ -58,8 +60,8 @@ import clavicom.gui.keyboard.key.UIKeyClavicom;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.listener.MouseToMoveListener;
 import clavicom.gui.utils.UIBackgroundPanel;
-import clavicom.tools.TSwingUtils;
 import clavicom.tools.TNavigationType;
+import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
 public class UIMouse extends UIBackgroundPanel 
@@ -208,7 +210,7 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 	
 	public void startDefilMouse()
 	{
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
 			indexSelectedKey = 0;
 			

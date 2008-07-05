@@ -178,7 +178,7 @@ public class Application
 		splash.newStep("Loading scrolling engine...");
 		loadDefilementEngine();
 		
-		if( CProfil.getInstance().getSound().isSoundOnStartApplication() )
+		if( CSettings.getSound().isSoundOnStartApplication() )
 		{
 			// Lancement du son de démarage
 			ThreadSound introSound = new ThreadSound( CFilePaths.getStartApplicationSoundFilePath() );
@@ -242,7 +242,7 @@ public class Application
 
 	private static void LaunchNavigationMode()
 	{
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
 			ClickEngine.getInstance().mouseHookResume();
 			
@@ -258,21 +258,8 @@ public class Application
 				DefilementEngine.getInstance().forceStartDefilement();
 			}
 		}
-		else if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
-		{
-			ClickEngine.getInstance().mouseHookResume();
-			
-			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
-			{
-				DefilementEngine.getInstance().startDefilement();
-			}
-			else
-			{
-				DefilementEngine.getInstance().forceStartDefilement();
-			}
-		}
 	}
-
+	
 	/**
 	 * Créé les fenêtres
 	 */
@@ -397,11 +384,11 @@ public class Application
 	private static void loadProfile() throws Exception
 	{		
 		// Récupération de la langue du profil
-		CProfil.getInstance().loadProfileLanguageUIName();
+		CSettings.loadProfileLanguageUIName();
 		
 		// Chargement de la langue du profil
 		UIString.LoadUIStringFile(  CFilePaths.getLanguagesUIFolder() + 
-									CProfil.getInstance().getLangueUI().getLanguageFileName());
+									CSettings.getLangueUI().getLanguageFileName());
 		
 		// Récupération du nom du commandset
 		CProfil.getInstance().loadProfileCommandSetName();
@@ -461,13 +448,13 @@ public class Application
 	{
 		try
 		{
-			CDictionary.createInstance( CProfil.getInstance().getDictionnaryName(),
-										CProfil.getInstance().getPreferedWords());
+			CDictionary.createInstance( CSettings.getDictionnaryName(),
+										CSettings.getPreferedWords());
 		}
 		catch (Exception ex)
 		{
 			CMessageEngine.newFatalError(	UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_1") +
-											CProfil.getInstance().getDictionnaryName().getDictionaryName() +
+											CSettings.getDictionnaryName().getDictionaryName() +
 											UIString.getUIString("MSG_MAIN_CANT_LOAD_DICTIONNARY_2"),
 											ex.getMessage());
 		}
@@ -544,7 +531,7 @@ public class Application
 	{
 		try
 		{
-			CPredictionEngine.createInstance( CProfil.getInstance().getKeyboard(), CProfil.getInstance().getPreferedWords() );
+			CPredictionEngine.createInstance( CProfil.getInstance().getKeyboard(), CSettings.getPreferedWords() );
 		}
 		catch (Exception ex)
 		{
@@ -645,10 +632,10 @@ public class Application
 	private static void loadSoundEngine()
 	{
 		// si l'utilisateur a besoin du son
-		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
-			CProfil.getInstance().getSound().isSoundOnClic()  ||
-			CProfil.getInstance().getSound().isSoundOnSurvol()  )
+		if( ( CSettings.getSound().isSoundOnDefil() 
+				&& CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+				CSettings.getSound().isSoundOnClic()  ||
+				CSettings.getSound().isSoundOnSurvol()  )
 		{
 			try
 			{
