@@ -34,15 +34,17 @@ import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
+
+import clavicom.CSettings;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.keygroup.mouse.CMouseKeyClick;
 import clavicom.core.keygroup.mouse.CMouseKeyMove;
 import clavicom.core.listener.onClicMouseClickListener;
 import clavicom.core.listener.onClicMouseMoveListener;
 import clavicom.core.message.CMessageEngine;
-import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.click.ClickEngine;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TMouseKeyClickEnum;
@@ -152,7 +154,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// souris sur le panel des bouttons pour garder le focus
 		
 		// si on est pas en mode défilement, on ne fait rien
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
+		if( CSettings.getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
 		{
 			
 			return;
@@ -161,7 +163,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 		// on regarde quel movement il veut faire
 		if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1 )
 		{
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on met en pause le hook 
 				ClickEngine.getInstance().mouseHookPause();
@@ -171,7 +173,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on reprend le hook
 				ClickEngine.getInstance().mouseHookResume();
@@ -179,7 +181,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_PRESS )
 		{
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on met en pause le hook 
 				ClickEngine.getInstance().mouseHookPause();
@@ -188,7 +190,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			// clic gauche pressé
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on reprend le hook
 				ClickEngine.getInstance().mouseHookResume();
@@ -196,7 +198,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_1_RELEASE )
 		{
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on met en pause le hook 
 				ClickEngine.getInstance().mouseHookPause();
@@ -205,7 +207,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			// clic gauche relaché
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on reprend le hook
 				ClickEngine.getInstance().mouseHookResume();
@@ -213,7 +215,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.BUTTON_2 )
 		{
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on met en pause le hook 
 				ClickEngine.getInstance().mouseHookPause();
@@ -223,7 +225,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mousePress( InputEvent.BUTTON3_MASK );
 			robot.mouseRelease( InputEvent.BUTTON3_MASK );	
 			
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on reprend le hook
 				ClickEngine.getInstance().mouseHookResume();
@@ -231,7 +233,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			
 		} else if( keyClic.GetClick() == TMouseKeyClickEnum.DOUBLE_BUTTON_1 )
 		{
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on met en pause le hook 
 				ClickEngine.getInstance().mouseHookPause();
@@ -243,7 +245,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			robot.mousePress( InputEvent.BUTTON1_MASK );
 			robot.mouseRelease( InputEvent.BUTTON1_MASK );
 			
-			if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
 				// on reprend le hook
 				ClickEngine.getInstance().mouseHookResume();
@@ -293,8 +295,7 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 			}
 		};
 		
-		CProfil profil = CProfil.getInstance();
-		int vitesse = profil.getNavigation().getMouseSpeed();
+		int vitesse = CSettings.getNavigation().getMouseSpeed();
 		
 		// on inverse la valeur
 		int duration = 101 - vitesse;

@@ -32,23 +32,42 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
+import clavicom.core.profil.CDictionaryName;
+import clavicom.core.profil.CLangueUIName;
+import clavicom.core.profil.CNavigation;
+import clavicom.core.profil.CPreferedWords;
+import clavicom.core.profil.CSound;
+import clavicom.core.profil.CTransparency;
 import clavicom.gui.language.UIString;
 import clavicom.tools.TXMLNames;
+import clavicom.tools.XMLTools;
 
 public class CSettings
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	
 	//---------------------------------------------------------- VARIABLES --//
+	static CLangueUIName langueUI;			// Langue de l'interface utilisateur
+
+	static CDictionaryName dictionnaryName;	// nom du fichier de dictionnaire
+	static CTransparency transparency;		// Transparence
+	static CSound sound;					// Gestion du son
+	static CNavigation navigation;			// Type de navigation de l'utilisateur
+	static CPreferedWords preferedWords;	// liste des mots préférés de l'utilisateur
+	
 	static String lastProfilePath;
 	static String defaultProfileName;
-	static String defaultLanguageFileName;
+	
+	static String settingFilePath;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 
 	//----------------------------------------------------------- METHODES --//
 	public static void loadSettings( String configFilePath ) throws Exception
 	{
+		settingFilePath = configFilePath;
+		
 		SAXBuilder sxb = new SAXBuilder();
 		Document document = null;
 		try
@@ -83,13 +102,11 @@ public class CSettings
 		
 		defaultProfileName = defaultProfileName_elem.getText();
 		
-		// Récupération du fichier de langue par défaut
-		Element defaultLanguageFileName_elem = racine.getChild( TXMLNames.SE_ELEMENT_DEFAULT_LANGUAGE_UI );
-		
-		if( defaultLanguageFileName_elem != null  )
-		{
-			defaultLanguageFileName = defaultLanguageFileName_elem.getText();
-		}
+		loadDictionnary(racine);
+		loadTransparency( racine );
+		loadSound( racine );
+		loadNavigation( racine );
+		loadPreferedWord( racine );
 	}
 	
 	public static void saveSettings( String configFilePath ) throws Exception
@@ -106,10 +123,36 @@ public class CSettings
 		defaultProfileName_elem.setText( defaultProfileName );
 		racine.addContent( defaultProfileName_elem );
 		
-		// Enregistrement de la langue par défaut
-		Element defaultLanguageFileName_elem = new Element( TXMLNames.SE_ELEMENT_DEFAULT_LANGUAGE_UI );
-		defaultLanguageFileName_elem.setText( defaultLanguageFileName );
-		racine.addContent( defaultLanguageFileName_elem );
+		// ===============================================================
+		// Attachement de la langueUI
+		// ===============================================================
+		racine.addContent( langueUI.buildNode() );
+		
+		// ===============================================================
+		// Attachement du dictionnaire
+		// ===============================================================
+		racine.addContent( dictionnaryName.buildNode() );
+		
+		// ===============================================================
+		// Attachement de la transparence
+		// ===============================================================
+		racine.addContent( transparency.buildNode() );
+		
+		// ===============================================================
+		// Attachement de la gestion du son
+		// ===============================================================
+		racine.addContent( sound.buildNode() );
+		
+		// ===============================================================
+		// Attachement de la navigation
+		// ===============================================================
+		racine.addContent( navigation.buildNode() );
+		
+		// ===============================================================
+		// Attachement des mots préférés de l'utilisateur
+		// ===============================================================
+		racine.addContent( preferedWords.buildNode() );
+		
 		
 		// Sauvegarde
 		
@@ -140,15 +183,184 @@ public class CSettings
 	{
 		CSettings.defaultProfileName = defaultProfileName;
 	}
-
-	public static String getDefaultLanguageFileName()
+	
+	public static void loadProfileLanguageUIName() throws Exception
 	{
-		return defaultLanguageFileName;
+		
+		Element racine = XMLTools.openFile( settingFilePath );
+		
+		// ======================================================================
+		// chargement de la langueUI
+		// ======================================================================
+		Element langueUI_elem = racine.getChild( TXMLNames.PR_ELEMENT_LANGUAGE_UI );
+		try
+		{
+			langueUI = new CLangueUIName( langueUI_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+	}
+	
+	public static void loadDictionnary (Element racine ) throws Exception
+	{
+		// ======================================================================
+		// chargement du dictionnaire
+		// ======================================================================
+		Element dictionary_elem = racine.getChild( TXMLNames.PR_ELEMENT_DICTIONARY_NAME );
+		if( dictionary_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_DICTIONARY_NAME );
+		}
+		try
+		{
+			dictionnaryName = new CDictionaryName( dictionary_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+	}
+	
+	public static void loadTransparency (Element racine ) throws Exception
+	{
+		// ======================================================================
+		// chargement de la transparence
+		// ======================================================================
+		Element transparency_elem = racine.getChild( TXMLNames.PR_ELEMENT_TRANSPARENCY );
+		if( transparency_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_TRANSPARENCY );
+		}
+		try
+		{
+			transparency = new CTransparency( transparency_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "]"  + ex.getMessage() );
+		}
+	}
+	
+	public static void loadSound (Element racine ) throws Exception
+	{
+		// ======================================================================
+		// chargement de la gestion du son
+		// ======================================================================
+		Element sound_elem = racine.getChild( TXMLNames.PR_ELEMENT_SOUND );
+		if( sound_elem == null )
+		{
+			throw new Exception( "[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" ) + "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_SOUND );
+		}
+		try
+		{
+			sound = new CSound( sound_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+	}
+	
+	public static void loadNavigation (Element racine ) throws Exception
+	{
+		// ======================================================================
+		// chargement de la navigation
+		// ======================================================================
+		Element navigation_elem = racine.getChild( TXMLNames.PR_ELEMENT_NAVIGATION );
+		if( navigation_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_NAVIGATION );
+		}
+		try
+		{
+			navigation = new CNavigation( navigation_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
+	}
+	
+	public static void loadPreferedWord (Element racine ) throws Exception
+	{
+		// ======================================================================
+		// chargement des mots préférés de l'utilisateur
+		// ======================================================================
+		Element preferedWords_elem = racine.getChild( TXMLNames.PR_ELEMENT_PREFERED_WORDS );
+		if( preferedWords_elem == null )
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "] : " + UIString.getUIString( "EX_KEYGROUP_NOT_FIND_NODE" ) + TXMLNames.PR_ELEMENT_PREFERED_WORDS );
+		}
+		try
+		{
+			preferedWords = new CPreferedWords( preferedWords_elem );
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("[" + UIString.getUIString( "EX_PROFIL_BUILD_PROFIL" )+ "]"  + ex.getMessage() );
+		}
 	}
 
-	public static void setDefaultLanguageFileName(String defaultLanguageFileName)
+	public static CLangueUIName getLangueUI()
 	{
-		CSettings.defaultLanguageFileName = defaultLanguageFileName;
+		return langueUI;
+	}
+
+	public static void setLangueUI(CLangueUIName langueUI)
+	{
+		CSettings.langueUI = langueUI;
+	}
+
+	public static CDictionaryName getDictionnaryName()
+	{
+		return dictionnaryName;
+	}
+
+	public static void setDictionnaryName(CDictionaryName dictionnaryName)
+	{
+		CSettings.dictionnaryName = dictionnaryName;
+	}
+
+	public static CTransparency getTransparency()
+	{
+		return transparency;
+	}
+
+	public static void setTransparency(CTransparency transparency)
+	{
+		CSettings.transparency = transparency;
+	}
+
+	public static CSound getSound()
+	{
+		return sound;
+	}
+
+	public static void setSound(CSound sound)
+	{
+		CSettings.sound = sound;
+	}
+
+	public static CNavigation getNavigation()
+	{
+		return navigation;
+	}
+
+	public static void setNavigation(CNavigation navigation)
+	{
+		CSettings.navigation = navigation;
+	}
+
+	public static CPreferedWords getPreferedWords()
+	{
+		return preferedWords;
+	}
+
+	public static void setPreferedWords(CPreferedWords preferedWords)
+	{
+		CSettings.preferedWords = preferedWords;
 	}
 		
 

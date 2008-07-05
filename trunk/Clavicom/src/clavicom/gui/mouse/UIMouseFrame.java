@@ -27,6 +27,8 @@ package clavicom.gui.mouse;
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import clavicom.CSettings;
 import clavicom.core.engine.CMouseEngine;
 import clavicom.core.keygroup.mouse.CMouse;
 import clavicom.core.profil.CFramePosition;
@@ -97,7 +99,7 @@ public class UIMouseFrame extends UITranslucentFrame
 		
 		if( b )
 		{
-			setTransparency( CProfil.getInstance().getTransparency().getKeyboardTransparency() );
+			setTransparency( CSettings.getTransparency().getKeyboardTransparency() );
 			CMouseEngine.getInstance().startTimer();
 			uiMouse.SwitchMoveMode();
 		}

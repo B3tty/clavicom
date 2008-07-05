@@ -31,6 +31,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+import clavicom.CSettings;
 import clavicom.core.profil.CFramePosition;
 import clavicom.core.profil.CProfil;
 import clavicom.gui.engine.DefilementKeyEngine;
@@ -191,7 +192,7 @@ UIRightClickListener
 
 			frameToolbar.setVisible(false);
 			
-			setTransparency(CProfil.getInstance().getTransparency().getKeyboardTransparency());
+			setTransparency(CSettings.getTransparency().getKeyboardTransparency());
 			
 			setFocusableWindowState(false);
 			setAlwaysOnTop(true);

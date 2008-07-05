@@ -27,7 +27,7 @@ package clavicom.gui.engine.sound;
 
 
 import clavicom.CFilePaths;
-import clavicom.core.profil.CProfil;
+import clavicom.CSettings;
 import clavicom.gui.engine.DefilementEngine;
 import clavicom.gui.keyboard.key.UIKey;
 import clavicom.gui.keyboard.keyboard.UIKeyGroup;
@@ -147,14 +147,14 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 	public void defil()
 	{
 		// si on est en mode défilement
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
+		if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 		{
 			scrollThread.play();
 		}
 		
 		// si on est en mode défilement
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE
-				&& CProfil.getInstance().getSound().isSoundOnMouseDelay())
+		if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE
+				&& CSettings.getSound().isSoundOnMouseDelay())
 		{
 			mouseDelayedClickThread.play();
 		}
@@ -162,7 +162,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 
 	public void keyEntered()
 	{
-		if( CProfil.getInstance().getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
+		if( CSettings.getNavigation().getTypeNavigation() != TNavigationType.DEFILEMENT )
 		{
 			enteredThread.play();
 		}
@@ -183,11 +183,11 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		// ========================================================================
 		// on regarde si on doit lancer le moteur de son
 		// ========================================================================
-		if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-				&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
-			CProfil.getInstance().getSound().isSoundOnClic()  ||
-			CProfil.getInstance().getSound().isSoundOnSurvol() ||
-			CProfil.getInstance().getSound().isSoundOnMouseDelay())
+		if( ( 	CSettings.getSound().isSoundOnDefil() && 
+				CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) || 
+				CSettings.getSound().isSoundOnClic()  ||
+				CSettings.getSound().isSoundOnSurvol() ||
+				CSettings.getSound().isSoundOnMouseDelay())
 		{
 			if( instance == null )
 			{
@@ -198,7 +198,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 		if( instance != null )
 		{
 			// on abonne les différent sons
-			if( CProfil.getInstance().getSound().isSoundOnClic() )
+			if( CSettings.getSound().isSoundOnClic() )
 			{
 				instance.listenPressed( uiKeyboard );
 			}
@@ -207,7 +207,7 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 				instance.unListenPressed( uiKeyboard );
 			}
 			
-			if( CProfil.getInstance().getSound().isSoundOnSurvol() )
+			if( CSettings.getSound().isSoundOnSurvol() )
 			{
 				instance.listenEntered( uiKeyboard );
 			}
@@ -216,8 +216,8 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 				instance.unListenEntered( uiKeyboard );
 			}
 			
-			if( ( CProfil.getInstance().getSound().isSoundOnDefil() 
-					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
+			if( ( CSettings.getSound().isSoundOnDefil() 
+					&& CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT) )
 			{
 				instance.listenDefilement( );
 			}
@@ -226,8 +226,8 @@ public class SoundEngine implements DefilListener, KeyEnteredListener, KeyPresse
 				instance.unListenDefilement( );
 			}
 			
-			if( ( CProfil.getInstance().getSound().isSoundOnMouseDelay() 
-					&& CProfil.getInstance().getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE) )
+			if( ( CSettings.getSound().isSoundOnMouseDelay() 
+					&& CSettings.getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE) )
 			{
 				instance.listenDefilement( );
 			}
