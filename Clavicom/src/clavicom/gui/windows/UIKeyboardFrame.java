@@ -195,6 +195,8 @@ UIRightClickListener
 			setTransparency(CSettings.getTransparency().getKeyboardTransparency());
 			
 			setFocusableWindowState(false);
+			frameToolbar.setFocusableWindowState(false);
+			
 			setAlwaysOnTop(true);
 			
 			// désabonnement a tous les moteurs

@@ -692,15 +692,10 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 		// (Lignes interverties)
 		DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
 		
-		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+		if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_STARTUP)
 		{
 			DefilementEngine.getInstance().startDefilement();
 		}
-		else
-		{
-			DefilementEngine.getInstance().forceStartDefilement();
-		}
-
 	}
 	
 	protected void onClickBtEditionKey()
@@ -845,6 +840,17 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 					// On arrête
 					return;
 				}
+			}
+			
+			// On vérifie qu'il y a au moins une touche de configuration
+			if(!panelKeyboard.hasSettingKeys()){
+				JOptionPane.showMessageDialog(
+						UIToolbarFrame.this,
+						UIString.getUIString("LB_EDITION_KEY_NO_CONFIGURE_KEY_1") + "\n" + 
+						UIString.getUIString("LB_EDITION_KEY_NO_CONFIGURE_KEY_2"), 
+						UIString.getUIString("LB_EDITION_KEY_NO_CONFIGURE_KEY_TITLE"), 
+						JOptionPane.WARNING_MESSAGE );
+				return;
 			}
 			
 			// On repasse en mode clavicom normal

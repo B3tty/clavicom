@@ -189,12 +189,12 @@ public class UIKeyList
 		keys.add(requiredIndex, uiKey);	
 	}
 	
-	public void simulateEnter( boolean selection )
+	public void simulateEnter( boolean simulate )
 	{
 		// séléction de toutes les touches
 		for( UIKeyKeyboard keyboardKey : keys )
 		{
-			if( selection )
+			if( simulate )
 			{
 				keyboardKey.forceState( TUIKeyState.ENTERED );
 			}

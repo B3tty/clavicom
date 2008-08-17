@@ -631,6 +631,10 @@
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_2">Si elles ne sont pas triées, elles seront perdues au prochain démarrage. </message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_3">Que voulez-vous faire ?</message>
 	
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_TITLE">Touche de configuration manquante</message>
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_1">Votre clavier ne contient pas de touche "Configuration de l'application".</message>
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_2">Veuillez en ajouter une pour pouvoir passer à nouveau en mode édition.</message>
+	
 	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Classer</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignorer</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Annuler</message>

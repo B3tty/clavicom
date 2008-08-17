@@ -560,7 +560,6 @@ UIRightClickListener
 	{
 		// Retrait des listeners
 		removeKeyListener(keyListener);
-//		removeMouseListener(mouseAdapter);
 		
 		// Changement de l'état
 		isEdited = false;
@@ -571,6 +570,7 @@ UIRightClickListener
 		// vérifie le moteur de son
 		SoundEngine.verifySoundEngine( this );
 		
+		getParent().setFocusable(false);
 	}
 	
 	public void select(boolean select)
@@ -769,6 +769,16 @@ UIRightClickListener
 		{						
 			replaceUIKey(currentKey);
 		}
+	}
+	
+	public boolean hasSettingKeys(){
+		for(UIKey currentKey : allKeys)
+		{			
+			if ((currentKey.getCoreKey().getClass() == CKeyClavicom.class) && 
+		        (((CKeyClavicom)currentKey.getCoreKey()).getAction() == TKeyClavicomActionType.OPEN_CONFIGURATION))
+				return true;
+		}
+		return false;
 	}
 	
 	private void replaceUIKey(UIKeyKeyboard currentKey)
@@ -1021,8 +1031,8 @@ UIRightClickListener
 	 * Supprime toutes les keys selectionnées
 	 */
 	public void deleteSelectedKeys()
-	{
-		// on demande à l'utilisateur s'il comfirma la suppression
+	{		
+		// on demande à l'utilisateur s'il comfirme la suppression
 		
 		// On construit le message le plus approprié
 		String message;

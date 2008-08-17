@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>french_standard.css</shortcutset_name>
-  <dictionary_name>french_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
       <red>102</red>
@@ -26,24 +24,6 @@
       <blue>162</blue>
     </default_entered>
   </keyboard_color>
-  <transparency>
-    <keyboard_transparency>1.0</keyboard_transparency>
-  </transparency>
-  <sound>
-    <on_defil active="true" />
-    <on_click active="true" />
-    <on_survol active="false" />
-    <on_mouse_delay active="true" />
-    <on_start active="false" />
-  </sound>
-  <navigation>
-    <type value="STANDARD" />
-    <rollover active="false" />
-    <mouse_speed value="85" />
-    <click_tempo value="837" />
-    <defil_tempo value="1267" />
-    <mouse_mouve_on_entered active="false" />
-  </navigation>
   <font>
     <name>Arial</name>
     <auto_size>false</auto_size>
@@ -3047,8 +3027,5 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words active="true">
-    <prefered_word frequency="1">ftre</prefered_word>
-  </prefered_words>
 </profil>
 

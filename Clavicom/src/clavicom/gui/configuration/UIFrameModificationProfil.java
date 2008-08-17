@@ -361,9 +361,7 @@ public class UIFrameModificationProfil extends JDialog
 	protected void initFrame()
 	{
 		// Titre de la fenêtre
-		setTitle(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_TITLE"));
-		
-		
+		setTitle(UIString.getUIString("LB_EDITION_OPTION_APPLICATION_TITLE"));		
 	}
 	
 	/**
@@ -642,9 +640,9 @@ public class UIFrameModificationProfil extends JDialog
 	}
 	
 	@Override
-	public void setVisible(boolean b)
+	public void setVisible(boolean visible)
 	{
-		if(b)
+		if(visible)
 		{
 			progressBarApply.setValue(0);
 
@@ -663,7 +661,7 @@ public class UIFrameModificationProfil extends JDialog
 		TSwingUtils.centerComponentToScreen(this);
 		
 		// TODO Auto-generated method stub
-		super.setVisible(b);
+		super.setVisible(visible);
 	}
 	
 }
