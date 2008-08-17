@@ -213,7 +213,7 @@ public class UIKeyClavicomEngine implements OnClickKeyClavicomListener
 			// si on est en défilement
 			if( CSettings.getNavigation().getTypeNavigation() == TNavigationType.DEFILEMENT )
 			{
-				DefilementKeyEngine.getInstance().startKeyDefilEngine(false);
+				DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
 			}
 			frameKeyboard.setVisible( true );
 			

@@ -33,6 +33,7 @@ import clavicom.gui.keyboard.keyboard.UIKeyGroup;
 import clavicom.gui.keyboard.keyboard.UIKeyList;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.DefilListener;
+import clavicom.tools.TStartDefilEnum;
 import clavicom.tools.TUIKeyState;
 
 public class DefilementKeyEngine implements DefilListener, clickMouseHookListener
@@ -246,7 +247,7 @@ public class DefilementKeyEngine implements DefilListener, clickMouseHookListene
 	public void clickMouseHook()
 	{
 		
-		if( firstTime )
+		if( firstTime && (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK))
 		{
 			firstTime = false;
 			return;

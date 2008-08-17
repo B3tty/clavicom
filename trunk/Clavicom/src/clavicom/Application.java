@@ -249,13 +249,9 @@ public class Application
 			
 			DefilementKeyEngine.getInstance().startKeyDefilEngine(true);
 			
-			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_ACTION_CLICK)
+			if (CProfil.getInstance().getAdvancedOption().getStartDefilMode() == TStartDefilEnum.ON_STARTUP)
 			{
 				DefilementEngine.getInstance().startDefilement();
-			}
-			else
-			{
-				DefilementEngine.getInstance().forceStartDefilement();
 			}
 		}
 	}

@@ -633,6 +633,10 @@
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_2">If you don't class those keys, your work will be lost on next launch.</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_KEYS_3">What do you want to do?</message>
 	
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_TITLE">Configure application key missing</message>
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_1">Your keyboard does not contain any "Configure application" key.</message>
+	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_2">Please add one to be able to switch to this edition mode later.</message>
+	
 	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Class</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignore</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Cancel</message>

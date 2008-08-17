@@ -49,8 +49,6 @@ public class DefilementEngine implements clickMouseHookListener
 	
 	UIKeyboard uiKeyboard;
 	UIMouse uiMouse;
-	
-	boolean mustStart;
 
 	//------------------------------------------------------ CONSTRUCTEURS --//
 	protected DefilementEngine( )
@@ -58,8 +56,6 @@ public class DefilementEngine implements clickMouseHookListener
 		// seront initialisés grace aux Set...
 		uiKeyboard = null;
 		uiMouse = null;
-		
-		mustStart = false;
 		
 		listenerList = new EventListenerList();
 		defilTimer = createSelectTimer( );
@@ -105,14 +101,8 @@ public class DefilementEngine implements clickMouseHookListener
 	// ========================================================|
 	// fin Listeners ==========================================|
 	// ========================================================|
-
 	
-	public void startDefilement( )
-	{
-		mustStart = true;
-	}
-	
-	public void forceStartDefilement()
+	public void startDefilement()
 	{
 		if( defilTimer != null )
 		{
@@ -182,12 +172,7 @@ public class DefilementEngine implements clickMouseHookListener
 
 	public void clickMouseHook()
 	{
-		if ( mustStart )
-		{
-			forceStartDefilement();
-
-			mustStart = false;
-		}
+		startDefilement();
 	}
 }
 

@@ -566,7 +566,7 @@ implements clickMouseHookListener, DefilListener, ComponentListener
 				}
 				else
 				{
-					DefilementEngine.getInstance().forceStartDefilement();
+					DefilementEngine.getInstance().startDefilement();
 				}
 			}
 			

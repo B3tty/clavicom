@@ -15,13 +15,18 @@
     <on_start active="false" />
   </sound>
   <navigation>
-    <type value="DEFILEMENT" />
+    <type value="STANDARD" />
     <rollover active="false" />
     <mouse_speed value="85" />
     <click_tempo value="837" />
     <defil_tempo value="1267" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
-  <prefered_words active="true" />
+  <prefered_words active="true">
+    <prefered_word frequency="6">azertyuiopqsdfghjklmwxcvbn</prefered_word>
+    <prefered_word frequency="2">àéè^¨ç'()-"_</prefered_word>
+    <prefered_word frequency="2">€àéè^¨ç'()-"_</prefered_word>
+    <prefered_word frequency="1">tghyuhytrf</prefered_word>
+  </prefered_words>
 </settings>
 
