@@ -607,7 +607,7 @@
 	<message id = "LB_CONFPROFIL_ADVANCED_NB_DEFIL_TURN">Number of scrolls before returning to previous level</message>
 	
 	<message id = "LB_CONFPROFIL_PANEL_ABOUT">About</message>
-	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION">Version 1.0 Bêta 1.2</message>
+	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_VERSION">Version 1.0 Bêta 1.3</message>
 	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_CONCEPTION">Design and development by </message>
 	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_DEV_FOR">Developed for </message>
 	<message id = "LB_CONFPROFIL_PANEL_ABOUT_CLAVICOM_BUG_CASE">For any question, please contact </message>
