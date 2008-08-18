@@ -1,8 +1,11 @@
-===== VERSION XXXXXXX (générée le XX/XX/XXXX) =====
+===== VERSION XXXXXX (générée le XX/XX/XXXX) =====
+ - 
+ 
+===== VERSION BETA 1.3 (générée le 18/08/2008) =====
  - Simplification du chargement des profils (plus d'import, ouverture réelle)
  - Correction du clic temporisé (valable uniquement sur le clavier et lorsqu'on attend sur une touche)
  - Obligation de présence d'une touche "Configuration de l'application"
- -
+ - Mise clavicoà jour des profils (simplification)
   
 ===== VERSION BETA 1.2 (générée le 26/06/2008) =====
  - Modification de l'installeur (gestion complète Anglais/Français)
