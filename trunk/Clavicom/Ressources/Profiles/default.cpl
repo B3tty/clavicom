@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
-  <commandset_name>us_standard.ccs</commandset_name>
-  <shortcutset_name>us_standard.css</shortcutset_name>
-  <dictionary_name>us_standard.cdc</dictionary_name>
+  <commandset_name>french_standard.ccs</commandset_name>
+  <shortcutset_name>french_standard.css</shortcutset_name>
   <keyboard_color>
     <back_color>
       <red>204</red>
@@ -26,24 +24,6 @@
       <blue>162</blue>
     </default_entered>
   </keyboard_color>
-  <transparency>
-    <keyboard_transparency>1.0</keyboard_transparency>
-  </transparency>
-  <sound>
-    <on_defil active="true" />
-    <on_click active="true" />
-    <on_survol active="false" />
-    <on_mouse_delay active="true" />
-    <on_start active="false" />
-  </sound>
-  <navigation>
-    <type value="STANDARD" />
-    <rollover active="false" />
-    <mouse_speed value="84" />
-    <click_tempo value="837" />
-    <defil_tempo value="1215" />
-    <mouse_mouve_on_entered active="false" />
-  </navigation>
   <font>
     <name>Lucida Sans</name>
     <auto_size>false</auto_size>
@@ -64,22 +44,22 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.15390626</x>
-        <y>0.59375</y>
+        <x>0.13828126</x>
+        <y>0.58875</y>
       </left_up>
       <right_down>
-        <x>0.8359375</x>
-        <y>0.89375</y>
+        <x>0.8617188</x>
+        <y>0.88125</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.6171875</x>
-        <y>0.4325</y>
+        <x>0.690625</x>
+        <y>0.58875</y>
       </left_up>
       <right_down>
-        <x>0.921875</x>
-        <y>0.8</y>
+        <x>0.9953125</x>
+        <y>0.95625</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
@@ -90,12 +70,12 @@
         <keyclavicom order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.84587157</x>
-              <y>0.02017291</y>
+              <x>0.84556407</x>
+              <y>0.023346303</y>
             </point>
             <point position="max">
-              <x>0.88990825</x>
-              <y>0.16138329</y>
+              <x>0.8893757</x>
+              <y>0.19066148</y>
             </point>
           </coordinates>
           <colors>
@@ -121,12 +101,12 @@
         <keyclavicom order="1" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.89541286</x>
-              <y>0.02017291</y>
+              <x>0.8959474</x>
+              <y>0.023346303</y>
             </point>
             <point position="max">
-              <x>0.93944955</x>
-              <y>0.16138329</y>
+              <x>0.939759</x>
+              <y>0.19066148</y>
             </point>
           </coordinates>
           <colors>
@@ -152,12 +132,12 @@
         <keyclavicom order="2" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.9431193</x>
-              <y>0.02017291</y>
+              <x>0.9430449</x>
+              <y>0.023346303</y>
             </point>
             <point position="max">
-              <x>0.98899084</x>
-              <y>0.16138329</y>
+              <x>0.9890471</x>
+              <y>0.19066148</y>
             </point>
           </coordinates>
           <colors>
@@ -183,6 +163,5 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words active="true" />
 </profil>
 
