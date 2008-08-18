@@ -46,11 +46,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
-
+import clavicom.CSettings;
 import clavicom.core.keygroup.CKey;
 import clavicom.core.listener.CKeyCaptionChangedListener;
 import clavicom.core.listener.CKeyClickListener;
@@ -63,6 +62,7 @@ import clavicom.gui.listener.KeyEnteredListener;
 import clavicom.gui.listener.KeyPressedListener;
 import clavicom.gui.listener.UIRightClickListener;
 import clavicom.tools.TColorKeyEnum;
+import clavicom.tools.TNavigationType;
 import clavicom.tools.TSwingUtils;
 import clavicom.tools.TUIKeyState;
 
@@ -190,12 +190,18 @@ public abstract class UIKey extends UIJResizer implements ComponentListener, CKe
 			}
 			
 			public void mousePressedSpecific(MouseEvent e) 
-			{
+			{				
 				buttonPressedUse();
 			}
 			
 			public void mouseReleasedSpecific(MouseEvent e) 
 			{
+				// Is we are on the delayed click, we cancel
+				if ( CSettings.getNavigation().getTypeNavigation() == TNavigationType.CLICK_TEMPORISE )
+	            {
+	                return;
+	            }
+				
 				buttonReleasedUse();
 			}
 			
