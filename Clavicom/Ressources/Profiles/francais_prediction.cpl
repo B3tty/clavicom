@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profil>
-  <language_ui>english.clg</language_ui>
   <commandset_name>french_standard.ccs</commandset_name>
   <shortcutset_name>french_standard.css</shortcutset_name>
-  <dictionary_name>french_standard.cdc</dictionary_name>
   <keyboard_color>
     <back_color>
       <red>204</red>
@@ -26,24 +24,6 @@
       <blue>162</blue>
     </default_entered>
   </keyboard_color>
-  <transparency>
-    <keyboard_transparency>1.0</keyboard_transparency>
-  </transparency>
-  <sound>
-    <on_defil active="true" />
-    <on_click active="true" />
-    <on_survol active="false" />
-    <on_mouse_delay active="true" />
-    <on_start active="false" />
-  </sound>
-  <navigation>
-    <type value="STANDARD" />
-    <rollover active="false" />
-    <mouse_speed value="84" />
-    <click_tempo value="837" />
-    <defil_tempo value="1215" />
-    <mouse_mouve_on_entered active="false" />
-  </navigation>
   <font>
     <name>Lucida Sans</name>
     <auto_size>false</auto_size>
@@ -69,7 +49,7 @@
       </left_up>
       <right_down>
         <x>0.8359375</x>
-        <y>0.895</y>
+        <y>0.89375</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
@@ -79,7 +59,7 @@
       </left_up>
       <right_down>
         <x>0.921875</x>
-        <y>0.80125</y>
+        <y>0.8</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
@@ -1227,12 +1207,12 @@
         <keycharacter order="0" caption_image="true">
           <coordinates>
             <point position="min">
-              <x>0.744559</x>
-              <y>0.17916666</y>
+              <x>0.6788991</x>
+              <y>0.17867436</y>
             </point>
             <point position="max">
-              <x>0.7777778</x>
-              <y>0.32083333</y>
+              <x>0.77798164</x>
+              <y>0.31988472</y>
             </point>
           </coordinates>
           <colors>
@@ -3175,6 +3155,5 @@
       </keylist>
     </keygroup>
   </keyboard>
-  <prefered_words active="true" />
 </profil>
 

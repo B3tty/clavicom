@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-  <last_profile_path>C:/Developpement/Clavicom/Ressources/Profiles/francais_simple.cpl</last_profile_path>
+  <last_profile_path>C:\Developpement\Clavicom\Ressources\Profiles\default.cpl</last_profile_path>
   <default_profile_name>default.cpl</default_profile_name>
-  <language_ui>english.clg</language_ui>
-  <dictionary_name>nederland_standard.cdc</dictionary_name>
+  <language_ui>french.clg</language_ui>
+  <dictionary_name>french_standard.cdc</dictionary_name>
   <transparency>
     <keyboard_transparency>1.0</keyboard_transparency>
   </transparency>
@@ -22,11 +22,6 @@
     <defil_tempo value="1267" />
     <mouse_mouve_on_entered active="false" />
   </navigation>
-  <prefered_words active="true">
-    <prefered_word frequency="6">azertyuiopqsdfghjklmwxcvbn</prefered_word>
-    <prefered_word frequency="2">àéè^¨ç'()-"_</prefered_word>
-    <prefered_word frequency="2">€àéè^¨ç'()-"_</prefered_word>
-    <prefered_word frequency="1">tghyuhytrf</prefered_word>
-  </prefered_words>
+  <prefered_words active="false" />
 </settings>
 
