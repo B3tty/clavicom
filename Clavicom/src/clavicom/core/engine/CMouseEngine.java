@@ -132,7 +132,6 @@ public class CMouseEngine implements onClicMouseMoveListener, onClicMouseClickLi
 
 	public void onClicMouseMove( CMouseKeyMove keyMove )
 	{
-
 		// on regarde quel movement il veut faire
 		currentMove = keyMove.GetDirection();
 		

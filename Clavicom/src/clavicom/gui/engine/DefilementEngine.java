@@ -31,13 +31,11 @@ import javax.swing.Timer;
 import javax.swing.event.EventListenerList;
 
 import clavicom.CSettings;
-import clavicom.gui.engine.click.ClickEngine;
-import clavicom.gui.engine.click.clickMouseHookListener;
 import clavicom.gui.keyboard.keyboard.UIKeyboard;
 import clavicom.gui.listener.DefilListener;
 import clavicom.gui.mouse.UIMouse;
 
-public class DefilementEngine implements clickMouseHookListener
+public class DefilementEngine
 {
 	//--------------------------------------------------------- CONSTANTES --//
 
@@ -58,9 +56,7 @@ public class DefilementEngine implements clickMouseHookListener
 		uiMouse = null;
 		
 		listenerList = new EventListenerList();
-		defilTimer = createSelectTimer( );
-		
-		ClickEngine.getInstance().addClickMouseHookListener( this );
+		defilTimer = createSelectTimer();
 	}
 
 
@@ -168,11 +164,6 @@ public class DefilementEngine implements clickMouseHookListener
 	public void setUiMouse(UIMouse uiMouse)
 	{
 		this.uiMouse = uiMouse;
-	}
-
-	public void clickMouseHook()
-	{
-		startDefilement();
 	}
 }
 

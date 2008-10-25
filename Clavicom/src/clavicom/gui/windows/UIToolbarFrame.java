@@ -676,7 +676,6 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 	
 	private void stopDefilMode()
 	{
-
 		ClickEngine.getInstance().mouseHookPause();
 			
 		DefilementEngine.getInstance().stopDefilement();
