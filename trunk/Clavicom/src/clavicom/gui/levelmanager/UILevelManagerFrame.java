@@ -63,8 +63,7 @@ public class UILevelManagerFrame extends JDialog
 	//--------------------------------------------------------- CONSTANTES --//
 	private final int BT_IMAGE_SIZE = 30;	// Taille des images des boutons
 	private final int SPACE = 5;			// Espace entre les composants
-	private final String DEFAULT_GROUP_NAME = "AUTO";	// Nom du groupe par défaut
-	private final String DEFAULT_LIST_NAME = "AUTO";	// Nom du groupe par défaut
+
 	
 	//---------------------------------------------------------- VARIABLES --//	
 	// Panels principaux
@@ -776,27 +775,8 @@ public class UILevelManagerFrame extends JDialog
 
 	protected void onBtClassKeyAutomaticPressed()
 	{
-		// On essaye de récupérer le groupe par défault
-		UIKeyGroup defaultGroup = uiKeyboard.getGroupByCaption(DEFAULT_GROUP_NAME);
-
-		if(defaultGroup == null)
-		{
-			defaultGroup = uiKeyboard.addUIKeyGroup(DEFAULT_GROUP_NAME);
-		}
-		
-		// On essaye de récupérer la liste par défault
-		UIKeyList defaultList = defaultGroup.getListByCaption(DEFAULT_LIST_NAME);
-
-		if(defaultList == null)
-		{
-			defaultList = uiKeyboard.addUIKeyListToGroup(DEFAULT_LIST_NAME, defaultGroup);
-		}
-		
-		// On ajoute toutes les touches non classées à la liste par défaut
-		while(uiKeyboard.getUnClassedKey().size() != 0)
-		{
-			uiKeyboard.classKeyToUIList(uiKeyboard.getUnClassedKey().get(0), defaultList);
-		}
+		// On classe les touches automatiquement
+		uiKeyboard.classKeyAutomatic();
 		
 		// On met a jour la liste des groupes
 		updateListGroupsContaint();
@@ -811,10 +791,10 @@ public class UILevelManagerFrame extends JDialog
 		updateListUnclassedKeysContaint();
 		
 		// On selectionne le groupe
-		panelGroups.getList().setSelectedValue(defaultGroup, true);
+		//panelGroups.getList().setSelectedValue(defaultGroup, true);
 		
 		// On selectionne la liste
-		panelLists.getList().setSelectedValue(defaultList, true);
+		//panelLists.getList().setSelectedValue(defaultList, true);
 		
 		// On met a jour la selection
 		updateEnableState();

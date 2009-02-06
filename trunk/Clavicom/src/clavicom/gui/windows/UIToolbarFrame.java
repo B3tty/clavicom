@@ -99,7 +99,8 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 	private final int PREFERED_SPACE_WITH_KEYBOARD = 5;	// Espacement avec le keyboard
 	
 	
-	private final String[] UNCLASSED_KEY_CHOICES = {	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CLASS"),		// Trier
+	private final String[] UNCLASSED_KEY_CHOICES = { 	UIString.getUIString("LB_EDITION_KEY_UNCLASSED_AUTO_CLASS"),		// Trier automatiquement	
+														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_MANUAL_CLASS"),		// Trier Manuelement
 														UIString.getUIString("LB_EDITION_KEY_UNCLASSED_CANCEL"),};	// Annuler
 
 	private final int BT_IMAGE_SIZE = 30;
@@ -610,7 +611,7 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 			// charger un profil
 
 			// on affiche le dialogue
-			JFileChooser fileChooser = new JFileChooser( CFilePaths.getDefaultProfileFolder() );
+			JFileChooser fileChooser = new JFileChooser( CFilePaths.getProfilsFolder() );
 			
 			// Spécification des extensions affichées
 			fileChooser.addChoosableFileFilter(new TSwingUtils.FiltreSimple("Clavicom Profile (*.cpl)",".cpl"));
@@ -826,9 +827,14 @@ public class UIToolbarFrame extends UITranslucentDialog implements UIGridChanged
 						    JOptionPane.QUESTION_MESSAGE,
 						    null,
 						    UNCLASSED_KEY_CHOICES, UNCLASSED_KEY_CHOICES[0]);
-				  
-				if (reponse == JOptionPane.YES_OPTION)
-				// Trier
+				
+				System.out.println( reponse );
+				
+				if (reponse == 0) // Classement automatique
+				{
+					panelKeyboard.classKeyAutomatic();
+				}
+				else if (reponse == 1) // Classement Manuel
 				{
 					frameLevelManager.setVisible(true);
 					return;

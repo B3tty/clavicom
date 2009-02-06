@@ -58,7 +58,6 @@ UIRightClickListener
 {
 	//--------------------------------------------------------- CONSTANTES --//
 	//---------------------------------------------------------- VARIABLES --//
-	@SuppressWarnings("unused")
 	private boolean isEdited; 	// Indique si on est en édition
 	
 	// Panel principal

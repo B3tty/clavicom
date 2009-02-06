@@ -122,6 +122,9 @@ UIRightClickListener
 	
 	final float NEW_KEY_RELATIVE_WIDTH = .1f;		// Taille relative des boutons ajoutés
 	final float NEW_KEY_RELATIVE_HEIGHT = .1f;		// Taille relative des boutons ajoutés
+	
+	private final String DEFAULT_GROUP_NAME = "AUTO";	// Nom du groupe par défaut pour le classement automatique
+	private final String DEFAULT_LIST_NAME = "AUTO";	// Nom du groupe par défaut pour le classement automatique
 
 	//---------------------------------------------------------- VARIABLES --//	
 	private List<UIKeyGroup> keyGroups;				// Liste des UIKeyGroups
@@ -135,7 +138,6 @@ UIRightClickListener
 	private Timer resizeTimer;					// Timer qui une fois expiré demande
 												// le calcul des images
 	
-	@SuppressWarnings("unused")
 	private boolean isEdited;					// Indique si le clavier est en edition
 	private CKeyboard coreKeyboard;				// Element du noyau
 	
@@ -1748,6 +1750,31 @@ UIRightClickListener
 	public void recreateKeyboardBackground()
 	{
 		imgBackground = recreateBackground();
+	}
+	
+	public void classKeyAutomatic()
+	{
+		// On essaye de récupérer le groupe par défault
+		UIKeyGroup defaultGroup = getGroupByCaption(DEFAULT_GROUP_NAME);
+
+		if(defaultGroup == null)
+		{
+			defaultGroup = addUIKeyGroup(DEFAULT_GROUP_NAME);
+		}
+		
+		// On essaye de récupérer la liste par défault
+		UIKeyList defaultList = defaultGroup.getListByCaption(DEFAULT_LIST_NAME);
+
+		if(defaultList == null)
+		{
+			defaultList = addUIKeyListToGroup(DEFAULT_LIST_NAME, defaultGroup);
+		}
+		
+		// On ajoute toutes les touches non classées à la liste par défaut
+		while(getUnClassedKey().size() != 0)
+		{
+			classKeyToUIList(getUnClassedKey().get(0), defaultList);
+		}
 	}
 	
 }
