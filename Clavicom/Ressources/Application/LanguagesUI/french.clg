@@ -635,8 +635,8 @@
 	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_1">Votre clavier ne contient pas de touche "Configuration de l'application".</message>
 	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_2">Veuillez en ajouter une pour pouvoir passer à nouveau en mode édition.</message>
 	
-	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Classer</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignorer</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_MANUAL_CLASS">Classer Manuellement</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_AUTO_CLASS">Classer Automatiquement</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Annuler</message>
 	
 	<message id = "LB_EDITION_OPTION_KEY_TITLE">Edition de touche</message>

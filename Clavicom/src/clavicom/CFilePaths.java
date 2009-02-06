@@ -36,7 +36,7 @@ public class CFilePaths
 	private static String application = ressources + "Application" + File.separator;
 	
 	private static String commandSets = application + "CommandSets" + File.separator;
-	private static String defaultProfile = application + "DefaultProfiles" + File.separator;
+	/*private static String defaultProfile = application + "DefaultProfiles" + File.separator;*/
 	private static String dictionaries = application + "Dictionaries" + File.separator;
 	private static String languagesUI = application + "LanguagesUI" + File.separator;
 	private static String shortcutSets = application + "ShortcutSets" + File.separator;
@@ -128,11 +128,11 @@ public class CFilePaths
 	{
 		return configFile;
 	}
-
+/*
 	public static String getDefaultProfileFolder()
 	{
 		return defaultProfile;
-	}
+	}*/
 
 	public static String getDictionariesFolder()
 	{

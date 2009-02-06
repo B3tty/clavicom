@@ -86,7 +86,7 @@ public class Application
 	@SuppressWarnings("unused")
 	private static CStringsEngine	toolStringEngine;			// Moteur de chaines
 	
-	@SuppressWarnings("unused")
+
 	private static UIKeyboard uiKeyboard;						// panel d'interface du clavier
 		
 	

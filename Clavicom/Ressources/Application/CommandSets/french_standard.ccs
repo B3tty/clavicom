@@ -913,7 +913,7 @@
 			<code order="0" action="pressed" value="VK_SUBTRACT"/>
 			<code order="1" action="released" value="VK_SUBTRACT"/>
 		</command>
-		<command id="162" search_string="+" caption = "Plus">
+		<command id="191" search_string="+" caption = "Plus">
 			<code order="0" action="pressed" value="VK_ADD"/>
 			<code order="1" action="released" value="VK_ADD"/>
 		</command>

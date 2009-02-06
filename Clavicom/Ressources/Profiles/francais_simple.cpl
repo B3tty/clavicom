@@ -44,22 +44,22 @@
     <add_space_after_string>true</add_space_after_string>
     <clavicom_frame_position>
       <left_up>
-        <x>0.13828126</x>
-        <y>0.58875</y>
+        <x>0.1507143</x>
+        <y>0.47428572</y>
       </left_up>
       <right_down>
-        <x>0.8617188</x>
-        <y>0.88125</y>
+        <x>0.87</x>
+        <y>0.7619048</y>
       </right_down>
     </clavicom_frame_position>
     <souricom_frame_position>
       <left_up>
-        <x>0.690625</x>
-        <y>0.58875</y>
+        <x>0.68857145</x>
+        <y>0.5885714</y>
       </left_up>
       <right_down>
-        <x>0.9953125</x>
-        <y>0.95625</y>
+        <x>0.9907143</x>
+        <y>0.9552381</y>
       </right_down>
     </souricom_frame_position>
     <nb_defil_turn>3</nb_defil_turn>
@@ -2871,9 +2871,9 @@
           <caption_level_2>+</caption_level_2>
           <caption_level_3>+</caption_level_3>
           <commands>
-            <command_normal id="162" />
-            <command_shift id="162" />
-            <command_altgr id="162" />
+            <command_normal id="121" />
+            <command_shift id="121" />
+            <command_altgr id="121" />
           </commands>
         </keycharacter>
         <keycharacter order="2" caption_image="false">

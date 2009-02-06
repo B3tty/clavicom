@@ -637,8 +637,8 @@
 	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_1">Your keyboard does not contain any "Configure application" key.</message>
 	<message id = "LB_EDITION_KEY_NO_CONFIGURE_KEY_2">Please add one to be able to switch to this edition mode later.</message>
 	
-	<message id = "LB_EDITION_KEY_UNCLASSED_CLASS">Class</message>
-	<message id = "LB_EDITION_KEY_UNCLASSED_IGNORE">Ignore</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_MANUAL_CLASS">Manual class</message>
+	<message id = "LB_EDITION_KEY_UNCLASSED_AUTO_CLASS">Automatic class</message>
 	<message id = "LB_EDITION_KEY_UNCLASSED_CANCEL">Cancel</message>
 	
 	<message id = "LB_EDITION_OPTION_KEY_TITLE">Key options</message>
